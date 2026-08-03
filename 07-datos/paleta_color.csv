@@ -3,7 +3,7 @@ Boca de Dragón,Monaco Dark Pink,Snapdragon Monaco Dark Pink,ROSA_FUERTE,#C2185B
 Boca de Dragón,Monaco Orange,Snapdragon Monaco Orange,NARANJA,#EF6C00,LINEA,DCB,alta,Color explícito en el nombre
 Boca de Dragón,Monaco Plumblossom,Snapdragon Monaco Plumblossom,LAVANDA,#B39DDB,LINEA,DCB,media,Plumblossom = malva claro; confirmar en campo
 Boca de Dragón,Monaco Red,Snapdragon Monaco Red,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
-Boca de Dragón,Opus Fresh,Snapdragon Opus Fresh,CREMA,#FFF8E1,LINEA,DCB,baja,El nombre NO indica color — CONFIRMAR
+Boca de Dragón,Opus Fresh,Snapdragon Opus Fresh,BLANCO,#FFFFFF,LINEA,DCB,alta,CONFIRMADO por variedades_bitacora.csv: se usa para condolencias y bouquets neutros. Tallos mas gruesos que Appleblossom
 Boca de Dragón,Opus Appleblossom,Snapdragon Opus Appleblossom,ROSA_CLARO,#F8BBD0,LINEA,DCB,media,Appleblossom = rosa muy pálido
 Boca de Dragón,Opus Pink,Snapdragon Opus Pink,ROSA_MEDIO,#EC407A,LINEA,DCB,alta,Color explícito en el nombre
 Boca de Dragón,Potomac Royal,Snapdragon Potomac Royal,MORADO,#6A1B9A,LINEA,DCB,media,Royal = morado intenso
@@ -11,26 +11,26 @@ Boca de Dragón,Potomac Crimson,Snapdragon Potomac Crimson,ROJO,#B71C1C,LINEA,DC
 Boca de Dragón,Cannes Red,Snapdragon Cannes Red,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
 Boca de Dragón,Cannes Pink,Snapdragon Cannes Pink,ROSA_MEDIO,#EC407A,LINEA,DCB,alta,Color explícito en el nombre
 Boca de Dragón,Cannes Lavender,Snapdragon Cannes Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,Color explícito en el nombre
-Boca de Dragón,Cannes Light Bronze,Snapdragon Cannes Light Bronze,BRONCE,#C68642,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Light Bronze,Snapdragon Cannes Light Bronze,ALBARICOQUE,#F2A65A,LINEA,DCB,alta,CORREGIDO por variedades_bitacora.csv: es un APRICOT unico que no existe en ninguna otra serie. Irremplazable — mantener siempre
 Boca de Dragón,Cannes Red Delight,Snapdragon Cannes Red Delight,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
 Boca de Dragón,MB Ivory,Snapdragon Madame Butterfly Ivory,MARFIL,#FFF3E0,LINEA,DCB,alta,Variedad preferida — tallo grueso y largo
 Boca de Dragón,MB Bronze,Snapdragon Madame Butterfly Bronze,BRONCE,#C68642,LINEA,DCB,alta,Variedad preferida — tallo grueso y largo
 Gomphrena,Quis Carmine,Gomphrena Quis Carmine,FUCSIA,#AD1457,RELLENO,DCB,alta,Caballo de batalla — aparece en 8 productos
-Gomphrena,Quis Sequin,Gomphrena Quis Sequin,MORADO_CLARO,#9C6ABF,RELLENO,DCB,baja,El nombre NO indica color — CONFIRMAR
+Gomphrena,Quis Sequin,Gomphrena Quis Sequin,ROSA_APAGADO,#C48B9F,RELLENO,DCB,alta,CORREGIDO por variedades_bitacora.csv: color apagado rosado envejecido. En OBSERVAR — no justifica precio vs Carmine y tiene cabezas caidas
 Gomphrena,Quis Pink,Gomphrena Quis Pink,ROSA_MEDIO,#EC407A,RELLENO,DCB,alta,Color explícito en el nombre
 Gomphrena,Audrey White,Gomphrena Audrey White,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre
 Gomphrena,Raspberry Cream,Gomphrena Raspberry Cream,ROSA_CREMA,#F48FB1,RELLENO,DCB,media,Bicolor frambuesa/crema
 Gomphrena,Salmon Pastel,Gomphrena Salmon Pastel,SALMON,#FFAB91,RELLENO,DCB,alta,Color explícito en el nombre
 Campanula,Champion Pink,Campanula Champion Pink,ROSA_MEDIO,#F06292,LINEA,DCB,alta,Color explícito en el nombre
 Campanula,Champion White,Campanula Champion White,BLANCO,#FFFFFF,LINEA,DCB,alta,Requerida en Bouquet pureza
-Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,RETIRADA DEL CULTIVO — decisiones_manejo.csv 2026-07-07: rindió 0.64 t/planta vs 0.92 de la blanca en el mismo bloque
-Statice,Forever Happy,Statice Forever Happy,LILA_ROSADO,#CE93D8,RELLENO,DCB,baja,El nombre NO indica color — se usa como el rosa/lila base. CONFIRMAR
+Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,CONFLICTO SIN RESOLVER — decisiones_manejo.csv (2026-07-07) dice SACAR del cultivo por 0.64 t/planta vs 0.92 de la blanca; variedades_bitacora.csv (CAMBIOS SEM24) dice MANTENER en zona correcta porque el problema es estres hidrico en 3B y no la variedad. PREGUNTAR A VANESSA
+Statice,Forever Happy,Statice Forever Happy,MULTICOLOR,#D8A0C0,RELLENO,DCB,media,CORREGIDO por variedades_bitacora.csv: tiene colores APRICOT y NARANJA en las flores que lo hacen muy bonito — NO es un lila plano. Colapso productivo documentado sem 20+
 Statice,Ruso,Limonium Ruso,MORADO,#7E57C2,RELLENO,DCB,media,Limonium Ruso = violeta azulado
 Statice,Hipster White,Statice Hipster White,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre
 Statice,Forever Silver,Statice Forever Silver,PLATA,#E0E0E0,RELLENO,DCB,alta,Neutro — sirve de puente entre familias
 Statice,Hipster Apricot,Statice Hipster Apricot,ALBARICOQUE,#FFCC80,RELLENO,DCB,alta,Color explícito en el nombre
 Zinnia,Aurora,Zinnia Aurora,NARANJA,#FB8C00,FOCAL,DCB,media,Aurora = naranja/coral
-Zinnia,Ballerina,Zinnia Ballerina,ROSA_MEDIO,#F06292,FOCAL,DCB,baja,El nombre NO indica color — CONFIRMAR
+Zinnia,Ballerina,Zinnia Ballerina,ROSA_CLARO,#F8BBD0,FOCAL,DCB,alta,CORREGIDO por variedades_bitacora.csv: rosada clarita. Menos productiva que Aurora — evaluar si justifica
 Zinnia,Linen,Zinnia Linen,CREMA,#FFF8E1,FOCAL,DCB,media,Linen = crema lino
 Zinnia,Benary Giant Bright Pink,Zinnia Benary Giant Bright Pink,ROSA_FUERTE,#D81B60,FOCAL,DCB,alta,Color explícito en el nombre
 Zinnia,Floret Golden Hour,Zinnia Floret Golden Hour,DORADO,#F9A825,FOCAL,DCB,media,Golden Hour = dorado/mostaza
@@ -82,3 +82,6 @@ Follaje,Ruscus,Ruscus,VERDE,#2E7D32,FOLLAJE,Comprado,alta,Follaje comprado — b
 Follaje,Eucalyptus Parvifolia,Eucalyptus Parvifolia,VERDE_GRIS,#78909C,FOLLAJE,Comprado,alta,Follaje comprado
 Follaje,Silver Dollar,Eucalyptus Silver Dollar,VERDE_PLATA,#B0BEC5,FOLLAJE,Comprado,alta,Follaje comprado
 Follaje,Helecho,Helecho,VERDE,#388E3C,FOLLAJE,Comprado,alta,Follaje comprado — según largo
+Boca de Dragón,Opus Lavender,Snapdragon Opus Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,AGREGADA desde variedades_bitacora.csv: vende muy bien y combina muy bien. Deberia estar mas constante en programacion. 2-3 camas
+Boca de Dragón,Opus Bronze Early,Snapdragon Opus Bronze Early,BRONCE,#C68642,LINEA,DCB,alta,AGREGADA desde variedades_bitacora.csv: naranja con toque rosado. Ciclo 9 sem. Necesita plastico contra malezas
+Gomphrena,Quis Red,Gomphrena Quis Red,ROJO,#C62828,RELLENO,DCB,alta,AGREGADA desde variedades_bitacora.csv: complemento perfecto de Carmine. Imprescindible en Navidad y Amor y Amistad

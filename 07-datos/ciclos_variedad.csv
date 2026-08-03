@@ -1,25 +1,34 @@
 grupo,sem_germinacion,sem_a_campo_min,sem_a_campo_max,ventana_sem_min,ventana_sem_max,distancia_cm,tallos_planta,pinch,fuente,notas
-Lisianthus,14,19,23,4,6,7.5,2,no,parametros_siembra.md,2a floración débil. 43 sem desde semilla
-Boca de Dragón,5,11,12,2,2,7.5,1,no,parametros_siembra.md,Potomac: excelente. Tallo grueso y largo
-Boca de Dragón MB,5,12,12,2,2,7.5,1,no,parametros_siembra.md,Madame Butterfly preferida. Ivory Red Bronze
-Celosia plumosa,4,14,14,4,4,15,4,no,parametros_siembra.md,Net 1. Con luz da más largo
-Celosia cristata,5,14,14,1,1,7.5,1,no,parametros_siembra.md,Con luz. Inducción floral sensible
-Gomphrena,4,15,15,3,3,15,3,no,parametros_siembra.md,Sem 9 es pico de tamaño y longitud
-Campanula,7,13,13,2,2,7.5,1,no,parametros_siembra.md,Net SI. Sem 90% germinación
-Trachellium,,13,15,8,16,15,6,no,parametros_siembra.md,Ventana larga. tallos_planta=6 es ESTIMADO (fuente dice "varios laterales")
-Matricaria,4,12,13,2,2,7.5,1,no,parametros_siembra.md,Net y luz. Sem 70% germinación
-Statice,5,13,13,8,8,30,8,no,parametros_siembra.md,Ventana larga. Vigilar botrytis
-Limonium,5,13,13,8,8,30,8,no,parametros_siembra.md,Mismo manejo que Statice
-Anémona,3,11,11,16,16,10,12,no,parametros_siembra.md,Saran. Sem 7 cosecha inicial delgada
-Ranúnculo,3,14,14,6,6,20,3,no,parametros_siembra.md,Saran. Sem 6 poco productivo
-Ammi,5,13,13,4,4,15,1.5,no,parametros_siembra.md,Net 2. Excelente exterior
-Strawflower,,13,15,8,8,15,6,SI,parametros_siembra.md,PINCH obligatorio. tallos_planta=6 y ventana=8 son ESTIMADOS (fuente dice "varios" y "larga")
-Larkspur,6,13,13,2,2,5,1,no,parametros_siembra.md,Ambiente fresco y frío
-Dusty Miller,6,25,25,4,4,15,8,no,parametros_siembra.md,Se queda enano en casi todos los ensayos
-Zinnia,4,9,12,2,3,15,1,opcional,parametros_siembra.md,Net SI. Pinch a la mitad da 1 mes de diferencia
-Nigela,4,12,12,2,2,7.5,1,no,parametros_siembra.md,Excelente en 3C. Para pods dejar una semana más
-Daucus carota,,13,16,6,6,15,,no,parametros_siembra.md,Ventana muy larga hasta sem 19. ventana=6 ESTIMADO. Considerar semipermanente
-Amaranto,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA
-Ammobium,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA
-Green Ball,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA
-Girasol,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA (critico: es el focal principal)
+Lisianthus,14,19,23,4,6,7.5,2,no,parametros_siembra.md,NO esta en VARIEDADES_BITACORA. 2a floracion debil. 43 sem desde semilla
+Boca de Dragón,5,9,12,2,3,7.5,1,no,variedades_bitacora.csv,"Monaco Dark Pink 9 sem (el mas rapido y MEJOR variedad). Opus 10. Potomac 11. MB 12. Ciclo depende de la serie"
+Boca de Dragón MB,5,12,12,2,2,7.5,1,no,variedades_bitacora.csv,MB Ivory el mas consistente. Ciclo estable 12 sem. Necesita densidad menor que Potomac
+Celosia plumosa,4,14,14,3,4,15,4,no,parametros_siembra.md,Net 1. Con luz da mas largo
+Celosia cristata,5,14,14,3,3,7.5,1,no,variedades_bitacora.csv,Ventana 3 sem (bitacora) no 1. Cristata Verda Green en OBSERVAR: requiere plastico+luz+fertilizacion
+Gomphrena,4,13,15,3,6,15,3,no,variedades_bitacora.csv,"Quis Carmine: ciclo real 13 sem, ventana 6+ sem — la mas versatil. Sequin 15/3. Salmon Pastel 15/3"
+Campanula,7,12,13,2,3,7.5,1,no,variedades_bitacora.csv,"Champion Pink y White: ciclo 12, ventana 3. Siembra mensual fija. Nunca sobra"
+Trachellium,,15,15,3,3,15,6,no,variedades_bitacora.csv,"CORREGIDO: ventana real 3 sem (buena sem 15-16 y luego cae), NO 8-16. tallos_planta=6 sigue ESTIMADO"
+Matricaria,4,12,13,2,2,7.5,1,no,parametros_siembra.md,Net y luz. Sem 70% germinacion
+Statice,5,13,15,4,8,30,8,no,variedades_bitacora.csv,"CONFLICTO en bitacora: una fila dice 15/4 y la de CAMBIOS SEM24 dice 13/8. COLAPSO documentado sem 20+ — la ventana util real termina ahi"
+Limonium,5,13,15,4,8,30,8,no,variedades_bitacora.csv,Mismo manejo que Statice. Senzii White Ball DESCARTADA por botritis severa
+Anémona,3,11,16,4,16,10,12,no,variedades_bitacora.csv,"Bitacora (Anemona/Ranunculo): 16/4. parametros_siembra dice 11/16. Saran. Solo pedidos especiales B2B"
+Ranúnculo,3,14,16,4,6,20,3,no,variedades_bitacora.csv,Bitacora 16/4. Saran. Solo pedidos especiales B2B
+Ammi,5,12,12,4,4,15,1.5,no,variedades_bitacora.csv,"Ciclo 12 (bitacora) no 13. TODO lo del exterior siempre se vende. Nunca sobra. 3-4 camas constantes"
+Strawflower,,15,15,6,6,15,6,SI,variedades_bitacora.csv,"Ciclo 15 ventana 6 (bitacora). PINCH obligatorio. tallos_planta=6 sigue ESTIMADO — bitacora lo marca pendiente de cuantificar"
+Larkspur,6,12,12,2,2,5,1,no,variedades_bitacora.csv,Ciclo 12 (bitacora) no 13. Light Blue mejor que Misty Lavender: mas colorido y seca mejor
+Dusty Miller,6,25,25,3,3,15,8,no,variedades_bitacora.csv,Solo Silver Dust viable. New Look DESCARTADA permanentemente (nunca elongo)
+Zinnia,4,12,12,4,4,15,1,opcional,variedades_bitacora.csv,"Ciclo 12 ventana 4 (bitacora). Net SI. Pinch a la mitad da 1 mes de diferencia"
+Nigela,4,12,14,2,2,7.5,1,no,variedades_bitacora.csv,Bitacora (Miss Jekyll Pink) 14/2. Excelente en 3C. En carritos se despetala — solo B2B
+Daucus carota,,13,24,2,6,15,,no,variedades_bitacora.csv,"Purple Kisses: ciclo 24 ventana 2 (bitacora) — se demora el doble que Ammi. REDUCIR"
+Girasol,,12,12,3,3,,,no,variedades_bitacora.csv,"RESUELTO: Pro Cut Orange (Chochi) ciclo 12 ventana 3. FALTA tallos_planta — sin eso no se calculan plantas"
+Ammobium,,13,13,3,3,,,no,variedades_bitacora.csv,"RESUELTO: ciclo 13 ventana 3. FALTA tallos_planta. Bitacora: 4.600 plantas fue DEMASIADO, ideal 2.500-3.000"
+Amaranto,,10,15,2,3,,,no,variedades_bitacora.csv,"RESUELTO por variedad: Emerald Tails 10/3 (el mas pedido). Love Lies Bleeding y Coral Fountain 11/3. Velvet Curtains 15/2. FALTA tallos_planta"
+Green Ball,,,,,,,,,SIN_DATO,"NO esta en VARIEDADES_BITACORA ni en parametros_siembra.md — PEDIR A VANESSA. Critico: aparece en 8 de 24 productos"
+Celosia Purple Flamingo,,15,15,3,3,,,no,variedades_bitacora.csv,Extraordinaria en secos. En fresco solo para paletas moradas
+Carthamus,,14,14,2,2,,,no,variedades_bitacora.csv,Ventana cortisima 2 sem. Seca increible. 1 tallo por bouquet. No sembrar en exceso
+Dianthus,,14,14,3,3,,,no,variedades_bitacora.csv,Sweet Cherry Bicolor: relleno constante. DESCARTAR blanco y rojo (muy comunes)
+Ptilotus,,15,15,4,4,,,no,variedades_bitacora.csv,Eleva bouquets. 1-3 tallos por bouquet grande. Con calor se cae rapido
+Heliperum,,15,15,6,6,,,no,variedades_bitacora.csv,"1.396 plantas fue demasiado, ideal la mitad. Max 3 tallos por bouquet seco"
+Marigold,,14,14,3,3,,,no,variedades_bitacora.csv,SOLO para picos (Madres, Amor y Amistad). Chillon en bucket normal
+Orlaya,,20,20,3,3,,,no,variedades_bitacora.csv,Solo B2B. En carritos se duerme muy rapido. Semilla costosa
+Scabiosa,,18,18,3,3,,,no,variedades_bitacora.csv,Mismo perfil que Orlaya. Solo arreglos especiales
+Dahlia,,16,16,4,4,,,no,variedades_bitacora.csv,Bulbos externos. Solo pedidos por encargo. No para carritos

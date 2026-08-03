@@ -535,11 +535,16 @@ def plan_siembra(tallos, ciclos):
 
     for (sem_cosecha, grupo), n_tallos in sorted(agregado.items()):
         c = ciclos.get(norm(grupo))
-        if not c or c["sem_a_campo_max"] is None or c["tallos_planta"] is None:
+        if not c or c["sem_a_campo_max"] is None:
             sin_datos.append({"semana_cosecha": sem_cosecha, "grupo": grupo, "tallos": n_tallos,
-                              "motivo": "sin ciclo o sin tallos/planta en ciclos_variedad.csv"})
+                              "motivo": "SIN CICLO — no se puede fechar la siembra"})
             continue
-        plantas = n_tallos / c["tallos_planta"]
+        # Con ciclo pero sin tallos/planta se puede fechar la siembra aunque no
+        # se pueda convertir tallos a plantas. La fecha ya es accionable.
+        plantas = (n_tallos / c["tallos_planta"]) if c["tallos_planta"] else None
+        if plantas is None:
+            sin_datos.append({"semana_cosecha": sem_cosecha, "grupo": grupo, "tallos": n_tallos,
+                              "motivo": "falta tallos/planta — fecha SI calculable, cantidad NO"})
         sem_campo = sem_cosecha - c["sem_a_campo_max"]
         sem_germ = (sem_campo - c["sem_germinacion"]) if c["sem_germinacion"] is not None else None
         plan.append({
@@ -723,13 +728,14 @@ def cmd_sembrar(ruta):
         "COSE.", "GRUPO", "TALLOS", "PLANTAS", "TRASPL", "BANDEJA", "VENT"))
     print("-" * 72)
     for p in plan:
-        print("%-6s %-20s %8.0f %8.0f %7s %7s %6s" % (
-            p["semana_cosecha"], p["grupo"][:20], p["tallos"], p["plantas"],
+        print("%-6s %-20s %8.0f %8s %7s %7s %6s" % (
+            p["semana_cosecha"], p["grupo"][:20], p["tallos"],
+            "%.0f" % p["plantas"] if p["plantas"] is not None else "?",
             p["semana_trasplante"],
             p["semana_siembra_bandeja"] if p["semana_siembra_bandeja"] is not None else "?",
             p["ventana_sem"] if p["ventana_sem"] is not None else "?"))
 
-    total_plantas = sum(p["plantas"] for p in plan)
+    total_plantas = sum(p["plantas"] for p in plan if p["plantas"] is not None)
     sitios, pendientes = sitios_disponibles(capacidad)
     print("\nCAPACIDAD")
     print("  plantas requeridas por el plan : %8.0f" % total_plantas)
@@ -739,7 +745,7 @@ def cmd_sembrar(ruta):
         print("  bloques SIN medir (no suman)   : %s" % ", ".join(pendientes))
 
     if sin_datos:
-        print("\nNO PLANIFICABLE — falta dato de ciclo (regla: no se inventa)")
+        print("\nDATOS FALTANTES (regla: no se inventa)")
         for s in sin_datos:
             print("  ! sem %-4s %-20s %7.0f tallos — %s"
                   % (s["semana_cosecha"], s["grupo"][:20], s["tallos"], s["motivo"]))

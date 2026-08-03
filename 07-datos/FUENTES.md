@@ -11,6 +11,9 @@ Todo lo de aquí vive en `Drive / DCB Claude / 07_Operaciones`
 
 - ✅ **espejado** — el archivo está en el repo, byte-exacto contra Drive
 - 🔨 **derivado** — creado en el repo a partir de otras fuentes (no existe en Drive)
+- 📖 **leído, no espejado** — se leyó completo y sus datos se incorporaron a los
+  archivos derivados con la fuente citada, pero el archivo en sí no está en el
+  repo. Es la fuente primaria: conviene espejarlo bien en una próxima sesión.
 - ⬜ **pendiente** — está en Drive, todavía no en el repo
 
 ## Datos (`07-datos/`) — carpeta `1aQWiCSB3c3eWa2p4QpRart7_KjI3-3KI`
@@ -23,7 +26,7 @@ Todo lo de aquí vive en `Drive / DCB Claude / 07_Operaciones`
 | 🔨 | `paleta_color.csv` | — | derivado de `listas_desplegables.csv` + recetas |
 | 🔨 | `ciclos_variedad.csv` | — | derivado de `dcb-variedades/references/parametros_siembra.md` |
 | 🔨 | `objetivo_color_pdv.csv` | — | propuesta sin validar — requiere datos de `03_Ventas` |
-| ⬜ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
+| 📖 | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ⬜ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
 | ⬜ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |
 | ⬜ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |

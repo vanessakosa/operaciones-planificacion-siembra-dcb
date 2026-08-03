@@ -23,7 +23,7 @@ Gomphrena,Raspberry Cream,Gomphrena Raspberry Cream,ROSA_CREMA,#F48FB1,RELLENO,D
 Gomphrena,Salmon Pastel,Gomphrena Salmon Pastel,SALMON,#FFAB91,RELLENO,DCB,alta,Color explícito en el nombre
 Campanula,Champion Pink,Campanula Champion Pink,ROSA_MEDIO,#F06292,LINEA,DCB,alta,Color explícito en el nombre
 Campanula,Champion White,Campanula Champion White,BLANCO,#FFFFFF,LINEA,DCB,alta,Requerida en Bouquet pureza
-Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,Color explícito en el nombre
+Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,RETIRADA DEL CULTIVO — decisiones_manejo.csv 2026-07-07: rindió 0.64 t/planta vs 0.92 de la blanca en el mismo bloque
 Statice,Forever Happy,Statice Forever Happy,LILA_ROSADO,#CE93D8,RELLENO,DCB,baja,El nombre NO indica color — se usa como el rosa/lila base. CONFIRMAR
 Statice,Ruso,Limonium Ruso,MORADO,#7E57C2,RELLENO,DCB,media,Limonium Ruso = violeta azulado
 Statice,Hipster White,Statice Hipster White,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre

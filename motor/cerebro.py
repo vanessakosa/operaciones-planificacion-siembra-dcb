@@ -111,9 +111,13 @@ def cargar_paleta():
             "confianza": fila["confianza_color"].strip(),
             "notas": fila["notas"].strip(),
         }
+        # Una variedad retirada del cultivo sigue en la paleta como memoria
+        # historica, pero NO es una opcion de color disponible.
+        reg["retirada"] = reg["notas"].startswith("RETIRADA")
         for clave in (reg["nombre_completo"], "%s %s" % (reg["grupo"], reg["variedad"]), reg["variedad"]):
             por_nombre.setdefault(norm(clave), reg)
-        por_grupo[reg["grupo"]].append(reg)
+        if not reg["retirada"]:
+            por_grupo[reg["grupo"]].append(reg)
     return por_nombre, dict(por_grupo)
 
 

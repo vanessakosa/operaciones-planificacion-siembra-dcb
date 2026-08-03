@@ -743,6 +743,54 @@ def cmd_sembrar(ruta):
         print("\nPRODUCTOS SIN RECETA: %s" % ", ".join(faltantes))
 
 
+def cmd_valor():
+    """Valor por tallo propio — palanca de optimizacion disponible HOY.
+
+    No requiere costos_productos.csv (que esta vacio). Mide cuanto ingreso
+    genera cada tallo DCB y cuanto del volumen se apalanca en follaje comprado.
+    """
+    por_nombre, por_grupo = cargar_paleta()
+    productos, _ = cargar_recetas()
+
+    filas = []
+    for p in productos:
+        a = analizar_producto(p, por_nombre, por_grupo)
+        if not a["tallos_dcb"] or not a["precio"]:
+            continue
+        comprado = a["total_tallos"] - a["tallos_dcb"]
+        filas.append({
+            "producto": p["producto"],
+            "precio": a["precio"],
+            "tallos_dcb": a["tallos_dcb"],
+            "comprado": comprado,
+            "pct_comprado": comprado / a["total_tallos"] if a["total_tallos"] else 0.0,
+            "por_tallo": a["precio"] / a["tallos_dcb"],
+        })
+
+    filas.sort(key=lambda f: -f["por_tallo"])
+    print("VALOR POR TALLO PROPIO — ordenado de mayor a menor\n")
+    print("%-38s %9s %7s %8s %8s" % ("PRODUCTO", "$/TALLO", "T.DCB", "COMPRADO", "%COMPR"))
+    print("-" * 76)
+    for f in filas:
+        print("%-38s %9s %7.0f %8.0f %7.0f%%" % (
+            f["producto"][:38],
+            "{:,.0f}".format(f["por_tallo"]).replace(",", "."),
+            f["tallos_dcb"], f["comprado"], 100 * f["pct_comprado"]))
+
+    mejor, peor = filas[0], filas[-1]
+    print("\nLECTURA")
+    print("  mejor : %-34s $%s por tallo propio"
+          % (mejor["producto"][:34], "{:,.0f}".format(mejor["por_tallo"]).replace(",", ".")))
+    print("  peor  : %-34s $%s por tallo propio"
+          % (peor["producto"][:34], "{:,.0f}".format(peor["por_tallo"]).replace(",", ".")))
+    print("  brecha: %.1fx" % (mejor["por_tallo"] / peor["por_tallo"]))
+    print("\n  El follaje comprado apalanca volumen sin gastar cama. Los productos")
+    print("  con 0% comprado se sostienen solo con tallo propio: son los que mas")
+    print("  cama consumen por peso de venta.")
+    print("\n  NOTA: esto es ingreso por tallo, NO margen. El margen requiere")
+    print("  costos_productos.csv, que hoy esta vacio (bloqueo #2 del roadmap).")
+
+
 def main(argv):
     if len(argv) < 2:
         print(__doc__)
@@ -752,6 +800,8 @@ def main(argv):
         cmd_productos()
     elif cmd == "auditar":
         cmd_auditar()
+    elif cmd == "valor":
+        cmd_valor()
     elif cmd == "bouquet":
         if len(argv) < 3:
             raise SystemExit("Uso: python3 motor/cerebro.py bouquet \"Cosecha Grande\"")

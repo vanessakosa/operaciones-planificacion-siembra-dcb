@@ -1,0 +1,19 @@
+Bloque,Huecos (largo),Líneas,1/hueco,2/hueco,Zigzag,# Camas,Notas
+Inv 3A,198,8,,,,,
+Inv 3B,267,8,,,,,
+Inv 3C (5 camas),141,8,,,,5,Parte de 5 camas
+Inv 3C (3 camas),90,8,,,,3,Parte de 3 camas
+Ext 3A,181,8,,,,,
+Inv 4A,112,8,,,,,Lado A
+Inv 4B,112,8,,,,,Lado B
+Inv 4 baja (225),225,8,,,,1,Cama baja larga
+Inv 4 baja (212),212,8,,,,1,Cama baja larga
+Inv 4 baja (200),200,8,,,,1,Cama baja larga aprox
+Inv 5,176,8,,,,,Todas iguales
+Ext 4,176,8,,,,,Igual que Inv 5
+Ext 5,176,8,,,,,Igual que Inv 5
+Ext 3B,,,,,,,PENDIENTE MEDIR
+Inv 2,,,,,,,PENDIENTE — camas de distinta medida
+Mini,,,,,,,PENDIENTE MEDIR
+Inv 4C,,,,,,,PENDIENTE confirmar huecos
+Inv 6,,,,,,,PENDIENTE MEDIR

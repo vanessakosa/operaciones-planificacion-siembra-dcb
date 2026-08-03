@@ -1,0 +1,25 @@
+grupo,sem_germinacion,sem_a_campo_min,sem_a_campo_max,ventana_sem_min,ventana_sem_max,distancia_cm,tallos_planta,pinch,fuente,notas
+Lisianthus,14,19,23,4,6,7.5,2,no,parametros_siembra.md,2a floración débil. 43 sem desde semilla
+Boca de Dragón,5,11,12,2,2,7.5,1,no,parametros_siembra.md,Potomac: excelente. Tallo grueso y largo
+Boca de Dragón MB,5,12,12,2,2,7.5,1,no,parametros_siembra.md,Madame Butterfly preferida. Ivory Red Bronze
+Celosia plumosa,4,14,14,4,4,15,4,no,parametros_siembra.md,Net 1. Con luz da más largo
+Celosia cristata,5,14,14,1,1,7.5,1,no,parametros_siembra.md,Con luz. Inducción floral sensible
+Gomphrena,4,15,15,3,3,15,3,no,parametros_siembra.md,Sem 9 es pico de tamaño y longitud
+Campanula,7,13,13,2,2,7.5,1,no,parametros_siembra.md,Net SI. Sem 90% germinación
+Trachellium,,13,15,8,16,15,6,no,parametros_siembra.md,Ventana larga. tallos_planta=6 es ESTIMADO (fuente dice "varios laterales")
+Matricaria,4,12,13,2,2,7.5,1,no,parametros_siembra.md,Net y luz. Sem 70% germinación
+Statice,5,13,13,8,8,30,8,no,parametros_siembra.md,Ventana larga. Vigilar botrytis
+Limonium,5,13,13,8,8,30,8,no,parametros_siembra.md,Mismo manejo que Statice
+Anémona,3,11,11,16,16,10,12,no,parametros_siembra.md,Saran. Sem 7 cosecha inicial delgada
+Ranúnculo,3,14,14,6,6,20,3,no,parametros_siembra.md,Saran. Sem 6 poco productivo
+Ammi,5,13,13,4,4,15,1.5,no,parametros_siembra.md,Net 2. Excelente exterior
+Strawflower,,13,15,8,8,15,6,SI,parametros_siembra.md,PINCH obligatorio. tallos_planta=6 y ventana=8 son ESTIMADOS (fuente dice "varios" y "larga")
+Larkspur,6,13,13,2,2,5,1,no,parametros_siembra.md,Ambiente fresco y frío
+Dusty Miller,6,25,25,4,4,15,8,no,parametros_siembra.md,Se queda enano en casi todos los ensayos
+Zinnia,4,9,12,2,3,15,1,opcional,parametros_siembra.md,Net SI. Pinch a la mitad da 1 mes de diferencia
+Nigela,4,12,12,2,2,7.5,1,no,parametros_siembra.md,Excelente en 3C. Para pods dejar una semana más
+Daucus carota,,13,16,6,6,15,,no,parametros_siembra.md,Ventana muy larga hasta sem 19. ventana=6 ESTIMADO. Considerar semipermanente
+Amaranto,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA
+Ammobium,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA
+Green Ball,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA
+Girasol,,,,,,,,,SIN_DATO,NO ESTA EN parametros_siembra.md — PEDIR A VANESSA (critico: es el focal principal)

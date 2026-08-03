@@ -1,0 +1,84 @@
+grupo,variedad,nombre_completo,familia_color,hex_referencia,rol_estructural,origen,confianza_color,notas
+Boca de Dragón,Monaco Dark Pink,Snapdragon Monaco Dark Pink,ROSA_FUERTE,#C2185B,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Monaco Orange,Snapdragon Monaco Orange,NARANJA,#EF6C00,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Monaco Plumblossom,Snapdragon Monaco Plumblossom,LAVANDA,#B39DDB,LINEA,DCB,media,Plumblossom = malva claro; confirmar en campo
+Boca de Dragón,Monaco Red,Snapdragon Monaco Red,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Opus Fresh,Snapdragon Opus Fresh,CREMA,#FFF8E1,LINEA,DCB,baja,El nombre NO indica color — CONFIRMAR
+Boca de Dragón,Opus Appleblossom,Snapdragon Opus Appleblossom,ROSA_CLARO,#F8BBD0,LINEA,DCB,media,Appleblossom = rosa muy pálido
+Boca de Dragón,Opus Pink,Snapdragon Opus Pink,ROSA_MEDIO,#EC407A,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Potomac Royal,Snapdragon Potomac Royal,MORADO,#6A1B9A,LINEA,DCB,media,Royal = morado intenso
+Boca de Dragón,Potomac Crimson,Snapdragon Potomac Crimson,ROJO,#B71C1C,LINEA,DCB,alta,Crimson = rojo carmín
+Boca de Dragón,Cannes Red,Snapdragon Cannes Red,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Pink,Snapdragon Cannes Pink,ROSA_MEDIO,#EC407A,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Lavender,Snapdragon Cannes Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Light Bronze,Snapdragon Cannes Light Bronze,BRONCE,#C68642,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Red Delight,Snapdragon Cannes Red Delight,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,MB Ivory,Snapdragon Madame Butterfly Ivory,MARFIL,#FFF3E0,LINEA,DCB,alta,Variedad preferida — tallo grueso y largo
+Boca de Dragón,MB Bronze,Snapdragon Madame Butterfly Bronze,BRONCE,#C68642,LINEA,DCB,alta,Variedad preferida — tallo grueso y largo
+Gomphrena,Quis Carmine,Gomphrena Quis Carmine,FUCSIA,#AD1457,RELLENO,DCB,alta,Caballo de batalla — aparece en 8 productos
+Gomphrena,Quis Sequin,Gomphrena Quis Sequin,MORADO_CLARO,#9C6ABF,RELLENO,DCB,baja,El nombre NO indica color — CONFIRMAR
+Gomphrena,Quis Pink,Gomphrena Quis Pink,ROSA_MEDIO,#EC407A,RELLENO,DCB,alta,Color explícito en el nombre
+Gomphrena,Audrey White,Gomphrena Audrey White,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre
+Gomphrena,Raspberry Cream,Gomphrena Raspberry Cream,ROSA_CREMA,#F48FB1,RELLENO,DCB,media,Bicolor frambuesa/crema
+Gomphrena,Salmon Pastel,Gomphrena Salmon Pastel,SALMON,#FFAB91,RELLENO,DCB,alta,Color explícito en el nombre
+Campanula,Champion Pink,Campanula Champion Pink,ROSA_MEDIO,#F06292,LINEA,DCB,alta,Color explícito en el nombre
+Campanula,Champion White,Campanula Champion White,BLANCO,#FFFFFF,LINEA,DCB,alta,Requerida en Bouquet pureza
+Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,Color explícito en el nombre
+Statice,Forever Happy,Statice Forever Happy,LILA_ROSADO,#CE93D8,RELLENO,DCB,baja,El nombre NO indica color — se usa como el rosa/lila base. CONFIRMAR
+Statice,Ruso,Limonium Ruso,MORADO,#7E57C2,RELLENO,DCB,media,Limonium Ruso = violeta azulado
+Statice,Hipster White,Statice Hipster White,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre
+Statice,Forever Silver,Statice Forever Silver,PLATA,#E0E0E0,RELLENO,DCB,alta,Neutro — sirve de puente entre familias
+Statice,Hipster Apricot,Statice Hipster Apricot,ALBARICOQUE,#FFCC80,RELLENO,DCB,alta,Color explícito en el nombre
+Zinnia,Aurora,Zinnia Aurora,NARANJA,#FB8C00,FOCAL,DCB,media,Aurora = naranja/coral
+Zinnia,Ballerina,Zinnia Ballerina,ROSA_MEDIO,#F06292,FOCAL,DCB,baja,El nombre NO indica color — CONFIRMAR
+Zinnia,Linen,Zinnia Linen,CREMA,#FFF8E1,FOCAL,DCB,media,Linen = crema lino
+Zinnia,Benary Giant Bright Pink,Zinnia Benary Giant Bright Pink,ROSA_FUERTE,#D81B60,FOCAL,DCB,alta,Color explícito en el nombre
+Zinnia,Floret Golden Hour,Zinnia Floret Golden Hour,DORADO,#F9A825,FOCAL,DCB,media,Golden Hour = dorado/mostaza
+Zinnia,Floret Victorian Wedding,Zinnia Floret Victorian Wedding,ROSA_PALIDO,#F8BBD0,FOCAL,DCB,baja,El nombre NO indica color — CONFIRMAR
+Celosia,Rose Gold,Celosia Rose Gold,ROSA_DORADO,#E8A87C,TEXTURA,DCB,media,Bicolor rosa/dorado
+Celosia,Raspberry Lemonade,Celosia Raspberry Lemonade,ROSA_AMARILLO,#F06292,TEXTURA,DCB,baja,Bicolor — CONFIRMAR dominante
+Celosia,Spun Sugar,Celosia Spun Sugar,ROSA_CLARO,#F8BBD0,TEXTURA,DCB,media,Spun Sugar = rosa algodón
+Celosia,Summer Sherbet,Celosia Summer Sherbet,NARANJA_PASTEL,#FFCC80,TEXTURA,DCB,media,Sherbet = naranja pastel
+Celosia,Cristata Verda Green,Celosia Cristata Verda Green,VERDE,#7CB342,FOCAL,DCB,alta,Cristata = cresta; 1 tallo/planta
+Celosia,Shimmer Mix,Celosia Shimmer Mix,MIX,,TEXTURA,DCB,baja,MEZCLA — no asignar color único
+Celosia,Dreams Mix,Celosia Dreams Mix,MIX,,TEXTURA,DCB,baja,MEZCLA — no asignar color único
+Amaranto,Emerald Tails,Amaranto Emerald Tails,VERDE,#558B2F,LINEA_CASCADA,DCB,alta,Cascada verde — estructura vertical descendente
+Amaranto,Velvet Curtains,Amaranto Velvet Curtains,BURDEOS,#6D1B33,LINEA_CASCADA,DCB,media,Velvet = burdeos profundo
+Amaranto,Love Lies Bleeding,Amaranto Love Lies Bleeding,BURDEOS,#8E1537,LINEA_CASCADA,DCB,media,Cascada roja profunda clásica
+Amaranto,Coral Fountain,Amaranto Coral Fountain,CORAL,#FF7043,LINEA_CASCADA,DCB,alta,Color explícito en el nombre
+Amaranto,Mira,Amaranto Mira,SIN_DATO,,LINEA_CASCADA,DCB,baja,El nombre NO indica color — CONFIRMAR
+Larkspur,Misty Lavender,Larkspur Misty Lavender,LAVANDA,#B39DDB,LINEA,DCB,alta,Ambiente fresco y frío; 15 tallos/paquete
+Larkspur,Light Blue,Larkspur Light Blue,AZUL_CLARO,#90CAF9,LINEA,DCB,alta,Único azul verdadero del catálogo
+Ammi,Ammi Majus,Ammi Majus,BLANCO,#FFFFFF,RELLENO_AIREADO,DCB,alta,Umbela blanca — da aire y transparencia
+Matricaria,Snowball,Matricaria Snowball,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre
+Matricaria,Vegmo Single,Matricaria Vegmo Single,BLANCO,#FFFDE7,RELLENO,DCB,media,Margarita blanca centro amarillo
+Strawflower,Apricot,Strawflower Apricot,ALBARICOQUE,#FFCC80,TEXTURA,DCB,alta,PINCH obligatorio
+Strawflower,Cranberry Rose,Strawflower Cranberry Rose,ROSA_VINO,#AD1457,TEXTURA,DCB,alta,PINCH obligatorio
+Strawflower,Silvery Rose,Strawflower Silvery Rose,ROSA_PLATA,#E1BEE7,TEXTURA,DCB,media,PINCH obligatorio
+Strawflower,Bright Rose,Strawflower Bright Rose,ROSA_FUERTE,#D81B60,TEXTURA,DCB,alta,PINCH obligatorio
+Strawflower,Purple Red,Strawflower Purple Red,ROJO_MORADO,#8E24AA,TEXTURA,DCB,alta,PINCH obligatorio
+Strawflower,Apricot Peach,Strawflower Apricot Peach,DURAZNO,#FFAB91,TEXTURA,DCB,alta,PINCH obligatorio
+Ammobium,Ammobium Alatum,Ammobium Alatum,BLANCO,#FFFDE7,RELLENO,DCB,alta,Blanco centro amarillo — textura seca
+Green Ball,Punky Ball,Green Ball Punky Ball,VERDE,#8BC34A,TEXTURA,DCB,alta,Neutro verde — aparece en 8 productos
+Girasol,Pro Cut White Lite,Girasol Pro Cut White Lite,BLANCO_CREMA,#FFF9C4,FOCAL,DCB,alta,Focal principal del catálogo
+Girasol,Pro Cut (sin pétalos),Girasol Pro Cut sin pétalos,VERDE_MARRON,#6D4C41,FOCAL_TEXTURA,DCB,alta,Solo el centro — uso deliberado como textura
+Trachellium,White Lake,Trachelium White Lake,BLANCO,#FFFFFF,SECUNDARIA,DCB,alta,Ventana larga 8-16 sem
+Trachellium,Purple Lake,Trachelium Purple Lake,MORADO,#7B1FA2,SECUNDARIA,DCB,alta,Ventana larga 8-16 sem
+Dusty Miller,Silver Dust,Dusty Miller Silver Dust,PLATA,#CFD8DC,FOLLAJE,DCB,alta,Se queda enano en casi todos los ensayos
+Dusty Miller,New Look,Dusty Miller New Look,PLATA,#CFD8DC,FOLLAJE,DCB,alta,Se queda enano en casi todos los ensayos
+Lisianthus,Megalo Orange Deep,Lisianthus Megalo Orange Deep,NARANJA,#EF6C00,FOCAL,DCB,alta,Ciclo largo 19-23 sem a campo
+Lisianthus,Jolly 3 Pink,Lisianthus Jolly 3 Pink,ROSA_MEDIO,#EC407A,FOCAL,DCB,alta,Ciclo largo 19-23 sem a campo
+Lisianthus,Megalo 3 Pink Rim,Lisianthus Megalo 3 Pink Rim,BLANCO_BORDE_ROSA,#FCE4EC,FOCAL,DCB,alta,Bicolor — borde rosa sobre blanco
+Lisianthus,Megalo 3 Pink Pop,Lisianthus Megalo 3 Pink Pop,ROSA_FUERTE,#D81B60,FOCAL,DCB,alta,Ciclo largo 19-23 sem a campo
+Lisianthus,Celeb 2 Madonna,Lisianthus Celeb 2 Madonna,BLANCO,#FFFFFF,FOCAL,DCB,media,Madonna = blanco puro
+Lisianthus,Celeb 2 Apricot,Lisianthus Celeb 2 Apricot,ALBARICOQUE,#FFCC80,FOCAL,DCB,alta,Color explícito en el nombre
+Lisianthus,Corelli I Yellow,Lisianthus Corelli I Yellow,AMARILLO,#FDD835,FOCAL,DCB,alta,Color explícito en el nombre
+Lisianthus,Megalo I Yellow,Lisianthus Megalo I Yellow,AMARILLO,#FDD835,FOCAL,DCB,alta,Color explícito en el nombre
+Lisianthus,Celeb 2 Crystal,Lisianthus Celeb 2 Crystal,BLANCO,#FAFAFA,FOCAL,DCB,media,Crystal = blanco cristalino
+Lisianthus,Celeb 2 White Imp,Lisianthus Celeb 2 White Imp,BLANCO,#FFFFFF,FOCAL,DCB,alta,Color explícito en el nombre
+Lisianthus,Celeb 2 Lovely Pink,Lisianthus Celeb 2 Lovely Pink,ROSA_CLARO,#F8BBD0,FOCAL,DCB,alta,Color explícito en el nombre
+Limonium,Ruso,Limonium Ruso,MORADO,#7E57C2,RELLENO,DCB,media,Duplicado del grupo Statice — unificar
+Follaje,Ruscus,Ruscus,VERDE,#2E7D32,FOLLAJE,Comprado,alta,Follaje comprado — base estructural
+Follaje,Eucalyptus Parvifolia,Eucalyptus Parvifolia,VERDE_GRIS,#78909C,FOLLAJE,Comprado,alta,Follaje comprado
+Follaje,Silver Dollar,Eucalyptus Silver Dollar,VERDE_PLATA,#B0BEC5,FOLLAJE,Comprado,alta,Follaje comprado
+Follaje,Helecho,Helecho,VERDE,#388E3C,FOLLAJE,Comprado,alta,Follaje comprado — según largo

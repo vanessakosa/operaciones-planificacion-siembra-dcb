@@ -26,19 +26,20 @@ Todo lo de aquí vive en `Drive / DCB Claude / 07_Operaciones`
 | 🔨 | `paleta_color.csv` | — | derivado de `listas_desplegables.csv` + recetas |
 | 🔨 | `ciclos_variedad.csv` | — | derivado de `dcb-variedades/references/parametros_siembra.md` |
 | 🔨 | `objetivo_color_pdv.csv` | — | propuesta sin validar — requiere datos de `03_Ventas` |
-| 📖 | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
+| 🔨 | `mezcla_real.csv` | — | derivado de `homologacion_registro.csv` (mezcla observada por Vanessa sem23) |
+| ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
-| ⬜ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |
-| ⬜ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
-| ⬜ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |
+| ✅ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |
+| ✅ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
+| ✅ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |
 | ✅ | `aplicaciones_historial.csv` | 1784 | `18aAECzxa8DmjIkvRJ3AAMTg3AV7E9XZn` |
-| ⬜ | `finca_entregas_plantulas.csv` | 932 | `1jp5QnfADBMYJRoPyXE2r-IW8RIb6Zw7m` |
+| ✅ | `finca_entregas_plantulas.csv` | 932 | `1jp5QnfADBMYJRoPyXE2r-IW8RIb6Zw7m` |
 | ✅ | `decisiones_manejo.csv` | 767 | `1j_xX_NA7OMND98HrKPaMsUN5348bdgm-` |
 | ✅ | `rendimiento_costo_lote.csv` | 169 | `12NowlTiTZU2izfeBNiMpLUgOSdD4DmV4` |
 | ✅ | `consolidado_lotes.csv` | 128 | `1wEnaQgIFpmISQy-W4b8aUv1tb4GeGNas` |
 | ✅ | `resumen_tallos_dia.csv` | 106 | `1_8Na6wvwys0I0ruRdRBOshRAlaeP1AZJ` |
 | ✅ | `costos_productos.csv` | 58 | `1SR6YgzymEy3xqRLQmc7aPclUr323UUhh` — **vacío (bloqueo #6)** |
-| ⬜ | `README.md` (diccionario de datos) | 3253 | `1RucCK0U3kZDYKiLjRp3y1ELWRmzuNIfo` |
+| ✅ | `README.md` (diccionario de datos) | 3253 | `1RucCK0U3kZDYKiLjRp3y1ELWRmzuNIfo` |
 
 ## Documentación (`.md`)
 

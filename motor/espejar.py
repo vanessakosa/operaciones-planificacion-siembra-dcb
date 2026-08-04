@@ -52,8 +52,13 @@ def _payloads(texto):
 
 
 def descargas():
-    """titulo -> payload mas reciente encontrado."""
-    encontrados = {}
+    """Devuelve (por_titulo, por_id).
+
+    Hay varios archivos distintos llamados README.md en el Drive, asi que el
+    titulo NO es una clave unica. Por eso se indexa tambien por Drive ID, que
+    si lo es, y es la forma correcta de pedir un archivo concreto.
+    """
+    por_titulo, por_id = {}, {}
     for ruta in _fuentes():
         try:
             with open(ruta, encoding="utf-8", errors="replace") as fh:
@@ -63,12 +68,14 @@ def descargas():
         # Los .jsonl traen el JSON escapado dentro de otro JSON: se desescapa.
         candidatos = _payloads(texto) + _payloads(texto.replace('\\"', '"').replace("\\n", "\n"))
         for obj in candidatos:
-            encontrados[obj["title"]] = obj
-    return encontrados
+            por_titulo[obj["title"]] = obj
+            if obj.get("id"):
+                por_id[obj["id"]] = obj
+    return por_titulo, por_id
 
 
 def cmd_listar():
-    d = descargas()
+    d, _ = descargas()
     if not d:
         print("No encontre descargas registradas.")
         return
@@ -84,17 +91,18 @@ def cmd_listar():
         print("%-42s %10s  %s" % (titulo[:42], n if n >= 0 else "ILEGIBLE", obj.get("id", "?")))
 
 
-def cmd_escribir(titulo, destino, esperados=None):
-    d = descargas()
-    obj = d.get(titulo)
+def cmd_escribir(clave, destino, esperados=None):
+    """clave puede ser un Drive ID (preferido, es unico) o un titulo."""
+    por_titulo, por_id = descargas()
+    obj = por_id.get(clave) or por_titulo.get(clave)
     if obj is None:
-        # Coincidencia parcial para no pelear con acentos y mayusculas
-        for k in d:
-            if titulo.lower() in k.lower():
-                obj, titulo = d[k], k
+        for k in por_titulo:
+            if clave.lower() in k.lower():
+                obj = por_titulo[k]
                 break
     if obj is None:
-        raise SystemExit("No encontre una descarga con titulo '%s'. Corre: listar" % titulo)
+        raise SystemExit("No encontre una descarga con clave '%s'. Corre: listar" % clave)
+    titulo = obj["title"]
 
     crudo = base64.b64decode(obj["content"])
     ruta = destino if os.path.isabs(destino) else os.path.join(RAIZ, destino)

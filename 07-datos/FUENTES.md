@@ -11,10 +11,11 @@ Todo lo de aquí vive en `Drive / DCB Claude / 07_Operaciones`
 
 - ✅ **espejado** — el archivo está en el repo, byte-exacto contra Drive
 - 🔨 **derivado** — creado en el repo a partir de otras fuentes (no existe en Drive)
-- 📖 **leído, no espejado** — se leyó completo y sus datos se incorporaron a los
-  archivos derivados con la fuente citada, pero el archivo en sí no está en el
-  repo. Es la fuente primaria: conviene espejarlo bien en una próxima sesión.
 - ⬜ **pendiente** — está en Drive, todavía no en el repo
+
+**Estado: 45 de 45 archivos de texto espejados, todos verificados byte a byte con
+`motor/espejar.py`.** Lo único que queda fuera son los 4 Excel maestros, que no se
+pueden espejar como texto.
 
 ## Datos (`07-datos/`) — carpeta `1aQWiCSB3c3eWa2p4QpRart7_KjI3-3KI`
 
@@ -45,34 +46,34 @@ Todo lo de aquí vive en `Drive / DCB Claude / 07_Operaciones`
 
 | Estado | Ruta | Bytes | Drive ID |
 |---|---|---|---|
-| ⬜ | `00-contexto/01-empresa-y-objetivos.md` | 3004 | `1CSr-I6elvejIj0DeDnQ3VPiVSZWX9CYD` |
-| ⬜ | `00-contexto/02-equipo-y-operarios.md` | 3158 | `1J49WlQZTPgX6_nF-gAj-WcbaaXKS2Czb` |
-| ⬜ | `00-contexto/03-identidad-visual.md` | 2660 | `130VKisTHycF1OywL0mzKKVt3gh_abXPH` |
-| ⬜ | `00-contexto/04-reglas-operativas-criticas.md` | 3066 | `1tz3_M0SdTfInHDPEnUR6nZ2_a1TNsLTv` |
-| ⬜ | `01-infraestructura/01-invernaderos.md` | 7223 | `1GrXr1Yl1IjDjRm0RJjbFsIGDosxgreSc` |
-| ⬜ | `01-infraestructura/02-analisis-de-suelo.md` | 3982 | `1pByOtqdVuULQ9Qti-3epx2GRnwqwbw0y` |
-| ⬜ | `01-infraestructura/03-no-dig-y-preparacion-camas.md` | 4759 | `1dfjXXS1KWXfI_2mgGnT1hZnldvrNYebw` |
-| ⬜ | `01-infraestructura/04-inventario-camas-borrador.md` | 9041 | `183j-TMNGGqqIsMc5zJH3mElt9irLjVcA` |
-| ⬜ | `02-nutricion/01-fertirriego-formulas.md` | 4352 | `1j-S7qutDebrfm5yQYbhAxq-A_5evw3Mq` |
-| ⬜ | `02-nutricion/02-bioinsumos.md` | 3098 | `1_Pj4iac5yBMGGm8pGBeLvsV_O_uC0etV` |
-| ⬜ | `02-nutricion/03-drench-inoculacion.md` | 1629 | `106wpGl1vjNK8yj9xKDiYw3FXWgKD-vwW` |
-| ⬜ | `03-fitosanidad/01-reglas-y-protocolos.md` | 6032 | `1UshhYg6xPi7hLuKHECs28dAmlRn_bxXi` |
-| ⬜ | `03-fitosanidad/02-inventario-insumos.md` | 3942 | `1M5AP0XcpvX-mzKRtYqhokSwN96lrUYhi` |
-| ⬜ | `04-variedades/01-mapa-variedades.md` | 6353 | `1wgesYWEUxJS4va_ptQKJP9DN8bNK6FaX` |
-| ⬜ | `04-variedades/02-notas-campo.md` | 3559 | `15vK3_mdI5vKOYBYCdtDMt75Y4jy__6Ak` |
-| ⬜ | `05-programacion/01-sistema-prevision-cosecha.md` | 6406 | `1xHAYZelcRuRZRqhgUpkFXOICpvON5B8i` |
-| ⬜ | `05-programacion/02-registro-de-tallos.md` | 3475 | `1k_bfgDM6Inv2fcZVxXjn_59P21nYM5Sd` |
-| ⬜ | `05-programacion/03-apps-script.md` | 5825 | `11BfTI25H5wir1fDe1NQBJk9KBxFEaiWu` |
-| ⬜ | `06-costos/01-modelo-de-costos.md` | 4458 | `16CTFMNyS5tujKl2Az7_DrlE5vJUAAIa6` |
-| ⬜ | `06-costos/02-costo-por-tallo.md` | 2708 | `1wNoDkq8nUNCTSxnNY4kfdN9Xa5aQiP5G` |
-| ⬜ | `08-roadmap/01-vision-claude-code.md` | 4683 | `1ERynJX--dFmYSwQ4QhkSOyqgrDYPiciG` |
-| ⬜ | `09-procedimientos/README.md` | 2211 | `1jXWgrphM1-OWiAR66fDqKPPqVp44tJkm` |
-| ⬜ | `09-procedimientos/B-composicion-y-sustitucion.md` | 1755 | `1JeqOdk-ZVYEgdT3riJtgJwsP-yQj2L72` |
-| ⬜ | `09-procedimientos/C-cierre-de-lote.md` | 4894 | `1nIwRMtalOPIT9mQ4_zcGPA13BGo6TPwa` |
-| ⬜ | `09-procedimientos/D-prescripcion-post-cierre.md` | 4242 | `1ZTHaDj40g_UPpq5mo8KMPTCj6S1nYMnx` |
-| ⬜ | `09-procedimientos/E-volumen-bombas.md` | 5165 | `1xY5FvgRjufwt5Cn9nJs5Q0sDuzMHi2n7` |
-| ⬜ | `09-procedimientos/F-cuando-modificar-formula.md` | 3382 | `1eejMBbfxZddij9Hx_wbauVJbgjIKB55F` |
-| ⬜ | `09-procedimientos/G-analisis-economico.md` | 5835 | `1g1fDY8h4mfq-2vikXK0M5xjPyAguUQos` |
+| ✅ | `00-contexto/01-empresa-y-objetivos.md` | 3004 | `1CSr-I6elvejIj0DeDnQ3VPiVSZWX9CYD` |
+| ✅ | `00-contexto/02-equipo-y-operarios.md` | 3158 | `1J49WlQZTPgX6_nF-gAj-WcbaaXKS2Czb` |
+| ✅ | `00-contexto/03-identidad-visual.md` | 2660 | `130VKisTHycF1OywL0mzKKVt3gh_abXPH` |
+| ✅ | `00-contexto/04-reglas-operativas-criticas.md` | 3066 | `1tz3_M0SdTfInHDPEnUR6nZ2_a1TNsLTv` |
+| ✅ | `01-infraestructura/01-invernaderos.md` | 7223 | `1GrXr1Yl1IjDjRm0RJjbFsIGDosxgreSc` |
+| ✅ | `01-infraestructura/02-analisis-de-suelo.md` | 3982 | `1pByOtqdVuULQ9Qti-3epx2GRnwqwbw0y` |
+| ✅ | `01-infraestructura/03-no-dig-y-preparacion-camas.md` | 4759 | `1dfjXXS1KWXfI_2mgGnT1hZnldvrNYebw` |
+| ✅ | `01-infraestructura/04-inventario-camas-borrador.md` | 9041 | `183j-TMNGGqqIsMc5zJH3mElt9irLjVcA` |
+| ✅ | `02-nutricion/01-fertirriego-formulas.md` | 4352 | `1j-S7qutDebrfm5yQYbhAxq-A_5evw3Mq` |
+| ✅ | `02-nutricion/02-bioinsumos.md` | 3098 | `1_Pj4iac5yBMGGm8pGBeLvsV_O_uC0etV` |
+| ✅ | `02-nutricion/03-drench-inoculacion.md` | 1629 | `106wpGl1vjNK8yj9xKDiYw3FXWgKD-vwW` |
+| ✅ | `03-fitosanidad/01-reglas-y-protocolos.md` | 6032 | `1UshhYg6xPi7hLuKHECs28dAmlRn_bxXi` |
+| ✅ | `03-fitosanidad/02-inventario-insumos.md` | 3942 | `1M5AP0XcpvX-mzKRtYqhokSwN96lrUYhi` |
+| ✅ | `04-variedades/01-mapa-variedades.md` | 6353 | `1wgesYWEUxJS4va_ptQKJP9DN8bNK6FaX` |
+| ✅ | `04-variedades/02-notas-campo.md` | 3559 | `15vK3_mdI5vKOYBYCdtDMt75Y4jy__6Ak` |
+| ✅ | `05-programacion/01-sistema-prevision-cosecha.md` | 6406 | `1xHAYZelcRuRZRqhgUpkFXOICpvON5B8i` |
+| ✅ | `05-programacion/02-registro-de-tallos.md` | 3475 | `1k_bfgDM6Inv2fcZVxXjn_59P21nYM5Sd` |
+| ✅ | `05-programacion/03-apps-script.md` | 5825 | `11BfTI25H5wir1fDe1NQBJk9KBxFEaiWu` |
+| ✅ | `06-costos/01-modelo-de-costos.md` | 4458 | `16CTFMNyS5tujKl2Az7_DrlE5vJUAAIa6` |
+| ✅ | `06-costos/02-costo-por-tallo.md` | 2708 | `1wNoDkq8nUNCTSxnNY4kfdN9Xa5aQiP5G` |
+| ✅ | `08-roadmap/01-vision-claude-code.md` | 4683 | `1ERynJX--dFmYSwQ4QhkSOyqgrDYPiciG` |
+| ✅ | `09-procedimientos/README.md` | 2211 | `1jXWgrphM1-OWiAR66fDqKPPqVp44tJkm` |
+| ✅ | `09-procedimientos/B-composicion-y-sustitucion.md` | 1755 | `1JeqOdk-ZVYEgdT3riJtgJwsP-yQj2L72` |
+| ✅ | `09-procedimientos/C-cierre-de-lote.md` | 4894 | `1nIwRMtalOPIT9mQ4_zcGPA13BGo6TPwa` |
+| ✅ | `09-procedimientos/D-prescripcion-post-cierre.md` | 4242 | `1ZTHaDj40g_UPpq5mo8KMPTCj6S1nYMnx` |
+| ✅ | `09-procedimientos/E-volumen-bombas.md` | 5165 | `1xY5FvgRjufwt5Cn9nJs5Q0sDuzMHi2n7` |
+| ✅ | `09-procedimientos/F-cuando-modificar-formula.md` | 3382 | `1eejMBbfxZddij9Hx_wbauVJbgjIKB55F` |
+| ✅ | `09-procedimientos/G-analisis-economico.md` | 5835 | `1g1fDY8h4mfq-2vikXK0M5xjPyAguUQos` |
 
 **El CLAUDE.md de Drive** (`1E20Ek83XZtf6Hq3mCX9nBoJBhJPgkpXz`, 6426 bytes) ya
 está incorporado y ampliado en el `CLAUDE.md` de la raíz del repo, con sus

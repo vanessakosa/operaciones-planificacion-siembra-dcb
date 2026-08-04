@@ -27,7 +27,7 @@ Todo lo de aquí vive en `Drive / DCB Claude / 07_Operaciones`
 | 🔨 | `ciclos_variedad.csv` | — | derivado de `dcb-variedades/references/parametros_siembra.md` |
 | 🔨 | `objetivo_color_pdv.csv` | — | propuesta sin validar — requiere datos de `03_Ventas` |
 | 📖 | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
-| ⬜ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
+| ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
 | ⬜ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |
 | ⬜ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
 | ⬜ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |

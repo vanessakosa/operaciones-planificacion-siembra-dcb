@@ -22,7 +22,7 @@ Daucus carota,,13,24,2,6,15,,no,variedades_bitacora.csv,"Purple Kisses: ciclo 24
 Girasol,,12,12,3,3,,1,no,"variedades_bitacora.csv + Vanessa (sesion ago-2026)","Ciclo 12 ventana 3 (bitacora). tallos_planta=1 CONFIRMADO por Vanessa. Focal principal del catalogo"
 Ammobium,,13,13,3,3,,1,no,"variedades_bitacora.csv + Vanessa (sesion ago-2026)","Ciclo 13 ventana 3. tallos_planta=1 CONFIRMADO por Vanessa. TECHO: bitacora dice que 4.600 plantas fue DEMASIADO, ideal 2.500-3.000 max por siembra"
 Amaranto,,10,15,2,3,,1,no,"variedades_bitacora.csv + Vanessa (sesion ago-2026)","tallos_planta=1 CONFIRMADO por Vanessa. Por variedad: Emerald Tails 10/3 (el mas pedido), Love Lies Bleeding y Coral Fountain 11/3, Velvet Curtains 15/2"
-Green Ball,,,,,,,,,SIN_DATO,"NO esta en VARIEDADES_BITACORA ni en parametros_siembra.md — PEDIR A VANESSA. Critico: aparece en 8 de 24 productos"
+Green Ball,,11,15,,,,,no,"campo_siembras.csv (derivado, n=3)","DERIVADO de 3 siembras reales en CAMPO: 2025-08-28 en 3A y 4, 2025-09-10 en 3c, 2025-12-12 en 3B. Punto medio 12.9 sem, piso 10.8, techo 15.0. Es un DIANTHUS (homologado Dianthus Green Ball). VENTANA SIN_DATO: Fin de cosecha esta vacio en las 3 filas. FALTA tallos_planta"
 Celosia Purple Flamingo,,15,15,3,3,,,no,variedades_bitacora.csv,Extraordinaria en secos. En fresco solo para paletas moradas
 Carthamus,,14,14,2,2,,,no,variedades_bitacora.csv,Ventana cortisima 2 sem. Seca increible. 1 tallo por bouquet. No sembrar en exceso
 Dianthus,,14,14,3,3,,,no,variedades_bitacora.csv,Sweet Cherry Bicolor: relleno constante. DESCARTAR blanco y rojo (muy comunes)

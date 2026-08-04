@@ -23,6 +23,7 @@ Uso:
     python3 motor/cerebro.py productos
     python3 motor/cerebro.py auditar
     python3 motor/cerebro.py bouquet "Cosecha Grande"
+    python3 motor/cerebro.py ciclos
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
 """
@@ -753,6 +754,126 @@ def cmd_sembrar(ruta):
         print("\nPRODUCTOS SIN RECETA: %s" % ", ".join(faltantes))
 
 
+# Antioquia tiene regimen bimodal: dos temporadas de lluvia y dos secas.
+MESES_LLUVIA = {3, 4, 5, 9, 10, 11}
+
+MES_NOMBRE = {
+    "ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6,
+    "JULIO": 7, "AGOSTO": 8, "SEPTIEMBRE": 9, "OCTUBRE": 10, "NOVIEMBRE": 11,
+    "DICIEMBRE": 12, "ENE": 1, "FEB": 2, "MAR": 3, "ABR": 4, "AGO": 8,
+    "SEP": 9, "JUN": 6, "JUL": 7, "OCT": 10, "NOV": 11, "DIC": 12,
+}
+
+
+def _meses_de(texto):
+    """CAMPO registra el inicio de cosecha como nombre de mes, no como fecha."""
+    import re
+    return [MES_NOMBRE[w] for w in re.findall(r"[A-ZÁÉÍÓÚ]+", (texto or "").upper())
+            if w in MES_NOMBRE]
+
+
+def ciclo_observado(fecha_siembra, texto_cosecha):
+    """Ciclo trasplante -> inicio de cosecha, como RANGO.
+
+    Devuelve (fecha_siembra, sem_min, sem_max) o None.
+
+    El rango NO es opcional: como la cosecha se anota por mes y no por fecha,
+    cualquier valor puntual seria falsa precision. sem_min asume cosecha el dia
+    1 del mes; sem_max asume el ultimo dia.
+    """
+    import datetime as dt
+    try:
+        s = dt.date.fromisoformat((fecha_siembra or "").strip())
+    except ValueError:
+        return None
+    meses = _meses_de(texto_cosecha)
+    if not meses:
+        return None
+    lo = hi = None
+    for m in meses:
+        anio = s.year if m >= s.month else s.year + 1
+        ini = dt.date(anio, m, 1)
+        fin = dt.date(anio + (m == 12), 1 if m == 12 else m + 1, 1) - dt.timedelta(days=1)
+        a, b = (ini - s).days / 7.0, (fin - s).days / 7.0
+        lo = a if lo is None else min(lo, a)
+        hi = b if hi is None else max(hi, b)
+    if lo is None or hi <= 0:
+        return None
+    return (s, max(lo, 0.0), hi)
+
+
+def cmd_ciclos():
+    """Deriva ciclos reales de 07-datos/campo_siembras.csv (hoja CAMPO).
+
+    Reporta primero la calidad del dato: sin eso, cualquier promedio enganaria.
+    """
+    filas = _leer_csv("campo_siembras.csv")
+    n = len(filas)
+    llenas = lambda k: sum(1 for f in filas if (f.get(k) or "").strip())
+
+    print("=" * 74)
+    print("CICLOS OBSERVADOS EN CAMPO — %d siembras registradas" % n)
+    print("=" * 74)
+    print("\nCALIDAD DEL DATO (leer esto antes de creer cualquier promedio)")
+    for k in ("Fecha siembra campo", "Inicio cosecha", "Fin de cosecha"):
+        c = llenas(k)
+        print("  %-22s %3d llenas  %5.0f%%" % (k, c, 100.0 * c / n if n else 0))
+
+    tri = sum(1 for f in filas
+              if (f.get("Fecha siembra campo") or "").strip()
+              and (f.get("Inicio cosecha") or "").strip()
+              and (f.get("Fin de cosecha") or "").strip())
+    print("  filas con las TRES fechas %3d           <- la VENTANA solo sale de aqui" % tri)
+
+    obs = []
+    for f in filas:
+        c = ciclo_observado(f.get("Fecha siembra campo"), f.get("Inicio cosecha"))
+        if c:
+            obs.append((f, c[0], c[1], c[2]))
+    print("\n  ciclo calculable en %d de %d filas (%.0f%%)" % (len(obs), n, 100.0 * len(obs) / n if n else 0))
+
+    meses_cubiertos = sorted({s.month for _, s, _, _ in obs})
+    print("  meses del anio con siembras fechadas: %s" % (meses_cubiertos or "ninguno"))
+    if len(meses_cubiertos) < 12:
+        print("  ADVERTENCIA: faltan %d meses. No hay base para predecir en esos meses."
+              % (12 - len(meses_cubiertos)))
+
+    # Por grupo homologado
+    por_grupo = defaultdict(list)
+    for f, s, lo, hi in obs:
+        clave = ((f.get("Nombre Homologados") or "").strip()
+                 or (f.get("Variedad") or "").strip() or "?")
+        por_grupo[clave].append((s.month, lo, hi))
+
+    print("\nCICLO POR NOMBRE HOMOLOGADO (rango, no valor puntual)")
+    print("%-32s %4s %10s %10s" % ("HOMOLOGADO", "N", "PISO", "TECHO"))
+    print("-" * 60)
+    for k, v in sorted(por_grupo.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+        if len(v) < 2:
+            continue
+        print("%-32s %4d %8.1f s %8.1f s" % (
+            k[:32], len(v), sum(x[1] for x in v) / len(v), sum(x[2] for x in v) / len(v)))
+
+    # Temporada
+    secas = [(lo + hi) / 2 for _, s, lo, hi in obs if s.month not in MESES_LLUVIA]
+    lluvias = [(lo + hi) / 2 for _, s, lo, hi in obs if s.month in MESES_LLUVIA]
+    print("\nEFECTO DE TEMPORADA (Antioquia bimodal: lluvia mar-may y sep-nov)")
+    if secas:
+        print("  SECA    n=%-3d ciclo medio %.1f sem" % (len(secas), sum(secas) / len(secas)))
+    if lluvias:
+        print("  LLUVIA  n=%-3d ciclo medio %.1f sem" % (len(lluvias), sum(lluvias) / len(lluvias)))
+    if secas and lluvias:
+        dif = abs(sum(secas) / len(secas) - sum(lluvias) / len(lluvias))
+        ruido = sum(hi - lo for _, _, lo, hi in obs) / len(obs)
+        print("  diferencia observada : %.1f sem" % dif)
+        print("  ruido de medicion    : %.1f sem  (por anotar la cosecha por mes)" % ruido)
+        if dif < ruido:
+            print("\n  >> El efecto de temporada (%.1f sem) es MENOR que el ruido de" % dif)
+            print("     medicion (%.1f sem). Con este dato NO se puede afirmar que la" % ruido)
+            print("     temporada mueva el ciclo. Para poder afirmarlo hace falta")
+            print("     anotar 'Inicio cosecha' y 'Fin de cosecha' como FECHA.")
+
+
 def cmd_valor():
     """Valor por tallo propio — palanca de optimizacion disponible HOY.
 
@@ -812,6 +933,8 @@ def main(argv):
         cmd_auditar()
     elif cmd == "valor":
         cmd_valor()
+    elif cmd == "ciclos":
+        cmd_ciclos()
     elif cmd == "bouquet":
         if len(argv) < 3:
             raise SystemExit("Uso: python3 motor/cerebro.py bouquet \"Cosecha Grande\"")

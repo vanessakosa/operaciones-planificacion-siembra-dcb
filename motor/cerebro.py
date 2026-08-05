@@ -20,6 +20,7 @@ Reglas no negociables que respeta este codigo:
     de manejo y se usa solo para planificacion interna de siembra.
 
 Uso:
+    python3 motor/cerebro.py matriz
     python3 motor/cerebro.py productos
     python3 motor/cerebro.py auditar
     python3 motor/cerebro.py bouquet "Cosecha Grande"
@@ -32,6 +33,7 @@ Uso:
 from __future__ import annotations
 
 import csv
+import datetime
 import os
 import sys
 from collections import defaultdict
@@ -1054,12 +1056,204 @@ def cmd_valor():
     print("  costos_productos.csv, que hoy esta vacio (bloqueo #2 del roadmap).")
 
 
+# --------------------------------------------------------------------------
+# La matriz de decision: que tan lejos esta el motor de poder decidir DONDE
+# --------------------------------------------------------------------------
+
+def _leer_opcional(nombre):
+    """Como _leer_csv pero devuelve [] si el archivo no existe todavia.
+
+    La matriz mide huecos, asi que un archivo ausente es un resultado valido
+    (cobertura 0), no un error que aborte el reporte.
+    """
+    ruta = os.path.join(DATOS, nombre)
+    if not os.path.exists(ruta):
+        return []
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        return list(csv.DictReader(fh))
+
+
+VACIO = ("", "SIN_DATO", "-", "?", "N/A", "PENDIENTE")
+
+
+def _lleno(valor):
+    return (valor or "").strip().upper() not in [v.upper() for v in VACIO]
+
+
+def _es_numero(valor):
+    try:
+        float((valor or "").strip().replace(",", "."))
+        return True
+    except ValueError:
+        return False
+
+
+def cobertura_matriz():
+    """Devuelve una lista de dicts, uno por variable de decision.
+
+    cubierto/total son conteos reales sobre los CSV. Ninguna variable se da
+    por buena sin contarla: si el archivo no existe, la cobertura es 0.
+    """
+    filas = []
+
+    def add(n, nombre, cubierto, total, unidad, desbloquea, nota=""):
+        filas.append({
+            "n": n, "nombre": nombre, "cub": cubierto, "tot": total,
+            "unidad": unidad, "desbloquea": desbloquea, "nota": nota,
+        })
+
+    # 1 — Demanda: el cultivar fijado en la receta es lo que hace consultable
+    #     la demanda de color. Sin cultivar, la receta no pide un color.
+    recetas = _leer_opcional("formulas_productos_bouquets.csv")
+    por_nombre, por_grupo = cargar_paleta()
+    dcb = fijos = 0
+    for fila in recetas:
+        if norm(fila.get("Origen", "")) != "dcb":
+            continue
+        cant = num(fila.get("Cantidad", ""))
+        if cant is None:
+            continue
+        dcb += cant
+        res = resolver(fila.get("Ingrediente", ""), por_nombre, por_grupo)
+        if res["tipo"] in ("EXACTA", "FOLLAJE", "NO_FLOR"):
+            fijos += cant
+    add(1, "Demanda de color y producto", fijos, dcb, "tallos DCB con cultivar fijado",
+        "que la receta pida un color y no un grupo",
+        "objetivo_color_pdv.csv esta como PROPUESTA SIN VALIDAR (faltan datos de 03_Ventas)")
+
+    # 2 — Ciclo, ventana, tallos/planta
+    ciclos = _leer_opcional("ciclos_variedad.csv")
+    completos = sum(1 for f in ciclos if _lleno(f.get("sem_a_campo_min"))
+                    and _lleno(f.get("ventana_sem_min")) and _lleno(f.get("tallos_planta")))
+    add(2, "Ciclo, ventana y tallos/planta", completos, len(ciclos), "grupos",
+        "fechar la siembra hacia atras desde la demanda")
+
+    # 3 — Microclima MEDIDO (no cualitativo): temperatura y humedad numericas
+    micro = _leer_opcional("microclima_bloques.csv")
+    medidos = sum(1 for f in micro if _es_numero(f.get("temp_min_c"))
+                  and _es_numero(f.get("hum_rel_max_pct")))
+    add(3, "Microclima medido por bloque", medidos, len(micro), "zonas con T y HR numericas",
+        "cruzar zona con riesgo de hongo y velocidad de ciclo",
+        "hay %d zonas descritas en cualitativo (ALTA/MEDIA/BAJA)" % len(micro))
+
+    # 4 — Presion y uniformidad de riego
+    riego = sum(1 for f in micro if _lleno(f.get("presion_agua")) and _lleno(f.get("uniformidad_riego")))
+    add(4, "Presion y uniformidad de riego", riego, len(micro), "zonas con presion y uniformidad",
+        "explicar por que solo ~22% del area rinde a potencial")
+
+    # 5 — Suelo por zona
+    suelo = sum(1 for f in micro if _lleno(f.get("suelo_estado")))
+    add(5, "Estado de suelo por zona", suelo, len(micro), "zonas con suelo caracterizado",
+        "decidir que variedad tolera esa cama")
+
+    # 6 — Historia fitosanitaria: existir no basta, hay que poder cruzarla por
+    #     semana de ciclo. Un evento con la semana ambigua no predice nada.
+    inc = _leer_opcional("incidencia_fitosanitaria.csv")
+    fechables = sum(1 for f in inc if (f.get("tipo_semana", "").strip().upper() in ("ISO", "CAMPO"))
+                    and _lleno(f.get("momento_reportado")))
+    add(6, "Historico de plagas y hongos", fechables, len(inc), "eventos con semana resuelta",
+        "predecir en que semana del ciclo aparece el problema",
+        "extraidos de texto libre; la semana reportada es ambigua entre ISO y semana de campo")
+
+    # 7 — Clima semanal contra las semanas que si tienen cosecha registrada
+    clima = _leer_opcional("clima_semanal.csv")
+    reg = _leer_opcional("registro_tallos.csv")
+    sem_cosecha = set()
+    for f in reg:
+        fecha = (f.get("Fecha") or "").strip()[:10]
+        try:
+            sem_cosecha.add(datetime.date.fromisoformat(fecha).isocalendar()[1])
+        except ValueError:
+            continue
+    sem_clima = set()
+    for f in clima:
+        if _es_numero(f.get("semana_iso")):
+            sem_clima.add(int(float(f["semana_iso"])))
+    add(7, "Clima semanal de la finca", len(sem_clima & sem_cosecha), len(sem_cosecha) or 1,
+        "semanas ISO con cosecha y clima",
+        "separar el efecto de temporada del efecto de variedad")
+
+    # 8 — Rendimiento: un lote cuenta si tiene tallos Y plantas para dividir
+    campo = _leer_opcional("campo_siembras.csv")
+    plantas = {}
+    for f in campo:
+        clave = (norm(f.get("Nombre Homologados", "")), norm_bloque(f.get("Bloque sembrado", "")))
+        if clave[0] and _es_numero(f.get("Cantidad Trasplantada")):
+            plantas[clave] = True
+    lotes, con_plantas = set(), set()
+    for f in reg:
+        clave = (norm(f.get("Variedad / Serie", "")), norm_bloque(f.get("Bloque", "")))
+        if not clave[0]:
+            continue
+        lotes.add(clave)
+        if clave in plantas:
+            con_plantas.add(clave)
+    add(8, "Rendimiento normalizado por ventana", len(con_plantas), len(lotes) or 1,
+        "lotes con tallos Y numero de plantas",
+        "comparar variedades sin el sesgo de ventana truncada")
+
+    # 9 — Calidad de tallo
+    cal = _leer_opcional("calidad_tallo.csv")
+    add(9, "Calidad de tallo (longitud, grado)", len(cal), len(lotes) or 1, "lotes medidos",
+        "separar 'produjo' de 'produjo vendible'",
+        "hoy la longitud de tallo NO se mide en ninguna parte del repositorio")
+
+    # 10 — Capacidad de camas
+    cap = _leer_opcional("capacidad_bloques.csv")
+    medidas = sum(1 for f in cap if _es_numero(f.get("Huecos (largo)")))
+    add(10, "Capacidad de camas", medidas, len(cap), "bloques medidos",
+        "saber si la siembra cabe en la semana que se necesita")
+
+    # 11 — Costos
+    cos = _leer_opcional("costos_productos.csv")
+    add(11, "Costo de semilla, insumos y mano de obra", len(cos), 1, "filas de costo",
+        "margen por m2 por semana — el eje que une los otros tres")
+
+    return filas
+
+
+def cmd_matriz():
+    filas = cobertura_matriz()
+    print("\n" + "=" * 78)
+    print("LA MATRIZ DE DECISION — cuanto se puede decidir hoy con datos reales")
+    print("=" * 78)
+    print("\nCada variable entra en la decision de QUE sembrar, CUANTA, DONDE, CUANDO")
+    print("y CON QUE MANEJO. Una variable en SIN_DATO no se estima: bloquea.\n")
+
+    listas = 0
+    for f in filas:
+        pct = (f["cub"] / f["tot"]) if f["tot"] else 0.0
+        if pct >= 0.999:
+            estado, listas = "LISTA  ", listas + 1
+        elif pct > 0:
+            estado = "PARCIAL"
+        else:
+            estado = "SIN_DATO"
+        print("%2d. %-38s %s %s %5.0f%%  (%s/%s %s)" % (
+            f["n"], f["nombre"][:38], barra(pct, 14), estado, pct * 100,
+            f["cub"], f["tot"], f["unidad"]))
+        print("     desbloquea: %s" % f["desbloquea"])
+        if f["nota"]:
+            print("     nota: %s" % f["nota"])
+        print("")
+
+    print("-" * 78)
+    print("%d de %d variables listas para decidir." % (listas, len(filas)))
+    print("\n  Las tres piernas del objetivo:")
+    print("    punto de venta  -> variable 1")
+    print("    bouquet         -> variables 1 y 2")
+    print("    EL MEDIO        -> variables 3 a 11  <- aqui esta el trabajo")
+    print("\n  Detalle y como llenar cada hueco: 08-roadmap/02-informacion-que-falta.md")
+
+
 def main(argv):
     if len(argv) < 2:
         print(__doc__)
         return 1
     cmd = argv[1]
-    if cmd == "productos":
+    if cmd == "matriz":
+        cmd_matriz()
+    elif cmd == "productos":
         cmd_productos()
     elif cmd == "auditar":
         cmd_auditar()

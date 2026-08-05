@@ -20,13 +20,64 @@ Vanessa lo pida explícitamente.
 
 ## Objetivo central
 
-Producir tallos extraordinarios en calidad y presentación, que se conviertan en
-bouquets correctamente estructurados y con color gobernado, y que lleguen a un
-punto de venta con distribución de color deliberada — maximizando la eficiencia
-del cultivo y reduciendo costos.
+**Este repositorio es el estratega del cultivo.** No es un archivo ni una
+calculadora de fechas: es el sistema que decide **cómo sembrar este cultivo de
+manera eficiente**, y que convierte esa eficiencia en rentabilidad para la
+empresa.
+
+El objetivo tiene tres piernas, y la tercera es la más grande:
+
+1. **Distribución de color deliberada en el punto de venta** — que la exhibición
+   muestre la mezcla de color que se decidió, no la que resultó.
+2. **Combinación de flores y color correcta dentro del bouquet** — estructura de
+   seis roles en rango, color gobernado, cultivar fijado en la receta.
+3. **Todas las decisiones que están en el medio** — la eficiencia y la
+   optimización de cada decisión y cada producto para lograr un **tallo de
+   calidad**. Esta es la parte más compleja, la más rentable y la que este
+   repositorio existe para resolver.
 
 **Toda decisión se evalúa desde tres ejes: calidad del tallo, rentabilidad, uso
-eficiente de recursos.**
+eficiente de recursos.** La unidad de medida que los une es **margen por m² por
+semana de cama ocupada** — no tallos por planta. Una cama ocupada 30 semanas por
+un cultivo barato pierde contra 18 semanas de uno caro. Hoy esa cuenta todavía
+no se puede correr porque `costos_productos.csv` está vacío.
+
+## La decisión de siembra no es una fecha: es una matriz
+
+Sembrar bien no es saber en qué semana va la bandeja. Es cruzar, para cada
+siembra: **qué variedad · cuánta · en qué bloque y cama · en qué semana · con
+qué manejo.** Las variables que entran en ese cruce:
+
+| # | Variable | Por qué decide | Dónde vive |
+|---|---|---|---|
+| 1 | Demanda de color y producto | Fija qué y cuánto | `11-bouquets/` `12-punto-de-venta/` |
+| 2 | Ciclo, ventana, tallos/planta, densidad, pinch | Fija cuándo y cuántas plantas | `ciclos_variedad.csv` `variedades_bitacora.csv` |
+| 3 | Microclima del bloque y de la cama — temperatura, humedad, radiación, viento | Decide **dónde**. Mismo bloque, camas opuestas, resultado opuesto | `01-infraestructura/01-invernaderos.md` (cualitativo) |
+| 4 | Presión y uniformidad de riego | **La limitante dominante hoy.** Solo ~22 % del área rinde a potencial | `01-infraestructura/01-invernaderos.md` |
+| 5 | Suelo: M.O., C.E., compactación, inóculo | Decide qué variedad tolera esa cama | `01-infraestructura/02-analisis-de-suelo.md` |
+| 6 | Histórico de plagas y hongos por variedad × bloque × semana de ciclo | Decide si esa combinación ya falló antes | `incidencia_fitosanitaria.csv` |
+| 7 | Clima de la temporada — semana del año, lluvia, sequía | Corre el ciclo y dispara el riesgo de hongo | `clima_semanal.csv` |
+| 8 | Histórico de tallos, normalizado por ventana | Mide productividad real sin el sesgo de ventana truncada | `registro_tallos.csv` → `cerebro.py rendimiento` |
+| 9 | Calidad del tallo: longitud y grado | Separa "produjo" de "produjo vendible" | `calidad_tallo.csv` |
+| 10 | Capacidad de camas libres en esa semana | Restricción dura del calendario | `capacidad_bloques.csv` |
+| 11 | Costo de semilla, insumos y mano de obra | Convierte todo lo anterior en margen | `costos_productos.csv` |
+
+**El acierto de una siembra no está en la fecha: está en el cruce.** El
+repositorio ya documenta el patrón, aunque en prosa y sin poder consultarse:
+
+- Larkspur y gomphrena van en las camas **inferiores** de 3A. Dianthus fracasó
+  en las **superiores** — mismo bloque, más calor y menos agua.
+- Lisianthus en 3C es la cama más problemática del bloque por humedad nocturna.
+- Matricaria Vegmo Single no va en 3C ni Inv 5: **inóculo de mosca blanca en el
+  suelo**. Dos lotes sacrificados por eso.
+- Statice pide Botrycid+Equifun preventivo desde la **semana 14–15 de cosecha**,
+  antes de sospechar botrytis. Patrón de ventana temporal, no de variedad.
+- Camas cortas = presión uniforme = riego homogéneo. Es la razón por la que Inv 4
+  es el mejor del cultivo, y **la lección transferible más importante de la finca**.
+
+Convertir estos patrones de prosa a matriz consultable es el trabajo central del
+proyecto. Detalle y estado de cada variable en
+`13-optimizacion/02-matriz-de-decision.md`.
 
 ## La cadena que modela este repositorio
 
@@ -35,6 +86,8 @@ punto de venta (mezcla de color objetivo)     12-punto-de-venta/
     -> producto y receta                      11-bouquets/
     -> tallos por variedad, color y semana    motor/cerebro.py explotar
     -> semana de trasplante y de bandeja      motor/cerebro.py sembrar
+    -> BLOQUE Y CAMA segun microclima,        01-infraestructura/ 07-datos/
+       agua, suelo e historia fitosanitaria     (la matriz de arriba)
     -> capacidad de camas                     01-infraestructura/
     -> manejo para que el tallo salga bien    02-nutricion/ 03-fitosanidad/
     -> cosecha y postcosecha                  10-postcosecha/
@@ -42,7 +95,9 @@ punto de venta (mezcla de color objetivo)     12-punto-de-venta/
 ```
 
 **Se lee de derecha a izquierda para ejecutar, y de izquierda a derecha para
-decidir.** La demanda de color manda sobre la siembra, no al revés.
+decidir.** La demanda de color manda sobre la siembra, no al revés — pero el
+**dónde y el cómo** los manda la matriz de campo, y ahí es donde se gana o se
+pierde la rentabilidad.
 
 ## Reglas no negociables
 
@@ -114,13 +169,20 @@ agronómica de manejo y se usa para planificación interna de siembra.
 Python 3, solo librería estándar. Todo se ejecuta desde la raíz del repo.
 
 ```bash
+python3 motor/cerebro.py matriz                 # cuánto de la matriz de decisión está cubierto
 python3 motor/cerebro.py productos              # las 24 recetas del catálogo
 python3 motor/cerebro.py auditar                # estructura + color de todo el catálogo
 python3 motor/cerebro.py bouquet "Cosecha Grande"   # un producto en detalle
 python3 motor/cerebro.py valor                  # ingreso por tallo propio
+python3 motor/cerebro.py ciclos                 # ciclo y ventana por grupo
+python3 motor/cerebro.py rendimiento Campanula  # tallos/planta/día normalizado por ventana
 python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallos
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
 ```
+
+`matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
+de las 11 variables de decisión está cubierto con datos reales. **Empieza cada
+sesión de estrategia corriéndolo.**
 
 Las reglas de estructura y color viven en constantes al inicio de
 `motor/cerebro.py` (`RANGO_ESTRUCTURA`, `DOMINANTE_MIN`,
@@ -144,22 +206,49 @@ Vanessa hace un brain dump de la semana en campo. El flujo es:
 
 ## Estado: los bloqueos que resolver primero
 
-Ordenados por relación esfuerzo/desbloqueo. Detalle en
-`13-optimizacion/01-como-optimizar.md`.
+Ordenados por relación esfuerzo/desbloqueo. Correr `cerebro.py matriz` para el
+estado medido. Detalle en `13-optimizacion/01-como-optimizar.md` y la lista
+completa de datos pendientes en `08-roadmap/02-informacion-que-falta.md`.
 
-1. **Ciclo de Girasol, Green Ball, Amaranto y Ammobium** — 4 grupos en uso
-   activo en las recetas sin ciclo registrado. Girasol es el focal principal;
-   Green Ball está en 8 de 24 productos. Sin esto el motor no puede fecharlos.
-2. **Confirmar el color de Statice Forever Happy** — está en 9 de 24 productos
-   con color inferido (confianza baja).
-3. **Fijar el cultivar en las recetas** — 24 % de los tallos DCB del catálogo
+**Nivel 0 — archivos que ya existen y solo hay que compartir:**
+
+0. **`DCB_Fitosanidad_Maestro.xlsx`** (8 hojas), **`DCB_Modelo_Costos.xlsx`**,
+   **`Calculo_por_tallo.xlsx`**, `aplicaciones_historial` actualizado y el
+   **`PROGRAMACION_2026` v8**. No hay que generar el dato: hay que traerlo.
+   Desbloquean fitosanidad y margen completos. **Pedirlos antes que nada.**
+
+**Para poder decidir DÓNDE sembrar (la pierna que falta):**
+
+1. **Medir temperatura y humedad por bloque** — hoy el microclima es cualitativo
+   ("caliente", "fresco", "húmedo nocturno"). Sin números no se puede cruzar con
+   el riesgo de hongo ni con la velocidad de ciclo. → `microclima_bloques.csv`
+2. **Registrar el clima semanal de la finca** — lluvia, temperatura mínima y
+   máxima por semana ISO. Es la variable que corre los ciclos y dispara la
+   botrytis. → `clima_semanal.csv`
+3. **Estructurar el histórico fitosanitario** — 24 eventos de fusarium, botrytis,
+   mosca blanca, mildeo, oidio y roya están enterrados en texto libre dentro de
+   los COMENTARIOS de `campo_siembras.csv`. Extraídos ya a
+   `incidencia_fitosanitaria.csv`; faltan las semanas de ciclo y la severidad.
+4. **Empezar a medir longitud de tallo** — la calidad no se registra en ninguna
+   parte del repositorio. Es la diferencia entre "produjo" y "produjo vendible".
+   → `calidad_tallo.csv`
+
+**Para poder decidir CUÁNTO y a QUÉ PRECIO:**
+
+5. **Llenar `costos_productos.csv`** — desbloquea margen por m² por semana, que
+   es el eje que une los otros tres.
+6. **Fijar el cultivar en las recetas** — 24 % de los tallos DCB del catálogo
    no lo tienen. Es la causa raíz de la inconsistencia de color en punto de venta.
-4. **Limpiar `formulas_productos_bouquets.csv`** — 11 filas de productos
-   fitosanitarios contaminan el archivo de recetas.
-5. **Medir Ext 3B, Inv 2, Mini, Inv 4C, Inv 6** — sin esto la capacidad real
+7. **Confirmar el color de Statice Forever Happy** — está en 9 de 24 productos
+   con color inferido (confianza baja).
+8. **Medir Ext 3B, Inv 2, Mini, Inv 4C, Inv 6** — sin esto la capacidad real
    de campo está subestimada.
-6. **Llenar `costos_productos.csv`** — desbloquea todo el análisis de margen.
-7. **Reconstruir `CONSOLIDADO` y `RENDIMIENTO`** en `DCB_Registro_Tallos`.
+9. **Limpiar `formulas_productos_bouquets.csv`** — 11 filas de productos
+   fitosanitarios contaminan el archivo de recetas.
+10. **Reconstruir `CONSOLIDADO` y `RENDIMIENTO`** en `DCB_Registro_Tallos`.
+
+*Cerrado:* ciclo de Girasol, Green Ball, Amaranto y Ammobium — los 13 grupos del
+catálogo ya son planificables.
 
 ## Archivos maestros que viven en Drive y NO están en el repo
 

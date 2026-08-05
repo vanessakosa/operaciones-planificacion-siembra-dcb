@@ -28,6 +28,10 @@ pueden espejar como texto.
 | 🔨 | `ciclos_variedad.csv` | — | derivado de `dcb-variedades/references/parametros_siembra.md` |
 | 🔨 | `objetivo_color_pdv.csv` | — | propuesta sin validar — requiere datos de `03_Ventas` |
 | 🔨 | `mezcla_real.csv` | — | derivado de `homologacion_registro.csv` (mezcla observada por Vanessa sem23) |
+| 🔨 | `incidencia_fitosanitaria.csv` | — | **extraído** de los COMENTARIOS de `campo_siembras.csv` y de `01-invernaderos.md`. 29 eventos que estaban en texto libre. `texto_original` conserva la frase literal |
+| 🔨 | `microclima_bloques.csv` | — | derivado de `01-invernaderos.md`. 18 zonas en cualitativo (`confianza = CUALITATIVA`). Las columnas numéricas están en `SIN_DATO` a la espera de medición |
+| ⬜ | `clima_semanal.csv` | — | **solo encabezado.** Esquema listo, sin un solo registro |
+| ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
 | ✅ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |

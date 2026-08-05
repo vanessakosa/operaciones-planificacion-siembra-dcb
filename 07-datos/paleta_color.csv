@@ -23,7 +23,7 @@ Gomphrena,Raspberry Cream,Gomphrena Raspberry Cream,ROSA_CREMA,#F48FB1,RELLENO,D
 Gomphrena,Salmon Pastel,Gomphrena Salmon Pastel,SALMON,#FFAB91,RELLENO,DCB,alta,Color explícito en el nombre
 Campanula,Champion Pink,Campanula Champion Pink,ROSA_MEDIO,#F06292,LINEA,DCB,alta,Color explícito en el nombre
 Campanula,Champion White,Campanula Champion White,BLANCO,#FFFFFF,LINEA,DCB,alta,Requerida en Bouquet pureza
-Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,CONFLICTO SIN RESOLVER — decisiones_manejo.csv (2026-07-07) dice SACAR del cultivo por 0.64 t/planta vs 0.92 de la blanca; variedades_bitacora.csv (CAMBIOS SEM24) dice MANTENER en zona correcta porque el problema es estres hidrico en 3B y no la variedad. PREGUNTAR A VANESSA
+Campanula,Champion Lavender,Campanula Champion Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,"RESUELTO: el argumento de rendimiento NO se sostiene. El 0.64 vs 0.92 comparaba 18 dias de ventana contra 27. Normalizado por dia la lavanda rinde 4% MAS que la blanca en la misma cama. NO retirada. La restriccion real es la zona: campanula NO en 3B hasta resolver la bomba, y eso aplica a las tres. Ver 04-variedades/03-campanula-champion-lavender.md"
 Statice,Forever Happy,Statice Forever Happy,MULTICOLOR,#D8A0C0,RELLENO,DCB,media,CORREGIDO por variedades_bitacora.csv: tiene colores APRICOT y NARANJA en las flores que lo hacen muy bonito — NO es un lila plano. Colapso productivo documentado sem 20+
 Statice,Ruso,Limonium Ruso,MORADO,#7E57C2,RELLENO,DCB,media,Limonium Ruso = violeta azulado
 Statice,Hipster White,Statice Hipster White,BLANCO,#FFFFFF,RELLENO,DCB,alta,Color explícito en el nombre

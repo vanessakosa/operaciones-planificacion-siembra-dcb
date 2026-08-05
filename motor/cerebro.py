@@ -24,6 +24,7 @@ Uso:
     python3 motor/cerebro.py auditar
     python3 motor/cerebro.py bouquet "Cosecha Grande"
     python3 motor/cerebro.py ciclos
+    python3 motor/cerebro.py rendimiento [grupo]
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
 """
@@ -874,6 +875,137 @@ def cmd_ciclos():
             print("     anotar 'Inicio cosecha' y 'Fin de cosecha' como FECHA.")
 
 
+def norm_bloque(texto):
+    """Los bloques se escriben distinto en cada archivo: CAMPO usa "3B" y
+    REGISTRO usa "Inv 3B". Sin unificar esto el cruce falla en silencio."""
+    t = norm(texto)
+    for pref in ("invernadero ", "inv ", "ext ", "exterior "):
+        if t.startswith(pref):
+            t = t[len(pref):]
+    return t.replace(" ", "")
+
+
+def cmd_rendimiento(grupo=None):
+    """Rendimiento real por variedad y bloque, NORMALIZADO por ventana.
+
+    Por que normaliza: comparar tallos/planta entre dos variedades cuyas
+    ventanas de cosecha llevan distinto tiempo transcurrido produce una
+    conclusion falsa. Es el mismo error que C-cierre-de-lote.md advierte para
+    los lotes sacrificados: un lote interrumpido parece de bajo rendimiento
+    cuando en realidad fue interrumpido.
+
+    El caso que motivo este comando: Campanula Champion Lavender parecia
+    rendir 0.64 t/planta contra 0.92 de la blanca en la MISMA cama. Pero la
+    lavanda llevaba 18 dias de ventana y la blanca 27. Por planta por dia son
+    iguales.
+    """
+    import datetime as dt
+    import re
+
+    siembras = _leer_csv("campo_siembras.csv")
+    cosecha = _leer_csv("registro_tallos.csv")
+
+    # plantas trasplantadas por (homologado, bloque)
+    plantas = defaultdict(float)
+    for s in siembras:
+        hom = (s.get("Nombre Homologados") or "").strip()
+        blo = norm_bloque(s.get("Bloque sembrado") or "")
+        n = num((s.get("Cantidad Trasplantada") or "").strip())
+        if hom and n:
+            plantas[(hom, blo)] += n
+
+    # cosecha por (grupo, variedad, bloque)
+    lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": []})
+    for c in cosecha:
+        g = (c.get("Grupo") or "").strip()
+        v = (c.get("Variedad / Serie") or "").strip()
+        b = (c.get("Bloque") or "").strip()
+        f = (c.get("Fecha") or "").strip()
+        if not (g and v and b) or not re.match(r"^\d{4}-\d{2}-\d{2}$", f):
+            continue
+        if grupo and norm(grupo) not in norm(g):
+            continue
+        t = num(c.get("Tallos frescos") or "")
+        d = lotes[(g, v, b)]
+        d["tallos"] += t or 0
+        d["fechas"].append(f)
+
+    if not lotes:
+        raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
+
+    corte = max(f for d in lotes.values() for f in d["fechas"])
+    print("RENDIMIENTO REAL NORMALIZADO POR VENTANA")
+    print("El registro de cosecha corta el %s — las ventanas abiertas en esa" % corte)
+    print("fecha estan TRUNCADAS, no cerradas.\n")
+    print("%-14s %-20s %-8s %7s %8s %6s %9s %12s" % (
+        "GRUPO", "VARIEDAD", "BLOQUE", "PLANTAS", "TALLOS", "DIAS", "T/PLANTA", "T/PLANTA/DIA"))
+    print("-" * 94)
+
+    filas, sospechosas = [], []
+    for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
+        fs = sorted(d["fechas"])
+        # Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de
+        # un lote de 2026). Se detectan como puntos alejados de la mediana y se
+        # REPORTAN, no se corrigen en silencio.
+        ds = [dt.date.fromisoformat(x) for x in fs]
+        mediana = ds[len(ds) // 2]
+        sanas = [x for x in ds if abs((x - mediana).days) <= 60]
+        raras = [x.isoformat() for x in ds if abs((x - mediana).days) > 60]
+        if raras:
+            sospechosas.append((g, v, b, raras))
+        a, z = min(sanas), max(sanas)
+        dias = (z - a).days + 1
+        # El homologado es "<Grupo> <Color>" (ej. "Campanula Lavender") y la
+        # variedad del registro es "<Serie> <Color>" (ej. "Champion Lavender").
+        # El puente es el color, que es la ultima palabra de ambos.
+        pl = None
+        color = norm(v).split()[-1] if norm(v).split() else ""
+        for (hom, blo), n in plantas.items():
+            if norm_bloque(b) == blo and norm(g) in norm(hom) and color and color in norm(hom):
+                pl = n
+                break
+        tp = (d["tallos"] / pl) if pl else None
+        tpd = (tp / dias) if tp else None
+        abierta = fs[-1] == corte
+        print("%-14s %-20s %-8s %7s %8.0f %6d %9s %12s %s" % (
+            g[:14], v[:20], b[:8],
+            "%.0f" % pl if pl else "?", d["tallos"], dias,
+            "%.2f" % tp if tp else "?",
+            "%.4f" % tpd if tpd else "?",
+            "<- ABIERTA" if abierta else ""))
+        if tpd:
+            filas.append((g, v, b, tpd, tp, dias, abierta))
+
+    # comparaciones dentro del mismo grupo y bloque
+    por_gb = defaultdict(list)
+    for g, v, b, tpd, tp, dias, ab in filas:
+        por_gb[(g, b)].append((v, tpd, tp, dias, ab))
+    hay = False
+    for (g, b), l in sorted(por_gb.items()):
+        if len(l) < 2:
+            continue
+        if not hay:
+            print("\nCOMPARACION DENTRO DEL MISMO BLOQUE (misma agua, misma luz, mismo suelo)")
+            hay = True
+        l.sort(key=lambda x: -x[1])
+        mejor = l[0]
+        print("\n  %s en %s — ordenado por tallos/planta/dia:" % (g, b))
+        for v, tpd, tp, dias, ab in l:
+            dif = 100 * (tpd / mejor[1] - 1)
+            print("    %-22s %.4f t/pl/dia  (%.2f t/pl en %d dias) %+6.1f%%%s"
+                  % (v[:22], tpd, tp, dias, dif, "  ventana ABIERTA" if ab else ""))
+        dias_distintos = len({x[3] for x in l}) > 1
+        if dias_distintos:
+            print("    OJO: las ventanas llevan distinto tiempo. Comparar t/planta")
+            print("         a secas sobreestima a la que lleva mas dias.")
+
+    if sospechosas:
+        print("\nFECHAS SOSPECHOSAS EXCLUIDAS DEL CALCULO DE VENTANA")
+        print("(probable error de ano en el registro — corregir en la fuente)")
+        for g, v, b, raras in sospechosas:
+            print("  %s / %s / %s: %s" % (g, v, b, ", ".join(raras)))
+
+
 def cmd_valor():
     """Valor por tallo propio — palanca de optimizacion disponible HOY.
 
@@ -935,6 +1067,8 @@ def main(argv):
         cmd_valor()
     elif cmd == "ciclos":
         cmd_ciclos()
+    elif cmd == "rendimiento":
+        cmd_rendimiento(argv[2] if len(argv) > 2 else None)
     elif cmd == "bouquet":
         if len(argv) < 3:
             raise SystemExit("Uso: python3 motor/cerebro.py bouquet \"Cosecha Grande\"")

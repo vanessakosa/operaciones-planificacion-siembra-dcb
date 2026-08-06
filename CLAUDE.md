@@ -250,6 +250,36 @@ completa de datos pendientes en `08-roadmap/02-informacion-que-falta.md`.
 *Cerrado:* ciclo de Girasol, Green Ball, Amaranto y Ammobium — los 13 grupos del
 catálogo ya son planificables.
 
+## Si abres este repo desde otra cuenta o máquina
+
+Con `git pull` viaja casi todo: este `CLAUDE.md`, las skills de `.claude/skills/`,
+los CSV de `07-datos/` y el motor. El motor es Python 3 con librería estándar, no
+hay nada que instalar. **La procedencia de cada dato viaja también** — la columna
+`fuente` dice si un número salió de un CSV, de un documento o de una confirmación
+explícita de Vanessa.
+
+Tres cosas que **no** viajan:
+
+1. **El acceso a Google Drive.** Está atado a la cuenta, no al repo. Los cuatro
+   Excel maestros de la tabla de abajo están aquí solo como IDs; sin el conector
+   de Drive autorizado sobre `DCB Claude / 07_Operaciones`, esos IDs no se pueden
+   abrir. Traer los archivos del Nivel 0 de
+   `08-roadmap/02-informacion-que-falta.md` requiere Drive.
+2. **`motor/espejar.py`.** Lee los resultados de descarga desde los transcripts de
+   sesión en `~/.claude/projects/`. Desde otra cuenta esos transcripts no existen,
+   así que el script no encuentra nada que espejar. No está roto: se quedó sin
+   fuente.
+3. **Permiso de escritura en GitHub** sobre
+   `vanessakosa/operaciones-planificacion-siembra-dcb`.
+
+Para arrancar una sesión desde cero:
+
+```bash
+git pull
+python3 motor/cerebro.py matriz     # estado medido de las 11 variables
+python3 motor/cerebro.py auditar    # estado del catálogo
+```
+
 ## Archivos maestros que viven en Drive y NO están en el repo
 
 Son demasiado grandes para espejar como texto. Se consultan en Drive por ID:

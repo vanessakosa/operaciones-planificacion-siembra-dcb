@@ -918,6 +918,12 @@ def cmd_rendimiento(grupo=None):
 
     # cosecha por (grupo, variedad, bloque)
     lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": []})
+    # El corte del REGISTRO se mide sobre todas las filas, no sobre las del
+    # filtro: una ventana esta abierta si sigue produciendo hasta donde llega
+    # el registro completo. Medido contra el maximo del grupo, un lote que
+    # dejo de producir en julio se marcaria ABIERTA solo porque es el ultimo
+    # de su grupo, aunque el registro siga tres semanas mas.
+    corte_registro = ""
     for c in cosecha:
         g = (c.get("Grupo") or "").strip()
         v = (c.get("Variedad / Serie") or "").strip()
@@ -925,6 +931,7 @@ def cmd_rendimiento(grupo=None):
         f = (c.get("Fecha") or "").strip()
         if not (g and v and b) or not re.match(r"^\d{4}-\d{2}-\d{2}$", f):
             continue
+        corte_registro = max(corte_registro, f)
         if grupo and norm(grupo) not in norm(g):
             continue
         t = num(c.get("Tallos frescos") or "")
@@ -935,10 +942,16 @@ def cmd_rendimiento(grupo=None):
     if not lotes:
         raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
 
-    corte = max(f for d in lotes.values() for f in d["fechas"])
+    corte = corte_registro
+    ultima_filtro = max(f for d in lotes.values() for f in d["fechas"])
     print("RENDIMIENTO REAL NORMALIZADO POR VENTANA")
     print("El registro de cosecha corta el %s — las ventanas abiertas en esa" % corte)
-    print("fecha estan TRUNCADAS, no cerradas.\n")
+    print("fecha estan TRUNCADAS, no cerradas.")
+    if ultima_filtro != corte:
+        print("La ultima cosecha registrada de este filtro es del %s, o sea que"
+              % ultima_filtro)
+        print("ningun lote de aqui sigue abierto al cierre del registro.")
+    print()
     print("%-14s %-20s %-8s %7s %8s %6s %9s %12s" % (
         "GRUPO", "VARIEDAD", "BLOQUE", "PLANTAS", "TALLOS", "DIAS", "T/PLANTA", "T/PLANTA/DIA"))
     print("-" * 94)

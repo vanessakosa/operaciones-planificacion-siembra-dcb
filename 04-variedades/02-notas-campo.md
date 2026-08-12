@@ -18,6 +18,7 @@
 | **Camas con historial largo de lisianthus (1+ año)** | Preparación diferenciada: yeso agrícola 200–300 g/m², ceniza, N-Cal GG desde sem 1, Glukoplant sem 5–8 |
 | **Lisianthus** | Ciclos acelerados de ~23 a ~12–15 sem con el fertirriego actual. **Exceso de salinidad compromete inmunidad** → botón temprano, tallo más corto y delgado. Hay que balancear |
 | **Dusty Miller** | Cultivo de follaje. Nunca pasa a Prefloración/Floración. Endurecimiento desde sem 18 |
+| **Bocas de dragón — series y fotoperiodo** | Grupos 1–2 son de día corto/invierno y no se dan bien en DCB (fotoperiodo no compatible con la latitud). Excepciones activas en ensayo: Doubleshot (grupo corto, usada para centros de mesa) y Avignon (grupo 2, buen trial reciente — se sigue ensayando pese a la regla general). Ventana de cosecha crítica de 2 semanas: después se abre demasiado y pierde vida en florero. Vida en florero 7–10 días — de las primeras en marchitarse dentro de un bouquet. Sensible a calor extremo. No se seca bien — único canal es fresco |
 
 ## Ciclos confirmados por dato de campo
 

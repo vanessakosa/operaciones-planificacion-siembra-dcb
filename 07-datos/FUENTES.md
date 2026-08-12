@@ -33,6 +33,8 @@ pueden espejar como texto.
 | ⬜ | `clima_semanal.csv` | — | **solo encabezado.** Esquema listo, sin un solo registro |
 | 🔨 | `secado_variedad.csv` | — | derivado de la auditoría ficha-por-variedad (`variedades_bitacora.csv` + dictado de Vanessa). Nueva variable 12 de la matriz de decisión: aprovechamiento en seco. Arranca con 1 fila (Dusty Miller), se llena grupo por grupo |
 | 🔨 | `calendario_comercial_colombia.csv` | — | derivado del dictado de Vanessa. Festivos, fechas comerciales, patrones recurrentes y temporadas mensuales — insumo para `colecciones_mensuales` (pendiente de escribir). Marcado `PROPUESTA — SIN VALIDAR` hasta cruzar con ventas reales de `03_Ventas` |
+| 🔨 | `vida_en_vaso.csv` | — | derivado de la auditoría ficha-por-variedad. Llena el hueco señalado en `10-postcosecha/README.md` — no existía ni un solo dato de vida en florero antes de esta sesión. Arranca con 1 fila (Boca de Dragón) |
+| 🔨 | `combinaciones_venta.csv` | — | derivado de la auditoría ficha-por-variedad. Registra afinidad de combinaciones para la estrategia de surtido (`13-optimizacion/03-...`, pendiente de escribir). Arranca con 1 fila (Boca de Dragón + Statice) |
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |

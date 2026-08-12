@@ -38,7 +38,7 @@ pueden espejar como texto.
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
-| ✅ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |
+| ⚠️ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` — **DESACTUALIZADO, confirmado 2026-08-12: 361 filas / 30.119 tallos en el repo vs. 598 filas / 52.894 tallos reales en Drive (Vanessa, via Sheets). Falta el 43% del total. Ademas la hoja de Drive tiene 2 pestañas mas (CONSOLIDADO, RENDIMIENTO — esta ultima con columna "Costo semilla $") que nunca se espejaron. No usar este archivo para totales hasta reexportar las 3 pestañas completas** |
 | ✅ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
 | ✅ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |
 | ✅ | `aplicaciones_historial.csv` | 1784 | `18aAECzxa8DmjIkvRJ3AAMTg3AV7E9XZn` |

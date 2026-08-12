@@ -38,14 +38,14 @@ pueden espejar como texto.
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
-| ⚠️ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` — **DESACTUALIZADO, confirmado 2026-08-12: 361 filas / 30.119 tallos en el repo vs. 598 filas / 52.894 tallos reales en Drive (Vanessa, via Sheets). Falta el 43% del total. Ademas la hoja de Drive tiene 2 pestañas mas (CONSOLIDADO, RENDIMIENTO — esta ultima con columna "Costo semilla $") que nunca se espejaron. No usar este archivo para totales hasta reexportar las 3 pestañas completas** |
+| ✅ | `registro_tallos.csv` | — | **REEXPORTADO 2026-08-12** desde `DCB_Registro_Tallos_v7_ORGANIZADO` (XLSX binario) con `motor/importar_tallos.py`. 596 filas con fecha válida, 54.486 tallos frescos, rango 2026-05-31 → 2026-07-31. Antes tenía 361 filas y cortaba el 03/07: **faltaban 202 filas de todo julio.** Las 6 pestañas del libro quedaron espejadas, no 3 |
 | ✅ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
 | ✅ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |
 | ✅ | `aplicaciones_historial.csv` | 1784 | `18aAECzxa8DmjIkvRJ3AAMTg3AV7E9XZn` |
 | ✅ | `finca_entregas_plantulas.csv` | 932 | `1jp5QnfADBMYJRoPyXE2r-IW8RIb6Zw7m` |
 | ✅ | `decisiones_manejo.csv` | 767 | `1j_xX_NA7OMND98HrKPaMsUN5348bdgm-` |
-| ✅ | `rendimiento_costo_lote.csv` | 169 | `12NowlTiTZU2izfeBNiMpLUgOSdD4DmV4` |
-| ✅ | `consolidado_lotes.csv` | 128 | `1wEnaQgIFpmISQy-W4b8aUv1tb4GeGNas` |
+| ⬜ | `rendimiento_costo_lote.csv` | 169 | `12NowlTiTZU2izfeBNiMpLUgOSdD4DmV4` — **solo encabezado, confirmado 2026-08-12 contra Drive.** La pestaña RENDIMIENTO del libro está vacía en la fuente: no es un problema de espejado sino de dato inexistente. Pide área m², costo semilla y costo insumos por lote — el mismo bloqueo que `costos_productos.csv` |
+| ✅ | `consolidado_lotes.csv` | — | **REEXPORTADO 2026-08-12** con `motor/importar_tallos.py`. 141 lotes con tallos, número de registros y primera/última cosecha. Antes estaba **vacío (solo encabezado)**: la pestaña CONSOLIDADO de Drive sí se calculaba sola, simplemente nunca se había espejado |
 | ✅ | `resumen_tallos_dia.csv` | 106 | `1_8Na6wvwys0I0ruRdRBOshRAlaeP1AZJ` |
 | ✅ | `costos_productos.csv` | 58 | `1SR6YgzymEy3xqRLQmc7aPclUr323UUhh` — **vacío (bloqueo #6)** |
 | ✅ | `README.md` (diccionario de datos) | 3253 | `1RucCK0U3kZDYKiLjRp3y1ELWRmzuNIfo` |
@@ -106,6 +106,42 @@ Los CSV de esta carpeta son el espejo en texto de estos Excel. **Verificar la
 versión del `PROGRAMACION_2026` antes de tomar los CSV como definitivos** — el
 export original se armó desde v7 y ya existe v8 con la homologación reparada
 (306/306 siembras cruzando).
+
+## Cómo se refresca el registro de tallos
+
+```bash
+python3 motor/importar_tallos.py ruta/al/DCB_Registro_Tallos.xlsx
+```
+
+**Bajar el libro como texto interpretado NO sirve: trunca sin avisar.** Medido
+el 2026-08-12 sobre la pestaña REGISTRO — la lectura en texto devolvió 251
+filas de 598 y se cortaba el 23/06 cuando la hoja llega al 31/07. La prueba
+estaba dentro del propio archivo: CONSOLIDADO reportaba 15 registros con última
+cosecha 03/07 para un lote cuyas filas ya no venían. Un truncamiento silencioso
+es peor que un error, porque el calendario se recalcula con menos cosecha y
+nadie se entera. Hay que descargar el **XLSX binario** y parsearlo.
+
+### Correcciones de fecha aplicadas en el import
+
+La hoja de Drive tiene fechas mal tecleadas. `importar_tallos.py` las corrige
+de forma explícita y las reporta en cada corrida — **nunca en silencio.** Las
+tres reglas las confirmó Vanessa el 2026-08-12:
+
+| Fecha en Drive | Corregida a | Filas | Por qué |
+|---|---|---|---|
+| `2056-07-06/07/08` | `2026-07-06/07/08` | 61 | Año mal tecleado; filas vecinas son de julio 2026 y los conteos son coherentes |
+| `2026-09-19` | `2026-06-19` | 2 | Fila suelta entre el 18 y el 19 de junio, mismo lote y cantidad que la cosecha del 18/06 |
+| `2025-06-17` | `2026-06-17` | 2 | Cae dentro de la corrida diaria de Ammobium en Inv 3A, que va del 08/06 al 26/06 de 2026 sin huecos |
+
+Cada regla aparece 2 veces porque la fecha mala está también propagada a la
+columna `Última cosecha` de CONSOLIDADO (el 2056 afectaba 28 lotes).
+
+**El libro en Drive sigue teniendo los valores originales** — no hay
+herramienta de escritura sobre Sheets en este repositorio. Si se arreglan allá,
+estas reglas dejan de encontrar coincidencias y no hacen nada: el import es
+idempotente en cualquiera de los dos casos. El año 2025 **no** se generaliza a
+2026: es una regla de una sola fila, por si el libro trae historia legítima de
+2025 más adelante.
 
 ## Desorden en Drive que conviene arreglar
 

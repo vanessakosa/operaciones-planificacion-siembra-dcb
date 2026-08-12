@@ -196,8 +196,7 @@ resuelve. Ver `04-variedades/03-campanula-champion-lavender.md`.
 
 | Dónde | Qué | Efecto |
 |---|---|---|
-| `DCB_Registro_Tallos` hoja REGISTRO | Tres cortes de campánula 3B fechados `2025-06-17` dentro de una cosecha de junio 2026 | El motor los excluye del cálculo de ventana |
-| `DCB_Registro_Tallos` hoja REGISTRO | Una fecha `14/06/0206` | Fila ignorada en todo cálculo por fecha |
+| `DCB_Registro_Tallos` hoja REGISTRO | 33 filas del 6–8 de julio fechadas en **2056**, una fila en `2026-09-19` y una en `2025-06-17` | Corregidas al importar (`motor/importar_tallos.py`, confirmadas por Vanessa 2026-08-12). **Siguen mal en Drive** — no hay herramienta de escritura sobre Sheets; conviene arreglarlas en la hoja |
 | `campo_siembras.csv` | `Carthamus Zanzíbar` tiene nombre homologado `Dianthus Sweet Cherry` | Aparece en el calendario de Erica como la variedad equivocada |
 | `formulas_productos_bouquets.csv` | 11 filas de productos fitosanitarios dentro del archivo de recetas | Contaminan la auditoría del catálogo |
 

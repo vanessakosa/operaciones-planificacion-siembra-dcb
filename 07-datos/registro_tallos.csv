@@ -1,363 +1,598 @@
 Fecha,Grupo,Variedad / Serie,Tallos frescos,Tallos secos,Bloque,¿Cierre cama?,Notas,,CLAVE_LOTE (auto)
 dd/mm/aaaa,seleccionar grupo,se llena con desplegable,solo frescos,los que van a seco,"ej: 4A, 3B, Inv5",escribir CIERRE,observación del día,,
-2026-05-31,Statice,Mix,73,,Inv4,,,,
-2026-05-31,Statice,Mix,55,,Inv4,,,,
-2026-05-31,Statice,Mix,80,,Inv4,,,,
-2026-05-31,Zinnia,Mix,106,,Inv4,,,,
-2026-05-31,Zinnia,Mix,100,,Inv4,,,,
-2026-05-31,Green Ball,Punky Ball,260,,Inv4,,,,
-2026-05-31,Green Ball,Punky Ball,263,,Inv4,,,,
-2026-05-31,Ammobium,Ammobium Alatum,63,,Exterior,,,,
-2026-05-31,Strawflower,Mix,47,,Exterior,,,,
-2026-05-31,Campanula,Mix,91,,Inv 5,,,,
-2026-05-31,Campanula,Mix,95,,Inv 5,,,,
-2026-05-31,Amaranto,Mix,84,,Inv 3A,,,,
-2026-05-31,Larkspur,Mix,33,,Inv 3A,,,,
-2026-05-31,Boca de Dragón,Monaco Orange,82,,Inv 4A,,,,
-2026-05-31,Boca de Dragón,Monaco Dark Pink,65,,Inv 4A,,,,
-2026-05-31,Gomphrena,Mix,262,,Inv4,,,,
-2026-05-31,Girasol,Pro Cut White Lite,32,,Inv 4A,,,,
-2026-05-31,Boca de Dragón,Mix,53,,Inv 4B,,,,
-2026-06-01,Gomphrena,Mix,150,,Inv4,,,,
-2026-06-01,Campanula,Mix,50,,Inv 5,,,,
-2026-06-01,Green Ball,Punky Ball,100,,Inv4,,,,
-2026-06-01,Dusty Miller,Mix,13,,Inv 5,,,,
-2026-06-01,Boca de Dragón,Potomac Appleblossom,50,,Inv 4B,,,,
-2026-06-01,Girasol,Pro Cut White Lite,60,,Inv 4A,,,,
-2026-06-01,Ammi,Ammi Majus,70,,Inv 6,,,,
-2026-06-01,Campanula,Mix,78,,Inv 5,,,,
-2026-06-01,Zinnia,Mix,100,,Inv4,,,,
-2026-06-01,Amaranto,Mix,50,,Inv 3A,,,,
-2026-06-01,Boca de Dragón,Monaco Orange,114,,Inv 4B,,,,
-2026-06-01,Boca de Dragón,Monaco Dark Pink,82,,Inv 4B,,,,
-2026-06-01,Boca de Dragón,Opus Fresh,100,,Inv 4B,,,,
-2026-06-01,Boca de Dragón,Potomac Crimson,108,,Inv 4B,,,,
-2026-06-01,Larkspur,Mix,70,,Inv 3A,,,,
-2026-06-01,Ammobium,Ammobium Alatum,70,,Exterior,,,,
-2026-06-02,Boca de Dragón,Monaco Orange,80,,Inv 4B,,,,
-2026-06-02,Girasol,Pro Cut White Lite,71,,Inv 4A,,,,
-2026-06-02,Gomphrena,Mix,150,,Inv4,,,,
-2026-06-02,Ammi,Ammi Majus,50,,Inv 5,,,,
-2026-06-02,Larkspur,Mix,140,,Inv 3A,,,,
-2026-06-02,Boca de Dragón,Potomac Crimson,108,,Inv 4B,,,,
-2026-06-02,Gomphrena,Mix,200,,Inv4,,,,
-2026-06-02,Strawflower,Mix,71,,Exterior,,,,
-2026-06-02,Ammobium,Ammobium Alatum,44,,Exterior,,,,
-2026-06-02,Campanula,Mix,45,,Inv 5,,,,
-2026-06-02,Gomphrena,Mix,50,,Inv4,,,,
-2026-06-02,Zinnia,Mix,51,,Inv4,,,,
-2026-06-03,Statice,Mix,122,,Inv4,,,,
-2026-06-03,Ammobium,Ammobium Alatum,80,,Exterior,,,,
-2026-06-03,Statice,Mix,50,,Inv4,,,,
-2026-06-04,Amaranto velvet,Mix,23,,Inv 6,,,,
-2026-06-04,Green Ball,Punky Ball,106,,Inv 3B,,,,
-2026-06-04,Girasol,Pro Cut White Lite,88,,Inv 4A,,,,
-2026-06-04,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,
-2026-06-04,Boca de Dragón,Opus Fresh,100,,Inv 4A,,,,
-2026-06-04,Zinnia,Mix,60,,Inv 4B,,,,
-2026-06-04,Zinnia,Mix,80,,Inv 3B,,,,
-2026-06-04,Zinnia,Mix,80,,Inv 4B,,,,
-2026-06-04,Campanula,Champion Pink,90,,Inv 3B,,,,
-2026-06-04,Campanula,Champion White,50,,Inv 3B,,,,
-2026-06-04,Campanula,Champion White,50,,Inv 3B,,,,
-2026-06-04,Campanula,Champion White,50,,Inv 3B,,,,
-2026-06-04,Amaranto,Emerald Tails,80,,Inv 3A,,Corte por pedido especial (~25 paquetes). No refleja producción semanal normal.,,
-2026-06-04,Amaranto,Emerald Tails,250,,Inv 3A,,Corte por pedido especial (~25 paquetes). No refleja producción semanal normal.,,
-2026-06-04,Strawflower,Mix,100,,Inv 6,,,,
-2026-06-04,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,
-2026-06-04,Boca de Dragón,Potomac Crimson,119,,Inv 4B,,,,
-2026-06-05,Zinnia,Mix,60,,Inv 4B,,,,
-2026-06-05,Zinnia,Mix,60,,Inv 4B,,,,
-2026-06-05,Campanula,Champion Pink,36,,Inv 5,,,,
-2026-06-05,Campanula,Champion White,70,,Inv 3B,,,,
-2026-06-05,Amaranto,Emerald Tails,50,,Inv 3A,,,,
-2026-06-05,Green Ball,Punky Ball,20,,Inv 3B,,,,
-2026-06-05,Statice,Forever Silver,30,,Inv 5,,,,
-2026-06-07,Zinnia,Mix,120,,Inv 4B,,,,
-2026-06-07,Statice,Mix,110,,Inv 4B,,,,
-2026-06-07,Campanula,Champion White,120,,Inv 3B,,,,
-2026-06-07,Campanula,Champion Pink,40,,Inv 3B,,,,
-2026-06-07,Boca de Dragón,Opus Fresh,99,,Inv 4A,,,,
-2026-06-07,Boca de Dragón,Monaco Dark Pink,24,,Inv 4A,,,,
-2026-06-07,Green Ball,Punky Ball,102,,Inv 3B,,,,
-2026-06-07,Girasol,Pro Cut White Lite,50,,Inv 4B,,,,
-2026-06-08,Boca de Dragón,Monaco Dark Pink,104,,Inv 4A,,,,
-2026-06-08,Gomphrena,Audrey White,130,,Inv 3B,,,,
-2026-06-08,Ammobium,Ammobium Alatum,110,,Inv 3A,,,,
-2026-06-08,Ammi,Ammi Majus,81,,Inv 6,,,,
-2026-06-08,Girasol,Pro Cut White Lite,72,,Inv 4B,,,,
-2026-06-08,Strawflower,Mix,80,,Inv 6,,,,
-2026-06-08,Statice,Mix,98,,Inv 4B,,,,
-2026-06-08,Zinnia,Mix,50,,Inv 4B,,,,
-2026-06-08,Boca de Dragón,Monaco Orange,60,,Inv 4A,,,,
-2026-06-08,Boca de Dragón,Cannes Red,99,,Inv 4A,,,,
-2026-06-08,Boca de Dragón,Monaco Dark Pink,24,,Inv 4A,,,,
-2026-06-08,Amaranto,Velvet Curtains,12,,Inv 6,,,,
-2026-06-08,Amaranto,Love Lies Bleeding,20,,Inv 3A,,,,
-2026-06-08,Campanula,Champion White,100,,Inv 3B,,,,
-2026-06-08,Campanula,Champion Pink,16,,Inv 3B,,,,
-2026-06-08,Boca de Dragón,Opus Fresh,24,,Inv 4A,,,,
-2026-06-08,,,,,,,,,
-2026-06-09,Boca de Dragón,Monaco Orange,141,,Inv 3B,,,,
-2026-06-09,Gomphrena,Quis Carmine,250,,Inv 3A,,,,
-2026-06-09,Zinnia,Mix,100,,Inv 4B,,,,
-2026-06-09,Ammi,Ammi Majus,32,,Inv 6,,,,
-2026-06-09,Strawflower,Mix,98,,Inv 6,,,,
-2026-06-09,Boca de Dragón,Opus Fresh,40,,Inv 4B,,,,
-2026-06-09,Boca de Dragón,Monaco Plumblossom,20,,Inv 5,,,,
-2026-06-09,Boca de Dragón,Monaco Dark Pink,30,,Inv 4A,,,,
-2026-06-09,Campanula,Champion Pink,15,,Inv 3B,,,,
-2026-06-09,Campanula,Champion White,60,,Inv 3B,,,,
-2026-06-10,Ammobium,Ammobium Alatum,100,,Inv 6,,,,
-2026-06-10,Amaranto,Love Lies Bleeding,50,,Inv 3A,,,,
-2026-06-10,Gomphrena,Quis Carmine,200,,Inv 3A,,,,
-2026-06-10,Gomphrena,Quis Sequin,200,,Inv 3A,,,,
-2026-06-10,Campanula,Champion Pink,18,,Inv 3B,,,,
-2026-06-10,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,
-2026-06-10,Boca de Dragón,Potomac Crimson,100,,Inv 4A,,,,
-2026-06-10,Girasol,Pro Cut White Lite,70,,Inv 4A,,,,
-2026-06-10,Dusty Miller,Silver Dust,20,,Inv 5,,,,
-2026-06-11,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,
-2026-06-11,Amaranto,Love Lies Bleeding,30,,Inv 3A,,,,
-2026-06-11,Campanula,Champion Pink,11,,Inv 3B,,,,
-2026-06-11,Campanula,Champion White,80,,Inv 3B,,,,
-2026-06-11,Boca de Dragón,Potomac Crimson,100,,Inv 4A,,,,
-2026-06-11,Boca de Dragón,Monaco Plumblossom,100,,Inv 5,,,,
-2026-06-11,Girasol,Pro Cut White Lite,88,,Inv 4A,,,,
-2026-06-11,Statice,Mix,100,,Inv 4B,,,,
-2026-06-11,Ammi,Ammi Majus,50,,Inv 6,,,,
-2026-06-12,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,
-2026-06-12,Amaranto,Love Lies Bleeding,63,,Inv 3A,,,,
-2026-06-12,Campanula,Champion White,100,,Inv 3B,,,,
-2026-06-12,Boca de Dragón,Potomac Crimson,50,,Inv 4A,,,,
-2026-06-12,Boca de Dragón,Monaco Orange,54,,Inv 4A,,,,
-2026-06-12,Girasol,Pro Cut White Lite,54,,Inv 4A,,,,
-2026-06-12,Statice,Mix,75,,Inv 4B,,,,
-2026-06-12,Zinnia,Mix,61,,Inv 4B,,,,
-2026-06-12,Gomphrena,Audrey White,100,,Inv 3B,,,,
-14/06/0206,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,
-14/06/0206,Amaranto,Love Lies Bleeding,60,,Inv 3A,,,,
-14/06/0206,Campanula,Champion White,75,,Inv 3B,,,,
-14/06/0206,Boca de Dragón,Potomac Crimson,70,,Inv 4A,,,,
-14/06/0206,Boca de Dragón,Monaco Orange,55,,Inv 4A,,,,
-14/06/0206,Boca de Dragón,Opus Fresh,50,,Inv 4A,,,,
-14/06/0206,Boca de Dragón,Opus Pink,12,,Inv 4A,,,,
-14/06/0206,Girasol,Pro Cut White Lite,100,,Inv 4A,,,,
-14/06/0206,Statice,Mix,80,,Inv 4B,,,,
-14/06/0206,Zinnia,Mix,62,,Inv 4A,,,,
-2026-06-15,Celosia,Cristata Verda Green,90,,Inv 3A,,,,
-2026-06-15,Gomphrena,Audrey White,60,,Inv 3B,,,,
-2026-06-15,Boca de Dragón,Potomac Crimson,120,,Inv 4A,,,,
-2026-06-15,Campanula,Champion White,41,,Inv 3B,,,,
-2026-06-15,Campanula,Champion Pink,20,,Inv 3B,,,,
-2026-06-15,Girasol,Pro Cut White Lite,53,,Inv 4B,,,,
-2026-06-15,Statice,Mix,75,,Inv 4B,,,,
-2026-06-15,Strawflower,Mix,120,,Inv 6,,,,
-2026-06-15,Ammi,Ammi Majus,80,,Inv 6,,,,
-2026-06-15,Amaranto,Love Lies Bleeding,80,,Inv 3A,,,,
-2026-06-15,Matricaria,Vegmo Single,95,,Inv 3C,,,,
-2026-06-15,Boca de Dragón,Opus Fresh,105,,Inv 4A,,,,
-2026-06-15,Boca de Dragón,Monaco Orange,22,,Inv 4A,,,,
-2026-06-15,Amaranto,Velvet Curtains,29,,Inv 6,,,,
-2026-06-15,Statice,Ruso,90,,Inv 3C,,,,
-2026-06-15,Zinnia,Mix,317,,Inv 4B,,,,
-2026-06-15,Gomphrena,Quis Carmine,230,,Inv 3A,,,,
-2026-06-15,Gomphrena,Quis Sequin,200,,Inv 3A,,,,
-2026-06-15,Lisianthus,Mix,60,,Inv 4B,,,,
-2026-06-16,Campanula,Champion Lavender,20,,Inv 3B,,,,
-2026-06-16,Campanula,Champion White,30,,Inv 3B,,,,
-2026-06-16,Campanula,Champion Pink,12,,Inv 3B,,,,
-2026-06-16,Statice,Mix,32,,Inv 3B,,,,
-2026-06-16,Girasol,Pro Cut White Lite,70,,Inv 4B,,,,
-2026-06-16,Boca de Dragón,Monaco Plumblossom,24,,Inv 5,,,,
-2026-06-16,Boca de Dragón,Opus Pink,13,,Inv 4B,,,,
-2025-06-17,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,
-2025-06-17,Girasol,Pro Cut White Lite,47,,Inv 4B,,,,
-2025-06-17,Statice,Mix,84,,Inv 4B,,,,
-2025-06-17,Boca de Dragón,Monaco Orange,26,,Inv 4A,,,,
-2025-06-17,Boca de Dragón,Opus Fresh,72,,Inv 4A,,,,
-2025-06-17,Strawflower,Mix,130,,Inv 6,,,,
-2025-06-17,Ammi,Ammi Majus,85,,Inv 6,,,,
-2025-06-17,Celosia,Cristata Verda Green,70,,Inv 3A,,,,
-2025-06-17,Boca de Dragón,Potomac Crimson,134,,Inv 4A,,,,
-2025-06-17,Campanula,Champion Lavender,33,,Inv 3B,,,,
-2025-06-17,Campanula,Champion White,17,,Inv 3B,,,,
-2025-06-17,Campanula,Champion Pink,13,,Inv 3B,,,,
-2025-06-18,Boca de Dragón,Opus Fresh,100,,Inv 4A,,,,
-2025-06-18,Boca de Dragón,Potomac Crimson,100,,Inv 4A,,,,
-2025-06-18,Boca de Dragón,Monaco Plumblossom,46,,Inv 5,,,,
-2025-06-18,Boca de Dragón,Monaco Orange,7,,Invt,,,,
-2025-06-18,Boca de Dragón,Monaco Dark Pink,105,,Inv 4C,,,,
-2025-06-18,Zinnia,Mix,133,,Inv 4B,,,,
-2026-06-18,Gomphrena,Quis Carmine,520,,Inv 3A,,,,
-2025-06-18,Gomphrena,Audrey White,25,,Inv 3B,,,,
-2025-06-18,Gomphrena,Quis Sequin,220,,Inv 3A,,,,
-2026-06-18,Girasol,Pro Cut White Lite,58,,Inv 4B,,,,
-2026-06-18,Campanula,Champion Lavender,37,,Inv 3B,,,,
-2026-06-18,Campanula,Champion White,58,,Inv 3B,,,,
-2026-06-18,Campanula,Champion Pink,16,,Inv 3B,,,,
-2026-06-18,Ammobium,Ammobium Alatum,220,,Inv 3A,,,,
-2026-06-18,Amaranto,Love Lies Bleeding,60,,Inv 3A,,,,
-2026-06-18,Green Ball,Punky Ball,105,,Inv 4B,,,,
-2026-09-19,Amaranto,Love Lies Bleeding,60,,Inv 3A,,,,
-2026-06-19,Celosia,Cristata Verda Green,73,,Inv 3A,,,,
-2026-06-19,Statice,Mix,50,,Inv 3B,,,,
-2026-06-19,Girasol,Pro Cut White Lite,34,,Inv 4B,,,,
-2026-06-19,Campanula,Champion Lavender,51,,Inv 3B,,,,
-2026-06-19,Campanula,Champion White,21,,Inv 3B,,,,
-2026-06-19,Campanula,Champion Pink,10,,Inv 3B,,,,
-2026-06-19,Boca de Dragón,Potomac Crimson,105,,Inv 4A,,,,
-2026-06-19,Amaranto,Velvet Curtains,39,,Inv 6,,,,
-2026-06-19,Ammobium,Ammobium Alatum,60,,Inv 3A,,,,
-2026-06-19,Ammi,Ammi Majus,50,,Inv 6,,,,
-2026-06-19,Zinnia,Mix,50,,Inv 4B,,,,
-2026-06-19,Strawflower,Mix,60,,Inv 6,,,,
-2026-06-21,Amaranto,Love Lies Bleeding,50,,Inv 3A,,,,
-2026-06-21,Celosia,Cristata Verda Green,50,,Inv 3A,,,,
-2026-06-21,Statice,Mix,90,,Inv 4A,,,,
-2026-06-21,Statice,Mix,100,,Inv 3B,,,,
-2026-06-21,Girasol,Pro Cut White Lite,43,,Inv 4B,,,,
-2026-06-21,Campanula,Champion Pink,11,,Inv 3B,,,,
-2026-06-21,Campanula,Champion Lavender,100,,Inv 3B,,,,
-2026-06-21,Campanula,Champion White,50,,Inv 3B,,,,
-2026-06-21,Boca de Dragón,Potomac Crimson,105,,Inv 4A,,,,
-2026-06-21,Boca de Dragón,Opus Fresh,100,,Inv 4A,,,,
-2026-06-21,Boca de Dragón,Monaco Orange,78,,Inv 4A,,,,
-2026-06-21,Boca de Dragón,Opus Pink,100,,Inv 4C,,,,
-2026-06-21,Ammobium,Ammobium Alatum,42,,Inv 3A,,,,
-2026-06-21,Ammi,Ammi Majus,40,,Inv 6,,,,
-2026-06-21,Zinnia,Mix,95,,Inv 4B,,,,
-2026-06-21,Gomphrena,Quis Carmine,200,,Inv 3A,,,,
-2026-06-21,Gomphrena,Quis Sequin,35,,Inv 3A,,,,
-2026-06-21,Strawflower,Mix,56,,Inv 6,,,,
-2026-06-21,Statice,Mix,50,,Inv 3B,,,,
-2026-06-22,Celosia,Cristata Verda Green,50,,Inv 3A,,,,
-2026-06-22,Statice,Mix,115,,Inv 3B,,,,
-2026-06-22,Girasol,Pro Cut White Lite,29,,Inv 4B,,,,
-2026-06-22,Campanula,Champion Lavender,50,,Inv 3B,,,,
-2026-06-22,Campanula,Champion White,51,,Inv 3B,,,,
-2026-06-22,Campanula,Champion Pink,15,,Inv 3B,,,,
-2026-06-22,Ammobium,Ammobium Alatum,70,,Inv 3A,,,,
-2026-06-22,Ammi,Ammi Majus,80,,Inv 6,,,,
-2026-06-22,Zinnia,Mix,70,,Inv 4B,,,,
-2026-06-22,Strawflower,Mix,100,,Inv 6,,,,
-2026-06-22,Gomphrena,Quis Carmine,200,,Inv 3A,,,,
-2026-06-22,Boca de Dragón,Monaco Plumblossom,100,,Inv 5,,,,
-2026-06-23,Girasol,Pro Cut White Lite,3,,Inv 4B,,,,
-2026-06-23,Boca de Dragón,Potomac Crimson,100,,Inv 4B,,,,
-2026-06-23,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,
-2026-06-23,Ammobium,Ammobium Alatum,18,,Inv 3A,,,,
-2026-06-23,Zinnia,Mix,79,,Inv 4B,,,,
-2026-06-23,Campanula,Champion Lavender,60,,Inv 3B,,,,
-2026-06-23,Gomphrena,Quis Carmine,250,,Inv 3A,,,,
-2026-06-23,Zinnia,Mix,52,,Inv 4B,,,,
-2026-06-24,Celosia,Cristata Verda Green,70,,Inv 3A,,,,
-2026-06-24,Amaranto,Love Lies Bleeding,50,,Inv 3A,,,,
-2026-06-24,Ammobium,Ammobium Alatum,58,,Inv 3A,,,,
-2026-06-24,Gomphrena,Quis Carmine,200,,Inv 3A,,,,
-2026-06-24,Gomphrena,Quis Sequin,200,,Inv 3A,,,,
-2026-06-24,Lisianthus,Mix,130,,Inv 3B,,,,
-2026-06-24,Campanula,Champion Lavender,100,,Inv 3B,,,,
-2026-06-24,Campanula,Champion White,60,,Inv 3B,,,,
-2026-06-24,Boca de Dragón,Monaco Red,100,,Inv 3C,,,,
-2026-06-24,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,
-2026-06-24,Boca de Dragón,Potomac Crimson,26,,Inv 5,,,,
-2026-06-24,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,
-2026-06-24,Boca de Dragón,opus fresh,38,,Inv 4A,,,,
-2026-06-24,Boca de Dragón,Monaco Plumblossom,120,,Inv 5,,,,
-2026-06-24,Zinnia,Mix,110,,Inv 4A,,,,
-2026-06-24,Statice,Mix,160,,Inv 3B,,,,
-2026-06-24,Girasol,Pro Cut White Lite,21,,Inv 4B,,,,
-2026-06-24,Green Ball,Punky Ball,100,,Inv 4A,,,,
-2026-06-25,Statice,Mix,130,,Inv 3A,,,,
-2026-06-25,Statice,Ruso,50,,Inv 3C,,,,
-2026-06-25,Lisianthus,Mix,70,,Inv 3B,,,,
-2026-06-25,Girasol,Pro Cut White Lite,4,,Inv 4B,,,,
-2026-06-25,Zinnia,Mix,60,,Inv 4B,,,,
-2026-06-25,Campanula,Champion White,66,,Inv 3B,,,,
-2026-06-25,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,
-2026-06-25,Ammi,Ammi Majus,80,,Inv 6,,,,
-2026-06-25,Strawflower,Mix,70,,Inv 6,,,,
-2026-06-25,Ammobium,Ammobium Alatum,30,,Inv 3A,,,,
-2026-06-25,Boca de Dragón,Monaco Red,15,,Inv 3C,,,,
-2026-06-25,Boca de Dragón,Potomac Crimson,38,,Inv 4A,,,,
-2026-06-26,Ammobium,Ammobium Alatum,55,,Inv 3A,,,,
-2026-06-26,Celosia,Cristata Verda Green,30,,Inv 3A,,,,
-2026-06-26,Campanula,Champion Lavender,250,,Inv 3B,,,,
-2026-06-26,Zinnia,Mix,300,,Inv 2,,,,
-2026-06-26,Lisianthus,Mix,72,,Inv 3B,,,,
-2026-06-26,Boca de Dragón,Cannes Red,15,,Inv 3C,,,,
-2026-06-26,Boca de Dragón,Potomac Crimson,19,,Inv 5,,,,
-2026-06-26,Boca de Dragón,Monaco Orange,70,,Inv 4A,,,,
-2026-06-26,Gomphrena,Quis Carmine,179,,Inv 3A,,,,
-2026-06-26,Strawflower,Mix,63,,Inv 6,,,,
-2026-06-26,Green Ball,Punky Ball,40,,Inv 4A,,,,
-2026-06-26,Ammi,Ammi Majus,50,,Inv 6,,,,
-2026-06-26,Statice,Mix,80,,Inv 4B,,,,
-2026-06-28,Boca de Dragón,Potomac Crimson,23,,Inv 5,,,,
-2026-06-28,Boca de Dragón,Monaco Orange,50,,Inv 4A,,,,
-2026-06-28,Boca de Dragón,Monaco Dark Pink,50,,Inv 4C,,,,
-2026-06-28,Celosia,Cristata Verda Green,30,,Inv 3A,,,,
-2026-06-28,Statice,Mix,62,,Inv 3B,,,,
-2026-06-28,Campanula,Champion White,50,,Inv 3B,,,,
-2026-06-28,Campanula,Champion Lavender,50,,Inv 3B,,,,
-2026-06-28,Ammi,Ammi Majus,50,,Inv 6,,,,
-2026-06-28,Strawflower,Mix,42,,Inv 6,,,,
-2026-06-28,Zinnia,Mix,146,,Inv 4B,,,,
-2026-06-28,Boca de Dragón,Monaco Plumblossom,50,,Inv 5,,,,
-2026-06-28,Boca de Dragón,Cannes Lavender,50,,Inv 4C,,,,
-2026-06-28,Statice,Ruso,50,,Inv 3B,,,,
-2026-06-28,Gomphrena,Quis Carmine,100,,Inv 3A,,,,
-2026-06-28,Gomphrena,Quis Sequin,100,,Inv 3A,,,,
-2026-06-28,Green Ball,Punky Ball,40,,Inv 4A,,,,
-2026-06-29,Ammobium,Ammobium Alatum,32,,Inv 4B,,,,
-2026-06-29,Amaranto,Love Lies Bleeding,35,,Inv 3A,,,,
-2026-06-29,Celosia,Cristata Verda Green,50,,Inv 3A,,,,
-2026-06-29,Gomphrena,Quis Carmine,250,,Inv 3A,,,,
-2026-06-29,Gomphrena,Quis Sequin,160,,Inv 3A,,,,
-2026-06-29,Campanula,Champion Lavender,200,,Inv 3B,,,,
-2026-06-29,Campanula,Champion White,65,,Inv 3B,,,,
-2026-06-29,Lisianthus,Mix,150,,Inv 3B,,,,
-2026-06-29,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,
-2026-06-29,Boca de Dragón,Monaco Dark Pink,100,,Inv 4C,,,,
-2026-06-29,Boca de Dragón,Cannes Lavender,78,,Inv 4C,,,,
-2026-06-29,Boca de Dragón,Monaco Plumblossom,100,,Inv 5,,,,
-2026-06-29,Zinnia,Mix,74,,Inv 4B,,,,
-2026-06-29,Green Ball,Punky Ball,100,,Inv 4A,,,,
-2026-06-29,Statice,Mix,80,,Inv 3A,,,,
-2026-06-29,Statice,Mix,80,,Inv 3B,,,,
-2026-06-29,Strawflower,Mix,70,,Inv 6,,,,
-2026-06-29,Ammi,Ammi Majus,60,,Inv 6,,,,
-2026-06-29,Gomphrena,Quis Carmine,300,,Inv 3A,,,,
-2026-06-29,Strawflower,Mix,150,,Inv 6,,,,
-2026-06-30,Campanula,Champion Lavender,100,,Inv 3B,,,,
-2026-06-30,Campanula,Champion White,78,,Inv 3B,,,,
-2026-06-01,Zinnia,Mix,300,,Inv 4B,,,,
-2026-06-01,Boca de Dragón,Monaco Orange,100,,Inv 4B,,,,
-2026-06-01,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,
-2026-07-01,Statice,Mix,170,,Inv 4B,,,,
-2026-07-02,Lisianthus,Mix,100,,Inv 3B,,,,
-2026-07-02,Celosia,Cristata Verda Green,60,,Inv 4B,,,,
-2026-07-02,Campanula,Champion Lavender,110,,Inv 3B,,,,
-2026-07-02,Matricaria,Vegmo Single,50,,Inv 3B,,,,
-2026-07-02,Statice,Mix,50,,Inv 3A,,,,
-2026-07-02,Statice,Mix,50,,Inv 3B,,,,
-2026-07-02,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,
-2026-07-02,Boca de Dragón,Monaco Dark Pink,100,,Inv 4C,,,,
-2026-07-02,Ammi,Ammi Majus,50,,Inv 6,,,,
-2026-07-02,Ammi,Ammi Majus,80,,Inv 6,,,,
-2026-07-02,Strawflower,Mix,150,,Inv 6,,,,
-2026-07-02,Statice,Mix,120,,Inv 3A,,,,
-2026-07-02,Statice,Mix,140,,Inv 3B,,,,
-2026-07-02,Statice,Mix,112,,Inv 4C,,,,
-2026-07-03,Lisianthus,Mix,120,,Inv 3B,,,,
-2026-07-03,Green Ball,Punky Ball,100,,Inv 4A,,,,
-2026-07-03,Matricaria,Vegmo Single,50,,Inv 3B,,,,
-2026-07-03,Celosia,Cristata Verda Green,30,,Inv 4B,,,,
-2026-07-03,Boca de Dragón,Monaco Dark Pink,100,,Inv 4C,,,,
-2026-07-03,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,
-2026-07-03,Gomphrena,Quis Carmine,382,,Inv 3A,,,,
-2026-07-03,Campanula,Champion Lavender,70,,Inv 3B,,,,
-2026-07-03,Zinnia,Mix,50,,Inv 4A,,,,
-2026-07-03,Ammi,Ammi Majus,80,,Inv 6,,,,
-2026-07-03,Statice,Ruso,60,,Inv 3C,,,,
+2026-05-31,Statice,Mix,73,,Inv4,,,,Statice|Mix|Inv4
+2026-05-31,Statice,Mix,55,,Inv4,,,,Statice|Mix|Inv4
+2026-05-31,Statice,Mix,80,,Inv4,,,,Statice|Mix|Inv4
+2026-05-31,Zinnia,Mix,106,,Inv4,,,,Zinnia|Mix|Inv4
+2026-05-31,Zinnia,Mix,100,,Inv4,,,,Zinnia|Mix|Inv4
+2026-05-31,Green Ball,Punky Ball,260,,Inv4,,,,Green Ball|Punky Ball|Inv4
+2026-05-31,Green Ball,Punky Ball,263,,Inv4,,,,Green Ball|Punky Ball|Inv4
+2026-05-31,Ammobium,Ammobium Alatum,63,,Exterior,,,,Ammobium|Ammobium Alatum|Exterior
+2026-05-31,Strawflower,Mix,47,,Exterior,,,,Strawflower|Mix|Exterior
+2026-05-31,Campanula,Mix,91,,Inv 5,,,,Campanula|Mix|Inv 5
+2026-05-31,Campanula,Mix,95,,Inv 5,,,,Campanula|Mix|Inv 5
+2026-05-31,Amaranto,Mix,84,,Inv 3A,,,,Amaranto|Mix|Inv 3A
+2026-05-31,Larkspur,Mix,33,,Inv 3A,,,,Larkspur|Mix|Inv 3A
+2026-05-31,Boca de Dragón,Monaco Orange,82,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-05-31,Boca de Dragón,Monaco Dark Pink,65,,Inv 4A,,,,Boca de Dragón|Monaco Dark Pink|Inv 4A
+2026-05-31,Gomphrena,Mix,262,,Inv4,,,,Gomphrena|Mix|Inv4
+2026-05-31,Girasol,Pro Cut White Lite,32,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-05-31,Boca de Dragón,Mix,53,,Inv 4B,,,,Boca de Dragón|Mix|Inv 4B
+2026-06-01,Gomphrena,Mix,150,,Inv4,,,,Gomphrena|Mix|Inv4
+2026-06-01,Campanula,Mix,50,,Inv 5,,,,Campanula|Mix|Inv 5
+2026-06-01,Green Ball,Punky Ball,100,,Inv4,,,,Green Ball|Punky Ball|Inv4
+2026-06-01,Dusty Miller,Mix,13,,Inv 5,,,,Dusty Miller|Mix|Inv 5
+2026-06-01,Boca de Dragón,Potomac Appleblossom,50,,Inv 4B,,,,Boca de Dragón|Potomac Appleblossom|Inv 4B
+2026-06-01,Girasol,Pro Cut White Lite,60,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-01,Ammi,Ammi Majus,70,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-01,Campanula,Mix,78,,Inv 5,,,,Campanula|Mix|Inv 5
+2026-06-01,Zinnia,Mix,100,,Inv4,,,,Zinnia|Mix|Inv4
+2026-06-01,Amaranto,Mix,50,,Inv 3A,,,,Amaranto|Mix|Inv 3A
+2026-06-01,Boca de Dragón,Monaco Orange,114,,Inv 4B,,,,Boca de Dragón|Monaco Orange|Inv 4B
+2026-06-01,Boca de Dragón,Monaco Dark Pink,82,,Inv 4B,,,,Boca de Dragón|Monaco Dark Pink|Inv 4B
+2026-06-01,Boca de Dragón,Opus Fresh,100,,Inv 4B,,,,Boca de Dragón|Opus Fresh|Inv 4B
+2026-06-01,Boca de Dragón,Potomac Crimson,108,,Inv 4B,,,,Boca de Dragón|Potomac Crimson|Inv 4B
+2026-06-01,Larkspur,Mix,70,,Inv 3A,,,,Larkspur|Mix|Inv 3A
+2026-06-01,Ammobium,Ammobium Alatum,70,,Exterior,,,,Ammobium|Ammobium Alatum|Exterior
+2026-06-02,Boca de Dragón,Monaco Orange,80,,Inv 4B,,,,Boca de Dragón|Monaco Orange|Inv 4B
+2026-06-02,Girasol,Pro Cut White Lite,71,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-02,Gomphrena,Mix,150,,Inv4,,,,Gomphrena|Mix|Inv4
+2026-06-02,Ammi,Ammi Majus,50,,Inv 5,,,,Ammi|Ammi Majus|Inv 5
+2026-06-02,Larkspur,Mix,140,,Inv 3A,,,,Larkspur|Mix|Inv 3A
+2026-06-02,Boca de Dragón,Potomac Crimson,108,,Inv 4B,,,,Boca de Dragón|Potomac Crimson|Inv 4B
+2026-06-02,Gomphrena,Mix,200,,Inv4,,,,Gomphrena|Mix|Inv4
+2026-06-02,Strawflower,Mix,71,,Exterior,,,,Strawflower|Mix|Exterior
+2026-06-02,Ammobium,Ammobium Alatum,44,,Exterior,,,,Ammobium|Ammobium Alatum|Exterior
+2026-06-02,Campanula,Mix,45,,Inv 5,,,,Campanula|Mix|Inv 5
+2026-06-02,Gomphrena,Mix,50,,Inv4,,,,Gomphrena|Mix|Inv4
+2026-06-02,Zinnia,Mix,51,,Inv4,,,,Zinnia|Mix|Inv4
+2026-06-03,Statice,Mix,122,,Inv4,,,,Statice|Mix|Inv4
+2026-06-03,Ammobium,Ammobium Alatum,80,,Exterior,,,,Ammobium|Ammobium Alatum|Exterior
+2026-06-03,Statice,Mix,50,,Inv4,,,,Statice|Mix|Inv4
+2026-06-04,Amaranto velvet,Mix,23,,Inv 6,,,,Amaranto velvet|Mix|Inv 6
+2026-06-04,Green Ball,Punky Ball,106,,Inv 3B,,,,Green Ball|Punky Ball|Inv 3B
+2026-06-04,Girasol,Pro Cut White Lite,88,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-04,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,Boca de Dragón|Monaco Dark Pink|Inv 4B
+2026-06-04,Boca de Dragón,Opus Fresh,100,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-04,Zinnia,Mix,60,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-04,Zinnia,Mix,80,,Inv 3B,,,,Zinnia|Mix|Inv 3B
+2026-06-04,Zinnia,Mix,80,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-04,Campanula,Champion Pink,90,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-04,Campanula,Champion White,50,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-04,Campanula,Champion White,50,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-04,Campanula,Champion White,50,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-04,Amaranto,Emerald Tails,80,,Inv 3A,,Corte por pedido especial (~25 paquetes). No refleja producción semanal normal.,,Amaranto|Emerald Tails|Inv 3A
+2026-06-04,Amaranto,Emerald Tails,250,,Inv 3A,,Corte por pedido especial (~25 paquetes). No refleja producción semanal normal.,,Amaranto|Emerald Tails|Inv 3A
+2026-06-04,Strawflower,Mix,100,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-04,Boca de Dragón,Monaco Dark Pink,100,,Inv 4B,,,,Boca de Dragón|Monaco Dark Pink|Inv 4B
+2026-06-04,Boca de Dragón,Potomac Crimson,119,,Inv 4B,,,,Boca de Dragón|Potomac Crimson|Inv 4B
+2026-06-05,Zinnia,Mix,60,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-05,Zinnia,Mix,60,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-05,Campanula,Champion Pink,36,,Inv 5,,,,Campanula|Champion Pink|Inv 5
+2026-06-05,Campanula,Champion White,70,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-05,Amaranto,Emerald Tails,50,,Inv 3A,,,,Amaranto|Emerald Tails|Inv 3A
+2026-06-05,Green Ball,Punky Ball,20,,Inv 3B,,,,Green Ball|Punky Ball|Inv 3B
+2026-06-05,Statice,Forever Silver,30,,Inv 5,,,,Statice|Forever Silver|Inv 5
+2026-06-07,Zinnia,Mix,120,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-07,Statice,Mix,110,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-07,Campanula,Champion White,120,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-07,Campanula,Champion Pink,40,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-07,Boca de Dragón,Opus Fresh,99,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-07,Boca de Dragón,Monaco Dark Pink,24,,Inv 4A,,,,Boca de Dragón|Monaco Dark Pink|Inv 4A
+2026-06-07,Green Ball,Punky Ball,102,,Inv 3B,,,,Green Ball|Punky Ball|Inv 3B
+2026-06-07,Girasol,Pro Cut White Lite,50,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-08,Boca de Dragón,Monaco Dark Pink,104,,Inv 4A,,,,Boca de Dragón|Monaco Dark Pink|Inv 4A
+2026-06-08,Gomphrena,Audrey White,130,,Inv 3B,,,,Gomphrena|Audrey White|Inv 3B
+2026-06-08,Ammobium,Ammobium Alatum,110,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-08,Ammi,Ammi Majus,81,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-08,Girasol,Pro Cut White Lite,72,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-08,Strawflower,Mix,80,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-08,Statice,Mix,98,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-08,Zinnia,Mix,50,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-08,Boca de Dragón,Monaco Orange,60,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-08,Boca de Dragón,Cannes Red,99,,Inv 4A,,,,Boca de Dragón|Cannes Red|Inv 4A
+2026-06-08,Boca de Dragón,Monaco Dark Pink,24,,Inv 4A,,,,Boca de Dragón|Monaco Dark Pink|Inv 4A
+2026-06-08,Amaranto,Velvet Curtains,12,,Inv 6,,,,Amaranto|Velvet Curtains|Inv 6
+2026-06-08,Amaranto,Love Lies Bleeding,20,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-08,Campanula,Champion White,100,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-08,Campanula,Champion Pink,16,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-08,Boca de Dragón,Opus Fresh,24,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-08,,,,,,,,,||
+2026-06-09,Boca de Dragón,Monaco Orange,141,,Inv 3B,,,,Boca de Dragón|Monaco Orange|Inv 3B
+2026-06-09,Gomphrena,Quis Carmine,250,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-09,Zinnia,Mix,100,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-09,Ammi,Ammi Majus,32,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-09,Strawflower,Mix,98,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-09,Boca de Dragón,Opus Fresh,40,,Inv 4B,,,,Boca de Dragón|Opus Fresh|Inv 4B
+2026-06-09,Boca de Dragón,Monaco Plumblossom,20,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-09,Boca de Dragón,Monaco Dark Pink,30,,Inv 4A,,,,Boca de Dragón|Monaco Dark Pink|Inv 4A
+2026-06-09,Campanula,Champion Pink,15,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-09,Campanula,Champion White,60,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-10,Ammobium,Ammobium Alatum,100,,Inv 6,,,,Ammobium|Ammobium Alatum|Inv 6
+2026-06-10,Amaranto,Love Lies Bleeding,50,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-10,Gomphrena,Quis Carmine,200,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-10,Gomphrena,Quis Sequin,200,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-10,Campanula,Champion Pink,18,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-10,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-10,Boca de Dragón,Potomac Crimson,100,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-10,Girasol,Pro Cut White Lite,70,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-10,Dusty Miller,Silver Dust,20,,Inv 5,,,,Dusty Miller|Silver Dust|Inv 5
+2026-06-11,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-11,Amaranto,Love Lies Bleeding,30,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-11,Campanula,Champion Pink,11,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-11,Campanula,Champion White,80,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-11,Boca de Dragón,Potomac Crimson,100,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-11,Boca de Dragón,Monaco Plumblossom,100,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-11,Girasol,Pro Cut White Lite,88,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-11,Statice,Mix,100,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-11,Ammi,Ammi Majus,50,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-12,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-12,Amaranto,Love Lies Bleeding,63,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-12,Campanula,Champion White,100,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-12,Boca de Dragón,Potomac Crimson,50,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-12,Boca de Dragón,Monaco Orange,54,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-12,Girasol,Pro Cut White Lite,54,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-12,Statice,Mix,75,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-12,Zinnia,Mix,61,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-12,Gomphrena,Audrey White,100,,Inv 3B,,,,Gomphrena|Audrey White|Inv 3B
+2026-06-14,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-14,Amaranto,Love Lies Bleeding,60,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-14,Campanula,Champion White,75,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-14,Boca de Dragón,Potomac Crimson,70,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-14,Boca de Dragón,Monaco Orange,55,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-14,Boca de Dragón,Opus Fresh,50,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-14,Boca de Dragón,Opus Pink,12,,Inv 4A,,,,Boca de Dragón|Opus Pink|Inv 4A
+2026-06-14,Girasol,Pro Cut White Lite,100,,Inv 4A,,,,Girasol|Pro Cut White Lite|Inv 4A
+2026-06-14,Statice,Mix,80,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-14,Zinnia,Mix,62,,Inv 4A,,,,Zinnia|Mix|Inv 4A
+2026-06-15,Celosia,Cristata Verda Green,90,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-15,Gomphrena,Audrey White,60,,Inv 3B,,,,Gomphrena|Audrey White|Inv 3B
+2026-06-15,Boca de Dragón,Potomac Crimson,120,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-15,Campanula,Champion White,41,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-15,Campanula,Champion Pink,20,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-15,Girasol,Pro Cut White Lite,53,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-15,Statice,Mix,75,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-15,Strawflower,Mix,120,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-15,Ammi,Ammi Majus,80,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-15,Amaranto,Love Lies Bleeding,80,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-15,Matricaria,Vegmo Single,95,,Inv 3C,,,,Matricaria|Vegmo Single|Inv 3C
+2026-06-15,Boca de Dragón,Opus Fresh,105,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-15,Boca de Dragón,Monaco Orange,22,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-15,Amaranto,Velvet Curtains,29,,Inv 6,,,,Amaranto|Velvet Curtains|Inv 6
+2026-06-15,Statice,Ruso,90,,Inv 3C,,,,Statice|Ruso|Inv 3C
+2026-06-15,Zinnia,Mix,317,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-15,Gomphrena,Quis Carmine,230,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-15,Gomphrena,Quis Sequin,200,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-15,Lisianthus,Mix,60,,Inv 4B,,,,Lisianthus|Mix|Inv 4B
+2026-06-16,Campanula,Champion Lavender,20,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-16,Campanula,Champion White,30,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-16,Campanula,Champion Pink,12,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-16,Statice,Mix,32,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-16,Girasol,Pro Cut White Lite,70,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-16,Boca de Dragón,Monaco Plumblossom,24,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-16,Boca de Dragón,Opus Pink,13,,Inv 4B,,,,Boca de Dragón|Opus Pink|Inv 4B
+2026-06-17,Ammobium,Ammobium Alatum,100,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-17,Girasol,Pro Cut White Lite,47,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-17,Statice,Mix,84,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-17,Boca de Dragón,Monaco Orange,26,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-17,Boca de Dragón,Opus Fresh,72,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-17,Strawflower,Mix,130,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-17,Ammi,Ammi Majus,85,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-17,Celosia,Cristata Verda Green,70,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-17,Boca de Dragón,Potomac Crimson,134,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-17,Campanula,Champion Lavender,33,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-17,Campanula,Champion White,17,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-17,Campanula,Champion Pink,13,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-18,Boca de Dragón,Opus Fresh,100,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-18,Boca de Dragón,Potomac Crimson,100,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-18,Boca de Dragón,Monaco Plumblossom,46,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-18,Boca de Dragón,Monaco Orange,7,,Invt,,,,Boca de Dragón|Monaco Orange|Invt
+2026-06-18,Boca de Dragón,Cannes Pink,105,,Inv 4C,,,,Boca de Dragón|Cannes Pink|Inv 4C
+2026-06-18,Zinnia,Mix,133,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-18,Gomphrena,Quis Carmine,520,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-18,Gomphrena,Audrey White,25,,Inv 3B,,,,Gomphrena|Audrey White|Inv 3B
+2026-06-18,Gomphrena,Quis Sequin,220,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-18,Girasol,Pro Cut White Lite,58,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-18,Campanula,Champion Lavender,37,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-18,Campanula,Champion White,58,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-18,Campanula,Champion Pink,16,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-18,Ammobium,Ammobium Alatum,220,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-18,Amaranto,Love Lies Bleeding,60,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-18,Green Ball,Punky Ball,105,,Inv 4B,,,,Green Ball|Punky Ball|Inv 4B
+2026-06-19,Amaranto,Love Lies Bleeding,60,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-19,Celosia,Cristata Verda Green,73,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-19,Statice,Mix,50,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-19,Girasol,Pro Cut White Lite,34,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-19,Campanula,Champion Lavender,51,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-19,Campanula,Champion White,21,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-19,Campanula,Champion Pink,10,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-19,Boca de Dragón,Potomac Crimson,105,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-19,Amaranto,Velvet Curtains,39,,Inv 6,,,,Amaranto|Velvet Curtains|Inv 6
+2026-06-19,Ammobium,Ammobium Alatum,60,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-19,Ammi,Ammi Majus,50,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-19,Zinnia,Mix,50,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-19,Strawflower,Mix,60,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-21,Amaranto,Love Lies Bleeding,50,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-21,Celosia,Cristata Verda Green,50,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-21,Statice,Mix,90,,Inv 4A,,,,Statice|Mix|Inv 4A
+2026-06-21,Statice,Mix,100,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-21,Girasol,Pro Cut White Lite,43,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-21,Campanula,Champion Pink,11,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-21,Campanula,Champion Lavender,100,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-21,Campanula,Champion White,50,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-21,Boca de Dragón,Potomac Crimson,105,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-21,Boca de Dragón,Opus Fresh,100,,Inv 4A,,,,Boca de Dragón|Opus Fresh|Inv 4A
+2026-06-21,Boca de Dragón,Monaco Orange,78,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-21,Boca de Dragón,Cannes Pink,100,,Inv 4C,,,,Boca de Dragón|Cannes Pink|Inv 4C
+2026-06-21,Ammobium,Ammobium Alatum,42,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-21,Ammi,Ammi Majus,40,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-21,Zinnia,Mix,95,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-21,Gomphrena,Quis Carmine,200,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-21,Gomphrena,Quis Sequin,35,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-21,Strawflower,Mix,56,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-21,Statice,Mix,50,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-22,Celosia,Cristata Verda Green,50,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-22,Statice,Mix,115,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-22,Girasol,Pro Cut White Lite,29,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-22,Campanula,Champion Lavender,50,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-22,Campanula,Champion White,51,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-22,Campanula,Champion Pink,15,,Inv 3B,,,,Campanula|Champion Pink|Inv 3B
+2026-06-22,Ammobium,Ammobium Alatum,70,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-22,Ammi,Ammi Majus,80,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-22,Zinnia,Mix,70,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-22,Strawflower,Mix,100,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-22,Gomphrena,Quis Carmine,200,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-22,Boca de Dragón,Monaco Plumblossom,100,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-23,Girasol,Pro Cut White Lite,3,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-23,Boca de Dragón,Cannes Red,100,,Inv 4B,,,,Boca de Dragón|Cannes Red|Inv 4B
+2026-06-23,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-23,Ammobium,Ammobium Alatum,18,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-23,Zinnia,Mix,79,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-23,Campanula,Champion Lavender,60,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-23,Gomphrena,Quis Carmine,250,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-23,Zinnia,Mix,52,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-24,Celosia,Cristata Verda Green,70,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-24,Amaranto,Love Lies Bleeding,50,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-24,Ammobium,Ammobium Alatum,58,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-24,Gomphrena,Quis Carmine,200,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-24,Gomphrena,Quis Sequin,200,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-24,Lisianthus,Mix,130,,Inv 3B,,,,Lisianthus|Mix|Inv 3B
+2026-06-24,Campanula,Champion Lavender,100,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-24,Campanula,Champion White,60,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-24,Boca de Dragón,Cannes Red,100,,Inv 3C,,,,Boca de Dragón|Cannes Red|Inv 3C
+2026-06-24,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-24,Boca de Dragón,Potomac Crimson,26,,Inv 5,,,,Boca de Dragón|Potomac Crimson|Inv 5
+2026-06-24,Boca de Dragón,Cannes Pink,100,,Inv 4B,,,,Boca de Dragón|Cannes Pink|Inv 4B
+2026-06-24,Boca de Dragón,opus fresh,38,,Inv 4A,,,,Boca de Dragón|opus fresh|Inv 4A
+2026-06-24,Boca de Dragón,Monaco Plumblossom,120,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-24,Zinnia,Mix,110,,Inv 4A,,,,Zinnia|Mix|Inv 4A
+2026-06-24,Statice,Mix,160,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-24,Girasol,Pro Cut White Lite,21,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-24,Green Ball,Punky Ball,100,,Inv 4A,,,,Green Ball|Punky Ball|Inv 4A
+2026-06-25,Statice,Mix,130,,Inv 3A,,,,Statice|Mix|Inv 3A
+2026-06-25,Statice,Ruso,50,,Inv 3C,,,,Statice|Ruso|Inv 3C
+2026-06-25,Lisianthus,Mix,70,,Inv 3B,,,,Lisianthus|Mix|Inv 3B
+2026-06-25,Girasol,Pro Cut White Lite,4,,Inv 4B,,,,Girasol|Pro Cut White Lite|Inv 4B
+2026-06-25,Zinnia,Mix,60,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-25,Campanula,Champion White,66,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-25,Boca de Dragón,Cannes Pink,100,,Inv 4B,,,,Boca de Dragón|Cannes Pink|Inv 4B
+2026-06-25,Ammi,Ammi Majus,80,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-25,Strawflower,Mix,70,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-25,Ammobium,Ammobium Alatum,30,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-25,Boca de Dragón,Monaco Red,15,,Inv 3C,,,,Boca de Dragón|Monaco Red|Inv 3C
+2026-06-25,Boca de Dragón,Potomac Crimson,38,,Inv 4A,,,,Boca de Dragón|Potomac Crimson|Inv 4A
+2026-06-26,Ammobium,Ammobium Alatum,55,,Inv 3A,,,,Ammobium|Ammobium Alatum|Inv 3A
+2026-06-26,Celosia,Cristata Verda Green,30,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-26,Campanula,Champion Lavender,250,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-26,Zinnia,Mix,300,,Inv 2,,,,Zinnia|Mix|Inv 2
+2026-06-26,Lisianthus,Mix,72,,Inv 3B,,,,Lisianthus|Mix|Inv 3B
+2026-06-26,Boca de Dragón,Cannes Red,15,,Inv 3C,,,,Boca de Dragón|Cannes Red|Inv 3C
+2026-06-26,Boca de Dragón,Potomac Crimson,19,,Inv 5,,,,Boca de Dragón|Potomac Crimson|Inv 5
+2026-06-26,Boca de Dragón,Monaco Orange,70,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-26,Gomphrena,Quis Carmine,179,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-26,Strawflower,Mix,63,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-26,Green Ball,Punky Ball,40,,Inv 4A,,,,Green Ball|Punky Ball|Inv 4A
+2026-06-26,Ammi,Ammi Majus,50,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-26,Statice,Mix,80,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-06-28,Boca de Dragón,Potomac Crimson,23,,Inv 5,,,,Boca de Dragón|Potomac Crimson|Inv 5
+2026-06-28,Boca de Dragón,Monaco Orange,50,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-28,Boca de Dragón,Cannes Pink,50,,Inv 4C,,,,Boca de Dragón|Cannes Pink|Inv 4C
+2026-06-28,Celosia,Cristata Verda Green,30,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-28,Statice,Mix,62,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-28,Campanula,Champion White,50,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-28,Campanula,Champion Lavender,50,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-28,Ammi,Ammi Majus,50,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-28,Strawflower,Mix,42,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-28,Zinnia,Mix,146,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-28,Boca de Dragón,Monaco Plumblossom,50,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-28,Boca de Dragón,Cannes Lavender,50,,Inv 4C,,,,Boca de Dragón|Cannes Lavender|Inv 4C
+2026-06-28,Statice,Ruso,50,,Inv 3B,,,,Statice|Ruso|Inv 3B
+2026-06-28,Gomphrena,Quis Carmine,100,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-28,Gomphrena,Quis Sequin,100,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-28,Green Ball,Punky Ball,40,,Inv 4A,,,,Green Ball|Punky Ball|Inv 4A
+2026-06-29,Ammobium,Ammobium Alatum,32,,Inv 4B,,,,Ammobium|Ammobium Alatum|Inv 4B
+2026-06-29,Amaranto,Love Lies Bleeding,35,,Inv 3A,,,,Amaranto|Love Lies Bleeding|Inv 3A
+2026-06-29,Celosia,Cristata Verda Green,50,,Inv 3A,,,,Celosia|Cristata Verda Green|Inv 3A
+2026-06-29,Gomphrena,Quis Carmine,250,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-29,Gomphrena,Quis Sequin,160,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-06-29,Campanula,Champion Lavender,200,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-29,Campanula,Champion White,65,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-29,Lisianthus,Mix,150,,Inv 3B,,,,Lisianthus|Mix|Inv 3B
+2026-06-29,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-06-29,Boca de Dragón,Cannes Pink,100,,Inv 4C,,,,Boca de Dragón|Cannes Pink|Inv 4C
+2026-06-29,Boca de Dragón,Cannes Lavender,78,,Inv 4C,,,,Boca de Dragón|Cannes Lavender|Inv 4C
+2026-06-29,Boca de Dragón,Monaco Plumblossom,100,,Inv 5,,,,Boca de Dragón|Monaco Plumblossom|Inv 5
+2026-06-29,Zinnia,Mix,74,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-29,Green Ball,Punky Ball,100,,Inv 4A,,,,Green Ball|Punky Ball|Inv 4A
+2026-06-29,Statice,Mix,80,,Inv 3A,,,,Statice|Mix|Inv 3A
+2026-06-29,Statice,Mix,80,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-06-29,Strawflower,Mix,70,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-29,Ammi,Ammi Majus,60,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-06-29,Gomphrena,Quis Carmine,300,,Inv 3A,,,,Gomphrena|Quis Carmine|Inv 3A
+2026-06-29,Strawflower,Mix,150,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-06-30,Campanula,Champion Lavender,100,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-06-30,Campanula,Champion White,78,,Inv 3B,,,,Campanula|Champion White|Inv 3B
+2026-06-01,Zinnia,Mix,300,,Inv 4B,,,,Zinnia|Mix|Inv 4B
+2026-06-01,Boca de Dragón,Monaco Orange,100,,Inv 4B,,,,Boca de Dragón|Monaco Orange|Inv 4B
+2026-06-01,Boca de Dragón,Cannes Pink,100,,Inv 4B,,,,Boca de Dragón|Cannes Pink|Inv 4B
+2026-07-01,Statice,Mix,170,,Inv 4B,,,,Statice|Mix|Inv 4B
+2026-07-02,Lisianthus,Mix,100,,Inv 3B,,,,Lisianthus|Mix|Inv 3B
+2026-07-02,Celosia,Cristata Verda Green,60,,Inv 4B,,,,Celosia|Cristata Verda Green|Inv 4B
+2026-07-02,Campanula,Champion Lavender,110,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-07-02,Matricaria,Vegmo Single,50,,Inv 3B,,,,Matricaria|Vegmo Single|Inv 3B
+2026-07-02,Statice,Mix,50,,Inv 3A,,,,Statice|Mix|Inv 3A
+2026-07-02,Statice,Mix,50,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-07-02,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-07-02,Boca de Dragón,Cannes Pink,100,,Inv 4C,,,,Boca de Dragón|Cannes Pink|Inv 4C
+2026-07-02,Ammi,Ammi Majus,50,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-07-02,Ammi,Ammi Majus,80,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-07-02,Strawflower,Mix,150,,Inv 6,,,,Strawflower|Mix|Inv 6
+2026-07-02,Statice,Mix,120,,Inv 3A,,,,Statice|Mix|Inv 3A
+2026-07-02,Statice,Mix,140,,Inv 3B,,,,Statice|Mix|Inv 3B
+2026-07-02,Statice,Mix,112,,Inv 4C,,,,Statice|Mix|Inv 4C
+2026-07-03,Lisianthus,Mix,120,,Inv 3B,,,,Lisianthus|Mix|Inv 3B
+2026-07-03,Green Ball,Punky Ball,100,,Inv 4A,,,,Green Ball|Punky Ball|Inv 4A
+2026-07-03,Matricaria,Vegmo Single,50,,Inv 3B,,,,Matricaria|Vegmo Single|Inv 3B
+2026-07-03,Celosia,Cristata Verda Green,30,,Inv 4B,,,,Celosia|Cristata Verda Green|Inv 4B
+2026-07-03,Boca de Dragón,Cannes Pink,100,,Inv 4C,,,,Boca de Dragón|Cannes Pink|Inv 4C
+2026-07-03,Boca de Dragón,Monaco Orange,100,,Inv 4A,,,,Boca de Dragón|Monaco Orange|Inv 4A
+2026-07-03,Gomphrena,Quis Sequin,382,,Inv 3A,,,,Gomphrena|Quis Sequin|Inv 3A
+2026-07-03,Campanula,Champion Lavender,70,,Inv 3B,,,,Campanula|Champion Lavender|Inv 3B
+2026-07-03,Zinnia,Mix,50,,Inv 4A,,,,Zinnia|Mix|Inv 4A
+2026-07-03,Ammi,Ammi Majus,80,,Inv 6,,,,Ammi|Ammi Majus|Inv 6
+2026-07-03,Statice,Ruso,60,,Inv 3C,,,,Statice|Ruso|Inv 3C
+2026-07-05,Boca de Dragón,Monaco Plumblossom,20,,Inv5,,,,Boca de Dragón|Monaco Plumblossom|Inv5
+2026-07-05,Boca de Dragón,Cannes Pink,50,,Inv3c,,,,Boca de Dragón|Cannes Pink|Inv3c
+2026-07-05,Boca de Dragón,Monaco Orange,50,,Inv4a,,,,Boca de Dragón|Monaco Orange|Inv4a
+2026-07-05,Statice,Mix,100,,Inv3b,,,,Statice|Mix|Inv3b
+2026-07-05,Green Ball,Punky Ball,50,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-05,Lisianthus,Mix,50,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-05,Boca de Dragón,Cannes Lavender,50,,Inv4b,,,,Boca de Dragón|Cannes Lavender|Inv4b
+2026-07-05,Zinnia,Mix,100,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-05,Boca de Dragón,Monaco Plumblossom,50,,Inv5,,,,Boca de Dragón|Monaco Plumblossom|Inv5
+2026-07-06,Matricaria,Vegmo Single,60,,Inv3b,,,,Matricaria|Vegmo Single|Inv3b
+2026-07-06,Campanula,Champion White,64,,Inv3b,,,,Campanula|Champion White|Inv3b
+2026-07-06,Celosia,Cristata Verda Green,50,,Inv3a,,,,Celosia|Cristata Verda Green|Inv3a
+2026-07-06,Lisianthus,Mix,160,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-06,Boca de Dragón,Cannes Pink,50,,Inv4c,,,,Boca de Dragón|Cannes Pink|Inv4c
+2026-07-06,Boca de Dragón,Monaco Orange,50,,Inv4a,,,,Boca de Dragón|Monaco Orange|Inv4a
+2026-07-06,Boca de Dragón,Cannes Lavender,50,,Inv4c,,,,Boca de Dragón|Cannes Lavender|Inv4c
+2026-07-06,Boca de Dragón,Potomac Royal,30,,Inv5,,,,Boca de Dragón|Potomac Royal|Inv5
+2026-07-06,Boca de Dragón,Monaco Plumblossom,60,,Inv5,,,,Boca de Dragón|Monaco Plumblossom|Inv5
+2026-07-06,Gomphrena,Quis Carmine,300,,Inv3a,,,,Gomphrena|Quis Carmine|Inv3a
+2026-07-07,Green Ball,Punky Ball,60,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-07,Amaranto,Emerald Tails,40,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-07,Zinnia,Mix,20,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-07,Boca de Dragón,Cannes Pink,50,,Inv4c,,,,Boca de Dragón|Cannes Pink|Inv4c
+2026-07-07,Boca de Dragón,Cannes Lavender,50,,Inv4c,,,,Boca de Dragón|Cannes Lavender|Inv4c
+2026-07-07,Lisianthus,Mix,50,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-07,Ammi,Ammi Majus,58,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-07,Campanula,Champion White,22,,Inv3b,,,,Campanula|Champion White|Inv3b
+2026-07-07,Boca de Dragón,Monaco Orange,60,,inv4a,,,,Boca de Dragón|Monaco Orange|inv4a
+2026-07-08,Celosia,Summer Sherbet,100,,Inv3a,,,,Celosia|Summer Sherbet|Inv3a
+2026-07-08,Celosia,Cristata Verda Green,80,,Inv3a,,,,Celosia|Cristata Verda Green|Inv3a
+2026-07-08,Campanula,Champion White,24,,Inv3b,,,,Campanula|Champion White|Inv3b
+2026-07-08,Lisianthus,Mix,270,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-08,Statice,Mix,215,,Inv3b,,,,Statice|Mix|Inv3b
+2026-07-08,Statice,Mix,250,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-08,Matricaria,Snowball,70,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-08,Green Ball,Punky Ball,100,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-08,Boca de Dragón,Cannes Lavender,100,,Inv4c,,,,Boca de Dragón|Cannes Lavender|Inv4c
+2026-07-08,Boca de Dragón,Cannes Pink,66,,Inv4c,,,,Boca de Dragón|Cannes Pink|Inv4c
+2026-07-08,Boca de Dragón,Opus Appleblossom,100,,Inv5,,,,Boca de Dragón|Opus Appleblossom|Inv5
+2026-07-08,Zinnia,Mix,170,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-08,Amaranto,Emerald Tails,50,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-08,Ammi,Ammi Majus,80,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-09,Celosia,Cristata Verda Green,51,,Inv5,,,,Celosia|Cristata Verda Green|Inv5
+2026-07-09,Ammi,Ammi Majus,45,,inv6,,,,Ammi|Ammi Majus|inv6
+2026-07-09,Boca de Dragón,Cannes Pink,32,,Inv4c,,,,Boca de Dragón|Cannes Pink|Inv4c
+2026-07-09,Statice,Mix,170,,In4a,,,,Statice|Mix|In4a
+2026-07-09,Statice,Mix,700,,Inv4b,,,,Statice|Mix|Inv4b
+2026-07-09,Campanula,Champion White,21,,Inv3b,,,,Campanula|Champion White|Inv3b
+2026-07-09,Zinnia,Mix,90,,Inv2,,,,Zinnia|Mix|Inv2
+2026-07-09,Amaranto,Emerald Tails,16,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-09,Statice,Ruso,130,,Inv3c,,,,Statice|Ruso|Inv3c
+2026-07-09,Zinnia,Mix,160,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-09,Boca de Dragón,Cannes Light Bronze,60,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-10,Boca de Dragón,Cannes Light Bronze,50,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-10,Zinnia,Mix,130,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-10,Ammi,Ammi Majus,50,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-10,Green Ball,Punky Ball,60,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-10,Lisianthus,Mix,100,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-10,Strawflower,Mix,100,,Inv6,,,,Strawflower|Mix|Inv6
+2026-07-10,Celosia,Cristata Verda Green,40,,Inv4b,,,,Celosia|Cristata Verda Green|Inv4b
+2026-07-12,Boca de Dragón,Cannes Light Bronze,100,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-12,Boca de Dragón,Cannes Lavender,100,,Inv4c,,,,Boca de Dragón|Cannes Lavender|Inv4c
+2026-07-12,Boca de Dragón,Cannes Pink,100,,Inv4c,,,,Boca de Dragón|Cannes Pink|Inv4c
+2026-07-12,Boca de Dragón,Monaco Plumblossom,100,,Inv5,,,,Boca de Dragón|Monaco Plumblossom|Inv5
+2026-07-12,Statice,Mix,170,,Inv3a,,,,Statice|Mix|Inv3a
+2026-07-12,Statice,Mix,170,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-12,Strawflower,Mix,50,,Inv6,,,,Strawflower|Mix|Inv6
+2026-07-12,Ammi,Ammi Majus,50,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-12,Green Ball,Punky Ball,100,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-12,Celosia,Cristata Verda Green,70,,Inv3a,,,,Celosia|Cristata Verda Green|Inv3a
+2026-07-12,Campanula,Champion White,10,,Inv3b,,,,Campanula|Champion White|Inv3b
+2026-07-13,Lisianthus,Mix,120,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-13,Celosia,Summer Sherbet,150,,Inv3b,,,,Celosia|Summer Sherbet|Inv3b
+2026-07-13,Statice,Ruso,100,,Inv3c,,,,Statice|Ruso|Inv3c
+2026-07-13,Matricaria,Snowball,70,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-13,Ammi,Ammi Majus,50,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-14,Lisianthus,Mix,100,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-14,Amaranto,Emerald Tails,60,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-14,Ammi,Ammi Majus,40,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-14,Boca de Dragón,Cannes Light Bronze,50,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-14,Celosia,Summer Sherbet,30,,Inv3b,,,,Celosia|Summer Sherbet|Inv3b
+2026-07-14,Green Ball,Punky Ball,60,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-14,Strawflower,Mix,60,,Inv6,,,,Strawflower|Mix|Inv6
+2026-07-15,Boca de Dragón,Cannes Light Bronze,200,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-15,Boca de Dragón,Cannes Red,150,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-15,Lisianthus,Mix,300,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-15,Zinnia,Mix,160,,Inv2,,,,Zinnia|Mix|Inv2
+2026-07-15,Statice,Mix,175,,inv4c,,,,Statice|Mix|inv4c
+2026-07-15,Amaranto,Emerald Tails,330,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-15,Campanula,Champion White,7,,Inv3b,,,,Campanula|Champion White|Inv3b
+2026-07-15,Celosia,Cristata Verda Green,100,,Inv3a,,,,Celosia|Cristata Verda Green|Inv3a
+2026-07-15,Celosia,Summer Sherbet,80,,Inv3b,,,,Celosia|Summer Sherbet|Inv3b
+2026-07-15,Matricaria,Snowball,80,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-15,Green Ball,Punky Ball,100,,inv4a,,,,Green Ball|Punky Ball|inv4a
+2026-07-15,Statice,Mix,271,,Inv3b,,,,Statice|Mix|Inv3b
+2026-07-15,Ammi,Ammi Majus,50,,Inv4a,,,,Ammi|Ammi Majus|Inv4a
+2026-07-15,Ammobium,Ammobium Alatum,50,,Inv4a,,,,Ammobium|Ammobium Alatum|Inv4a
+2026-07-16,Boca de Dragón,Cannes Light Bronze,200,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-16,Boca de Dragón,Cannes Red,100,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-16,Boca de Dragón,Cannes Lavender,100,,Inv3c,,,,Boca de Dragón|Cannes Lavender|Inv3c
+2026-07-16,Matricaria,Snowball,80,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-16,Lisianthus,Mix,160,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-16,Statice,Ruso,100,,Inv3c,,,,Statice|Ruso|Inv3c
+2026-07-16,Ammi,Ammi Majus,57,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-16,Celosia,Summer Sherbet,50,,Inv3a,,,,Celosia|Summer Sherbet|Inv3a
+2026-07-16,Celosia,Summer Sherbet,150,,Inv3b,,,,Celosia|Summer Sherbet|Inv3b
+2026-07-16,Celosia,Dreams Mix,300,,Inv2,,,,Celosia|Dreams Mix|Inv2
+2026-07-16,Zinnia,Mix,140,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-17,Amaranto,Emerald Tails,87,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-17,Gomphrena,Raspberry Cream,10,,inv5,,,,Gomphrena|Raspberry Cream|inv5
+2026-07-17,Zinnia,Mix,70,,Inv2,,,,Zinnia|Mix|Inv2
+2026-07-17,Dusty Miller,New Look,15,,Inv5,,,,Dusty Miller|New Look|Inv5
+2026-07-17,Statice,Mix,240,,inv3a,,,,Statice|Mix|inv3a
+2026-07-17,Statice,Mix,190,,Inv3c,,,,Statice|Mix|Inv3c
+2026-07-17,Boca de Dragón,Cannes Light Bronze,200,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-17,Zinnia,Mix,215,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-17,Ammi,Ammi Majus,52,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-17,Celosia,Summer Sherbet,50,,Inv3a,,,,Celosia|Summer Sherbet|Inv3a
+2026-07-17,Celosia,Summer Sherbet,50,,Inv3b ,,,,Celosia|Summer Sherbet|Inv3b 
+2026-07-19,Boca de Dragón,Cannes Red,100,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-19,Boca de Dragón,Cannes Light Bronze,100,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-19,Amaranto,Emerald Tails,65,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-19,Matricaria,Snowball,31,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-19,Statice,Mix,160,,Inv4b,,,,Statice|Mix|Inv4b
+2026-07-19,Statice,Ruso,50,,inv3c,,,,Statice|Ruso|inv3c
+2026-07-19,Lisianthus,Mix,300,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-19,Ammi,Ammi Majus,60,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-19,Celosia,Summer Sherbet,70,,Inv3b,,,,Celosia|Summer Sherbet|Inv3b
+2026-07-19,Green Ball,Punky Ball,60,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-19,Zinnia,Mix,205,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-19,Celosia,Cristata Verda Green,70,,Inv3a,,,,Celosia|Cristata Verda Green|Inv3a
+2026-07-19,Boca de Dragón,Cannes Lavender,22,,Inv4c,,,,Boca de Dragón|Cannes Lavender|Inv4c
+2026-07-19,Statice,Mix,175,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-20,Matricaria,Snowball,30,,inv3b,,,,Matricaria|Snowball|inv3b
+2026-07-20,Celosia,Summer Sherbet,100,,Inv3b,,,,Celosia|Summer Sherbet|Inv3b
+2026-07-20,Green Ball,Punky Ball,200,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-20,Celosia,Cristata Verda Green,200,,Inv3a,,,,Celosia|Cristata Verda Green|Inv3a
+2026-07-20,Celosia,Dreams Mix,200,,Inv2,,,,Celosia|Dreams Mix|Inv2
+2026-07-20,Lisianthus,Mix,50,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-21,Strawflower,Mix,40,,inv6,,,,Strawflower|Mix|inv6
+2026-07-21,Gomphrena,Raspberry Cream,10,,Inv5,,,,Gomphrena|Raspberry Cream|Inv5
+2026-07-21,Ammi,Ammi Majus,30,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-21,Celosia,Shimmer Mix,130,,Inv3a,,,,Celosia|Shimmer Mix|Inv3a
+2026-07-21,Boca de Dragón,Cannes Light Bronze,100,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-21,Boca de Dragón,Cannes Red,100,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-21,Boca de Dragón,Cannes Light Bronze,50,,Inv4b,,,,Boca de Dragón|Cannes Light Bronze|Inv4b
+2026-07-21,Boca de Dragón,Cannes Red,70,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-21,Zinnia,Mix,100,,Inv2,,,,Zinnia|Mix|Inv2
+2026-07-21,Amaranto,Emerald Tails,10,,Inv5,,,,Amaranto|Emerald Tails|Inv5
+2026-07-21,Ammi,Ammi Majus,20,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-21,Statice,Ruso,25,,Inv3c,,,,Statice|Ruso|Inv3c
+2026-07-21,Boca de Dragón,Cannes Light Bronze,100,,Inv4b,,,,Boca de Dragón|Cannes Light Bronze|Inv4b
+2026-07-22,Lisianthus,Mix,150,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-22,Matricaria,Snowball,70,,Inv3,,,,Matricaria|Snowball|Inv3
+2026-07-22,Matricaria,Vegmo Single,60,,Inv3,,,,Matricaria|Vegmo Single|Inv3
+2026-07-22,Celosia,Shimmer Mix,80,,Inv3b,,,,Celosia|Shimmer Mix|Inv3b
+2026-07-23,Boca de Dragón,Cannes Light Bronze,100,,Inv4b,,,,Boca de Dragón|Cannes Light Bronze|Inv4b
+2026-07-23,Boca de Dragón,Cannes Red,100,,inv4a,,,,Boca de Dragón|Cannes Red|inv4a
+2026-07-23,Statice,Mix,198,,Inv3b,,,,Statice|Mix|Inv3b
+2026-07-23,Statice,Mix,192,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-23,Green Ball,Punky Ball,100,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-23,Lisianthus,Mix,200,,Inv3b,,,,Lisianthus|Mix|Inv3b
+2026-07-23,Zinnia,Mix,120,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-23,Celosia,Shimmer Mix,200,,Inv3b,,,,Celosia|Shimmer Mix|Inv3b
+2026-07-23,Ammi,Ammi Majus,100,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-23,Strawflower,Mix,70,,Inv6,,,,Strawflower|Mix|Inv6
+2026-07-24,Gomphrena,Raspberry Cream,80,,Inv5,,,,Gomphrena|Raspberry Cream|Inv5
+2026-07-24,Dusty Miller,New Look,40,,Inv5,,,,Dusty Miller|New Look|Inv5
+2026-07-24,Lisianthus,Mix,260,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-24,Matricaria,Snowball,60,,Inv3,,,,Matricaria|Snowball|Inv3
+2026-07-24,Matricaria,Vegmo Single,60,,Inv3,,,,Matricaria|Vegmo Single|Inv3
+2026-07-24,Statice,Mix,100,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-24,Ammi,Ammi Majus,63,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-24,Celosia,Dreams Mix,120,,Inv2,,,,Celosia|Dreams Mix|Inv2
+2026-07-24,Zinnia,Mix,50,,Inv2,,,,Zinnia|Mix|Inv2
+2026-07-26,Gomphrena,Raspberry Cream,50,,Inv5,,,,Gomphrena|Raspberry Cream|Inv5
+2026-07-26,Boca de Dragón,Cannes Light Bronze,100,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-26,Boca de Dragón,Cannes Red,100,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-26,Matricaria,Vegmo Single,60,,Inv3b,,,,Matricaria|Vegmo Single|Inv3b
+2026-07-26,Lisianthus,Mix,150,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-26,Celosia,Shimmer Mix,200,,Inv3a,,,,Celosia|Shimmer Mix|Inv3a
+2026-07-26,Ammi,Ammi Majus,63,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-26,Statice,Mix,120,,Inv3a,,,,Statice|Mix|Inv3a
+2026-07-26,Statice,Mix,120,,Inv4b,,,,Statice|Mix|Inv4b
+2026-07-26,Zinnia,Mix,215,,Inv4b ,,,,Zinnia|Mix|Inv4b 
+2026-07-27,Statice,Mix,160,,Inv3b,,,,Statice|Mix|Inv3b
+2026-07-27,Statice,Mix,215,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-27,Zinnia,Mix,120,,Inv4b,,,,Zinnia|Mix|Inv4b
+2026-07-27,Boca de Dragón,Cannes Light Bronze,110,,Inv4b,,,,Boca de Dragón|Cannes Light Bronze|Inv4b
+2026-07-27,Boca de Dragón,Cannes Red,80,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-27,Matricaria,Snowball,100,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-27,Celosia,Shimmer Mix,100,,Inv3b,,,,Celosia|Shimmer Mix|Inv3b
+2026-07-27,Ammi,Ammi Majus,35,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-27,Strawflower,Mix,100,,Inv6,,,,Strawflower|Mix|Inv6
+2026-07-27,Lisianthus,Mix,50,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-27,Green Ball,Punky Ball,100,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-27,Boca de Dragón,Monaco Dark Pink,23,,Inv5,,,,Boca de Dragón|Monaco Dark Pink|Inv5
+2026-07-28,Boca de Dragón,Cannes Light Bronze,150,,Inv4b,,,,Boca de Dragón|Cannes Light Bronze|Inv4b
+2026-07-28,Boca de Dragón,Cannes Red,150,,Inv4a,,,,Boca de Dragón|Cannes Red|Inv4a
+2026-07-28,Green Ball,Punky Ball,100,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-28,Statice,Mix,100,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-28,Celosia,Shimmer Mix,100,,Inv3a,,,,Celosia|Shimmer Mix|Inv3a
+2026-07-29,Boca de Dragón,Cannes Light Bronze,100,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-29,Boca de Dragón,Cannes Red,100,,Inv4a ,,,,Boca de Dragón|Cannes Red|Inv4a 
+2026-07-29,Zinnia,Mix,100,,Inv2,,,,Zinnia|Mix|Inv2
+2026-07-29,Lisianthus,Mix,340,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-29,Green Ball,Punky Ball,115,,Inv4a ,,,,Green Ball|Punky Ball|Inv4a 
+2026-07-29,Ammi,Ammi Majus,50,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-29,Statice,Mix,100,,Inv3a,,,,Statice|Mix|Inv3a
+2026-07-29,Statice,Mix,100,,Inv3b ,,,,Statice|Mix|Inv3b 
+2026-07-29,Celosia,Shimmer Mix,110,,Inv3a,,,,Celosia|Shimmer Mix|Inv3a
+2026-07-29,Matricaria,Snowball,100,,Inv3,,,,Matricaria|Snowball|Inv3
+2026-07-30,Statice,Mix,80,,Inv3b ,,,,Statice|Mix|Inv3b 
+2026-07-30,Statice,Mix,210,,Inv4c,,,,Statice|Mix|Inv4c
+2026-07-30,Ammobium,Ammobium Alatum,100,,Inv3,,,,Ammobium|Ammobium Alatum|Inv3
+2026-07-30,Green Ball,Punky Ball,100,,Inv4a ,,,,Green Ball|Punky Ball|Inv4a 
+2026-07-30,Matricaria,Vegmo Single,140,,Inv3b ,,,,Matricaria|Vegmo Single|Inv3b 
+2026-07-30,Statice,Mix,150,,Inv3a,,,,Statice|Mix|Inv3a
+2026-07-30,Lisianthus,Mix,310,,Inv3b ,,,,Lisianthus|Mix|Inv3b 
+2026-07-30,Boca de Dragón,Cannes Red,200,,Inv4a ,,,,Boca de Dragón|Cannes Red|Inv4a 
+2026-07-30,Boca de Dragón,Cannes Light Bronze,100,,Inv3c,,,,Boca de Dragón|Cannes Light Bronze|Inv3c
+2026-07-30,Dusty Miller,New Look,50,,Inv5,,,,Dusty Miller|New Look|Inv5
+2026-07-30,Celosia,Shimmer Mix,100,,Inv3a,,,,Celosia|Shimmer Mix|Inv3a
+2026-07-30,Ammi,Ammi Majus,90,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-30,Ammi,Ammi Majus,60,,Inv6,,,,Ammi|Ammi Majus|Inv6
+2026-07-30,Boca de Dragón,Cannes Red,100,,Inv4a ,,,,Boca de Dragón|Cannes Red|Inv4a 
+2026-07-31,Matricaria,Snowball,60,,Inv3b,,,,Matricaria|Snowball|Inv3b
+2026-07-31,Celosia,Shimmer Mix,90,,Inv3b ,,,,Celosia|Shimmer Mix|Inv3b 
+2026-07-31,Green Ball,Punky Ball,100,,Inv4a,,,,Green Ball|Punky Ball|Inv4a
+2026-07-31,Ammobium,Ammobium Alatum,130,,Inv3,,,,Ammobium|Ammobium Alatum|Inv3
+2026-07-31,Boca de Dragón,Cannes Red,100,,Inv4a ,,,,Boca de Dragón|Cannes Red|Inv4a 
+2026-07-31,Ammi,Ammi Majus,22,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-31,Dusty Miller,New Look,60,,Inv5,,,,Dusty Miller|New Look|Inv5
+2026-07-31,Ammi,Ammi Majus,60,,Inv4,,,,Ammi|Ammi Majus|Inv4
+2026-07-31,Statice,Mix,100,,Inv4b,,,,Statice|Mix|Inv4b

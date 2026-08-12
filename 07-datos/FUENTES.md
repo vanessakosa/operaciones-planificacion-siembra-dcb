@@ -31,6 +31,8 @@ pueden espejar como texto.
 | 🔨 | `incidencia_fitosanitaria.csv` | — | **extraído** de los COMENTARIOS de `campo_siembras.csv` y de `01-invernaderos.md`. 29 eventos que estaban en texto libre. `texto_original` conserva la frase literal |
 | 🔨 | `microclima_bloques.csv` | — | derivado de `01-invernaderos.md`. 18 zonas en cualitativo (`confianza = CUALITATIVA`). Las columnas numéricas están en `SIN_DATO` a la espera de medición |
 | ⬜ | `clima_semanal.csv` | — | **solo encabezado.** Esquema listo, sin un solo registro |
+| 🔨 | `secado_variedad.csv` | — | derivado de la auditoría ficha-por-variedad (`variedades_bitacora.csv` + dictado de Vanessa). Nueva variable 12 de la matriz de decisión: aprovechamiento en seco. Arranca con 1 fila (Dusty Miller), se llena grupo por grupo |
+| 🔨 | `calendario_comercial_colombia.csv` | — | derivado del dictado de Vanessa. Festivos, fechas comerciales, patrones recurrentes y temporadas mensuales — insumo para `colecciones_mensuales` (pendiente de escribir). Marcado `PROPUESTA — SIN VALIDAR` hasta cruzar con ventas reales de `03_Ventas` |
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |

@@ -1,0 +1,35 @@
+tipo,fecha_o_patron,nombre,efecto_venta,severidad,categoria_producto_asociada,confianza,fuente,notas
+FESTIVO_PUENTE,6 enero (trasladado a lunes),Reyes Magos,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado - la gente viaja
+FESTIVO_PUENTE,19 marzo (trasladado a lunes),San Jose,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado
+FESTIVO_PUENTE,Marzo/abril (movil) - Jueves y Viernes Santo,Semana Santa,BAJA,ALTA,,alta,Vanessa - sesion 2026-08-12,CONFIRMADO explicitamente por Vanessa: mala porque la gente se va de viaje. No es traslado Ley Emiliani pero genera el mismo efecto de puente extendido
+FESTIVO_PUENTE,Mayo (movil, trasladado a lunes),Ascension del Senor,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado
+FESTIVO_PUENTE,Junio (movil, trasladado a lunes),Corpus Christi,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado - cae dentro de temporada ya mala por vacaciones escolares
+FESTIVO_PUENTE,Junio (movil, trasladado a lunes),Sagrado Corazon,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado - cae dentro de temporada ya mala por vacaciones escolares
+FESTIVO_PUENTE,29 junio (trasladado a lunes),San Pedro y San Pablo,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado - cae dentro de temporada ya mala por vacaciones escolares
+FESTIVO_PUENTE,15 agosto (trasladado a lunes),Asuncion de la Virgen,BAJA,MEDIA,,media,Vanessa - sesion 2026-08-12,"Puente largo, PERO cae en agosto que Vanessa marca como mes alto por Feria de las Flores - tension sin resolver, ver TEMPORADA_MENSUAL agosto"
+FESTIVO_PUENTE,12 octubre (trasladado a lunes),Dia de la Raza,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,Puente largo garantizado
+FESTIVO_PUENTE,1 noviembre (trasladado a lunes),Todos los Santos,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,"Puente largo, PERO cae en noviembre que Vanessa marca como mes alto por eventos pre-navidenos - tension sin resolver"
+FESTIVO_PUENTE,11 noviembre (trasladado a lunes),Independencia de Cartagena,BAJA,ALTA,,media,Vanessa - sesion 2026-08-12,"Puente largo, misma tension que Todos los Santos en noviembre"
+FESTIVO_FIJO,1 enero,Ano Nuevo,BAJA,MEDIA,,media,Vanessa - sesion 2026-08-12,Fecha fija entre semana - cae dentro de enero que ya es mes bajo completo
+FESTIVO_FIJO,1 mayo,Dia del Trabajo,BAJA,BAJA,,media,Vanessa - sesion 2026-08-12,Fecha fija - efecto variable segun en que dia de la semana caiga ese ano
+FESTIVO_FIJO,20 julio,Independencia,BAJA,BAJA,,media,Vanessa - sesion 2026-08-12,Fecha fija - cae dentro de julio que ya es mes terrible por vacaciones escolares
+FESTIVO_FIJO,7 agosto,Batalla de Boyaca,BAJA,BAJA,,media,Vanessa - sesion 2026-08-12,Fecha fija - cae dentro de agosto que Vanessa marca como mes alto por Feria de las Flores
+FESTIVO_FIJO,8 diciembre,Inmaculada Concepcion / Dia de las Velitas,ALTA,,,media,Vanessa - sesion 2026-08-12,Ver FECHA_COMERCIAL Velitas - este si mueve venta al alza pese a ser festivo
+FESTIVO_FIJO,25 diciembre,Navidad,ALTA_TICKET_BAJA_VOLUMEN,,coronas y guirnaldas,alta,Vanessa - sesion 2026-08-12,CONFIRMADO: el fuerte en dinero de diciembre son coronas y guirnaldas - alto ticket por unidad aunque el volumen general de diciembre cae por viajes
+FECHA_COMERCIAL,8 marzo,Dia de la Mujer,ALTA,,,media,Vanessa - sesion 2026-08-12,"CONFIRMADO por Vanessa: bueno porque es Dia de la Mujer y ademas lo asocia a inicio de temporada (""primavera""). Cae en el mismo mes que el festivo puente San Jose (19 marzo) - ver tension en TEMPORADA_MENSUAL marzo"
+FECHA_COMERCIAL,14 febrero,San Valentin,ALTA,,,media,Vanessa - sesion 2026-08-12,Agregado en correccion de Vanessa - se me habia quedado fuera de la propuesta inicial
+FECHA_COMERCIAL,Segundo domingo de mayo,Dia de la Madre,ALTISIMA,,,media,Vanessa - sesion 2026-08-12,La fecha mas alta del ano segun Vanessa
+FECHA_COMERCIAL,Principios de agosto,Feria de las Flores (Medellin),ALTA,,,media,Vanessa - sesion 2026-08-12,"DCB esta en Antioquia - oportunidad local. Tension con festivos puente del mismo mes, ver notas de agosto en FESTIVO_PUENTE"
+FECHA_COMERCIAL,Tercer sabado de septiembre,Dia del Amor y la Amistad (Colombia),ALTA,,,media,Vanessa - sesion 2026-08-12,No es 14 feb como en otros paises - en Colombia es este sabado de septiembre
+FECHA_COMERCIAL,7 diciembre,Dia de las Velitas,MEDIA,,,media,Vanessa - sesion 2026-08-12,
+FECHA_COMERCIAL,"Variable (aprox. abril-mayo, afinar)",Primeras comuniones,SUBE,,,baja,Vanessa - sesion 2026-08-12,PENDIENTE afinar mes exacto - varia por parroquia y colegio. Vanessa lo menciono sin fecha precisa
+FECHA_COMERCIAL,"Noviembre-diciembre (colegio); variable (universidad, danza)",Graduaciones,SUBE,,,baja,Vanessa - sesion 2026-08-12,PENDIENTE afinar meses exactos por tipo de graduacion (colegio vs universidad vs danza)
+PATRON_RECURRENTE,Dia 15 y fin de cada mes,Quincena,ALTA,,,media,Vanessa - sesion 2026-08-12,Patron recurrente todo el ano - no es fecha fija sino ciclo mensual
+TEMPORADA_MENSUAL,Enero,Mes completo,BAJA,,,media,Vanessa - sesion 2026-08-12,Gente todavia de viaje
+TEMPORADA_MENSUAL,Marzo,Mes completo,MIXTA,,,media,Vanessa - sesion 2026-08-12,"Dia de la Mujer + inicio de temporada empujan el mes hacia arriba, pese al festivo puente San Jose (19 marzo)"
+TEMPORADA_MENSUAL,Junio-Julio,Mes completo,TERRIBLE,,,media,Vanessa - sesion 2026-08-12,Vacaciones escolares - el peor periodo del ano segun Vanessa
+TEMPORADA_MENSUAL,Agosto,Mes completo,ALTA,,,media,Vanessa - sesion 2026-08-12,"Feria de las Flores empuja el mes hacia arriba pese a tener 2 festivos puente (Boyaca 7 ago, Asuncion 15 ago)"
+TEMPORADA_MENSUAL,Noviembre,Mes completo,ALTA,,,media,Vanessa - sesion 2026-08-12,"Eventos pre-navidenos + graduaciones de colegio empujan el mes hacia arriba pese a tener 2 festivos puente"
+TEMPORADA_MENSUAL,Diciembre,Mes completo,MIXTA,,,media,Vanessa - sesion 2026-08-12,Volumen general bajo por viajes pero ticket alto concentrado en coronas y guirnaldas navidenas
+PENDIENTE_CONFIRMAR,Tercer domingo de junio,Dia del Padre,SIN_DATO,,,baja,Propuesta inicial Claude - no confirmada por Vanessa,"Cae en el mes que Vanessa marca como terrible por vacaciones - confirmar si compensa algo o si vacaciones gana siempre"
+PENDIENTE_CONFIRMAR,Todo el calendario,Cruce con datos reales de ventas,SIN_DATO,,,baja,Pendiente autorizacion y fuente,"Vanessa pidio nutrir este calendario con comportamiento real de ventas. Requiere datos de 03_Ventas (fuera de alcance del proyecto sin autorizacion explicita de que archivo/reporte usar). Cuando llegue el dato: subir confianza a alta donde el dato confirme el efecto esperado, marcar CONTRADICHA donde no lo confirme"

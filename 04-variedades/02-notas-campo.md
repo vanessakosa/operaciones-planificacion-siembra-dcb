@@ -49,3 +49,8 @@ Las semillas del documento base solo se usan cuando no hay ninguna cosecha regis
 - **Trachelium y matricaria en Inv 5:** se quedaron vegetativos sin florar.
   Causa confirmada: estrés hídrico. Consecuencia práctica: **no programar estas dos variedades
   en Inv 5 hasta que se instale la bomba**
+- **Pérdida por polinizadores — patrón que cruza variedades:** ya son dos casos distintos
+  (Campanula Champion Lavender y Snapdragon color rojo) con pérdidas altas atribuidas a
+  polinizadores. No es todavía la misma variedad+zona+comportamiento que exige la regla de
+  promoción, pero **si aparece un tercer caso, se promueve a regla general de manejo de
+  polinizadores**, no solo a nota de variedad individual

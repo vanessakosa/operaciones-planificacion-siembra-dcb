@@ -134,6 +134,45 @@ cosecha 03/07 para un lote cuyas filas ya no venían. Un truncamiento silencioso
 es peor que un error, porque el calendario se recalcula con menos cosecha y
 nadie se entera. Hay que descargar el **XLSX binario** y parsearlo.
 
+### ⚠️ PENDIENTE DE CONFIRMAR — 64 filas fechadas en septiembre
+
+Refresco del **2026-08-13** (697 filas): aparecen **64 filas fechadas del 6 al
+12 de septiembre de 2026**, un mes en el futuro respecto a la fecha del
+refresco. **No se corrigieron** — falta que Vanessa lo confirme.
+
+La evidencia apunta a que son de **agosto** con el mes mal tecleado. Si se
+reemplaza el 09 por 08, la corrida de cosecha queda continua y los **dos únicos
+días sin datos son los dos sábados** (01 y 08 de agosto), que es un calendario
+de campo coherente:
+
+| Fecha si fuera agosto | Día | Estado en el archivo |
+|---|---|---|
+| 08-01 | sábado | sin datos |
+| 08-02 a 08-05 | dom–mié | ya dicen agosto |
+| 08-06, 08-07 | jue, vie | **dicen septiembre** |
+| 08-08 | sábado | sin datos |
+| 08-09 a 08-12 | dom–mié | **dicen septiembre** |
+
+La alternativa —que septiembre sea real— exigiría creer que cosecharon del 2 al
+5 de agosto, pararon un mes completo y retomaron el 6 de septiembre. Con
+Statice, Celosia, Ammi y Green Ball en ventana abierta al 31 de julio, eso no
+se sostiene.
+
+**Mientras no se confirme, cualquier cálculo de ventana o de tallos/día sobre
+agosto y septiembre está sesgado.** `cerebro.py rendimiento` va a leer un corte
+de registro del 2026-09-12.
+
+**La validación de rango 2025–2027 NO atrapa esta clase de error**, porque
+`2026-09` cae dentro del rango. La regla que sí lo atraparía es prohibir fechas
+futuras, con fórmula personalizada en la validación de datos:
+
+```
+=Y(A3>=FECHA(2025;1;1); A3<=HOY())
+```
+
+`HOY()` se recalcula solo, así que no necesita mantenimiento, y habría
+rechazado estas 64 filas en el momento de capturarlas.
+
 ### Correcciones de fecha aplicadas en el import
 
 La hoja de Drive tiene fechas mal tecleadas. `importar_tallos.py` las corrige

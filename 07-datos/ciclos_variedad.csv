@@ -31,4 +31,4 @@ Heliperum,,15,15,6,6,,,no,variedades_bitacora.csv,"1.396 plantas fue demasiado, 
 Marigold,,14,14,3,3,,,no,variedades_bitacora.csv,SOLO para picos (Madres, Amor y Amistad). Chillon en bucket normal
 Orlaya,,20,20,3,3,,,no,variedades_bitacora.csv,Solo B2B. En carritos se duerme muy rapido. Semilla costosa
 Scabiosa,,18,18,3,3,,,no,variedades_bitacora.csv,Mismo perfil que Orlaya. Solo arreglos especiales
-Dahlia,,16,16,4,4,,,no,variedades_bitacora.csv,Bulbos externos. Solo pedidos por encargo. No para carritos
+Dahlia,,16,16,4,4,,,no,variedades_bitacora.csv,"Bulbos externos. Solo pedidos por encargo. No para carritos. CONFLICTO 2026-08-13: la tabla de referencia de PROGRAMACION_2026 dice ciclo 12 y ventana 6, contra 16/4 de la bitacora. Se mantiene 16/4 por jerarquia (VARIEDADES_BITACORA es primaria para ciclo y ventana). Sin resolver"

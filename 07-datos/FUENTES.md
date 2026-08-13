@@ -103,6 +103,20 @@ local con sus `references/` completas. Se agregó `dcb-bouquets` (nueva).
 | `DCB_Calculadora_Bouquets.xlsx` | 76 823 | `14eKUYrRhmseyqrHXxDFt2Siq97E71yVN` |
 | `DCB_Registro_Tallos_v7_ORGANIZADO` | 30 986 | `14OP0GgkNmV1ty8Jz0hmASEts64ptI3y9L0i2FYsedHc` |
 
+**`PROGRAMACION_2026` no se puede bajar entero:** pesa 11,5 MB y Drive responde
+`File too large for export`. La lectura en texto sí funciona pero **trunca
+fuerte** — el 2026-08-13 devolvió 204 KB de 11,5 MB. Sirve para buscar algo
+puntual, **nunca para concluir que un dato no existe**: lo que no aparece pudo
+quedar en la parte truncada. Para trabajar con CAMPO completo hay que exportar
+esa pestaña sola a CSV desde Sheets.
+
+Dentro trae una **tabla de referencia agronómica** con `SEMANAS SIEMBRA A
+COSECHA` y `VENTANA DE COSECHA (SEMANAS)` para ~50 variedades, más germinación,
+distancia, densidad, pinch y tallos por planta. **No está espejada en el repo** y
+en algún caso contradice a `ciclos_variedad.csv` (ver el conflicto de Dahlia).
+Vale la pena espejarla, resolviendo los choques uno por uno contra la jerarquía
+de verdad — `VARIEDADES_BITACORA` manda para ciclo y ventana.
+
 **Hay dos `PROGRAMACION_2026_v8_ACTUALIZADO`:** el `.xlsx` subido y una **hoja
 nativa de Google Sheets** con otro ID. La nativa es la que tiene Apps Script
 encima y 33 pestañas — descubierta el 2026-08-12 al diagnosticar por qué un

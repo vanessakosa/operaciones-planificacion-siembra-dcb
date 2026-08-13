@@ -20,25 +20,38 @@ CSV del repositorio están correctos.** Pero la hoja es lo que ve Diana y es la
 fuente de verdad para todo lo que no pasa por el motor. Mientras la hoja tenga
 `2056`, cualquiera que la lea directo saca conclusiones falsas.
 
+## ⚠️ Nada de ventanas de confirmación
+
+**Estas funciones no usan `SpreadsheetApp.getUi().alert()` a propósito.**
+
+La primera versión sí lo hacía y falló en la práctica del modo más confuso
+posible: `alert()` abre la ventana **en la pestaña de la hoja de cálculo**, no
+en la del editor de Apps Script. Ejecutándolo desde el editor, la ventana se
+abre sola en la otra pestaña y el script **se queda bloqueado esperando una
+respuesta que nadie ve**, hasta que a los 30 minutos Apps Script lo mata con
+`Exceeded maximum execution time`. Parece que el script se colgó calculando y
+en realidad estaba esperando un clic.
+
+En vez de eso, la confirmación es un **paso separado**: primero corres una
+función que solo mira y reporta, lees el resultado en **Registro de ejecución**,
+y solo entonces corres la que escribe. Mismo control, sin bloqueo.
+
 ## ⚠️ Antes de pegar nada
 
 Este libro **ya tiene un `onEdit`** (los desplegables en cascada de la columna
 C, ver `02-registro-de-tallos.md`). Apps Script **no admite dos funciones con el
 mismo nombre** en un proyecto: si pegas un `onEdit` u `onOpen` nuevo encima del
-que ya existe, rompes los desplegables. Las funciones de abajo tienen nombres
-propios y no colisionan. Para el menú, ver la nota al final.
+que ya existe, gana el de abajo y el de arriba se apaga en silencio, sin dar
+error. Conviene pegar esto en un **archivo `.gs` aparte** — todas las funciones
+del proyecto se ven entre sí, así que funcionan igual y no se toca nada de lo
+que ya existe.
 
-## 1 · Corregir las fechas
-
-Extensiones → Apps Script → pegar → ejecutar `corregirFechasRegistro`.
-
-**Muestra exactamente qué va a cambiar y pide confirmación antes de escribir.**
-Nada se corrige en silencio. Si lo corres dos veces, la segunda no encuentra
-nada que hacer.
+## El código
 
 ```javascript
 /**
- * Corrige las fechas mal tecleadas de la hoja REGISTRO.
+ * Analiza la columna Fecha de REGISTRO y devuelve la lista de correcciones.
+ * NO escribe nada. La usan las dos funciones de abajo.
  *
  * Las tres reglas las confirmo Vanessa el 2026-08-12, contra los datos:
  *
@@ -48,11 +61,8 @@ nada que hacer.
  *     variedad, bloque y cantidad que la cosecha del 18/06.
  *  c) Una fila 2025-06-17 dentro de la corrida diaria de Ammobium en Inv 3A,
  *     que va del 08/06 al 26/06 de 2026 sin huecos.
- *
- * Es una limpieza de una sola vez. Pide confirmacion mostrando cada cambio,
- * asi que tampoco puede hacer dano si se corre por accidente mas adelante.
  */
-function corregirFechasRegistro() {
+function _analizarFechasRegistro() {
   const COL_FECHA = 1;   // A
   const COL_GRUPO = 2;   // B
   const COL_VAR   = 3;   // C
@@ -61,16 +71,15 @@ function corregirFechasRegistro() {
 
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const ws = ss.getSheetByName('REGISTRO');
-  const ui = SpreadsheetApp.getUi();
-  if (!ws) { ui.alert('No se encontro la hoja REGISTRO'); return; }
+  if (!ws) { Logger.log('ERROR: no existe la hoja REGISTRO'); return null; }
 
   const ultima = ws.getLastRow();
-  if (ultima < PRIMERA_FILA_DATOS) { ui.alert('REGISTRO no tiene datos'); return; }
+  if (ultima < PRIMERA_FILA_DATOS) { Logger.log('REGISTRO no tiene datos'); return null; }
 
   const filas = ws.getRange(PRIMERA_FILA_DATOS, 1,
                             ultima - PRIMERA_FILA_DATOS + 1, COL_BLOQ).getValues();
 
-  // Normaliza para comparar: quita espacios, acentos de mayuscula y case.
+  // Normaliza para comparar: quita espacios y case.
   // Asi 'Inv 3A', 'inv3a' e 'Inv3A' son la misma cosa.
   const clave = function (t) {
     return String(t || '').trim().toLowerCase().replace(/\s+/g, '');
@@ -82,19 +91,17 @@ function corregirFechasRegistro() {
     { de: '2026-09-19', a: '2026-06-19', grupo: clave('Amaranto'),
       variedad: clave('Love Lies Bleeding'), bloque: clave('Inv 3A') },
     { de: '2025-06-17', a: '2026-06-17', grupo: clave('Ammobium'),
-      variedad: clave('Ammobium Alatum'),    bloque: clave('Inv 3A') },
+      variedad: clave('Ammobium Alatum'),    bloque: clave('Inv 3A') }
   ];
 
-  const iso = function (d) {
-    return Utilities.formatDate(d, ss.getSpreadsheetTimeZone(), 'yyyy-MM-dd');
-  };
+  const tz = ss.getSpreadsheetTimeZone();
+  const iso = function (d) { return Utilities.formatDate(d, tz, 'yyyy-MM-dd'); };
 
   const cambios = [];
   for (let i = 0; i < filas.length; i++) {
     const valor = filas[i][COL_FECHA - 1];
     if (!(valor instanceof Date)) continue;
 
-    const fila = PRIMERA_FILA_DATOS + i;
     const actual = iso(valor);
     let nueva = null;
     let motivo = '';
@@ -115,60 +122,78 @@ function corregirFechasRegistro() {
         break;
       }
     }
-    if (nueva) cambios.push({ fila: fila, de: actual, a: iso(nueva), valor: nueva, motivo: motivo });
+
+    if (nueva) {
+      cambios.push({ fila: PRIMERA_FILA_DATOS + i, de: actual, a: iso(nueva),
+                     valor: nueva, motivo: motivo });
+    }
   }
 
-  if (cambios.length === 0) {
-    ui.alert('Nada que corregir\n\nNo se encontraron fechas fuera de rango en REGISTRO.');
+  return { ws: ws, colFecha: COL_FECHA, leidas: filas.length, cambios: cambios };
+}
+
+
+/**
+ * PASO 1 — solo mira y reporta. No escribe ni una celda.
+ * El resultado sale en Ver > Registro de ejecucion.
+ */
+function revisarFechasRegistro() {
+  const r = _analizarFechasRegistro();
+  if (!r) return;
+
+  Logger.log('=== REVISION — no se escribe nada ===');
+  Logger.log('Filas leidas en REGISTRO: %s', r.leidas);
+  Logger.log('Fechas a corregir: %s', r.cambios.length);
+
+  if (r.cambios.length === 0) {
+    Logger.log('Nada que corregir. La columna Fecha esta limpia.');
     return;
   }
 
-  // Resumen agrupado + las primeras filas en detalle, para poder revisar
-  // antes de aceptar.
   const porMotivo = {};
-  cambios.forEach(function (c) {
+  r.cambios.forEach(function (c) {
     const k = c.de.substring(0, 7) + ' -> ' + c.a.substring(0, 7) + '  (' + c.motivo + ')';
     porMotivo[k] = (porMotivo[k] || 0) + 1;
   });
-  let msg = 'Se van a corregir ' + cambios.length + ' fechas en REGISTRO:\n\n';
+  Logger.log('--- resumen ---');
   Object.keys(porMotivo).sort().forEach(function (k) {
-    msg += '  ' + porMotivo[k] + ' filas   ' + k + '\n';
+    Logger.log('  %s filas   %s', porMotivo[k], k);
   });
-  msg += '\nDetalle (primeras 10):\n';
-  cambios.slice(0, 10).forEach(function (c) {
-    msg += '  fila ' + c.fila + ':  ' + c.de + '  ->  ' + c.a + '\n';
-  });
-  if (cambios.length > 10) msg += '  ... y ' + (cambios.length - 10) + ' mas\n';
-  msg += '\n¿Aplicar?';
 
-  if (ui.alert('Corregir fechas de REGISTRO', msg, ui.ButtonSet.YES_NO) !== ui.Button.YES) {
-    ui.alert('Cancelado. No se escribio nada.');
+  Logger.log('--- detalle fila por fila ---');
+  r.cambios.forEach(function (c) {
+    Logger.log('  fila %s:  %s  ->  %s', c.fila, c.de, c.a);
+  });
+
+  Logger.log('Si el resumen cuadra, corre aplicarCorreccionFechas.');
+}
+
+
+/**
+ * PASO 2 — escribe las correcciones. Correr solo despues de revisar.
+ * Es idempotente: la segunda vez no encuentra nada que hacer.
+ */
+function aplicarCorreccionFechas() {
+  const r = _analizarFechasRegistro();
+  if (!r) return;
+
+  if (r.cambios.length === 0) {
+    Logger.log('Nada que corregir. No se escribio nada.');
     return;
   }
 
-  cambios.forEach(function (c) {
-    ws.getRange(c.fila, COL_FECHA).setValue(c.valor);
+  r.cambios.forEach(function (c) {
+    r.ws.getRange(c.fila, r.colFecha).setValue(c.valor);
     Logger.log('fila %s: %s -> %s (%s)', c.fila, c.de, c.a, c.motivo);
   });
 
-  ui.alert('Listo\n\n' + cambios.length + ' fechas corregidas.\n\n' +
-           'El detalle quedo en Registros de ejecucion.\n' +
-           'Ahora conviene correr "Validar columna Fecha" para que no vuelva a pasar.');
+  Logger.log('=== LISTO — %s fechas corregidas ===', r.cambios.length);
+  Logger.log('Ahora corre validarColumnaFecha para que no vuelva a pasar.');
 }
-```
 
-## 2 · Impedir que vuelva a pasar
 
-Ejecutar `validarColumnaFecha` una sola vez. Deja la columna A de REGISTRO
-aceptando **solo fechas entre 2025-01-01 y 2027-12-31**, y **rechazando** lo
-que esté fuera — no avisando, rechazando. Un `2056` deja de ser capturable.
-
-El rango es deliberadamente ancho: no estorba la captura diaria y aun así
-atrapa el error que importa, que es el dígito del año.
-
-```javascript
 /**
- * Pone validacion de fecha en la columna A de REGISTRO.
+ * PASO 3 — pone validacion de fecha en la columna A de REGISTRO.
  *
  * setAllowInvalid(false) hace que Sheets RECHACE el valor, no que solo lo
  * marque. Es a proposito: una fecha imposible no rompe nada visible, corre el
@@ -179,10 +204,8 @@ function validarColumnaFecha() {
   const PRIMERA_FILA_DATOS = 3;
   const FILAS = 2000;   // margen sobre las ~600 actuales
 
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const ws = ss.getSheetByName('REGISTRO');
-  const ui = SpreadsheetApp.getUi();
-  if (!ws) { ui.alert('No se encontro la hoja REGISTRO'); return; }
+  const ws = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('REGISTRO');
+  if (!ws) { Logger.log('ERROR: no existe la hoja REGISTRO'); return; }
 
   const regla = SpreadsheetApp.newDataValidation()
     .requireDateBetween(new Date(2025, 0, 1), new Date(2027, 11, 31))
@@ -193,27 +216,39 @@ function validarColumnaFecha() {
 
   ws.getRange(PRIMERA_FILA_DATOS, 1, FILAS, 1).setDataValidation(regla);
 
-  ui.alert('Validacion aplicada\n\n' +
-           'La columna Fecha de REGISTRO ahora solo acepta fechas entre 2025 y 2027.\n' +
-           'Cubre ' + FILAS + ' filas desde la ' + PRIMERA_FILA_DATOS + '.');
+  Logger.log('=== LISTO — validacion aplicada ===');
+  Logger.log('Columna Fecha de REGISTRO: solo fechas entre 2025 y 2027.');
+  Logger.log('Cubre %s filas desde la %s.', FILAS, PRIMERA_FILA_DATOS);
 }
 ```
 
-## 3 · Menú (opcional)
+## Cómo correrlo
 
-Si el libro **no** tiene ya un `onOpen`, se puede pegar esto para tener las dos
-funciones a mano. Si **sí** lo tiene, no pegues otro: agrega las dos líneas de
-`addItem` dentro del `onOpen` que ya existe.
+Extensiones → Apps Script. Pegar en un archivo `.gs` **nuevo**, guardar
+(`Ctrl+S`), y ejecutar **en este orden**, eligiendo cada función en el
+desplegable de arriba:
 
-```javascript
-function onOpen() {
-  SpreadsheetApp.getUi()
-    .createMenu('DCB Datos')
-    .addItem('Corregir fechas de REGISTRO', 'corregirFechasRegistro')
-    .addItem('Validar columna Fecha',       'validarColumnaFecha')
-    .addToUi();
-}
-```
+| # | Función | Qué hace | Qué esperar |
+|---|---|---|---|
+| 1 | `revisarFechasRegistro` | Solo mira | En Registro de ejecución: `Fechas a corregir: 35` |
+| 2 | `aplicarCorreccionFechas` | Escribe | `LISTO — 35 fechas corregidas` |
+| 3 | `validarColumnaFecha` | Pone la regla | `LISTO — validacion aplicada` |
+
+**Entre el paso 1 y el 2, lee el resumen.** Debe decir 33 filas de `2056-07`,
+1 de `2026-09` y 1 de `2025-06`. Si dice otra cosa, no sigas: significa que la
+hoja cambió desde que se verificaron las reglas.
+
+La primera ejecución pide autorización — *Revisar permisos* → elegir cuenta →
+*Configuración avanzada* → *Ir a … (no seguro)* → *Permitir*. Esa advertencia
+sale con cualquier script propio sin verificar comercialmente; es genérica, no
+un diagnóstico.
+
+## Comprobar que quedó
+
+- En REGISTRO, ordenar por Fecha de mayor a menor: la más alta debe ser
+  **31/07/2026**. Si aparece un 2056, el paso 2 no corrió.
+- Escribir `06/07/2056` en una celda vacía de la columna Fecha: **Sheets debe
+  rechazarlo**. Si lo acepta, el paso 3 no corrió.
 
 ## Después de correrlo
 

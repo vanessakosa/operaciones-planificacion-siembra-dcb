@@ -98,9 +98,22 @@ local con sus `references/` completas. Se agregó `dcb-bouquets` (nueva).
 | Archivo | Bytes | Drive ID |
 |---|---|---|
 | `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` | 17 212 694 | `1NaGlBEY5j-e-rLx_7NvdIWWPWCiGxv0x` |
+| `PROGRAMACION_2026_v8_ACTUALIZADO` — **hoja nativa, 33 pestañas** | — | `1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4` |
 | `Stock Productos Agro DCB.xlsx` | 638 333 | `1lqk28pyr6Fd00U1nuPmwH9_hfVL8yZE4` |
 | `DCB_Calculadora_Bouquets.xlsx` | 76 823 | `14eKUYrRhmseyqrHXxDFt2Siq97E71yVN` |
 | `DCB_Registro_Tallos_v7_ORGANIZADO` | 30 986 | `14OP0GgkNmV1ty8Jz0hmASEts64ptI3y9L0i2FYsedHc` |
+
+**Hay dos `PROGRAMACION_2026_v8_ACTUALIZADO`:** el `.xlsx` subido y una **hoja
+nativa de Google Sheets** con otro ID. La nativa es la que tiene Apps Script
+encima y 33 pestañas — descubierta el 2026-08-12 al diagnosticar por qué un
+script no encontraba su hoja. **Verificar en cuál se está trabajando antes de
+editar nada**, porque los dos se llaman igual en Drive.
+
+Detectado también ese día: el proyecto de Apps Script de la hoja nativa
+contiene un `onEdit` que busca las pestañas `REGISTRO` y `LISTAS` — que no
+existen en ese libro, sino en `DCB_Registro_Tallos`. Es el handler de los
+desplegables en cascada de Diana, **pegado en el libro equivocado**, donde no
+puede funcionar. Ver `05-programacion/02-registro-de-tallos.md`.
 
 Los CSV de esta carpeta son el espejo en texto de estos Excel. **Verificar la
 versión del `PROGRAMACION_2026` antes de tomar los CSV como definitivos** — el

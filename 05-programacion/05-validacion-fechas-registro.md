@@ -94,6 +94,21 @@ function _analizarFechasRegistro() {
       variedad: clave('Ammobium Alatum'),    bloque: clave('Inv 3A') }
   ];
 
+  // Mes mal tecleado: 64 filas de septiembre 2026 que en realidad son de
+  // agosto (confirmado por Vanessa el 2026-08-13). Con el mes corregido la
+  // corrida queda continua y los dos unicos dias sin cosecha son los dos
+  // sabados.
+  //
+  // EL CANDADO: solo se aplica si la fecha TODAVIA NO OCURRIO. Una cosecha no
+  // se registra en el futuro, asi que una fecha futura es por definicion un
+  // error de captura. Cuando septiembre llegue de verdad, la regla deja de
+  // dispararse sola y los registros legitimos pasan intactos. Por eso no hace
+  // falta acordarse de quitarla.
+  const CORRIGE_MES_SI_FUTURA = { '2026-09': 8 };
+
+  const finDeHoy = new Date();
+  finDeHoy.setHours(23, 59, 59, 999);
+
   const tz = ss.getSpreadsheetTimeZone();
   const iso = function (d) { return Utilities.formatDate(d, tz, 'yyyy-MM-dd'); };
 
@@ -103,12 +118,16 @@ function _analizarFechasRegistro() {
     if (!(valor instanceof Date)) continue;
 
     const actual = iso(valor);
+    const mesNuevo = CORRIGE_MES_SI_FUTURA[actual.substring(0, 7)];
     let nueva = null;
     let motivo = '';
 
     if (valor.getFullYear() === 2056) {
       nueva = new Date(2026, valor.getMonth(), valor.getDate());
       motivo = 'ano 2056 -> 2026';
+    } else if (mesNuevo !== undefined && valor > finDeHoy) {
+      nueva = new Date(valor.getFullYear(), mesNuevo - 1, valor.getDate());
+      motivo = 'mes futuro -> mes correcto';
     } else {
       for (let r = 0; r < reglaFila.length; r++) {
         const regla = reglaFila[r];
@@ -195,29 +214,48 @@ function aplicarCorreccionFechas() {
 /**
  * PASO 3 — pone validacion de fecha en la columna A de REGISTRO.
  *
+ * NO SE USA requireDateBetween con un rango de anos. Esa fue la primera
+ * version y se quedo corta: acepta cualquier fecha entre 2025 y 2027, asi que
+ * cierra el digito del ANO pero no el del MES. El 2026-08-13 entraron 64 filas
+ * fechadas en septiembre — un mes en el futuro — y la regla las dejo pasar sin
+ * chistar.
+ *
+ * La regla correcta es semantica, no de rango: UNA COSECHA NO SE PUEDE
+ * REGISTRAR EN EL FUTURO. Con formula personalizada y HOY(), que se recalcula
+ * solo, la validacion se mueve con el calendario sin mantenimiento.
+ *
  * setAllowInvalid(false) hace que Sheets RECHACE el valor, no que solo lo
  * marque. Es a proposito: una fecha imposible no rompe nada visible, corre el
- * ciclo y desplaza el calendario en silencio. Vale mas frenar la captura que
- * descubrirlo tres meses despues.
+ * ciclo y desplaza el calendario en silencio. Vale mas frenar la captura en el
+ * momento — cuando Diana todavia recuerda que dia cosecho — que descubrirlo
+ * tres meses despues.
  */
 function validarColumnaFecha() {
   const PRIMERA_FILA_DATOS = 3;
-  const FILAS = 2000;   // margen sobre las ~600 actuales
+  const FILAS = 2000;   // margen sobre las ~700 actuales
 
   const ws = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('REGISTRO');
   if (!ws) { Logger.log('ERROR: no existe la hoja REGISTRO'); return; }
 
+  const rango = ws.getRange(PRIMERA_FILA_DATOS, 1, FILAS, 1);
+
+  // La formula se escribe relativa a la PRIMERA celda del rango; Sheets la
+  // ajusta fila por fila sola.
+  const formula = '=Y(A' + PRIMERA_FILA_DATOS + '>=FECHA(2025;1;1); ' +
+                  'A' + PRIMERA_FILA_DATOS + '<=HOY())';
+
   const regla = SpreadsheetApp.newDataValidation()
-    .requireDateBetween(new Date(2025, 0, 1), new Date(2027, 11, 31))
+    .requireFormulaSatisfied(formula)
     .setAllowInvalid(false)
-    .setHelpText('Fecha de cosecha: solo entre 2025 y 2027. ' +
-                 'Si Sheets la rechaza, revisa el ano antes que nada.')
+    .setHelpText('Fecha de cosecha: no puede ser futura ni anterior a 2025. ' +
+                 'Si Sheets la rechaza, revisa el mes y el ano.')
     .build();
 
-  ws.getRange(PRIMERA_FILA_DATOS, 1, FILAS, 1).setDataValidation(regla);
+  rango.setDataValidation(regla);
 
   Logger.log('=== LISTO — validacion aplicada ===');
-  Logger.log('Columna Fecha de REGISTRO: solo fechas entre 2025 y 2027.');
+  Logger.log('Columna Fecha de REGISTRO: no se aceptan fechas futuras.');
+  Logger.log('Formula: %s', formula);
   Logger.log('Cubre %s filas desde la %s.', FILAS, PRIMERA_FILA_DATOS);
 }
 ```

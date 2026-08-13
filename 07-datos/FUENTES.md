@@ -134,44 +134,35 @@ cosecha 03/07 para un lote cuyas filas ya no venían. Un truncamiento silencioso
 es peor que un error, porque el calendario se recalcula con menos cosecha y
 nadie se entera. Hay que descargar el **XLSX binario** y parsearlo.
 
-### ⚠️ PENDIENTE DE CONFIRMAR — 64 filas fechadas en septiembre
+### La validación de rango no basta: hay que prohibir fechas futuras
 
-Refresco del **2026-08-13** (697 filas): aparecen **64 filas fechadas del 6 al
-12 de septiembre de 2026**, un mes en el futuro respecto a la fecha del
-refresco. **No se corrigieron** — falta que Vanessa lo confirme.
+El refresco del **2026-08-13** trajo **64 filas fechadas del 6 al 12 de
+septiembre de 2026** — un mes en el futuro. Vanessa confirmó ese mismo día que
+son de **agosto**, con el mes mal tecleado. Con el 09 cambiado por 08 la corrida
+queda continua y los **dos únicos días sin cosecha son los dos sábados**:
 
-La evidencia apunta a que son de **agosto** con el mes mal tecleado. Si se
-reemplaza el 09 por 08, la corrida de cosecha queda continua y los **dos únicos
-días sin datos son los dos sábados** (01 y 08 de agosto), que es un calendario
-de campo coherente:
-
-| Fecha si fuera agosto | Día | Estado en el archivo |
+| Fecha | Día | Filas |
 |---|---|---|
-| 08-01 | sábado | sin datos |
-| 08-02 a 08-05 | dom–mié | ya dicen agosto |
-| 08-06, 08-07 | jue, vie | **dicen septiembre** |
-| 08-08 | sábado | sin datos |
-| 08-09 a 08-12 | dom–mié | **dicen septiembre** |
+| 08-01 | **sábado** | — |
+| 08-02 a 08-07 | dom–vie | 8, 6, 13, 9, 14, 8 |
+| 08-08 | **sábado** | — |
+| 08-09 a 08-12 | dom–mié | 10, 10, 9, 13 |
 
-La alternativa —que septiembre sea real— exigiría creer que cosecharon del 2 al
-5 de agosto, pararon un mes completo y retomaron el 6 de septiembre. Con
-Statice, Celosia, Ammi y Green Ball en ventana abierta al 31 de julio, eso no
-se sostiene.
-
-**Mientras no se confirme, cualquier cálculo de ventana o de tallos/día sobre
-agosto y septiembre está sesgado.** `cerebro.py rendimiento` va a leer un corte
-de registro del 2026-09-12.
-
-**La validación de rango 2025–2027 NO atrapa esta clase de error**, porque
-`2026-09` cae dentro del rango. La regla que sí lo atraparía es prohibir fechas
-futuras, con fórmula personalizada en la validación de datos:
+La lección importante: **la validación de rango 2025–2027 no atrapa esta clase
+de error**, porque `2026-09` cae dentro del rango. Cierra el dígito del año, no
+el del mes. La regla que sí lo cierra es prohibir fechas futuras, con fórmula
+personalizada en la validación de datos de la columna Fecha:
 
 ```
 =Y(A3>=FECHA(2025;1;1); A3<=HOY())
 ```
 
 `HOY()` se recalcula solo, así que no necesita mantenimiento, y habría
-rechazado estas 64 filas en el momento de capturarlas.
+rechazado las 64 filas **en el momento de capturarlas** — que es cuando Diana
+todavía recuerda qué día cosechó.
+
+`importar_tallos.py` también reporta ahora cualquier fecha posterior a hoy,
+aunque la importe: perder el dato es peor que tenerlo marcado.
 
 ### Correcciones de fecha aplicadas en el import
 
@@ -184,6 +175,7 @@ tres reglas las confirmó Vanessa el 2026-08-12:
 | `2056-07-06/07/08` | `2026-07-06/07/08` | 61 | Año mal tecleado; filas vecinas son de julio 2026 y los conteos son coherentes |
 | `2026-09-19` | `2026-06-19` | 2 | Fila suelta entre el 18 y el 19 de junio, mismo lote y cantidad que la cosecha del 18/06 |
 | `2025-06-17` | `2026-06-17` | 2 | Cae dentro de la corrida diaria de Ammobium en Inv 3A, que va del 08/06 al 26/06 de 2026 sin huecos |
+| `2026-09-06` a `2026-09-12` | `2026-08-06` a `2026-08-12` | 110 | Mes mal tecleado. **Solo se aplica si la fecha aún no ocurrió** — cuando septiembre llegue de verdad la regla deja de dispararse sola y los registros legítimos pasan intactos |
 
 Cada regla aparece 2 veces porque la fecha mala está también propagada a la
 columna `Última cosecha` de CONSOLIDADO (el 2056 afectaba 28 lotes).

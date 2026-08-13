@@ -81,6 +81,18 @@ CORRIGE_FILA = [
     },
 ]
 
+# 4) Mes mal tecleado: 64 filas del 6 al 12 de septiembre de 2026 que en
+#    realidad son de agosto (confirmado por Vanessa el 2026-08-13). Con el mes
+#    corregido la corrida queda continua y los dos unicos dias sin cosecha son
+#    los dos sabados, 01 y 08 de agosto.
+#
+#    EL CANDADO: la regla solo se aplica si la fecha TODAVIA NO HA OCURRIDO.
+#    Una cosecha no se registra en el futuro, asi que una fecha futura es por
+#    definicion un error de captura. Cuando septiembre llegue de verdad, la
+#    regla deja de dispararse sola y los registros legitimos de septiembre
+#    pasan intactos. Por eso no hace falta acordarse de quitarla.
+CORRIGE_MES_SI_FUTURA = {(2026, 9): 8}
+
 # Pestana -> (archivo destino, fila del encabezado, formato de fecha)
 #   iso  = 2026-07-31   (lo que exige el motor para registro_tallos.csv)
 #   dmy  = 31/07/2026   (formato que ya traia resumen_tallos_dia.csv)
@@ -200,12 +212,23 @@ def _formatear(fecha, formato):
     return fecha.isoformat()
 
 
-def _corregir(fecha, registro, informe):
+def _corregir(fecha, registro, informe, hoy=None):
     """Aplica las correcciones confirmadas. Devuelve la fecha buena."""
+    if hoy is None:
+        hoy = datetime.date.today()
+
     if fecha.year in CORRIGE_ANO:
         nueva = fecha.replace(year=CORRIGE_ANO[fecha.year])
         informe.append((fecha.isoformat(), nueva.isoformat(),
                         "ano %d -> %d" % (fecha.year, nueva.year)))
+        return nueva
+
+    # Mes mal tecleado, solo si la fecha aun no ocurrio (ver CORRIGE_MES_SI_FUTURA)
+    mes_nuevo = CORRIGE_MES_SI_FUTURA.get((fecha.year, fecha.month))
+    if mes_nuevo is not None and fecha > hoy:
+        nueva = fecha.replace(month=mes_nuevo)
+        informe.append((fecha.isoformat(), nueva.isoformat(),
+                        "mes %02d -> %02d (fecha futura)" % (fecha.month, mes_nuevo)))
         return nueva
     for regla in CORRIGE_FILA:
         if fecha.isoformat() != regla["de"]:
@@ -237,7 +260,8 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
                  if re.search(r"fecha|cosecha", (h or ""), re.I)]
     indice = {h: i for i, h in enumerate(encabezado)}
 
-    cuerpo, correcciones, sospechosas = [], [], []
+    hoy = datetime.date.today()
+    cuerpo, correcciones, sospechosas, futuras = [], [], [], []
     for numero, celdas in filas:
         if numero <= fila_encabezado:
             continue
@@ -253,10 +277,14 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
             fecha = _a_fecha(celdas[i])
             if fecha is None:
                 continue
-            buena = _corregir(fecha, registro, correcciones)
+            buena = _corregir(fecha, registro, correcciones, hoy)
             if not (FECHA_MIN <= buena <= FECHA_MAX):
                 sospechosas.append((numero, buena.isoformat()))
                 continue
+            # Una cosecha no se registra en el futuro. Se importa igual —
+            # perder el dato es peor — pero se reporta para que se revise.
+            if buena > hoy:
+                futuras.append((numero, buena.isoformat()))
             celdas[i] = _formatear(buena, fmt)
 
         cuerpo.append([_limpiar_numero(c) if i not in col_fecha else c
@@ -269,7 +297,8 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
         w.writerows(cuerpo)
 
     return {"filas": len(cuerpo), "destino": destino,
-            "correcciones": correcciones, "sospechosas": sospechosas}
+            "correcciones": correcciones, "sospechosas": sospechosas,
+            "futuras": futuras}
 
 
 def main():
@@ -286,7 +315,7 @@ def main():
     print("Importando %s" % os.path.basename(xlsx))
     print("-" * 66)
 
-    total_corr, total_sosp = [], []
+    total_corr, total_sosp, total_fut = [], [], []
     for nombre, destino, fila_enc, fmt in PESTANAS:
         if nombre not in disponibles:
             print("  %-14s FALTA en el libro — se deja el CSV como estaba"
@@ -302,6 +331,7 @@ def main():
               % (nombre, r["filas"], r["destino"]))
         total_corr.extend(r["correcciones"])
         total_sosp.extend((nombre,) + s for s in r["sospechosas"])
+        total_fut.extend((nombre,) + s for s in r["futuras"])
 
     if total_corr:
         print("-" * 66)
@@ -312,6 +342,16 @@ def main():
             vistos[(de[:7], a[:7], motivo)] += 1
         for (de, a, motivo), n in sorted(vistos.items()):
             print("  %-9s -> %-9s  %3d filas   (%s)" % (de, a, n, motivo))
+
+    if total_fut:
+        print("-" * 66)
+        print("REVISAR — %d fechas posteriores a hoy (%s). Se importaron, pero"
+              % (len(total_fut), datetime.date.today().isoformat()))
+        print("una cosecha no se registra en el futuro: son error de captura.")
+        for hoja, numero, fecha in total_fut[:15]:
+            print("  %s fila %s: %s" % (hoja, numero, fecha))
+        if len(total_fut) > 15:
+            print("  ... y %d mas" % (len(total_fut) - 15))
 
     if total_sosp:
         print("-" * 66)

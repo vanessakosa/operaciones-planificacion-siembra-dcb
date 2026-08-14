@@ -50,6 +50,38 @@
 - **Oportunidad comercial:** convertirlo en vitrina fotográfica — ya lo solicitaron clientes
 - Zona alta y seca de Inv 2: destinada al ensayo de Limonium sinensis serie Diamond
 
+### Es el bloque de ENSAYOS (confirmado por Vanessa, 2026-08-13)
+
+**Inv 2 es donde se prueban cultivos nuevos.** Esto no es un detalle: cambia
+cómo hay que leer todo número que salga de aquí. Un rendimiento de Inv 2 **no
+es comparable de igual a igual** con el de un bloque de producción — es un
+cultivo en su primera vuelta, con manejo todavía sin afinar, y muchas veces sin
+histórico contra el cual normalizar.
+
+En ensayo a agosto 2026, todos sin nombre homologado en la columna N:
+
+| Cultivo | Plantas | Estado |
+|---|---|---|
+| Bunny Tails (Colitas de conejo, *Lagurus ovatus*) | 1.170 | Cosechando desde sem 32. **Primera vez bajo invernadero** |
+| Dahlias | 696 + 100 | Cosechando desde sem 32. **Perenne con reset** — se sacan hijos, así que el conteo de plantas deriva |
+| Espárrago | sin registrar | Cosechando desde sem 33. **Perenne, primera siembra.** No tiene ni fila en `campo_siembras.csv` |
+| Echinops | 200 | — |
+| Craspedia | 338 | — |
+| Scabiosa Estrella | 870 | — |
+| Cynoglossum Blue | 597 | — |
+
+**Consecuencia operativa:** sin nombre homologado no entran al calendario de
+Erica (regla 5). Para un ensayo eso puede ser lo correcto — todavía no hay nada
+que prometerle a un cliente. Pero **ya están produciendo tallos vendibles**, así
+que la decisión de cuándo graduarlos a producción y homologarlos es explícita,
+no automática.
+
+**Qué medir aquí:** como son primeras siembras, el dato que hay que capturar no
+es el ciclo copiado de una bitácora sino **el observado**: semana de siembra,
+semana del primer corte, y tallos por semana hasta que la ventana cierre. Para
+los perennes, además, **área en m² en vez de número de plantas** — ver la nota
+de Dahlia en `07-datos/ciclos_variedad.csv`.
+
 ## Invernadero 3 — El principal (mayor área)
 
 ### Bloque 3A — 11 camas, 198 huecos × 8 líneas

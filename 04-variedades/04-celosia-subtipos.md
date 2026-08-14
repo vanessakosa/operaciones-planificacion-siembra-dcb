@@ -27,6 +27,14 @@ la mitad de la cama, y plumosa a 7,5 cm ahoga cuatro tallos por planta.**
 
 **spicata:** `Dreams` · `Flamingo` · `Celway`
 
+**plumosa:** `Shimmer` · y **todas las de Floret** — `Summer Sherbet` ·
+`Rose Gold` · `Spun Sugar` · `Raspberry Lemonade` · `Glowing Embers`
+
+> **`Floret` es el proveedor de semilla, no un subtipo.** Pero todas las
+> celosias que DCB compra a Floret son plumosas, así que en la práctica el
+> prefijo funciona como atajo. Conviene no confundir las dos cosas: si algún día
+> entra una cristata de Floret, el atajo deja de valer.
+
 ### Confirmado por dato — CAMPO escribe el subtipo en el nombre
 
 **cristata:** `Verda Green` · `Indian Summer` · `Enda Rose` · `Reprise Velvet`
@@ -35,18 +43,24 @@ la mitad de la cama, y plumosa a 7,5 cm ahoga cuatro tallos por planta.**
 Estos no se dedujeron del nombre corto: `campo_siembras.csv` los registra
 completos, del tipo `Celosia Cristata Enda Rose`.
 
-### ⚠️ SIN CONFIRMAR — no asignar hasta que Vanessa lo diga
+### ⚠️ SIN CONFIRMAR
 
-`Shimmer` · `Summer Sherbet` · `Sunday` · `Spun Sugar` · `Rose Gold` ·
-`Raspberry Lemonade` · `Sylphid`
+`Sunday` · `Sylphid`
 
 **No se deducen del catálogo del proveedor.** La regla 8 del `CLAUDE.md` prohíbe
 asignar por deducción y presentarlo como dato; aquí aplica igual aunque se trate
 del subtipo y no del color.
 
-Nota: `ciclos_variedad.csv` tiene una fila de **plumosa con datos completos pero
-ningún cultivar asignado todavía**. Es decir, se conoce el manejo de plumosa sin
-saber cuál de las series que se siembran lo es.
+`Sunday` sí está sembrada — hay tres lotes en 4A y uno en Inv 2 (`Sunday Light
+Pink`, `Sunday Dark Pink`, `Sunday Red`). `Sylphid` solo aparece en la tabla de
+referencia de PROGRAMACION, con ciclo 12 y ventana 2.
+
+### 🆕 `Glowing Embers` — cultivar nuevo, sin registrar
+
+Vanessa lo nombró como plumosa de Floret el 2026-08-13, pero **no aparece en
+ningún archivo del repositorio**: ni siembra en `campo_siembras.csv`, ni color en
+`paleta_color.csv`, ni cosecha en `registro_tallos.csv`. Falta pedir su siembra y
+su color antes de que pueda entrar a una receta.
 
 ## Ciclo y ventana por subtipo
 
@@ -64,28 +78,59 @@ observado.
 
 6.221 tallos en 54 registros:
 
-| Serie en el registro | Tallos | Subtipo |
+| Serie en el registro | Tallos | Bloques | Subtipo |
+|---|---|---|---|
+| Mix | 1.960 | 3a, Inv3a | **plumosa** ✅ |
+| Cristata Verda Green | 1.264 | Inv3a, Inv 3A, Inv 4B, Inv5 | cristata ✅ |
+| Shimmer Mix | 1.210 | Inv3a, Inv3b, 3a | **plumosa** ✅ |
+| Dreams Mix | 890 | Inv2, 2 | spicata ✅ |
+| Summer Sherbet | 830 | Inv3b, Inv3a | **plumosa** ✅ |
+| Enda Rose | 67 | 3a | cristata ✅ |
+
+**Todo lo cosechado queda atribuido por subtipo:**
+
+| Subtipo | Tallos | % |
 |---|---|---|
-| Mix | 1.960 | **SIN_DATO** — ver abajo |
-| Cristata Verda Green | 1.264 | cristata ✅ |
-| Shimmer Mix | 1.210 | sin confirmar |
-| Dreams Mix | 890 | **spicata** ✅ |
-| Summer Sherbet | 830 | sin confirmar |
-| Enda Rose | 67 | cristata ✅ |
+| plumosa | 4.000 | 64 % |
+| cristata | 1.331 | 21 % |
+| spicata | 890 | 14 % |
 
-**El 31 % de la Celosia cosechada entró como `Mix` a secas** — 1.960 tallos en
-3A/Inv3A entre el 2 y el 12 de agosto, sin atribución de cultivar.
+### La `Mix` no es un dato perdido — es una mezcla real
 
-### La causa raíz es el desplegable, no la captura
+Vanessa lo explicó el 2026-08-13: **en 3A y MINI están sembrados Shimmer y las
+de Floret intercalados en la misma cama.** Cuando se registra un corte como
+`Mix`, mezcla de verdad tallos de Shimmer y de las distintas Floret.
+
+Eso cambia el diagnóstico. `Mix` no es un fallo de captura: **es una descripción
+correcta de lo que se cortó.** Y como Shimmer y todas las Floret son plumosas,
+**el subtipo de esos 1.960 tallos sí se conoce con certeza.** Lo único que se
+pierde es el cultivar exacto — y eso es irrecuperable por diseño, no por
+descuido: los tallos vienen físicamente entremezclados de la misma cama.
+
+### Qué arreglar en `listas_desplegables.csv` (y qué NO)
 
 ```
 listas_desplegables.csv  →  Celosia,Mix
 ```
 
-**La única opción que ofrece el desplegable de Celosia es `Mix`.** Las otras
-cinco series se escribieron a mano. Mientras eso siga así, el problema se
-reproduce cada semana: no es descuido de quien captura, es que no había qué
-escoger. **Arreglar LISTAS corta el problema en la fuente.**
+Hoy el desplegable ofrece **una sola opción**. Pero la corrección **no** es
+llenarlo de cultivares: en una cama intercalada, pedirle a quien cosecha que
+distinga Shimmer de Rose Gold tallo por tallo es pedir un dato que no existe, y
+lo que se obtendría sería ruido con apariencia de precisión.
+
+**La corrección es ofrecer el nivel que sí es real:**
+
+| Opción propuesta | Cuándo se usa |
+|---|---|
+| `Plumosa Mix` | cama intercalada de 3A/MINI — Shimmer + Floret |
+| `Shimmer` | si sale de una cama pura |
+| `Summer Sherbet`, `Rose Gold`, `Spun Sugar`, `Raspberry Lemonade` | camas puras de Floret |
+| `Cristata Verda Green`, `Cristata Enda Rose`, … | cristatas, que sí van separadas |
+| `Dreams`, `Celway`, `Flamingo` | spicatas |
+
+Así el registro captura **el subtipo siempre** —que es la unidad de manejo— y el
+cultivar **solo cuando es real.** Registrar `Mix` a secas pierde el subtipo sin
+necesidad; registrar un cultivar falso inventa precisión.
 
 ## El puente roto entre cosecha y siembra
 
@@ -104,10 +149,26 @@ Colitas de conejo.
 
 ## Qué falta
 
-1. **Subtipo de `Shimmer`, `Summer Sherbet` y `Sunday`** — con eso queda cerrado
-   el mapeo de todo lo que hoy se cosecha.
-2. **Qué había en la cama de la `Mix`** de agosto, o marcarla `SIN_DATO`
-   explícitamente.
-3. **Arreglar `listas_desplegables.csv`** para que el desplegable ofrezca las
-   series reales.
-4. **Deshacer `Floret Rosados Corales`** en tres homologados, uno por cultivar.
+1. **Subtipo de `Sunday` y `Sylphid`** — es lo único del mapeo que sigue
+   abierto. `Sunday` está sembrada (tres lotes en 4A, uno en Inv 2) pero
+   todavía no ha llegado al registro de cosecha.
+2. **`Glowing Embers`** — pedir siembra y color; hoy no existe en el repo.
+3. **Arreglar `listas_desplegables.csv`** con los niveles de la tabla de arriba:
+   subtipo siempre, cultivar solo cuando la cama es pura.
+4. **Deshacer `Floret Rosados Corales`** en homologados por cultivar. Hoy
+   agrupa Spun Sugar (1.200 plantas), Summer Sherbet (1.200) y Rose Gold
+   (1.231) bajo un solo nombre, así que sus tallos no se pueden cruzar con sus
+   plantas y no hay tallos/planta para ninguno.
+
+## Lo que este caso enseña
+
+**La `Mix` parecía un fallo de captura y era una descripción honesta.** La
+primera lectura —"el 31 % entró sin cultivar, hay que arreglar el desplegable
+para que ofrezca cultivares"— habría llevado a pedirle a quien cosecha un dato
+que no existe en el campo, porque la cama está intercalada. El resultado no
+habría sido más precisión: habría sido ruido con apariencia de precisión.
+
+La pregunta correcta no era *"¿por qué no anotaron el cultivar?"* sino
+**"¿el cultivar es siquiera separable en esa cama?"**. La respuesta era no — y
+en cuanto se supo, los 1.960 tallos pasaron de irrecuperables a plenamente
+atribuidos al nivel que importa para decidir: el subtipo.

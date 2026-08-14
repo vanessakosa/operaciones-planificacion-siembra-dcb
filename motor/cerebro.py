@@ -137,10 +137,28 @@ def cargar_ciclos():
             "ventana_max": num(fila["ventana_sem_max"]),
             "distancia_cm": num(fila["distancia_cm"]),
             "tallos_planta": num(fila["tallos_planta"]),
+            "perenne": (fila.get("perenne") or "").strip().lower() == "si",
             "fuente": fila["fuente"].strip(),
             "notas": fila["notas"].strip(),
         }
     return ciclos
+
+
+def es_perenne(grupo, ciclos=None):
+    """Un cultivo perenne no se normaliza por planta.
+
+    Se propaga por division — de Dahlia se sacan hijos — asi que el numero de
+    plantas deriva con el tiempo y no sirve de denominador. El denominador
+    correcto es el AREA, que es ademas la unidad del eje central del proyecto:
+    margen por m2 por semana de cama ocupada.
+    """
+    if ciclos is None:
+        ciclos = cargar_ciclos()
+    g = norm(grupo)
+    for clave, fila in ciclos.items():
+        if clave and (clave in g or g in clave) and fila.get("perenne"):
+            return True
+    return False
 
 
 def cargar_capacidad():
@@ -924,13 +942,21 @@ def cmd_rendimiento(grupo=None):
     # dejo de producir en julio se marcaria ABIERTA solo porque es el ultimo
     # de su grupo, aunque el registro siga tres semanas mas.
     corte_registro = ""
+    sin_variedad = 0
     for c in cosecha:
         g = (c.get("Grupo") or "").strip()
         v = (c.get("Variedad / Serie") or "").strip()
         b = (c.get("Bloque") or "").strip()
         f = (c.get("Fecha") or "").strip()
-        if not (g and v and b) or not re.match(r"^\d{4}-\d{2}-\d{2}$", f):
+        # Antes se exigia tambien la variedad, y eso descartaba en silencio
+        # cultivos enteros: Esparrago, Dahlias y Colitas de conejo se registran
+        # sin serie, asi que sus 530 tallos no aparecian en ningun reporte.
+        # Un lote sin variedad es un lote igual; se etiqueta y se ve.
+        if not (g and b) or not re.match(r"^\d{4}-\d{2}-\d{2}$", f):
             continue
+        if not v:
+            v = "(sin variedad)"
+            sin_variedad += 1
         corte_registro = max(corte_registro, f)
         if grupo and norm(grupo) not in norm(g):
             continue
@@ -957,6 +983,8 @@ def cmd_rendimiento(grupo=None):
     print("-" * 94)
 
     filas, sospechosas = [], []
+    ciclos_perenne = cargar_ciclos()
+    hubo_perenne = False
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
         fs = sorted(d["fechas"])
         # Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de
@@ -979,17 +1007,41 @@ def cmd_rendimiento(grupo=None):
             if norm_bloque(b) == blo and norm(g) in norm(hom) and color and color in norm(hom):
                 pl = n
                 break
+        # Un perenne NO se normaliza por planta: se propaga por division y el
+        # numero de plantas deriva. Mostrar "?" ahi confundiria "no se" con
+        # "no aplica", que es justo el error que hace sacar conclusiones falsas.
+        perenne = es_perenne(g, ciclos_perenne)
+        if perenne:
+            pl = None
         tp = (d["tallos"] / pl) if pl else None
         tpd = (tp / dias) if tp else None
         abierta = fs[-1] == corte
+        marca = "<- ABIERTA" if abierta else ""
+        if perenne:
+            marca = ("PERENNE: normalizar por m2 " + marca).strip()
+            hubo_perenne = True
         print("%-14s %-20s %-8s %7s %8.0f %6d %9s %12s %s" % (
             g[:14], v[:20], b[:8],
-            "%.0f" % pl if pl else "?", d["tallos"], dias,
-            "%.2f" % tp if tp else "?",
-            "%.4f" % tpd if tpd else "?",
-            "<- ABIERTA" if abierta else ""))
+            "%.0f" % pl if pl else ("n/a" if perenne else "?"), d["tallos"], dias,
+            "%.2f" % tp if tp else ("n/a" if perenne else "?"),
+            "%.4f" % tpd if tpd else ("n/a" if perenne else "?"),
+            marca))
         if tpd:
             filas.append((g, v, b, tpd, tp, dias, abierta))
+
+    if sin_variedad:
+        print()
+        print("%d registros no traen variedad y salen como (sin variedad)." % sin_variedad)
+        print("Antes se descartaban en silencio. Sin la serie no se pueden comparar")
+        print("cultivares entre si — conviene llenarla en REGISTRO.")
+
+    if hubo_perenne:
+        print()
+        print("n/a NO es un dato faltante. Un perenne se propaga por division —")
+        print("de Dahlia se sacan hijos — asi que el numero de plantas deriva y no")
+        print("sirve de denominador. Hay que medir AREA (m2) y comparar tallos/m2,")
+        print("que es ademas la unidad del eje del proyecto: margen por m2 por")
+        print("semana de cama ocupada. Falta el area en rendimiento_costo_lote.csv.")
 
     # comparaciones dentro del mismo grupo y bloque
     por_gb = defaultdict(list)

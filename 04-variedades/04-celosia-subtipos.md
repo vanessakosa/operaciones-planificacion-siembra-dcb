@@ -142,10 +142,46 @@ Y lo que de hecho se cortó en 3A durante agosto: `Mix` (1.960), `Shimmer Mix`
 cristata quedan descartados por el propio registro — Verda Green no tiene ningún
 corte después del 20/07, y Enda Rose se registra por su nombre, aparte.
 
-**Hallazgo lateral:** Enda Rose estaba proyectada para *Amor y Amistad*
-(septiembre) y se está cortando desde el 10 de agosto — **3 a 4 semanas
-adelantada**, consistente con lo que el `CLAUDE.md` advierte sobre los ciclos
-reales corriendo por delante de lo proyectado.
+### ⚠️ Enda Rose no está adelantada: está perdida
+
+Una versión anterior de esta ficha decía que Enda Rose venía *"3 a 4 semanas
+adelantada, consistente con los ciclos reales corriendo por delante de lo
+proyectado"*. **Es exactamente al revés**, y la explicación estaba en el
+comentario de `campo_siembras.csv`, que no se había leído:
+
+> `Sin Bokashi, con Cotes | ALERTA sem28: inducción floral. Falla luz extendida
+> sem27, todas fueron a flor. Probablemente se pierda esa cosecha.`
+
+No es un ciclo rápido: es **inducción floral prematura por una falla de luz en
+la semana 27**. Las plantas se fueron a flor antes de terminar de formar tallo.
+
+**Pero no es pérdida total.** Vanessa lo precisó el 2026-08-13: *"sí estamos
+cosechando los más largos para venderlos."* O sea que el lote **se está
+recuperando por selección** — se corta lo que alcanzó largo vendible y se vende.
+Los 67 tallos de agosto son producto real, no descarte.
+
+La lectura correcta está en el medio de las dos que escribí antes: **no es una
+cosecha adelantada ni una cosecha perdida — es una cosecha reducida y
+seleccionada.** El lote rinde menos de lo que debía, y lo que rinde sale por
+corte selectivo del tallo largo.
+
+> **Esto es exactamente la variable 9 de la matriz de decisión.** Cuánto se
+> salva de un lote inducido depende de **cuántos tallos alcanzaron largo
+> vendible** — y `calidad_tallo.csv` está vacío. Sin medir longitud no se puede
+> cuantificar el daño de una inducción ni decidir si el lote merece seguir
+> ocupando la cama. Es la diferencia entre *"produjo"* y *"produjo vendible"*.
+
+**Y no fue un caso aislado.** La misma falla golpeó tres cristatas a la vez, con
+el comentario idéntico:
+
+| Lote | Bloque |
+|---|---|
+| Cristata Enda Rose | 3A |
+| Cristata Reprise Orange | 4A |
+| Cristata Clubs Cocktail | 4A |
+
+Un evento de infraestructura —la luz— cruzó dos bloques y arruinó tres lotes de
+la misma semana de siembra. **Eso no se ve en ninguna columna estructurada.**
 
 ### La limitación que hace esto impreciso
 
@@ -211,6 +247,69 @@ Colitas de conejo.
    (1.231) bajo un solo nombre, así que sus tallos no se pueden cruzar con sus
    plantas y no hay tallos/planta para ninguno.
 
+## Lo que dicen los COMENTARIOS — y por qué hay que leerlos
+
+Vanessa lo señaló el 2026-08-13: **los cierres se explican sobre todo en los
+comentarios.** Ahí está si una cama se sacó porque *se necesitaba el espacio* o
+porque *se acabó la cosecha* — dos cosas que en los números se ven igual y
+significan lo opuesto. Y ahí están las semanas de pico.
+
+### 1. La inducción floral es un patrón, no un incidente
+
+Aparece en **siete** lotes de Celosia:
+
+| Lote | Bloque | Qué dice el comentario |
+|---|---|---|
+| Cristata Enda Rose | 3A | Falla luz sem27, todas a flor, cosecha probablemente perdida |
+| Cristata Reprise Orange | 4A | idéntico |
+| Cristata Clubs Cocktail | 4A | idéntico |
+| Celosias Lavly | — | `PERDIDA INDUCCION FLORAL` — pérdida total |
+| Celosias Lavly | 4 | Inducción floral en semana 11 |
+| Celosias Shimmer | 5 | *"no fueron buenos tallos como en cosechas anteriores. ¿Puede ser por la inducción floral/elongación?"* |
+| Celosias Dreams | 2 | *"Ya muestran plumas. ¿Inducción floral?"* |
+| Cristata Verda Green | 3A | *"En sem 22 ya tienen crestas. Me preocupa si es una inducción"* |
+
+**Por la regla de promoción a norma del `CLAUDE.md` —misma variedad, misma
+zona, mismo comportamiento, dos veces o más— esto ya es regla, no observación.**
+La Celosia en DCB tiene un problema sistémico de inducción floral ligado a la
+luz, y cuesta lotes completos.
+
+### 2. Un cierre no es un final de cosecha
+
+| Lote | Por qué se cerró |
+|---|---|
+| Celosias Indian Summer (4) | *"Cosechamos tallos buenísimos en semana 19, y **hubiésemos podido extender y engordar hasta la 20, pero los usamos en madres**"* |
+| Celosias Asian Garden (2) | *"están desde la 15 pero **esperando salir de las dreams primero**"* |
+| Celosias Dreams (4B) | *"excelente semana 15, ya en 16 podríamos pelar, **lo sacamos en la 18**"* |
+
+Ninguno de los tres cerró porque se acabara la producción. **Cerraron por
+demanda o por rotación de cama.** Un motor que lea solo las fechas los va a
+contar como ventanas terminadas y va a subestimar el potencial de las tres.
+
+### 3. Las semanas de pico están dichas
+
+- **Dreams:** arranca sem 14, **excelente sem 15**, en 16 ya se puede pelar
+- **Indian Summer:** tallos buenísimos sem 19, **podía engordar hasta la 20**
+- **Cristata Verda Green (3A):** cosecha desde sem 25, con mucha desuniformidad
+
+### 4. Y de paso, conocimiento de bouquet
+
+> Indian Summer: *"Combina lindo con rosado claro solamente. **Con otros colores
+> oscurece el bouquet**."*
+
+Eso es una regla de color que no está en `paleta_color.csv` ni en ninguna receta.
+
+### 5. Otras causas de pérdida registradas ahí
+
+- **Verda Green (3B):** *"Se quedaron enanas"* · *"Sem27-28 cosechando pero con
+  síntomas de **botritis**"*
+- **Verda Green (3A):** *"hay unas cabezas con abanicos grandes y otras muy
+  pequeñas. **Creo que con más agua nos puede ir mejor**, pero sí elongaron
+  mucho"* — la limitante de riego otra vez
+- **Floret (Spun Sugar, Summer Sherbet, Shimmer):** *"Sem27 tallos cortos. Sem28
+  más largos. Algunos centros muy maduros cortados cortos con laterales
+  inmaduros"* — problema de uniformidad de corte
+
 ## Lo que este caso enseña
 
 **La `Mix` parecía un fallo de captura y era una descripción honesta.** La
@@ -223,3 +322,12 @@ La pregunta correcta no era *"¿por qué no anotaron el cultivar?"* sino
 **"¿el cultivar es siquiera separable en esa cama?"**. La respuesta era no — y
 en cuanto se supo, los 1.960 tallos pasaron de irrecuperables a plenamente
 atribuidos al nivel que importa para decidir: el subtipo.
+
+**Y la segunda lección, más cara:** las dos veces que esta ficha se equivocó
+—decir que Sunday estaba sembrada, y llamar "adelantada" a una Enda Rose que
+está perdida— **el dato correcto estaba en el archivo**, en la fecha de siembra
+una vez y en el comentario la otra. No faltaba información: faltaba leerla.
+
+Las columnas estructuradas dicen **qué** pasó. Los COMENTARIOS dicen **por qué**,
+y sin el porqué los números mienten en las dos direcciones: un cierre por
+demanda parece agotamiento, y una pérdida por inducción parece precocidad.

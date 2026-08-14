@@ -161,6 +161,62 @@ def es_perenne(grupo, ciclos=None):
     return False
 
 
+# Motivos de cierre que NO significan "la planta dejo de producir".
+# Extraidos de los COMENTARIOS de CAMPO — ver 13-optimizacion/04-...
+# Solo 4 de 36 lotes cerraron por agotamiento real: si la ventana se mide como
+# primer corte -> ultimo corte sin mirar esto, no mide la variedad sino una
+# decision de Vanessa, y subestima a la variedad.
+CIERRE_AJENO = {
+    "espacio":         "se necesitaba la cama",
+    "rotacion":        "esperando salir otro lote",
+    "demanda":         "cortado para un pico comercial",
+    "sanitario":       "sacrificado por plaga u hongo",
+    "calidad":         "sacado por deformidad o vida en florero",
+    "perdida_total":   "perdida total",
+    "perdida_parcial": "perdida parcial",
+    "temprano":        "cortado antes de tiempo — hubiese aguantado mas",
+}
+
+# 'tardio' se trata aparte: la cama NO se interrumpio, se paso de punto. No
+# subestima a la variedad — al reves, los ultimos tallos bajaron de calidad.
+# Meterlo en el mismo saco seria otra columna que miente.
+CIERRE_TARDIO = "tardio"
+
+
+def cargar_cierres():
+    """Motivo de cierre por lote, extraido de los COMENTARIOS de CAMPO."""
+    ruta = os.path.join(DATOS, "cierres_lote.csv")
+    if not os.path.exists(ruta):
+        return []
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        return list(csv.DictReader(fh))
+
+
+def buscar_cierre(grupo, variedad, bloque, cierres):
+    """Cruza un lote de REGISTRO con su fila de cierre.
+
+    El cruce es difuso a proposito: cierres_lote.csv guarda el nombre como se
+    escribio en CAMPO ("Celosias Indian Summer") mientras REGISTRO lo parte en
+    grupo y variedad ("Celosia" + "Indian Summer"). Se exige que el grupo Y la
+    variedad aparezcan en el nombre del cierre, y que el bloque case por
+    prefijo — "3A bajas" cuenta como "3A".
+    """
+    g, v, b = norm(grupo), norm(variedad), norm_bloque(bloque)
+    if not (g and b):
+        return None
+    for fila in cierres:
+        nombre = norm(fila.get("variedad", ""))
+        if g not in nombre:
+            continue
+        if v and v not in nombre:
+            continue
+        cb = norm_bloque(fila.get("bloque", ""))
+        if not cb or not (cb.startswith(b) or b.startswith(cb)):
+            continue
+        return fila
+    return None
+
+
 def cargar_capacidad():
     bloques = []
     for fila in _leer_csv("capacidad_bloques.csv"):
@@ -984,7 +1040,9 @@ def cmd_rendimiento(grupo=None):
 
     filas, sospechosas = [], []
     ciclos_perenne = cargar_ciclos()
+    cierres = cargar_cierres()
     hubo_perenne = False
+    cerrados_ajenos, cerrados_tarde = [], []
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
         fs = sorted(d["fechas"])
         # Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de
@@ -1020,6 +1078,18 @@ def cmd_rendimiento(grupo=None):
         if perenne:
             marca = ("PERENNE: normalizar por m2 " + marca).strip()
             hubo_perenne = True
+
+        # Una ventana cerrada por espacio, demanda o sanidad NO mide a la
+        # variedad. Si no se marca, este lote parece de bajo rendimiento
+        # cuando en realidad fue interrumpido.
+        cie = buscar_cierre(g, v, b, cierres)
+        motivo = (cie or {}).get("motivo", "")
+        if motivo in CIERRE_AJENO:
+            marca = ("CIERRE AJENO: %s %s" % (motivo, marca)).strip()
+            cerrados_ajenos.append((g, v, b, motivo, cie.get("evidencia_literal", "")))
+        elif motivo == CIERRE_TARDIO:
+            marca = ("PASADO DE PUNTO %s" % marca).strip()
+            cerrados_tarde.append((g, v, b, cie.get("evidencia_literal", "")))
         print("%-14s %-20s %-8s %7s %8.0f %6d %9s %12s %s" % (
             g[:14], v[:20], b[:8],
             "%.0f" % pl if pl else ("n/a" if perenne else "?"), d["tallos"], dias,
@@ -1028,6 +1098,30 @@ def cmd_rendimiento(grupo=None):
             marca))
         if tpd:
             filas.append((g, v, b, tpd, tp, dias, abierta))
+
+    if cerrados_ajenos:
+        print()
+        print("%d lote(s) con CIERRE AJENO — la cama se cerro por una razon que no" % len(cerrados_ajenos))
+        print("es la planta, asi que su ventana esta INTERRUMPIDA, no terminada. El")
+        print("tallos/planta de estas filas SUBESTIMA a la variedad:")
+        for g, v, b, motivo, ev in cerrados_ajenos:
+            print("  %s %s (%s) — %s" % (g, v, b, CIERRE_AJENO[motivo]))
+            if ev:
+                print("      \"%s\"" % ev[:88])
+        print("  (%d de %d cierres conocidos cruzaron con un lote cosechado; el resto"
+              % (len(cerrados_ajenos) + len(cerrados_tarde), len(cierres)))
+        print("   es de lotes anteriores al rango del registro de tallos)")
+
+    if cerrados_tarde:
+        print()
+        print("%d lote(s) PASADOS DE PUNTO. Aqui la ventana no se interrumpio: se"
+              % len(cerrados_tarde))
+        print("estiro de mas, asi que el tallos/planta NO esta subestimado — pero los")
+        print("ultimos tallos entraron con menos calidad:")
+        for g, v, b, ev in cerrados_tarde:
+            print("  %s %s (%s)" % (g, v, b))
+            if ev:
+                print("      \"%s\"" % ev[:88])
 
     if sin_variedad:
         print()

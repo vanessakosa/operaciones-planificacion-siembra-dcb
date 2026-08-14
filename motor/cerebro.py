@@ -35,6 +35,7 @@ from __future__ import annotations
 import csv
 import datetime
 import os
+import re
 import sys
 from collections import defaultdict
 
@@ -951,14 +952,113 @@ def cmd_ciclos():
             print("     anotar 'Inicio cosecha' y 'Fin de cosecha' como FECHA.")
 
 
-def norm_bloque(texto):
-    """Los bloques se escriben distinto en cada archivo: CAMPO usa "3B" y
-    REGISTRO usa "Inv 3B". Sin unificar esto el cruce falla en silencio."""
+# El mismo grupo se llama distinto en cada archivo. REGISTRO usa el nombre en
+# espanol y CAMPO el comercial. Sin esto, el grupo mas grande del cultivo —60
+# siembras de Snapdragon— no cruza con sus 6.221 tallos cosechados.
+SINONIMOS_GRUPO = {
+    "boca de dragon": "snapdragon",
+    "colitas de conejo": "bunny tails",   # confirmado por Vanessa 2026-08-13
+}
+
+# Palabras que describen la cama pero no la identifican: "CAMAS BAJAS 3A" es
+# el bloque 3A.
+_RUIDO_BLOQUE = ("camas", "cama", "bajas", "baja", "altas", "alta", "del",
+                 "de", "la", "el", "y")
+
+
+def alias_grupo(grupo):
+    """Devuelve todas las formas conocidas de nombrar un grupo."""
+    g = norm(grupo)
+    formas = {g}
+    for a, b in SINONIMOS_GRUPO.items():
+        if g == a or a in g:
+            formas.add(b)
+        if g == b or b in g:
+            formas.add(a)
+    return {f for f in formas if f}
+
+
+def bloques_de(texto):
+    """Codigos de cama que aparecen en un texto libre.
+
+    CAMPO escribe "CAMAS BAJAS 3A", "Gomphrenas 3B", "5 y 3C" o "3A+3B+4A".
+    Devuelve el conjunto de camas mencionadas — varias si el texto nombra
+    varias, que es informacion honesta: ese lote ocupa mas de una.
+    """
     t = norm(texto)
-    for pref in ("invernadero ", "inv ", "ext ", "exterior "):
+    for r in _RUIDO_BLOQUE:
+        t = re.sub(r"\b%s\b" % r, " ", t)
+    partes = re.split(r"[+,/]| y |\s+", t)
+    salida = set()
+    for p in partes:
+        b = norm_bloque(p)
+        # Solo lo que tiene forma de cama. Sin este filtro entraban "inv" del
+        # propio prefijo, el nombre del cultivo en "Gomphrenas 3B", y el "1"
+        # de "5+ 1 del 4A", que es un conteo de camas y no un bloque.
+        if b and re.match(r"^(ext)?\d[a-c]?$|^mini$|^ext$", b):
+            salida.add(b)
+    return salida
+
+
+def _plantas_del_lote(grupo, variedad, bloque, plantas):
+    """Cuantas plantas se trasplantaron en el lote que produjo estos tallos.
+
+    Cruza REGISTRO (grupo + variedad + bloque) con CAMPO (Variedad + Nombre
+    Homologado + Bloque sembrado). Tres cosas lo hacen dificil y las tres
+    estan resueltas aqui:
+
+      * el grupo se llama distinto en cada archivo (ver SINONIMOS_GRUPO)
+      * el bloque tiene 46 grafias y a veces viene con prosa alrededor
+      * la variedad del registro es la serie ("Monaco Orange") y en CAMPO
+        aparece dentro del nombre completo ("Snapdragon Monaco Orange")
+
+    "Mix" y las variedades vacias NO identifican un cultivar, asi que para
+    ellas basta grupo + bloque. Es deliberado: devolver el total del bloque es
+    correcto cuando el corte fue efectivamente mezclado.
+    """
+    alias = alias_grupo(grupo)
+    v = norm(variedad)
+    generica = v in ("", "mix", "sin variedad")
+    total = 0.0
+    for (hom, var, blo), n in plantas.items():
+        if blo not in bloques_de(bloque):
+            continue
+        if not any(a in var for a in alias):
+            continue
+        if not generica and not (v in hom or (hom and hom in v) or v in var):
+            continue
+        total += n
+    return total or None
+
+
+def norm_bloque(texto):
+    """Unifica las 46 grafias distintas de bloque que hay entre los archivos.
+
+    CAMPO escribe "3B" y REGISTRO "Inv 3B", pero ademas conviven "Inv3b",
+    "inv3b" y "3b". La version anterior solo quitaba el prefijo CUANDO HABIA
+    ESPACIO, asi que "Inv 5" quedaba en "5" y "Inv5" en "inv5" — dos claves
+    distintas para la misma cama, y el cruce con las plantas fallaba en
+    silencio en la mayoria de los lotes.
+
+    El exterior se conserva SEPARADO del invernadero a proposito: "ext 3B" es
+    una cama al aire libre y "Inv 3B" esta bajo plastico. Son microclimas
+    opuestos — mezclarlos inventaria un lote que no existe.
+    """
+    t = norm(texto).replace(" ", "")
+    if not t:
+        return ""
+    # exterior, venga como prefijo ("ext3b", "exterior") o sufijo ("3ext")
+    for pref in ("exterior", "ext"):
         if t.startswith(pref):
-            t = t[len(pref):]
-    return t.replace(" ", "")
+            return "ext" + t[len(pref):]
+    for suf in ("exterior", "ext"):
+        if t.endswith(suf) and len(t) > len(suf):
+            return "ext" + t[:-len(suf)]
+    # invernadero
+    for pref in ("invernadero", "inv"):
+        if t.startswith(pref) and len(t) > len(pref):
+            return t[len(pref):]
+    return t
 
 
 def cmd_rendimiento(grupo=None):
@@ -981,14 +1081,20 @@ def cmd_rendimiento(grupo=None):
     siembras = _leer_csv("campo_siembras.csv")
     cosecha = _leer_csv("registro_tallos.csv")
 
-    # plantas trasplantadas por (homologado, bloque)
+    # Plantas trasplantadas. Se guarda tambien la columna Variedad de CAMPO
+    # porque es la unica que trae el GRUPO: los homologados son "Monaco
+    # Orange" u "Opus Fresh", que no dicen a que grupo pertenecen. Sin eso el
+    # cruce exigia que el grupo apareciera en el homologado y fallaba en el
+    # 90% de los lotes.
     plantas = defaultdict(float)
     for s in siembras:
-        hom = (s.get("Nombre Homologados") or "").strip()
-        blo = norm_bloque(s.get("Bloque sembrado") or "")
+        hom = norm(s.get("Nombre Homologados") or "")
+        var = norm(s.get("Variedad") or "")
         n = num((s.get("Cantidad Trasplantada") or "").strip())
-        if hom and n:
-            plantas[(hom, blo)] += n
+        if not n or not (hom or var):
+            continue
+        for blo in bloques_de(s.get("Bloque sembrado") or ""):
+            plantas[(hom, var, blo)] += n
 
     # cosecha por (grupo, variedad, bloque)
     lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": []})
@@ -1016,8 +1122,13 @@ def cmd_rendimiento(grupo=None):
         corte_registro = max(corte_registro, f)
         if grupo and norm(grupo) not in norm(g):
             continue
+        # La clave usa el bloque NORMALIZADO: "Inv 4C" e "Inv4c" son la misma
+        # cama y antes salian como dos lotes, cada uno reclamando el total de
+        # plantas de la cama. Eso partia la cosecha en dos y subestimaba el
+        # tallos/planta de ambos.
         t = num(c.get("Tallos frescos") or "")
-        d = lotes[(g, v, b)]
+        clave_b = "+".join(sorted(bloques_de(b))) or norm_bloque(b)
+        d = lotes[(g, v, clave_b)]
         d["tallos"] += t or 0
         d["fechas"].append(f)
 
@@ -1059,12 +1170,7 @@ def cmd_rendimiento(grupo=None):
         # El homologado es "<Grupo> <Color>" (ej. "Campanula Lavender") y la
         # variedad del registro es "<Serie> <Color>" (ej. "Champion Lavender").
         # El puente es el color, que es la ultima palabra de ambos.
-        pl = None
-        color = norm(v).split()[-1] if norm(v).split() else ""
-        for (hom, blo), n in plantas.items():
-            if norm_bloque(b) == blo and norm(g) in norm(hom) and color and color in norm(hom):
-                pl = n
-                break
+        pl = _plantas_del_lote(g, v, b, plantas)
         # Un perenne NO se normaliza por planta: se propaga por division y el
         # numero de plantas deriva. Mostrar "?" ahi confundiria "no se" con
         # "no aplica", que es justo el error que hace sacar conclusiones falsas.

@@ -1020,15 +1020,21 @@ def _plantas_del_lote(grupo, variedad, bloque, plantas):
     v = norm(variedad)
     generica = v in ("", "mix", "sin variedad")
     total = 0.0
-    for (hom, var, blo), n in plantas.items():
+    faltan = 0
+    for (hom, var, blo, tiene), n in plantas.items():
         if blo not in bloques_de(bloque):
             continue
         if not any(a in var for a in alias):
             continue
         if not generica and not (v in hom or (hom and hom in v) or v in var):
             continue
-        total += n
-    return total or None
+        if tiene:
+            total += n
+        else:
+            faltan += 1
+    if not total:
+        return None, 0
+    return total, faltan
 
 
 def norm_bloque(texto):
@@ -1091,10 +1097,18 @@ def cmd_rendimiento(grupo=None):
         hom = norm(s.get("Nombre Homologados") or "")
         var = norm(s.get("Variedad") or "")
         n = num((s.get("Cantidad Trasplantada") or "").strip())
-        if not n or not (hom or var):
+        if not (hom or var):
+            continue
+        # Una siembra SIN cantidad trasplantada se registra igual, marcada.
+        # Si no, su cosecha se divide entre las plantas de las otras camas y
+        # el tallos/planta sale inflado: en Zinnia 4B hay 4 siembras y solo 1
+        # tiene conteo, asi que el resultado salia 4 veces mas alto.
+        if not n:
+            for blo in bloques_de(s.get("Bloque sembrado") or ""):
+                plantas[(hom, var, blo, False)] += 0
             continue
         for blo in bloques_de(s.get("Bloque sembrado") or ""):
-            plantas[(hom, var, blo)] += n
+            plantas[(hom, var, blo, True)] += n
 
     # cosecha por (grupo, variedad, bloque)
     lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": []})
@@ -1154,6 +1168,7 @@ def cmd_rendimiento(grupo=None):
     cierres = cargar_cierres()
     hubo_perenne = False
     cerrados_ajenos, cerrados_tarde = [], []
+    denom_incompleto = 0
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
         fs = sorted(d["fechas"])
         # Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de
@@ -1170,7 +1185,7 @@ def cmd_rendimiento(grupo=None):
         # El homologado es "<Grupo> <Color>" (ej. "Campanula Lavender") y la
         # variedad del registro es "<Serie> <Color>" (ej. "Champion Lavender").
         # El puente es el color, que es la ultima palabra de ambos.
-        pl = _plantas_del_lote(g, v, b, plantas)
+        pl, sin_conteo = _plantas_del_lote(g, v, b, plantas)
         # Un perenne NO se normaliza por planta: se propaga por division y el
         # numero de plantas deriva. Mostrar "?" ahi confundiria "no se" con
         # "no aplica", que es justo el error que hace sacar conclusiones falsas.
@@ -1188,6 +1203,10 @@ def cmd_rendimiento(grupo=None):
         # Una ventana cerrada por espacio, demanda o sanidad NO mide a la
         # variedad. Si no se marca, este lote parece de bajo rendimiento
         # cuando en realidad fue interrumpido.
+        if pl and sin_conteo:
+            marca = ("DENOMINADOR INCOMPLETO: %d siembra(s) sin conteo %s"
+                     % (sin_conteo, marca)).strip()
+            denom_incompleto += 1
         cie = buscar_cierre(g, v, b, cierres)
         motivo = (cie or {}).get("motivo", "")
         if motivo in CIERRE_AJENO:
@@ -1204,6 +1223,13 @@ def cmd_rendimiento(grupo=None):
             marca))
         if tpd:
             filas.append((g, v, b, tpd, tp, dias, abierta))
+
+    if denom_incompleto:
+        print()
+        print("%d lote(s) con DENOMINADOR INCOMPLETO: en esa cama hay siembras sin" % denom_incompleto)
+        print("cantidad trasplantada, asi que la cosecha se divide entre menos plantas")
+        print("de las que hubo. Ese tallos/planta es un TECHO, no una medicion — y")
+        print("este error INFLA, al reves que la ventana truncada.")
 
     if cerrados_ajenos:
         print()

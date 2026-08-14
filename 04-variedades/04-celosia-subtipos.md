@@ -43,7 +43,7 @@ la mitad de la cama, y plumosa a 7,5 cm ahoga cuatro tallos por planta.**
 Estos no se dedujeron del nombre corto: `campo_siembras.csv` los registra
 completos, del tipo `Celosia Cristata Enda Rose`.
 
-### ⚠️ SIN CONFIRMAR
+### ⚠️ SIN CONFIRMAR — y NO están sembradas
 
 `Sunday` · `Sylphid`
 
@@ -51,9 +51,17 @@ completos, del tipo `Celosia Cristata Enda Rose`.
 asignar por deducción y presentarlo como dato; aquí aplica igual aunque se trate
 del subtipo y no del color.
 
-`Sunday` sí está sembrada — hay tres lotes en 4A y uno en Inv 2 (`Sunday Light
-Pink`, `Sunday Dark Pink`, `Sunday Red`). `Sylphid` solo aparece en la tabla de
-referencia de PROGRAMACION, con ciclo 12 y ventana 2.
+> **Corrección (2026-08-13).** Una versión anterior de esta ficha decía que
+> `Sunday` "sí está sembrada, tres lotes en 4A y uno en Inv 2". **Es falso.**
+> Esos lotes se sembraron en **agosto de 2025** con inicio de cosecha en
+> **octubre de 2025** — llevan casi un año cerrados. El error fue leer
+> `campo_siembras.csv` como si fuera el estado actual del campo, cuando es un
+> **log histórico que incluye lotes cerrados.** Vanessa lo corrigió: ninguna de
+> las dos está sembrada hoy.
+>
+> **Regla para no repetirlo:** una fila de `campo_siembras.csv` **no significa
+> "está en el campo"**. Hay que mirar su fecha de siembra y su inicio de cosecha
+> antes de hablar en presente.
 
 ### 🆕 `Glowing Embers` — cultivar nuevo, sin registrar
 
@@ -102,10 +110,53 @@ de Floret intercalados en la misma cama.** Cuando se registra un corte como
 `Mix`, mezcla de verdad tallos de Shimmer y de las distintas Floret.
 
 Eso cambia el diagnóstico. `Mix` no es un fallo de captura: **es una descripción
-correcta de lo que se cortó.** Y como Shimmer y todas las Floret son plumosas,
-**el subtipo de esos 1.960 tallos sí se conoce con certeza.** Lo único que se
-pierde es el cultivar exacto — y eso es irrecuperable por diseño, no por
-descuido: los tallos vienen físicamente entremezclados de la misma cama.
+correcta de lo que se cortó.** Lo que se pierde es el cultivar exacto, y eso es
+irrecuperable por diseño, no por descuido: los tallos vienen físicamente
+entremezclados de la misma cama.
+
+### Pero "Mix = plumosa" NO es una regla permanente
+
+**A veces se siembran y cosechan juntas variedades distintas de plumosa, y a
+veces separadas.** Depende de cómo esté armada la cama en ese momento. Así que
+el subtipo de una `Mix` **hay que resolverlo por período**, contrastando contra
+cómo aparece sembrado en CAMPO y sus inicios de cosecha.
+
+**El método:** para cada corte ambiguo, buscar qué lotes de ese bloque tenían
+ventana abierta en esa fecha.
+
+Aplicado a la `Mix` de agosto 2026 en 3A:
+
+| Sembrado en 3A | Inicio cosecha | Subtipo | ¿En ventana en agosto? |
+|---|---|---|---|
+| Cristata Verda Green | JULIO | cristata | sí — **pero** sus cortes propios paran el 20/07 |
+| Summer Sherbet | AGOSTO | plumosa | **sí** |
+| Shimmer | AGOSTO | plumosa | **sí** |
+| Rose Gold | AGOSTO | plumosa | **sí** |
+| Raspberry Lemonade | AGOSTO | plumosa | **sí** |
+| Cristata Enda Rose | AMOR (sept) | cristata | proyectada para septiembre |
+
+Y lo que de hecho se cortó en 3A durante agosto: `Mix` (1.960), `Shimmer Mix`
+(100) y `Enda Rose` (67).
+
+**Conclusión para este período:** la `Mix` es plumosa. Los dos candidatos
+cristata quedan descartados por el propio registro — Verda Green no tiene ningún
+corte después del 20/07, y Enda Rose se registra por su nombre, aparte.
+
+**Hallazgo lateral:** Enda Rose estaba proyectada para *Amor y Amistad*
+(septiembre) y se está cortando desde el 10 de agosto — **3 a 4 semanas
+adelantada**, consistente con lo que el `CLAUDE.md` advierte sobre los ciclos
+reales corriendo por delante de lo proyectado.
+
+### La limitación que hace esto impreciso
+
+`campo_siembras.csv` guarda el **inicio de cosecha como nombre de mes**
+(`AGOSTO`, `MADRES`, `AMOR`), no como fecha o semana. Y el **fin de cosecha está
+vacío en el 87 % de las filas**. Con eso, la ventana de un lote solo se puede
+acotar de forma gruesa, y el cruce depende de que los cortes propios de cada
+cultivar delaten cuándo dejó de producir.
+
+Mientras el fin de cosecha no se registre, **este cruce va a seguir siendo un
+argumento y no una prueba.**
 
 ### Qué arreglar en `listas_desplegables.csv` (y qué NO)
 

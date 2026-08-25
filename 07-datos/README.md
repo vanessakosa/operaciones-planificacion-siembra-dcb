@@ -23,7 +23,7 @@ Exportados el **30 de julio de 2026** desde:
 | `consolidado_lotes.csv` | **0** | REGISTRO_TALLOS → CONSOLIDADO | ❌ **Sin fórmulas — bloquea rentabilidad** |
 | `rendimiento_costo_lote.csv` | **0** | REGISTRO_TALLOS → RENDIMIENTO | ❌ **Vacía** |
 | `costos_productos.csv` | **0** | MAESTRO_CAMPO → COSTOS_PRODUCTOS | ❌ **Vacía — bloquea costo por aplicación** |
-| `costos_follaje_comprado.csv` | 4 | Dictado de Vanessa 2026-08-25 | ✅ **Primer costo real del repo** — Ruscus, Silver Dollar, Eucalipto Baby, Solidago |
+| `costos_follaje_comprado.csv` | 5 | Factura FH 2743 + dictado de Vanessa | ✅ **Primer costo real del repo** — Ruscus, Silver Dollar, Baby Blue, Parvifolia, Solidago. Con y sin IVA |
 | `resumen_tallos_dia.csv` | 4 | REGISTRO_TALLOS → RESUMEN | ⚠️ Hoja con fórmulas — export incompleto |
 
 ## Advertencias de lectura

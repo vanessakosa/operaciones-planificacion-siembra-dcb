@@ -178,7 +178,16 @@ python3 motor/cerebro.py ciclos                 # ciclo y ventana por grupo
 python3 motor/cerebro.py rendimiento Campanula  # tallos/planta/día normalizado por ventana
 python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallos
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
+
+python3 motor/importar_tallos.py registro.xlsx  # Drive -> los CSV de 07-datos/
 ```
+
+**Para refrescar el registro de cosecha:** bajar
+`DCB_Registro_Tallos_v7_ORGANIZADO` de Drive **como XLSX binario** y pasarlo por
+`importar_tallos.py`. Leerlo como texto interpretado **trunca sin avisar** — el
+2026-08-12 devolvió 251 filas de 598. El importador espeja las 6 pestañas,
+corrige 3 errores de fecha confirmados y reporta cada corrección. Detalle en
+`07-datos/FUENTES.md`.
 
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada
@@ -245,10 +254,15 @@ completa de datos pendientes en `08-roadmap/02-informacion-que-falta.md`.
    de campo está subestimada.
 9. **Limpiar `formulas_productos_bouquets.csv`** — 11 filas de productos
    fitosanitarios contaminan el archivo de recetas.
-10. **Reconstruir `CONSOLIDADO` y `RENDIMIENTO`** en `DCB_Registro_Tallos`.
+10. **Llenar `RENDIMIENTO`** en `DCB_Registro_Tallos` — la pestaña existe con sus
+    columnas (área m², costo semilla, costo insumos) pero está **vacía en la
+    fuente**, no es un problema de espejado. Es el mismo bloqueo que el #5.
 
 *Cerrado:* ciclo de Girasol, Green Ball, Amaranto y Ammobium — los 13 grupos del
-catálogo ya son planificables.
+catálogo ya son planificables. **Registro de tallos reexportado** (2026-08-12):
+596 filas hasta el 31/07 contra 361 que había, y `consolidado_lotes.csv` pasó de
+vacío a 141 lotes — `CONSOLIDADO` sí se calculaba solo en Drive, solo faltaba
+espejarlo.
 
 ## Si abres este repo desde otra cuenta o máquina
 

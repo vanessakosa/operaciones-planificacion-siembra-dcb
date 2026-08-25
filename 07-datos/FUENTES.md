@@ -31,17 +31,24 @@ pueden espejar como texto.
 | 🔨 | `incidencia_fitosanitaria.csv` | — | **extraído** de los COMENTARIOS de `campo_siembras.csv` y de `01-invernaderos.md`. 29 eventos que estaban en texto libre. `texto_original` conserva la frase literal |
 | 🔨 | `microclima_bloques.csv` | — | derivado de `01-invernaderos.md`. 18 zonas en cualitativo (`confianza = CUALITATIVA`). Las columnas numéricas están en `SIN_DATO` a la espera de medición |
 | ⬜ | `clima_semanal.csv` | — | **solo encabezado.** Esquema listo, sin un solo registro |
+| 🔨 | `secado_variedad.csv` | — | derivado de la auditoría ficha-por-variedad (`variedades_bitacora.csv` + dictado de Vanessa). Nueva variable 12 de la matriz de decisión: aprovechamiento en seco. Arranca con 1 fila (Dusty Miller), se llena grupo por grupo |
+| 🔨 | `calendario_comercial_colombia.csv` | — | derivado del dictado de Vanessa. Festivos, fechas comerciales, patrones recurrentes y temporadas mensuales — insumo para `colecciones_mensuales` (pendiente de escribir). Marcado `PROPUESTA — SIN VALIDAR` hasta cruzar con ventas reales de `03_Ventas` |
+| 🔨 | `vida_en_vaso.csv` | — | derivado de la auditoría ficha-por-variedad. Llena el hueco señalado en `10-postcosecha/README.md` — no existía ni un solo dato de vida en florero antes de esta sesión. Arranca con 1 fila (Boca de Dragón) |
+| 🔨 | `combinaciones_venta.csv` | — | derivado de la auditoría ficha-por-variedad. Registra afinidad de combinaciones para la estrategia de surtido (`13-optimizacion/03-...`, pendiente de escribir). Arranca con 1 fila (Boca de Dragón + Statice) |
+| 🔨 | `cierres_lote.csv` | — | derivado del barrido de los 202 COMENTARIOS de `campo_siembras.csv` (2026-08-13). 36 lotes con **motivo de cierre** y cita literal. Hallazgo: solo el 11 % cerró por agotamiento real |
+| 🔨 | `picos_cosecha.csv` | — | mismo barrido. 16 lotes con semana de inicio y de **pico** dichas en prosa |
+| 🔨 | `desajuste_demanda.csv` | — | mismo barrido. 13 registros de flor que **sobró o faltó**, incluidos 5 lotes de Zinnia en pico simultáneo la semana 28 |
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
-| ✅ | `registro_tallos.csv` | 18338 | `1gZg39pa3XkpmkVTdJnys6ltRlmEBwY-O` |
+| ✅ | `registro_tallos.csv` | — | **REEXPORTADO 2026-08-12** desde `DCB_Registro_Tallos_v7_ORGANIZADO` (XLSX binario) con `motor/importar_tallos.py`. 596 filas con fecha válida, 54.486 tallos frescos, rango 2026-05-31 → 2026-07-31. Antes tenía 361 filas y cortaba el 03/07: **faltaban 202 filas de todo julio.** Las 6 pestañas del libro quedaron espejadas, no 3 |
 | ✅ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
 | ✅ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |
 | ✅ | `aplicaciones_historial.csv` | 1784 | `18aAECzxa8DmjIkvRJ3AAMTg3AV7E9XZn` |
 | ✅ | `finca_entregas_plantulas.csv` | 932 | `1jp5QnfADBMYJRoPyXE2r-IW8RIb6Zw7m` |
 | ✅ | `decisiones_manejo.csv` | 767 | `1j_xX_NA7OMND98HrKPaMsUN5348bdgm-` |
-| ✅ | `rendimiento_costo_lote.csv` | 169 | `12NowlTiTZU2izfeBNiMpLUgOSdD4DmV4` |
-| ✅ | `consolidado_lotes.csv` | 128 | `1wEnaQgIFpmISQy-W4b8aUv1tb4GeGNas` |
+| ⬜ | `rendimiento_costo_lote.csv` | 169 | `12NowlTiTZU2izfeBNiMpLUgOSdD4DmV4` — **solo encabezado, confirmado 2026-08-12 contra Drive.** La pestaña RENDIMIENTO del libro está vacía en la fuente: no es un problema de espejado sino de dato inexistente. Pide área m², costo semilla y costo insumos por lote — el mismo bloqueo que `costos_productos.csv` |
+| ✅ | `consolidado_lotes.csv` | — | **REEXPORTADO 2026-08-12** con `motor/importar_tallos.py`. 141 lotes con tallos, número de registros y primera/última cosecha. Antes estaba **vacío (solo encabezado)**: la pestaña CONSOLIDADO de Drive sí se calculaba sola, simplemente nunca se había espejado |
 | ✅ | `resumen_tallos_dia.csv` | 106 | `1_8Na6wvwys0I0ruRdRBOshRAlaeP1AZJ` |
 | ✅ | `costos_productos.csv` | 58 | `1SR6YgzymEy3xqRLQmc7aPclUr323UUhh` — **vacío (bloqueo #6)** |
 | ✅ | `README.md` (diccionario de datos) | 3253 | `1RucCK0U3kZDYKiLjRp3y1ELWRmzuNIfo` |
@@ -94,14 +101,108 @@ local con sus `references/` completas. Se agregó `dcb-bouquets` (nueva).
 | Archivo | Bytes | Drive ID |
 |---|---|---|
 | `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` | 17 212 694 | `1NaGlBEY5j-e-rLx_7NvdIWWPWCiGxv0x` |
+| `PROGRAMACION_2026_v8_ACTUALIZADO` — **hoja nativa, 33 pestañas** | — | `1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4` |
 | `Stock Productos Agro DCB.xlsx` | 638 333 | `1lqk28pyr6Fd00U1nuPmwH9_hfVL8yZE4` |
 | `DCB_Calculadora_Bouquets.xlsx` | 76 823 | `14eKUYrRhmseyqrHXxDFt2Siq97E71yVN` |
 | `DCB_Registro_Tallos_v7_ORGANIZADO` | 30 986 | `14OP0GgkNmV1ty8Jz0hmASEts64ptI3y9L0i2FYsedHc` |
+
+**`PROGRAMACION_2026` no se puede bajar entero:** pesa 11,5 MB y Drive responde
+`File too large for export`. La lectura en texto sí funciona pero **trunca
+fuerte** — el 2026-08-13 devolvió 204 KB de 11,5 MB. Sirve para buscar algo
+puntual, **nunca para concluir que un dato no existe**: lo que no aparece pudo
+quedar en la parte truncada. Para trabajar con CAMPO completo hay que exportar
+esa pestaña sola a CSV desde Sheets.
+
+Dentro trae una **tabla de referencia agronómica** con `SEMANAS SIEMBRA A
+COSECHA` y `VENTANA DE COSECHA (SEMANAS)` para ~50 variedades, más germinación,
+distancia, densidad, pinch y tallos por planta. **No está espejada en el repo** y
+en algún caso contradice a `ciclos_variedad.csv` (ver el conflicto de Dahlia).
+Vale la pena espejarla, resolviendo los choques uno por uno contra la jerarquía
+de verdad — `VARIEDADES_BITACORA` manda para ciclo y ventana.
+
+**Hay dos `PROGRAMACION_2026_v8_ACTUALIZADO`:** el `.xlsx` subido y una **hoja
+nativa de Google Sheets** con otro ID. La nativa es la que tiene Apps Script
+encima y 33 pestañas — descubierta el 2026-08-12 al diagnosticar por qué un
+script no encontraba su hoja. **Verificar en cuál se está trabajando antes de
+editar nada**, porque los dos se llaman igual en Drive.
+
+Detectado también ese día: el proyecto de Apps Script de la hoja nativa
+contiene un `onEdit` que busca las pestañas `REGISTRO` y `LISTAS` — que no
+existen en ese libro, sino en `DCB_Registro_Tallos`. Es el handler de los
+desplegables en cascada de Diana, **pegado en el libro equivocado**, donde no
+puede funcionar. Ver `05-programacion/02-registro-de-tallos.md`.
 
 Los CSV de esta carpeta son el espejo en texto de estos Excel. **Verificar la
 versión del `PROGRAMACION_2026` antes de tomar los CSV como definitivos** — el
 export original se armó desde v7 y ya existe v8 con la homologación reparada
 (306/306 siembras cruzando).
+
+## Cómo se refresca el registro de tallos
+
+```bash
+python3 motor/importar_tallos.py ruta/al/DCB_Registro_Tallos.xlsx
+```
+
+**Bajar el libro como texto interpretado NO sirve: trunca sin avisar.** Medido
+el 2026-08-12 sobre la pestaña REGISTRO — la lectura en texto devolvió 251
+filas de 598 y se cortaba el 23/06 cuando la hoja llega al 31/07. La prueba
+estaba dentro del propio archivo: CONSOLIDADO reportaba 15 registros con última
+cosecha 03/07 para un lote cuyas filas ya no venían. Un truncamiento silencioso
+es peor que un error, porque el calendario se recalcula con menos cosecha y
+nadie se entera. Hay que descargar el **XLSX binario** y parsearlo.
+
+### La validación de rango no basta: hay que prohibir fechas futuras
+
+El refresco del **2026-08-13** trajo **64 filas fechadas del 6 al 12 de
+septiembre de 2026** — un mes en el futuro. Vanessa confirmó ese mismo día que
+son de **agosto**, con el mes mal tecleado. Con el 09 cambiado por 08 la corrida
+queda continua y los **dos únicos días sin cosecha son los dos sábados**:
+
+| Fecha | Día | Filas |
+|---|---|---|
+| 08-01 | **sábado** | — |
+| 08-02 a 08-07 | dom–vie | 8, 6, 13, 9, 14, 8 |
+| 08-08 | **sábado** | — |
+| 08-09 a 08-12 | dom–mié | 10, 10, 9, 13 |
+
+La lección importante: **la validación de rango 2025–2027 no atrapa esta clase
+de error**, porque `2026-09` cae dentro del rango. Cierra el dígito del año, no
+el del mes. La regla que sí lo cierra es prohibir fechas futuras, con fórmula
+personalizada en la validación de datos de la columna Fecha:
+
+```
+=Y(A3>=FECHA(2025;1;1); A3<=HOY())
+```
+
+`HOY()` se recalcula solo, así que no necesita mantenimiento, y habría
+rechazado las 64 filas **en el momento de capturarlas** — que es cuando Diana
+todavía recuerda qué día cosechó.
+
+`importar_tallos.py` también reporta ahora cualquier fecha posterior a hoy,
+aunque la importe: perder el dato es peor que tenerlo marcado.
+
+### Correcciones de fecha aplicadas en el import
+
+La hoja de Drive tiene fechas mal tecleadas. `importar_tallos.py` las corrige
+de forma explícita y las reporta en cada corrida — **nunca en silencio.** Las
+tres reglas las confirmó Vanessa el 2026-08-12:
+
+| Fecha en Drive | Corregida a | Filas | Por qué |
+|---|---|---|---|
+| `2056-07-06/07/08` | `2026-07-06/07/08` | 61 | Año mal tecleado; filas vecinas son de julio 2026 y los conteos son coherentes |
+| `2026-09-19` | `2026-06-19` | 2 | Fila suelta entre el 18 y el 19 de junio, mismo lote y cantidad que la cosecha del 18/06 |
+| `2025-06-17` | `2026-06-17` | 2 | Cae dentro de la corrida diaria de Ammobium en Inv 3A, que va del 08/06 al 26/06 de 2026 sin huecos |
+| `2026-09-06` a `2026-09-12` | `2026-08-06` a `2026-08-12` | 110 | Mes mal tecleado. **Solo se aplica si la fecha aún no ocurrió** — cuando septiembre llegue de verdad la regla deja de dispararse sola y los registros legítimos pasan intactos |
+
+Cada regla aparece 2 veces porque la fecha mala está también propagada a la
+columna `Última cosecha` de CONSOLIDADO (el 2056 afectaba 28 lotes).
+
+**El libro en Drive sigue teniendo los valores originales** — no hay
+herramienta de escritura sobre Sheets en este repositorio. Si se arreglan allá,
+estas reglas dejan de encontrar coincidencias y no hacen nada: el import es
+idempotente en cualquiera de los dos casos. El año 2025 **no** se generaliza a
+2026: es una regla de una sola fila, por si el libro trae historia legítima de
+2025 más adelante.
 
 ## Desorden en Drive que conviene arreglar
 

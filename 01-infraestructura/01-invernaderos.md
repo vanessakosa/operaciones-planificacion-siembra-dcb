@@ -50,6 +50,56 @@
 - **Oportunidad comercial:** convertirlo en vitrina fotográfica — ya lo solicitaron clientes
 - Zona alta y seca de Inv 2: destinada al ensayo de Limonium sinensis serie Diamond
 
+### Aquí se hacen los ensayos — y la razón es deliberada
+
+**Inv 2 NO es un bloque de pruebas: tiene camas productivas.** Lo que pasa es
+que **cuando hay que ensayar algo, se ensaya aquí**, y la razón la dio Vanessa
+el 2026-08-13:
+
+> Es el invernadero **más irregular de todos**. No se quiere comprometer el
+> espacio de los otros, que es mucho más parejo.
+
+Esa lógica es correcta y vale la pena hacerla explícita, porque es la misma
+que explica por qué Inv 4 es el mejor del cultivo: **la uniformidad es el
+recurso escaso.** Un ensayo consume espacio sin garantizar retorno; gastarlo en
+camas parejas es gastar lo más caro que tiene la finca. Se ensaya donde la
+varianza ya es alta.
+
+**La contrapartida, que hay que tener presente al leer resultados:** si un
+ensayo va mal en Inv 2, el resultado es **ambiguo entre la variedad y la cama**.
+No se puede separar "esta variedad no sirve" de "esta cama no regó parejo". El
+ensayo sirve para descartar con confianza lo que fracasa **rotundamente**, y
+para detectar promesas — pero un resultado mediocre aquí **no condena a la
+variedad**: pide repetirlo en una cama pareja antes de decidir.
+
+Por eso conviene anotar, para cada ensayo, **en qué cama exacta** de Inv 2 está
+— no solo "bloque 2". Sin eso, ni siquiera se puede volver a mirar si la cama
+era de las buenas o de las malas.
+
+En ensayo a agosto 2026, todos sin nombre homologado en la columna N:
+
+| Cultivo | Plantas | Estado |
+|---|---|---|
+| Bunny Tails (Colitas de conejo, *Lagurus ovatus*) | 1.170 | Cosechando desde sem 32. **Primera vez bajo invernadero** |
+| Dahlias | 696 + 100 | Cosechando desde sem 32. **Perenne con reset** — se sacan hijos, así que el conteo de plantas deriva |
+| Espárrago | sin registrar | Cosechando desde sem 33. **Perenne, primera siembra.** No tiene ni fila en `campo_siembras.csv` |
+| Echinops | 200 | — |
+| Craspedia | 338 | — |
+| Scabiosa Estrella | 870 | — |
+| Cynoglossum Blue | 597 | — |
+
+**Consecuencia operativa:** sin nombre homologado no entran al calendario de
+Erica (regla 5). Para un ensayo eso puede ser lo correcto — todavía no hay nada
+que prometerle a un cliente. Pero **ya están produciendo tallos vendibles**, así
+que la decisión de cuándo graduarlos a producción y homologarlos es explícita,
+no automática.
+
+**Qué medir aquí:** como son primeras siembras, el dato que hay que capturar no
+es el ciclo copiado de una bitácora sino **el observado**: semana de siembra,
+semana del primer corte, y tallos por semana hasta que la ventana cierre. Para
+los perennes, además, **área en m² en vez de número de plantas** — ver la nota
+de Dahlia en `07-datos/ciclos_variedad.csv`.
+
 ## Invernadero 3 — El principal (mayor área)
 
 ### Bloque 3A — 11 camas, 198 huecos × 8 líneas

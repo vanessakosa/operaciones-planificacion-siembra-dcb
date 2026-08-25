@@ -37,6 +37,7 @@ pueden espejar como texto.
 | 🔨 | `combinaciones_venta.csv` | — | derivado de la auditoría ficha-por-variedad. Registra afinidad de combinaciones para la estrategia de surtido (`13-optimizacion/03-...`, pendiente de escribir). Arranca con 1 fila (Boca de Dragón + Statice) |
 | 🔨 | `cierres_lote.csv` | — | derivado del barrido de los 202 COMENTARIOS de `campo_siembras.csv` (2026-08-13). 36 lotes con **motivo de cierre** y cita literal. Hallazgo: solo el 11 % cerró por agotamiento real |
 | 🔨 | `picos_cosecha.csv` | — | mismo barrido. 16 lotes con semana de inicio y de **pico** dichas en prosa |
+| 🔨 | `costos_follaje_comprado.csv` | — | dictado de Vanessa (2026-08-25). **Primer dato de costo real del repositorio.** 4 follajes comprados con proveedor, presentación y costo por tallo. No va en `costos_productos.csv`: esa hoja es de agroquímicos y mide costo por cc/g. Pendiente homologar `Eucalipto Baby` contra `Eucalyptus Parvifolia` y `Eucalipto` de las recetas |
 | 🔨 | `desajuste_demanda.csv` | — | mismo barrido. 13 registros de flor que **sobró o faltó**, incluidos 5 lotes de Zinnia en pico simultáneo la semana 28 |
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |

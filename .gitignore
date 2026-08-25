@@ -1,0 +1,4 @@
+# Cache de bytecode de Python — se regenera solo al importar el motor.
+# Estaba versionado y ensuciaba el diff en cada sesion que corriera cerebro.py.
+__pycache__/
+*.py[cod]

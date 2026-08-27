@@ -30,6 +30,11 @@ la mitad de la cama, y plumosa a 7,5 cm ahoga cuatro tallos por planta.**
 **plumosa:** `Shimmer` · y **todas las de Floret** — `Summer Sherbet` ·
 `Rose Gold` · `Spun Sugar` · `Raspberry Lemonade` · `Glowing Embers`
 
+> **En campo a la plumosa se le dice «plumas».** Vanessa lo confirmó el
+> 2026-08-13 al dictar la receta de Dream Land. Es vocabulario operativo, igual
+> que «Bunny Tails» para Colitas de conejo — conviene que el sistema lo
+> reconozca para que un dictado no se pierda.
+
 > **`Floret` es el proveedor de semilla, no un subtipo.** Pero todas las
 > celosias que DCB compra a Floret son plumosas, así que en la práctica el
 > prefijo funciona como atajo. Conviene no confundir las dos cosas: si algún día

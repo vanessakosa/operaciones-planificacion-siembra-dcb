@@ -57,7 +57,7 @@ qué manejo.** Las variables que entran en ese cruce:
 | 5 | Suelo: M.O., C.E., compactación, inóculo | Decide qué variedad tolera esa cama | `01-infraestructura/02-analisis-de-suelo.md` |
 | 6 | Histórico de plagas y hongos por variedad × bloque × semana de ciclo | Decide si esa combinación ya falló antes | `incidencia_fitosanitaria.csv` |
 | 7 | Clima de la temporada — semana del año, lluvia, sequía | Corre el ciclo y dispara el riesgo de hongo | `clima_semanal.csv` |
-| 8 | Histórico de tallos, normalizado por ventana | Mide productividad real sin el sesgo de ventana truncada | `registro_tallos.csv` → `cerebro.py rendimiento` |
+| 8 | Histórico de tallos, normalizado por ventana | Mide productividad real sin el sesgo de ventana truncada | `registro_tallos.csv` → `cerebro.py rendimiento` y `cerebro.py m2` |
 | 9 | Calidad del tallo: longitud y grado | Separa "produjo" de "produjo vendible" | `calidad_tallo.csv` |
 | 10 | Capacidad de camas libres en esa semana | Restricción dura del calendario | `capacidad_bloques.csv` |
 | 11 | Costo de semilla, insumos y mano de obra | Convierte todo lo anterior en margen | `costos_productos.csv` |
@@ -176,6 +176,7 @@ python3 motor/cerebro.py bouquet "Cosecha Grande"   # un producto en detalle
 python3 motor/cerebro.py valor                  # ingreso por tallo propio
 python3 motor/cerebro.py ciclos                 # ciclo y ventana por grupo
 python3 motor/cerebro.py rendimiento Campanula  # tallos/planta/día normalizado por ventana
+python3 motor/cerebro.py m2 [grupo]             # tallos/m² y tallos/m²/semana de cama
 python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallos
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
 

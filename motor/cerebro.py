@@ -26,6 +26,7 @@ Uso:
     python3 motor/cerebro.py bouquet "Cosecha Grande"
     python3 motor/cerebro.py ciclos
     python3 motor/cerebro.py rendimiento [grupo]
+    python3 motor/cerebro.py m2 [grupo]
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
 """
@@ -77,6 +78,26 @@ RANGO_ESTRUCTURA = {
     "TEXTURA":    (0.05, 0.20),
     "FOLLAJE":    (0.20, 0.40),
 }
+
+# Geometria de cama. La malla de siembra es de 0,15 m en las DOS direcciones
+# (Vanessa 2026-08-13: "cada hueco tiene cero quince en esa malla"), asi que:
+#
+#     largo de la cama = huecos x 0,15      ancho = lineas x 0,15
+#     sitios por m2    = 1 / 0,15^2 = 44,44
+#
+# Verificado contra el campo: Inv 4A son 112 huecos x 8 lineas = 896 sitios,
+# que es el numero que Vanessa escribio en el comentario de esa cama.
+#
+# De ahi sale la densidad real, que NO es la de la malla sino la de la
+# DISTANCIA DE SIEMBRA de cada cultivo:
+#
+#     plantas por m2 = 1 / (0,15 x distancia_de_siembra_en_metros)
+#
+# Una sola formula cubre los tres casos de la finca sin excepciones:
+#   15 cm  -> 1 planta por hueco        -> 44,44 pl/m2
+#    7,5 cm-> 2 plantas por hueco       -> 88,89 pl/m2
+#   30 cm  -> 1 planta cada dos huecos  -> 22,22 pl/m2
+MALLA_M = 0.15
 
 # Reglas de color DCB — proporcion sobre los tallos NO neutros.
 DOMINANTE_MIN = 0.50
@@ -143,6 +164,90 @@ def cargar_ciclos():
             "notas": fila["notas"].strip(),
         }
     return ciclos
+
+
+def cargar_subtipos():
+    """Cultivar -> subtipo agronomico, cuando el grupo es un paraguas.
+
+    Celosia es el caso: el REGISTRO escribe grupo "Celosia", pero cristata va
+    a 7,5 cm con 1 tallo/planta y plumosa a 15 cm con 4. Sin resolver el
+    subtipo, el area de la cama sale con el doble o la mitad del error.
+    Vive en CSV y no en el codigo porque es dato de campo, no una regla.
+    """
+    ruta = os.path.join(DATOS, "subtipos.csv")
+    if not os.path.exists(ruta):
+        return []
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        filas = list(csv.DictReader(fh))
+    return [f for f in filas
+            if (f.get("subtipo") or "").strip()
+            and f["subtipo"].strip() != "SIN_CONFIRMAR"]
+
+
+def parametros_de(grupo, variedad, ciclos, subtipos=()):
+    """Fila de ciclos_variedad.csv que le corresponde a un lote del REGISTRO.
+
+    Devuelve (fila, nivel). nivel dice de donde salio el match, para que
+    quien lea la tabla sepa cuanto creerle:
+
+      SUBTIPO  el cultivar esta en subtipos.csv (Shimmer -> Celosia plumosa)
+      EXACTO   el nombre del grupo de ciclos aparece en "grupo + variedad"
+      GRUPO    varias filas del grupo aplican y COINCIDEN en el parametro
+      -        ninguna, o varias que se contradicen -> SIN_DATO honesto
+
+    El nivel GRUPO es el que salva a Boca de Dragon: el registro escribe
+    "Monaco Orange", que no esta en ciclos_variedad, pero TODAS las filas de
+    boca de dragon dicen 7,5 cm — asi que el dato no depende del cultivar.
+    Si se contradijeran, no se elige una: se reporta SIN_DATO.
+    """
+    alias = alias_grupo(grupo)
+    clave = norm("%s %s" % (grupo, variedad))
+    claves = {clave} | {norm("%s %s" % (a, variedad)) for a in alias}
+
+    # 1. subtipo declarado para ese cultivar
+    v = norm(variedad)
+    for s in subtipos:
+        if not any(a in norm(s["grupo"]) or norm(s["grupo"]) in a for a in alias):
+            continue
+        cu = norm(s["cultivar"])
+        if cu and cu in v:
+            fila = ciclos.get(norm(s["subtipo"]))
+            if fila:
+                return fila, "SUBTIPO"
+
+    # 2. match exacto por nombre de grupo de ciclos_variedad
+    mejor, largo = None, 0
+    for k, fila in ciclos.items():
+        if not k:
+            continue
+        if any(k in c for c in claves) and len(k) > largo:
+            mejor, largo = fila, len(k)
+    if mejor:
+        return mejor, "EXACTO"
+
+    # 3. consenso entre todas las filas del grupo
+    candidatas = [f for k, f in ciclos.items()
+                  if k and any(a in k or k in a for a in alias)]
+    if candidatas:
+        return candidatas, "GRUPO"
+    return None, "-"
+
+
+def valor_parametro(res, nivel, campo):
+    """Extrae un parametro de lo que devolvio parametros_de().
+
+    En nivel GRUPO hay varias filas: solo se devuelve el valor si TODAS las
+    que lo tienen lleno coinciden. Un promedio entre 7,5 y 15 seria un numero
+    que no existe en ninguna cama.
+    """
+    if not res:
+        return None, "-"
+    if nivel != "GRUPO":
+        return res.get(campo), nivel
+    valores = {f.get(campo) for f in res if f.get(campo)}
+    if len(valores) == 1:
+        return valores.pop(), "GRUPO"
+    return None, "AMBIGUO"
 
 
 def es_perenne(grupo, ciclos=None):
@@ -234,6 +339,23 @@ def cargar_capacidad():
     return bloques
 
 
+class _CategoriaVenta(object):
+    """Que categorias de formulas_productos_bouquets.csv son producto de venta.
+
+    El archivo mezcla el catalogo comercial con un bloque de productos
+    fitosanitarios que tiene otro esquema. Se separan por categoria.
+    """
+
+    PREFIJOS = ("bouquet", "maxi bouquet", "centro de mesa", "paquete",
+                "yugo", "arreglo", "ramo")
+
+    def match(self, categoria):
+        return norm(categoria).startswith(self.PREFIJOS)
+
+
+CATEGORIA_VENTA = _CategoriaVenta()
+
+
 def cargar_recetas():
     """Parsea formulas_productos_bouquets.csv.
 
@@ -253,11 +375,22 @@ def cargar_recetas():
 
         if prod:
             categoria = (fila.get("Categoría") or "").strip()
-            # Una cabecera legitima de producto describe la composicion en la
-            # columna Ingrediente ("11 flores DCB + 4 follaje comprado").
-            # Las filas fitosanitarias traen ahi el fabricante o el i.a.
-            if "flores DCB" not in ingr:
-                descartadas.append({"fila": prod, "motivo": "esquema fitosanitario, no es un producto de venta"})
+            # Un producto de venta se reconoce por su CATEGORIA, no por como
+            # este redactada la cabecera.
+            #
+            # La version anterior exigia la frase "flores DCB" en la columna
+            # Ingrediente. Funcionaba hasta que se cargaron Dream Land y My
+            # Love con una cabecera descriptiva ("BASE DE TALLOS — ..."), y
+            # el motor los TIRO A LA BASURA etiquetados como fitosanitarios.
+            # El catalogo decia 30 productos y el motor veia 28, sin avisar.
+            #
+            # Es lista blanca a proposito: una categoria nueva se reporta como
+            # desconocida en vez de desaparecer en silencio.
+            if not CATEGORIA_VENTA.match(categoria):
+                descartadas.append({
+                    "fila": prod,
+                    "motivo": "categoria '%s' no es de venta" % (categoria or "(vacia)"),
+                })
                 actual = None
                 continue
             actual = {
@@ -723,15 +856,32 @@ def cmd_auditar():
     print("-" * 78)
 
     total_libre = total_dcb = 0.0
+    incoherentes = []
     for p in productos:
         a = analizar_producto(p, por_nombre, por_grupo)
         total_libre += a["tallos_color_libre"]
         total_dcb += a["tallos_dcb"]
         alertas = len(a["diagnostico"]) + sum(
             1 for e in a["estructura"] if e["estado"] in ("bajo", "alto"))
+        for d in a["diagnostico"]:
+            if "pero ningun ingrediente" in d:
+                incoherentes.append((p["producto"], d))
         print("%-38s %6.0f %6.0f%% %7.0f%% %s"
               % (p["producto"][:38], a["total_tallos"], 100 * a["pct_color_libre"],
                  100 * a["neutro_pct"], "!" * alertas))
+
+    # Esto salia solo al abrir el producto uno por uno, asi que en la tabla se
+    # veia como un "!" mas entre otros. Un producto que no contiene lo que su
+    # nombre promete es un problema de otra categoria: el cliente lo pide por
+    # el nombre. Va aparte y va primero.
+    if incoherentes:
+        print("\n" + "-" * 78)
+        print("EL NOMBRE NO CORRESPONDE AL CONTENIDO (%d)" % len(incoherentes))
+        for nombre, d in incoherentes:
+            print("  ! %-36s %s" % (nombre[:36], d))
+        print("  Revisar la receta en formulas_productos_bouquets.csv antes de")
+        print("  usarla para planificar: el motor va a sembrar lo que dice la")
+        print("  receta, no lo que dice el nombre.")
 
     print("\n" + "-" * 78)
     print("GOBERNANZA DE COLOR: %.0f%% de los tallos DCB del catalogo (%.0f de %.0f)"
@@ -1067,23 +1217,17 @@ def norm_bloque(texto):
     return t
 
 
-def cmd_rendimiento(grupo=None):
-    """Rendimiento real por variedad y bloque, NORMALIZADO por ventana.
+def construir_lotes(grupo=None):
+    """Cruza CAMPO (plantas trasplantadas) con REGISTRO (tallos cosechados).
 
-    Por que normaliza: comparar tallos/planta entre dos variedades cuyas
-    ventanas de cosecha llevan distinto tiempo transcurrido produce una
-    conclusion falsa. Es el mismo error que C-cierre-de-lote.md advierte para
-    los lotes sacrificados: un lote interrumpido parece de bajo rendimiento
-    cuando en realidad fue interrumpido.
+    Es el puente del que cuelgan 'rendimiento' y 'm2', y esta afuera de los
+    dos a proposito: cuando el cruce estaba duplicado, arreglar una grafia de
+    bloque en un comando dejaba el otro dando un numero distinto para el
+    mismo lote. Es exactamente lo que sigue pasando con 'matriz', que todavia
+    tiene su propio cruce y por eso reporta 20% donde este reporta 57%.
 
-    El caso que motivo este comando: Campanula Champion Lavender parecia
-    rendir 0.64 t/planta contra 0.92 de la blanca en la MISMA cama. Pero la
-    lavanda llevaba 18 dias de ventana y la blanca 27. Por planta por dia son
-    iguales.
+    Devuelve (lotes, plantas, corte_registro, sin_variedad, inicio_registro).
     """
-    import datetime as dt
-    import re
-
     siembras = _leer_csv("campo_siembras.csv")
     cosecha = _leer_csv("registro_tallos.csv")
 
@@ -1118,6 +1262,7 @@ def cmd_rendimiento(grupo=None):
     # dejo de producir en julio se marcaria ABIERTA solo porque es el ultimo
     # de su grupo, aunque el registro siga tres semanas mas.
     corte_registro = ""
+    inicio_registro = ""
     sin_variedad = 0
     for c in cosecha:
         g = (c.get("Grupo") or "").strip()
@@ -1134,6 +1279,7 @@ def cmd_rendimiento(grupo=None):
             v = "(sin variedad)"
             sin_variedad += 1
         corte_registro = max(corte_registro, f)
+        inicio_registro = min(inicio_registro or f, f)
         if grupo and norm(grupo) not in norm(g):
             continue
         # La clave usa el bloque NORMALIZADO: "Inv 4C" e "Inv4c" son la misma
@@ -1145,6 +1291,224 @@ def cmd_rendimiento(grupo=None):
         d = lotes[(g, v, clave_b)]
         d["tallos"] += t or 0
         d["fechas"].append(f)
+
+    return lotes, plantas, corte_registro, sin_variedad, inicio_registro
+
+
+def ventana_del_lote(fechas):
+    """(inicio, fin, dias, fechas_sospechosas) de un lote.
+
+    Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de un
+    lote de 2026). Se detectan como puntos alejados de la mediana y se
+    REPORTAN, no se corrigen en silencio.
+    """
+    import datetime as dt
+    fs = sorted(fechas)
+    ds = [dt.date.fromisoformat(x) for x in fs]
+    mediana = ds[len(ds) // 2]
+    sanas = [x for x in ds if abs((x - mediana).days) <= 60]
+    raras = [x.isoformat() for x in ds if abs((x - mediana).days) > 60]
+    a, z = min(sanas), max(sanas)
+    return a, z, (z - a).days + 1, raras
+
+
+def cmd_m2(grupo=None):
+    """Tallos por metro cuadrado — el denominador que pidio Vanessa.
+
+    Por que m2 y no tallos/planta:
+
+      * Un perenne no tiene denominador de plantas. Dahlia se propaga por
+        division, asi que el conteo deriva; el AREA no. Este comando es el
+        unico que puede medir a Dahlia y a Esparrago.
+      * El eje del proyecto es margen por m2 por SEMANA de cama ocupada.
+        Tallos/planta no se puede convertir a plata sin saber cuanta cama
+        costo. Tallos/m2/semana si.
+      * Dos variedades con el mismo tallos/planta rinden distinto si una va a
+        7,5 cm y la otra a 30. Statice da 8 tallos por planta pero ocupa
+        cuatro veces mas cama que un lisianthus.
+
+    El area NO se mide en campo: se deriva de plantas x distancia de siembra.
+    Por eso cada fila dice de donde salio la distancia (columna FTE).
+    """
+    lotes, plantas, corte, sin_variedad, arranque = construir_lotes(grupo)
+    if not lotes:
+        raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
+
+    ciclos = cargar_ciclos()
+    subtipos = cargar_subtipos()
+    cierres = cargar_cierres()
+
+    print("TALLOS POR METRO CUADRADO DE CAMA OCUPADA")
+    print("El registro de cosecha corta el %s." % corte)
+    print()
+    print("El area no se mide en campo, se DERIVA:")
+    print("    plantas/m2 = 1 / (0,15 x distancia de siembra)")
+    print("    area_m2    = plantas trasplantadas / plantas por m2")
+    print("La malla es de 0,15 m (Vanessa 2026-08-13). La columna FTE dice de")
+    print("donde salio la distancia de cada fila.")
+    print()
+    print("%-13s %-19s %-7s %7s %5s %6s %7s %7s %6s %9s" % (
+        "GRUPO", "VARIEDAD", "BLOQUE", "PLANTAS", "DIST", "M2",
+        "TALLOS", "T/M2", "SEM", "T/M2/SEM"))
+    print("-" * 96)
+
+    filas, sin_dist, notas = [], [], []
+    total_m2 = total_tallos = 0.0
+    for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
+        ini, _, dias, raras = ventana_del_lote(d["fechas"])
+        semanas = dias / 7.0
+        pl, sin_conteo = _plantas_del_lote(g, v, b, plantas)
+        res, nivel = parametros_de(g, v, ciclos, subtipos)
+        dist, fte = valor_parametro(res, nivel, "distancia_cm")
+        vmin, _ = valor_parametro(res, nivel, "ventana_min")
+
+        marcas = []
+        if d["fechas"] and max(d["fechas"]) == corte:
+            marcas.append("ABIERTA")
+        # El registro empieza el 2026-05-31, con lotes ya en plena cosecha. Un
+        # lote que arranca ahi NO empezo ahi: le falta el tramo anterior.
+        if arranque and ini.isoformat() <= arranque:
+            marcas.append("ARRANCA EN EL CORTE")
+        # Una ventana registrada mas corta que la ventana MINIMA documentada
+        # del grupo no es una ventana: es un pedazo de ventana. Y miente en
+        # las dos direcciones a la vez, que es lo peligroso — el total sale
+        # corto y el ritmo sale largo, porque el pedazo registrado suele ser
+        # el pico.
+        fragmento = bool(vmin) and semanas < float(vmin)
+        if fragmento:
+            marcas.append("FRAGMENTO %.1f de %g sem" % (semanas, float(vmin)))
+        if pl and sin_conteo:
+            marcas.append("DENOM INCOMPLETO")
+        cie = buscar_cierre(g, v, b, cierres)
+        motivo = (cie or {}).get("motivo", "")
+        if motivo in CIERRE_AJENO:
+            marcas.append("CIERRE AJENO: " + motivo)
+        elif motivo == CIERRE_TARDIO:
+            marcas.append("PASADO DE PUNTO")
+        if raras:
+            marcas.append("fechas raras")
+
+        if not (pl and dist):
+            falta = []
+            if not pl:
+                falta.append("plantas")
+            if not dist:
+                falta.append("distancia (%s)" % ("ambigua" if fte == "AMBIGUO" else "sin dato"))
+            sin_dist.append((g, v, b, d["tallos"], ", ".join(falta)))
+            continue
+
+        dens = 1.0 / (MALLA_M * (dist / 100.0))
+        area = pl / dens
+        tm2 = d["tallos"] / area
+        tm2s = tm2 / semanas if semanas else None
+        total_m2 += area
+        total_tallos += d["tallos"]
+
+        # El ritmo de un fragmento no se imprime. Es la unica columna de todo
+        # el motor que se puede leer al reves de la realidad, y ya paso: en la
+        # primera corrida Amaranto Emerald Tails salio primero del bloque 3A
+        # con 48 t/m2/sem — que eran 380 tallos en DOS DIAS de pico.
+        celda_ritmo = "        -" if fragmento else "%9.2f" % (tm2s or 0)
+        print("%-13s %-19s %-7s %7.0f %5s %6.1f %7.0f %7.1f %6.1f %s %s %s" % (
+            g[:13], v[:19], b[:7], pl, ("%g" % dist), area, d["tallos"],
+            tm2, semanas, celda_ritmo, fte[:3],
+            " ".join("[%s]" % m for m in marcas)))
+        filas.append((g, v, b, area, d["tallos"], tm2, tm2s, semanas, marcas,
+                      fte, fragmento))
+
+    if total_m2:
+        print("-" * 96)
+        print("%-13s %-19s %-7s %7s %5s %6.1f %7.0f %7.1f" % (
+            "TOTAL", "%d lotes medidos" % len(filas), "", "", "", total_m2,
+            total_tallos, total_tallos / total_m2))
+
+    print()
+    print("FTE = de donde salio la distancia de siembra:")
+    print("  EXA  ciclos_variedad.csv nombra ese cultivo exacto")
+    print("  SUB  el cultivar se resolvio por subtipos.csv (Shimmer -> plumosa)")
+    print("  GRU  el cultivar no esta, pero TODAS las filas del grupo coinciden")
+    print("       en la distancia — asi que el dato no depende del cultivar")
+
+    if sin_dist:
+        sin_dist.sort(key=lambda x: -x[3])
+        perdidos = sum(x[3] for x in sin_dist)
+        print()
+        print("%d lote(s) SIN TALLOS/M2 — %.0f tallos, el %.0f%% de lo cosechado"
+              % (len(sin_dist), perdidos, 100 * perdidos / (perdidos + total_tallos)))
+        print("Esto NO es un cero: es que falta el denominador. Que falta en cada uno:")
+        for g, v, b, t, falta in sin_dist[:20]:
+            print("  %-13s %-19s %-7s %6.0f tallos   falta %s" % (g[:13], v[:19], b[:7], t, falta))
+        if len(sin_dist) > 20:
+            print("  ... y %d mas" % (len(sin_dist) - 20))
+
+    # Comparacion dentro del mismo bloque: misma agua, misma luz, mismo suelo.
+    por_b = defaultdict(list)
+    excluidos = 0
+    for g, v, b, area, t, tm2, tm2s, sem, marcas, fte, frag in filas:
+        # Un fragmento no entra al ranking. Si entra, gana — porque su ritmo
+        # esta medido sobre el pico y no sobre la ventana.
+        if frag:
+            excluidos += 1
+            continue
+        if tm2s:
+            por_b[b].append((g, v, tm2, tm2s, sem, marcas))
+    hay = False
+    for b, l in sorted(por_b.items()):
+        if len(l) < 2:
+            continue
+        if not hay:
+            print("\nQUIEN RINDE MAS POR CAMA — dentro del mismo bloque")
+            print("(mismo riego, misma luz, mismo suelo: aqui la comparacion es limpia)")
+            if excluidos:
+                print("%d lote(s) quedaron fuera por ventana FRAGMENTO — su ritmo esta"
+                      % excluidos)
+                print("medido sobre un pedazo, casi siempre el pico, asi que ganarian")
+                print("el ranking sin haber rendido mas.")
+            hay = True
+        l.sort(key=lambda x: -x[3])
+        print("\n  Bloque %s — ordenado por tallos/m2/semana:" % b)
+        for g, v, tm2, tm2s, sem, marcas in l:
+            print("    %-13s %-19s %6.2f t/m2/sem   (%6.1f t/m2 en %.1f sem)%s"
+                  % (g[:13], v[:19], tm2s, tm2, sem,
+                     "  " + " ".join("[%s]" % m for m in marcas) if marcas else ""))
+
+    print()
+    print("COMO LEER ESTA TABLA")
+    print("  T/M2      cuanto produjo esa cama en toda su ventana. Es el numero")
+    print("            que se compara con el costo de ocupar la cama.")
+    print("  T/M2/SEM  el ritmo. Sirve para comparar un cultivo de ventana larga")
+    print("            con uno de ventana corta, que es lo que T/M2 no deja ver.")
+    print("  [ABIERTA] la ventana seguia produciendo al cierre del registro:")
+    print("            su T/M2 esta TRUNCADO, va a subir.")
+    print("  [DENOM INCOMPLETO] hay siembras sin conteo en esa cama, asi que el")
+    print("            area sale mas chica de lo real y el T/M2 sale INFLADO.")
+    print("  [CIERRE AJENO] la cama se cerro por espacio, demanda o sanidad —")
+    print("            no porque la planta dejara de producir. SUBESTIMA.")
+    print("  [FRAGMENTO] la ventana registrada es mas corta que la ventana MINIMA")
+    print("            documentada del grupo. Miente en las dos direcciones: el")
+    print("            T/M2 sale corto y el ritmo sale largo. Por eso el ritmo no")
+    print("            se imprime y el lote no entra al ranking.")
+    print("  [ARRANCA EN EL CORTE] su primera cosecha es del %s, el primer dia" % (arranque or "?"))
+    print("            del registro. Ese lote ya venia cosechando desde antes.")
+
+
+def cmd_rendimiento(grupo=None):
+    """Rendimiento real por variedad y bloque, NORMALIZADO por ventana.
+
+    Por que normaliza: comparar tallos/planta entre dos variedades cuyas
+    ventanas de cosecha llevan distinto tiempo transcurrido produce una
+    conclusion falsa. Es el mismo error que C-cierre-de-lote.md advierte para
+    los lotes sacrificados: un lote interrumpido parece de bajo rendimiento
+    cuando en realidad fue interrumpido.
+
+    El caso que motivo este comando: Campanula Champion Lavender parecia
+    rendir 0.64 t/planta contra 0.92 de la blanca en la MISMA cama. Pero la
+    lavanda llevaba 18 dias de ventana y la blanca 27. Por planta por dia son
+    iguales.
+    """
+    import datetime as dt
+
+    lotes, plantas, corte_registro, sin_variedad, _ = construir_lotes(grupo)
 
     if not lotes:
         raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
@@ -1345,6 +1709,89 @@ def cmd_valor():
     print("  cama consumen por peso de venta.")
     print("\n  NOTA: esto es ingreso por tallo, NO margen. El margen requiere")
     print("  costos_productos.csv, que hoy esta vacio (bloqueo #2 del roadmap).")
+
+    _escalera_de_valor(productos, por_nombre, por_grupo)
+
+
+def _escalera_de_valor(productos, por_nombre, por_grupo):
+    """Contrasta la escalera declarada con la que muestran los precios.
+
+    Vanessa la enuncio el 2026-08-13: "Los bouquets suelen tener de todas las
+    formas para tener armonia. Pero tambien hacemos paquetes mixtos, que
+    pueden tener solo lineales por ejemplo pero en mezcla de colores o
+    variedades. Esas son de menos valor que un bouquet, pero de mayor valor
+    que el paquete solido de una sola variedad y nos hace unicos."
+
+    Se mide en dos unidades a proposito, porque dan respuestas distintas:
+    por UNIDAD (lo que paga el cliente) y por TALLO (lo que cuesta la cama).
+    """
+    ESCALONES = [
+        ("1 PAQUETE SOLIDO", lambda c: c == "paquete"),
+        ("2 PAQUETE MIXTO", lambda c: c == "paquete mixto"),
+        ("3 BOUQUET / ARREGLO",
+         lambda c: c.startswith(("bouquet", "maxi bouquet", "centro de mesa"))),
+    ]
+    grupos = defaultdict(list)
+    for p in productos:
+        if not p["precio"]:
+            continue
+        a = analizar_producto(p, por_nombre, por_grupo)
+        if not a["total_tallos"]:
+            continue
+        c = norm(p["categoria"])
+        for etiqueta, prueba in ESCALONES:
+            if prueba(c):
+                grupos[etiqueta].append((p["producto"], a["precio"], a["total_tallos"]))
+                break
+
+    if len(grupos) < 2:
+        return
+
+    def mediana(xs):
+        xs = sorted(xs)
+        return xs[len(xs) // 2]
+
+    print("\n\nESCALERA DE VALOR — paquete solido < paquete mixto < bouquet")
+    print("%-22s %3s %12s %12s" % ("ESCALON", "N", "$/UNIDAD", "$/TALLO"))
+    print("-" * 54)
+    resumen = []
+    for etiqueta, _ in ESCALONES:
+        l = grupos.get(etiqueta)
+        if not l:
+            continue
+        mu = mediana([pr for _, pr, _ in l])
+        mt = mediana([pr / t for _, pr, t in l])
+        resumen.append((etiqueta, mu, mt))
+        print("%-22s %3d %12s %12s" % (
+            etiqueta, len(l),
+            "{:,.0f}".format(mu).replace(",", "."),
+            "{:,.0f}".format(mt).replace(",", ".")))
+    print("(medianas, no promedios: con 5 a 12 productos por escalon un solo")
+    print(" precio atipico mueve el promedio y no mueve la mediana)")
+
+    if len(resumen) == 3:
+        u = [r[1] for r in resumen]
+        t = [r[2] for r in resumen]
+        sube_u = u[0] < u[1] < u[2]
+        sube_t = t[0] < t[1] < t[2]
+        print()
+        print("  Por UNIDAD la escalera %s: %s" % (
+            "SE CUMPLE" if sube_u else "NO se cumple",
+            " -> ".join("{:,.0f}".format(x).replace(",", ".") for x in u)))
+        print("  Por TALLO  la escalera %s: %s" % (
+            "SE CUMPLE" if sube_t else "NO se cumple",
+            " -> ".join("{:,.0f}".format(x).replace(",", ".") for x in t)))
+        if sube_u and not sube_t:
+            print()
+            print("  Los dos juntos dicen una sola cosa: el escalon se esta cobrando")
+            print("  en TALLOS, no en precio. Un paquete mixto vale mas porque lleva")
+            print("  mas flor, no porque la mezcla se cobre. Si mezclar es lo que")
+            print("  hace unico al producto, hoy esa diferencia se esta regalando —")
+            print("  y ademas cuesta mas cama, porque son mas tallos propios.")
+    print("\n  OJO: esto es PRECIO DE LISTA, no lo que se vende. Cual combinacion")
+    print("  rota mejor no se puede responder todavia: no existe archivo de")
+    print("  ventas. Lo que hay son las combinaciones que Vanessa nombro, en")
+    print("  07-datos/combinaciones_venta.csv.")
 
 
 # --------------------------------------------------------------------------
@@ -1554,6 +2001,8 @@ def main(argv):
         cmd_ciclos()
     elif cmd == "rendimiento":
         cmd_rendimiento(argv[2] if len(argv) > 2 else None)
+    elif cmd == "m2":
+        cmd_m2(argv[2] if len(argv) > 2 else None)
     elif cmd == "bouquet":
         if len(argv) < 3:
             raise SystemExit("Uso: python3 motor/cerebro.py bouquet \"Cosecha Grande\"")

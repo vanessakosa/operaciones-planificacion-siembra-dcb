@@ -2,3 +2,4 @@
 # Estaba versionado y ensuciaba el diff en cada sesion que corriera cerebro.py.
 __pycache__/
 *.py[cod]
+*.pyc

@@ -126,7 +126,7 @@ mezcla sale gratis y cuesta más cama. Detalle en
 |---|---|---|---|
 | 1 | `costos_productos.csv` vacío | **Vanessa** | margen por m² por semana — el eje del proyecto |
 | 2 | Cultivar en Statice, Lisianthus, Zinnia, Strawflower | **Vanessa** | 23.155 tallos sin atribuir. Selección varietal |
-| 3 | **No existe archivo de ventas ni devoluciones** | **Vanessa** | 4 de las columnas que pidió para las fichas |
+| 3 | Ventas: existe en Drive (canal Online, 91 días reales) pero no en el repo; devoluciones no existen en ningún lado | **David sube ventas** | 4 de las columnas que pidió para las fichas. Método de cruce color×fecha ya documentado en `13-optimizacion/03-estrategia-de-surtido.md` |
 | 4 | `calidad_tallo.csv` vacío | **Vanessa** | "produjo" vs "produjo vendible" |
 | 5 | `Cantidad Trasplantada` en CAMPO | **Vanessa** | 30 % de la cosecha no tiene T/m² por esto |
 | 6 | `clima_semanal.csv` vacío · microclima cualitativo | **Vanessa** | separar efecto de temporada del de variedad |

@@ -82,11 +82,62 @@ Vanessa (rendimiento en sólido, con qué combina, con qué no). **3 no
 documentado: son los dos huecos que más urge cerrar antes de intentar
 un cruce completo de todos los colores.
 
+## El registro de ventas SÍ existe — corrección a este documento
+
+La primera versión de este documento decía que no existía archivo de ventas.
+Estaba mal. Existe, en Drive, carpeta **"Archivos de ventas e inventario"** —
+el archivo `Online` tiene el registro real, línea por línea, del canal
+online: **91 días de ventas, 7 de mayo al 27 de agosto de 2026**, con fecha,
+producto, precio, cantidad y canal de salida. Hay archivos hermanos por punto
+físico (Viva Palmas, Tesoro, Euro la Inferior) sin explorar todavía.
+
+**Confirmado por Vanessa (2026-08-27): David se encarga de subir ventas y
+devoluciones al repositorio.** No es tarea de esta revisión variedad-por-
+variedad armar ese pipeline — lo que sí vale la pena dejar es el método,
+probado con casos reales, para cuando ese archivo aterrice:
+
+**Método (dictado por Vanessa): cruzar la fecha en que se subió la venta con
+la variedad/color que estaba activo en cosecha ese mismo momento.** Ya
+probado arriba con Boca de Dragón semana 27 — funciona, con el límite de que
+una semana con varios colores en cosecha simultánea da un conjunto de
+candidatos, no un color único.
+
+### Caso real confirmado — el primero de este tipo en el repositorio
+
+Venta del **24/7/2026: "Dream Big blanco"**, $270.000 — mismo precio y mismo
+producto que "Dream Big" del catálogo (37 tallos, Boca de Dragón cant. 3–5).
+"Blanco" no es un producto aparte: es quien vendió anotando el color de Boca
+que realmente llevó ese ramo. Es la primera vez que el repositorio tiene un
+dato directo — no inferido — de qué color de Boca se usó en un bouquet
+específico. Si esta anotación de color se repite en más ventas del archivo
+`Online`, ahí hay una fuente de verdad mejor que el cruce por fecha.
+
+### Dos productos reales que faltaban en el catálogo — agregados
+
+Al revisar el registro de ventas aparecieron dos paquetes mixtos que se
+venden con regularidad y no tenían receta: **"Bocas de dragón y plumas"**
+(8 ventas registradas) y **"Bocas de dragón y statice"** (3 ventas). Vanessa
+confirmó la composición — 6 Boca de dragón + 5 Celosia plumosa, y 6 Boca de
+dragón + 5 Statice respectivamente — y quedaron agregadas a
+`formulas_productos_bouquets.csv` con el precio observado en las ventas
+($50.000 y $45.000).
+
+Un tercer nombre que aparecía, **"Event bocas de dragón 10 tallos"** (15
+ventas, la más frecuente de los tres), **no es un producto nuevo** — es
+"Bocas de dragón (paquete)" (el mismo de 10 tallos ya en catálogo) vendido
+con el 15% de descuento mayorista de eventos. El precio observado es
+consistente ($32.300 cada vez) pero **no cuadra con un 15% simple sobre los
+$50.000 de catálogo** — $32.300 implica una base de ~$38.000, no $50.000.
+Queda anotado como discrepancia sin resolver, no asumida: cuando llegue el
+archivo formal de ventas, homologar "Event..." a "Bocas de dragón (paquete)"
+con un indicador de canal/descuento, no como SKU aparte.
+
 ## Lo que falta para que este documento responda la pregunta completa
 
-1. **El archivo de ventas** (bloqueo ya conocido: producto · semana ·
-   vendidos · devueltos) — sin esto, "combina bien" y "se cosechó a tiempo"
-   siguen siendo proxies, no la respuesta real de si se vendió.
+1. **El archivo de ventas formal** (bloqueo ya conocido: producto · semana ·
+   vendidos · devueltos) — David lo sube. Mientras tanto, "combina bien" y
+   "se cosechó a tiempo" siguen siendo proxies, no la respuesta real de si
+   se vendió. Cuando llegue, aplicar el método de arriba.
 2. **Cultivar fijado en receta** — mientras las recetas no digan de qué
    color se armó cada bouquet, no hay forma de saber si el punto de venta
    mostró la mezcla que Vanessa decidió o la que resultó de lo que había esa

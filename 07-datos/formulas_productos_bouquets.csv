@@ -183,6 +183,11 @@ Dream Land,,Maxi bouquet,"MAXI — el invariante es el VOLUMEN y la paleta (rosa
 ,,,Statice rosado,3,DCB,"COLOR sin cultivar fijado",
 ,,,Girasol,1,DCB,"Cultivar no especificado. El unico en cosecha es Pro Cut White Lite",
 ,,,Strawflower,1,DCB,"Cultivar no especificado",
+My Love,,Bouquet,4 flores DCB + 0 follaje comprado,,,,
+,,,Snapdragon vino,3,DCB,"COLOR sin cultivar fijado. El vino documentado es Potomac Crimson (""es un vino y da buenos tallos"")",
+,,,Snapdragon Monaco Plumblossom,3,DCB,"Cultivar FIJADO. Blanco con toque vino en las flores",
+,,,Campanula Champion White,3-4,DCB,,
+,,,Amaranto vino,1,DCB,"SIN CONFIRMAR cual: Velvet Curtains o Love Lies Bleeding. Ya estaba marcado en combinaciones_venta.csv",
 Cantus,Boscalid 50%,Fungicida SDHI síntesis,BASF,gr,20g/bomba 25L · 1-1.2kg/ha,"Botrytis + Sclerotinia. Máx 2 aplicaciones seguidas, máx 4/ciclo. No mezclar alcalinos. Excepción orgánica justificada.",Sem24
 Infinito,Fluopicolide + Propamocarb,Fungicida oomiceto síntesis,Bayer,cc,50cc/bomba 25L · 2cc/L,Mildeo velloso + Phytophthora. Sistémico + contacto. Mejor perfil ambiental entre los 3 recomendados para MO alta en suelo.,Sem24
 Xivana Smart,Fluopicolide + Fluoxapiprolin,Fungicida oomiceto síntesis,Verificar,cc,Ver etiqueta,Mildeo velloso. Comparte Fluopicolide con Infinito — NO rotar entre sí. Rotar con Segovis.,Sem24

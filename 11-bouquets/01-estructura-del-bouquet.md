@@ -141,3 +141,59 @@ Tres consecuencias que hay que tener presentes:
   de quien arma el ramo.
 - **Marcar cuáles productos son de volumen** y cuáles de lista fija. Hoy el
   motor los trata a todos igual.
+
+### 4 · Producto definido por BASE DE TALLOS — el color se arma con lo que haya
+
+> **My Love.** Vanessa, 2026-08-13: *"puede variar, otra versión del My Love
+> puede ser con campánulas rosadas y bocas crimson y blancas o algo así… **es la
+> base de tallos**."*
+
+Aquí lo invariante es **la estructura**: cuántos tallos de cada rol. El color y
+el cultivar se arman con lo que haya en cosecha.
+
+| Invariante (la base) | Varía |
+|---|---|
+| 6 bocas, en **dos** cultivares distintos | cuáles dos, y de qué color |
+| 3–4 campánulas | blancas o rosadas |
+| 1 amaranto | cuál vinotinto |
+| 10–11 tallos | la paleta resultante |
+
+**Es el caso 3 llevado un paso más allá.** En Dream Land el invariante es
+volumen + paleta; aquí es la base de tallos, y hasta la paleta cambia.
+
+Que lleve **dos cultivares de boca y no seis tallos del mismo** no es casual: es
+lo que le da profundidad al ramo dentro de un solo rol.
+
+### ⚠️ Lo que esto le hace al auditor de estructura
+
+`cerebro.py bouquet "My Love"` reporta:
+
+```
+FOCAL      0 %   objetivo 10-30 %
+LINEA     64 %   objetivo 15-30 %
+RELLENO    0 %   objetivo 20-45 %
+TEXTURA    0 %   objetivo 5-20 %
+FOLLAJE    0 %   objetivo 20-40 %
+```
+
+Boca de Dragón, Campánula y Amaranto son **los tres LINEA** en
+`paleta_color.csv`. Así que el producto es 64 % línea y no tiene ningún otro rol.
+
+**Hay dos lecturas posibles y la diferencia importa:**
+
+1. **My Love no es un bouquet sino un paquete mixto.** Es comparable a `Paquete
+   campanulas y bocas` (10 tallos, 2 variedades, categoría *Paquete mixto*): un
+   producto pequeño de composición simple, donde la regla de seis roles no
+   aplica. En ese caso hay que cambiarle la categoría, no la receta.
+2. **Sí es un bouquet y le falta estructura.** Entonces el auditor está
+   señalando algo real: sin focal el ojo no tiene dónde detenerse, y sin follaje
+   no hay marco.
+
+**Esto lo decide Vanessa**, no el motor. Pero vale la pena que quede la
+pregunta: la regla de los seis roles la escribió ella, y su propio producto no
+la cumple.
+
+> **Nota de método.** Que el auditor haya encontrado esto es justamente para lo
+> que existe. No significa que el producto esté mal — significa que la
+> herramienta está viva y que conviene revisar a qué productos se les debe
+> aplicar la regla completa y a cuáles no.

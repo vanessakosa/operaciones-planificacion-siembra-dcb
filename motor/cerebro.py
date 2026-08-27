@@ -27,6 +27,7 @@ Uso:
     python3 motor/cerebro.py ciclos
     python3 motor/cerebro.py rendimiento [grupo]
     python3 motor/cerebro.py m2 [grupo]
+    python3 motor/cerebro.py prorratear [grupo]
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
 """
@@ -1150,7 +1151,57 @@ def bloques_de(texto):
     return salida
 
 
-def _plantas_del_lote(grupo, variedad, bloque, plantas):
+def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos):
+    """Ventana de cosecha ESTIMADA de UNA siembra puntual.
+
+    Existe para poder responder la pregunta de Vanessa: "¿siempre cruzas con
+    la ventana de siembra?" — con esto, cuando el mismo cultivar se sembro dos
+    veces en el mismo bloque, se puede saber cual de las dos siembras estaba
+    activa en la fecha de un corte, en vez de sumarlas a ciegas.
+
+    Se construye SOLO con datos ya confirmados en ciclos_variedad.csv —
+    semanas de siembra a campo + ventana de cosecha, contadas desde la fecha
+    real de siembra. Nunca se inventa un numero que no este ahi:
+
+      * si la siembra no tiene fecha registrada, no hay ventana -> (None, None)
+      * si el ciclo no tiene NINGUN dato de semanas a campo, tampoco -> (None, None)
+      * si falta la ventana de cosecha (duracion) pero SI hay semana de
+        arranque, la ventana queda ABIERTA hacia adelante (fin=None) — sigue
+        produciendo indefinidamente en vez de cerrarse con un numero inventado
+    """
+    if not fecha_siembra:
+        return None, None
+    res, nivel = parametros_de(grupo, var_texto, ciclos, subtipos or ())
+    ini_sem, _ = valor_parametro(res, nivel, "sem_a_campo_min")
+    fin_sem, _ = valor_parametro(res, nivel, "sem_a_campo_max")
+    vmin, _ = valor_parametro(res, nivel, "ventana_min")
+    vmax, _ = valor_parametro(res, nivel, "ventana_max")
+    ini_sem = ini_sem or fin_sem
+    fin_sem = fin_sem or ini_sem
+    if not ini_sem:
+        return None, None
+    ini = fecha_siembra + datetime.timedelta(weeks=float(ini_sem))
+    dur = vmax or vmin
+    fin = (fecha_siembra + datetime.timedelta(weeks=float(fin_sem) + float(dur))) if dur else None
+    return ini, fin
+
+
+def _solapa(ini, fin, fecha_min, fecha_max):
+    """True si el corte [fecha_min, fecha_max] cae dentro de [ini, fin].
+
+    fin=None es una ventana ABIERTA hacia adelante (ver _ventana_estimada):
+    sigue produciendo indefinidamente porque no hay dato para cerrarla, asi
+    que solapa con cualquier corte posterior a ini.
+    """
+    if fecha_max < ini:
+        return False
+    if fin is not None and fecha_min > fin:
+        return False
+    return True
+
+
+def _plantas_del_lote(grupo, variedad, bloque, plantas,
+                       fecha_min=None, fecha_max=None, ciclos=None, subtipos=None):
     """Cuantas plantas se trasplantaron en el lote que produjo estos tallos.
 
     Cruza REGISTRO (grupo + variedad + bloque) con CAMPO (Variedad + Nombre
@@ -1165,26 +1216,60 @@ def _plantas_del_lote(grupo, variedad, bloque, plantas):
     "Mix" y las variedades vacias NO identifican un cultivar, asi que para
     ellas basta grupo + bloque. Es deliberado: devolver el total del bloque es
     correcto cuando el corte fue efectivamente mezclado.
+
+    UNA SOLA siembra coincidiendo no tiene ambiguedad. Pero cuando el MISMO
+    cultivar (o, en un corte "Mix", cualquier cultivar del bloque) se sembro
+    mas de una vez, sumar sus plantas a ciegas es un error real y ya
+    documentado: Snapdragon Potomac Appleblossom se sembro en 3B el
+    2025-11-20 (2.880 plantas) y otra vez sin fecha (3.014 plantas) — antes
+    esta funcion sumaba 5.894 sin importar cual de las dos produjo el corte.
+
+    Con fecha_min/fecha_max/ciclos SI se puede resolver, pero no siempre:
+    hace falta que CADA siembra candidata tenga fecha de siembra propia y un
+    ciclo con el que estimar su ventana. Si falta cualquiera de esas dos
+    cosas para alguna candidata, o si dos candidatas solapan la misma fecha,
+    queda AMBIGUO — se sigue sumando (para no perder tallos) pero marcado,
+    nunca en silencio.
+
+    Devuelve (plantas, siembras_sin_conteo, nivel_multi):
+      nivel_multi es None si hubo 0 o 1 siembra candidata (sin ambiguedad),
+      "VENTANA" si hubo varias y se aislo una sola por fecha, o
+      "AMBIGUO(n)" si hubo varias y no se pudieron separar.
     """
     alias = alias_grupo(grupo)
     v = norm(variedad)
     generica = v in ("", "mix", "sin variedad")
-    total = 0.0
-    faltan = 0
-    for (hom, var, blo, tiene), n in plantas.items():
+    candidatos = []
+    for (hom, var, blo), entradas in plantas.items():
         if blo not in bloques_de(bloque):
             continue
         if not any(a in var for a in alias):
             continue
         if not generica and not (v in hom or (hom and hom in v) or v in var):
             continue
-        if tiene:
-            total += n
-        else:
-            faltan += 1
-    if not total:
-        return None, 0
-    return total, faltan
+        for e in entradas:
+            candidatos.append({"n": e["n"], "tiene": e["tiene"], "fecha": e["fecha"],
+                               "hom": hom, "var": var})
+
+    con_conteo = [c for c in candidatos if c["tiene"]]
+    faltan = sum(1 for c in candidatos if not c["tiene"])
+    if not con_conteo:
+        return None, faltan, None
+    if len(con_conteo) == 1:
+        return con_conteo[0]["n"], faltan, None
+
+    # Mas de una siembra coincide. Intentar aislar la que estaba activa.
+    if fecha_min and fecha_max and ciclos is not None:
+        for c in con_conteo:
+            c["ini"], c["fin"] = _ventana_estimada(grupo, c["var"], c["fecha"], ciclos, subtipos)
+        con_ventana = [c for c in con_conteo if c["ini"]]
+        if len(con_ventana) == len(con_conteo):
+            solapan = [c for c in con_ventana if _solapa(c["ini"], c["fin"], fecha_min, fecha_max)]
+            if len(solapan) == 1:
+                return solapan[0]["n"], faltan, "VENTANA"
+
+    total = sum(c["n"] for c in con_conteo)
+    return total, faltan, "AMBIGUO(%d siembras)" % len(con_conteo)
 
 
 def norm_bloque(texto):
@@ -1236,11 +1321,25 @@ def construir_lotes(grupo=None):
     # Orange" u "Opus Fresh", que no dicen a que grupo pertenecen. Sin eso el
     # cruce exigia que el grupo apareciera en el homologado y fallaba en el
     # 90% de los lotes.
-    plantas = defaultdict(float)
+    # Cada siembra se guarda como una entrada INDIVIDUAL, no sumada de entrada,
+    # y con su propia fecha. Antes se sumaba aqui mismo -- plantas[(hom, var,
+    # blo, True)] += n -- y esa suma ya no se podia deshacer mas adelante: dos
+    # siembras del mismo cultivar en el mismo bloque, en fechas distintas,
+    # quedaban indistinguibles para siempre. Es un caso real y no raro:
+    # Snapdragon Potomac Appleblossom se sembro en 3B el 2025-11-20 (2.880
+    # plantas) y otra vez sin fecha (3.014 plantas) -- sumadas dan las 5.894
+    # plantas que hoy reclama el corte "Mix" de esa cama, sin saber cual de
+    # las dos produjo el tallo. _plantas_del_lote() es quien ahora decide,
+    # lote por lote, si puede separarlas por fecha o si hay que dejarlo
+    # marcado como ambiguo.
+    plantas = defaultdict(list)
     for s in siembras:
         hom = norm(s.get("Nombre Homologados") or "")
         var = norm(s.get("Variedad") or "")
         n = num((s.get("Cantidad Trasplantada") or "").strip())
+        fecha_txt = (s.get("Fecha siembra campo") or "").strip()
+        fecha_siembra = (datetime.date.fromisoformat(fecha_txt)
+                         if re.match(r"^\d{4}-\d{2}-\d{2}$", fecha_txt) else None)
         if not (hom or var):
             continue
         # Una siembra SIN cantidad trasplantada se registra igual, marcada.
@@ -1249,10 +1348,10 @@ def construir_lotes(grupo=None):
         # tiene conteo, asi que el resultado salia 4 veces mas alto.
         if not n:
             for blo in bloques_de(s.get("Bloque sembrado") or ""):
-                plantas[(hom, var, blo, False)] += 0
+                plantas[(hom, var, blo)].append({"n": 0.0, "tiene": False, "fecha": fecha_siembra})
             continue
         for blo in bloques_de(s.get("Bloque sembrado") or ""):
-            plantas[(hom, var, blo, True)] += n
+            plantas[(hom, var, blo)].append({"n": n, "tiene": True, "fecha": fecha_siembra})
 
     # cosecha por (grupo, variedad, bloque)
     lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": []})
@@ -1355,9 +1454,9 @@ def cmd_m2(grupo=None):
     filas, sin_dist, notas = [], [], []
     total_m2 = total_tallos = 0.0
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
-        ini, _, dias, raras = ventana_del_lote(d["fechas"])
+        ini, fin, dias, raras = ventana_del_lote(d["fechas"])
         semanas = dias / 7.0
-        pl, sin_conteo = _plantas_del_lote(g, v, b, plantas)
+        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos)
         res, nivel = parametros_de(g, v, ciclos, subtipos)
         dist, fte = valor_parametro(res, nivel, "distancia_cm")
         vmin, _ = valor_parametro(res, nivel, "ventana_min")
@@ -1379,6 +1478,10 @@ def cmd_m2(grupo=None):
             marcas.append("FRAGMENTO %.1f de %g sem" % (semanas, float(vmin)))
         if pl and sin_conteo:
             marcas.append("DENOM INCOMPLETO")
+        if nivel_multi == "VENTANA":
+            marcas.append("multi-siembra: resuelta por fecha")
+        elif nivel_multi:
+            marcas.append(nivel_multi)
         cie = buscar_cierre(g, v, b, cierres)
         motivo = (cie or {}).get("motivo", "")
         if motivo in CIERRE_AJENO:
@@ -1529,10 +1632,12 @@ def cmd_rendimiento(grupo=None):
 
     filas, sospechosas = [], []
     ciclos_perenne = cargar_ciclos()
+    subtipos = cargar_subtipos()
     cierres = cargar_cierres()
     hubo_perenne = False
     cerrados_ajenos, cerrados_tarde = [], []
     denom_incompleto = 0
+    ambiguos = 0
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
         fs = sorted(d["fechas"])
         # Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de
@@ -1549,7 +1654,7 @@ def cmd_rendimiento(grupo=None):
         # El homologado es "<Grupo> <Color>" (ej. "Campanula Lavender") y la
         # variedad del registro es "<Serie> <Color>" (ej. "Champion Lavender").
         # El puente es el color, que es la ultima palabra de ambos.
-        pl, sin_conteo = _plantas_del_lote(g, v, b, plantas)
+        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, a, z, ciclos_perenne, subtipos)
         # Un perenne NO se normaliza por planta: se propaga por division y el
         # numero de plantas deriva. Mostrar "?" ahi confundiria "no se" con
         # "no aplica", que es justo el error que hace sacar conclusiones falsas.
@@ -1571,6 +1676,11 @@ def cmd_rendimiento(grupo=None):
             marca = ("DENOMINADOR INCOMPLETO: %d siembra(s) sin conteo %s"
                      % (sin_conteo, marca)).strip()
             denom_incompleto += 1
+        if nivel_multi == "VENTANA":
+            marca = ("multi-siembra: resuelta por fecha " + marca).strip()
+        elif nivel_multi:
+            marca = ("%s %s" % (nivel_multi, marca)).strip()
+            ambiguos += 1
         cie = buscar_cierre(g, v, b, cierres)
         motivo = (cie or {}).get("motivo", "")
         if motivo in CIERRE_AJENO:
@@ -1594,6 +1704,17 @@ def cmd_rendimiento(grupo=None):
         print("cantidad trasplantada, asi que la cosecha se divide entre menos plantas")
         print("de las que hubo. Ese tallos/planta es un TECHO, no una medicion — y")
         print("este error INFLA, al reves que la ventana truncada.")
+
+    if ambiguos:
+        print()
+        print("%d lote(s) MULTI-SIEMBRA: el mismo cultivar (o, en un corte Mix," % ambiguos)
+        print("cualquier cultivar del bloque) se sembro mas de una vez en esa cama.")
+        print("Cuando las dos siembras tienen fecha y ciclo conocido, esta funcion")
+        print("aisla cual estaba activa en la fecha del corte (marca 'resuelta por")
+        print("fecha'). Cuando no puede — falta una fecha, o las dos ventanas")
+        print("estimadas se solapan — queda AMBIGUO: se sigue sumando para no perder")
+        print("tallos, pero el numero de plantas puede estar mezclando dos siembras")
+        print("que no produjeron al mismo tiempo.")
 
     if cerrados_ajenos:
         print()
@@ -1661,6 +1782,204 @@ def cmd_rendimiento(grupo=None):
         print("(probable error de ano en el registro — corregir en la fuente)")
         for g, v, b, raras in sospechosas:
             print("  %s / %s / %s: %s" % (g, v, b, ", ".join(raras)))
+
+
+def tasas_limpias():
+    """Tasa de corte (tallos/planta/dia) medida SOLO en lotes limpios.
+
+    "Limpio" quiere decir: cultivar identificado (no Mix), denominador de
+    plantas completo, sin multi-siembra ambigua, ventana igual o mayor a la
+    minima documentada del grupo (no FRAGMENTO), y sin cierre ajeno. Son las
+    mismas condiciones que 'm2' usa para su ranking "sin ninguna marca".
+
+    Es la base del prorrateo de "Mix": Vanessa pidio prorratear por tasa de
+    corte conocida, no por cantidad de plantas a secas — dos cultivares con
+    la misma cantidad de plantas activas no cortan igual.
+
+    Devuelve (tasas_cultivar, tasas_grupo):
+      tasas_cultivar: {(grupo_norm, cultivar_norm): tallos/planta/dia}
+      tasas_grupo:    {grupo_norm: tallos/planta/dia} — promedio de TODO el
+                      grupo, para cuando el cultivar activo no tiene lotes
+                      limpios propios con los que medirse.
+    """
+    lotes, plantas, _, _, _ = construir_lotes()
+    ciclos = cargar_ciclos()
+    subtipos = cargar_subtipos()
+    cierres = cargar_cierres()
+
+    num_c, den_c = defaultdict(float), defaultdict(float)
+    num_g, den_g = defaultdict(float), defaultdict(float)
+    for (g, v, b), d in lotes.items():
+        vn = norm(v)
+        if vn in ("", "mix", "sin variedad") or es_perenne(g, ciclos):
+            continue
+        ini, fin, dias, raras = ventana_del_lote(d["fechas"])
+        if raras:
+            continue
+        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos)
+        if not pl or sin_conteo or (nivel_multi and nivel_multi != "VENTANA"):
+            continue
+        res, nivel = parametros_de(g, v, ciclos, subtipos)
+        vmin, _ = valor_parametro(res, nivel, "ventana_min")
+        if vmin and (dias / 7.0) < float(vmin):
+            continue
+        cie = buscar_cierre(g, v, b, cierres)
+        if (cie or {}).get("motivo", "") in CIERRE_AJENO:
+            continue
+        num_c[(norm(g), vn)] += d["tallos"]
+        den_c[(norm(g), vn)] += pl * dias
+        num_g[norm(g)] += d["tallos"]
+        den_g[norm(g)] += pl * dias
+
+    tasas_c = {k: num_c[k] / den_c[k] for k in num_c if den_c[k]}
+    tasas_g = {k: num_g[k] / den_g[k] for k in num_g if den_g[k]}
+    return tasas_c, tasas_g
+
+
+def siembras_activas(grupo, bloque_clave, fecha, plantas, ciclos, subtipos):
+    """Cultivares con ventana de cosecha ESTIMADA activa en esa fecha y bloque.
+
+    bloque_clave puede nombrar mas de una cama ("3a+3b+3c" — la clave que usa
+    un lote de REGISTRO cuando el corte se hizo sobre varias camas a la vez).
+
+    Un cultivar sin fecha de siembra, o cuyo ciclo no tiene ningun dato de
+    semanas a campo, NO ENTRA a la lista — no se puede saber si estaba activo,
+    y afirmar que si seria inventar el dato. Devuelve {cultivar: plantas}.
+    """
+    beds = set(bloque_clave.split("+"))
+    alias = alias_grupo(grupo)
+    activos = defaultdict(float)
+    for (hom, var, blo), entradas in plantas.items():
+        if blo not in beds or not any(a in var for a in alias):
+            continue
+        for e in entradas:
+            if not e["tiene"]:
+                continue
+            ini, fin = _ventana_estimada(grupo, var, e["fecha"], ciclos, subtipos)
+            if not ini or not (ini <= fecha and (fin is None or fecha <= fin)):
+                continue
+            activos[hom or var] += e["n"]
+    return dict(activos)
+
+
+def cmd_prorratear(grupo=None):
+    """Prorratea los cortes 'Mix' entre los cultivares activos esa fecha.
+
+    Vanessa 2026-08-13: "prorratea como el 2" — por tasa de corte conocida
+    (tallos/planta/dia medida en lotes limpios), no por partes iguales ni por
+    cantidad de plantas a secas, porque dos cultivares con las mismas plantas
+    activas no cortan igual.
+
+    Es una ESTIMACION, nunca un dato de cosecha real — regla 1 del CLAUDE.md.
+    No se reescribe registro_tallos.csv: el resultado se guarda aparte en
+    07-datos/mix_prorrateado.csv, marcado como derivado, para que nadie lo
+    confunda con un corte que alguien realmente conto en campo.
+
+    Un corte "Mix" se prorratea SOLO cuando:
+      1. esta en UNA sola cama (un corte repartido en varias camas a la vez
+         no se separa aqui — se cuenta y se reporta aparte)
+      2. al menos un cultivar de esa cama tiene ventana estimable activa esa
+         fecha (fecha de siembra + ciclo conocido)
+      3. ese cultivar (o su grupo, de respaldo) tiene una tasa de corte limpia
+         medida en otra parte del cultivo
+
+    Si falta cualquiera de las tres, el corte queda SIN PRORRATEAR y se dice
+    por que — nunca se reparte a ciegas.
+    """
+    lotes, plantas, _, _, _ = construir_lotes()
+    ciclos = cargar_ciclos()
+    subtipos = cargar_subtipos()
+    tasas_c, tasas_g = tasas_limpias()
+
+    cosecha = _leer_csv("registro_tallos.csv")
+    mix_por_dia = defaultdict(float)
+    multi_cama = 0
+    for c in cosecha:
+        g = (c.get("Grupo") or "").strip()
+        v = (c.get("Variedad / Serie") or "").strip()
+        b = (c.get("Bloque") or "").strip()
+        f = (c.get("Fecha") or "").strip()
+        if not (g and b) or not re.match(r"^\d{4}-\d{2}-\d{2}$", f):
+            continue
+        if norm(v) not in ("", "mix", "sin variedad"):
+            continue
+        if grupo and norm(grupo) not in norm(g):
+            continue
+        camas = bloques_de(b)
+        if len(camas) != 1:
+            multi_cama += 1
+            continue
+        t = num(c.get("Tallos frescos") or "") or 0
+        if t:
+            mix_por_dia[(g, next(iter(camas)), f)] += t
+
+    resultados, sin_prorratear = [], []
+    for (g, blo, f), tallos_mix in mix_por_dia.items():
+        fecha = datetime.date.fromisoformat(f)
+        por_cultivar = siembras_activas(g, blo, fecha, plantas, ciclos, subtipos)
+        if not por_cultivar:
+            sin_prorratear.append((g, blo, f, tallos_mix, "ninguna siembra con ventana activa esa fecha"))
+            continue
+        pesos = {}
+        for cultivar, n in por_cultivar.items():
+            tasa, fte = tasas_c.get((norm(g), cultivar)), "propia"
+            if tasa is None:
+                tasa, fte = tasas_g.get(norm(g)), "de grupo"
+            if tasa:
+                pesos[cultivar] = (n * tasa, tasa, fte)
+        total_peso = sum(p for p, _, _ in pesos.values())
+        if not total_peso:
+            sin_prorratear.append((g, blo, f, tallos_mix, "sin tasa de corte conocida para ningun cultivar activo"))
+            continue
+        for cultivar, (peso, tasa, fte) in pesos.items():
+            resultados.append({
+                "fecha": f, "grupo": g, "bloque": blo,
+                "tallos_mix_originales": "%.0f" % tallos_mix,
+                "cultivar_estimado": cultivar,
+                "plantas_activas": "%.0f" % por_cultivar[cultivar],
+                "tasa_usada": "%.5f" % tasa,
+                "fuente_tasa": fte,
+                "pct_asignado": "%.4f" % (peso / total_peso),
+                "tallos_estimados": "%.1f" % (tallos_mix * peso / total_peso),
+            })
+
+    ruta = os.path.join(DATOS, "mix_prorrateado.csv")
+    campos = ["fecha", "grupo", "bloque", "tallos_mix_originales", "cultivar_estimado",
+              "plantas_activas", "tasa_usada", "fuente_tasa", "pct_asignado", "tallos_estimados"]
+    with open(ruta, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=campos)
+        w.writeheader()
+        w.writerows(sorted(resultados, key=lambda r: (r["grupo"], r["fecha"])))
+
+    total_mix = sum(mix_por_dia.values())
+    total_prorrateado = sum(float(r["tallos_estimados"]) for r in resultados)
+    print("PRORRATEO DE CORTES 'MIX' — POR TASA DE CORTE CONOCIDA")
+    print("ESTIMACION, no dato de cosecha real. Guardado en 07-datos/mix_prorrateado.csv")
+    print()
+    print("Tallos 'Mix' totales%s: %.0f" % (" de %s" % grupo if grupo else "", total_mix))
+    print("Prorrateados          : %.0f  (%.0f%%)" % (
+        total_prorrateado, 100 * total_prorrateado / total_mix if total_mix else 0))
+    print("Sin prorratear         : %.0f  (%.0f%%)" % (
+        total_mix - total_prorrateado, 100 * (1 - total_prorrateado / total_mix) if total_mix else 0))
+    if multi_cama:
+        print("Cortes 'Mix' en MAS DE UNA CAMA a la vez (no se reparten aqui): %d filas"
+              % multi_cama)
+
+    if resultados:
+        por_gc = defaultdict(float)
+        for r in resultados:
+            por_gc[(r["grupo"], r["cultivar_estimado"])] += float(r["tallos_estimados"])
+        print("\nTallos estimados por cultivar (suma de todas las fechas prorrateadas):")
+        for (g, cv), t in sorted(por_gc.items(), key=lambda kv: (kv[0][0], -kv[1])):
+            print("  %-16s %-22s %8.0f tallos" % (g[:16], cv[:22], t))
+
+    if sin_prorratear:
+        motivos = defaultdict(float)
+        for g, blo, f, t, motivo in sin_prorratear:
+            motivos[motivo] += t
+        print("\nSIN PRORRATEAR — por que:")
+        for motivo, t in sorted(motivos.items(), key=lambda kv: -kv[1]):
+            print("  %8.0f tallos: %s" % (t, motivo))
 
 
 def cmd_valor():
@@ -2003,6 +2322,8 @@ def main(argv):
         cmd_rendimiento(argv[2] if len(argv) > 2 else None)
     elif cmd == "m2":
         cmd_m2(argv[2] if len(argv) > 2 else None)
+    elif cmd == "prorratear":
+        cmd_prorratear(argv[2] if len(argv) > 2 else None)
     elif cmd == "bouquet":
         if len(argv) < 3:
             raise SystemExit("Uso: python3 motor/cerebro.py bouquet \"Cosecha Grande\"")

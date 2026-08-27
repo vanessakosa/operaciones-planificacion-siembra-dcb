@@ -1,6 +1,7 @@
 # Dónde vamos — contexto para retomar
 
-> Última actualización: **2026-08-13**, commit `f1d7ec2`.
+> Última actualización: **2026-08-13**, commit `9ce281f` + cruce por ventana
+> de siembra (sin commitear al momento de escribir esto).
 > Este archivo es el punto de entrada cuando se retoma después de una pausa.
 > Si algo de acá contradice a `07-datos/`, gana `07-datos/`.
 
@@ -79,6 +80,23 @@ no** (4.333 → 4.231 → 4.565). El escalón se cobra en tallos, no en precio: 
 mezcla sale gratis y cuesta más cama. Detalle en
 `11-bouquets/02-paquetes-mixtos.md`.
 
+### Cruce por ventana de siembra + prorrateo de "Mix"
+
+Vanessa preguntó si el cruce siempre revisa la ventana de siembra, y encontró
+sola el caso que lo probaba: Boca de Dragón, Potomac Appleblossom, sembrado
+dos veces en 3B (2.880 y 3.014 plantas) — el motor las sumaba sin poder decir
+cuál produjo el corte. Arreglado con **ventanas de cosecha estimadas por
+siembra** (fecha de siembra + ciclo). Cuando se puede aislar una sola siembra
+activa, se usa esa; cuando no, queda marcado `AMBIGUO(n siembras)` en vez de
+sumarse en silencio.
+
+Se construyó también `cerebro.py prorratear` — reparte cortes "Mix" entre
+cultivares activos por **tasa de corte limpia**, como pidió Vanessa. Pero
+**hoy resuelve 0 % de los 24.475 tallos "Mix" del cultivo**: `Fecha siembra
+campo` solo está llena en 37 % de las siembras, y sin fecha no hay ventana
+que estimar. El mecanismo funciona — hoy no tiene con qué. Detalle completo
+en `13-optimizacion/07-cruce-por-ventana-de-siembra.md`.
+
 ---
 
 ## Decisiones tomadas que no hay que volver a discutir
@@ -128,7 +146,8 @@ mezcla sale gratis y cuesta más cama. Detalle en
 | 2 | Cultivar en Statice, Lisianthus, Zinnia, Strawflower | **Vanessa** | 23.155 tallos sin atribuir. Selección varietal |
 | 3 | **No existe archivo de ventas ni devoluciones** | **Vanessa** | 4 de las columnas que pidió para las fichas |
 | 4 | `calidad_tallo.csv` vacío | **Vanessa** | "produjo" vs "produjo vendible" |
-| 5 | `Cantidad Trasplantada` en CAMPO | **Vanessa** | 30 % de la cosecha no tiene T/m² por esto |
+| 5 | `Fecha siembra campo` en CAMPO (37 % llena) | **Vanessa** | Desambiguar siembras repetidas + prorratear "Mix" (`cerebro.py prorratear`, hoy 0 %) |
+| 5b | `Cantidad Trasplantada` en CAMPO | **Vanessa** | 30 % de la cosecha no tiene T/m² por esto |
 | 6 | `clima_semanal.csv` vacío · microclima cualitativo | **Vanessa** | separar efecto de temporada del de variedad |
 | 7 | Leer/escribir `PROGRAMACION_2026` (pesa 11,5 MB) | **David** | fitosanidad completa + dictado directo |
 | 8 | Exportar `APLICACIONES` | **David** | el historial se corta en la semana 27 |

@@ -7,12 +7,13 @@ Boca de Dragón,Opus Fresh,Snapdragon Opus Fresh,BLANCO,#FFFFFF,LINEA,DCB,alta,C
 Boca de Dragón,Opus Appleblossom,Snapdragon Opus Appleblossom,ROSA_CLARO,#F8BBD0,LINEA,DCB,media,Appleblossom = rosa muy pálido
 Boca de Dragón,Opus Pink,Snapdragon Opus Pink,ROSA_MEDIO,#EC407A,LINEA,DCB,alta,Color explícito en el nombre
 Boca de Dragón,Potomac Royal,Snapdragon Potomac Royal,MORADO,#6A1B9A,LINEA,DCB,media,Royal = morado intenso
+Boca de Dragón,Potomac Appleblossom,Snapdragon Potomac Appleblossom,ROSA_CLARO,#F8BBD0,LINEA,DCB,baja,"Appleblossom = rosa muy palido, igual que Opus Appleblossom — pero es deduccion del nombre, NO confirmada en campo (regla del CLAUDE.md: nunca asignar color por nombre y presentarlo como dato). Se cosecho: 50 tallos en sem23 (registro_tallos.csv), unico registro. Agregada 2026-08-27 al revisar por que aparecia cosechado sin fila de color."
 Boca de Dragón,Potomac Crimson,Snapdragon Potomac Crimson,ROJO,#B71C1C,LINEA,DCB,alta,Crimson = rojo carmín
-Boca de Dragón,Cannes Red,Snapdragon Cannes Red,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Red,Snapdragon Cannes Red,ROJO,#C62828,LINEA,DCB,alta,"Color explícito en el nombre. ALERTA DE CAPTURA (Vanessa 2026-08-27): en registro_tallos.csv se mezcla con Cannes Red Delight — el registro no siempre distingue las dos series cuando el color coincide. Los 2.044 tallos atribuidos hoy a Cannes Red pueden incluir Red Delight sin separar."
 Boca de Dragón,Cannes Pink,Snapdragon Cannes Pink,ROSA_MEDIO,#EC407A,LINEA,DCB,alta,Color explícito en el nombre
-Boca de Dragón,Cannes Lavender,Snapdragon Cannes Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Lavender,Snapdragon Cannes Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,"Color explícito en el nombre. ALERTA DE CAPTURA (Vanessa 2026-08-27): confirmado que se mezcla con Opus Lavender en registro_tallos.csv — mismo color coloquial 'Lavanda', no siempre se distingue la serie. Los 600 tallos de este cultivar en el registro pueden incluir Opus Lavender."
 Boca de Dragón,Cannes Light Bronze,Snapdragon Cannes Light Bronze,ALBARICOQUE,#F2A65A,LINEA,DCB,alta,CORREGIDO por variedades_bitacora.csv: es un APRICOT unico que no existe en ninguna otra serie. Irremplazable — mantener siempre
-Boca de Dragón,Cannes Red Delight,Snapdragon Cannes Red Delight,ROJO,#C62828,LINEA,DCB,alta,Color explícito en el nombre
+Boca de Dragón,Cannes Red Delight,Snapdragon Cannes Red Delight,ROJO,#C62828,LINEA,DCB,alta,"Color explícito en el nombre. ALERTA DE CAPTURA (Vanessa 2026-08-27): mezclado con Cannes Red en registro_tallos.csv — mismo color, no siempre se distingue la serie al anotar la cosecha. Explica por que este cultivar aparece con 0 tallos propios en el registro pese a estar MANTENER en variedades_bitacora.csv."
 Boca de Dragón,MB Ivory,Snapdragon Madame Butterfly Ivory,MARFIL,#FFF3E0,LINEA,DCB,alta,Variedad preferida — tallo grueso y largo
 Boca de Dragón,MB Bronze,Snapdragon Madame Butterfly Bronze,BRONCE,#C68642,LINEA,DCB,alta,Variedad preferida — tallo grueso y largo
 Gomphrena,Quis Carmine,Gomphrena Quis Carmine,FUCSIA,#AD1457,RELLENO,DCB,alta,Caballo de batalla — aparece en 8 productos
@@ -82,6 +83,6 @@ Follaje,Ruscus,Ruscus,VERDE,#2E7D32,FOLLAJE,Comprado,alta,Follaje comprado — b
 Follaje,Eucalyptus Parvifolia,Eucalyptus Parvifolia,VERDE_GRIS,#78909C,FOLLAJE,Comprado,alta,Follaje comprado
 Follaje,Silver Dollar,Eucalyptus Silver Dollar,VERDE_PLATA,#B0BEC5,FOLLAJE,Comprado,alta,Follaje comprado
 Follaje,Helecho,Helecho,VERDE,#388E3C,FOLLAJE,Comprado,alta,Follaje comprado — según largo
-Boca de Dragón,Opus Lavender,Snapdragon Opus Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,AGREGADA desde variedades_bitacora.csv: vende muy bien y combina muy bien. Deberia estar mas constante en programacion. 2-3 camas
+Boca de Dragón,Opus Lavender,Snapdragon Opus Lavender,LAVANDA,#9575CD,LINEA,DCB,alta,AGREGADA desde variedades_bitacora.csv: vende muy bien y combina muy bien. Deberia estar mas constante en programacion. 2-3 camas. ALERTA DE CAPTURA (Vanessa 2026-08-27): confirmado que se mezcla con Cannes Lavender en registro_tallos.csv bajo el color comun 'Lavanda' — no aparece separado en la cosecha por esa razon, no porque no se haya sembrado.
 Boca de Dragón,Opus Bronze Early,Snapdragon Opus Bronze Early,BRONCE,#C68642,LINEA,DCB,alta,AGREGADA desde variedades_bitacora.csv: naranja con toque rosado. Ciclo 9 sem. Necesita plastico contra malezas
 Gomphrena,Quis Red,Gomphrena Quis Red,ROJO,#C62828,RELLENO,DCB,alta,AGREGADA desde variedades_bitacora.csv: complemento perfecto de Carmine. Imprescindible en Navidad y Amor y Amistad

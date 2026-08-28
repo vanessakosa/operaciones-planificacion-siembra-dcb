@@ -1495,7 +1495,8 @@ def construir_lotes(grupo=None):
             plantas[(hom, var, blo)].append({"n": n, "tiene": True, "fecha": fecha_siembra})
 
     # cosecha por (grupo, variedad, bloque)
-    lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": []})
+    lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": [],
+                                 "grafias": defaultdict(int)})
     # El corte del REGISTRO se mide sobre todas las filas, no sobre las del
     # filtro: una ventana esta abierta si sigue produciendo hasta donde llega
     # el registro completo. Medido contra el maximo del grupo, un lote que
@@ -1526,13 +1527,26 @@ def construir_lotes(grupo=None):
         # cama y antes salian como dos lotes, cada uno reclamando el total de
         # plantas de la cama. Eso partia la cosecha en dos y subestimaba el
         # tallos/planta de ambos.
+        #
+        # La VARIEDAD tambien se normaliza, por la misma razon y con el mismo
+        # efecto: "Opus Fresh" y "opus fresh" son la misma planta, y salian
+        # como dos lotes de 790 y 38 tallos. Se guarda aparte la grafia mas
+        # frecuente para mostrarla — normalizar la clave no debe cambiar como
+        # se ve el nombre en la tabla.
         t = num(c.get("Tallos frescos") or "")
         clave_b = "+".join(sorted(bloques_de(b))) or norm_bloque(b)
-        d = lotes[(g, v, clave_b)]
+        clave_v = norm(v)
+        d = lotes[(g, clave_v, clave_b)]
         d["tallos"] += t or 0
         d["fechas"].append(f)
+        d["grafias"][v] += 1
 
-    return lotes, plantas, corte_registro, sin_variedad, inicio_registro
+    # Se reemplaza la clave normalizada por la grafia mas usada en el REGISTRO.
+    salida = {}
+    for (g, cv, cb), d in lotes.items():
+        nombre = max(d["grafias"].items(), key=lambda kv: (kv[1], kv[0]))[0]
+        salida[(g, nombre, cb)] = d
+    return salida, plantas, corte_registro, sin_variedad, inicio_registro
 
 
 def ventana_del_lote(fechas):

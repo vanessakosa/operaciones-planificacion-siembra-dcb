@@ -100,7 +100,9 @@ PESTANAS = [
     ("REGISTRO",     "registro_tallos.csv",        1, "iso"),
     ("LISTAS",       "listas_desplegables.csv",    1, None),
     ("RESUMEN",      "resumen_tallos_dia.csv",     1, "dmy"),
-    ("CONSOLIDADO",  "consolidado_lotes.csv",      4, "iso"),
+    # CONSOLIDADO NO se espeja: se RECALCULA desde REGISTRO. Ver
+    # consolidar_desde_registro() para el por que.
+    ("CONSOLIDADO",  None,                         4, "iso"),
     ("RENDIMIENTO",  "rendimiento_costo_lote.csv", 4, "iso"),
     ("HOMOLOGACION", "homologacion_registro.csv",  1, None),
 ]
@@ -301,6 +303,126 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
             "futuras": futuras}
 
 
+def _sumar_columna(z, cadenas, ruta_hoja, fila_encabezado, columna):
+    """Suma una columna numerica de una pestana, sin escribir nada.
+
+    Sirve para CONTRASTAR la pestana CONSOLIDADO de Drive contra el recalculo
+    propio, sin espejarla. Un #REF! o un texto no suman — es lo correcto: son
+    justamente las celdas rotas que se quieren detectar.
+    """
+    filas = _filas(z, ruta_hoja, cadenas)
+    por_numero = {n: c for n, c in filas}
+    encabezado = por_numero.get(fila_encabezado, [])
+    try:
+        idx = [i for i, h in enumerate(encabezado)
+               if (h or "").strip() == columna][0]
+    except IndexError:
+        return None
+    total = 0.0
+    for numero, celdas in filas:
+        if numero <= fila_encabezado or idx >= len(celdas):
+            continue
+        try:
+            total += float((celdas[idx] or "0").replace(",", "") or 0)
+        except ValueError:
+            pass
+    return total
+
+
+def _norm(texto):
+    """Minusculas, sin acentos, sin espacios ni puntuacion. Para comparar."""
+    t = (texto or "").strip().lower()
+    for a, b in (("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
+                 ("ñ", "n")):
+        t = t.replace(a, b)
+    return re.sub(r"[\s.\-_/]+", "", t)
+
+
+def consolidar_desde_registro():
+    """Recalcula consolidado_lotes.csv desde registro_tallos.csv.
+
+    POR QUE NO SE ESPEJA LA PESTANA
+    -------------------------------
+    La pestana CONSOLIDADO de Drive esta MAL CALCULADA y el error es grande:
+    reportaba 76.963 tallos contra 69.122 reales, 7.841 de mas (11%). Dos
+    causas, las dos verificadas fila por fila el 2026-08-28:
+
+      1. CUENTA DOS VECES lo que solo difiere en mayusculas. 'Inv4a' e
+         'inv4a' entran al pivote como camas distintas, y 'Opus Fresh' y
+         'opus fresh' como variedades distintas. Las filas duplicadas traen
+         las MISMAS fechas y el MISMO numero de registros — es la misma
+         cosecha contada dos veces. Son 11 casos, +8.041 tallos. El peor:
+         Statice Mix en Inv4c, +1.587.
+
+      2. TIENE FORMULAS ROTAS. Seis filas con #REF!, todas de cortes de
+         agosto de grupos que se registran sin variedad (Colitas de conejo,
+         Dahlias, Esparrago, Matricaria, Campanula). En Colitas de conejo
+         ademas PIERDE un corte: el REGISTRO tiene dos de 200 tallos y
+         CONSOLIDADO reporta 200.
+
+    Espejar una pestana rota propaga el error a todo el motor sin que se vea.
+    Recalcular desde REGISTRO —que es el dato crudo, escrito a mano, y la
+    fuente de verdad— cuesta veinte lineas y elimina las dos causas de raiz.
+
+    El agrupado normaliza mayusculas y espacios en Grupo, Variedad y Bloque,
+    pero MUESTRA la grafia mas frecuente de cada uno: normalizar la clave no
+    debe cambiar como se lee el nombre.
+    """
+    origen = os.path.join(DATOS, "registro_tallos.csv")
+    if not os.path.exists(origen):
+        return None
+    with open(origen, newline="", encoding="utf-8") as fh:
+        filas = list(csv.DictReader(fh))
+
+    lotes = {}
+    for r in filas:
+        g = (r.get("Grupo") or "").strip()
+        v = (r.get("Variedad / Serie") or "").strip()
+        b = (r.get("Bloque") or "").strip()
+        f = (r.get("Fecha") or "").strip()
+        if not g or _norm(g) == "seleccionargrupo":
+            continue
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", f):
+            continue
+        clave = (_norm(g), _norm(v), _norm(b))
+        d = lotes.setdefault(clave, {
+            "frescos": 0.0, "secos": 0.0, "n": 0, "fechas": [],
+            "gg": {}, "gv": {}, "gb": {},
+        })
+        for col, campo in (("Tallos frescos", "frescos"), ("Tallos secos", "secos")):
+            try:
+                d[campo] += float((r.get(col) or "0").replace(",", "") or 0)
+            except ValueError:
+                pass
+        d["n"] += 1
+        d["fechas"].append(f)
+        for txt, bolsa in ((g, "gg"), (v, "gv"), (b, "gb")):
+            d[bolsa][txt] = d[bolsa].get(txt, 0) + 1
+
+    def frecuente(bolsa):
+        return max(bolsa.items(), key=lambda kv: (kv[1], kv[0]))[0] if bolsa else ""
+
+    salida = []
+    for d in lotes.values():
+        salida.append([
+            frecuente(d["gg"]), frecuente(d["gv"]), frecuente(d["gb"]),
+            "%g" % d["frescos"], "%g" % d["secos"],
+            "%g" % (d["frescos"] + d["secos"]), d["n"],
+            min(d["fechas"]), max(d["fechas"]),
+        ])
+    salida.sort(key=lambda x: (x[0], -float(x[5]), x[2]))
+
+    destino = os.path.join(DATOS, "consolidado_lotes.csv")
+    with open(destino, "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["Grupo", "Variedad / Serie", "Bloque", "Tallos frescos",
+                    "Tallos secos", "Total tallos", "# Registros",
+                    "Primera cosecha", "Última cosecha"])
+        w.writerows(salida)
+    return {"lotes": len(salida),
+            "frescos": sum(float(x[3]) for x in salida)}
+
+
 def main():
     if len(sys.argv) != 2:
         raise SystemExit(__doc__.strip().split("\n\n")[1].strip())
@@ -316,9 +438,17 @@ def main():
     print("-" * 66)
 
     total_corr, total_sosp, total_fut = [], [], []
+    frescos_drive = None
     for nombre, destino, fila_enc, fmt in PESTANAS:
         if nombre not in disponibles:
             print("  %-14s FALTA en el libro — se deja el CSV como estaba"
+                  % nombre)
+            continue
+        # CONSOLIDADO de Drive se lee solo para COMPARAR, no se escribe.
+        if destino is None:
+            frescos_drive = _sumar_columna(z, cadenas, disponibles[nombre],
+                                           fila_enc, "Tallos frescos")
+            print("  %-14s     (no se espeja — se recalcula desde REGISTRO)"
                   % nombre)
             continue
         r = exportar(z, cadenas, nombre, disponibles[nombre],
@@ -332,6 +462,27 @@ def main():
         total_corr.extend(r["correcciones"])
         total_sosp.extend((nombre,) + s for s in r["sospechosas"])
         total_fut.extend((nombre,) + s for s in r["futuras"])
+
+    cons = consolidar_desde_registro()
+    if cons:
+        print("  %-14s %4d lotes  ->  07-datos/consolidado_lotes.csv  (RECALCULADO)"
+              % ("consolidado", cons["lotes"]))
+        if frescos_drive is not None:
+            delta = frescos_drive - cons["frescos"]
+            print("-" * 66)
+            print("CONSOLIDADO — recalculado contra la pestana de Drive:")
+            print("  REGISTRO (fuente de verdad)  %9.0f tallos frescos"
+                  % cons["frescos"])
+            print("  pestana CONSOLIDADO de Drive %9.0f" % frescos_drive)
+            if abs(delta) >= 1:
+                print("  DIFERENCIA                   %9.0f  (%.1f%%)"
+                      % (delta, 100.0 * delta / cons["frescos"] if cons["frescos"] else 0))
+                print("  La pestana de Drive esta mal: cuenta dos veces lo que solo")
+                print("  difiere en mayusculas ('Inv4a' vs 'inv4a', 'Opus Fresh' vs")
+                print("  'opus fresh') y tiene formulas rotas con #REF!. Se usa el")
+                print("  recalculo. Conviene arreglar la formula en Drive igual.")
+            else:
+                print("  Coinciden. La pestana de Drive ya no necesita arreglo.")
 
     if total_corr:
         print("-" * 66)

@@ -1,4 +1,4 @@
-# Cruce por ventana de siembra — de 0 % a 8 % de "Mix" prorrateado
+# Cruce por ventana de siembra — de 0 % a 73 % de "Mix" prorrateado
 
 ```bash
 python3 motor/cerebro.py rendimiento [grupo]   # marca AMBIGUO(n siembras) o "resuelta por fecha"
@@ -7,14 +7,16 @@ python3 motor/cerebro.py prorratear [grupo]    # reparte "Mix" por tasa de corte
 python3 motor/cerebro.py ciclos                # ciclo calculable: 37% -> 85%
 ```
 
-> Construido en dos pasos, el 2026-08-13 y el 2026-08-14, a partir de tres
+> Construido en tres pasos, el 2026-08-13 y el 2026-08-14, a partir de cuatro
 > preguntas de Vanessa: *"¿estás seguro que estás cruzando los tallos
 > registrados con la ventana de cosecha... y los que están como Mix, por qué
 > no los prorrateas?"* → *"prorratea como el 2, y ¿tienes forma de siempre
-> cruzar con la ventana de siembra?"* → y la que destrabó todo:
+> cruzar con la ventana de siembra?"* → la que destrabó la fecha:
 > *"Fecha a siembra a campo está vacío porque dejé de usarla, ahora trabajo
-> solo con las semanas... la columna que sigue es la semana que se
-> trasplantó... ese dato sí está en todo."*
+> solo con las semanas... ese dato sí está en todo."* → y la que cerró el
+> método: *"recuerda que los fines de cosecha están en las notas, en los
+> comentarios. Si no existe para prorratear, se divide entre las variedades
+> sembradas de esa especie."*
 
 ---
 
@@ -91,13 +93,13 @@ estimada. Es una aproximación de hasta 6 días, aceptable para construir una
 ventana medida en semanas. La fecha exacta queda de respaldo para las pocas
 filas que todavía la traen.
 
-## 4 · El resultado, en las tres funciones que usan fecha de siembra
+## 4 · El resultado del paso 2, con la semana de siembra
 
-| | Antes (`Fecha siembra campo`, 37 %) | Ahora (semana de siembra, 97 %) |
+| | Antes (`Fecha siembra campo`, 37 %) | Con semana de siembra (97 %) |
 |---|---|---|
 | `ciclos` — ciclo calculable | 111 de 302 (37 %) | **258 de 302 (85 %)** |
 | `ciclos` — meses del año cubiertos | 6 de 12 | **12 de 12** |
-| `prorratear` — tallos "Mix" resueltos | 0 de 24.475 (0 %) | **1.960 de 24.475 (8 %)** |
+| `prorratear` — tallos "Mix" resueltos | 0 de 24.475 (0 %) | 1.960 de 24.475 (8 %) |
 | `m2`/`rendimiento` — lotes resueltos por fecha | 0 | 1 (Celosia Dreams Mix, bloque 2) |
 
 El caso resuelto muestra por qué importa: Celosia "Dreams Mix" en el bloque 2
@@ -105,28 +107,63 @@ tenía dos siembras sumadas en **5.067 plantas**. Aislada la que estaba activa,
 son **2.600** — el tallos/m² de ese lote **casi se duplica** (de 7,8 a 15,2),
 porque antes estaba dividido entre plantas que no correspondían a ese corte.
 
-### Por qué el prorrateo sigue en 8 % y no más
+## 5 · El paso 3 — fines de cosecha reales + partes iguales de respaldo
 
-De los 24.475 tallos "Mix":
+Con la semana de siembra, `prorratear` subió de 0 % a solo 8 %. Vanessa lo
+resolvió con dos observaciones más:
 
-| Motivo | Tallos |
+> *"Recuerda que los fines de cosecha están en las notas, en los
+> comentarios."*
+
+Ya estaban extraídos: `cierres_lote.csv` trae `semana_cierre` para 29 de 36
+lotes cerrados, sacado de los comentarios de CAMPO en una sesión anterior —
+pero `_ventana_estimada()` todavía no lo usaba, solo estimaba el fin con la
+duración genérica del ciclo. Ahora el cierre real **manda** sobre la
+estimación: si existe, se usa esa fecha (ancla a la siembra de esa misma
+fila, usando el domingo de la semana de cierre como el extremo más
+generoso).
+
+> *"Si no existe [ventana con la que prorratear] para prorratear, se divide
+> entre las variedades sembradas de esa especie."*
+
+Antes, cuando no se podía aislar quién estaba activo, el corte quedaba sin
+prorratear. Ahora hay una escalera de tres métodos, del más al menos preciso
+— y cada fila del CSV dice cuál se usó, para que un reparto por partes
+iguales nunca se confunda con uno pesado por tasa real:
+
+1. **`tasa`** — el principal: cultivares con ventana activa, ponderados por
+   tasa de corte medida.
+2. **`partes iguales entre activas (sin tasa)`** — se sabe quién estaba
+   sembrado y activo, pero ningún cultivar tiene tasa medible.
+3. **`partes iguales entre sembradas (sin ventana)`** — ni siquiera se pudo
+   saber quién estaba activo esa fecha; se reparte entre todo lo que CAMPO
+   registra sembrado de ese grupo en esa cama, sin filtrar por fecha.
+
+### Resultado: de 8 % a 73 %
+
+| Método | Tallos |
 |---|---|
-| Ninguna siembra con ventana activa esa fecha | 11.980 |
-| Sin tasa de corte conocida para el cultivar activo | 10.535 |
-| **Prorrateados** | **1.960** |
+| `partes iguales entre activas (sin tasa)` | 10.535 |
+| `partes iguales entre sembradas (sin ventana)` | 5.443 |
+| `tasa` | 1.960 |
+| **Prorrateados** | **17.938 (73 %)** |
+| Sin prorratear — grupo nunca sembrado en esa cama según CAMPO | 6.537 (27 %) |
 
-El segundo motivo (10.535 tallos) **coincide con los cuatro grupos ya
-identificados como ciegos**: Statice, Lisianthus, Zinnia y Strawflower no
-tienen ni una tasa calculable, ni siquiera a nivel de grupo — no existe un
-solo lote limpio (cultivar identificado, sin marcas) del que medirla, porque
-son justo los grupos con 0–6 % de trazabilidad de cultivar.
+**Los 10.535 tallos del método 2 son exactamente Statice, Lisianthus, Zinnia
+y Strawflower** — los cuatro grupos ya identificados como ciegos (0–6 % de
+trazabilidad de cultivar). Se sabe qué cultivares estaban sembrados y
+activos esa semana; lo que falta es la tasa, porque no existe un solo lote
+limpio de esos grupos del que medirla. **Es el mismo bloqueo de siempre,
+visto desde otro ángulo:** capturar cultivar ahí (bloqueo B1 del roadmap) no
+solo permite elegir variedad — también sube esos 10.535 tallos del método 2
+(partes iguales) al método 1 (tasa real), que es más preciso.
 
-**Es el mismo bloqueo de siempre, visto desde otro ángulo:** capturar
-cultivar en esos cuatro grupos (bloqueo B1 del roadmap) no solo permitiría
-elegir variedades — también desbloquea el prorrateo de sus propios cortes
-"Mix", porque hoy no hay con qué medirles una tasa de corte.
+⚠️ **Léase el método antes de creer un número.** `mix_prorrateado.csv` mezcla
+tres niveles de confianza en la misma columna `tallos_estimados`. Un reporte
+que sume esa columna sin filtrar por `metodo` está tratando una estimación
+gruesa igual que una medida.
 
-## 5 · El efecto de temporada, con 258 filas en vez de 111
+## 6 · El efecto de temporada, con 258 filas en vez de 111
 
 `cerebro.py ciclos` también usa esta fecha. Con más que el doble de datos:
 
@@ -141,7 +178,7 @@ no se puede afirmar que la temporada mueva el ciclo, pero la brecha se cerró
 a la mitad. El cuello de botella se movió de la siembra a la cosecha —
 detalle en `05-programacion/04-como-predecir-ciclos.md`.
 
-## 6 · Pendiente para decidir con Vanessa
+## 7 · Pendiente para decidir con Vanessa
 
 `Inicio cosecha` está lleno el 90 % de las veces, pero siempre como nombre de
 mes, nunca fecha exacta. Un segundo nivel de ventana basado en eso subiría

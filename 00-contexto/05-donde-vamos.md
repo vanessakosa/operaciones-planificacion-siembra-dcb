@@ -91,18 +91,28 @@ activa, se usa esa; cuando no, queda marcado `AMBIGUO(n siembras)` en vez de
 sumarse en silencio.
 
 Se construyó también `cerebro.py prorratear` — reparte cortes "Mix" entre
-cultivares activos por **tasa de corte limpia**, como pidió Vanessa. La
-primera corrida dio 0 %: el motor usaba `Fecha siembra campo` (37 % llena).
-**Vanessa aclaró que dejó de usarla — hoy trabaja por semana de trasplante**,
-que está llena en **97 %** de las filas pero vivía en una columna que el
-lector genérico no podía ver (el archivo tiene DOS columnas "Semana" y
-`csv.DictReader` colapsaba a la última). Arreglado leyendo esa columna por
-posición. Resultado: `ciclos` subió de 37 % a **85 %** calculable y ahora
-cubre los 12 meses del año; `prorratear` subió de 0 % a **8 %**. El resto
-sigue bloqueado por lo mismo de siempre: Statice, Lisianthus, Zinnia y
-Strawflower no tienen ni un lote limpio del que medir una tasa de corte —
-mismos cuatro grupos ciegos de siempre, visto desde otro ángulo. Detalle
-completo en `13-optimizacion/07-cruce-por-ventana-de-siembra.md`.
+cultivares activos por **tasa de corte limpia**, como pidió Vanessa
+("prorratea como el 2"). Tres pasos hasta llegar a un número usable:
+
+1. Primera corrida: **0 %**. El motor usaba `Fecha siembra campo` (37 %
+   llena).
+2. Vanessa aclaró que dejó de usarla — hoy trabaja **por semana de
+   trasplante**, llena en **97 %** de las filas pero en una columna que el
+   lector genérico no podía ver (el archivo tiene DOS columnas "Semana" y
+   `csv.DictReader` colapsaba a la última). Arreglado leyendo por posición.
+   `ciclos` subió de 37 % a **85 %** calculable, `prorratear` de 0 % a 8 %.
+3. Vanessa: *"los fines de cosecha están en las notas, en los comentarios...
+   si no existe [ventana] para prorratear, se divide entre las variedades
+   sembradas de esa especie."* Se conectó `cierres_lote.csv` (ya extraído de
+   comentarios en otra sesión) como fin de ventana REAL, y se agregó una
+   escalera de respaldo por partes iguales cuando no hay tasa o no hay
+   ventana. **`prorratear` subió de 8 % a 73 %.**
+
+El 27 % restante es honesto: el grupo nunca se sembró en esa cama según
+CAMPO. Y **cada fila del CSV dice qué método se usó** — tasa (el más
+confiable) vs. partes iguales (dos niveles, menos confiables) — para que no
+se sumen como si pesaran igual. Detalle completo en
+`13-optimizacion/07-cruce-por-ventana-de-siembra.md`.
 
 ---
 

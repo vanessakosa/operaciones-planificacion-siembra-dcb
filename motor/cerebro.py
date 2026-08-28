@@ -1243,7 +1243,31 @@ def bloques_de(texto):
     return salida
 
 
-def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos):
+def _fecha_de_semana_relativa(ancla, semana_iso):
+    """Fecha de una semana ISO sin año, ubicada en o despues de `ancla`.
+
+    cierres_lote.csv guarda EN QUE SEMANA se cerro una cama (extraida de los
+    comentarios de campo), pero sin año. Se ancla a la fecha de siembra de esa
+    misma siembra -- que ya tiene año resuelto -- y se toma el primer año
+    (el de la siembra, o el siguiente si cruza diciembre) que deja la semana
+    de cierre en o despues de la siembra. Se usa el DOMINGO de esa semana (el
+    ultimo dia), no el lunes: el cierre es un limite superior, "hasta aca
+    produjo", y conviene el extremo mas generoso.
+    """
+    if not (ancla and semana_iso):
+        return None
+    for anio in (ancla.year, ancla.year + 1):
+        try:
+            candidata = datetime.date.fromisocalendar(anio, int(semana_iso), 7)
+        except ValueError:
+            continue
+        if candidata >= ancla:
+            return candidata
+    return None
+
+
+def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos,
+                       bloque=None, cierres=None):
     """Ventana de cosecha ESTIMADA de UNA siembra puntual.
 
     Existe para poder responder la pregunta de Vanessa: "¿siempre cruzas con
@@ -1251,15 +1275,23 @@ def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos):
     veces en el mismo bloque, se puede saber cual de las dos siembras estaba
     activa en la fecha de un corte, en vez de sumarlas a ciegas.
 
-    Se construye SOLO con datos ya confirmados en ciclos_variedad.csv —
-    semanas de siembra a campo + ventana de cosecha, contadas desde la fecha
-    real de siembra. Nunca se inventa un numero que no este ahi:
+    El inicio SIEMPRE sale de ciclos_variedad.csv — semanas de siembra a
+    campo, contadas desde la fecha real de siembra. Nunca se inventa un
+    numero que no este ahi:
 
       * si la siembra no tiene fecha registrada, no hay ventana -> (None, None)
       * si el ciclo no tiene NINGUN dato de semanas a campo, tampoco -> (None, None)
-      * si falta la ventana de cosecha (duracion) pero SI hay semana de
-        arranque, la ventana queda ABIERTA hacia adelante (fin=None) — sigue
-        produciendo indefinidamente en vez de cerrarse con un numero inventado
+
+    El FIN tiene dos fuentes, y la de campo manda sobre la estimada:
+
+      1. Vanessa 2026-08-14: "los fines de cosecha estan en las notas, en los
+         comentarios" -- ya extraidos a cierres_lote.csv (semana_cierre). Si
+         existe un cierre documentado para este lote, ESE es el fin real, no
+         una estimacion por ciclo.
+      2. Si no hay cierre documentado, se estima con la ventana de cosecha
+         del ciclo (duracion). Si tampoco hay eso, la ventana queda ABIERTA
+         hacia adelante (fin=None) — sigue produciendo indefinidamente en vez
+         de cerrarse con un numero inventado.
     """
     if not fecha_siembra:
         return None, None
@@ -1275,6 +1307,14 @@ def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos):
     ini = fecha_siembra + datetime.timedelta(weeks=float(ini_sem))
     dur = vmax or vmin
     fin = (fecha_siembra + datetime.timedelta(weeks=float(fin_sem) + float(dur))) if dur else None
+
+    if bloque and cierres:
+        cie = buscar_cierre(grupo, var_texto, bloque, cierres)
+        sem_cierre = num((cie or {}).get("semana_cierre") or "")
+        if sem_cierre:
+            fin_real = _fecha_de_semana_relativa(fecha_siembra, sem_cierre)
+            if fin_real:
+                fin = fin_real
     return ini, fin
 
 
@@ -1293,7 +1333,8 @@ def _solapa(ini, fin, fecha_min, fecha_max):
 
 
 def _plantas_del_lote(grupo, variedad, bloque, plantas,
-                       fecha_min=None, fecha_max=None, ciclos=None, subtipos=None):
+                       fecha_min=None, fecha_max=None, ciclos=None, subtipos=None,
+                       cierres=None):
     """Cuantas plantas se trasplantaron en el lote que produjo estos tallos.
 
     Cruza REGISTRO (grupo + variedad + bloque) con CAMPO (Variedad + Nombre
@@ -1341,7 +1382,7 @@ def _plantas_del_lote(grupo, variedad, bloque, plantas,
             continue
         for e in entradas:
             candidatos.append({"n": e["n"], "tiene": e["tiene"], "fecha": e["fecha"],
-                               "hom": hom, "var": var})
+                               "hom": hom, "var": var, "blo": blo})
 
     con_conteo = [c for c in candidatos if c["tiene"]]
     faltan = sum(1 for c in candidatos if not c["tiene"])
@@ -1353,7 +1394,8 @@ def _plantas_del_lote(grupo, variedad, bloque, plantas,
     # Mas de una siembra coincide. Intentar aislar la que estaba activa.
     if fecha_min and fecha_max and ciclos is not None:
         for c in con_conteo:
-            c["ini"], c["fin"] = _ventana_estimada(grupo, c["var"], c["fecha"], ciclos, subtipos)
+            c["ini"], c["fin"] = _ventana_estimada(grupo, c["var"], c["fecha"], ciclos, subtipos,
+                                                    bloque=c["blo"], cierres=cierres)
         con_ventana = [c for c in con_conteo if c["ini"]]
         if len(con_ventana) == len(con_conteo):
             solapan = [c for c in con_ventana if _solapa(c["ini"], c["fin"], fecha_min, fecha_max)]
@@ -1555,7 +1597,7 @@ def cmd_m2(grupo=None):
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
         ini, fin, dias, raras = ventana_del_lote(d["fechas"])
         semanas = dias / 7.0
-        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos)
+        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos, cierres)
         res, nivel = parametros_de(g, v, ciclos, subtipos)
         dist, fte = valor_parametro(res, nivel, "distancia_cm")
         vmin, _ = valor_parametro(res, nivel, "ventana_min")
@@ -1753,7 +1795,7 @@ def cmd_rendimiento(grupo=None):
         # El homologado es "<Grupo> <Color>" (ej. "Campanula Lavender") y la
         # variedad del registro es "<Serie> <Color>" (ej. "Champion Lavender").
         # El puente es el color, que es la ultima palabra de ambos.
-        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, a, z, ciclos_perenne, subtipos)
+        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, a, z, ciclos_perenne, subtipos, cierres)
         # Un perenne NO se normaliza por planta: se propaga por division y el
         # numero de plantas deriva. Mostrar "?" ahi confundiria "no se" con
         # "no aplica", que es justo el error que hace sacar conclusiones falsas.
@@ -1915,7 +1957,7 @@ def tasas_limpias():
         ini, fin, dias, raras = ventana_del_lote(d["fechas"])
         if raras:
             continue
-        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos)
+        pl, sin_conteo, nivel_multi = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos, cierres)
         if not pl or sin_conteo or (nivel_multi and nivel_multi != "VENTANA"):
             continue
         res, nivel = parametros_de(g, v, ciclos, subtipos)
@@ -1935,11 +1977,14 @@ def tasas_limpias():
     return tasas_c, tasas_g
 
 
-def siembras_activas(grupo, bloque_clave, fecha, plantas, ciclos, subtipos):
+def siembras_activas(grupo, bloque_clave, fecha, plantas, ciclos, subtipos, cierres=None):
     """Cultivares con ventana de cosecha ESTIMADA activa en esa fecha y bloque.
 
     bloque_clave puede nombrar mas de una cama ("3a+3b+3c" — la clave que usa
     un lote de REGISTRO cuando el corte se hizo sobre varias camas a la vez).
+
+    El fin de la ventana usa el cierre real de cierres_lote.csv cuando existe
+    (ver _ventana_estimada) — es mas preciso que estimarlo por ciclo.
 
     Un cultivar sin fecha de siembra, o cuyo ciclo no tiene ningun dato de
     semanas a campo, NO ENTRA a la lista — no se puede saber si estaba activo,
@@ -1954,11 +1999,33 @@ def siembras_activas(grupo, bloque_clave, fecha, plantas, ciclos, subtipos):
         for e in entradas:
             if not e["tiene"]:
                 continue
-            ini, fin = _ventana_estimada(grupo, var, e["fecha"], ciclos, subtipos)
+            ini, fin = _ventana_estimada(grupo, var, e["fecha"], ciclos, subtipos,
+                                          bloque=blo, cierres=cierres)
             if not ini or not (ini <= fecha and (fin is None or fecha <= fin)):
                 continue
             activos[hom or var] += e["n"]
     return dict(activos)
+
+
+def siembras_del_bloque(grupo, bloque_clave, plantas):
+    """Todos los cultivares alguna vez sembrados de este grupo en esta cama,
+    SIN filtrar por fecha ni ventana.
+
+    Respaldo de Vanessa 2026-08-14 para cuando 'siembras_activas' no puede
+    aislar quien estaba activo: "si no existe [ventana] para prorratear, se
+    divide entre las variedades sembradas de esa especie". Es un reparto por
+    PARTES IGUALES, mas grueso que el de tasa de corte — se usa solo cuando
+    el metodo mejor no tiene con que trabajar. Devuelve un set de cultivares.
+    """
+    beds = set(bloque_clave.split("+"))
+    alias = alias_grupo(grupo)
+    cultivares = set()
+    for (hom, var, blo), entradas in plantas.items():
+        if blo not in beds or not any(a in var for a in alias):
+            continue
+        if any(e["tiene"] for e in entradas):
+            cultivares.add(hom or var)
+    return cultivares
 
 
 def cmd_prorratear(grupo=None):
@@ -1967,27 +2034,46 @@ def cmd_prorratear(grupo=None):
     Vanessa 2026-08-13: "prorratea como el 2" — por tasa de corte conocida
     (tallos/planta/dia medida en lotes limpios), no por partes iguales ni por
     cantidad de plantas a secas, porque dos cultivares con las mismas plantas
-    activas no cortan igual.
+    activas no cortan igual. Ese es el metodo PRINCIPAL.
+
+    Vanessa 2026-08-14 agrego el respaldo para cuando el principal no
+    alcanza: "si no existe [ventana/tasa] para prorratear, se divide entre
+    las variedades sembradas de esa especie" — partes iguales. Se aplica en
+    dos escalones, del mas al menos preciso:
+
+      1. TASA — el metodo principal. Cultivares con ventana activa esa
+         fecha (fecha de siembra + ciclo, y el cierre real de
+         cierres_lote.csv cuando existe), ponderados por su tasa de corte.
+      2. PARTES IGUALES ENTRE ACTIVAS — hay cultivares con ventana activa,
+         pero ninguno tiene tasa medible (es el caso de Statice, Lisianthus,
+         Zinnia y Strawflower: 0-6% de trazabilidad, no hay lotes limpios de
+         los que medir una tasa). Se reparte igual entre esos cultivares.
+      3. PARTES IGUALES ENTRE TODAS LAS SEMBRADAS DE LA CAMA — ni siquiera se
+         pudo saber quien estaba activo esa fecha (falta la fecha de siembra
+         de todos los candidatos, o su ventana estimada no cubre el corte).
+         Se reparte igual entre TODO lo que CAMPO registra como sembrado de
+         ese grupo en esa cama, sin filtrar por fecha. Es el escalon mas
+         grueso: puede incluir una siembra que ya no estaba activa si CAMPO
+         no trae con que descartarla.
+
+    Solo si NINGUNA de las tres tiene con que trabajar —el grupo nunca se
+    sembro en esa cama segun CAMPO— el corte queda SIN PRORRATEAR.
 
     Es una ESTIMACION, nunca un dato de cosecha real — regla 1 del CLAUDE.md.
     No se reescribe registro_tallos.csv: el resultado se guarda aparte en
-    07-datos/mix_prorrateado.csv, marcado como derivado, para que nadie lo
-    confunda con un corte que alguien realmente conto en campo.
+    07-datos/mix_prorrateado.csv, marcado como derivado y con el metodo usado
+    en cada fila, para que nadie lo confunda con un corte que alguien
+    realmente conto en campo — y para que un reparto por partes iguales no
+    se confunda con uno pesado por tasa real.
 
-    Un corte "Mix" se prorratea SOLO cuando:
-      1. esta en UNA sola cama (un corte repartido en varias camas a la vez
-         no se separa aqui — se cuenta y se reporta aparte)
-      2. al menos un cultivar de esa cama tiene ventana estimable activa esa
-         fecha (fecha de siembra + ciclo conocido)
-      3. ese cultivar (o su grupo, de respaldo) tiene una tasa de corte limpia
-         medida en otra parte del cultivo
-
-    Si falta cualquiera de las tres, el corte queda SIN PRORRATEAR y se dice
-    por que — nunca se reparte a ciegas.
+    Un corte "Mix" repartido en MAS DE UNA CAMA a la vez no se separa aqui
+    (se cuenta y se reporta aparte): no hay como saber cuanto le toco a cada
+    cama, y ese es un problema distinto al de que cultivar.
     """
     lotes, plantas, _, _, _ = construir_lotes()
     ciclos = cargar_ciclos()
     subtipos = cargar_subtipos()
+    cierres = cargar_cierres()
     tasas_c, tasas_g = tasas_limpias()
 
     cosecha = _leer_csv("registro_tallos.csv")
@@ -2015,28 +2101,42 @@ def cmd_prorratear(grupo=None):
     resultados, sin_prorratear = [], []
     for (g, blo, f), tallos_mix in mix_por_dia.items():
         fecha = datetime.date.fromisoformat(f)
-        por_cultivar = siembras_activas(g, blo, fecha, plantas, ciclos, subtipos)
-        if not por_cultivar:
-            sin_prorratear.append((g, blo, f, tallos_mix, "ninguna siembra con ventana activa esa fecha"))
-            continue
+        por_cultivar = siembras_activas(g, blo, fecha, plantas, ciclos, subtipos, cierres)
+        metodo = "tasa"
+
         pesos = {}
-        for cultivar, n in por_cultivar.items():
-            tasa, fte = tasas_c.get((norm(g), cultivar)), "propia"
-            if tasa is None:
-                tasa, fte = tasas_g.get(norm(g)), "de grupo"
-            if tasa:
-                pesos[cultivar] = (n * tasa, tasa, fte)
+        if por_cultivar:
+            for cultivar, n in por_cultivar.items():
+                tasa, fte = tasas_c.get((norm(g), cultivar)), "propia"
+                if tasa is None:
+                    tasa, fte = tasas_g.get(norm(g)), "de grupo"
+                if tasa:
+                    pesos[cultivar] = (n * tasa, tasa, fte)
+            # Escalon 2: hay activas, pero ninguna tiene tasa medible.
+            if not pesos:
+                metodo = "partes iguales entre activas (sin tasa)"
+                pesos = {cv: (1.0, None, "sin tasa") for cv in por_cultivar}
+        else:
+            # Escalon 3: no se pudo saber quien estaba activo. Se reparte
+            # entre todo lo que CAMPO registra sembrado en esa cama.
+            todas = siembras_del_bloque(g, blo, plantas)
+            if todas:
+                metodo = "partes iguales entre sembradas (sin ventana)"
+                pesos = {cv: (1.0, None, "sin ventana") for cv in todas}
+
         total_peso = sum(p for p, _, _ in pesos.values())
         if not total_peso:
-            sin_prorratear.append((g, blo, f, tallos_mix, "sin tasa de corte conocida para ningun cultivar activo"))
+            sin_prorratear.append((g, blo, f, tallos_mix,
+                                    "ninguna siembra de este grupo registrada en esa cama"))
             continue
         for cultivar, (peso, tasa, fte) in pesos.items():
             resultados.append({
                 "fecha": f, "grupo": g, "bloque": blo,
                 "tallos_mix_originales": "%.0f" % tallos_mix,
                 "cultivar_estimado": cultivar,
-                "plantas_activas": "%.0f" % por_cultivar[cultivar],
-                "tasa_usada": "%.5f" % tasa,
+                "metodo": metodo,
+                "plantas_activas": "%.0f" % por_cultivar[cultivar] if cultivar in por_cultivar else "",
+                "tasa_usada": "%.5f" % tasa if tasa else "",
                 "fuente_tasa": fte,
                 "pct_asignado": "%.4f" % (peso / total_peso),
                 "tallos_estimados": "%.1f" % (tallos_mix * peso / total_peso),
@@ -2044,7 +2144,8 @@ def cmd_prorratear(grupo=None):
 
     ruta = os.path.join(DATOS, "mix_prorrateado.csv")
     campos = ["fecha", "grupo", "bloque", "tallos_mix_originales", "cultivar_estimado",
-              "plantas_activas", "tasa_usada", "fuente_tasa", "pct_asignado", "tallos_estimados"]
+              "metodo", "plantas_activas", "tasa_usada", "fuente_tasa", "pct_asignado",
+              "tallos_estimados"]
     with open(ruta, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=campos)
         w.writeheader()
@@ -2052,8 +2153,12 @@ def cmd_prorratear(grupo=None):
 
     total_mix = sum(mix_por_dia.values())
     total_prorrateado = sum(float(r["tallos_estimados"]) for r in resultados)
-    print("PRORRATEO DE CORTES 'MIX' — POR TASA DE CORTE CONOCIDA")
+    print("PRORRATEO DE CORTES 'MIX'")
     print("ESTIMACION, no dato de cosecha real. Guardado en 07-datos/mix_prorrateado.csv")
+    print("con el METODO de cada fila — no todos pesan igual de fuerte:")
+    print("  tasa                                     -> el mas confiable")
+    print("  partes iguales entre activas (sin tasa)   -> se sabe quien, no cuanto corta")
+    print("  partes iguales entre sembradas (sin ventana) -> el mas grueso")
     print()
     print("Tallos 'Mix' totales%s: %.0f" % (" de %s" % grupo if grupo else "", total_mix))
     print("Prorrateados          : %.0f  (%.0f%%)" % (
@@ -2065,6 +2170,13 @@ def cmd_prorratear(grupo=None):
               % multi_cama)
 
     if resultados:
+        por_metodo = defaultdict(float)
+        for r in resultados:
+            por_metodo[r["metodo"]] += float(r["tallos_estimados"])
+        print("\nProrrateados, por metodo:")
+        for m, t in sorted(por_metodo.items(), key=lambda kv: -kv[1]):
+            print("  %8.0f tallos: %s" % (t, m))
+
         por_gc = defaultdict(float)
         for r in resultados:
             por_gc[(r["grupo"], r["cultivar_estimado"])] += float(r["tallos_estimados"])

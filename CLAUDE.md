@@ -178,6 +178,7 @@ python3 motor/cerebro.py ciclos                 # ciclo y ventana por grupo
 python3 motor/cerebro.py rendimiento Campanula  # tallos/planta/día normalizado por ventana
 python3 motor/cerebro.py m2 [grupo]             # tallos/m² y tallos/m²/semana de cama
 python3 motor/cerebro.py prorratear [grupo]     # reparte cortes "Mix" por tasa de corte conocida (ESTIMADO)
+python3 motor/cerebro.py chequear [grupo]       # una fila por cultivar Y CAMA, con la siembra de CAMPO que aporto las plantas
 python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallos
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
 

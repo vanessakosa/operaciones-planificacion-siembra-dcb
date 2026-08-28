@@ -28,6 +28,7 @@ Uso:
     python3 motor/cerebro.py rendimiento [grupo]
     python3 motor/cerebro.py m2 [grupo]
     python3 motor/cerebro.py prorratear [grupo]
+    python3 motor/cerebro.py chequear [grupo]
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
 """
@@ -1566,6 +1567,137 @@ def ventana_del_lote(fechas):
     return a, z, (z - a).days + 1, raras
 
 
+def siembras_que_aportan(grupo, variedad, bloque, plantas):
+    """Las filas de CAMPO que aportaron las plantas de este lote.
+
+    Existe para que Vanessa pueda CHEQUEAR: 'cerebro.py chequear' muestra un
+    tallos/planta por cama, y sin saber de que siembra salio el denominador no
+    hay forma de verificar si el numero esta bien. Devuelve la lista de
+    (nombre en CAMPO, cama, plantas, fecha estimada de siembra).
+    """
+    alias = alias_grupo(grupo)
+    v = norm(variedad)
+    generica = v in ("", "mix", "sin variedad")
+    salida = []
+    for (hom, var, blo), entradas in plantas.items():
+        if blo not in bloques_de(bloque):
+            continue
+        if not any(a in var for a in alias):
+            continue
+        if not generica and not (v in hom or (hom and hom in v) or v in var):
+            continue
+        for e in entradas:
+            salida.append((hom or var, blo, e["n"], e["tiene"], e["fecha"]))
+    return sorted(salida, key=lambda x: (x[1], x[4] or datetime.date.min))
+
+
+def cmd_chequear(grupo=None):
+    """Vista por CAMA para verificar el dato contra la hoja, planta por planta.
+
+    Vanessa 2026-08-28: "vamos a hacer algo para que sea mas facil para mi
+    chequear, ponme ahi tambien la cama donde esta esa siembra."
+
+    Los otros comandos agregan por cultivar, y agregar esconde justo lo que
+    hay que revisar: un cultivar con 0,42 t/planta puede ser 0,80 en una cama
+    y 0,14 en la de al lado — y eso no es la variedad, es la cama. Este
+    comando NO agrega: una fila por cultivar y cama, con las fechas del primer
+    y ultimo corte, y debajo las siembras de CAMPO que aportaron el
+    denominador, para poder ir a la hoja y contrastar.
+    """
+    lotes, plantas, corte, _, _ = construir_lotes(grupo)
+    if not lotes:
+        raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
+    ciclos = cargar_ciclos()
+    subtipos = cargar_subtipos()
+    cierres = cargar_cierres()
+
+    # Prorrateo ya calculado, si existe. No se recalcula aqui: es una vista.
+    pro = defaultdict(float)
+    ruta_pro = os.path.join(DATOS, "mix_prorrateado.csv")
+    if os.path.exists(ruta_pro):
+        with open(ruta_pro, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if grupo and norm(grupo) not in norm(r["grupo"]):
+                    continue
+                pro[(norm(r["grupo"]), norm(r["cultivar_estimado"]), r["bloque"])] \
+                    += float(r["tallos_estimados"])
+
+    print("CHEQUEO POR CAMA%s — registro al %s"
+          % (" — %s" % grupo if grupo else "", corte))
+    print("Una fila por cultivar Y CAMA. Debajo de cada una, la siembra de CAMPO")
+    print("que aporto las plantas, para poder contrastar contra la hoja.")
+    print()
+
+    filas, mixtos = [], []
+    for (g, v, b), d in lotes.items():
+        ini, fin, dias, raras = ventana_del_lote(d["fechas"])
+        if norm(v) in ("", "mix", "sin variedad"):
+            mixtos.append((g, b, d["tallos"], min(d["fechas"]), max(d["fechas"])))
+            continue
+        pl, sc, nm = _plantas_del_lote(g, v, b, plantas, ini, fin, ciclos, subtipos, cierres)
+        pr = pro.get((norm(g), norm(v), b), 0.0)
+        filas.append((g, v, b, pl, d["tallos"], pr, dias,
+                      min(d["fechas"]), max(d["fechas"]), sc, nm, ini, fin))
+    filas.sort(key=lambda x: (x[0], norm(x[1]), x[2]))
+
+    ancho = "%-20s %-8s %8s %7s %6s %7s %8s  %-10s %-10s %4s  %s"
+    print(ancho % ("CULTIVAR", "CAMA", "PLANTAS", "CORTADO", "PRORR",
+                   "TOTAL", "T/PLANTA", "1er CORTE", "ULT CORTE", "DIAS", ""))
+    print("-" * 128)
+    anterior = None
+    for g, v, b, pl, rl, pr, dias, f1, f2, sc, nm, ini, fin in filas:
+        if anterior is not None and anterior != (g, norm(v)):
+            print()
+        anterior = (g, norm(v))
+        tot = rl + pr
+        marcas = []
+        if sc:
+            marcas.append("%d siembra(s) SIN conteo en esta cama -> T/planta INFLADO" % sc)
+        if nm and nm != "VENTANA":
+            marcas.append(nm)
+        elif nm == "VENTANA":
+            marcas.append("multi-siembra resuelta por fecha")
+        if f2 == corte:
+            marcas.append("ABIERTA")
+        print(ancho % (v[:20], b, "%.0f" % pl if pl else "SIN DATO", "%.0f" % rl,
+                       "%.0f" % pr, "%.0f" % tot,
+                       "%.2f" % (tot / pl) if pl else "?", f1, f2, dias,
+                       " | ".join(marcas)))
+        for hom, blo, n, tiene, fecha in siembras_que_aportan(g, v, b, plantas):
+            sem = ("sem %d de %d" % (fecha.isocalendar()[1], fecha.year)) if fecha else "sin fecha"
+            # Cuando la ventana estimada de la siembra NO cubre las fechas de
+            # los cortes, el denominador viene de OTRO ciclo. Con una sola
+            # siembra candidata el motor la usa igual (es lo unico que hay),
+            # asi que este aviso es la unica senal de que el numero no cierra.
+            aviso = ""
+            if tiene and fecha:
+                vi, vf = _ventana_estimada(g, hom, fecha, ciclos, subtipos,
+                                            bloque=blo, cierres=cierres)
+                if vi and not _solapa(vi, vf, ini, fin):
+                    aviso = ("  <-- NO CUADRA: esta siembra cosecharia %s%s"
+                             % (vi.isoformat(),
+                                " a %s" % vf.isoformat() if vf else " en adelante"))
+            print("      CAMPO: %-28s cama %-6s %8s plantas   %-16s%s"
+                  % (hom[:28], blo, "%.0f" % n if tiene else "VACIO", sem, aviso))
+
+    if mixtos:
+        print("\nCORTES 'MIX' — no dicen que cultivar, no entran arriba")
+        for g, b, t, f1, f2 in sorted(mixtos):
+            como = ("repartido por partes iguales" if "+" not in b
+                    else "SIN REPARTIR — el corte abarca varias camas")
+            print("   %-16s cama %-9s %7.0f tallos   %s -> %s   %s"
+                  % (g[:16], b, t, f1, f2, como))
+
+    print("\nCOMO CHEQUEAR ESTA TABLA")
+    print("  PLANTAS SIN DATO -> esa cama no tiene 'Cantidad Trasplantada' en")
+    print("      CAMPO. No es que no se sembro: es que no se anoto cuanto.")
+    print("  T/PLANTA muy distinto entre camas del mismo cultivar -> el problema")
+    print("      es la CAMA (agua, luz, suelo), no la variedad.")
+    print("  DIAS = 1 y muchos tallos -> un solo corte grande. Puede ser un pico")
+    print("      real o una cama que se saco de una.")
+    print("  La linea CAMPO de abajo dice de que siembra salio el denominador.")
+
+
 def cmd_m2(grupo=None):
     """Tallos por metro cuadrado — el denominador que pidio Vanessa.
 
@@ -2547,6 +2679,8 @@ def main(argv):
         cmd_rendimiento(argv[2] if len(argv) > 2 else None)
     elif cmd == "m2":
         cmd_m2(argv[2] if len(argv) > 2 else None)
+    elif cmd == "chequear":
+        cmd_chequear(argv[2] if len(argv) > 2 else None)
     elif cmd == "prorratear":
         cmd_prorratear(argv[2] if len(argv) > 2 else None)
     elif cmd == "bouquet":

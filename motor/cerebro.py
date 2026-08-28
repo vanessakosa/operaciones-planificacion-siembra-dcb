@@ -118,6 +118,58 @@ def _leer_csv(nombre):
         return list(csv.DictReader(fh))
 
 
+def _leer_semanas_siembra():
+    """Semana ISO de trasplante por fila de campo_siembras.csv, con el ano
+    inferido por secuencia.
+
+    Vanessa 2026-08-14: "Fecha a siembra a campo esta vacio porque deje de
+    usarla, ahora trabajo solo con las semanas... la columna que sigue es la
+    semana que se trasplanto... eso lo hago porque a veces puede pasar que en
+    esa semana se sembro en dos dias distintos, y proyectamos todo por
+    semana. Ese dato si esta en todo." Confirmado: 294 de 302 filas la tienen
+    (97%), contra 37% de 'Fecha siembra campo'.
+
+    Es la columna "Semana" que aparece justo despues de "Fecha siembra
+    campo". El archivo tiene DOS columnas llamadas "Semana" (la otra es la
+    semana de INICIO DE COSECHA, mas adelante) y csv.DictReader colapsa
+    encabezados duplicados quedandose solo con la ultima -- asi que
+    _leer_csv() nunca pudo ver esta columna. Por eso se lee aparte, por
+    POSICION (columna 7), no por nombre.
+
+    El archivo no trae el ano, solo el numero de semana ISO (1-52), y las
+    302 filas son un log CRONOLOGICO que arranca en la semana 31 de 2025
+    (confirmado cruzando contra la fecha exacta de esa misma fila, de las
+    pocas que todavia la traen) y llega hasta 2026. El ano se infiere por
+    SECUENCIA: una caida grande en el numero de semana (mas de
+    UMBRAL_CRUCE_ANIO) es el cruce de diciembre a enero, no un error de
+    tipeo. Un salto chico (1-2 semanas) es jitter normal del dictado y no
+    dispara cambio de ano -- se observaron 9 de esos en las filas que se
+    pueden verificar contra fecha exacta, ninguno mayor a 1 semana.
+
+    Devuelve una lista alineada 1 a 1 con _leer_csv("campo_siembras.csv"):
+    [(semana:int|None, anio:int|None), ...]
+    """
+    ANIO_INICIAL = 2025
+    UMBRAL_CRUCE_ANIO = 26
+    ruta = os.path.join(DATOS, "campo_siembras.csv")
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        filas = list(csv.reader(fh))[1:]
+    resultado = []
+    anio = ANIO_INICIAL
+    anterior = None
+    for r in filas:
+        txt = (r[7] if len(r) > 7 else "").strip()
+        if not txt.isdigit():
+            resultado.append((None, None))
+            continue
+        semana = int(txt)
+        if anterior is not None and (anterior - semana) > UMBRAL_CRUCE_ANIO:
+            anio += 1
+        anterior = semana
+        resultado.append((semana, anio))
+    return resultado
+
+
 def cargar_paleta():
     """Devuelve (por_nombre, por_grupo).
 
@@ -1001,6 +1053,33 @@ def _meses_de(texto):
             if w in MES_NOMBRE]
 
 
+def _fecha_siembra_estim(fila, semana_info):
+    """Fecha de siembra estimada para una fila de campo_siembras.csv.
+
+    Fuente principal: el LUNES de la semana ISO de trasplante (columna
+    "Semana" junto a "Fecha siembra campo" -- ver _leer_semanas_siembra).
+    Vanessa 2026-08-14 la confirmo como la que usa de verdad hoy: "deje de
+    usar la fecha exacta, ahora trabajo solo con las semanas... a veces se
+    sembro en dos dias distintos [de la misma semana] y proyectamos todo por
+    semana." Aproxima el dia real por hasta 6 dias, pero es 97% de las filas
+    contra 37% de la fecha exacta -- que se usa solo como respaldo cuando la
+    semana falta, para las pocas filas viejas que todavia la traen.
+
+    semana_info es la tupla (semana, anio) de esa misma fila, ya alineada por
+    posicion -- ver _leer_semanas_siembra().
+    """
+    semana, anio = semana_info
+    if semana and anio:
+        try:
+            return datetime.date.fromisocalendar(anio, semana, 1)
+        except ValueError:
+            pass
+    fecha_txt = (fila.get("Fecha siembra campo") or "").strip()
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", fecha_txt):
+        return datetime.date.fromisoformat(fecha_txt)
+    return None
+
+
 def ciclo_observado(fecha_siembra, texto_cosecha):
     """Ciclo trasplante -> inicio de cosecha, como RANGO.
 
@@ -1037,6 +1116,7 @@ def cmd_ciclos():
     Reporta primero la calidad del dato: sin eso, cualquier promedio enganaria.
     """
     filas = _leer_csv("campo_siembras.csv")
+    semanas_siembra = _leer_semanas_siembra()
     n = len(filas)
     llenas = lambda k: sum(1 for f in filas if (f.get(k) or "").strip())
 
@@ -1047,6 +1127,11 @@ def cmd_ciclos():
     for k in ("Fecha siembra campo", "Inicio cosecha", "Fin de cosecha"):
         c = llenas(k)
         print("  %-22s %3d llenas  %5.0f%%" % (k, c, 100.0 * c / n if n else 0))
+    con_semana = sum(1 for sem, anio in semanas_siembra if sem and anio)
+    print("  %-22s %3d llenas  %5.0f%%  <- fuente real hoy (Vanessa 2026-08-14:"
+          % ("Semana de siembra", con_semana, 100.0 * con_semana / n if n else 0))
+    print("  %-22s %25s     \"deje de usar la fecha exacta, ahora trabajo solo" % ("", ""))
+    print("  %-22s %25s     con las semanas\")" % ("", ""))
 
     tri = sum(1 for f in filas
               if (f.get("Fecha siembra campo") or "").strip()
@@ -1054,9 +1139,16 @@ def cmd_ciclos():
               and (f.get("Fin de cosecha") or "").strip())
     print("  filas con las TRES fechas %3d           <- la VENTANA solo sale de aqui" % tri)
 
+    # El ciclo (trasplante -> inicio de cosecha) ya no depende de la fecha
+    # exacta: se calcula con la fecha ESTIMADA de la semana de trasplante
+    # (lunes de esa semana ISO), que es la fuente que Vanessa usa de verdad.
+    # La fecha exacta, cuando esta, sigue sirviendo de respaldo.
     obs = []
-    for f in filas:
-        c = ciclo_observado(f.get("Fecha siembra campo"), f.get("Inicio cosecha"))
+    for f, semana_info in zip(filas, semanas_siembra):
+        fecha_est = _fecha_siembra_estim(f, semana_info)
+        if not fecha_est:
+            continue
+        c = ciclo_observado(fecha_est.isoformat(), f.get("Inicio cosecha"))
         if c:
             obs.append((f, c[0], c[1], c[2]))
     print("\n  ciclo calculable en %d de %d filas (%.0f%%)" % (len(obs), n, 100.0 * len(obs) / n if n else 0))
@@ -1332,14 +1424,21 @@ def construir_lotes(grupo=None):
     # las dos produjo el tallo. _plantas_del_lote() es quien ahora decide,
     # lote por lote, si puede separarlas por fecha o si hay que dejarlo
     # marcado como ambiguo.
+    # La fecha de siembra ya casi no se llena (Vanessa 2026-08-14: "deje de
+    # usarla, ahora trabajo solo con las semanas"). La fuente principal es la
+    # semana ISO de trasplante -- 97% llena contra 37% de la fecha exacta --
+    # y de ahi se toma el lunes de esa semana como estimador. Es aproximado
+    # (la siembra real cae en algun dia de esa semana, a veces en dos dias
+    # distintos segun ella misma explica) pero alcanza sobrado para construir
+    # una ventana de varias SEMANAS de ciclo. La fecha exacta, cuando esta,
+    # sirve de respaldo para las pocas filas viejas sin semana.
+    semanas_siembra = _leer_semanas_siembra()
     plantas = defaultdict(list)
-    for s in siembras:
+    for s, semana_info in zip(siembras, semanas_siembra):
         hom = norm(s.get("Nombre Homologados") or "")
         var = norm(s.get("Variedad") or "")
         n = num((s.get("Cantidad Trasplantada") or "").strip())
-        fecha_txt = (s.get("Fecha siembra campo") or "").strip()
-        fecha_siembra = (datetime.date.fromisoformat(fecha_txt)
-                         if re.match(r"^\d{4}-\d{2}-\d{2}$", fecha_txt) else None)
+        fecha_siembra = _fecha_siembra_estim(s, semana_info)
         if not (hom or var):
             continue
         # Una siembra SIN cantidad trasplantada se registra igual, marcada.

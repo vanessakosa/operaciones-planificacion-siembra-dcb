@@ -26,12 +26,32 @@ De paso: **Green Ball es un Dianthus.** El nombre homologado en CAMPO es
 Con esto **los 13 grupos del catálogo son planificables.** Lo único que le
 falta a Green Ball es `tallos_planta`.
 
+## Actualización 2026-08-14 — la fecha de siembra dejó de ser el cuello de botella
+
+Esto de abajo se escribió cuando el ciclo solo se podía calcular con
+`Fecha siembra campo`, llena en 37 % de las filas. Vanessa aclaró ese mismo
+día: *"Fecha a siembra a campo está vacío porque dejé de usarla, ahora trabajo
+solo con las semanas... la columna que sigue es la semana que se trasplantó...
+eso lo hago porque a veces puede pasar que en esa semana se sembró en dos días
+distintos, y proyectamos todo por semana. Ese dato sí está en todo."**
+
+Comprobado: la columna `Semana` de trasplante (la que va justo al lado de
+`Fecha siembra campo` — el archivo tiene dos columnas llamadas igual, y por
+eso el lector genérico no la veía) está llena en **294 de 302 filas (97 %)**.
+`cerebro.py ciclos` ahora la usa como fuente principal — toma el lunes de esa
+semana ISO como fecha estimada — y la fecha exacta queda de respaldo para las
+pocas filas que todavía la traen.
+
+**Resultado: el ciclo calculable pasó de 111 a 258 filas — de 37 % a 85 %.**
+Y el punto 4 de abajo ("falta medio año") queda resuelto: los 258 casos ya
+cubren los 12 meses del año.
+
 ## Lo que NO se puede hacer todavía, y por qué
 
 Pediste sacar también la ventana y las condiciones climáticas para hacer
-predicciones certeras. Con el dato actual no se puede, por tres razones
-independientes. Ninguna se arregla con más análisis: se arreglan cambiando
-cómo se anota.
+predicciones certeras. Con el dato actual todavía no se puede, por dos
+razones que la fecha de siembra no arregla — se arreglan cambiando cómo se
+anota la COSECHA, no la siembra.
 
 ### 1. La ventana no existe en el dato
 
@@ -46,34 +66,30 @@ tienen `Fin de cosecha` vacío.
 Los 272 valores de `Inicio cosecha` son texto: `NOVIEMBRE`, `JULIO/AGOSTO`,
 `ABRIL?`, `JUN-JUL`. Ninguno es una fecha.
 
-Eso mete un **ruido de medición de 4.1 semanas** en cada ciclo calculado: si
+Eso mete un **ruido de medición de ~4.2 semanas** en cada ciclo calculado: si
 la cosecha empezó "en noviembre", pudo ser el 1 o el 30.
 
-### 3. El efecto de temporada es más chico que el ruido
+### 3. El efecto de temporada, con 258 filas, ya es medible — y sigue por debajo del ruido
 
 | Temporada | n | Ciclo medio |
 |---|---|---|
-| SECA (dic–feb, jun–ago) | 35 | 13.8 sem |
-| LLUVIA (mar–may, sep–nov) | 76 | 14.5 sem |
+| SECA (dic–feb, jun–ago) | 84 | 13.4 sem |
+| LLUVIA (mar–may, sep–nov) | 174 | 15.4 sem |
 
-**Diferencia: 0.7 semanas. Ruido de medición: 4.1 semanas.**
+**Diferencia: 2.0 semanas. Ruido de medición: 4.2 semanas.**
 
-El efecto que buscamos es **seis veces más pequeño que el error del
-instrumento**. Con este dato no se puede afirmar que la temporada mueva el
-ciclo — ni que no lo mueva. Simplemente no alcanza para saberlo.
+Con 111 filas la diferencia era 0.7 sem — casi invisible. Con 258 subió a 2.0,
+pero el ruido de anotar la cosecha por mes (no por fecha) sigue siendo el
+doble. **Todavía no se puede afirmar que la temporada mueva el ciclo**, pero
+la brecha con el ruido se cerró a la mitad. Es la razón #2 de arriba la que
+falta cerrar ahora — el cuello de botella se movió de la siembra a la cosecha.
 
-### 4. Falta medio año
-
-Todas las siembras con fecha caen entre **julio y diciembre de 2025**. Enero a
-junio no tiene un solo registro fechado, y no hay un segundo año para comparar.
-
-Cualquier "efecto de temporada" que calcule está midiendo, en realidad, **qué
-variedades se sembraron en cada mes** — no el clima. Por eso septiembre sale en
-16.7 semanas: no es que septiembre alargue el ciclo, es que en septiembre se
-sembró Trachelium y Lisianthus, que son de ciclo largo.
-
-**Ese es el error que hay que evitar.** El promedio por mes parece un dato
-climático y es un artefacto de la mezcla de variedades.
+Antes también se sospechaba que "falta medio año" — todas las siembras con
+fecha caían entre julio y diciembre de 2025. Con la semana de siembra como
+fuente, los 258 casos **ya cubren los 12 meses**, así que ese problema quedó
+resuelto. El que persiste es distinto: **qué variedades se sembraron en cada
+mes sigue mezclado con el efecto de temporada**, porque `Inicio cosecha`
+en mes no alcanza para separarlos con precisión.
 
 ## Lo que sí valida el ejercicio
 
@@ -95,14 +111,14 @@ descartada) y **Ammi Dara 18.5–22.7**, muy por encima del Ammi Majus.
 
 ## Qué cambiar para poder predecir de verdad
 
-Tres cambios en cómo se anota, en orden de impacto:
+La siembra ya no es el problema. Quedan dos cambios en cómo se anota la
+COSECHA, en orden de impacto:
 
 1. **`Inicio cosecha` como fecha, no como mes.** Solo esto baja el ruido de
-   4.1 semanas a ~0.5 y hace visible cualquier efecto de temporada real.
+   ~4.2 semanas a ~0.5 y hace visible cualquier efecto de temporada real.
 2. **Llenar `Fin de cosecha`.** Sin esto la ventana no existe, y la ventana es
    lo que determina si hace falta escalonar siembras para no quedar
    monocromático en el punto de venta.
-3. **`Fecha siembra campo` en todas las filas.** Hoy está en 37 %.
 
 Con un año completo anotado así, el análisis por temporada pasa a ser válido —
 y ahí sí conviene separar por variedad para no confundir clima con mezcla de

@@ -91,11 +91,18 @@ activa, se usa esa; cuando no, queda marcado `AMBIGUO(n siembras)` en vez de
 sumarse en silencio.
 
 Se construyó también `cerebro.py prorratear` — reparte cortes "Mix" entre
-cultivares activos por **tasa de corte limpia**, como pidió Vanessa. Pero
-**hoy resuelve 0 % de los 24.475 tallos "Mix" del cultivo**: `Fecha siembra
-campo` solo está llena en 37 % de las siembras, y sin fecha no hay ventana
-que estimar. El mecanismo funciona — hoy no tiene con qué. Detalle completo
-en `13-optimizacion/07-cruce-por-ventana-de-siembra.md`.
+cultivares activos por **tasa de corte limpia**, como pidió Vanessa. La
+primera corrida dio 0 %: el motor usaba `Fecha siembra campo` (37 % llena).
+**Vanessa aclaró que dejó de usarla — hoy trabaja por semana de trasplante**,
+que está llena en **97 %** de las filas pero vivía en una columna que el
+lector genérico no podía ver (el archivo tiene DOS columnas "Semana" y
+`csv.DictReader` colapsaba a la última). Arreglado leyendo esa columna por
+posición. Resultado: `ciclos` subió de 37 % a **85 %** calculable y ahora
+cubre los 12 meses del año; `prorratear` subió de 0 % a **8 %**. El resto
+sigue bloqueado por lo mismo de siempre: Statice, Lisianthus, Zinnia y
+Strawflower no tienen ni un lote limpio del que medir una tasa de corte —
+mismos cuatro grupos ciegos de siempre, visto desde otro ángulo. Detalle
+completo en `13-optimizacion/07-cruce-por-ventana-de-siembra.md`.
 
 ---
 
@@ -146,8 +153,9 @@ en `13-optimizacion/07-cruce-por-ventana-de-siembra.md`.
 | 2 | Cultivar en Statice, Lisianthus, Zinnia, Strawflower | **Vanessa** | 23.155 tallos sin atribuir. Selección varietal |
 | 3 | **No existe archivo de ventas ni devoluciones** | **Vanessa** | 4 de las columnas que pidió para las fichas |
 | 4 | `calidad_tallo.csv` vacío | **Vanessa** | "produjo" vs "produjo vendible" |
-| 5 | `Fecha siembra campo` en CAMPO (37 % llena) | **Vanessa** | Desambiguar siembras repetidas + prorratear "Mix" (`cerebro.py prorratear`, hoy 0 %) |
+| 5 | `Inicio cosecha` y `Fin de cosecha` como fecha exacta, no mes | **Vanessa** | Ventana real de cosecha + separar temporada de mezcla de variedad |
 | 5b | `Cantidad Trasplantada` en CAMPO | **Vanessa** | 30 % de la cosecha no tiene T/m² por esto |
+| 5c | Cultivar en Statice/Lisianthus/Zinnia/Strawflower (ver #2) | **Vanessa** | También desbloquea `prorratear` para esos 4 grupos — hoy sin tasa |
 | 6 | `clima_semanal.csv` vacío · microclima cualitativo | **Vanessa** | separar efecto de temporada del de variedad |
 | 7 | Leer/escribir `PROGRAMACION_2026` (pesa 11,5 MB) | **David** | fitosanidad completa + dictado directo |
 | 8 | Exportar `APLICACIONES` | **David** | el historial se corta en la semana 27 |

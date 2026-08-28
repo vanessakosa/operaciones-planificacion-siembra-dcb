@@ -192,6 +192,15 @@ python3 motor/importar_tallos.py registro.xlsx  # Drive -> los CSV de 07-datos/
 corrige 3 errores de fecha confirmados y reporta cada corrección. Detalle en
 `07-datos/FUENTES.md`.
 
+**OJO con `campo_siembras.csv`: tiene DOS columnas llamadas `Semana`** — la de
+trasplante (col 7) y la de inicio de cosecha (col 10). `csv.DictReader` colapsa
+encabezados repetidos y se queda con la ultima, asi que leerlas por nombre
+devuelve la equivocada. El motor las lee por POSICION
+(`_leer_semanas_siembra` / `_leer_semanas_cosecha`). La semana de cosecha le
+gana siempre al texto de `Inicio cosecha`, que es un mes y trae ruido de +-4
+semanas — y ademas puede estar desactualizado: Cannes Red 3C dice JULIO en el
+texto y semana 25 (15 de junio) en la columna.
+
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada
 sesión de estrategia corriéndolo.**

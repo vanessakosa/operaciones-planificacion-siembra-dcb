@@ -171,6 +171,66 @@ def _leer_semanas_siembra():
     return resultado
 
 
+def _leer_semanas_cosecha():
+    """Semana ISO de INICIO DE COSECHA por fila de campo_siembras.csv.
+
+    Vanessa 2026-08-28: "estas contando es cuando dice el mes, pero tienes que
+    leer la semana; ahi por ejemplo empezo a cosechar en semana 25, justamente
+    es en junio."
+
+    Tenia razon y el efecto es grande. El motor venia leyendo 'Inicio cosecha',
+    que es texto de MES ('JULIO', 'JUN-JUL', 'ABRIL?'), y eso mete un ruido de
+    +-4,2 semanas en cada ciclo: si empezo "en julio" pudo ser el 1 o el 31.
+    Al lado hay una columna con la SEMANA ISO exacta, y el ruido baja a cero.
+
+    El caso que lo destapo: Cannes Red en 3C dice 'JULIO' en el texto pero
+    semana 25 en la columna — que es el 15 de junio. Con el mes daba un ciclo
+    de 12 semanas; con la semana, 7. El texto estaba desactualizado.
+
+    Es la SEGUNDA columna llamada "Semana" del archivo (la primera es la de
+    trasplante). csv.DictReader colapsa encabezados repetidos y se queda con
+    la ULTIMA, asi que 'Semana' via DictReader devuelve esta y no la de
+    siembra — otra razon para leer las dos por POSICION y no por nombre.
+
+    Solo 103 de 302 filas la tienen llena, contra 272 del texto de mes. Por eso
+    no reemplaza al mes: lo PREFIERE cuando esta, y cae al mes cuando no.
+
+    El ano NO se infiere por secuencia aqui (esta columna tiene huecos, y una
+    secuencia con huecos se desincroniza). Se ancla contra la fecha de siembra
+    de la misma fila, que ya tiene ano resuelto: una cosecha no puede empezar
+    antes de su siembra.
+
+    Devuelve una lista alineada con _leer_csv("campo_siembras.csv"):
+    [semana:int|None, ...]
+    """
+    ruta = os.path.join(DATOS, "campo_siembras.csv")
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        filas = list(csv.reader(fh))[1:]
+    salida = []
+    for r in filas:
+        txt = (r[10] if len(r) > 10 else "").strip()
+        salida.append(int(txt) if txt.isdigit() and 1 <= int(txt) <= 53 else None)
+    return salida
+
+
+def _fecha_cosecha_real(semana_cosecha, fecha_siembra):
+    """Fecha de inicio de cosecha a partir de su semana ISO, sin ano en la
+    fuente. Se ancla a la siembra: la cosecha no puede empezar antes.
+
+    Se usa el LUNES de la semana, igual que en la siembra, por coherencia.
+    """
+    if not (semana_cosecha and fecha_siembra):
+        return None
+    for anio in (fecha_siembra.year, fecha_siembra.year + 1):
+        try:
+            c = datetime.date.fromisocalendar(anio, semana_cosecha, 1)
+        except ValueError:
+            continue
+        if c >= fecha_siembra:
+            return c
+    return None
+
+
 def cargar_paleta():
     """Devuelve (por_nombre, por_grupo).
 
@@ -1144,15 +1204,33 @@ def cmd_ciclos():
     # exacta: se calcula con la fecha ESTIMADA de la semana de trasplante
     # (lunes de esa semana ISO), que es la fuente que Vanessa usa de verdad.
     # La fecha exacta, cuando esta, sigue sirviendo de respaldo.
-    obs = []
-    for f, semana_info in zip(filas, semanas_siembra):
+    # El ciclo sale de dos fuentes distintas, y NO valen lo mismo:
+    #   EXACTA  la columna Semana de inicio de cosecha -> ciclo con ruido cero
+    #   MES     el texto 'Inicio cosecha' -> ruido de +-4,2 semanas, porque
+    #           "julio" puede ser el 1 o el 31
+    # Se prefiere la exacta siempre que este. Mezclarlas sin distinguirlas
+    # seria esconder que la mitad de los ciclos son mucho mas confiables que
+    # la otra.
+    semanas_cosecha = _leer_semanas_cosecha()
+    obs, exactas = [], 0
+    for f, semana_info, sem_cos in zip(filas, semanas_siembra, semanas_cosecha):
         fecha_est = _fecha_siembra_estim(f, semana_info)
         if not fecha_est:
             continue
+        real = _fecha_cosecha_real(sem_cos, fecha_est)
+        if real:
+            sem = (real - fecha_est).days / 7.0
+            if sem > 0:
+                obs.append((f, fecha_est, sem, sem))
+                exactas += 1
+                continue
         c = ciclo_observado(fecha_est.isoformat(), f.get("Inicio cosecha"))
         if c:
             obs.append((f, c[0], c[1], c[2]))
     print("\n  ciclo calculable en %d de %d filas (%.0f%%)" % (len(obs), n, 100.0 * len(obs) / n if n else 0))
+    print("    de esos, %d con SEMANA exacta de cosecha (ruido cero) y %d"
+          % (exactas, len(obs) - exactas))
+    print("    derivados del texto de mes (ruido +-4 semanas)")
 
     meses_cubiertos = sorted({s.month for _, s, _, _ in obs})
     print("  meses del anio con siembras fechadas: %s" % (meses_cubiertos or "ninguno"))
@@ -1268,7 +1346,7 @@ def _fecha_de_semana_relativa(ancla, semana_iso):
 
 
 def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos,
-                       bloque=None, cierres=None):
+                       bloque=None, cierres=None, inicio_real=None):
     """Ventana de cosecha ESTIMADA de UNA siembra puntual.
 
     Existe para poder responder la pregunta de Vanessa: "¿siempre cruzas con
@@ -1305,9 +1383,15 @@ def _ventana_estimada(grupo, var_texto, fecha_siembra, ciclos, subtipos,
     fin_sem = fin_sem or ini_sem
     if not ini_sem:
         return None, None
-    ini = fecha_siembra + datetime.timedelta(weeks=float(ini_sem))
+    # El inicio tiene dos fuentes y la de campo manda sobre la estimada, igual
+    # que el fin: si CAMPO anoto la semana ISO en que empezo a cosechar, esa es
+    # la fecha real y no hay nada que estimar. Cannes Red en 3C es el caso que
+    # lo mostro: el ciclo daba inicio en julio y la columna decia semana 25 —
+    # 15 de junio, siete semanas despues de sembrar, no doce.
+    ini = inicio_real or (fecha_siembra + datetime.timedelta(weeks=float(ini_sem)))
     dur = vmax or vmin
-    fin = (fecha_siembra + datetime.timedelta(weeks=float(fin_sem) + float(dur))) if dur else None
+    base_fin = inicio_real or (fecha_siembra + datetime.timedelta(weeks=float(fin_sem)))
+    fin = (base_fin + datetime.timedelta(weeks=float(dur))) if dur else None
 
     if bloque and cierres:
         cie = buscar_cierre(grupo, var_texto, bloque, cierres)
@@ -1383,6 +1467,7 @@ def _plantas_del_lote(grupo, variedad, bloque, plantas,
             continue
         for e in entradas:
             candidatos.append({"n": e["n"], "tiene": e["tiene"], "fecha": e["fecha"],
+                               "inicio_cosecha": e.get("inicio_cosecha"),
                                "hom": hom, "var": var, "blo": blo})
 
     con_conteo = [c for c in candidatos if c["tiene"]]
@@ -1396,7 +1481,8 @@ def _plantas_del_lote(grupo, variedad, bloque, plantas,
     if fecha_min and fecha_max and ciclos is not None:
         for c in con_conteo:
             c["ini"], c["fin"] = _ventana_estimada(grupo, c["var"], c["fecha"], ciclos, subtipos,
-                                                    bloque=c["blo"], cierres=cierres)
+                                                    bloque=c["blo"], cierres=cierres,
+                                                    inicio_real=c.get("inicio_cosecha"))
         con_ventana = [c for c in con_conteo if c["ini"]]
         if len(con_ventana) == len(con_conteo):
             solapan = [c for c in con_ventana if _solapa(c["ini"], c["fin"], fecha_min, fecha_max)]
@@ -1476,24 +1562,31 @@ def construir_lotes(grupo=None):
     # una ventana de varias SEMANAS de ciclo. La fecha exacta, cuando esta,
     # sirve de respaldo para las pocas filas viejas sin semana.
     semanas_siembra = _leer_semanas_siembra()
+    # Semana ISO real de inicio de cosecha, cuando esta anotada. Es mejor que
+    # estimarla con el ciclo: es lo que de verdad paso en esa cama.
+    semanas_cosecha = _leer_semanas_cosecha()
     plantas = defaultdict(list)
-    for s, semana_info in zip(siembras, semanas_siembra):
+    for s, semana_info, sem_cos in zip(siembras, semanas_siembra, semanas_cosecha):
         hom = norm(s.get("Nombre Homologados") or "")
         var = norm(s.get("Variedad") or "")
         n = num((s.get("Cantidad Trasplantada") or "").strip())
         fecha_siembra = _fecha_siembra_estim(s, semana_info)
+        inicio_real = _fecha_cosecha_real(sem_cos, fecha_siembra)
         if not (hom or var):
             continue
         # Una siembra SIN cantidad trasplantada se registra igual, marcada.
         # Si no, su cosecha se divide entre las plantas de las otras camas y
         # el tallos/planta sale inflado: en Zinnia 4B hay 4 siembras y solo 1
         # tiene conteo, asi que el resultado salia 4 veces mas alto.
+        entrada = {"fecha": fecha_siembra, "inicio_cosecha": inicio_real}
         if not n:
             for blo in bloques_de(s.get("Bloque sembrado") or ""):
-                plantas[(hom, var, blo)].append({"n": 0.0, "tiene": False, "fecha": fecha_siembra})
+                d = dict(entrada); d.update({"n": 0.0, "tiene": False})
+                plantas[(hom, var, blo)].append(d)
             continue
         for blo in bloques_de(s.get("Bloque sembrado") or ""):
-            plantas[(hom, var, blo)].append({"n": n, "tiene": True, "fecha": fecha_siembra})
+            d = dict(entrada); d.update({"n": n, "tiene": True})
+            plantas[(hom, var, blo)].append(d)
 
     # cosecha por (grupo, variedad, bloque)
     lotes = defaultdict(lambda: {"tallos": 0.0, "fechas": [],
@@ -1587,7 +1680,8 @@ def siembras_que_aportan(grupo, variedad, bloque, plantas):
         if not generica and not (v in hom or (hom and hom in v) or v in var):
             continue
         for e in entradas:
-            salida.append((hom or var, blo, e["n"], e["tiene"], e["fecha"]))
+            salida.append((hom or var, blo, e["n"], e["tiene"], e["fecha"],
+                           e.get("inicio_cosecha")))
     return sorted(salida, key=lambda x: (x[1], x[4] or datetime.date.min))
 
 
@@ -1663,8 +1757,10 @@ def cmd_chequear(grupo=None):
                        "%.0f" % pr, "%.0f" % tot,
                        "%.2f" % (tot / pl) if pl else "?", f1, f2, dias,
                        " | ".join(marcas)))
-        for hom, blo, n, tiene, fecha in siembras_que_aportan(g, v, b, plantas):
+        for hom, blo, n, tiene, fecha, ini_real in siembras_que_aportan(g, v, b, plantas):
             sem = ("sem %d de %d" % (fecha.isocalendar()[1], fecha.year)) if fecha else "sin fecha"
+            if ini_real:
+                sem += " -> cos. sem %d" % ini_real.isocalendar()[1]
             # Cuando la ventana estimada de la siembra NO cubre las fechas de
             # los cortes, el denominador viene de OTRO ciclo. Con una sola
             # siembra candidata el motor la usa igual (es lo unico que hay),
@@ -1672,7 +1768,8 @@ def cmd_chequear(grupo=None):
             aviso = ""
             if tiene and fecha:
                 vi, vf = _ventana_estimada(g, hom, fecha, ciclos, subtipos,
-                                            bloque=blo, cierres=cierres)
+                                            bloque=blo, cierres=cierres,
+                                            inicio_real=ini_real)
                 if vi and not _solapa(vi, vf, ini, fin):
                     aviso = ("  <-- NO CUADRA: esta siembra cosecharia %s%s"
                              % (vi.isoformat(),
@@ -2146,7 +2243,8 @@ def siembras_activas(grupo, bloque_clave, fecha, plantas, ciclos, subtipos, cier
             if not e["tiene"]:
                 continue
             ini, fin = _ventana_estimada(grupo, var, e["fecha"], ciclos, subtipos,
-                                          bloque=blo, cierres=cierres)
+                                          bloque=blo, cierres=cierres,
+                                          inicio_real=e.get("inicio_cosecha"))
             if not ini or not (ini <= fecha and (fin is None or fecha <= fin)):
                 continue
             activos[hom or var] += e["n"]

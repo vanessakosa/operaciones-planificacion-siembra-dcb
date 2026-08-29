@@ -1,0 +1,7 @@
+grupo,nombre_homologado,cama,semana_siembra,semana_cosecha,plantas,motivo,fuente,notas
+Boca de Dragón,Opus Fresh,4B,2,12,1152,cosecha_previa_al_registro,Vanessa 2026-08-28,"Dictado: ""esa siembra el cuatro b de Opus Fresh no cuenta, porque en semana doce no hay registro"". Sus tallos existieron pero nunca se anotaron"
+Boca de Dragón,Cannes Pink,4B,2,13,864,cosecha_previa_al_registro,Vanessa 2026-08-28,"Dictado: ""esa obviamente no esta en registro de tallos, o sea, hay que sacarla de este analisis"""
+Boca de Dragón,Cannes Lavender,4B,2,14,1792,cosecha_previa_al_registro,Vanessa 2026-08-28,"Dictado: ""no se puede cruzar con los tallos cosechados, porque se cosecho en la semana catorce, y el registro apenas ahi empieza en semana veintidos. Ahi esta un error. Entonces, esa es otra siembra diferente"""
+Boca de Dragón,Opus Fresh,MINI,3,13,,cosecha_previa_al_registro,derivado 2026-08-28,Detectado por la regla general — cosecha en sem 13 contra registro que arranca en sem 22
+Boca de Dragón,Cannes Pink,4A,4,16,,cosecha_previa_al_registro,derivado 2026-08-28,Detectado por la regla general — cosecha en sem 16
+Boca de Dragón,Potomac Appleblossom,4A,4,15,288,cosecha_previa_al_registro,derivado 2026-08-28,Detectado por la regla general — cosecha en sem 15

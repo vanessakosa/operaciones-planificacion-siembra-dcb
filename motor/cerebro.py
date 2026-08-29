@@ -280,6 +280,59 @@ def cargar_ciclos():
     return ciclos
 
 
+def cargar_atribucion():
+    """Decisiones EXPLICITAS de Vanessa sobre a que cama pertenece un corte.
+
+    El cruce automatico empareja por grupo + cultivar + bloque, y eso falla
+    cuando el operario anota la cama equivocada, cuando dos camas son en
+    realidad el mismo lote, o cuando una siembra vieja ya no existe pero su
+    nombre sigue apareciendo. Ninguna de esas tres cosas se puede deducir del
+    dato: solo Vanessa sabe que paso en el campo.
+
+    Este archivo es esa capa. Le GANA al cruce automatico, y cada fila trae
+    la cita textual del dictado para poder auditarla despues.
+
+    Devuelve {(grupo_norm, variedad_norm): {"destino": cama, "motivo": ...}}
+    """
+    ruta = os.path.join(DATOS, "atribucion_lotes.csv")
+    if not os.path.exists(ruta):
+        return {}
+    salida = {}
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        for f in csv.DictReader(fh):
+            destino = (f.get("cama_destino") or "").strip()
+            if not destino or destino == "SIN_RESOLVER":
+                continue
+            salida[(norm(f["grupo"]), norm(f["variedad"]))] = {
+                "destino": norm_bloque(destino),
+                "motivo": (f.get("motivo") or "").strip(),
+                "camas": {norm_bloque(c) for c in
+                          (f.get("camas_registro") or "").split("+") if c.strip()},
+            }
+    return salida
+
+
+def cargar_excluidas():
+    """Siembras que NO se pueden cruzar con el registro de tallos.
+
+    Vanessa 2026-08-28: el registro de cosecha arranca en la semana 22, pero
+    el cultivo venia produciendo desde antes. Una siembra cuya ventana de
+    cosecha termino antes de la semana 22 tuvo tallos reales que nunca se
+    anotaron — no porque no existieran, sino porque todavia no se llevaba el
+    registro. Usarla como denominador reparte cosecha ajena sobre sus plantas
+    y hunde su tallos/planta sin motivo.
+
+    Devuelve un set de (nombre_homologado_norm, cama_norm).
+    """
+    ruta = os.path.join(DATOS, "siembras_excluidas.csv")
+    if not os.path.exists(ruta):
+        return set()
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        return {(norm(f["nombre_homologado"]), norm_bloque(f["cama"]))
+                for f in csv.DictReader(fh)
+                if (f.get("nombre_homologado") or "").strip()}
+
+
 def cargar_subtipos():
     """Cultivar -> subtipo agronomico, cuando el grupo es un paraguas.
 
@@ -1565,6 +1618,8 @@ def construir_lotes(grupo=None):
     # Semana ISO real de inicio de cosecha, cuando esta anotada. Es mejor que
     # estimarla con el ciclo: es lo que de verdad paso en esa cama.
     semanas_cosecha = _leer_semanas_cosecha()
+    excluidas = cargar_excluidas()
+    atribucion = cargar_atribucion()
     plantas = defaultdict(list)
     for s, semana_info, sem_cos in zip(siembras, semanas_siembra, semanas_cosecha):
         hom = norm(s.get("Nombre Homologados") or "")
@@ -1578,6 +1633,11 @@ def construir_lotes(grupo=None):
         # Si no, su cosecha se divide entre las plantas de las otras camas y
         # el tallos/planta sale inflado: en Zinnia 4B hay 4 siembras y solo 1
         # tiene conteo, asi que el resultado salia 4 veces mas alto.
+        # Una siembra excluida NO entra como denominador: sus tallos son
+        # reales pero nunca se anotaron (ver cargar_excluidas).
+        if any((hom, blo) in excluidas or (var, blo) in excluidas
+               for blo in bloques_de(s.get("Bloque sembrado") or "")):
+            continue
         entrada = {"fecha": fecha_siembra, "inicio_cosecha": inicio_real}
         if not n:
             for blo in bloques_de(s.get("Bloque sembrado") or ""):
@@ -1630,6 +1690,12 @@ def construir_lotes(grupo=None):
         t = num(c.get("Tallos frescos") or "")
         clave_b = "+".join(sorted(bloques_de(b))) or norm_bloque(b)
         clave_v = norm(v)
+        # Capa de atribucion manual: cuando Vanessa dijo explicitamente que
+        # los cortes de varias camas son UN solo lote, se reetiquetan a la
+        # cama destino ANTES de agrupar. Es la unica forma de que sumen.
+        regla = atribucion.get((norm(g), clave_v))
+        if regla and (not regla["camas"] or clave_b in regla["camas"]):
+            clave_b = regla["destino"]
         d = lotes[(g, clave_v, clave_b)]
         d["tallos"] += t or 0
         d["fechas"].append(f)

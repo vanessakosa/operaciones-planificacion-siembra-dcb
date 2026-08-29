@@ -1726,6 +1726,53 @@ def ventana_del_lote(fechas):
     return a, z, (z - a).days + 1, raras
 
 
+def cobertura_registro(grupo, variedad, bloque, plantas, arranque):
+    """Dice si el REGISTRO alcanzo a ver toda la cosecha de este lote.
+
+    Vanessa 2026-08-28: "es importante separar las que comenzaron floracion
+    despues que arrancamos a llenar el registro."
+
+    El registro de tallos arranca el 2026-05-31 (semana 22), pero el cultivo
+    venia produciendo desde antes. Una siembra cuya floracion arranco antes de
+    esa fecha tuvo tallos REALES que nunca se anotaron — no porque no
+    existieran, sino porque todavia no se llevaba el registro.
+
+    La distincion no es cosmetica: cambia si el tallos/planta se puede creer.
+      COMPLETA         floracion arranco en/despues de la sem 22 -> el numero
+                       es real y comparable
+      TRUNCADA_INICIO  floracion arranco antes -> faltan tallos, el numero
+                       SUBESTIMA a la variedad y NO se puede comparar contra
+                       una completa
+      SIN_DATO         la siembra no tiene semana de inicio de cosecha, asi
+                       que no se sabe de que lado cae
+
+    Son 55 siembras truncadas contra 48 completas: mas de la mitad del
+    cultivo. Mezclarlas en un mismo ranking premia a las completas por una
+    razon que no tiene nada que ver con la planta.
+    """
+    if not arranque:
+        return "SIN_DATO"
+    d0 = datetime.date.fromisoformat(arranque)
+    estados = set()
+    for hom, blo, n, tiene, fecha, ini_real in siembras_que_aportan(
+            grupo, variedad, bloque, plantas):
+        if not tiene:
+            continue
+        if not ini_real:
+            estados.add("SIN_DATO")
+        elif ini_real < d0:
+            estados.add("TRUNCADA_INICIO")
+        else:
+            estados.add("COMPLETA")
+    if not estados:
+        return "SIN_DATO"
+    # Basta una siembra truncada para que el total del lote lo este.
+    for prioridad in ("TRUNCADA_INICIO", "SIN_DATO", "COMPLETA"):
+        if prioridad in estados:
+            return prioridad
+    return "SIN_DATO"
+
+
 def siembras_que_aportan(grupo, variedad, bloque, plantas):
     """Las filas de CAMPO que aportaron las plantas de este lote.
 
@@ -1764,7 +1811,7 @@ def cmd_chequear(grupo=None):
     y ultimo corte, y debajo las siembras de CAMPO que aportaron el
     denominador, para poder ir a la hoja y contrastar.
     """
-    lotes, plantas, corte, _, _ = construir_lotes(grupo)
+    lotes, plantas, corte, _, arranque = construir_lotes(grupo)
     if not lotes:
         raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
     ciclos = cargar_ciclos()
@@ -1817,6 +1864,11 @@ def cmd_chequear(grupo=None):
             marcas.append(nm)
         elif nm == "VENTANA":
             marcas.append("multi-siembra resuelta por fecha")
+        cob = cobertura_registro(g, v, b, plantas, arranque)
+        if cob == "TRUNCADA_INICIO":
+            marcas.append("FLORECIO ANTES DEL REGISTRO -> faltan tallos, SUBESTIMA")
+        elif cob == "SIN_DATO" and pl:
+            marcas.append("sin semana de inicio de cosecha — no se sabe si falta cosecha")
         if f2 == corte:
             marcas.append("ABIERTA")
         print(ancho % (v[:20], b, "%.0f" % pl if pl else "SIN DATO", "%.0f" % rl,
@@ -1851,6 +1903,24 @@ def cmd_chequear(grupo=None):
             print("   %-16s cama %-9s %7.0f tallos   %s -> %s   %s"
                   % (g[:16], b, t, f1, f2, como))
 
+    print("\nCOBERTURA DEL REGISTRO — lo mas importante para comparar")
+    print("  El registro de tallos arranca el %s (semana %d), pero el"
+          % (arranque, datetime.date.fromisoformat(arranque).isocalendar()[1]
+             if arranque else 0))
+    print("  cultivo venia produciendo desde antes. Por eso hay DOS clases de")
+    print("  lote y NO se pueden comparar entre si:")
+    print("    sin marca  -> la floracion arranco DESPUES del registro. Todos")
+    print("                  sus tallos estan anotados: el numero es real.")
+    print("    [FLORECIO ANTES DEL REGISTRO] -> ya venia cosechando cuando")
+    print("                  empezamos a anotar. Esos tallos existieron pero")
+    print("                  nunca se registraron, asi que su T/PLANTA")
+    print("                  SUBESTIMA. Comparar una de estas contra una sin")
+    print("                  marca castiga a la variedad por un problema de")
+    print("                  captura, no de campo.")
+    print("    [sin semana de inicio de cosecha] -> no se sabe de que lado")
+    print("                  cae. Llenar esa columna en CAMPO lo resuelve.")
+    print("  Las siembras cuya ventana ENTERA quedo antes del registro estan")
+    print("  en 07-datos/siembras_excluidas.csv y no aparecen aca.")
     print("\nCOMO CHEQUEAR ESTA TABLA")
     print("  PLANTAS SIN DATO -> esa cama no tiene 'Cantidad Trasplantada' en")
     print("      CAMPO. No es que no se sembro: es que no se anoto cuanto.")
@@ -1932,6 +2002,8 @@ def cmd_m2(grupo=None):
             marcas.append("multi-siembra: resuelta por fecha")
         elif nivel_multi:
             marcas.append(nivel_multi)
+        if cobertura_registro(g, v, b, plantas, arranque) == "TRUNCADA_INICIO":
+            marcas.append("FLORECIO ANTES DEL REGISTRO")
         cie = buscar_cierre(g, v, b, cierres)
         motivo = (cie or {}).get("motivo", "")
         if motivo in CIERRE_AJENO:
@@ -2061,7 +2133,7 @@ def cmd_rendimiento(grupo=None):
     """
     import datetime as dt
 
-    lotes, plantas, corte_registro, sin_variedad, _ = construir_lotes(grupo)
+    lotes, plantas, corte_registro, sin_variedad, corte_arranque = construir_lotes(grupo)
 
     if not lotes:
         raise SystemExit("Sin datos de cosecha para '%s'." % (grupo or "el filtro"))
@@ -2088,6 +2160,7 @@ def cmd_rendimiento(grupo=None):
     cerrados_ajenos, cerrados_tarde = [], []
     denom_incompleto = 0
     ambiguos = 0
+    truncadas = 0
     for (g, v, b), d in sorted(lotes.items(), key=lambda kv: (kv[0][0], -kv[1]["tallos"])):
         fs = sorted(d["fechas"])
         # Hay errores de tipeo de ano en el registro (fechas de 2025 dentro de
@@ -2126,6 +2199,9 @@ def cmd_rendimiento(grupo=None):
             marca = ("DENOMINADOR INCOMPLETO: %d siembra(s) sin conteo %s"
                      % (sin_conteo, marca)).strip()
             denom_incompleto += 1
+        if cobertura_registro(g, v, b, plantas, corte_arranque) == "TRUNCADA_INICIO":
+            marca = ("FLORECIO ANTES DEL REGISTRO: faltan tallos, SUBESTIMA " + marca).strip()
+            truncadas += 1
         if nivel_multi == "VENTANA":
             marca = ("multi-siembra: resuelta por fecha " + marca).strip()
         elif nivel_multi:
@@ -2154,6 +2230,14 @@ def cmd_rendimiento(grupo=None):
         print("cantidad trasplantada, asi que la cosecha se divide entre menos plantas")
         print("de las que hubo. Ese tallos/planta es un TECHO, no una medicion — y")
         print("este error INFLA, al reves que la ventana truncada.")
+
+    if truncadas:
+        print()
+        print("%d lote(s) FLORECIERON ANTES DE QUE EXISTIERA EL REGISTRO." % truncadas)
+        print("El registro arranca el %s: esos lotes ya venian cosechando y sus" % corte_arranque)
+        print("primeros tallos nunca se anotaron. Su tallos/planta SUBESTIMA, y NO")
+        print("se puede comparar contra un lote que florecio despues — seria")
+        print("castigar a la variedad por un problema de captura, no de campo.")
 
     if ambiguos:
         print()

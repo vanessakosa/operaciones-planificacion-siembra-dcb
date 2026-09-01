@@ -320,3 +320,22 @@ Son demasiado grandes para espejar como texto. Se consultan en Drive por ID:
 El archivo maestro activo de programación es siempre el `PROGRAMACION_2026` en
 su versión más reciente — **verificar la versión antes de tomar los CSV de
 `07-datos/` como definitivos.**
+
+## Dónde sube Vanessa un archivo nuevo
+
+Carpetas de Drive que espejan el repo. El PDF o Excel crudo va ahí tal cual, y
+**los números extraídos se escriben en el repo** — porque el acceso a Drive
+está atado a la cuenta y no viaja con `git pull`, así que lo que no se espeja
+se pierde al abrir desde otra máquina.
+
+| Qué | Carpeta de Drive |
+|---|---|
+| Análisis de suelo (PDF del laboratorio) | [`07_Operaciones / 01-infraestructura`](https://drive.google.com/drive/folders/1YldcNcUhk2mk38A0yvpXYkwhOlZbCau5) |
+
+Nombrar con la fecha adelante para que no se pisen entre sí:
+`2026-08-analisis-suelo-Inv3B.pdf`.
+
+**Al recibir un archivo nuevo: bajarlo, extraer los datos al markdown o CSV que
+corresponda, y decir qué decisiones vigentes cambian.** Un análisis de suelo no
+se "archiva": recalibra fórmulas de fertirriego que hoy están congeladas —
+ver la tabla al final de `01-infraestructura/02-analisis-de-suelo.md`.

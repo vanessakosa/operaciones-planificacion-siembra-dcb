@@ -71,3 +71,34 @@ con cada volteo profundo.** No voltear es proteger una inversión biológica de 
 - Inv 3B e Inv 4 — muestras enviadas, resultado pendiente de incorporar
 - Al llegar: comparar contra los valores de junio 2025 para medir si las correcciones
   (eliminar P, K, cal) están moviendo la aguja, y recalibrar las fórmulas de fertirriego
+
+## Dónde subir un análisis nuevo
+
+**Drive → `DCB Claude / 07_Operaciones / 01-infraestructura`**
+https://drive.google.com/drive/folders/1YldcNcUhk2mk38A0yvpXYkwhOlZbCau5
+
+El PDF del laboratorio va tal cual, sin transcribir. Nombrarlo con la fecha
+adelante para que no se pisen: `2026-08-analisis-suelo-Inv3B.pdf`.
+
+**Por qué Drive y además el repo.** El acceso a Drive está atado a la cuenta,
+no al repositorio: desde otra máquina, o con el conector caído, esos PDF no se
+pueden abrir. Lo único que viaja siempre con `git pull` es lo commiteado. Por
+eso el flujo es el mismo que el del registro de tallos —el Excel vive en Drive
+y `07-datos/registro_tallos.csv` es el espejo que viaja—: **Vanessa sube el PDF
+a Drive, y los números extraídos más la interpretación se escriben acá.**
+
+El PDF es la fuente; este archivo es lo que leen las fórmulas de fertirriego.
+
+## Qué se recalcula cuando llega un análisis nuevo
+
+No es "actualizar la tabla". Cada valor mueve una decisión concreta que hoy
+está congelada, y conviene revisarlas en este orden:
+
+| Si cambió | Qué se revisa |
+|---|---|
+| **Cu** subió de 2,3–2,7 | Si Haifa Micro puede bajar de los 180 g/tanque fijos. Es la regla más cara del programa y la única razón de que exista |
+| **P** bajó de ~100 mg/kg | Si se puede volver a permitir alguna fuente de P. Hoy hay 6 insumos eliminados por esto |
+| **K** en Inv 3 bajó de 5,18 | Si se puede volver a subir K en fertirriego, y con qué fuente (nunca MKP) |
+| **S** bajó de 90–103 | Destraba el punto pendiente de Bitter Mag, que hoy mete azufre en un suelo saturado |
+| **C.E.** de Inv 3 bajó de 0,829 | La salinidad activa de Inv 3 es la causa documentada de los tallos cortos de lisianthus |
+| **M.O.** se sostuvo sobre 19 % | Confirma que el bokashi y el No-Dig funcionan, o avisa que hay que ajustar la dosis |

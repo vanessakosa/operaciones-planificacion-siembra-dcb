@@ -1,9 +1,17 @@
 # Comparativo de casas comerciales — fertirriego
 
-> **Estado: MESA DE TRABAJO ABIERTA.** Precios de Haifa y Fullfert confirmados y
-> **ficha del Haifa Micro recibida** (Vanessa, 2026-09-02). Falta (a) el **% de húmicos y
-> fúlvicos del Fullfert**, (b) el **precio del balde de 20 kg del Haifa Micro**, (c) fichas y
-> precios de la casa nueva, (d) precios de boro, quelato de Cu y molibdato.
+> **Estado: DECISIÓN TOMADA en nitrato de calcio y cobre. Ver el VEREDICTO al final.**
+>
+> Recibido y confirmado (Vanessa, 2026-09-02): precios Haifa y Fullfert, ficha del Haifa Micro,
+> lista de precios completa del distribuidor (919 productos, ~30 casas), **ficha del SQM Calcinit**
+> y **ficha del Amilsol micro Cu15**.
+>
+> Falta: (a) **% de B del SQM Amilsol Micro Boro**, (b) **% de húmicos/fúlvicos, pH y contenido de K
+> del Campofert Humus 15**, (c) % de Mo del molibdato, (d) si los precios de Haifa incluyen IVA,
+> (e) **litros de tanque por m² por bloque** — para pasar de $/tanque a $/m²/año.
+>
+> El balde de 20 kg del Haifa Micro **queda descartado**: Vanessa confirmó que no baja de precio
+> por cantidad.
 >
 > Las composiciones de Haifa de abajo son **de catálogo y están marcadas PENDIENTE CONFIRMAR
 > contra la ficha/etiqueta del lote comprado** — Regla 3.
@@ -362,3 +370,164 @@ La comparación NO es precio por kg de producto. Es en tres columnas:
 
 **Las dos filas de Polyfeed y Bitter Mag están abajo solo como referencia histórica: la propuesta
 es eliminarlos, no reemplazarlos.**
+
+---
+
+# VEREDICTO · Lista de precios del distribuidor · Agosto 2026
+
+> **Fuente:** `Lista_de_precios_Agosto_1.xlsx`, hoja `LP ANT1_Ago`, 919 productos de ~30 casas
+> comerciales. Espejada a **`07-datos/precios_fertirriego.csv`** (50 filas relevantes).
+> Precios de lista del distribuidor — el precio negociado real puede diferir.
+
+## 🔴 El hallazgo: el nitrato de calcio está al 42% de lo que se paga hoy
+
+| | Precio | COP/kg |
+|---|---|---|
+| **Haifa N-Cal** | $190.360 / 25 kg | **$7.614/kg** |
+| **SQM Nitrato Calcio CALCINIT** | **$79.582 / 25 kg** | **$3.183/kg** (IVA 0%) |
+
+**2,39× más barato**, en el producto que es el 30–43% del tanque.
+
+| Fórmula | Haifa | SQM | Ahorro/tanque |
+|---|---|---|---|
+| 1.200 g (Vegetativo) | $9.137 | $3.820 | **$5.317** |
+| 1.400 g (Floración) | $10.660 | $4.457 | **$6.204** |
+
+### ✅ FICHA DEL CALCINIT CONFIRMADA — es el mismo producto, el 2,39× es puro precio
+
+Ficha `[Y-FPT215]` recibida de Vanessa (2026-09-02):
+
+| | Haifa N-Cal | **SQM/Yara Calcinit** |
+|---|---|---|
+| Grado | 15,5-0-0-26,3 CaO | **15,5-0-0-26,0 CaO** |
+| Fórmula | Sal doble de nitrato de calcio y amonio | **5Ca(NO₃)₂·NH₄NO₃·10H₂O** |
+| Uso declarado | Fertirriego | **Fertilizante para fertirriego** ✅ |
+| Apariencia | Granular | Gránulos, 80–100% entre 1,0 y 4,0 mm |
+| Solubilidad | — | **250 g/100 ml @ 20 °C** |
+| N nítrico / amoniacal | — | 14,2% / 1,3% |
+| pH solución 10% | — | 5,0 – 7,0 |
+| Metales pesados declarados | — | Cd 5 · Pb 10 · Cr 5 · As 0,5 · Hg 0,2 ppm |
+
+**No hay diferencia de producto que justifique el precio.** Misma sal doble, mismo grado, mismo uso.
+
+| | Haifa | **Calcinit** |
+|---|---|---|
+| COP/kg producto | $7.614 | **$3.183** |
+| COP/kg de N (15,5%) | $49.125 | **$20.537** |
+| COP/kg de Ca (18,59%) | $40.960 | **$17.124** |
+| **COP/kg de N+Ca (34,09%)** | $22.336 | **$9.338** |
+
+**Ahorro anual estimado:** ~$576.000 COP si se corren ~100 tanques/año a 1.300 g promedio, solo en
+nitrato de calcio. *(Depende de cuántos tanques se corren realmente — sigue pendiente el dato de
+litros por m².)*
+
+**Detalle agronómico menor a favor:** el 1,3% de N amoniacal de la sal doble es N que la planta no
+tiene que reducir con nitrato reductasa. Va en la dirección correcta para el problema de Fase 1,
+aunque es marginal.
+
+> **DECISIÓN: cambiar el nitrato de calcio a Calcinit. Sin condiciones pendientes.**
+
+## El cobre: 58× más barato, con ficha confirmada
+
+**Amilsol micro Cu15 — FICHA CONFIRMADA (Vanessa, 2026-09-02):** 15,0% Cu-EDTA quelatado completo ·
+solubilidad 90–120 g/100 ml · pH solución 1% = 6–7 · **rango de estabilidad pH 1,5–10** ·
+aplicación foliar, al suelo e hidroponía.
+
+| Fuente | COP / kg de Cu | vs Haifa Micro |
+|---|---|---|
+| **Haifa Micro** (0,2% Cu) | **$20.147.000** | — |
+| **SQM Amilsol micro Cu15** (15,0% Cu-EDTA) | **$345.290** | **58× más barato** |
+| PQP Sulfato de cobre (bulto 25 kg) | $85.531 | 236× más barato |
+| Oxicloruro de cobre | $28.558 | 705× — pero es fungicida y trae cloro |
+
+**El rango de estabilidad 1,5–10 es mejor que el del Haifa Micro (3–9)** — no se desarma en la mezcla.
+
+### Corrección: el quelato también gana para el suelo, no solo para el tanque
+
+Un análisis previo recomendó sulfato de cobre para el suelo y quelato solo para el tanque, mirando
+únicamente el precio por kg de Cu (donde el sulfato gana 4×). **Ese razonamiento estaba incompleto:
+el problema de este suelo es que el 22,9% de M.O. secuestra el cobre, y evitar eso es exactamente
+para lo que existe la quelatación.** El sulfato pide un factor de fijación alto; el Cu-EDTA entra
+protegido y pide un factor bajo.
+
+| Escenario realista | Corregir Bloque 5 (piso teórico 28,7 g Cu) |
+|---|---|
+| Sulfato de cobre, factor de fijación 10× | **$24.547** |
+| **Cu15 quelato, factor 2×** | **$19.820** |
+| *(Haifa Micro, referencia)* | *$578.219* |
+
+*Los factores 10× y 2× son estimaciones de comportamiento, no dato de campo. Lo que sí es dato: el
+quelato está diseñado para resistir la fijación y el sulfato no.*
+
+**Recomendación: Amilsol micro Cu15 para todo el cobre** — un solo producto para tanque y suelo,
+cero azufre (desaparece el conflicto con la regla de no agregar sulfatos), y sirve foliar, que es
+lo que entra en la ventana de prefloración de Fase 3. En el tanque: **2,4 g = $124, contra $7.253
+del Haifa Micro.**
+
+## El mejor precio de cada renglón
+
+| Renglón | Producto | Presentación | COP/unidad c/IVA | Nota |
+|---|---|---|---|---|
+| **Nitrato de calcio** | **SQM Calcio Calcinit** | bulto 25 kg | **$3.183/kg** | 2,39× más barato que Haifa |
+| **Cobre** | **SQM Amilsol micro Cu15** | bolsa 1 kg | **$51.794/kg** | 15,0% Cu-EDTA confirmado |
+| **Boro** | **SQM Amilsol Micro Boro** | bulto 25 kg | **$7.981/kg** | 2,5× más barato que el 2º. **% de B sin confirmar** |
+| Boro (2º) | Microfertisa Borosol | bolsa 1 kg | $20.097/kg | |
+| **Molibdeno** | Molibdato de amonio (VARIOS) | bolsa 1 kg | $210.979/kg | ~54% Mo típico → ~0,7 g/tanque = $148 |
+| **Húmicos** | **Campofert Humus 15** | caneca 20 L | **$26.165/L** | **22% menos que el Fullfert** ($33.665) |
+| **Aminoácidos** | MP Galagro Aminopoder | caneca 20 L | $40.768/L | Renglón nuevo — desplazar nitrato (Fase 1) |
+| **Calcio foliar** | Innovak Promesol Calcio | caneca 20 L | $26.620/L | Para 3C, 4B, Inv 1 (entrega por transpiración) |
+| **Ca+B+Zn foliar** | Interoc Novaplant Ca+B+Zn | caneca 20 L | $32.154/L | **Equivalente funcional del Glukoplant Ca-BZn** |
+| **Fósforo (solo B4)** | SQM Amilsol MAP 12-61-0 | bulto 25 kg | $8.492/kg | $31.925/kg P — **7,9× más barato que el P del Polyfeed** |
+
+**Corrección:** la sospecha de que el "Amilsol Magnum P44" traía magnesio era infundada — la lista
+aclara que es **urea fosfato** (18-44-0), sin Mg. Aun así el MAP le gana en $/kg de P.
+
+**Alerta de paso:** el **yeso agrícola** está a $1.455/kg (barato), pero es **sulfato de calcio: trae
+azufre** a un suelo con S alto. El protocolo de camas con historial largo de lisianthus lo pide a
+200–300 g/m² — **revisar ese protocolo aparte.**
+
+## El tanque: de $30.436 a $4.204
+
+**Inv 4+5 Vegetativo, 2.000 L:**
+
+| Escenario | Costo | Reducción |
+|---|---|---|
+| **HOY** (N-Cal Haifa + Polyfeed + Bitter Mag + Haifa Micro + Fullfert) | **$30.436** | — |
+| **PROPUESTO base** | **$4.204** | **−86%** |
+| + húmicos Campofert (100 cc) | $6.820 | −78% |
+| + aminoácidos (100 cc) | $10.897 | −64% |
+
+| Producto propuesto | Dosis | Costo |
+|---|---|---|
+| Nitrato de calcio SQM Calcinit | 1.200 g | $3.820 |
+| Cu15 quelato | 2,4 g | $124 |
+| Boro SQM | ~14 g | $112 |
+| Molibdato de amonio | ~0,7 g | $148 |
+| **BASE** | | **$4.204** |
+
+Origen del ahorro: **$17.933** de eliminar Polyfeed + Bitter Mag + Haifa Micro, y **$5.317** de
+cambiar el nitrato de calcio.
+
+## ⚠️ Supuestos que faltan verificar antes de comprar
+
+| Supuesto | Estado |
+|---|---|
+| Calcinit = 15,5% N + 26,0% CaO, hidrosoluble, grado fertirriego | ✅ **CONFIRMADO por ficha [Y-FPT215]** |
+| Cu15 = 15,0% Cu-EDTA | ✅ **CONFIRMADO** |
+| SQM Boro = % de B | ⚠️ **Pedir ficha** |
+| Molibdato de amonio = 54% Mo | ⚠️ Valor típico, pedir ficha |
+| Campofert Humus 15: % húmicos/fúlvicos, pH, ¿trae K? | 🔴 **Pedir ficha** — el Fullfert traía 40 g/L de K y pH 12 |
+| ¿Los precios de Haifa incluyen IVA? | ⚠️ En esta lista los macros van IVA 0% y los micros 19% |
+| Precio de lista del distribuidor vs. precio negociado real | ⚠️ Puede diferir en los dos sentidos |
+
+## Veredicto final
+
+> **Cambiarse — pero no "a SQM": a una canasta de cuatro proveedores del mismo distribuidor.**
+> SQM para nitrato de calcio, cobre quelatado, boro y MAP. Campofert (o similar) para húmicos.
+> MP Galagro para aminoácidos. Innovak o Interoc para calcio foliar.
+>
+> **Haifa no queda en ningún renglón.**
+
+**Nota para la sesión de foliar:** esta misma lista trae los productos de fitosanidad del cultivo
+(Botrycid, Equifun, Regalia, etc.). Es la base para revisar el programa foliar por etapa fenológica
+y calcular costo por bomba — el cuarto punto pendiente.

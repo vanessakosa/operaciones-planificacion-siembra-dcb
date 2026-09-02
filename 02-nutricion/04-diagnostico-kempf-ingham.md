@@ -301,7 +301,8 @@ con lo que el suelo pide.
 
 | Necesidad | Qué entra | Diferenciación por bloque |
 |---|---|---|
-| **Cu** | Subir por encima de los 180 g fijos | **Solo B5** (2.9 B). B3 y B4 ya respondieron |
+| **Cu** | **NO por el tanque — vía edáfica.** El Haifa Micro tiene Cu 0,2%: 80 tanques y $577.489 para corregir B5. Sulfato de cobre: 113 g y $1.126 | **Solo B5** (2.9 B). B3 y B4 ya respondieron |
+| **Micro completo** | **Candidato a eliminar.** 81% de su carga es Fe, Mn y Zn (adecuados o altos en suelo) y el Fe viene en EDDHA, quelato para pH 7–9 que no aplica a pH 5,7. Reemplazar por **B + Cu + Mo separados** | Igual en los tres |
 | **P disponible** | **Biológico primero.** Fuente mineral solo en B4 | **B4 (10.74 B) es el único candidato** |
 | **Ca** | Mantener N-Cal, pero **la entrega es foliar y ambiental** | Prioridad 3C, Inv 1, 4B |
 | **N** | **Bajar el total y cambiar la forma** — menos nitrato, más aminoácidos | B3 primero (N-NO₃ 64.4 A) |

@@ -1,8 +1,9 @@
 # Comparativo de casas comerciales — fertirriego
 
-> **Estado: MESA DE TRABAJO ABIERTA.** Precios de Haifa y Fullfert recibidos y confirmados
-> (Vanessa, 2026-09-02). Falta (a) la **ficha del Haifa Micro con el % de Cu**, (b) el
-> **% de húmicos y fúlvicos del Fullfert**, (c) fichas y precios de la casa nueva.
+> **Estado: MESA DE TRABAJO ABIERTA.** Precios de Haifa y Fullfert confirmados y
+> **ficha del Haifa Micro recibida** (Vanessa, 2026-09-02). Falta (a) el **% de húmicos y
+> fúlvicos del Fullfert**, (b) el **precio del balde de 20 kg del Haifa Micro**, (c) fichas y
+> precios de la casa nueva, (d) precios de boro, quelato de Cu y molibdato.
 >
 > Las composiciones de Haifa de abajo son **de catálogo y están marcadas PENDIENTE CONFIRMAR
 > contra la ficha/etiqueta del lote comprado** — Regla 3.
@@ -109,29 +110,112 @@ De cada kg: **35,7% es K que no se quiere**, solo **14,4% es nutriente útil** (
 **La virtud real del N-Cal:** es el único producto del tanque que entrega dos nutrientes que sí se
 necesitan, y por eso su costo combinado ($22.199/kg de nutriente útil) es el mejor de los cinco.
 
-## 🔴 El punto ciego: el cobre y la ficha del Micro
+## 🔴 El Haifa Micro es el producto equivocado para este suelo
 
-Tras eliminar Polyfeed y Bitter Mag el Micro queda siendo el **34–38%** del tanque, y es el
-**único producto sin ficha confirmada**. Se está gastando un tercio del presupuesto de fertirriego
-en el producto del que menos se sabe.
+**Ficha confirmada (Vanessa, 2026-09-02).** Micros totales **9,4%** — el 90,6% es quelante y
+portador. Aplicación: foliar, side/top-dressing e hidroponía. Baldes de 1, 2, 5 y **20 kg**.
 
-Y el diagnóstico de suelo pide **más cobre en Bloque 5**. Subirlo vía Haifa Micro significa subir
-un producto de $40.294/kg:
+| Elemento | % | g/tanque (180 g) | **COP/kg del elemento** | Estado en suelo DCB |
+|---|---|---|---|---|
+| **Fe** (EDDHA) | 3,7% | 6,66 g | $1.089.016 | Bajo — probable artefacto del umbral |
+| **Mn** (EDTA) | 2,4% | 4,32 g | $1.678.900 | 🔴 **ALTO** |
+| **Zn** (EDTA) | 1,5% | 2,70 g | $2.686.240 | 🔴 **ALTO** |
+| **B** (etanolamina) | 1,4% | 2,52 g | $2.878.114 | Medio — ✅ se necesita |
+| **Cu** (EDTA) | **0,2%** | **0,36 g** | **🔴 $20.146.800** | **BAJO en B5 — es lo que se busca** |
+| **Mo** | 0,2% | 0,36 g | $20.146.800 | Sin medir — ✅ relevante |
 
-| Si el Micro tiene… | El Cu sale a | Un quelato al 10% Cu conviene si cuesta menos de |
+> **El 81% de la carga nutricional es Fe, Mn y Zn — los tres adecuados o altos en el suelo.
+> Lo que se necesita (Cu + B + Mo) es el 19%.**
+
+### El hierro está en la forma más cara por una razón que no aplica aquí
+
+El Fe viene quelatado con **EDDHA**, el quelato de hierro más caro y estable que existe. **Su
+razón de ser es funcionar en suelos calcáreos de pH 7–9**, donde el EDTA se desarma. **El pH de
+DCB es 5,6–5,8**: a ese pH el EDTA funciona bien y hasta el sulfato ferroso funcionaría. **Se está
+pagando la prima del EDDHA para resolver un problema que la finca no tiene** — y el Fe es la
+fracción más grande del producto.
+
+Es el mismo patrón dos veces: es un producto de hidroponía, donde no hay reserva de suelo y hay
+que suministrar todo. DCB tiene 20% de M.O. y Mn y Zn altos.
+
+## El cobre: 513× más caro que la fuente que ya se compra
+
+Corregir Bloque 5 de 2,9 a 3,5 mg/kg (Inv 5 = 13 camas × 31,68 m² = **412 m²**; D.ap 0,58;
+20 cm → 116 kg suelo/m² → **47,8 t de suelo**) requiere **28,7 g de Cu** (piso teórico,
+100% de eficiencia).
+
+| Vía | Cantidad | **Costo** |
 |---|---|---|
-| 0,5% Cu | $8.058.720/kg Cu | $805.872/kg |
-| 1,0% Cu | $4.029.360/kg Cu | $402.936/kg |
-| 1,5% Cu | $2.686.240/kg Cu | $268.624/kg |
-| 2,0% Cu | $2.014.680/kg Cu | $201.468/kg |
-| 3,0% Cu | $1.343.120/kg Cu | $134.312/kg |
+| **Haifa Micro** (0,36 g Cu/tanque) | **80 tanques** | **$577.489** |
+| **Sulfato de cobre** (25,45% Cu, $10.000/kg del repo) | 113 g de producto | **$1.126** |
 
-En una mezcla completa de micros el Fe suele ser el grueso y el Cu una fracción pequeña
-(típicamente < 2%). **Eso pone el cobre en el rango de millones por kilo.**
+**Ratio 513×.** Con un margen 10× por fijación del Cu en la M.O. del 22,9%:
+**$11.263 vía sulfato contra $5.774.892 vía Haifa Micro.**
 
-> **El quelato de cobre individual sigue siendo muy probablemente más barato por kg de Cu que
-> subir el Haifa Micro**, y es la única forma de dosificar Cu distinto en Bloque 5 sin subir todo
-> lo demás. La ficha del Micro es lo que lo confirma o lo descarta.
+### La objeción del azufre, contestada con los propios números
+
+| | Azufre |
+|---|---|
+| **Toda la corrección de Cu de Inv 5** (412 m²) | **14,5 g S** |
+| **UN tanque de Bitter Mag** (600 g) | **76,8 g S** |
+
+> **Un tanque de Bitter Mag mete 5,3× más azufre que toda la corrección de cobre de Inv 5
+> completo** — y el Bitter Mag se aplica cada semana.
+
+El precedente ya está escrito y razonado en `02-bioinsumos.md`: el sulfato de cobre se mantiene en
+el Bokashi *"a pesar de la regla de no agregar sulfatos: la cantidad es marginal y el objetivo es
+corregir el déficit crítico de Cu, que pesa más que el aporte de S."* Solo hay que extenderlo.
+
+*El precio de $2.000/200 g sale de esa receta y puede estar desactualizado. Aun 10× viejo, gana
+por 50×.*
+
+### Matiz justo con el producto: para la PLANTA el Cu del tanque está bien
+
+0,36 g en 2.000 L = **0,18 ppm**, por encima del rango típico de fertirriego (0,05–0,1 ppm). El
+Micro no falla en lo que fue diseñado para hacer.
+
+> **Ningún programa de fertirriego puede corregir una reserva de suelo: corregir suelo necesita
+> MASA, el fertirriego entrega CONCENTRACIÓN.** Los 2,9 mg/kg de Bloque 5 son un problema de
+> suelo y piden **vía edáfica**. Y aun con agua perfecta, el fertirriego nunca lo habría corregido.
+
+## Dos palancas de plata
+
+### 1. El balde de 20 kg existe — para hoy
+
+La ficha lista baldes de **1, 2, 5 y 20 kg**. Se está comprando el de **5 kg a $40.294/kg**.
+**Pedir la cotización del de 20 kg**: es ahorro inmediato mientras el producto siga en uso, sin
+cambiar nada más.
+
+### 2. Reemplazar el Micro por Cu + B + Mo separados
+
+| Necesidad | g/tanque hoy | Fuente sugerida | Cantidad aprox |
+|---|---|---|---|
+| **B** | 2,52 g | Octaborato (20,5% B) o ácido bórico (17,5% B) | ~12–14 g |
+| **Cu** | 0,36 g al tanque + **corrección edáfica aparte** | Quelato de Cu al tanque, sulfato al suelo | Gramos |
+| **Mo** | 0,36 g | Molibdato de sodio (39% Mo) | ~0,9 g |
+| Fe, Mn, Zn | — | **Suspender** hasta confirmar deficiencia visual o en savia | 0 |
+
+**El Mo parece trivial y no lo es:** es el cofactor de la **nitrato reductasa**, la enzima que
+convierte nitrato en proteína. El problema de Fase 1 de DCB —nitrato alto, mosca blanca,
+fusarium— depende de esa enzima. Con N-NO₃ en 64,4 en Bloque 3, el Mo es parte del tratamiento,
+y cuesta centavos.
+
+⚠️ **Compatibilidad:** cuidado con el Cu foliar en **Limonium sinensis serie Diamond** — la regla
+existente de *"evitar fungicidas cúpricos una vez aparece color en la flor: decoloración
+permanente"* aplica igual a un quelato de cobre.
+
+## Tanque proyectado
+
+| | Inv 4+5 Vegetativo |
+|---|---|
+| Hoy | **$30.436** |
+| Sacando Polyfeed + Bitter Mag | $19.757 (−35%) |
+| **Sacando también el Micro**, con Cu+B+Mo separados | **~$13.000–14.000 estimado (−55%)** |
+
+El N-Cal ($9.137) queda siendo el **65–70% del tanque limpio: ahí es donde hay que negociar duro.**
+
+*El rango estimado depende de los precios de boro, quelato de Cu y molibdato, aún sin cotizar.
+El Fullfert ($3.366) sigue abierto hasta ver su % de húmicos.*
 
 ## Los productos Haifa que están en uso hoy
 
@@ -140,7 +224,7 @@ En una mezcla completa de micros el Fe suele ser el grueso y el Cu una fracción
 | **Haifa Cal GG** (nitrato de calcio granular) | 15.5% N nítrico · 26.3% CaO (≈18.8% Ca) | ✅ **Ca y N** | Nitrato (hay que bajar la forma nítrica) |
 | **Polyfeed 10-10-43** | 10% N · 10% P₂O₅ · **43% K₂O** | P (algo) | 🔴 **K masivo** |
 | **Bitter Mag 16MgO** (sulfato de magnesio) | 16% MgO (≈9.6% Mg) · ~32% SO₃ (≈13% S) | — | 🔴 **Mg + S, los dos sobran** |
-| **Haifa Micro Hydroponic** | Mezcla de micros quelatados (Fe, Mn, Zn, Cu, B, Mo) | ✅ **Cu, B, Zn, Mn** | **% de Cu SIN CONFIRMAR — es el dato clave que falta** |
+| **Haifa Micro Hydroponic Mix** | **FICHA CONFIRMADA:** Fe 3,7% (EDDHA) · Mn 2,4% (EDTA) · Zn 1,5% (EDTA) · B 1,4% (etanolamina) · Cu 0,2% (EDTA) · Mo 0,2%. Total micros 9,4% | ✅ **B, Cu, Mo (19% de la carga)** | 🔴 **Fe, Mn, Zn = 81% de la carga, todos adecuados o altos en suelo** |
 | **Haifa MKP** (0-52-34) | 52% P₂O₅ · 34% K₂O | P | 🔴 K — **ya eliminado** |
 | **Haifa UP** (12-61-0) | 12% N · 61% P₂O₅ | P | — **ya eliminado** |
 | **Fullfert** (no es Haifa) | Húmicos/fúlvicos | ✅ Acondicionador | — |
@@ -222,9 +306,8 @@ limpio** (N-Cal ≈47–52%, Micro ≈34–38%, Fullfert ≈13–17%):
 ## De Haifa
 - [x] ~~Precio actual por presentación~~ **RECIBIDO Y CONFIRMADO 2026-09-02** — ver tabla arriba
 - [x] ~~Precio del Fullfert~~ **RECIBIDO** — $33.665/L
-- [ ] 🔴 **Ficha técnica de Haifa Micro Hydroponic — el % de Cu.** Es el 24–30% del tanque y el
-      34–38% de lo que queda tras la limpieza; el único producto sin ficha. Decide cómo subir el
-      cobre en Bloque 5 y si conviene el quelato individual
+- [x] ~~Ficha técnica de Haifa Micro — el % de Cu~~ **RECIBIDA** — Cu 0,2%, ver análisis arriba
+- [ ] **Precio del balde de 20 kg del Haifa Micro** (hoy se compra el de 5 kg a $40.294/kg)
 - [ ] **% de húmicos y fúlvicos del Fullfert** y su dosis por ficha — $2.693–$3.366 por tanque
       sobre un suelo con M.O. de 18,6–23,4%
 
@@ -260,7 +343,7 @@ La comparación NO es precio por kg de producto. Es en tres columnas:
 | Producto | Casa | Presentación | Precio | COP/kg | % nutriente útil | **$/kg nutriente útil** | Pasajero K/Mg/S | Forma |
 |---|---|---|---|---|---|---|---|---|
 | Nitrato de calcio | **Haifa N-Cal** | 25 kg | $190.360 | $7.614 | 15,5% N + 18,8% Ca = 34,3% | **$22.199** | — | Nitrato |
-| Micro completo | **Haifa Micro** | 5 kg | $201.468 | $40.294 | **Cu ?% — SIN FICHA** | **SIN DATO** | Confirmar | Quelato |
+| Micro completo | **Haifa Micro** | 5 kg | $201.468 | $40.294 | 9,4% micros, de los cuales **19% útil** | **$2,29M/kg útil** · Cu a **$20,1M/kg** | 🔴 81% Fe+Mn+Zn no requeridos | EDDHA + EDTA |
 | Húmicos/fúlvicos | **Fullfert** | 1 L | $33.665 | $33.665 | **SIN FICHA** | **SIN DATO** | — | — |
 | NPK alto en K | Polyfeed | 25 kg | $273.608 | $10.944 | 14,4% (N+P) | $76.002 | 🔴 35,7% K | Nitrato/amonio |
 | Sulfato de Mg | Bitter Mag | 25 kg | $171.360 | $6.854 | **0%** | **NO APLICA** | 🔴 9,65% Mg + 12,8% S | Sulfato |

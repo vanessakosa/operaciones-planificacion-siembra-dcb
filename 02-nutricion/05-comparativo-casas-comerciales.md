@@ -1,9 +1,116 @@
 # Comparativo de casas comerciales — fertirriego
 
-> **Estado: MESA DE TRABAJO ABIERTA.** Faltan (a) precios actualizados de Haifa, (b) fichas
-> técnicas y precios de la casa nueva. Las composiciones de Haifa de abajo son **de catálogo y
-> están marcadas PENDIENTE CONFIRMAR contra la ficha/etiqueta del lote comprado** — Regla 3:
-> ningún producto entra a formulación sin ficha confirmada.
+> **Estado: MESA DE TRABAJO ABIERTA.** Precios de Haifa recibidos (Vanessa, 2026-09-02).
+> Faltan (a) la **ficha del Haifa Micro con el % de Cu** — hoy el dato más valioso que falta en
+> todo el proyecto de fertirriego, ver abajo por qué —, (b) el precio del Fullfert,
+> (c) confirmar el precio del N-Cal, (d) fichas y precios de la casa nueva.
+>
+> Las composiciones de Haifa de abajo son **de catálogo y están marcadas PENDIENTE CONFIRMAR
+> contra la ficha/etiqueta del lote comprado** — Regla 3.
+
+## Precios Haifa · 2026-09-02 · fuente: Vanessa
+
+| Producto | Precio | Presentación | **COP/kg** |
+|---|---|---|---|
+| Haifa N-Cal | $19.036 | 25 kg | **$761** ⚠️ verificar |
+| Bitter Mag 16MgO | $171.360 | 25 kg | **$6.854** |
+| Polyfeed 10-10-43 | $273.608 | 25 kg | **$10.944** |
+| **Haifa Micro Hydroponic** | $201.468 | **5 kg** | **🔴 $40.294** |
+| Fullfert | SIN PRECIO | — | — |
+
+⚠️ **El N-Cal a $761/kg parece demasiado bajo** para nitrato de calcio (≈ USD 0,19/kg).
+Sospecha: podría ser **$190.360 / 25 kg = $7.614/kg**. Los dos escenarios están corridos abajo.
+
+## Costo por tanque de 2.000 L (sin Fullfert)
+
+| Fórmula | N-Cal | Polyfeed | Bitter Mag | **Micro** | TOTAL |
+|---|---|---|---|---|---|
+| Inv 3 Vegetativo | $914 (6,7%) | $2.736 (20,1%) | $2.742 (20,1%) | **$7.253 (53,2%)** | **$13.644** |
+| Inv 3 Floración | $1.066 (8,4%) | $1.642 (12,9%) | $2.742 (21,6%) | **$7.253 (57,1%)** | **$12.702** |
+| Inv 4+5 Vegetativo | $914 (4,8%) | $6.567 (34,8%) | $4.113 (21,8%) | **$7.253 (38,5%)** | **$18.846** |
+| Inv 4+5 Floración | $1.066 (6,3%) | $4.378 (26,0%) | $4.113 (24,5%) | **$7.253 (43,1%)** | **$16.809** |
+
+### 🔴 El volumen no manda: manda el precio por kilo
+
+> **El Haifa Micro es el 38–57% del costo de cada tanque, aunque se dosifica a solo 180 g.**
+> Cuesta 53 veces más por kilo que el N-Cal. El N-Cal, que es el 60–70% del peso del tanque, es
+> apenas el 5–8% del costo.
+>
+> **Corrección explícita:** una versión anterior de este análisis decía que el nitrato de calcio
+> era donde se decidía el ahorro por ser el de mayor volumen. **Con los precios reales eso es
+> falso.**
+
+## Ahorro por eliminar Polyfeed y Bitter Mag
+
+| Fórmula | Ahorro/tanque | % del tanque |
+|---|---|---|
+| Inv 3 Vegetativo | $5.478 | **40,1%** |
+| Inv 3 Floración | $4.383 | **34,5%** |
+| **Inv 4+5 Vegetativo** | **$10.679** | **🔴 56,7%** |
+| Inv 4+5 Floración | $8.490 | **50,5%** |
+
+En las fórmulas de Inv 4+5 —que cubren Inv 4 (677 m², el mejor bloque) y Inv 5— se ahorra **más
+de la mitad** del costo del tanque. Y no cuesta nada agronómicamente: es dejar de comprar los dos
+elementos saturados que bloquean al Ca. **Ahorra plata y mejora el cultivo a la vez.**
+
+### Bitter Mag: el 100% de su contenido nutricional es algo que no se necesita
+
+| Aporta | ¿Se necesita? |
+|---|---|
+| Mg 9,65% | 🔴 No — saturación 32–38% |
+| S 12,8% | 🔴 No — S alto en los tres bloques |
+
+**$2.742–$4.113 por tanque por magnesio y azufre en exceso.** No hay fracción útil que rescatar.
+
+### Polyfeed: mala forma de comprar incluso lo útil
+
+De cada kg: **35,7% es K que no se quiere**, solo **14,4% es nutriente útil** (N + P).
+
+| Vía | Costo del nitrógeno | Costo del fósforo |
+|---|---|---|
+| N-Cal (15,5% N) | **$4.913 / kg N** | — |
+| Polyfeed (10% N, 4,36% P) | **$109.443 / kg N** | **$251.017 / kg P** |
+
+**El N del Polyfeed cuesta 22× el N del N-Cal.** (2,2× en el escenario B.)
+
+## Sensibilidad al precio del N-Cal
+
+| | Con $19.036 | Si fuera $190.360 |
+|---|---|---|
+| N-Cal COP/kg | $761 | $7.614 |
+| N del Polyfeed vs N-Cal | 22,3× más caro | 2,2× más caro |
+| Ahorro Inv 4+5 Vegetativo | 56,7% | 39,5% |
+| Micro como % de lo que queda | 88,8% | 44,3% |
+
+**No cambia:** eliminar Polyfeed y Bitter Mag conviene en los dos escenarios.
+**Sí cambia:** cuál producto negociar más duro después.
+
+## 🔴 El Micro se vuelve el problema central — y su ficha es lo que falta
+
+Tras eliminar Polyfeed y Bitter Mag, el tanque queda en N-Cal + Micro + Fullfert, y el
+**Haifa Micro pasa a ser el 87–89% de lo que queda** (44% en escenario B). Es exactamente el
+único producto sin ficha confirmada.
+
+Y el diagnóstico de suelo pide **más cobre en Bloque 5**. Subirlo vía Haifa Micro significa subir
+un producto de $40.294/kg:
+
+| Si el Micro tiene… | El Cu sale a | Un quelato al 10% Cu conviene si cuesta menos de |
+|---|---|---|
+| 0,5% Cu | $8.058.720/kg Cu | $805.872/kg |
+| 1,0% Cu | $4.029.360/kg Cu | $402.936/kg |
+| 1,5% Cu | $2.686.240/kg Cu | $268.624/kg |
+| 2,0% Cu | $2.014.680/kg Cu | $201.468/kg |
+| 3,0% Cu | $1.343.120/kg Cu | $134.312/kg |
+
+En una mezcla completa de micros el Fe suele ser el grueso y el Cu una fracción pequeña
+(típicamente < 2%). **Eso pone el cobre en el rango de millones por kilo.**
+
+> **El quelato de cobre individual (producto #3 de la lista) pasó de "sería bueno tenerlo" a
+> probablemente la palanca de ahorro más grande del ejercicio.** Y es la única forma de dosificar
+> Cu distinto en Bloque 5 sin subir todo lo demás.
+
+**Prioridad de cotización INVERTIDA respecto a la versión anterior: primero el micro completo y
+el quelato de cobre; después el nitrato de calcio.**
 
 ## Los productos Haifa que están en uso hoy
 
@@ -63,14 +170,13 @@ Esto demuestra dos cosas de una sola tabla:
 
 # Lista de compra para la casa comercial nueva
 
-Ordenada por impacto en la factura. **El #1 es donde se decide el ahorro, porque es el de mayor
-volumen.**
+Reordenada tras los precios de Haifa del 2026-09-02: **manda el precio por kilo, no el volumen.**
 
 | # | Producto a cotizar | Reemplaza | Qué preguntar específicamente |
 |---|---|---|---|
-| **1** | **Nitrato de calcio** hidrosoluble | Haifa Cal GG | % N, % CaO, solubilidad. **Producto de mayor volumen** |
-| **2** | **Micronutriente completo hidrosoluble quelatado** | Haifa Micro Hydroponic | **Análisis garantizado COMPLETO.** Cu, B, Zn, Mn, Fe **quelatados** (EDTA/DTPA/aminoquelato) y **cero o mínimo K, Mg y S** |
-| **3** | **Quelato de cobre** individual | — (nuevo) | Para dosificar Cu por bloque, sobre todo B5. **Quelato, NO sulfato de cobre** |
+| **1** | **Micronutriente completo hidrosoluble quelatado** | Haifa Micro ($40.294/kg, 38–57% del tanque) | **Análisis garantizado COMPLETO.** Cu, B, Zn, Mn, Fe **quelatados** (EDTA/DTPA/aminoquelato) y **cero o mínimo K, Mg y S** |
+| **2** | **Quelato de cobre** individual | — (nuevo) | **Probablemente la palanca de ahorro más grande.** Permite subir Cu solo en B5. **Quelato, NO sulfato de cobre** |
+| **3** | **Nitrato de calcio** hidrosoluble | Haifa Cal GG (solo 5–8% del costo) | % N, % CaO, solubilidad. Mayor volumen pero menor peso en la factura |
 | **4** | **Aminoácidos / N orgánico** hidrosoluble | Parcialmente el nitrato | % aminoácidos libres, origen. Herramienta contra mosca blanca y fusarium (Fase 1) |
 | **5** | **Boro** soluble | — | Octaborato o ácido bórico soluble. **Margen estrecho — dosis conservadora** |
 | **6** | **Húmicos / fúlvicos** | Fullfert | % húmicos, % fúlvicos, pH |
@@ -91,11 +197,12 @@ volumen.**
 # Datos que hacen falta para poder decidir
 
 ## De Haifa
-- [ ] **Precio actual por presentación** de: Haifa Cal GG, Polyfeed 10-10-43, Bitter Mag 16MgO,
-      Haifa Micro Hydroponic
-- [ ] **Ficha técnica de Haifa Micro Hydroponic** — el **% de Cu** es el dato que falta para
-      cerrar el diagnóstico de Bloque 5
-- [ ] Tamaño de presentación (kg por saco/bulto) de cada uno
+- [x] ~~Precio actual por presentación~~ **RECIBIDO 2026-09-02** — ver tabla arriba
+- [ ] 🔴 **Ficha técnica de Haifa Micro Hydroponic — el % de Cu.** Ya no es solo para el
+      diagnóstico de Bloque 5: es el **87% del costo del tanque** después de la limpieza.
+      **El dato más valioso que falta en todo el proyecto de fertirriego**
+- [ ] ⚠️ **Confirmar el precio del N-Cal** — $19.036 o $190.360 por 25 kg
+- [ ] **Precio del Fullfert**, quedó sin cotizar
 
 ## De la casa nueva
 Por cada producto de la lista de 9:

@@ -52,6 +52,40 @@ Cambios estructurales aplicados: ❌ roca fosfórica · ❌ cal agrícola · ❌
 | Inv 5 | 2 sacos | 125 g/m² | NO | Sí | **Resolver agua antes de intensificar** |
 | Inv 3C | 1 saco | 100 g/m² | NO | Sí | Zona húmeda |
 
+### ⚠️ Esta tabla está en sacos por cama, y las camas van de 6.3 a 48.1 m²
+
+La dosis efectiva por m² **no es la que la tabla sugiere.** Convertida con las áreas de cama de
+`01-invernaderos.md` (saco = 25 kg):
+
+| Bloque | Protocolo | Área cama | **kg/m² real** |
+|---|---|---|---|
+| Inv 3C grande | 1 saco | 25.2 m² | **0.99** |
+| Inv 4 STD | 1 saco | 20.2 m² | **1.24** |
+| Inv 3A | 2 sacos | 35.6 m² | **1.40** |
+| Inv 3B STD grande | 3 sacos | 48.1 m² | **1.56** |
+| Inv 5 | 2 sacos | 31.7 m² | **1.58** |
+| Inv 4 PREMIUM | 1.5 sacos | 20.2 m² | **1.86** |
+| Inv 3C pequeña | 1 saco | 12.6 m² | **1.98** |
+| Inv 3B PREMIUM grande | 4 sacos | 48.1 m² | **2.08** |
+| **Inv 3B STD pequeña** | **3 sacos** | **11.7 m²** | **🔴 6.41** |
+
+La cama pequeña de 3B recibe **cuatro veces más Bokashi por m² que la cama grande del mismo
+bloque, con el mismo protocolo.** No es una decisión: es un artefacto de expresar la dosis en
+sacos por cama.
+
+**El Mini no tiene fila de Bokashi en el protocolo** (camas de 12.6 y 6.3 m²) — hueco a resolver.
+
+**Acción pendiente de validación: reescribir este protocolo en kg/m²**, y traducir a sacos al
+momento de aplicar según el área de esa cama concreta. Costo cero.
+
+**Lo que sí está bien y no hay que tocar:** la lógica inversa. Bloque 3 (M.O. 18.6%, la más baja,
+suelo erosionado) recibe más; Bloque 4 (M.O. 23.4%, la más alta) recibe menos. Correcto.
+
+**Contexto que cambia la dosis objetivo:** con M.O. en 18.6–23.4% el objetivo de construir
+materia orgánica está **cumplido**, y el Bokashi es además una fuente de potasio no contabilizada
+(equinaza + ceniza + melaza + king grass) sobre un suelo con saturación de K de 24–30%.
+Ver `02-nutricion/04-diagnostico-kempf-ingham.md`.
+
 ## Preparación diferenciada para camas con historial largo de lisianthus (1+ año)
 
 - Yeso agrícola 200–300 g/m²

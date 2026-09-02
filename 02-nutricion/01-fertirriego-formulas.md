@@ -1,5 +1,19 @@
 # Fertirriego — fórmulas vigentes
 
+> ## 🔴 ESTAS FÓRMULAS TIENEN UNA PROPUESTA DE CAMBIO MAYOR SIN VALIDAR
+>
+> Los análisis de suelo de agosto 2026 (informes 38189/38190/38191) muestran **saturación de K
+> en 24–30% y de Mg en 32–38%** en los tres bloques, contra un rango de balance de 2–5% y 10–20%.
+>
+> **Polyfeed 10-10-43 (43% K₂O) y Bitter Mag 16MgO están aportando semanalmente los dos
+> elementos que ya están saturados y que están bloqueando al Ca.**
+>
+> Propuesta: **eliminar los dos de todas las fórmulas.** Diagnóstico completo, causas y
+> alternativas en **`02-nutricion/04-diagnostico-kempf-ingham.md`**.
+>
+> **Estado: PENDIENTE DE VALIDACIÓN de Vanessa.** Las fórmulas de abajo siguen siendo las
+> vigentes hasta que ella decida. No aplicarlas a ciegas sin leer el diagnóstico primero.
+
 ## Lógica de 3 capas
 
 | Capa | Qué es | Dónde se ajusta |
@@ -98,9 +112,13 @@ no es un logro si el tallo sale delgado.
 
 ## Pendientes de análisis
 
-- Comparar **Haifa vs alternativas más económicas** con suministro estable (costo por unidad de nutriente)
-- Resolver el aporte de azufre del Bitter Mag en un suelo con S muy alto
-- Recalibrar todas las fórmulas cuando lleguen los análisis de Inv 3B e Inv 4
+- Comparar **Haifa vs alternativas más económicas** con suministro estable (costo por unidad de
+  nutriente). **EN CURSO** — ver `02-nutricion/05-comparativo-casas-comerciales.md`
+- ~~Resolver el aporte de azufre del Bitter Mag en un suelo con S muy alto~~ → **RESUELTO
+  (2026-09-02):** con saturación de Mg en 32–38% no se repone Mg en ninguna forma, así que la
+  pregunta de "qué fuente de Mg sin sulfato" se vuelve irrelevante. La respuesta es eliminar el Mg
+- ~~Recalibrar todas las fórmulas cuando lleguen los análisis de Inv 3B e Inv 4~~ → **LLEGARON
+  (ago 2026).** Recalibración propuesta en `04-diagnostico-kempf-ingham.md`, pendiente de validación
 - Definir fórmula B (Prefloración, sem 7–9) con dosis explícitas — hoy solo está descrita
   cualitativamente ("Polyfeed sube, N-Cal baja levemente"), lo cual no es suficiente para
   entregar a un operario

@@ -1,0 +1,303 @@
+<title>Fórmula Base de Fertirriego</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root{
+    --papel:#FFFFFF;
+    --beige:#F5F0E8;
+    --crema:#FAF7F3;
+    --tinta:#1A1A1A;
+    --tinta-2:#555555;
+    --tinta-3:#888888;
+    --regla:#D0C8B8;
+    --alerta:#C0392B;
+    --op:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --marca:"Lora",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--papel);
+    color:var(--tinta);
+    font-family:var(--op);
+    margin:0;
+    padding:28px 20px 60px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .hoja{max-width:820px;margin:0 auto}
+
+  /* ---------- encabezado ---------- */
+  .marca{
+    font-family:var(--marca);
+    font-size:13px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--tinta-2);
+    margin:0 0 6px;
+  }
+  h1{
+    font-family:var(--op);
+    font-size:29px;
+    line-height:1.15;
+    font-weight:700;
+    letter-spacing:-.01em;
+    margin:0 0 10px;
+    text-wrap:balance;
+  }
+  .meta{
+    display:flex;flex-wrap:wrap;gap:6px 26px;
+    font-size:13px;color:var(--tinta-2);
+    padding-bottom:14px;
+    border-bottom:2px solid var(--regla);
+    margin-bottom:30px;
+  }
+  .meta b{color:var(--tinta);font-weight:700}
+
+  /* ---------- secciones ---------- */
+  section{margin-bottom:34px;break-inside:avoid}
+  h2{
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--tinta-2);
+    font-weight:700;
+    margin:0 0 12px;
+    padding-bottom:7px;
+    border-bottom:1px solid var(--regla);
+  }
+
+  /* ---------- tabla de dosis ---------- */
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  caption{
+    caption-side:top;text-align:left;
+    font-size:13px;color:var(--tinta-2);
+    padding:0 0 9px;
+  }
+  th{
+    background:var(--beige);
+    color:var(--tinta-2);
+    font-size:11px;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    font-weight:700;
+    text-align:left;
+    padding:9px 12px;
+    border-bottom:1px solid var(--regla);
+  }
+  td{
+    padding:13px 12px;
+    border-bottom:1px solid var(--regla);
+    vertical-align:middle;
+  }
+  tbody tr:nth-child(even) td{background:var(--crema)}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.mid,td.mid{text-align:center}
+
+  .prod{font-weight:700;font-size:16px;line-height:1.25}
+  .prod small{display:block;font-weight:400;font-size:12.5px;color:var(--tinta-2);margin-top:2px}
+  .dosis{font-size:25px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+  .dosis span{font-size:14px;font-weight:400;color:var(--tinta-2);margin-left:2px}
+
+  .caja{
+    display:inline-block;
+    width:19px;height:19px;
+    border:1.5px solid var(--tinta-2);
+  }
+
+  /* ---------- conteo de tanques ---------- */
+  .tanques th{font-size:11px}
+  .tanques td{font-size:15px;padding:11px 12px}
+  .llenar{
+    display:block;
+    min-height:26px;
+    border-bottom:1.5px solid var(--tinta-2);
+  }
+  .bloque{font-weight:700}
+
+  /* ---------- bloque de una sola vez ---------- */
+  .unica{
+    border:2px solid var(--tinta);
+    padding:18px 20px;
+  }
+  .unica h3{
+    font-size:16px;margin:0 0 4px;font-weight:700;
+  }
+  .unica p{margin:0 0 14px;font-size:13.5px;color:var(--tinta-2)}
+  .unica table{font-size:15px}
+  .sello{
+    display:inline-block;
+    background:var(--beige);
+    border:1px solid var(--regla);
+    padding:3px 9px;
+    font-size:10.5px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--tinta-2);
+    margin-bottom:9px;
+  }
+
+  /* ---------- orden de mezcla ---------- */
+  ol.orden{
+    margin:0;padding:0;list-style:none;
+    counter-reset:paso;
+    display:grid;gap:1px;
+    background:var(--regla);
+    border:1px solid var(--regla);
+  }
+  ol.orden li{
+    counter-increment:paso;
+    background:var(--papel);
+    padding:12px 14px 12px 46px;
+    position:relative;
+    font-size:14.5px;
+    line-height:1.4;
+  }
+  ol.orden li:nth-child(even){background:var(--crema)}
+  ol.orden li::before{
+    content:counter(paso);
+    position:absolute;left:14px;top:12px;
+    font-weight:700;font-size:14.5px;
+    color:var(--tinta-2);
+    font-variant-numeric:tabular-nums;
+  }
+
+  .no{
+    margin-top:14px;
+    border-left:3px solid var(--alerta);
+    padding:10px 0 10px 14px;
+    font-size:14px;
+    line-height:1.45;
+  }
+  .no b{color:var(--alerta)}
+
+  footer{
+    margin-top:40px;padding-top:14px;
+    border-top:1px solid var(--regla);
+    font-size:12px;color:var(--tinta-3);
+    display:flex;flex-wrap:wrap;gap:4px 22px;
+  }
+
+  @media print{
+    @page{margin:14mm}
+    body{padding:0;font-size:12pt}
+    .hoja{max-width:none}
+    section{page-break-inside:avoid}
+    h1{font-size:24pt}
+    .dosis{font-size:20pt}
+  }
+  @media (max-width:560px){
+    .dosis{font-size:21px}
+    td,th{padding-left:8px;padding-right:8px}
+  }
+</style>
+
+<div class="hoja">
+
+  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
+  <h1>Fertirriego — Fórmula Base</h1>
+  <div class="meta">
+    <span>Tanque de <b>2.000 litros</b></span>
+    <span>Aplica a <b>todos los bloques</b></span>
+    <span>Aplica en <b>todas las etapas</b></span>
+    <span>Versión <b>1</b> · <b>02/09/2026</b></span>
+  </div>
+
+  <section>
+    <h2>Dosis por tanque de 2.000 litros</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:44%">Producto</th>
+          <th class="num" style="width:24%">Cantidad</th>
+          <th class="mid" style="width:16%">Pesado</th>
+          <th class="mid" style="width:16%">Al tanque</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="prod">Nitrato de Calcio<small>Calcinit · bulto blanco 25 kg</small></td>
+          <td class="num"><span class="dosis">1.200<span>g</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Borosol<small>Boro · bolsa 1 kg</small></td>
+          <td class="num"><span class="dosis">12,3<span>g</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Amilsol Micro Cu 15<small>Cobre · bolsa 1 kg</small></td>
+          <td class="num"><span class="dosis">2,4<span>g</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Orden de mezcla</h2>
+    <ol class="orden">
+      <li>Llenar el tanque hasta la <b>mitad</b> con agua.</li>
+      <li>Agregar el <b>Nitrato de Calcio</b>. Agitar hasta que no queden gránulos en el fondo.</li>
+      <li>Agregar el <b>Borosol</b>. Agitar.</li>
+      <li>Agregar el <b>Amilsol Micro Cu 15</b>. Agitar.</li>
+      <li>Completar los <b>2.000 litros</b> con agua y agitar de nuevo antes de arrancar el riego.</li>
+    </ol>
+    <p class="no"><b>NO</b> agregar ningún otro producto a este tanque. <b>NO</b> mezclar con húmicos, fosfatos ni sulfatos.</p>
+  </section>
+
+  <section>
+    <h2>Número de tanques de esta semana</h2>
+    <table class="tanques">
+      <caption>Vanessa llena esta columna cada semana. Si la casilla está vacía, ese bloque no se riega.</caption>
+      <thead>
+        <tr>
+          <th style="width:34%">Bloque</th>
+          <th class="mid" style="width:33%">Tanques</th>
+          <th class="mid" style="width:33%">Hecho</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="bloque">Invernadero 3A</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+        <tr><td class="bloque">Invernadero 3B</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+        <tr><td class="bloque">Invernadero 3C</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+        <tr><td class="bloque">Mini</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+        <tr><td class="bloque">Invernadero 4</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+        <tr><td class="bloque">Invernadero 5</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+        <tr><td class="bloque">Invernadero 6 · exterior</td><td><span class="llenar"></span></td><td class="mid"><span class="caja"></span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="unica">
+      <span class="sello">Una sola vez</span>
+      <h3>Corrección de cobre — Invernadero 5</h3>
+      <p>Se aplica una única vez, al suelo, sobre las 13 camas del Invernadero 5. No repetir sin autorización de Vanessa.</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:52%">Producto</th>
+            <th class="num" style="width:24%">Cantidad total</th>
+            <th class="mid" style="width:24%">Hecho</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prod">Amilsol Micro Cu 15<small>Disolver en agua y aplicar al pie de la planta</small></td>
+            <td class="num"><span class="dosis">400<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>Entrega: Alexander</span>
+    <span>Fertirriego: Atilio</span>
+    <span>Dudas de cantidad: preguntar antes de aplicar</span>
+  </footer>
+
+</div>

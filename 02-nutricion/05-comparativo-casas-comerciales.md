@@ -531,3 +531,106 @@ cambiar el nitrato de calcio.
 **Nota para la sesión de foliar:** esta misma lista trae los productos de fitosanidad del cultivo
 (Botrycid, Equifun, Regalia, etc.). Es la base para revisar el programa foliar por etapa fenológica
 y calcular costo por bomba — el cuarto punto pendiente.
+
+---
+
+# ORDEN DE COMPRA · Alma Agrícola · 2026-09-02
+
+## Fichas verificadas — los tres productos del tanque nuevo
+
+| Producto | Ficha | Estado |
+|---|---|---|
+| **SQM Nitrato Calcio Calcinit** | `[Y-FPT215]` · 15,5-0-0-26,0 CaO · sal doble 5Ca(NO₃)₂·NH₄NO₃·10H₂O · grado fertirriego · solubilidad 250 g/100 ml · N nítrico 14,2% / amoniacal 1,3% · pH sol. 10% = 5,0–7,0 | ✅ **CONFIRMADA** |
+| **SQM Amilsol micro Cu15** | 15,0% Cu-EDTA quelatado completo · solubilidad 90–120 g/100 ml · pH sol. 1% = 6–7 · **estabilidad pH 1,5–10** · foliar, suelo e hidroponía | ✅ **CONFIRMADA** |
+| **Microfertisa Borosol** | **20,5% B** (octaborato de sodio) · pH sol. 10% = 7,9 · solubilidad 23 g/100 ml · presentaciones 0,5 / 1 / 25 kg · aprobado para cultivos orgánicos · compatible con la mayoría de insecticidas y fungicidas | ✅ **CONFIRMADA** |
+
+## Orden esencial
+
+| Código | Producto | Presentación | Cant. | Precio | IVA | Total |
+|---|---|---|---|---|---|---|
+| **2SHYD-03** | SQM Nitrato Calcio Calcinit | Bulto × 25 kg | **4** | $79.582 | 0% | **$318.328** |
+| **1ASQM-03** | SQM Amilsol Micro Rexene Cu 15 | Bolsa × 1 kg | **1** | $43.524 | 19% | **$51.794** |
+| **1AMCF-02** | Microfertisa Borosol | Bolsa × 1 kg | **1** | $16.888 | 19% | **$20.097** |
+| | | | | | **ESENCIAL** | **$390.219** |
+
+**Racional de cantidades:**
+- **Calcinit ×4 bultos (100 kg)** = ~71–83 tanques. Lo único que se consume en volumen; fácil de reordenar
+- **Cu15 ×1 kg** = corrección de suelo de Bloque 5 (~383 g) **+** ~250 tanques (240 g). Un kilo cubre todo
+- **Borosol ×1 kg** = **81 tanques** a 12,3 g
+
+## Ensayos — 1 litro de cada uno
+
+| Código | Producto | Presentación | Precio | Para qué |
+|---|---|---|---|---|
+| **1ACPF-10** | Campofert Humus 15 | Bidón × 1 L | $27.556 | Reemplazo del Fullfert — **ensayo partido en Inv 4** |
+| **1OGLG-06** | MP Galagro Aminopoder | Bidón × 1 L | $59.132 | Renglón nuevo: desplazar nitrato (Fase 1) |
+| **1AINN-07** | Innovak Promesol Calcio | Bidón × 1 L | $32.676 | Ca foliar para 3C, 4B, Inv 1 |
+| | | | **$119.364** | |
+
+**ORDEN COMPLETA: $509.583**
+
+En caneca de 20 L el Humus 15 baja a $26.165/L y el Aminopoder a $40.768/L — comprar caneca solo
+después de que el ensayo dé.
+
+## ⚠️ El boro: NO comprar el de SQM aunque sea más barato por kilo
+
+| | Presentación | Precio c/IVA | Alcance a 12,3 g/tanque |
+|---|---|---|---|
+| SQM Amilsol Micro Boro | **solo bulto × 25 kg** | $199.534 | **2.032 tanques** — años de producto |
+| **Microfertisa Borosol** | **0,5 / 1 / 25 kg** | **$20.097** (1 kg) | 81 tanques |
+
+Diferencia real: ~$170/tanque, unos **$17.000/año**. No vale amarrar $199.534 en un bulto que no se
+va a consumir, y el boro se apelmaza. **Borosol además cubre las tres presentaciones**, así que si
+algún día hace falta volumen es el mismo proveedor. **Es un caso donde el precio por kilo miente.**
+
+## Lo que NO pedir todavía
+
+| Producto | Por qué esperar |
+|---|---|
+| SQM Amilsol MAP (2SSQM-06, $212.302) | Solo para Bloque 4 y **la dosis no está definida.** No comprar 25 kg sin dosis fijada |
+| Molibdato (1AGEN-01 $177.293 / MOLIB-K 1ACPF-18 $92.800) | A 0,7 g/tanque, 500 g duran 714 tanques. Compra única que puede ir en la segunda orden. El MOLIB-K trae K en el nombre — **pedir ficha primero** |
+| PQP Sulfato de cobre (2SPQP-02, $457.304) | **El Cu15 lo reemplaza:** un producto en vez de dos, sin azufre |
+| Interoc Novaplant Ca+B+Zn (1AITR-01, $41.527) | Equivalente del Glukoplant Ca-BZn. **Comparar primero contra el precio del Glukoplant actual** |
+
+## El tanque resultante
+
+| Fórmula | Calcinit | Cu15 | Borosol | **TOTAL** | Hoy | Reducción |
+|---|---|---|---|---|---|---|
+| **Vegetativo** | 1.200 g · $3.820 | 2,4 g · $124 | 12,3 g · $247 | **$4.191** | $24.561–30.436 | **83–86%** |
+| **Floración** | 1.400 g · $4.457 | 2,4 g · $124 | 12,3 g · $247 | **$4.828** | $24.990–29.770 | **81–84%** |
+
+**Tres productos, tres fichas confirmadas, ninguna pendiente.**
+
+## Margen de boro — dato útil de la etiqueta
+
+| | |
+|---|---|
+| Concentración actual (heredada del Haifa Micro) | **1,26 ppm de B** |
+| Techo de etiqueta en fertirriego | **5 ppm** |
+| Uso | **25% del máximo permitido** |
+
+Importa porque **el boro tiene el margen más estrecho entre deficiencia y toxicidad de todos los
+nutrientes.** Saber que se está al 25% del techo dice que hay espacio seguro si hace falta.
+
+**Argumentos para subirlo:** el B entrecruza pectinas de la pared celular (ligado a botrytis); B y
+Ca trabajan juntos y hay problema de entrega de Ca; la bitácora atribuye los pétalos separados de
+bocas en 4B a "estrés hídrico o déficit de Ca/B"; y **el exceso de K antagoniza la absorción de B**,
+así que con K al 24–30% el boro funcional puede ser menor que el "M" del análisis.
+
+**Decisión: mantener 12,3 g/tanque (1,26 ppm) como base.** Si se ataca el problema de bocas de
+dragón, hacerlo **por vía foliar y solo en esa variedad, semanas 5–8** — donde la bitácora ya exige
+Glukoplant Ca-BZn sin excepción. Etiqueta foliar: **0,2–0,5 g/L = 5 a 12,5 g por bomba de 25 L.**
+Es decisión de variedad, no cambio del tanque general. El análisis de savia es lo que confirmaría
+si el boro está llegando.
+
+## ⚠️ Instrucción para el operario cuando entre el producto nuevo
+
+> **La dosis en gramos NO cambia** — 1.200–1.400 g por tanque de 2.000 L, igual que con el Haifa,
+> porque es la misma composición (15,5% N, 26% CaO). **Solo cambia el saco.** Decírselo explícito a
+> Alexander y a Wilson para que nadie "ajuste" la dosis por su cuenta.
+
+## Lo único que falta
+
+**Ficha del Campofert Humus 15:** % de húmicos, % de fúlvicos, **pH** y **si trae potasio.** Es el
+único de los seis productos que se compraría sin ficha, y el Fullfert ya enseñó que un húmico puede
+traer 40 g/L de K y pH 12 (riesgo de precipitar el calcio del tanque).

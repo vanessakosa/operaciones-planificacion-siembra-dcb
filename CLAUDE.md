@@ -54,7 +54,7 @@ qué manejo.** Las variables que entran en ese cruce:
 | 2 | Ciclo, ventana, tallos/planta, densidad, pinch | Fija cuándo y cuántas plantas | `ciclos_variedad.csv` `variedades_bitacora.csv` |
 | 3 | Microclima del bloque y de la cama — temperatura, humedad, radiación, viento | Decide **dónde**. Mismo bloque, camas opuestas, resultado opuesto | `01-infraestructura/01-invernaderos.md` (cualitativo) |
 | 4 | Presión y uniformidad de riego | **La limitante dominante hoy.** Solo ~22 % del área rinde a potencial | `01-infraestructura/01-invernaderos.md` |
-| 5 | Suelo: M.O., C.E., compactación, inóculo | Decide qué variedad tolera esa cama | `01-infraestructura/02-analisis-de-suelo.md` |
+| 5 | Suelo: M.O., C.E., compactación, inóculo | Decide qué variedad tolera esa cama | `07-datos/analisis_suelo.csv` + `01-infraestructura/02-analisis-de-suelo.md` |
 | 6 | Histórico de plagas y hongos por variedad × bloque × semana de ciclo | Decide si esa combinación ya falló antes | `incidencia_fitosanitaria.csv` |
 | 7 | Clima de la temporada — semana del año, lluvia, sequía | Corre el ciclo y dispara el riesgo de hongo | `clima_semanal.csv` |
 | 8 | Histórico de tallos, normalizado por ventana | Mide productividad real sin el sesgo de ventana truncada | `registro_tallos.csv` → `cerebro.py rendimiento` |
@@ -74,6 +74,11 @@ repositorio ya documenta el patrón, aunque en prosa y sin poder consultarse:
   antes de sospechar botrytis. Patrón de ventana temporal, no de variedad.
 - Camas cortas = presión uniforme = riego homogéneo. Es la razón por la que Inv 4
   es el mejor del cultivo, y **la lección transferible más importante de la finca**.
+- **El fertirriego se entrega en proporción al agua**, así que en los bloques de
+  baja presión el déficit se multiplica en vez de sumarse. Bloque 5 tiene los
+  cuatro indicadores de tanque en su mínimo (K, N-NO₃, C.E. y Cu) y es el único
+  donde el cobre no se corrigió con la dosis fija de Haifa Micro.
+  Ver `02-nutricion/04-diagnostico-kempf-ingham.md`.
 
 Convertir estos patrones de prosa a matriz consultable es el trabajo central del
 proyecto. Detalle y estado de cada variable en
@@ -241,6 +246,22 @@ completa de datos pendientes en `08-roadmap/02-informacion-que-falta.md`.
 4. **Empezar a medir longitud de tallo** — la calidad no se registra en ninguna
    parte del repositorio. Es la diferencia entre "produjo" y "produjo vendible".
    → `calidad_tallo.csv`
+
+**Para poder cerrar la nutrición (abierto 2026-09-02):**
+
+4b. **Litros de tanque aplicados por m² por bloque** — sin esto no se puede pasar
+    de "gramos por tanque" a "kg por m² por año", que es la unidad en la que se
+    decide el fertirriego. Es también lo que confirma por qué el cobre de Bloque 5
+    no respondió a la dosis fija de Haifa Micro.
+4c. **Análisis del Bokashi terminado** (abono orgánico, Natural Control) — es la
+    fuente de potasio no contabilizada del sistema: equinaza + ceniza + melaza +
+    king grass, aplicada a 1–2 kg/m², 2–3 veces al año, sobre un suelo con
+    saturación de K de 24–30 %. Sin este dato el balance de nutrientes no cierra.
+4d. **Ficha técnica de Haifa Micro Hydroponic (% de Cu)** y precios actualizados
+    de Haifa — mesa de trabajo en `02-nutricion/05-comparativo-casas-comerciales.md`.
+4e. **N-NH₄ y análisis de savia** — el N-NH₄ vino vacío en los tres informes de
+    agosto; sin la relación nitrato:amonio el diagnóstico de Fase 1 (Kempf) es
+    parcial. La savia es lo que verifica si el mineral llegó a la planta.
 
 **Para poder decidir CUÁNTO y a QUÉ PRECIO:**
 

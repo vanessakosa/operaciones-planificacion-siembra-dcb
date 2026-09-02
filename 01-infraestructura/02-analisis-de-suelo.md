@@ -102,7 +102,7 @@ no se había contabilizado — ver `02-nutricion/04-diagnostico-kempf-ingham.md`
 | Haifa UP | **ELIMINADO** | ✅ Confirmada |
 | Cote NP | **ELIMINADO** | ✅ Confirmada |
 | Sulfatos | No agregar | ✅ Confirmada — S sigue alto |
-| Haifa Micro Hydroponic | **FIJO en 180 g / tanque 2.000 L** | ⚠️ **REVISAR — ver abajo** |
+| Haifa Micro Hydroponic | **FIJO en 180 g / tanque 2.000 L** | 🔴 **REVISAR — ver abajo. La ficha dice Cu 0,2%: por esta vía el cobre cuesta $20,1M/kg** |
 | Fullfert | Producto de húmicos/fúlvicos vigente | Sin cambio |
 | Salvado de trigo | Eliminado del Bokashi | Sin cambio |
 
@@ -122,6 +122,23 @@ más alto de los tres (5.8). Ninguna explica que los cuatro indicadores de tanqu
 simultáneamente en el mínimo.
 
 **Cómo confirmarlo:** medir litros aplicados por m² por bloque. **Dato pendiente #1.**
+
+### Y aunque el agua fuera perfecta, el fertirriego nunca habría corregido esa reserva
+
+Con la ficha del Haifa Micro confirmada (**Cu 0,2%**), el tanque de 2.000 L entrega **0,36 g de
+cobre**. Corregir Bloque 5 de 2,9 a 3,5 mg/kg en los 412 m² de Inv 5 (47,8 t de suelo a 20 cm con
+D. aparente 0,58) requiere **28,7 g de Cu** como piso teórico — es decir **80 tanques**, $577.489
+solo en Micro.
+
+> **Corregir una reserva de suelo necesita MASA; el fertirriego entrega CONCENTRACIÓN.**
+> Para la planta el cobre del tanque está bien (0,18 ppm, por encima del rango típico de
+> fertirriego de 0,05–0,1 ppm). Para el suelo, no alcanza por diseño.
+
+**La corrección de Cu de Bloque 5 va por vía edáfica.** Vía sulfato de cobre (25,45% Cu) son
+**113 g de producto ≈ $1.126** — 513 veces más barato que por el Micro. El azufre que introduce
+(14,5 g en 412 m²) es **5,3 veces menor que el de UN solo tanque de Bitter Mag** (76,8 g).
+
+Detalle completo en `02-nutricion/05-comparativo-casas-comerciales.md`.
 
 ## Microbiológico · Bioquirama
 

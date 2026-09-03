@@ -78,6 +78,44 @@ armado para las 2 quemas de caneca.
 | ~~Humus de lombriz~~ | 80 kg | **FUERA** | 🔴 $160.000 — el ingrediente comprado más caro después de la harina |
 | ~~Sulfato de cobre~~ | 200 g | **FUERA** | 🔴 El Amilsol Cu15 cubre todo el cobre, y bloquea el EM-1 |
 
+## La receta se le entrega en SACOS, no en kilos
+
+Regla dictada por Vanessa el 2026-09-03: **si la hoja dice kilos, el operario va a la báscula.**
+El material ya llega envasado, así que la unidad de trabajo es el envase. Y a pedido suyo la hoja
+lleva **las dos cifras**: el envase que cuenta y el peso que debe dar, para que él corrobore.
+
+| Ingrediente | Se cuenta | Debe pesar | Envase |
+|---|---|---|---|
+| Estiércol de caballo | 32 sacos | 800 kg | Saco de 25 kg |
+| Tierra negra | 16 sacos | 400 kg | Saco de 25 kg |
+| Harina de maíz | 5 sacos | 200 kg | **Saco de 40 kg** |
+| King grass picado | 7 sacos | 175 kg | Saco de 25 kg |
+| Biochar | 2 quemas de caneca | 80 kg | — |
+| Melaza | 2 sacos | 60 kg | Saco de 30 kg |
+| Levadura | 2 bloques | 1 kg | Bloque de 500 g |
+
+**El king grass sube de 160 a 175 kg** por redondear 6,5 sacos a 7. Es el ingrediente gratis de
+finca y el efecto es nulo: la harina de maíz pasa de 11,8 % a 11,7 % de la mezcla, dentro del
+rango clásico de 10–15 %.
+
+**El saco de harina de maíz es de 40 kg**, no de 25 — dato ya registrado en
+`02-nutricion/02-bioinsumos.md` (8 sacos × 40 kg = 320 kg de la receta anterior). Es el único
+envase distinto de la tabla y por eso va anotado en la hoja.
+
+> ⚠️ **Verificación que vale la pena hacer una vez, antes de armar.** El saco de 25 kg está
+> dimensionado para **estiércol**, cuya densidad aparente es del orden de 0,4–0,5 g/cm³. La
+> **tierra negra es dos a tres veces más densa.** Si Wilson llena ese mismo saco de tierra hasta
+> arriba, el saco no pesa 25 kg — pesa bastante más, y 16 sacos dejarían de ser 400 kg.
+>
+> **Pesar un solo saco lleno de tierra negra** resuelve la duda en un minuto: si da ~25 kg, los
+> 16 sacos están bien; si da 40, son 10 sacos. Es justamente para esto que la hoja lleva la
+> columna de kilos al lado de la de sacos.
+
+**Envases disponibles:** la tanda necesita llenar 16 sacos de tierra negra y 7 de king grass
+= **23 sacos**. Los 50 sacos de estiércol se van vaciando a la pila, así que los envases salen
+de ahí — solo hay que vaciar el estiércol primero. Los **53 sacos de producto terminado** también
+salen del mismo ciclo.
+
 ## Costo
 
 | | Actual | **V1** |

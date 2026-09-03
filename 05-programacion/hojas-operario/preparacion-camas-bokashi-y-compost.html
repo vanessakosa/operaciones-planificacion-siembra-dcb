@@ -39,6 +39,8 @@
   .dosis{font-size:25px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
   .dosis span{font-size:14px;font-weight:400;color:var(--tinta-2);margin-left:2px}
   .caja{display:inline-block;width:19px;height:19px;border:1.5px solid var(--tinta-2)}
+  .kg{font-size:17px;font-weight:700;color:var(--tinta-2);white-space:nowrap}
+  .kg span{font-size:13px;font-weight:400;margin-left:2px}
 
   .fuera td{background:var(--papel)}
   .fuera .prod{font-weight:400;color:var(--tinta-3)}
@@ -112,52 +114,60 @@
       <table>
         <thead>
           <tr>
-            <th style="width:46%">Ingrediente</th>
-            <th class="num" style="width:24%">Cantidad</th>
-            <th class="mid" style="width:15%">Pesado</th>
-            <th class="mid" style="width:15%">A la pila</th>
+            <th style="width:36%">Ingrediente</th>
+            <th class="num" style="width:20%">Cantidad</th>
+            <th class="num" style="width:16%">Debe pesar</th>
+            <th class="mid" style="width:14%">Contado</th>
+            <th class="mid" style="width:14%">A la pila</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="prod">Estiércol de caballo<small>32 sacos de 25 kg</small></td>
-            <td class="num"><span class="dosis">800<span>kg</span></span></td>
+            <td class="prod">Estiércol de caballo<small>Sacos de 25 kg</small></td>
+            <td class="num"><span class="dosis">32<span>sacos</span></span></td>
+            <td class="num"><span class="kg">800<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Tierra negra</td>
-            <td class="num"><span class="dosis">400<span>kg</span></span></td>
+            <td class="prod">Tierra negra<small>Sacos de 25 kg</small></td>
+            <td class="num"><span class="dosis">16<span>sacos</span></span></td>
+            <td class="num"><span class="kg">400<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Harina de maíz</td>
-            <td class="num"><span class="dosis">200<span>kg</span></span></td>
+            <td class="prod">Harina de maíz<small>Sacos de 40 kg</small></td>
+            <td class="num"><span class="dosis">5<span>sacos</span></span></td>
+            <td class="num"><span class="kg">200<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">King grass picado</td>
-            <td class="num"><span class="dosis">160<span>kg</span></span></td>
+            <td class="prod">King grass picado<small>Sacos de 25 kg</small></td>
+            <td class="num"><span class="dosis">7<span>sacos</span></span></td>
+            <td class="num"><span class="kg">175<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Biochar<small>De las 2 quemas nuevas · entra el día 2</small></td>
-            <td class="num"><span class="dosis">80<span>kg</span></span></td>
+            <td class="prod">Biochar<small>Entra el día 2</small></td>
+            <td class="num"><span class="dosis">2<span>quemas de caneca</span></span></td>
+            <td class="num"><span class="kg">80<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Melaza<small>2 sacos de 30 kg</small></td>
-            <td class="num"><span class="dosis">60<span>kg</span></span></td>
+            <td class="prod">Melaza<small>Sacos de 30 kg</small></td>
+            <td class="num"><span class="dosis">2<span>sacos</span></span></td>
+            <td class="num"><span class="kg">60<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Levadura<small>2 bloques de 500 g</small></td>
-            <td class="num"><span class="dosis">1<span>kg</span></span></td>
+            <td class="prod">Levadura<small>Bloques de 500 g</small></td>
+            <td class="num"><span class="dosis">2<span>bloques</span></span></td>
+            <td class="num"><span class="kg">1<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
@@ -175,7 +185,7 @@
       <li>Punto de humedad: apretar un puño de mezcla. <b>Debe compactarse sin soltar agua.</b></li>
       <li>Armar la pila. <b>Altura máxima 1,2 m.</b> No compactar.</li>
       <li>Cubrir.</li>
-      <li><b>Día 2:</b> voltear la pila y agregar los <b>80 kg de biochar</b>.</li>
+      <li><b>Día 2:</b> voltear la pila y agregar el <b>biochar de las 2 quemas</b>.</li>
       <li><b>Día 4:</b> voltear la pila.</li>
       <li><b>Día 14:</b> la tanda está lista. Ensacar.</li>
     </ol>
@@ -274,8 +284,8 @@
         </thead>
         <tbody>
           <tr>
-            <td class="prod">Estiércol de caballo<small>18 sacos de 25 kg</small></td>
-            <td class="num"><span class="dosis">450<span>kg</span></span></td>
+            <td class="prod">Estiércol de caballo<small>Sacos de 25 kg · deben pesar 450 kg en total</small></td>
+            <td class="num"><span class="dosis">18<span>sacos</span></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>

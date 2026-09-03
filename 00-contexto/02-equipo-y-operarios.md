@@ -58,6 +58,12 @@ Otros nombres en nómina de campo: Yeison, Fabián, Esneider, Elieser.
     acción suya* — la temperatura del compost decide el volteo, así que esa sí va.
   - Un volteo, un riego o un aviso **son acciones y se quedan**, aunque tengan fecha. La regla
     separa acción de registro, no corto de largo.
+- 🔴 **Cantidades en el envase, no en kilos** — regla del 2026-09-03: *"si tú le pones los kilos
+  y no le pones los sacos, se va a confundir, porque entonces va a ir a pesar cada cosa."*
+  La unidad de trabajo es **el envase con el que el material llega**: sacos, bultos, pacas,
+  bloques, quemas de caneca. **Y van las dos cifras** — el envase que cuenta y el peso que debe
+  dar, para que él corrobore. Un envase de peso distinto al del resto (el saco de harina de maíz
+  es de 40 kg y no de 25) se anota en la línea de apoyo del ingrediente.
 - Fuente Helvetica, sin itálicas, tablas tamaño 10+
 - `KeepTogether` para que el título no se separe de su tabla · `PageBreak` antes de cada sección
 - Paleta: blanco, beige y negro únicamente

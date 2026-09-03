@@ -15,8 +15,8 @@ insumos como estrategia de costo**.
 | Ingrediente | Cantidad | Origen | Costo |
 |---|---|---|---|
 | Equinaza fresca | 800 kg | Vecinos | $0 |
-| Tierra negra | 400 kg | Finca | $0 |
-| King grass picado | 160 kg | Finca | $0 |
+| Tierra negra | 400 kg · **16 sacos de 25 kg** | Finca | $0 |
+| King grass picado | 175 kg · **7 sacos de 25 kg** | Finca | $0 |
 | Ceniza de madera | 40 kg | Finca | $0 |
 | Biochar casero (2 canecas) | 80 kg | Propio | $0 |
 | Harina de maíz | 320 kg (8 sacos × 40 kg) | Agrotienda | $448.000 |

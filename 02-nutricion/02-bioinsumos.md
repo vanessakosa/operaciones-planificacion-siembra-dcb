@@ -5,7 +5,12 @@ insumos como estrategia de costo**.
 
 ## Bokashi — receta optimizada vigente
 
-**Base: 40 sacos de equinaza (~20 kg cada uno)**
+**Base: 32 sacos de estiércol de caballo (25 kg cada uno)**
+
+> ⚠️ **Corrección 2026-09-02:** el saco de estiércol es de **25 kg, no 20** (confirmado en campo).
+> Y **la levadura cuesta $18.000/kg, no $37.000** — el dato de La Cantaleta estaba desactualizado.
+> La receta vigente es la **V1**, en `01-infraestructura/05-bokashi-v1-y-compost.md`:
+> sin ceniza, sin humus de lombriz, sin sulfato de cobre, y harina de maíz a 200 kg.
 
 | Ingrediente | Cantidad | Origen | Costo |
 |---|---|---|---|
@@ -18,7 +23,7 @@ insumos como estrategia de costo**.
 | Humus de lombriz | 80 kg (2 sacos × 40 kg) | Agrotienda | $160.000 |
 | Melaza | 60 kg (2 sacos × 30 kg) | Agrotienda | $86.000 |
 | Sulfato de cobre | 200 g | Agrotienda | $2.000 |
-| Levadura | 1 kg (2 bloques × 500 g) | La Cantaleta | $37.000 |
+| Levadura | 1 kg (2 bloques × 500 g) | La Cantaleta | **$18.000** (corregido 2026-09-02) |
 | Transporte equinaza | 1 viaje | — | ~$150.000 |
 
 **TOTAL ~$883.000 · Produce ~1.500 kg = ~60 sacos de 25 kg · Costo por saco ~$14.700**

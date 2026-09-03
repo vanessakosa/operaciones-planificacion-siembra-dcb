@@ -134,3 +134,52 @@ sola sesión es señal de que ese archivo dejó de ser opcional.
 | Bocas Opus Fresh 3A + Appleblossom | En cosecha ahora |
 | Lisianthus | Insignificante — solo para los bouquets más grandes |
 | Dusty Miller | Todavía hay bastante |
+
+### Corrección del mismo día — la hoja decía 37, el campo dice 36
+
+Vanessa corrigió dos ventanas que yo había tomado de la columna `Semana` de
+inicio de cosecha de CAMPO:
+
+| Lote | La hoja dice | El campo dice |
+|---|---|---|
+| Snapdragon Opus White Fresh, 3A | inicio sem 37 | **inicio sem 36** |
+| Snapdragon Opus Appleblossom, 4A | inicio sem 37 | **inicio sem 36** |
+| Campanula Champion Pink, 4C | inicio sem 37 | **inicio sem 36**, pico sem 37 |
+
+**Lección de método, no de variedad:** la columna de inicio de cosecha de CAMPO
+es *proyección* mientras el lote no haya arrancado, y pasa a ser *observación*
+solo cuando alguien la corrige después de verlo. Leerla como observación corrió
+dos grupos enteros una semana hacia adelante y sostuvo una proyección de pico que
+no existía. **Los datos de campo le ganan a las proyecciones de la hoja** — está
+en la jerarquía de verdad del proyecto.
+
+→ Vale la pena que CAMPO distinga inicio *proyectado* de inicio *confirmado*.
+Hoy son la misma celda y no se pueden separar.
+
+### Falla hídrica confirmada — Limonium del 4A
+
+> *"Los limonium que están sembrados en el 4A los voy a sacar porque se quedaron
+> enanos, y es por falla hídrica, lo tengo muy claro."*
+
+Los tres lotes `Wings` (Bubblegum, Fantasia, Pretty — 70 plantas cada uno,
+sembrados en la semana 28) se sacan sin producir.
+
+**Esto confirma en campo lo que el diagnóstico de infraestructura ya decía:** la
+presión y uniformidad de riego es la limitante dominante de la finca, con solo
+~22 % del área rindiendo a potencial. Los mismos Limonium sembrados en el **Inv 2
+están en crecimiento y bonitos** — la variedad no falló, falló el agua del 4A.
+
+Es la comparación más limpia que hay documentada hasta ahora: misma variedad,
+misma semana de siembra, dos bloques, resultado opuesto. Vale registrarla en
+`incidencia_fitosanitaria.csv` como causa abiótica cuando ese archivo admita el
+tipo.
+
+### Aclaraciones de nomenclatura
+
+- **"Las celosías de Johnny" = Shimmer.** Registrado para que el término no se
+  pierda entre sesiones.
+- **Limonium ≠ Statice** en el lenguaje de Vanessa: los del Inv 2 *"no son
+  statice, sino limonium"*. En `paleta_color.csv` y en los homologados los dos
+  paraguas se mezclan; conviene no colapsarlos.
+- La cristata que queda en pie está en **4A**, y solo rinde **la mitad de la
+  cama**: la otra mitad se quedó enana.

@@ -4,11 +4,70 @@
 > La muestra para análisis sale **de esta misma tanda**, cuando esté terminada.
 > Resultado esperado en ~15 días.
 
+## Inventario en finca al 2026-09-02
+
+| Insumo | Cantidad | Nota |
+|---|---|---|
+| Estiércol de caballo | **50 sacos × 25 kg = 1.250 kg** | El saco es de 25 kg, no 20 |
+| Harina de maíz | **80 kg** | 🔴 **El insumo limitante** — V1 pide 200 |
+| Melaza | **60 kg** | ⚠️ **Cero margen** para la tanda completa |
+| Heno | 3 pacas (~45–75 kg) | **Va al compost, no al Bokashi** |
+| Cascarilla de arroz | 3 pacas | **Va al compost, no al Bokashi** |
+| Tierra negra · King grass · Biochar | "hay mucho" / propio | OK. El biochar hay que quemarlo |
+| Levadura | **0 — hay que comprar** | $18.000/kg |
+
+### Decisión: se compra la harina y se hace la tanda completa
+
+**Comprar 120 kg de harina ($168.000) lleva a la tanda máxima que la melaza permite** — con
+60 kg de melaza el factor máximo es exactamente 1,0. Ni más ni menos.
+
+**El argumento decisivo fue la equinaza fresca.** La receta la pide fresca por la carga
+microbiana y el N lábil. Hay 1.250 kg: una tanda de 21 sacos usaría 320 y dejaría 930 kg
+degradándose, contra 800 usados y 450 sobrantes en la completa.
+
+| | |
+|---|---|
+| **Valor total de insumos** | **$384.000** (harina $280.000 + melaza $86.000 + levadura $18.000) |
+| Produce | **1.315 kg = 53 sacos** |
+| **Por saco** | **$7.300** — contra $14.717 de la receta vieja, **50% menos** |
+| **Plata de bolsillo** | **$186.000** — solo harina faltante y levadura |
+
+Sin transporte: la equinaza ya está en finca y la harina la recoge Vanessa.
+
+**Corrección de un análisis previo:** se había recomendado la tanda pequeña alegando riesgo de
+probar una receta nueva en 1.700 kg. **Ese riesgo estaba exagerado** — revisando cambio por
+cambio: sin ceniza *ayuda* (es alcalinizante y el bokashi es lactofermentación ácida), sin
+sulfato de cobre es irrelevante (era 0,01% de la masa), sin humus baja algo el inóculo pero
+equinaza + tierra negra + levadura lo cubren, y la harina al 11,8% queda **dentro del rango
+clásico de 10–15%**.
+
+### Levadura esta tanda, EM-1 la siguiente
+
+| | Costo | Punto de equilibrio |
+|---|---|---|
+| Levadura | **$18.000/tanda** | — |
+| EM-1 galón 4 L | $51.074 una vez → 80 L activado → ~13 tandas → **$3.929/tanda** | **2,8 tandas** |
+
+**El EM-1 gana a mediano plazo** (a ~6,4 tandas/año son $115.200 de levadura contra $51.074 de
+EM-1 cada dos años). **Pero no para esta tanda:** el EM-1 tiene que llegar y después pedir 3–6
+días de activación — entrega más activación es fácilmente una semana. **Los $18.000 de levadura
+son el precio de no dejar 1.250 kg de estiércol fresco otra semana en el patio.**
+
+Bonus: esta tanda con levadura y la siguiente con EM-1, misma receta y con el análisis de esta
+como línea base, deja una comparación gratis.
+
+### El biochar no es cuello de botella
+
+Confirmado por Vanessa: se incorpora mientras fermenta. Coherente con el protocolo
+(*"incorporar el biochar en el volteo del día 2"*) y con que **el biochar no fermenta** — es
+carbono inerte que adsorbe y da hábitat. Entra tarde sin problema. Hay 48 h de margen desde el
+armado para las 2 quemas de caneca.
+
 ## Receta V1 — cambios respecto a la actual
 
 | Ingrediente | Actual | **V1** | Decisión |
 |---|---|---|---|
-| Equinaza fresca | 800 kg | **800 kg** | Sin cambio — gratis, hay mucha |
+| Estiércol de caballo | 800 kg | **800 kg** | Sin cambio — 32 sacos de 25 kg |
 | Tierra negra | 400 kg | **400 kg** | Sin cambio — gratis, hay mucha |
 | King grass picado | 160 kg | **160 kg** | Sin cambio — gratis, hay mucho |
 | Biochar | 80 kg | **80 kg** | Sin cambio — propio |
@@ -134,8 +193,40 @@ los vecinos y lo comprado; el compost corre con lo que hoy va a una pila fría.
 > **Meter restos de cultivo al Bokashi sería reinocular** el patógeno que se lleva dos años
 > combatiendo, y ya hay inóculo confirmado en suelo de 3C, Inv 5 e Inv 4.
 
-**Único recurso compartido:** el king grass, que en el compost haría de "marrón" (carbono) frente
-al verde de los restos de cultivo. No es restricción — hay mucho.
+## Dónde van el heno y la cascarilla: al compost
+
+**Razón de asignación de recursos escasos:**
+
+| | En el Bokashi | En el compost |
+|---|---|---|
+| **Heno** (3 pacas) | **Sustituible** — hay king grass de sobra y es gratis | **Casi insustituible** — sin un "marrón" seco los restos de cultivo verdes no llegan a C:N 25–30 ni a 55–65 °C |
+| **Cascarilla de arroz** (3 pacas) | **No sirve** — es la cáscara (lignina y sílice), no el salvado. No es fuente de energía y no fermenta | **Estructura y aireación** — sin oxígeno no hay compost térmico |
+
+> **El recurso escaso va donde no tiene reemplazo.**
+
+🔴 **Ojo con la confusión cascarilla / salvado**, que es frecuente:
+
+| | Qué es | Función |
+|---|---|---|
+| **Cascarilla** de arroz | La cáscara externa — lignina y sílice | Estructura. Casi no se descompone |
+| **Salvado** de arroz | La capa interna — almidón y nutrientes | **Energía** para el fermento |
+
+El bokashi clásico usa el **salvado**. El repo ya registra que el *salvado de trigo* fue el
+ingrediente energético anterior, reemplazado por harina de maíz por costo. **La cascarilla no
+puede sustituir la harina.**
+
+**En el compost, heno y cascarilla hacen pareja con funciones distintas:**
+
+| | C:N | Función |
+|---|---|---|
+| Heno | ~25–40, degradación moderada | **Balance de C:N** — es lo que hace subir la temperatura |
+| Cascarilla | ~80–120, casi no se degrada | **Estructura y aireación** |
+
+*Dato adicional: la cascarilla es alta en **sílice**, que fortalece pared celular — la misma vía
+del Equifun. El protocolo de No-Dig ya la pide en 3B PREMIUM (*"Sí + cascarilla 2–3 cm"*).*
+
+**Sobrantes tras la tanda V1 completa, que arrancan la pila de compost:** ~450 kg de estiércol,
+3 pacas de heno y 3 pacas de cascarilla.
 
 ## Para qué sirve cada uno
 

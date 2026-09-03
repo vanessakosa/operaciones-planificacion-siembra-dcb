@@ -120,3 +120,77 @@ una semana completa.
 4. **Fin de cosecha declarado**: 4 lotes vivos no tienen semana de inicio
    (3 Trachellium en 5 / 3C y un Celosia Celway Red sin fila completa) y la
    mayoría de los fines son estimados por ventana, no observados.
+
+## 6. Correcciones de campo — Vanessa, 2026-09-03 (APLICADAS)
+
+25 lotes corregidos contra lo observado en campo. Quedaron escritas en
+`07-datos/lotes_activos_sem36.csv`, en las columnas `origen_inicio`,
+`nota_campo` y `fuente_correccion`.
+
+| Lote | Archivo decía | Campo dice |
+|---|---|---|
+| Campanula Champion Pink 4C | ini 37 · fin 39 | **ini 36 · pico 37 · fin 38** |
+| Campanula Champion White 3C | 3C · ini 39 · fin 41 | **3C+4C (misma siembra) · ini 36 · fin 38** |
+| Cristata Reprise Orange 4A | ini 37 · fin 39 | **enana, sin uso como flor principal · fin 37** |
+| Cristata Clubs Cocktail 4A | 1.978 pl · fin 39 | **media cama · fin 38** |
+| Cristata Enda Rose 3A | 3A · fin 34 | **3A + media 4A · fin 37** |
+| Dianthus Sweet Cherry 4A | ini 37 · fin 39 | **sin desbrote, botón enano · solo toques de color · se saca en 38** |
+| Girasol Pro Cut White Lite 4A | ini 40 | **ya cosechado, no hay más — CERRADO** |
+| Statice Forever Silver 3C | ini 40 | **ini 36, pero volumen irrelevante** |
+| Cynoglossum Blue 2 | ini 40 | **DESCARTADO — no dura en florero** |
+| Scabiosa Estrella 2 | en fresco | **destino secos, no protagoniza bouquet** |
+| Green ball punky ball 4B | fin 35 | **media cama, laterales, estirada a 38** |
+| Matricaria Snowball 4B | ini 42 | **sin formación de tallo a sem 36 — ini en riesgo** |
+| Opus Appleblossom (siem 27) | bloque 4A | **bloque 4B — error de anotación** |
+| Limonium Wings 4A (×3) | ini 43 | **enanos — se quitan, CERRADOS** |
+| Limonium Diamond 2 (×5) | ini 43 | **grandes pero sin desarrollo de tallo, ciclo mucho más largo — SIN_DATO** |
+| Strawflowers 3EXT (×4) | en cosecha | **nada representativo en volumen** |
+
+## 7. Lo que cambia el análisis
+
+**El hueco se movió: ya no es la 36–40, es la 39–40.** Con las correcciones,
+las semanas 36 a 38 suben a 27.000–29.500 plantas (la Campanula y el Statice se
+adelantaron, la Enda Rose y el Green Ball se estiraron). Pero la **39 cae a
+16 lotes / 19.462 plantas** — el punto más bajo del semestre, justo después de
+Amor y Amistad.
+
+**El conteo de plantas de la semana 38 miente.** Dice 29.468, pero lo que hay
+dentro es: Campanula ya en cola de floración, Dianthus Sweet Cherry sin desbrote
+dando toques de color, Cristata Clubs Cocktail en media cama, Green Ball en
+tallos laterales, Statice en cantidad irrelevante. **Volumen de plantas no es
+volumen de tallo vendible**, y hoy el repositorio no puede distinguirlos porque
+`calidad_tallo.csv` está vacío. Este es el caso concreto que justifica el
+bloqueo #4 del roadmap.
+
+**Amor y Amistad (sábado 19 de septiembre = semana 38) se queda sin flor
+principal, y el problema es Boca de Dragón.** En la 38 lo único vertical que
+hay es Opus Appleblossom (4B) y Opus Fresh (3A), ambas ya en floración desde la
+36. El siguiente arranque de snapdragon es Monaco Dark Pink en la 40, y las MB
+Madame Butterfly / MB White y las Cannes Lemon / Cannes Red no llegan hasta la
+41–42 porque se sembraron tarde. **Gap de Boca de Dragón de la 39 a la 40**, y
+sin refuerzo nuevo en el pico comercial del año.
+
+**Sesgo sistemático del archivo.** De las 25 correcciones, 22 mueven la
+proyección hacia abajo (enano, poquito, sin tallo, descartado) o cambian la
+fecha. El `PROGRAMACION_2026` no está midiendo: está proyectando, y proyecta
+optimista. Por eso `lotes_activos_sem36.csv` ahora lleva la columna
+`origen_inicio` que separa **OBSERVADO en campo** de **proyectado**. Solo 11 de
+170 lotes tienen hoy un inicio observado.
+
+## 8. Pendiente de decisión
+
+1. **MB Madame Butterfly / MB White (4B, siem 30):** el archivo dice ini 42;
+   Vanessa estimó 40 en el dictado y luego aclaró que "se sembraron tarde,
+   florecen después". Quedó en **42**. Confirmar.
+2. **"Enda Rose"** como la otra mitad del 4A viene de dictado de voz
+   ("the rose"). Interpretado como *Cristata Enda Rose*, que es el único lote de
+   ese nombre en el 3A. Confirmar.
+3. **Bug de homologación en los 10 Limonium (siem 28).** La columna
+   `Nombre Homologados` del archivo fuente está desalineada: Bubblegum Wings
+   figura como "Opus Appleblossom", Pretty Wings como "Girasol White Lite",
+   Tiffany Diamond como "Campanula White", Max Diamond como "Forever Silver",
+   Divine Diamond como "Dianthus Sweet Cherry", Anouchka Diamond como
+   "Dusty New Look". **Esos nombres son de otras variedades y van a contaminar
+   el calendario de Erica.** Hay que corregirlos en el PROGRAMACION_2026, no
+   aquí. No propongo nombres: los Limonium Wings y Diamond no existen en la
+   VARIEDADES_BITACORA todavía.

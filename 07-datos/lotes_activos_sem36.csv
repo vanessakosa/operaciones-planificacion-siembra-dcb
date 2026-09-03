@@ -1,171 +1,171 @@
-semana_siembra,variedad,nombre_homologado,bloque,plantas,mes_cosecha,sem_inicio_cosecha,sem_fin_cosecha,origen_fin,estado
-28,Achillea Cerise Queen,Achillea Cerise Queen,6 EXT,1000,ENERO,1,3,estimado(ventana 3),Activa
-28,Achillea Cloth of God,Achillea Cloth of God,6 EXT,3342,ENERO,1,3,estimado(ventana 3),Activa
-5,Dahlias,Dalia Ball Linda's Baby,2,100,ABRIL,16,19,estimado(ventana 4),Activa
-8,Gomphrena Quis Carmine,Quis Carmine,CAMAS BAJAS 3A,2785,MAYO,21,26,estimado(ventana 6),Activa
-9,Ammi Majus,Ammi Majus,6,1370,MADRES,21,24,estimado(ventana 4),Activa
-14,Zinnia Linen,Zinnia Linen,4B,324,JULIO,22,25,estimado(ventana 4),Activa
-14,Zinnias Floret,Zinnia Golden Hour,4B,393,JULIO,22,25,estimado(ventana 4),Activa
-11,Ammi Visnaga,Ammi Majus,6,1728,JUNIO,23,25,declarado,Activa
-18,"Zinnia Aurora, Bailarina, Benary",Zinnia Aurora,4B,,JULIO,23,26,estimado(ventana 4),Activa
-9,Strawflower Apricot,Strawflower Apricot,6,4490,JUNIO,24,29,estimado(ventana 6),Activa
-9,Strawflower Cranberry Rose,Strawflower Cranberry Rose,6,2759,JUNIO,24,29,estimado(ventana 6),Activa
-9,Green Ball,Dianthus Green Ball,4A,800,JUNIO,24,26,estimado(ventana 3),Activa
-14,Snapdragon Monaco Plumblossom,Monaco Plumblossom,5,1918,JUNIO,24,28,declarado,Activa
-16,Amaranto Love Lies Bleeding,Love Lies Bleeding,3A,1067,JULIO,24,25,declarado,Activa
-17,Zinnia Benary Giant bright Pink,Zinnia Bright Pink,4B,,AGOSTO,24,27,estimado(ventana 4),Activa
-13,Campanula Champion White,Campanula White,3C,1096,JUNIO,25,25,declarado,Activa
-16,Campanula Champion Lavender,Campanula Lavender,3B,1918,JULIO,25,27,declarado,Activa
-16,Campanula Champion White,Campanula White,3B,1370,JULIO,25,28,declarado,Activa
-17,Celosia Cristata Verda Green,Cristata Verda Green,3A+4B,3134,JULIO,25,30,declarado,Activa
-18,Snapdragon Cannes Pink,Cannes Pink,4C,2540,JULIO,25,29,declarado,Activa
-11,Echinops,Echinops,2,200,JUNIO,26,SIN_DATO,SIN_DATO,Activa
-17,Snapdragon Monaco Orange,Monaco Orange,4A,1728,JULIO,26,28,declarado,Activa
-10,Lisianthus Celeb 2 Madonna,Lisianthus Blanco,Mini 3C Y 3B,200,AGOSTO,27,30,declarado,Activa
-10,Lisianthus Corelli I Yellow,Lisianthus Amarillo,Mini 3C Y 3B,1000,AGOSTO,27,31,declarado,Activa
-10,Lisianthus Megalo I Yellow,Lisianthus Amarillo,Mini 3C Y 3B,446,AGOSTO,27,31,declarado,Activa
-10,Lisianthus Celeb 2 Crystal,Lisianthus Blanco,Mini 3C Y 3B,1200,AGOSTO,27,31,declarado,Activa
-10,Lisianthus Celeb 2 White Improved,Lisianthus Blanco,Mini 3C Y 3B,400,AGOSTO,27,31,declarado,Activa
-12,Matricaria Snowball,Matricaria Snowball,3B,2016,JUNIO,27,28,declarado,Activa
-13,Statice Forever Happy,Statice Happy,3A+3B+4A,2708,JULIO,27,34,estimado(ventana 8),Activa
-14,Green ball punky ball,Dianthus Green Ball,4A,945,JULIO/AGOSTO,27,33,declarado,Activa
-15,Matricaria Snowball,Matricaria Snowball,3B,822 + 822,JULIO,27,30,declarado,Activa
-15,Statice Hipster White,Statice White,4B+4C,2952,AGOSTO,27,34,estimado(ventana 8),Activa
-18,Matricaria Snowball,Matricaria Snowball,4A,1918,JULIO,27,34,declarado,Activa
-10,Lisianthus Celeb 2 Apricot,Lisianthus Rosado,Mini 3C Y 3B,1600,AGOSTO,28,32,declarado,Activa
-11,Lisianthus Beige Neo,Lisianthus Pastel,3B,1660,AGOSTO,28,31,declarado,Activa
-15,Limonium Pink Pokers,Ruso,2,2670,AGOSTO,28,35,estimado(ventana 8),Activa
-17,Celosia Spun Sugar,Floret Rosados Corales,3B,1200,AGOSTO,28,32,declarado,Activa
-17,Celosia Summer Sherbet,Floret Rosados Corales,3A,1200,AGOSTO,28,32,declarado,Activa
-17,Celosia Shimmer,Shimmer Mix,"3B, MINI",3200,AGOSTO,28,31,estimado(ventana 4),Activa
-18,Snapdragon Cannes Lavender,Cannes Lavender,4C,3186,JULIO,28,30,declarado,Activa
-18,Celosias Dreams,Dreams Mix,2,2600,AGOSTO,28,32,declarado,Activa
-20,Celosia Shimmer,Shimmer Mix,3A,2654,AGOSTO,28,31,estimado(ventana 4),Activa
-20,Amaranto Green Tails,Green Tails,5,1600?,JULIO,28,31,declarado,Activa
-21,Celosias Dreams,Dreams Mix,2,"2,467",AGOSTO,28,31,declarado,Activa
-15,Dusty Miller,Dusty New Look,5,1000,AGOSTO,29,31,estimado(ventana 3),Activa
-15,Dusty Miller,Dusty New Look,5,976,SEPTIEMBRE,29,31,estimado(ventana 3),Activa
-15,Gomphrenas Raspberry Cream,Raspberry Cream,5,1600,JULIO,30,35,declarado,Activa
-15,Bunny Tails,Bunny Tails,2,1170,AGOSTO,30,SIN_DATO,SIN_DATO,Activa
-20,Snapdragon Cannes Red Delight,Cannes Red Delight,4a,2793,AGOSTO,30,31,declarado,Activa
-10,Lisianthus Jolly 3 Pink,Lisianthus Rosado,Mini 3C Y 3B,849,AGOSTO,31,36,estimado(ventana 6),Activa
-10,Lisianthus Megalo 3 Pink Rim,Lisianthus Pastel,Mini 3C Y 3B,1045,AGOSTO,31,36,estimado(ventana 6),Activa
-10,Lisianthus Megalo 3 Pink Pop,Lisianthus Rosado,Mini 3C Y 3B,,AGOSTO,31,36,estimado(ventana 6),Activa
-10,Lisianthus Celeb 2 Lovely Pink,Lisianthus Rosado,Mini 3C Y 3B,1000,AGOSTO,31,36,estimado(ventana 6),Activa
-16,Craspedia,Craspedia,2,338,AGOSTO,31,SIN_DATO,SIN_DATO,Activa
-18,Ammi Majus,Ammi Majus,5,1644,AGOSTO,31,33,declarado,Activa
-20,Celosia Rose Gold,Floret Rosados Corales,3A,1231,AGOSTO,31,34,estimado(ventana 4),Activa
-20,Celosia Raspberry Lemonade,Floret Raspberry Lemonade,3A,1158,AGOSTO,31,34,estimado(ventana 4),Activa
-22,Snapdragon Opus Appleblossom,Opus Appleblossom,3b,864,AGOSTO,31,32,declarado,Activa
-22,Snapdragon Opus Pink,Opus Pink,3B,720,AGOSTO,31,32,declarado,Activa
-17,Trachellium White Lake,Trachelium White,MINI,1900,AGOSTO,32,34,estimado(ventana 3),Activa
-20,Snapdragon Cannes Light Bronze,Cannes Light Bronze,3c,3517,AGOSTO,32,34,estimado(ventana 3),Activa
-21,Strawflower Apricot Peach,Strawflower Apricot Peach,3EXT,994,SEPTIEMBRE,32,37,estimado(ventana 6),Activa
-21,Strawflower Silvery Rose,Strawflower Silvery Rose,3EXT,800,SEPTIEMBRE,32,37,estimado(ventana 6),Activa
-21,Strawflower Bright Rose,Strawflower Bright Rose,3EXT,891,SEPTIEMBRE,32,37,estimado(ventana 6),Activa
-22,Snapdragon Opus Appleblossom,Opus Appleblossom,3C,2448,AGOSTO,32,34,estimado(ventana 3),Activa
-24,Celosia Cristata Enda Rose,Cristata Enda Rose,3A,4264,AMOR,32,34,estimado(ventana 3),Activa
-10,Lisianthus Megalo Orange Deep,Lisianthus Rosado,Mini 3C Y 3B,2000,AGOSTO,33,38,estimado(ventana 6),Activa
-16,Scabiosa Estrella,Scabiosa Estrella,2,870,AGOSTO,33,35,estimado(ventana 3),Activa
-21,Green ball punky ball,Dianthus Green Ball,4B,,SEPTIEMBRE,33,35,estimado(ventana 3),Activa
-22,Amaranto Mira,Mira,2,800,AGOSTO,33,30,declarado,Activa
-24,Snapdragon Cannes Light Bronze,Cannes Light Bronze,3A,1414,AGOSTO,33,34,declarado,Activa
-24,Snapdragon Prueba Avignon Pink 2,PRUEBA INTERNA,3A,43,AGOSTO,33,35,declarado,Activa
-24,Snapdragon Prueba Bridal Pink F1,PRUEBA INTERNA,3A,44,AGOSTO,33,35,declarado,Activa
-24,Snapdragon Prueba Avignon Silver 2 F1,PRUEBA INTERNA,3A,45,AGOSTO,33,35,declarado,Activa
-24,Snapdragon Prueba Antibes Apricot 1 F1,PRUEBA INTERNA,3A,39,AGOSTO,33,35,declarado,Activa
-24,Snapdragon Prueba Avignon Light Rose 2 F1,PRUEBA INTERNA,3A,20,AGOSTO,33,35,declarado,Activa
-24,Snapdragon Prueba Avignon Apricot 2 F1,PRUEBA INTERNA,3A,26,AGOSTO,33,35,declarado,Activa
-24,Snapdragon Prueba Double F Apricot 2 F1,PRUEBA INTERNA,3A,57,AGOSTO,33,35,declarado,Activa
-21,Strawfloer Purple Red,Strawflower Cranberry Rose,3EXT,790,SEPTIEMBRE,34,SIN_DATO,SIN_DATO,Activa
-15,Dusty Miller,Dusty New Look,5,,SEPTIEMBRE,35,37,estimado(ventana 3),Activa
-22,Matricaria Single Vegmo,Matricaria Vegmo,5,,AGOSTO,35,36,estimado(ventana 2),Activa
-22,Ammi Majus,Ammi Majus,3EXT,,AGOSTO,35,38,estimado(ventana 4),Activa
-23,Matricaria Vegmo Single,Matricaria Vegmo,4A,3168,AGOSTO,35,36,estimado(ventana 2),Activa
-13,Lisianthus,Lisianthus Blanco,3B,2800,SEPTIEMBRE,36,41,estimado(ventana 6),Activa
-22,Gomphrena Salmon Pastel,Salmon Pink,4B,730,SEPTIEMBRE,37,42,estimado(ventana 6),Activa
-22,Gomphrena Quis Pink,Quis Pink,2,447,SEPTIEMBRE,37,42,estimado(ventana 6),Activa
-24,Celosia Cristata Reprise Orange,Cristata Reprise Orange,4A,693,AMOR,37,39,estimado(ventana 3),Activa
-24,Celosia Cristata Clubs Cocktail,Cristata Clubs Cocktail,4A,1978,AMOR,37,39,estimado(ventana 3),Activa
-25,Campanula Champion Pink,Campanula Pink,4C,3014,SEPTIEMBRE,37,39,estimado(ventana 3),Activa
-25,Dianthus Sweet Cherry,Dianthus Sweet Cherry,4A,1918,OCTUBRE,37,39,estimado(ventana 3),Activa
-27,Snapdragon Opus Appleblossom,Opus Appleblossom,4A,1644,SEPTIEMBRE,37,39,estimado(ventana 3),Activa
-27,Snapdragon Opus White Fresh,Opus Fresh,3A,1096,SEPTIEMBRE,37,39,estimado(ventana 3),Activa
-15,Lisianthus,Lisianthus Blanco,3B,1042,SEPTIEMBRE,38,43,estimado(ventana 6),Activa
-18,Dusty Miller New Look,Dusty New Look,,1464,SEPT,38,40,estimado(ventana 3),Activa
-23,Gomphrena Quis Carmine,QIS Carmine,5,1728,SEPTIEMBRE,38,43,estimado(ventana 6),Activa
-25,Carthamus Zanzibar,Dianthus Sweet Cherry,4A,1900,SEPTIEMBRE,38,39,estimado(ventana 2),Activa
-25,Ammi Majus,Ammi Majus,6ext,1644,SEPTIEMBRE,38,41,estimado(ventana 4),Activa
-27,Campanula Champion White,Campanula White,3C,1918,SEPTIEMBRE,39,41,estimado(ventana 3),Activa
-29,Snapdragon Opus White Fresh,Opus White Fresh,4A,822,OCTUBRE,39,41,estimado(ventana 3),Activa
-17,Lisianthus mas,Lisianthus Blanco,3B,286,SEPTIEMBRE,40,45,estimado(ventana 6),Activa
-25,Scabiosa Triple Berry Mix,Scabiosa Triple Berry,2,446,OCTUBRE,40,42,estimado(ventana 3),Activa
-25,Gomphrena Quis Carmine,QIS Carmine,5,1662,OCTUBRE,40,45,estimado(ventana 6),Activa
-25,Gomphrena Quis Pink,Quis Pink,4A y 4B y 2,1508,OCTUBRE,40,45,estimado(ventana 6),Activa
-25,Cynoglossum Blue,,2,597,OCTUBRE,40,SIN_DATO,SIN_DATO,Activa
-25,Statice Forever Silver,Forever Silver,3C,1647,OCTUBRE,40,47,estimado(ventana 8),Activa
-28,Girasol Pro Cut White Lite,Girasol White Lite,4A,288,OCTUBRE,40,42,estimado(ventana 3),Activa
-32,Snapdragon Monaco Dark Pink,,4B+3B,1918,OCTUBRE,40,42,estimado(ventana 3),nueva
-28,Strawflower King Size Red,Strawflower King Size Red,3B,,NOVIEMBRE,41,46,estimado(ventana 6),nueva
-28,Strawflower Copper Red,Strawflower Copper Red,3B,,NOVIEMBRE,41,46,estimado(ventana 6),nueva
-29,Campanula Champion White,Campanula Champion White,4B,1918,OCTUBRE,41,43,estimado(ventana 3),Activa
-30,Snapdragon Cannes Red,Cannes Red,3A,1527,OCTUBRE,41,43,estimado(ventana 3),nueva
-30,Snapdragon Cannes Lemon,Cannes Lemon,4A+3A,3304,OCTUBRE,41,43,estimado(ventana 3),nueva
-28,Achillea Cerise Queen,Achillea Cerise Queen,3B parte baja,,DICEMBRE?,42,44,estimado(ventana 3),nueva
-28,Achillea Cloth of God,Achillea Cloth of God,3B parte baja,,DICEMBRE?,42,44,estimado(ventana 3),nueva
-30,Snapdragon MB Madame Butterfly,MB Madame Butterfly,4B,1395,OCTUBRE,42,43,estimado(ventana 2),nueva
-29,Ammi Majus,Ammi Majus,6 EXT,1370,OCTUBRE,42,45,estimado(ventana 4),Activa
-30,Snapdragon MB White,MB Ivory,4B,1395,OCTUBRE,42,43,estimado(ventana 2),nueva
-31,Matricaria Snowball,,4B,822,OCTUBRE,42,43,estimado(ventana 2),nueva
-32,Snapdragon Opus Lavender,,4B+3B,1918,OCTUBRE,42,44,estimado(ventana 3),nueva
-32,Snapdragon Opus Fresh,,4B+3B,576,OCTUBRE,42,44,estimado(ventana 3),nueva
-22,Lisianthus,Lisianthus Blanco,3B,,OCTUBRE,43,48,estimado(ventana 6),Activa
-23,Dusty Miller New Look,Dusty New Look,5,864,OCTUBRE,43,45,estimado(ventana 3),Activa
-28,Strawflower Vintage White,Strawflower Vintage White,6 EXT,881,OCTUBRE,43,48,estimado(ventana 6),Activa
-28,Strawflower King Size Red,Strawflower Cranberry Rose,6 EXT,1800,OCTUBRE,43,48,estimado(ventana 6),Activa
-28,Strawflower Copper Red,Strawflower Cranberry Rose,6 EXT,400,OCTUBRE,43,48,estimado(ventana 6),Activa
-28,Dianthus Green Ball,Dianthus Green Ball,3A,1600,OCTUBRE,43,45,estimado(ventana 3),Activa
-28,Limonium Bubblegum Wings,Opus Appleblossom,4A,70,OCTUBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Fantasia Wings,Opus Fresh,4A,70,OCTUBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Pretty Wings,Girasol White Lite,4A,70,OCTUBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Anouchka Diamond,Dusty New Look,2,40,NOVIEMBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Blush Diamond,,2,40,NOVIEMBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Max Diamond,Forever Silver,2,40,NOVIEMBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Divine Diamond,Dianthus Sweet Cherry,2,40,NOVIEMBRE,43,50,estimado(ventana 8),Activa
-28,Limonium Tiffany Diamond,Campanula White,2,40,NOVIEMBRE,43,50,estimado(ventana 8),Activa
-28,Strawflower Vintage White,Strawflower Vintage White,3B,,NOVIEMBRE,43,48,estimado(ventana 6),nueva
-33,Snapdragon Opus Lavender,,3B,1918,OCTUBRE,43,45,estimado(ventana 3),nueva
-33,Snapdragon Opus Fresh,,3B,548,OCTUBRE,43,45,estimado(ventana 3),nueva
-33,Snapdragon Opus Red,,4A,2016,OCTUBRE,43,45,estimado(ventana 3),nueva
-29,Trachellium White Lake,Trachelium White,5+3C,1900,NOVIEMBRE,44,46,estimado(ventana 3),Activa
-29,Limonium Hipster Apricot,Statice Hipster Apricot,4C+,1838,NOVIEMBRE,44,51,estimado(ventana 8),nueva
-31,Limonium Quis Lavender,,2,673,NOVIEMBRE,44,51,estimado(ventana 8),nueva
-33,Snapdragon Plumblossom,,4B,1918,NOVIEMBRE,44,46,estimado(ventana 3),nueva
-35,Snapdragon Monaco Plumblossom,,4A,2016,NOVIEMBRE,44,46,estimado(ventana 3),nueva
-35,Snapdragon Opus White Fresh,,4A,1440,NOVIEMBRE,44,46,estimado(ventana 3),nueva
-35,Snapdragon Monaco Dark Pink,,4A,576,NOVIEMBRE,44,46,estimado(ventana 3),nueva
-30,Gomphrena Quis Orange,QIS Orange,3B,464,OCTUBRE,45,50,estimado(ventana 6),Activa
-30,Gomphrena Quis Red,QIS Red,3B,822,OCTUBRE,45,50,estimado(ventana 6),Activa
-32,Ammi Majus,,6,1728,NOVIEMBRE,45,48,estimado(ventana 4),nueva
-33,Campanula Champion Pink,,4B,1370,NOVIEMBRE,45,47,estimado(ventana 3),nueva
-33,Gomphrena Carmine,,3B,1918,NOVIEMBRE,46,51,estimado(ventana 6),nueva
-33,Gomphrena Quis Red,,3B,1918,NOVIEMBRE,46,51,estimado(ventana 6),nueva
-34,Dianthus Sweet Cherry,,3A,2016,NOVIEMBRE,46,48,estimado(ventana 3),nueva
-34,Campanula champion White,,3A,1644,NOVIEMBRE,46,48,estimado(ventana 3),nueva
-34,Matricaria Snowball,,3A,2016,NOVIEMBRE,46,47,estimado(ventana 2),nueva
-22,Dusty Miller New Look,Dusty New Look,3B,648,NOVIEMBRE,47,49,estimado(ventana 3),Activa
-32,Dusty Miller,,5,432,DICIEMBRE,47,49,estimado(ventana 3),Activa
-35,Sunflower Pro Cut Red,,Mini,1440,NOVIEMBRE,47,49,estimado(ventana 3),nueva
-35,Ammi Majus,,6,1728,NOVIEMBRE,47,50,estimado(ventana 4),nueva
-35,Girasol Pro Cut Red,,3A,1152,NOVIEMBRE,47,49,estimado(ventana 3),nueva
-36,Dianthus Sweet Cherry,,4C+3C,2016,NOVIEMBRE,48,50,estimado(ventana 3),nueva
-36,Campanulas Champion Pink,,5,1370,NOVIEMBRE,48,50,estimado(ventana 3),nueva
-36,Campanulas Champion White,,5,1644,NOVIEMBRE,48,50,estimado(ventana 3),nueva
-34,Statice Hipster Apricot,,3A,1000,DICIEMBRE,49,56,estimado(ventana 8),nueva
-36,Green Ball,,4C,1600,NOVIEMBRE,49,51,estimado(ventana 3),nueva
-35,Trachellium White Lake,,3A,3800,DICIEMBRE,50,52,estimado(ventana 3),nueva
-36,Celosia Purple Flamingo,,5,1096,DICIEMBRE,51,53,estimado(ventana 3),nueva
-11,Trachellium White Lake,Trachelium White,5,,JUN-JUL,SIN_DATO,SIN_DATO,declarado,Activa
-12,Trachellium Purple,Trachelium Purple,5,776,JULIO,SIN_DATO,SIN_DATO,declarado,Activa
-23,Trachellium White Lake,Trachelium White,5 y 3C,2000,SEPTIEMBRE,SIN_DATO,SIN_DATO,declarado,Activa
-,Celosia Celway Red,,,1152,,SIN_DATO,SIN_DATO,declarado,nueva
+semana_siembra,variedad,nombre_homologado,bloque,plantas,mes_cosecha,sem_inicio_cosecha,sem_fin_cosecha,origen_fin,estado,origen_inicio,nota_campo,fuente_correccion
+28,Achillea Cerise Queen,Achillea Cerise Queen,6 EXT,1000,ENERO,1,3,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+28,Achillea Cloth of God,Achillea Cloth of God,6 EXT,3342,ENERO,1,3,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+5,Dahlias,Dalia Ball Linda's Baby,2,100,ABRIL,16,19,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+8,Gomphrena Quis Carmine,Quis Carmine,CAMAS BAJAS 3A,2785,MAYO,21,26,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+9,Ammi Majus,Ammi Majus,6,1370,MADRES,21,24,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+14,Zinnia Linen,Zinnia Linen,4B,324,JULIO,22,25,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+14,Zinnias Floret,Zinnia Golden Hour,4B,393,JULIO,22,25,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+11,Ammi Visnaga,Ammi Majus,6,1728,JUNIO,23,25,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+18,"Zinnia Aurora, Bailarina, Benary",Zinnia Aurora,4B,,JULIO,23,26,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+9,Strawflower Apricot,Strawflower Apricot,6,4490,JUNIO,24,29,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+9,Strawflower Cranberry Rose,Strawflower Cranberry Rose,6,2759,JUNIO,24,29,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+9,Green Ball,Dianthus Green Ball,4A,800,JUNIO,24,26,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+14,Snapdragon Monaco Plumblossom,Monaco Plumblossom,5,1918,JUNIO,24,28,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+16,Amaranto Love Lies Bleeding,Love Lies Bleeding,3A,1067,JULIO,24,25,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Zinnia Benary Giant bright Pink,Zinnia Bright Pink,4B,,AGOSTO,24,27,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+13,Campanula Champion White,Campanula White,3C,1096,JUNIO,25,25,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+16,Campanula Champion Lavender,Campanula Lavender,3B,1918,JULIO,25,27,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+16,Campanula Champion White,Campanula White,3B,1370,JULIO,25,28,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Celosia Cristata Verda Green,Cristata Verda Green,3A+4B,3134,JULIO,25,30,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+18,Snapdragon Cannes Pink,Cannes Pink,4C,2540,JULIO,25,29,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+11,Echinops,Echinops,2,200,JUNIO,26,SIN_DATO,SIN_DATO,Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Snapdragon Monaco Orange,Monaco Orange,4A,1728,JULIO,26,28,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Celeb 2 Madonna,Lisianthus Blanco,Mini 3C Y 3B,200,AGOSTO,27,30,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Corelli I Yellow,Lisianthus Amarillo,Mini 3C Y 3B,1000,AGOSTO,27,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Megalo I Yellow,Lisianthus Amarillo,Mini 3C Y 3B,446,AGOSTO,27,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Celeb 2 Crystal,Lisianthus Blanco,Mini 3C Y 3B,1200,AGOSTO,27,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Celeb 2 White Improved,Lisianthus Blanco,Mini 3C Y 3B,400,AGOSTO,27,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+12,Matricaria Snowball,Matricaria Snowball,3B,2016,JUNIO,27,28,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+13,Statice Forever Happy,Statice Happy,3A+3B+4A,2708,JULIO,27,34,estimado(ventana 8),Activa,proyectado (PROGRAMACION_2026 v8),,
+14,Green ball punky ball,Dianthus Green Ball,4A,945,JULIO/AGOSTO,27,33,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Matricaria Snowball,Matricaria Snowball,3B,822 + 822,JULIO,27,30,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Statice Hipster White,Statice White,4B+4C,2952,AGOSTO,27,34,estimado(ventana 8),Activa,proyectado (PROGRAMACION_2026 v8),,
+18,Matricaria Snowball,Matricaria Snowball,4A,1918,JULIO,27,34,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Celeb 2 Apricot,Lisianthus Rosado,Mini 3C Y 3B,1600,AGOSTO,28,32,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+11,Lisianthus Beige Neo,Lisianthus Pastel,3B,1660,AGOSTO,28,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Limonium Pink Pokers,Ruso,2,2670,AGOSTO,28,35,estimado(ventana 8),Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Celosia Spun Sugar,Floret Rosados Corales,3B,1200,AGOSTO,28,32,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Celosia Summer Sherbet,Floret Rosados Corales,3A,1200,AGOSTO,28,32,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Celosia Shimmer,Shimmer Mix,"3B, MINI",3200,AGOSTO,28,31,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+18,Snapdragon Cannes Lavender,Cannes Lavender,4C,3186,JULIO,28,30,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+18,Celosias Dreams,Dreams Mix,2,2600,AGOSTO,28,32,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+20,Celosia Shimmer,Shimmer Mix,3A,2654,AGOSTO,28,31,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+20,Amaranto Green Tails,Green Tails,5,1600?,JULIO,28,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+21,Celosias Dreams,Dreams Mix,2,"2,467",AGOSTO,28,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Dusty Miller,Dusty New Look,5,1000,AGOSTO,29,31,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Dusty Miller,Dusty New Look,5,976,SEPTIEMBRE,29,31,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Gomphrenas Raspberry Cream,Raspberry Cream,5,1600,JULIO,30,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Bunny Tails,Bunny Tails,2,1170,AGOSTO,30,SIN_DATO,SIN_DATO,Activa,proyectado (PROGRAMACION_2026 v8),,
+20,Snapdragon Cannes Red Delight,Cannes Red Delight,4a,2793,AGOSTO,30,31,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Jolly 3 Pink,Lisianthus Rosado,Mini 3C Y 3B,849,AGOSTO,31,36,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Megalo 3 Pink Rim,Lisianthus Pastel,Mini 3C Y 3B,1045,AGOSTO,31,36,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Megalo 3 Pink Pop,Lisianthus Rosado,Mini 3C Y 3B,,AGOSTO,31,36,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+10,Lisianthus Celeb 2 Lovely Pink,Lisianthus Rosado,Mini 3C Y 3B,1000,AGOSTO,31,36,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+16,Craspedia,Craspedia,2,338,AGOSTO,31,SIN_DATO,SIN_DATO,Activa,proyectado (PROGRAMACION_2026 v8),,
+18,Ammi Majus,Ammi Majus,5,1644,AGOSTO,31,33,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+20,Celosia Rose Gold,Floret Rosados Corales,3A,1231,AGOSTO,31,34,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+20,Celosia Raspberry Lemonade,Floret Raspberry Lemonade,3A,1158,AGOSTO,31,34,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+22,Snapdragon Opus Appleblossom,Opus Appleblossom,3b,864,AGOSTO,31,32,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+22,Snapdragon Opus Pink,Opus Pink,3B,720,AGOSTO,31,32,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Trachellium White Lake,Trachelium White,MINI,1900,AGOSTO,32,34,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+20,Snapdragon Cannes Light Bronze,Cannes Light Bronze,3c,3517,AGOSTO,32,34,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+21,Strawflower Apricot Peach,Strawflower Apricot Peach,3EXT,994,SEPTIEMBRE,32,37,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),Se ha cosechado pero nada representativo en volumen.,Vanessa - brain dump 2026-09-03 (sem36)
+21,Strawflower Silvery Rose,Strawflower Silvery Rose,3EXT,800,SEPTIEMBRE,32,37,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),Se ha cosechado pero nada representativo en volumen.,Vanessa - brain dump 2026-09-03 (sem36)
+21,Strawflower Bright Rose,Strawflower Bright Rose,3EXT,891,SEPTIEMBRE,32,37,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),Se ha cosechado pero nada representativo en volumen.,Vanessa - brain dump 2026-09-03 (sem36)
+22,Snapdragon Opus Appleblossom,Opus Appleblossom,3C,2448,AGOSTO,32,34,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Celosia Cristata Enda Rose,Cristata Enda Rose,3A + media 4A,4264,AMOR,32,37,observado,Activa,proyectado (PROGRAMACION_2026 v8),Comparte el 4A con Clubs Cocktail. Cama 3A y cama 4A terminan de cosechar sem37.,Vanessa - brain dump 2026-09-03 (sem36)
+10,Lisianthus Megalo Orange Deep,Lisianthus Rosado,Mini 3C Y 3B,2000,AGOSTO,33,38,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+16,Scabiosa Estrella,Scabiosa Estrella,2,870,AGOSTO,33,35,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),Destino SECOS. No genera protagonismo en bouquet fresco.,Vanessa - brain dump 2026-09-03 (sem36)
+21,Green ball punky ball,Dianthus Green Ball,4B (media cama),,SEPTIEMBRE,33,38,observado,Activa,proyectado (PROGRAMACION_2026 v8),Solo queda media cama con los ultimos tallos laterales. Se deja explotar hasta sem38 para rellenar Amor y Amistad.,Vanessa - brain dump 2026-09-03 (sem36)
+22,Amaranto Mira,Mira,2,800,AGOSTO,33,30,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Cannes Light Bronze,Cannes Light Bronze,3A,1414,AGOSTO,33,34,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Avignon Pink 2,PRUEBA INTERNA,3A,43,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Bridal Pink F1,PRUEBA INTERNA,3A,44,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Avignon Silver 2 F1,PRUEBA INTERNA,3A,45,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Antibes Apricot 1 F1,PRUEBA INTERNA,3A,39,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Avignon Light Rose 2 F1,PRUEBA INTERNA,3A,20,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Avignon Apricot 2 F1,PRUEBA INTERNA,3A,26,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Snapdragon Prueba Double F Apricot 2 F1,PRUEBA INTERNA,3A,57,AGOSTO,33,35,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+21,Strawfloer Purple Red,Strawflower Cranberry Rose,3EXT,790,SEPTIEMBRE,34,SIN_DATO,SIN_DATO,Activa,proyectado (PROGRAMACION_2026 v8),Se ha cosechado pero nada representativo en volumen.,Vanessa - brain dump 2026-09-03 (sem36)
+15,Dusty Miller,Dusty New Look,5,,SEPTIEMBRE,35,37,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+22,Matricaria Single Vegmo,Matricaria Vegmo,5,,AGOSTO,35,36,estimado(ventana 2),Activa,proyectado (PROGRAMACION_2026 v8),,
+22,Ammi Majus,Ammi Majus,3EXT,,AGOSTO,35,38,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+23,Matricaria Vegmo Single,Matricaria Vegmo,4A,3168,AGOSTO,35,36,estimado(ventana 2),Activa,proyectado (PROGRAMACION_2026 v8),,
+13,Lisianthus,Lisianthus Blanco,3B,2800,SEPTIEMBRE,36,41,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+22,Gomphrena Salmon Pastel,Salmon Pink,4B,730,SEPTIEMBRE,37,42,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+22,Gomphrena Quis Pink,Quis Pink,2,447,SEPTIEMBRE,37,42,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+24,Celosia Cristata Reprise Orange,Cristata Reprise Orange,4A,693,AMOR,37,37,observado,Activa,OBSERVADO en campo,Se quedaron ENANAS. Sin uso como flor principal. Cama termina sem37.,Vanessa - brain dump 2026-09-03 (sem36)
+24,Celosia Cristata Clubs Cocktail,Cristata Clubs Cocktail,4A (media cama),1978,AMOR,37,38,observado,Activa,OBSERVADO en campo,Eran bastante poquitas. Media cama del 4A; la otra mitad es Enda Rose. Aguanta hasta sem38.,Vanessa - brain dump 2026-09-03 (sem36)
+25,Campanula Champion Pink,Campanula Pink,4C,3014,SEPTIEMBRE,36,38,observado,Activa,OBSERVADO en campo,Floreciendo sem36. Full apertura sem37. Sem38 ya queda lo maluco.,Vanessa - brain dump 2026-09-03 (sem36)
+25,Dianthus Sweet Cherry,Dianthus Sweet Cherry,4A,1918,OCTUBRE,37,38,observado,Activa,OBSERVADO en campo,"Con boton floral pero NO se hizo desbrote: botones muy pequenos. Da toques de color, NO flor principal. Se saca completa sem38 sacando todos los tallos posibles.",Vanessa - brain dump 2026-09-03 (sem36)
+27,Snapdragon Opus Appleblossom,Opus Appleblossom,4B,1644,SEPTIEMBRE,37,39,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),"CORRECCION DE BLOQUE: estaba mal anotado como 4A, es 4B. Floreciendo sem36.",Vanessa - brain dump 2026-09-03 (sem36)
+27,Snapdragon Opus White Fresh,Opus Fresh,3A,1096,SEPTIEMBRE,37,39,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+15,Lisianthus,Lisianthus Blanco,3B,1042,SEPTIEMBRE,38,43,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+18,Dusty Miller New Look,Dusty New Look,,1464,SEPT,38,40,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+23,Gomphrena Quis Carmine,QIS Carmine,5,1728,SEPTIEMBRE,38,43,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+25,Carthamus Zanzibar,Dianthus Sweet Cherry,4A,1900,SEPTIEMBRE,38,39,estimado(ventana 2),Activa,proyectado (PROGRAMACION_2026 v8),,
+25,Ammi Majus,Ammi Majus,6ext,1644,SEPTIEMBRE,38,41,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+27,Campanula Champion White,Campanula White,3C+4C,1918,SEPTIEMBRE,36,38,observado,Activa,OBSERVADO en campo,"Misma siembra repartida entre 3C y 4C. Floreciendo sem36 junto con la Pink del 4C. Full apertura sem37, sem38 lo maluco.",Vanessa - brain dump 2026-09-03 (sem36)
+29,Snapdragon Opus White Fresh,Opus White Fresh,4A,822,OCTUBRE,39,41,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+17,Lisianthus mas,Lisianthus Blanco,3B,286,SEPTIEMBRE,40,45,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+25,Scabiosa Triple Berry Mix,Scabiosa Triple Berry,2,446,OCTUBRE,40,42,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+25,Gomphrena Quis Carmine,QIS Carmine,5,1662,OCTUBRE,40,45,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+25,Gomphrena Quis Pink,Quis Pink,4A y 4B y 2,1508,OCTUBRE,40,45,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+25,Cynoglossum Blue,,2,597,OCTUBRE,DESCARTADO,DESCARTADO,observado,Activa,OBSERVADO en campo,Empezando a florecer pero SE SACA: no tiene duracion en florero. Descartada como producto.,Vanessa - brain dump 2026-09-03 (sem36)
+25,Statice Forever Silver,Forever Silver,3C,1647,OCTUBRE,36,47,estimado(ventana 8),Activa,OBSERVADO en campo,Primeros tallos sem36 (4 semanas antes de lo proyectado) pero la cantidad de tallos por cama es muy baja. No cuenta como volumen.,Vanessa - brain dump 2026-09-03 (sem36)
+28,Girasol Pro Cut White Lite,Girasol White Lite,4A,288,OCTUBRE,CERRADO,CERRADO,observado,Activa,OBSERVADO en campo,Ya cosechado en el 4A y era poquito. No hay mas girasol White Lite. El ini sem40 del archivo es falso.,Vanessa - brain dump 2026-09-03 (sem36)
+32,Snapdragon Monaco Dark Pink,,4B+3B,1918,OCTUBRE,40,42,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+28,Strawflower King Size Red,Strawflower King Size Red,3B,,NOVIEMBRE,41,46,estimado(ventana 6),nueva,proyectado (PROGRAMACION_2026 v8),,
+28,Strawflower Copper Red,Strawflower Copper Red,3B,,NOVIEMBRE,41,46,estimado(ventana 6),nueva,proyectado (PROGRAMACION_2026 v8),,
+29,Campanula Champion White,Campanula Champion White,4B,1918,OCTUBRE,41,43,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+30,Snapdragon Cannes Red,Cannes Red,3A,1527,OCTUBRE,41,43,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+30,Snapdragon Cannes Lemon,Cannes Lemon,4A+3A,3304,OCTUBRE,41,43,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+28,Achillea Cerise Queen,Achillea Cerise Queen,3B parte baja,,DICEMBRE?,42,44,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+28,Achillea Cloth of God,Achillea Cloth of God,3B parte baja,,DICEMBRE?,42,44,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+30,Snapdragon MB Madame Butterfly,MB Madame Butterfly,4B,1395,OCTUBRE,42,43,estimado(ventana 2),nueva,proyectado (PROGRAMACION_2026 v8),,
+29,Ammi Majus,Ammi Majus,6 EXT,1370,OCTUBRE,42,45,estimado(ventana 4),Activa,proyectado (PROGRAMACION_2026 v8),,
+30,Snapdragon MB White,MB Ivory,4B,1395,OCTUBRE,42,43,estimado(ventana 2),nueva,proyectado (PROGRAMACION_2026 v8),,
+31,Matricaria Snowball,,4B,822,OCTUBRE,42,43,estimado(ventana 2),nueva,proyectado (PROGRAMACION_2026 v8),RIESGO: a sem36 no se le ve formacion de tallos todavia. El ini sem42 no esta confirmado.,Vanessa - brain dump 2026-09-03 (sem36)
+32,Snapdragon Opus Lavender,,4B+3B,1918,OCTUBRE,42,44,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+32,Snapdragon Opus Fresh,,4B+3B,576,OCTUBRE,42,44,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+22,Lisianthus,Lisianthus Blanco,3B,,OCTUBRE,43,48,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+23,Dusty Miller New Look,Dusty New Look,5,864,OCTUBRE,43,45,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+28,Strawflower Vintage White,Strawflower Vintage White,6 EXT,881,OCTUBRE,43,48,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+28,Strawflower King Size Red,Strawflower Cranberry Rose,6 EXT,1800,OCTUBRE,43,48,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+28,Strawflower Copper Red,Strawflower Cranberry Rose,6 EXT,400,OCTUBRE,43,48,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+28,Dianthus Green Ball,Dianthus Green Ball,3A,1600,OCTUBRE,43,45,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+28,Limonium Bubblegum Wings,Opus Appleblossom,4A,70,OCTUBRE,CERRADO,CERRADO,observado,Activa,OBSERVADO en campo,Limonium tipo statice del 4A: se quedo enano. Se quita.,Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Fantasia Wings,Opus Fresh,4A,70,OCTUBRE,CERRADO,CERRADO,observado,Activa,OBSERVADO en campo,Limonium tipo statice del 4A: se quedo enano. Se quita.,Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Pretty Wings,Girasol White Lite,4A,70,OCTUBRE,CERRADO,CERRADO,observado,Activa,OBSERVADO en campo,Limonium tipo statice del 4A: se quedo enano. Se quita.,Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Anouchka Diamond,Dusty New Look,2,40,NOVIEMBRE,SIN_DATO,SIN_DATO,observado,Activa,OBSERVADO en campo,"Limonium Diamond del bloque 2 (otro tipo, no statice). Planta grande pero SIN desarrollo de tallo: ciclo mucho mas largo de lo proyectado. El ini sem43 no aplica.",Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Blush Diamond,,2,40,NOVIEMBRE,SIN_DATO,SIN_DATO,observado,Activa,OBSERVADO en campo,"Limonium Diamond del bloque 2 (otro tipo, no statice). Planta grande pero SIN desarrollo de tallo: ciclo mucho mas largo de lo proyectado. El ini sem43 no aplica.",Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Max Diamond,Forever Silver,2,40,NOVIEMBRE,SIN_DATO,SIN_DATO,observado,Activa,OBSERVADO en campo,"Limonium Diamond del bloque 2 (otro tipo, no statice). Planta grande pero SIN desarrollo de tallo: ciclo mucho mas largo de lo proyectado. El ini sem43 no aplica.",Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Divine Diamond,Dianthus Sweet Cherry,2,40,NOVIEMBRE,SIN_DATO,SIN_DATO,observado,Activa,OBSERVADO en campo,"Limonium Diamond del bloque 2 (otro tipo, no statice). Planta grande pero SIN desarrollo de tallo: ciclo mucho mas largo de lo proyectado. El ini sem43 no aplica.",Vanessa - brain dump 2026-09-03 (sem36)
+28,Limonium Tiffany Diamond,Campanula White,2,40,NOVIEMBRE,SIN_DATO,SIN_DATO,observado,Activa,OBSERVADO en campo,"Limonium Diamond del bloque 2 (otro tipo, no statice). Planta grande pero SIN desarrollo de tallo: ciclo mucho mas largo de lo proyectado. El ini sem43 no aplica.",Vanessa - brain dump 2026-09-03 (sem36)
+28,Strawflower Vintage White,Strawflower Vintage White,3B,,NOVIEMBRE,43,48,estimado(ventana 6),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Snapdragon Opus Lavender,,3B,1918,OCTUBRE,43,45,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Snapdragon Opus Fresh,,3B,548,OCTUBRE,43,45,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Snapdragon Opus Red,,4A,2016,OCTUBRE,43,45,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+29,Trachellium White Lake,Trachelium White,5+3C,1900,NOVIEMBRE,44,46,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+29,Limonium Hipster Apricot,Statice Hipster Apricot,4C+,1838,NOVIEMBRE,44,51,estimado(ventana 8),nueva,proyectado (PROGRAMACION_2026 v8),,
+31,Limonium Quis Lavender,,2,673,NOVIEMBRE,44,51,estimado(ventana 8),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Snapdragon Plumblossom,,4B,1918,NOVIEMBRE,44,46,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+35,Snapdragon Monaco Plumblossom,,4A,2016,NOVIEMBRE,44,46,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+35,Snapdragon Opus White Fresh,,4A,1440,NOVIEMBRE,44,46,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+35,Snapdragon Monaco Dark Pink,,4A,576,NOVIEMBRE,44,46,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+30,Gomphrena Quis Orange,QIS Orange,3B,464,OCTUBRE,45,50,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+30,Gomphrena Quis Red,QIS Red,3B,822,OCTUBRE,45,50,estimado(ventana 6),Activa,proyectado (PROGRAMACION_2026 v8),,
+32,Ammi Majus,,6,1728,NOVIEMBRE,45,48,estimado(ventana 4),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Campanula Champion Pink,,4B,1370,NOVIEMBRE,45,47,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Gomphrena Carmine,,3B,1918,NOVIEMBRE,46,51,estimado(ventana 6),nueva,proyectado (PROGRAMACION_2026 v8),,
+33,Gomphrena Quis Red,,3B,1918,NOVIEMBRE,46,51,estimado(ventana 6),nueva,proyectado (PROGRAMACION_2026 v8),,
+34,Dianthus Sweet Cherry,,3A,2016,NOVIEMBRE,46,48,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+34,Campanula champion White,,3A,1644,NOVIEMBRE,46,48,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+34,Matricaria Snowball,,3A,2016,NOVIEMBRE,46,47,estimado(ventana 2),nueva,proyectado (PROGRAMACION_2026 v8),,
+22,Dusty Miller New Look,Dusty New Look,3B,648,NOVIEMBRE,47,49,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+32,Dusty Miller,,5,432,DICIEMBRE,47,49,estimado(ventana 3),Activa,proyectado (PROGRAMACION_2026 v8),,
+35,Sunflower Pro Cut Red,,Mini,1440,NOVIEMBRE,47,49,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+35,Ammi Majus,,6,1728,NOVIEMBRE,47,50,estimado(ventana 4),nueva,proyectado (PROGRAMACION_2026 v8),,
+35,Girasol Pro Cut Red,,3A,1152,NOVIEMBRE,47,49,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+36,Dianthus Sweet Cherry,,4C+3C,2016,NOVIEMBRE,48,50,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+36,Campanulas Champion Pink,,5,1370,NOVIEMBRE,48,50,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+36,Campanulas Champion White,,5,1644,NOVIEMBRE,48,50,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+34,Statice Hipster Apricot,,3A,1000,DICIEMBRE,49,56,estimado(ventana 8),nueva,proyectado (PROGRAMACION_2026 v8),,
+36,Green Ball,,4C,1600,NOVIEMBRE,49,51,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+35,Trachellium White Lake,,3A,3800,DICIEMBRE,50,52,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+36,Celosia Purple Flamingo,,5,1096,DICIEMBRE,51,53,estimado(ventana 3),nueva,proyectado (PROGRAMACION_2026 v8),,
+11,Trachellium White Lake,Trachelium White,5,,JUN-JUL,SIN_DATO,SIN_DATO,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+12,Trachellium Purple,Trachelium Purple,5,776,JULIO,SIN_DATO,SIN_DATO,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+23,Trachellium White Lake,Trachelium White,5 y 3C,2000,SEPTIEMBRE,SIN_DATO,SIN_DATO,declarado,Activa,proyectado (PROGRAMACION_2026 v8),,
+,Celosia Celway Red,,,1152,,SIN_DATO,SIN_DATO,declarado,nueva,proyectado (PROGRAMACION_2026 v8),,

@@ -25,6 +25,7 @@ Uso:
     python3 motor/cerebro.py auditar
     python3 motor/cerebro.py bouquet "Cosecha Grande"
     python3 motor/cerebro.py ciclos
+    python3 motor/cerebro.py huecos [semana]
     python3 motor/cerebro.py rendimiento [grupo]
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
@@ -1537,6 +1538,310 @@ def cmd_matriz():
     print("\n  Detalle y como llenar cada hueco: 08-roadmap/02-informacion-que-falta.md")
 
 
+# --------------------------------------------------------------------------
+# Huecos de cosecha — que semanas se quedan sin flor
+# --------------------------------------------------------------------------
+
+# campo_siembras.csv tiene DOS columnas llamadas "Semana": la 7 es la semana de
+# TRASPLANTE y la 10 la semana de INICIO DE COSECHA. csv.DictReader se queda con
+# la ultima y silenciosamente devuelve la de cosecha cuando se pide la de
+# siembra. Por eso esta hoja se lee por POSICION y no por nombre.
+CAMPO_COL = {
+    "proveedor": 1, "variedad": 2, "color": 3, "recibidas": 4, "trasplantadas": 5,
+    "fecha_siembra": 6, "semana_siembra": 7, "bloque": 8, "inicio_cosecha": 9,
+    "semana_inicio": 10, "fin_cosecha": 11, "comentarios": 12, "homologado": 13,
+}
+
+
+def _entero(valor):
+    """Numero de plantas o de semana tal como CAMPO lo escribe a mano.
+
+    Tolera lo que aparece de verdad en la hoja: '1600?', '200 aprox' y
+    '822 + 822' (dos entregas del mismo lote, que se suman). '14 bandejas'
+    devuelve None a proposito: una bandeja no es un numero de plantas y
+    cuantas caben no esta en ningun CSV de este repositorio.
+    """
+    t = str(valor or "").strip()
+    if not t or "bandeja" in norm(t):
+        return None
+    numeros = [int(n.replace(".", "").replace(",", ""))
+               for n in re.findall(r"\d+(?:[.,]\d{3})*", t)]
+    if not numeros:
+        return None
+    return sum(numeros) if "+" in t else numeros[0]
+
+
+def cargar_campo():
+    """Filas de la hoja CAMPO leidas por posicion. Ver CAMPO_COL."""
+    ruta = os.path.join(DATOS, "campo_siembras.csv")
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        filas = list(csv.reader(fh))[1:]
+    salida = []
+    for fila in filas:
+        reg = {k: (fila[i].strip() if i < len(fila) else "")
+               for k, i in CAMPO_COL.items()}
+        reg["semana_siembra"] = _entero(reg["semana_siembra"])
+        reg["semana_inicio"] = _entero(reg["semana_inicio"])
+        reg["plantas"] = _entero(reg["trasplantadas"]) or _entero(reg["recibidas"])
+        salida.append(reg)
+    return salida
+
+
+def temporada_actual(filas):
+    """Las siembras de la temporada en curso.
+
+    CAMPO es un registro corrido sin columna de anio: arranca en la semana 31
+    de la temporada pasada y sigue hasta hoy. El corte es la primera fila que
+    vuelve a la semana 1 — ahi empieza el anio calendario en curso.
+    """
+    for i, f in enumerate(filas):
+        if f["semana_siembra"] == 1:
+            return filas[i:]
+    return filas
+
+
+def ciclo_de(fila, ciclos):
+    """Ficha de ciclo del grupo al que pertenece una siembra de CAMPO.
+
+    CAMPO escribe el nombre comercial completo ("Snapdragon Cannes Light
+    Bronze"); ciclos_variedad.csv indexa por grupo ("Boca de Dragon"). Se busca
+    el grupo mas largo que aparezca dentro del nombre para que "Celosia
+    cristata" gane sobre "Celosia" y no al reves.
+    """
+    claves = sorted(ciclos, key=len, reverse=True)
+    for texto in (fila["variedad"], fila["homologado"]):
+        t = norm(texto)
+        if not t:
+            continue
+        for k in claves:
+            if k and k in t:
+                return ciclos[k]
+        for k in claves:
+            if any(a and a in t for a in alias_grupo(ciclos[k]["grupo"])):
+                return ciclos[k]
+    return None
+
+
+def cargar_mortalidad():
+    """pct de mortalidad por lote. Vacio = SIN_DATO, y SIN_DATO no se estima."""
+    ruta = os.path.join(DATOS, "mortalidad_siembras.csv")
+    if not os.path.exists(ruta):
+        return {}
+    tabla = {}
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        for f in csv.DictReader(fh):
+            pct = num(f.get("pct_mortalidad"))
+            if pct is None:
+                continue
+            clave = (_entero(f.get("semana_siembra")),
+                     norm(f.get("variedad")), norm(f.get("bloque")))
+            tabla[clave] = pct
+    return tabla
+
+
+def proyectar_cosecha(filas, ciclos, mortalidad):
+    """Tallos por semana ISO que deberian salir de las siembras ya hechas.
+
+    Devuelve (tallos_por_semana, lotes_proyectados, descartes).
+
+    El reparto dentro de la ventana es PLANO a proposito: picos_cosecha.csv
+    documenta que la cosecha tiene pico, pero solo para 16 lotes. Inventar una
+    curva para el resto seria falsa precision — lo que se busca aqui es donde
+    cae el piso, no la forma exacta de la campana.
+    """
+    tallos, lotes = defaultdict(float), []
+    descartes = defaultdict(list)
+    for f in filas:
+        sem = f["semana_siembra"]
+        if sem is None:
+            continue
+        cic = ciclo_de(f, ciclos)
+        if cic is None:
+            descartes["sin grupo en ciclos_variedad.csv"].append(f)
+            continue
+        if cic["sem_a_campo_min"] is None or cic["ventana_max"] is None:
+            descartes["grupo sin ciclo ni ventana"].append(f)
+            continue
+        if cic["tallos_planta"] is None:
+            descartes["grupo sin tallos/planta"].append(f)
+            continue
+        if not f["plantas"]:
+            descartes["sin numero de plantas"].append(f)
+            continue
+
+        # La semana de inicio anotada en CAMPO le gana al ciclo teorico: es
+        # observacion, y los datos de campo le ganan a las proyecciones.
+        ini = f["semana_inicio"] or int(sem + cic["sem_a_campo_min"])
+        ventana = max(1, int(cic["ventana_max"]))
+        pct = mortalidad.get((sem, norm(f["variedad"]), norm(f["bloque"])))
+        vivas = f["plantas"] * (1 - pct / 100.0) if pct is not None else f["plantas"]
+        total = vivas * cic["tallos_planta"]
+        for w in range(ini, ini + ventana):
+            tallos[w] += total / ventana
+        lotes.append({"fila": f, "ciclo": cic, "ini": ini,
+                      "fin": ini + ventana - 1, "tallos": total,
+                      "mortalidad": pct})
+    return tallos, lotes, descartes
+
+
+def tallos_reales():
+    """Tallos efectivamente cosechados por semana ISO del anio en curso."""
+    por_semana = defaultdict(float)
+    for f in _leer_csv("registro_tallos.csv"):
+        try:
+            d = datetime.date.fromisoformat((f.get("Fecha") or "").strip())
+        except ValueError:
+            continue
+        for col in ("Tallos frescos", "Tallos secos"):
+            por_semana[(d.year, d.isocalendar()[1])] += num(f.get(col)) or 0
+    return por_semana
+
+
+MES_ES = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5,
+          "junio": 6, "julio": 7, "agosto": 8, "septiembre": 9,
+          "octubre": 10, "noviembre": 11, "diciembre": 12}
+
+
+def demanda_por_mes():
+    """Nivel de venta esperado por mes, de calendario_comercial_colombia.csv.
+
+    Solo se leen las filas TEMPORADA_MENSUAL. Las fechas moviles (Madres,
+    Semana Santa, graduaciones) quedan fuera a proposito: convertirlas a semana
+    ISO exige un dato que el archivo no tiene, y una fecha inventada aqui
+    movería una decision de siembra.
+    """
+    ruta = os.path.join(DATOS, "calendario_comercial_colombia.csv")
+    if not os.path.exists(ruta):
+        return {}
+    niveles = {}
+    with open(ruta, newline="", encoding="utf-8") as fh:
+        for f in csv.DictReader(fh):
+            if (f.get("tipo") or "").strip() != "TEMPORADA_MENSUAL":
+                continue
+            patron = norm(f.get("fecha_o_patron"))
+            for nombre, numero in MES_ES.items():
+                if nombre in patron:
+                    niveles[numero] = (f.get("efecto_venta") or "").strip()
+    return niveles
+
+
+def mes_de_semana(semana, anio):
+    """Mes al que pertenece una semana ISO: el de su jueves, como manda la norma."""
+    try:
+        return datetime.date.fromisocalendar(anio, semana, 4).month
+    except ValueError:
+        return None
+
+
+def cmd_huecos(semana=None):
+    ciclos = cargar_ciclos()
+    mortalidad = cargar_mortalidad()
+    campo = temporada_actual(cargar_campo())
+    tallos, lotes, descartes = proyectar_cosecha(campo, ciclos, mortalidad)
+
+    hoy = datetime.date.today()
+    sem_hoy = int(semana) if semana else hoy.isocalendar()[1]
+
+    print("=" * 78)
+    print("HUECOS DE COSECHA — proyeccion desde las siembras ya hechas")
+    print("=" * 78)
+    print("\nSemana ISO en curso: %d   (%s)" % (sem_hoy, hoy.isoformat()))
+    print("Siembras de la temporada en CAMPO: %d" % len(campo))
+    ultima = max((f["semana_siembra"] for f in campo
+                  if f["semana_siembra"] is not None), default=None)
+    if ultima is not None:
+        print("Ultima siembra registrada: semana %d  -> %d semanas sin registrar siembra"
+              % (ultima, sem_hoy - ultima))
+
+    # ---- calidad del dato antes de cualquier numero ----
+    fuera = sum(len(v) for v in descartes.values())
+    print("\nCALIDAD DEL DATO (leer antes de creer la curva)")
+    print("  lotes que SI entran en la proyeccion : %d" % len(lotes))
+    print("  lotes que quedan FUERA               : %d" % fuera)
+    for motivo, v in sorted(descartes.items(), key=lambda kv: -len(kv[1])):
+        plantas = sum(f["plantas"] or 0 for f in v)
+        print("     %-34s %3d lotes  %6s plantas" % (motivo, len(v), plantas or "?"))
+    faltantes = descartes.get("sin grupo en ciclos_variedad.csv", [])
+    if faltantes:
+        print("\n  Grupos que le FALTAN a ciclos_variedad.csv — mientras no esten,")
+        print("  estas plantas no aparecen en la curva aunque si esten en la cama:")
+        por_nombre = defaultdict(int)
+        for f in faltantes:
+            por_nombre[f["homologado"] or f["variedad"]] += f["plantas"] or 0
+        for nombre, plantas in sorted(por_nombre.items(), key=lambda kv: -kv[1]):
+            print("     %-38s %6s plantas" % (nombre[:38], plantas or "SIN_DATO"))
+    con_pct = sum(1 for l in lotes if l["mortalidad"] is not None)
+    print("  lotes con mortalidad medida          : %d de %d" % (con_pct, len(lotes)))
+    if con_pct == 0:
+        print("     >> SIN_DATO de mortalidad. La curva de abajo es el TECHO:")
+        print("        supone que no se murio ni una planta. Llenar la columna")
+        print("        pct_mortalidad de 07-datos/mortalidad_siembras.csv.")
+
+    # ---- calibracion contra lo realmente cosechado ----
+    reales = tallos_reales()
+    pares = [(w, reales[(hoy.year, w)], tallos[w])
+             for w in sorted(tallos)
+             if w < sem_hoy and reales.get((hoy.year, w), 0) > 0 and tallos[w] > 0]
+    factor = None
+    if pares:
+        factor = sum(r for _, r, _ in pares) / sum(p for _, _, p in pares)
+        print("\nCALIBRACION contra registro_tallos.csv (%d semanas ya cerradas)" % len(pares))
+        print("  %-6s %10s %10s" % ("SEM", "REAL", "PROYECT."))
+        for w, r, p in pares[-6:]:
+            print("  %-6d %10.0f %10.0f" % (w, r, p))
+        print("  factor de realizacion: %.2f" % factor)
+        print("  Es decir: de cada 100 tallos que el ciclo teorico promete, el")
+        print("  cultivo entrega %.0f. Ese %d%% se lo reparten la mortalidad, el" %
+              (factor * 100, round((1 - factor) * 100)))
+        print("  descarte de calidad y el optimismo de tallos/planta — y hasta")
+        print("  que no haya mortalidad medida NO se pueden separar.")
+
+    # ---- la curva ----
+    print("\nCOSECHA PROYECTADA POR SEMANA")
+    ventana = range(sem_hoy, max(max(tallos, default=sem_hoy), sem_hoy + 16) + 1)
+    valores = [tallos.get(w, 0) * (factor or 1) for w in ventana]
+    techo = max(valores) or 1
+    piso = None
+    if pares:
+        piso = min(r for _, r, _ in pares)
+        print("  piso de referencia: %.0f tallos/sem (la peor semana ya medida)" % piso)
+    niveles = demanda_por_mes()
+    print("  %-5s %9s   %-26s %-10s %s" % ("SEM", "TALLOS", "curva", "VENTA", ""))
+    for w, v in zip(ventana, valores):
+        marca = ""
+        if piso and v < piso * 0.5:
+            marca = "<<< HUECO"
+        elif piso and v < piso:
+            marca = "<  bajo el piso"
+        mes = mes_de_semana(w, hoy.year)
+        venta = niveles.get(mes, "")
+        # Una semana floja en un mes flojo es un ajuste; una semana vacia en un
+        # mes ALTA es plata que se deja de hacer. Por eso van en la misma linea.
+        if marca and venta in ("ALTA", "ALTISIMA"):
+            marca += "  *** en mes %s" % venta
+        print("  %-5d %9.0f   %-26s %-10s %s" % (
+            w, v, "#" * int(26 * v / techo), venta or "-", marca))
+
+    # ---- que todavia alcanza a llegar ----
+    print("\nLO QUE TODAVIA ALCANZA A LLEGAR (semana en curso: %d)" % sem_hoy)
+    print("  Dos rutas distintas y conviene no confundirlas: TRASPLANTAR hoy")
+    print("  supone que la plantula ya existe; SEMBRAR hoy suma la germinacion.")
+    print("\n  %-22s %11s %11s" % ("GRUPO", "TRASPLANTE", "BANDEJA"))
+    print("  %-22s %11s %11s" % ("", "hoy ->", "hoy ->"))
+    print("  " + "-" * 46)
+    rapidos = sorted((c for c in ciclos.values() if c["sem_a_campo_min"]),
+                     key=lambda c: c["sem_a_campo_min"])
+    for c in rapidos[:14]:
+        tras = int(sem_hoy + c["sem_a_campo_min"])
+        germ = c["sem_germinacion"]
+        band = "SIN_DATO" if germ is None else "sem %d" % int(tras + germ)
+        print("  %-22s %11s %11s" % (c["grupo"][:22], "sem %d" % tras, band))
+    print("\n  Ninguna de estas dos columnas es SIEMBRA DIRECTA EN CAMA. La siembra")
+    print("  directa se salta el trasplante pero no la germinacion, y cuanto")
+    print("  adelanta o atrasa NO esta medido en ningun CSV de este repositorio.")
+    print("  Si se hace, hay que registrarla como ensayo para poder medirla.")
+
+
 def main(argv):
     if len(argv) < 2:
         print(__doc__)
@@ -1552,6 +1857,8 @@ def main(argv):
         cmd_valor()
     elif cmd == "ciclos":
         cmd_ciclos()
+    elif cmd == "huecos":
+        cmd_huecos(argv[2] if len(argv) > 2 else None)
     elif cmd == "rendimiento":
         cmd_rendimiento(argv[2] if len(argv) > 2 else None)
     elif cmd == "bouquet":

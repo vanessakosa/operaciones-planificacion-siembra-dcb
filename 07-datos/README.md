@@ -24,6 +24,7 @@ Exportados el **30 de julio de 2026** desde:
 | `rendimiento_costo_lote.csv` | **0** | REGISTRO_TALLOS → RENDIMIENTO | ❌ **Vacía** |
 | `costos_productos.csv` | **0** | MAESTRO_CAMPO → COSTOS_PRODUCTOS | ❌ **Vacía — bloquea costo por aplicación** |
 | `resumen_tallos_dia.csv` | 4 | REGISTRO_TALLOS → RESUMEN | ⚠️ Hoja con fórmulas — export incompleto |
+| `mortalidad_siembras.csv` | 73 | Generado del propio CAMPO | ⚠️ **`pct_mortalidad` vacío — lo dicta Vanessa** |
 
 ## Advertencias de lectura
 
@@ -33,6 +34,14 @@ Exportados el **30 de julio de 2026** desde:
 - Las hojas con fórmulas (RESUMEN, CONSOLIDADO, RENDIMIENTO) exportan vacías o incompletas
   porque el export lee valores en caché. **Vacío aquí no siempre significa vacío allá** —
   pero en el caso de CONSOLIDADO y RENDIMIENTO sí: se confirmó que no tienen fórmulas.
+- ⚠️ **`campo_siembras.csv` tiene DOS columnas llamadas `Semana`**: la posición 7 es la
+  semana de **trasplante** y la 10 la de **inicio de cosecha**. `csv.DictReader` se queda
+  en silencio con la última, así que pedir `fila["Semana"]` devuelve la de cosecha creyendo
+  que es la de siembra. Esta hoja **se lee por posición**, no por nombre — ver `CAMPO_COL`
+  en `motor/cerebro.py`.
+- `campo_siembras.csv` no tiene columna de año: es un registro corrido que arranca en la
+  semana 31 de la temporada pasada. El corte de temporada es **la primera fila que vuelve a
+  la semana 1** (`temporada_actual()` en el motor).
 - `campo_siembras.csv` tiene 302 filas contra las 306 siembras activas reportadas.
   La diferencia son filas sin variedad en columna C (filtradas en el export). Verificar.
 - Fechas normalizadas a `YYYY-MM-DD`. Hay inconsistencias de formato en el origen que

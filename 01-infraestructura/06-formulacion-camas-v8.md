@@ -97,12 +97,14 @@ el peor riego
 | **Leonardita** 16 g/m² | 510 g |
 | **Sáfer Terra Life** 100 g/m² | 3,17 kg |
 | Yeso | — |
-| 🟢 **Cobre — UNA SOLA VEZ** | **29 g/cama** · 383 g en total |
+| 🟢 **Cobre — UNA SOLA VEZ** | **Una bolsa de 500 g de Kelasys Cobre**, repartida en las 13 camas |
 
 **Drench:** Fosfolip 82 cc + Promobac
 
-**La excepción del bloque: la corrección de cobre, y no se repite.** Si el producto es el Kelasys
-y resulta estar quelatado en más del 80 %, la dosis sube a **37 g/cama** (478 g en total) — ver
+**La excepción del bloque: la corrección de cobre, y no se repite.** ✅ **Resuelto 2026-09-03:** el
+proveedor confirmó **EDTA** como agente quelatante del Kelasys Cobre, así que se toma ese producto.
+El cálculo da 478 g para las 13 camas; **se redondea a la bolsa completa de 500 g** para que no
+haya que pesar nada en una aplicación de una sola vez. Detalle en
 `02-nutricion/05-comparativo-casas-comerciales.md`.
 
 ---

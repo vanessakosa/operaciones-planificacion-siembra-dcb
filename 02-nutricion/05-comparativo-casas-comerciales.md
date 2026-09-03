@@ -708,3 +708,69 @@ bodega**, que era justo lo que se quiso evitar.
 
 **Los 3 % de K₂O y 5 % de S no son objeción a esta masa:** 478 g de producto son 14 g de K₂O y
 24 g de S repartidos en los 412 m² de Inv 5. Despreciable. **La objeción es solo la quelación.**
+
+
+## ✅ RESUELTO 2026-09-03 — el proveedor confirma EDTA, y se toma el Kelasys
+
+**Respuesta de Alma Agrícola: agente quelatante EDTA, 12 % de cobre.**
+
+### 🔴 Corrección: la estequiometría del azufre NO demostraba lo que se afirmó
+
+La sección anterior concluyó que *"5 % de S explica 9,9 % de cobre como sulfato — el 83 % del
+producto"* y lo presentó como evidencia. **Hecho el balance de masa completo, los mismos números
+admiten las dos lecturas:**
+
+| Hipótesis | Balance |
+|---|---|
+| **Quelación total** | 12 % Cu + **55–64 % de EDTA** (MW 292,24 libre / 336,2 como Na₂EDTA, 1:1 con Cu 63,55) + 20 % humedad + 3 % K₂O + 5 % S = **95–104 %** ✓ |
+| Sulfato de cobre | 47 % de CuSO₄·5H₂O para 12 % Cu, arrastrando **6,0 % de S** contra 5 % declarado ✓ |
+
+**El balance de masa no discrimina.** Con 55–64 % de EDTA en la fórmula, el 5 % de azufre viene de
+un portador aparte y el cobre puede estar íntegramente quelatado. La inferencia previa era *una*
+lectura consistente, no una prueba — se apoyó en ella con más fuerza de la que daba. Lo que sí
+quedaba genuinamente abierto era la pregunta, y por eso valía hacerla.
+
+*El pH ácido de 3,0–4,0 tampoco discrimina: los quelatos EDTA en forma ácida son una presentación
+comercial normal, y la propia ficha del Amilsol Cu15 declara estabilidad de pH 1,5 a 10.*
+
+### Y hay un argumento agronómico que lo hace correcto, no solo aceptable
+
+**El Cu-EDTA tiene la constante de estabilidad más alta de todos los quelatos EDTA de
+micronutrientes** — log K ≈ 18,8, por encima del Fe, el Mn y el Zn. Es la razón por la que el
+hierro necesita EDDHA a pH alto y el cobre no. **A pH 5,6–5,8 el Cu-EDTA es muy estable**, que es
+exactamente la propiedad que se busca contra el secuestro por el 22,9 % de M.O. de Inv 5.
+
+Y es **el mismo quelato del Amilsol Cu15.** Mismo mecanismo, mismo comportamiento esperado.
+
+### Decisión y dosis
+
+| | Producto para Inv 5 | Por cama | Costo |
+|---|---|---|---|
+| ✅ **Kelasys Cu · EDTA 12 %** | **478 g** | **37 g** | **$17.057** |
+| Amilsol Cu15 · EDTA 15 % | 383 g | 29 g | $19.819 |
+
+**Ahorro $2.791 y una semana de espera.** Una bolsa de 500 g cubre la corrección completa de las
+13 camas de Inv 5. *(Factor de fijación 2× para quelato, igual que en la comparación original —
+estimación de comportamiento, no dato de campo.)*
+
+### 🔴 Consecuencia en la hoja de operario del fertirriego
+
+El Cu15 no era solo para el suelo: **es también la línea del tanque.** La solución madre está
+calculada sobre un producto al 15 %.
+
+| | Para entregar 0,36 g de Cu por tanque de 2.000 L |
+|---|---|
+| Amilsol Cu15 (15 %) | 120 g en 1 L |
+| **Kelasys Cu (12 %)** | **150 g en 1 L** |
+
+**Los 20 ml por tanque no cambian.** Cambia solo el polvo del frasco. Si se prepara con 120 g del
+Kelasys, **cada tanque recibe 20 % menos cobre.**
+
+### Lo que el Kelasys NO cubre
+
+Su ficha dice *"fertilizante simple quelatado para aplicación al suelo en sistemas de
+fertirriego"* — **no declara uso foliar.** El Amilsol Cu15 sí servía foliar, que era la vía
+prevista para la ventana de prefloración de la Fase 3 de Kempf.
+
+Para suelo y tanque el Kelasys sirve y es más barato. **Pero el cobre foliar queda como decisión
+aparte** cuando se armé el programa foliar — no asumir el mismo producto.

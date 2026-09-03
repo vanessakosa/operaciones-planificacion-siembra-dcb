@@ -122,3 +122,36 @@ no es un logro si el tallo sale delgado.
 - Definir fórmula B (Prefloración, sem 7–9) con dosis explícitas — hoy solo está descrita
   cualitativamente ("Polyfeed sube, N-Cal baja levemente"), lo cual no es suficiente para
   entregar a un operario
+
+
+---
+
+# 🔴 La hoja de operario estaba desactualizada en el repo · corregido 2026-09-03
+
+**El repo tenía la Versión 1** de `05-programacion/hojas-operario/fertirriego-formula-base.html`
+— la que pide **pesar 2,4 g de cobre directo al tanque.** Ese es exactamente el defecto que se
+corrigió el 2026-09-02 con la solución madre, porque **2,4 g en una báscula de campo de 1 g es
+±42 % de error.** La corrección vivió en el artefacto de Claude y **nunca se comiteó al repo.**
+
+> **Lección de método:** un artefacto publicado no es el repositorio. Toda hoja de operario que se
+> corrija tiene que espejarse en `05-programacion/hojas-operario/` en el mismo commit, o el repo
+> conserva la versión con el defecto y esa es la que sobrevive.
+
+## Versión 3 · 2026-09-03
+
+| Renglón | v1 (lo que había en el repo) | **v3** |
+|---|---|---|
+| Nitrato de calcio | 1.200 g | 1.200 g |
+| Borosol | 12,3 g | **12 g** (redondeado) |
+| Cobre al tanque | 🔴 **2,4 g de polvo pesado** | **20 ml de solución madre, con jeringa** |
+| Solución madre | *(no existía)* | **150 g de Kelasys Cobre en 1 L** · rinde 50 tanques |
+| Corrección de Inv 5 | 400 g de Amilsol Cu15 | **1 bolsa completa de 500 g de Kelasys** |
+
+**Los 150 g no son un error de transcripción de los 120 g.** El Amilsol Cu15 es 15 % de cobre y el
+Kelasys es 12 %: para entregar los mismos **0,36 g de Cu por tanque** hacen falta 150 g en el
+litro. **Con 120 g del Kelasys el tanque recibiría 20 % menos cobre.** La hoja lo dice explícito
+para que Atilio no corrija de memoria.
+
+**Y la corrección de Inv 5 se expresa como "la bolsa completa de 500 g"** en vez de los 478 g
+calculados: en una aplicación de una sola vez, eliminar el pesaje vale más que el 4,6 % de
+precisión, y está dentro de la incertidumbre del factor de fijación.

@@ -118,16 +118,66 @@ salen del mismo ciclo.
 
 ## Costo
 
-| | Actual | **V1** |
+| | Anterior | **V1** |
 |---|---|---|
-| Insumos | 1.941 kg | 1.701 kg |
-| Produce | 1.500 kg (60 sacos) | **1.314 kg (53 sacos)** |
-| Costo total | $883.000 | **$553.000** |
-| **Por saco de 25 kg** | $14.717 | **$10.518** |
-| | | **−28,5%** |
+| Insumos | 1.941 kg | 1.716 kg |
+| Produce | 1.500 kg (60 sacos) | **~1.325 kg (53 sacos)** |
+| Costo total | $864.000 | **$534.000** |
+| **Por saco de 25 kg** | $14.400 | **$10.075** |
+| | | **−30,0 % por saco** |
 
 **De dónde sale el ahorro:** humus de lombriz −$160.000 · harina de maíz −$168.000 ·
 sulfato de cobre −$2.000. **Total −$330.000 por tanda.**
+
+> ⚠️ **Corrección de nivel 2026-09-03.** Esta tabla decía $883.000 y $553.000. Los dos totales
+> arrastraban la **levadura a $37.000**, precio corregido a **$18.000** el 2026-09-02 — $19.000
+> de más en cada receta. **El ahorro de $330.000 no cambia**, porque el error era idéntico en las
+> dos y se cancelaba en la resta; lo que estaba mal eran los niveles y, con ellos, el costo por
+> saco y por cama.
+
+**Y el ahorro por saco (30,0 %) no es el mismo que el ahorro por tanda (38,2 %).** La tanda
+cuesta 38,2 % menos pero **produce 11,7 % menos** (53 sacos contra 60), porque salieron 225 kg
+de insumo. El número que manda para el costo de preparar una cama es el **30,0 % por saco**.
+
+**Desglose del costo V1:**
+
+| Ingrediente | Cantidad | Costo |
+|---|---|---|
+| Harina de maíz | 5 sacos de 40 kg | $280.000 |
+| Transporte de la equinaza | 1 viaje | $150.000 |
+| Melaza | 2 sacos de 30 kg | $86.000 |
+| Levadura | 2 bloques de 500 g | $18.000 |
+| Estiércol · tierra negra · king grass · biochar | — | $0 |
+| **Total** | **1.716 kg** | **$534.000** |
+
+**El transporte ya es el 28 % del costo de la tanda** y es el segundo renglón. Con la equinaza,
+la tierra negra, el king grass y el biochar en $0, lo único que se puede seguir bajando es la
+harina de maíz y el flete.
+
+## Costo por preparación de cama
+
+Con el protocolo vigente de `03-no-dig-y-preparacion-camas.md`:
+
+| Bloque | Sacos/cama | Anterior | **V1** | Ahorro |
+|---|---|---|---|---|
+| Inv 3C grande · Inv 4 STD · Inv 3C pequeña | 1 | $14.400 | **$10.075** | $4.325 |
+| Inv 4 PREMIUM | 1,5 | $21.600 | **$15.113** | $6.488 |
+| Inv 3A · Inv 5 | 2 | $28.800 | **$20.150** | $8.650 |
+| Inv 3B STD | 3 | $43.200 | **$30.225** | $12.975 |
+| Inv 3B PREMIUM | 4 | $57.600 | **$40.300** | $17.300 |
+
+**Piso anual, solo con las camas que están contadas** — 3A (11), 3C (8), Inv 4 STD (28) e
+Inv 5 (13) = 60 camas y 84 sacos por vuelta:
+
+| | |
+|---|---|
+| Ahorro por vuelta completa | **$363.300** |
+| A 2–3 vueltas al año | **$727.000 – $1.090.000 al año** |
+
+⚠️ **Es un piso, no un estimado.** No incluye 3B — el bloque de dosis más alta, 3–4 sacos por
+cama — ni Inv 2, Mini, los exteriores ni Inv 6, porque **esas camas no están contadas**. Es el
+pendiente #8 de `CLAUDE.md`. Cerrar el inventario de camas es lo que convierte este piso en la
+cifra real.
 
 ## Por qué salen la ceniza y el sulfato de cobre
 

@@ -1550,6 +1550,7 @@ CAMPO_COL = {
     "proveedor": 1, "variedad": 2, "color": 3, "recibidas": 4, "trasplantadas": 5,
     "fecha_siembra": 6, "semana_siembra": 7, "bloque": 8, "inicio_cosecha": 9,
     "semana_inicio": 10, "fin_cosecha": 11, "comentarios": 12, "homologado": 13,
+    "estado": 16,
 }
 
 
@@ -1639,7 +1640,7 @@ def cargar_mortalidad():
     return tabla
 
 
-def proyectar_cosecha(filas, ciclos, mortalidad):
+def proyectar_cosecha(filas, ciclos, mortalidad, sem_corte=None):
     """Tallos por semana ISO que deberian salir de las siembras ya hechas.
 
     Devuelve (tallos_por_semana, lotes_proyectados, descartes).
@@ -1676,11 +1677,22 @@ def proyectar_cosecha(filas, ciclos, mortalidad):
         pct = mortalidad.get((sem, norm(f["variedad"]), norm(f["bloque"])))
         vivas = f["plantas"] * (1 - pct / 100.0) if pct is not None else f["plantas"]
         total = vivas * cic["tallos_planta"]
-        for w in range(ini, ini + ventana):
+        # La columna Estado del v8 dice si la cama sigue en pie. Un lote
+        # 'Cerrada' ya produjo lo que iba a producir: se le respeta lo que
+        # aporto hasta la semana de corte y se le corta el futuro. Borrarlo
+        # entero falsearia hacia abajo las semanas ya medidas, que son las que
+        # calibran la curva.
+        cerrado = norm(f["estado"]) == "cerrada"
+        semanas = [w for w in range(ini, ini + ventana)
+                   if not (cerrado and sem_corte is not None and w >= sem_corte)]
+        if cerrado and not semanas:
+            descartes["cama ya cerrada (Estado=Cerrada)"].append(f)
+            continue
+        for w in semanas:
             tallos[w] += total / ventana
         lotes.append({"fila": f, "ciclo": cic, "ini": ini,
-                      "fin": ini + ventana - 1, "tallos": total,
-                      "mortalidad": pct})
+                      "fin": max(semanas), "tallos": total,
+                      "mortalidad": pct, "cerrado": cerrado})
     return tallos, lotes, descartes
 
 
@@ -1737,10 +1749,13 @@ def cmd_huecos(semana=None):
     ciclos = cargar_ciclos()
     mortalidad = cargar_mortalidad()
     campo = temporada_actual(cargar_campo())
-    tallos, lotes, descartes = proyectar_cosecha(campo, ciclos, mortalidad)
 
     hoy = datetime.date.today()
     sem_hoy = int(semana) if semana else hoy.isocalendar()[1]
+    mas_rapido = min((c["sem_a_campo_min"] for c in ciclos.values()
+                      if c["sem_a_campo_min"]), default=0)
+    horizonte = sem_hoy + int(mas_rapido)
+    tallos, lotes, descartes = proyectar_cosecha(campo, ciclos, mortalidad, sem_hoy)
 
     print("=" * 78)
     print("HUECOS DE COSECHA — proyeccion desde las siembras ya hechas")
@@ -1827,6 +1842,8 @@ def cmd_huecos(semana=None):
     if pares:
         piso = min(r for _, r, _ in pares)
         print("  piso de referencia: %.0f tallos/sem (la peor semana ya medida)" % piso)
+    print("  desde la semana %d todavia se alcanza a sembrar (el ciclo mas corto" % horizonte)
+    print("  del catalogo son %d semanas desde trasplante)" % mas_rapido)
     niveles = demanda_por_mes()
     print("  %-5s %9s   %-26s %-10s %s" % ("SEM", "TALLOS", "curva", "VENTA", ""))
     for w, v in zip(ventana, valores):
@@ -1837,6 +1854,11 @@ def cmd_huecos(semana=None):
             marca = "<  bajo el piso"
         mes = mes_de_semana(w, hoy.year)
         venta = niveles.get(mes, "")
+        # Una semana vacia que todavia se alcanza a sembrar NO es un hueco: es
+        # el horizonte de planificacion. Confundirlas hace sonar la alarma por
+        # el trabajo que justamente toca hacer ahora.
+        if marca and w >= horizonte:
+            marca = "aun sembrable — decidir AHORA"
         # Una semana floja en un mes flojo es un ajuste; una semana vacia en un
         # mes ALTA es plata que se deja de hacer. Por eso van en la misma linea.
         if marca and venta in ("ALTA", "ALTISIMA"):

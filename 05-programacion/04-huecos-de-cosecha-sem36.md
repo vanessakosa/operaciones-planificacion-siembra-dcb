@@ -251,3 +251,81 @@ de ese proveedor.
 **Cancelar con David las 1.096 plántulas de CELOSIA CELWAY RED de la semana 37.**
 La Celway Red está descartada; Ball la sembró por error. Marcada como
 `DESCARTADA` en `programacion_ball_plugs.csv` y en `lotes_activos_sem36.csv`.
+
+## 10. Tallos estimados por semana — campo + Ball (2026-09-03)
+
+Derivados: `07-datos/tallos_estimados_semana.csv` (385 filas, detalle por
+producto y semana) y `07-datos/resumen_tallos_semana.csv`.
+
+**Cómo se estima:** `plantas × tallos_planta ÷ semanas de ventana`, con
+`tallos_planta` y `ventana` de `ciclos_variedad.csv`. **No** se aplica factor de
+merma ni de calidad — es techo teórico, no tallo vendible. Cada fila lleva su
+`calidad_dato`. Incluye los 18 lotes futuros de la confirmación de Ball, con
+inicio = semana de entrega + ciclo a campo.
+
+| Sem | Tallos est. | Productos | Sin dato |
+|---|---|---|---|
+| 36 | 11.076 | 14 | 5 |
+| 37 | 11.712 | 16 | 4 |
+| **38** *(Amor y Amistad)* | **13.354** | 15 | 4 |
+| **39** | **10.328** | 12 | 1 |
+| 40 | 10.944 | 13 | 1 |
+| **41** | **9.289** ← mínimo | 15 | 3 |
+| 42 | 10.618 | 18 | 5 |
+| 43 | 16.802 | 23 | 6 |
+| 44 | 19.829 | 22 | 6 |
+| **45** | **20.746** ← pico | 24 | 4 |
+| 46 | 18.700 | 20 | 5 |
+| 47 | 17.948 | 21 | 3 |
+| 48 | 16.847 | 21 | 4 |
+| 49 | 15.706 | 21 | 1 |
+| 50 | 18.923 | 17 | 1 |
+| 51 | 17.650 | 13 | 2 |
+| 52 | 10.080 | 4 | 2 |
+| 1–4 de 2027 | 1.981 · 1.981 · 2.461 · 5.896 | 3–4 | 1–2 |
+| 5–8 de 2027 | 4.896 · 4.896 · 1.096 · 1.096 | 2–3 | 0–1 |
+| 9–11 de 2027 | **0** | 0 | 1 |
+
+### Los tres vacíos, ahora con número
+
+**Vacío 1 — semanas 39 a 42.** De 13.354 tallos en la 38 se cae a **9.289 en la
+41**, el mínimo del semestre. Y la 41 es además el mes de menor surtido de color
+antes de Navidad.
+
+**Vacío 2 — enero de 2027.** De 10.080 tallos en la 52 a **1.981 en la semana 1**.
+Es una caída del 80 %. Lo único que hay en enero es Statice Hipster Apricot,
+Ammi Majus y Campanula White: blanco y durazno, sin un solo color fuerte.
+
+**Vacío 3 — semanas 9 a 11 de 2027: CERO tallos.** No hay nada, ni de campo ni
+de Ball. Después de eso solo vuelven los Dusty Miller (semanas 12–14) y el
+Ptilotus Matilda (14), que son follaje y textura, no flor.
+
+### Bocas de Dragón, semana por semana
+
+| Sem | Tallos de snapdragon |
+|---|---|
+| 37 | 913 (Opus Appleblossom 548 + Opus Fresh 365) |
+| **38** | **913** — mismo lote, sin refuerzo |
+| 39 | 1.187 |
+| 40 | 913 |
+| 41 | 2.249 (entran Cannes Lemon y Cannes Red) |
+| 42 | 3.376 |
+| 43 | 4.124 |
+| 44–45 | ~4.500 |
+
+En Amor y Amistad hay **913 tallos de snapdragon**, contra 4.500 en la 44. Es
+el 20 %. La estructura vertical del bouquet en el pico comercial del año
+depende de dos lotes que ya venían floreciendo desde la 36.
+
+### Lo que no se puede cuantificar todavía
+
+Estos grupos no tienen `tallos_planta` en `ciclos_variedad.csv` y salen como
+`SIN_DATO` — entre ellos hay 4.032 plantas de **Dianthus Sweet Cherry** en la
+semana 48, que es de los lotes más grandes del calendario:
+
+**Dianthus · Ptilotus · Scabiosa · Carthamus · Celosia Purple Flamingo ·
+Helipterum · Dahlia**
+
+Medir tallos/planta de esos siete grupos es el trabajo más barato con más
+retorno del calendario: hoy dejan un hueco de información en las semanas 46 a
+52 y en enero de 2027 justo donde hay que decidir el surtido.

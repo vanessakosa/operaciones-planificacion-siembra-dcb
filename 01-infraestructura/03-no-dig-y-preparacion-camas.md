@@ -88,6 +88,11 @@ Ver `02-nutricion/04-diagnostico-kempf-ingham.md`.
 
 ## Preparación diferenciada para camas con historial largo de lisianthus (1+ año)
 
+> 🔴 **NUNCA SE HA EJECUTADO.** Confirmado por Vanessa el 2026-09-03: *"no hemos aplicado yeso
+> agrícola nunca en preparación de camas, no sé de dónde salió eso."* **Es un protocolo escrito
+> que quedó como propuesta y se lee como historia.** No usar como antecedente de manejo ni como
+> explicación de ningún resultado de suelo.
+
 - Yeso agrícola 200–300 g/m²
 - Ceniza
 - Haifa N-Cal GG desde semana 1

@@ -179,3 +179,32 @@ el P soluble bajo. **Preguntar a Bioquirama si ofrece el panel completo.**
 | **C.E. trimestral** | Línea base actual 0.20–0.28. Marca histórica de "esto ya duele" = 0.829 (Inv 3, 2025) | Bajo |
 | **Muestras separadas dentro del bloque** | Las tres muestras son compuestas y promedian. 3A superiores vs inferiores, y la "barriga" de 3B vs los extremos, tienen perfiles opuestos documentados | Igual |
 | Inv 1, Inv 2, Inv 6, exteriores | Sin análisis de ningún año | — |
+
+
+---
+
+# De dónde viene el azufre alto · resuelto 2026-09-03
+
+**Bloque 3 (51,67 mg/kg · A) y Bloque 5 (42,68 · A)** están en azufre alto; Bloque 4 en 26,55 (M).
+Se descartó la primera hipótesis y quedó una sola fuente plausible.
+
+| Hipótesis | Veredicto |
+|---|---|
+| El yeso agrícola del protocolo de lisianthus | 🔴 **Descartada.** Vanessa confirmó el 2026-09-03 que **nunca se ha aplicado yeso** en preparación de camas |
+| Sulfato de cobre del Bokashi | 🔴 Descartada por masa — 200 g en 1.500 kg de tanda |
+| **Bitter Mag del fertirriego** — sulfato de magnesio | 🟢 **Es la única fuente recurrente y de masa suficiente:** el repo ya registra **76,8 g de S en UN solo tanque de 2.000 L** |
+
+## Y eso cambia el veredicto del yeso de "nunca" a "todavía no"
+
+**El Bitter Mag ya salió de la fórmula base de fertirriego** — se eliminó al resolver que con el
+magnesio saturado (32–38 % de saturación) no se reemplaza magnesio en absoluto. Ver
+`02-nutricion/01-fertirriego-formulas.md`.
+
+> **El azufre alto es un legado de un insumo que ya se eliminó, no una característica del suelo.**
+> Sin entrada recurrente de azufre, el número baja. **El veto al yeso en Bloque 3 y Bloque 5 es
+> temporal:** se reevalúa en el próximo análisis, y si el S bajó a clave M, el yeso entra en los
+> tres bloques y no solo en Bloque 4.
+
+⚠️ **Lo que falta para confirmarlo con número y no con dirección:** los **litros de tanque por m²
+por bloque** (pendiente 4b de `CLAUDE.md`). Con eso, los 76,8 g de S por tanque se convierten en
+kg de S por m² por año, y se puede verificar si la masa aplicada explica los 51,67 mg/kg medidos.

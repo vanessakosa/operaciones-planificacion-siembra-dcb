@@ -634,3 +634,77 @@ si el boro está llegando.
 **Ficha del Campofert Humus 15:** % de húmicos, % de fúlvicos, **pH** y **si trae potasio.** Es el
 único de los seis productos que se compraría sin ficha, y el Fullfert ya enseñó que un húmico puede
 traer 40 g/L de K y pH 12 (riesgo de precipitar el calcio del tanque).
+
+
+---
+
+# Kelasys Cobre (SYS) vs Amilsol Micro Cu15 · 2026-09-03
+
+El Amilsol Cu15 **no está disponible** en Alma Agrícola esta semana; llegaría la siguiente. Se
+ofreció el **Kelasys Cobre** de SYS como alternativa disponible hoy.
+
+| | **Kelasys Cu** | Amilsol Micro Cu15 |
+|---|---|---|
+| Cobre | **12 %** | 15 % |
+| Otros | **K₂O 3 % · S 5 %** | — |
+| pH al 10 % | **3,0 – 4,0** | — |
+| Agente quelatante | **NO DECLARADO** | EDTA |
+| % de cobre quelatado | **NO DECLARADO** | — |
+| Precio/kg | **$35.660** (sin IVA) | $51.793 (con IVA 19 %) |
+| **$ por kg de Cu** | **$297.168** | $345.287 |
+| Registro ICA | 6951 | — |
+
+**El precio es real: 13,9 % más barato por kg de cobre**, y parte de la ventaja es fiscal — el
+Kelasys no lleva IVA.
+
+## 🔴 La estequiometría del azufre dice que el producto es mayoritariamente sulfato
+
+En sulfato de cobre, cada 1 % de S acompaña **1,98 %** de Cu (63,55 / 32,06).
+
+> El Kelasys declara **S 5 %**, que explica **9,9 % de cobre como sulfato — el 83 % de los 12 %
+> totales.** Quedan **2,1 puntos** de cobre sin sulfato asociado.
+
+**Y el pH de 3,0 – 4,0 apunta al mismo lado:** una solución de Cu-EDTA es prácticamente neutra,
+no ácida. Lo más probable es una **mezcla física de sulfato de cobre con una fracción quelatada
+minoritaria**, más 3 % de K₂O.
+
+**Por eso la pregunta que decide no es cuál es el agente, sino qué porcentaje está quelatado.**
+Un producto puede declarar "EDTA" y ser 83 % sulfato.
+
+## Por qué la quelación no es un detalle en este caso
+
+La razón entera para elegir un quelato en Inv 5 es que el bloque tiene **22,9 % de M.O.**, y el
+diagnóstico es que esa materia orgánica secuestra el cobre — por eso lee **2,9 mg/kg (clave B)**
+a pesar de las aplicaciones. El quelato resiste la fijación; el sulfato no.
+
+| Escenario | Producto | Costo |
+|---|---|---|
+| Kelasys como **quelato** (factor 2×) | 478 g | **$17.057** |
+| Amilsol Cu15, quelato (factor 2×) | 383 g | $19.819 |
+| Kelasys como **sulfato** (factor 10×) | 2.392 g | **$85.287** |
+
+**Ventaja de precio: 14 %. Incertidumbre: 5×.** Y el costo de equivocarse no es la plata: es que
+el cobre de Inv 5 siga sin corregir un ciclo más, en el bloque que ya es el peor en cobre y en
+riego.
+
+*Los factores 2× y 10× son estimaciones de comportamiento, no dato de campo — igual que en la
+comparación original.*
+
+## Decisión
+
+**Pedir el Amilsol Cu15 y esperar la semana.** Esperar **no cuesta nada**: el Bokashi V1 está
+listo en 14 días y la preparación de camas no arranca antes; el Amilsol llega la semana entrante.
+Y el Cu15 es además el producto del tanque — el Kelasys implicaría **dos productos de cobre en
+bodega**, que era justo lo que se quiso evitar.
+
+**Camino rápido si se quiere cerrar hoy** — dos preguntas al proveedor:
+
+| Respuesta | Decisión |
+|---|---|
+| EDTA o DTPA, **más del 80 % quelatado** | ✅ Kelasys — equivalente y 13,9 % más barato |
+| EDTA o DTPA, **20–50 % quelatado** | 🟡 Sirve **subiendo la dosis** — recalcular con el % en mano |
+| Aminoácidos · ácidos orgánicos · lignosulfonato | 🔴 Son **complejos, no quelatos**. Amilsol |
+| "Sí es quelatado", sin porcentaje | 🔴 Es lo que ya dice la ficha. Amilsol |
+
+**Los 3 % de K₂O y 5 % de S no son objeción a esta masa:** 478 g de producto son 14 g de K₂O y
+24 g de S repartidos en los 412 m² de Inv 5. Despreciable. **La objeción es solo la quelación.**

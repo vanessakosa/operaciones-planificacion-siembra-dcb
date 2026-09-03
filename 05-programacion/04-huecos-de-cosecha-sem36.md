@@ -194,3 +194,60 @@ optimista. Por eso `lotes_activos_sem36.csv` ahora lleva la columna
    el calendario de Erica.** Hay que corregirlos en el PROGRAMACION_2026, no
    aquí. No propongo nombres: los Limonium Wings y Diamond no existen en la
    VARIEDADES_BITACORA todavía.
+
+## 9. La programación de Ball — SÍ existe (recibida 2026-09-03)
+
+Fuente: `Confirmacion David.xlsm`, Ball Colombia, Drive
+`1U_FWCnHXO05RDrmGR7QNR0fMdu9UtiJ6`. Confirmación de **plugs** desde la semana
+24 hasta la 53. Espejada en `07-datos/programacion_ball_plugs.csv` (74 filas).
+
+**Entregas pendientes de la semana 37 en adelante — 31.546 plántulas:**
+
+| Sem | Plántulas | Qué llega |
+|---|---|---|
+| 37 | **10.562** | Campanula Champion II White 3.014 · Potomac Appleblossom 3.014 · Dianthus Sweet Cherry 1.918 · Sunflower Pro Cut Red 1.520 · ~~Celway Red 1.096~~ |
+| 38 | 1.918 | Potomac Appleblossom |
+| 39 | **7.302** | Matricaria Snowball 1.728 · Ammi Visnaga 1.644 · Senecio New Look 1.464 · Opus White Fresh 1.370 · Purple Flamingo 1.096 |
+| 40 | 3.288 | Potomac Appleblossom 1.918 · Opus White Fresh 1.370 |
+| 41 | 2.996 | Trachelium White Lake 1.900 · Campanula Champion II White 1.096 |
+| 42 | 2.192 | Gomphrena QIS Carmine 1.096 · QIS Red 1.096 |
+| 45 | 1.644 | Celosia Purple Flamingo |
+| 51 | 1.644 | Ptilotus Matilda |
+
+**Cuándo entra eso a cosecha** (semana de entrega + ciclo a campo de
+`ciclos_variedad.csv`):
+
+| Entra en cosecha | Plantas | De dónde |
+|---|---|---|
+| sem 46 | 3.014 | Appleblossom (entrega 37) |
+| sem 47 | 1.918 | Appleblossom (38) |
+| sem 48 | 1.370 | Opus White Fresh (39) |
+| sem 49 | 7.822 | Campanula White + Sunflower Red (37) + Opus/Appleblossom (40) |
+| sem 51 | 5.290 | Dianthus Sweet Cherry (37) + Ammi Visnaga + Matricaria Snowball (39) |
+| sem 1–5 de 2027 | 6.284 | Campanula (41) · Purple Flamingo (39) · Gomphrenas (42) · Trachelium (41) |
+| sem 8 y 14 de 2027 | 3.288 | Purple Flamingo (45) · Ptilotus Matilda (51) |
+
+### Lo que cambia y lo que NO
+
+**Cambia el Hueco B.** La caída de la 51–52 se suaviza: entran 5.290 plantas en
+la 51 y otras 6.284 en enero. Ya no es un vacío, pero sigue siendo **la mitad
+de lo que hay hoy en el pico**.
+
+**NO cambia nada de aquí a Amor y Amistad.** La entrega más próxima es la
+semana 37, y su primera cosecha es la **semana 46**. El Hueco A (semanas 36–40)
+y el **gap de Boca de Dragón de la 38 a la 39** quedan exactamente igual: Ball
+no llega a tiempo, por definición de ciclo.
+
+**Ball se acaba en la semana 51.** Después de esa última entrega de Ptilotus no
+hay nada más confirmado. La tabla del punto 4 —plantular con semilla propia—
+sigue siendo obligatoria para febrero y marzo de 2027, y sigue siendo urgente
+esta semana.
+
+**Falta la programación de Andrés:** confirmado por Vanessa que no hay nada más
+de ese proveedor.
+
+### Acción inmediata
+
+**Cancelar con David las 1.096 plántulas de CELOSIA CELWAY RED de la semana 37.**
+La Celway Red está descartada; Ball la sembró por error. Marcada como
+`DESCARTADA` en `programacion_ball_plugs.csv` y en `lotes_activos_sem36.csv`.

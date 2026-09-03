@@ -54,3 +54,83 @@ Las semillas del documento base solo se usan cuando no hay ninguna cosecha regis
   polinizadores. No es todavía la misma variedad+zona+comportamiento que exige la regla de
   promoción, pero **si aparece un tercer caso, se promueve a regla general de manejo de
   polinizadores**, no solo a nota de variedad individual
+
+---
+
+## Sesión 2026-09-03 — brain dump de campo (semana ISO 36)
+
+Dictado por Vanessa. Observaciones nuevas, todavía **no promovidas a regla**
+salvo la de Sweet William, que repite un patrón ya documentado.
+
+### 🔴 Falla de labor cultural — Sweet William rojo
+
+> *"El Sweet William rojo, que sembramos para Amor y Amistad, **no se le hizo
+> desbrote** y tiene unos centros muy pequeños, con unos laterales muy delgados.
+> Eso fue una falla muy grande, que no nos puede pasar con los que sembramos
+> esta semana y los que sembramos hace una semana."*
+
+**Esto ya es regla, no observación.** `01-mapa-variedades.md` dice para Dianthus
+Green Ball / Punky Ball: *"Desbrotar laterales"*, y la tabla de reglas
+establecidas de este mismo documento exige pinch en semanas 5–6 post-trasplante.
+El lote rojo de Amor y Amistad se sembró sin esa labor y el resultado es
+exactamente el que la regla predice: central pequeño, laterales delgados.
+
+**Lotes en riesgo AHORA mismo** — sembrados hace una y dos semanas, entran en
+ventana de desbrote en las semanas 39–42:
+
+| Sem siembra | Bloque | Lote | Desbrote (sem 5–6 post-trasplante) |
+|---|---|---|---|
+| 34 | 3A | Dianthus Sweet Cherry (2.016 pl) | **semanas 39–40** |
+| 36 | 4C+3C | Dianthus Sweet Cherry (2.016 pl) | **semanas 41–42** |
+
+→ Programar la labor con fecha, no "cuando se pueda". Es la diferencia entre un
+tallo vendible y uno de relleno.
+
+### Adelanto de ciclo por problema de luz
+
+> *"Las celosias eran las que yo tenía pensado, cuando se me adelantaron los
+> lisiantos, para Amor y Amistad, y como tuvieron el problema de la luz, entonces
+> se adelantó el ciclo, por lo que no van a aguantar para Amor y Amistad."*
+
+**Dos cultivos, la misma causa, el mismo efecto:** lisianthus y celosia cristata
+adelantaron floración por luz y ninguno llega al pico comercial de la semana 38
+para el que fueron sembrados. Las tres camas de cristata marcadas `AMOR` en
+`Inicio cosecha` (Enda Rose 3A, Reprise Orange 4A, Clubs Cocktail 4A) se sembraron
+apuntando a Amor y Amistad y llegan corridas.
+
+**Si esto se repite una vez más, se promueve a regla:** una siembra apuntada a
+fecha comercial necesita margen para adelanto por luz, no solo para atraso.
+
+### Observaciones de calidad de tallo
+
+| Variedad | Bloque | Observación |
+|---|---|---|
+| Statice Forever Silver | 3C | Empezando a producir, **tallos cortos** |
+| Trachelium White Lake | 5 | Quedan tallos, **algunos torcidos** |
+| Girasol Pro Cut White Lite | 4B | Media cama, **tallos demasiado delgados** — dejar madurar |
+| Sweet William rojo | — | Centros pequeños, laterales delgados (sin desbrote) |
+
+Los cuatro son de **calidad de tallo**, que es justo lo que
+`07-datos/calidad_tallo.csv` sigue vacío para medir. Cuatro observaciones en una
+sola sesión es señal de que ese archivo dejó de ser opcional.
+
+### Estado de camas dictado
+
+| Cama | Estado dictado |
+|---|---|
+| Celosias 3A (serie Floret + Shimmer) | **Pasadas, listas para sacar** — sem 36 |
+| Floret rojas y últimas rosadas | Se acaban **sem 37** |
+| Celosia cristata 3A y 4A parte alta | Terminan cosecha **fin de sem 37** |
+| Celosia cristata — una cama | Se deja en pie a ver si resiste |
+| Celosias "de otoño" rojas y moradas, 3A baja + bloque 4 | En cola. Algunos centrales para sem 38; pico por confirmar |
+| Colitas de conejo (Bunny Tails, Inv 2) | Una semana más — **sem 37** |
+| Statice blanco | Ya se sacó todo |
+| Statice — última cama que queda | Se va a sacar |
+| Trachelium Mini | Prácticamente salió todo, quedan muy pocos |
+| Trachelium 5 | Quedan tallos, algunos torcidos |
+| Trachelium 5 parte baja | En formación de tallos |
+| Gomphrena Carmine | **Empieza cosecha hoy** (sem 36) — hay muchas |
+| Campanula 4C (rosado + blanco) | Florece sem 36, cosecha sem 37 |
+| Bocas Opus Fresh 3A + Appleblossom | En cosecha ahora |
+| Lisianthus | Insignificante — solo para los bouquets más grandes |
+| Dusty Miller | Todavía hay bastante |

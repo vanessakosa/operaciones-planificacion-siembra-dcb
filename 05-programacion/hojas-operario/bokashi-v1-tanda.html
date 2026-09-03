@@ -1,0 +1,268 @@
+<title>Tanda de Bokashi V1</title>
+<style>
+  :root{
+    --papel:#FFFFFF; --beige:#F5F0E8; --crema:#FAF7F3;
+    --tinta:#1A1A1A; --tinta-2:#555555; --tinta-3:#888888;
+    --regla:#D0C8B8; --alerta:#C0392B;
+    --op:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--op);
+       margin:0;padding:28px 20px 60px;-webkit-font-smoothing:antialiased}
+  .hoja{max-width:820px;margin:0 auto}
+
+  .marca{font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+         color:var(--tinta-2);margin:0 0 6px}
+  h1{font-size:29px;line-height:1.15;font-weight:700;letter-spacing:-.01em;
+     margin:0 0 10px;text-wrap:balance}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 26px;font-size:13px;color:var(--tinta-2);
+        padding-bottom:14px;border-bottom:2px solid var(--regla);margin-bottom:30px}
+  .meta b{color:var(--tinta);font-weight:700}
+
+  section{margin-bottom:34px;break-inside:avoid}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
+     font-weight:700;margin:0 0 12px;padding-bottom:7px;border-bottom:1px solid var(--regla)}
+
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  caption{caption-side:top;text-align:left;font-size:13px;color:var(--tinta-2);padding:0 0 9px}
+  th{background:var(--beige);color:var(--tinta-2);font-size:11px;letter-spacing:.11em;
+     text-transform:uppercase;font-weight:700;text-align:left;padding:9px 12px;
+     border-bottom:1px solid var(--regla)}
+  td{padding:13px 12px;border-bottom:1px solid var(--regla);vertical-align:middle}
+  tbody tr:nth-child(even) td{background:var(--crema)}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.mid,td.mid{text-align:center}
+
+  .prod{font-weight:700;font-size:16px;line-height:1.25}
+  .prod small{display:block;font-weight:400;font-size:12.5px;color:var(--tinta-2);margin-top:2px}
+  .dosis{font-size:25px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+  .dosis span{font-size:14px;font-weight:400;color:var(--tinta-2);margin-left:2px}
+  .caja{display:inline-block;width:19px;height:19px;border:1.5px solid var(--tinta-2)}
+
+  .fuera td{background:var(--papel)}
+  .fuera .prod{font-weight:400;color:var(--tinta-3);text-decoration:line-through}
+  .fuera .prod small{text-decoration:none;color:var(--tinta-3)}
+  .no-va{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+         color:var(--alerta)}
+
+  ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
+           background:var(--regla);border:1px solid var(--regla)}
+  ol.orden li{counter-increment:paso;background:var(--papel);padding:12px 14px 12px 46px;
+              position:relative;font-size:14.5px;line-height:1.4}
+  ol.orden li:nth-child(even){background:var(--crema)}
+  ol.orden li::before{content:counter(paso);position:absolute;left:14px;top:12px;
+                      font-weight:700;font-size:14.5px;color:var(--tinta-2);
+                      font-variant-numeric:tabular-nums}
+
+  .control{border:2px solid var(--tinta);padding:18px 20px}
+  .control h3{font-size:16px;margin:0 0 14px;font-weight:700}
+  .dias{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:1px;
+        background:var(--regla);border:1px solid var(--regla)}
+  .dia{background:var(--papel);padding:11px 12px}
+  .dia b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+         color:var(--tinta-2);margin-bottom:8px}
+  .linea{display:block;min-height:24px;border-bottom:1.5px solid var(--tinta-2);margin-bottom:6px}
+  .dia small{font-size:11.5px;color:var(--tinta-3)}
+
+  .senales{margin-top:16px;font-size:14.5px;line-height:1.5}
+  .senales b{font-weight:700}
+
+  .no{margin-top:14px;border-left:3px solid var(--alerta);padding:10px 0 10px 14px;
+      font-size:14px;line-height:1.45}
+  .no b{color:var(--alerta)}
+
+  footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--regla);
+         font-size:12px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 22px}
+
+  @media print{
+    @page{margin:14mm}
+    body{padding:0;font-size:12pt}
+    .hoja{max-width:none}
+    section{page-break-inside:avoid}
+    h1{font-size:24pt}
+    .dosis{font-size:20pt}
+  }
+  @media (max-width:560px){
+    .dosis{font-size:21px}
+    td,th{padding-left:8px;padding-right:8px}
+  }
+</style>
+
+<div class="hoja">
+
+  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
+  <h1>Tanda de Bokashi — Versión 1</h1>
+  <div class="meta">
+    <span>Produce <b>~1.315 kg</b></span>
+    <span><b>53 sacos</b> de 25 kg</span>
+    <span>Lista en <b>2 semanas</b></span>
+    <span>Versión <b>2</b> · <b>02/09/2026</b></span>
+  </div>
+
+  <section>
+    <h2>Ingredientes de esta tanda</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:46%">Ingrediente</th>
+          <th class="num" style="width:24%">Cantidad</th>
+          <th class="mid" style="width:15%">Pesado</th>
+          <th class="mid" style="width:15%">A la pila</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="prod">Estiércol de caballo<small>32 sacos de 25 kg</small></td>
+          <td class="num"><span class="dosis">800<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Tierra negra</td>
+          <td class="num"><span class="dosis">400<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Harina de maíz<small>80 kg en bodega + 120 kg por comprar</small></td>
+          <td class="num"><span class="dosis">200<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">King grass picado<small>NO usar el heno — ese va al compost</small></td>
+          <td class="num"><span class="dosis">160<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Biochar<small>De las 2 quemas nuevas · entra en el volteo del día 2 · NO usar el bulto viejo mezclado con ceniza</small></td>
+          <td class="num"><span class="dosis">80<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Melaza<small>2 sacos de 30 kg · disolver en agua · NO usar para Supermagro</small></td>
+          <td class="num"><span class="dosis">60<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Levadura<small>2 bloques de 500 g · disolver en agua tibia</small></td>
+          <td class="num"><span class="dosis">1<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Ingredientes que ya NO van</h2>
+    <table>
+      <tbody>
+        <tr class="fuera">
+          <td class="prod" style="width:70%">Ceniza de madera<small>Ni el saco de ceniza sola, ni el bulto de biochar mezclado con ceniza</small></td>
+          <td class="num"><span class="no-va">No va</span></td>
+        </tr>
+        <tr class="fuera">
+          <td class="prod">Humus de lombriz</td>
+          <td class="num"><span class="no-va">No va</span></td>
+        </tr>
+        <tr class="fuera">
+          <td class="prod">Sulfato de cobre</td>
+          <td class="num"><span class="no-va">No va</span></td>
+        </tr>
+        <tr class="fuera">
+          <td class="prod">Heno</td>
+          <td class="num"><span class="no-va">Al compost</span></td>
+        </tr>
+        <tr class="fuera">
+          <td class="prod">Cascarilla de arroz</td>
+          <td class="num"><span class="no-va">Al compost</span></td>
+        </tr>
+        <tr class="fuera">
+          <td class="prod">Roca fosfórica · Cal agrícola · Harina de roca · Salvado de trigo</td>
+          <td class="num"><span class="no-va">No van</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="no"><b>NO</b> agregar restos de cultivo ni de cocina a esta pila. Esos van a la pila de compost, aparte.</p>
+  </section>
+
+  <section>
+    <h2>Armado</h2>
+    <ol class="orden">
+      <li>Disolver la <b>melaza</b> y la <b>levadura</b> en agua, por separado. La levadura en agua tibia.</li>
+      <li>Mezclar en seco la <b>equinaza</b>, la <b>tierra negra</b>, la <b>harina de maíz</b> y el <b>king grass</b>.</li>
+      <li>Regar con la <b>melaza</b> y la <b>levadura</b> mientras se sigue mezclando.</li>
+      <li>Punto de humedad: apretar un puño de mezcla. <b>Debe compactarse sin soltar agua.</b></li>
+      <li>Armar la pila. <b>Altura máxima 1,2 m.</b> No compactar.</li>
+      <li>Cubrir.</li>
+      <li>El <b>biochar</b> no entra ahora: se incorpora en el <b>volteo del día 2</b>.</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="control">
+      <h3>Control de la tanda</h3>
+      <div class="dias">
+        <div class="dia"><b>Día 1 · armado</b><span class="linea"></span><small>fecha</small></div>
+        <div class="dia"><b>Día 2 · voltear</b><span class="linea"></span><small>temp. °C — entra el biochar</small></div>
+        <div class="dia"><b>Día 4 · voltear</b><span class="linea"></span><small>temp. °C</small></div>
+        <div class="dia"><b>Día 7</b><span class="linea"></span><small>temp. °C</small></div>
+        <div class="dia"><b>Día 14 · lista</b><span class="linea"></span><small>fecha</small></div>
+      </div>
+      <p class="senales">
+        Temperatura correcta: <b>45 a 55 °C</b>.<br>
+        Olor correcto: <b>dulce, a fermento</b>. Si huele a podrido, avisar a Vanessa.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="control">
+      <h3>Muestra para el laboratorio</h3>
+      <div class="dias">
+        <div class="dia"><b>Tomada</b><span class="linea"></span><small>fecha</small></div>
+        <div class="dia"><b>Enviada</b><span class="linea"></span><small>fecha</small></div>
+      </div>
+      <p class="senales">
+        Tomar la muestra <b>cuando la tanda esté terminada</b>, no antes.<br>
+        Tomar de <b>cinco puntos distintos</b> de la pila y mezclar.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por comprar antes de armar</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:52%">Insumo</th>
+          <th class="num" style="width:24%">Cantidad</th>
+          <th class="mid" style="width:24%">Comprado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="prod">Harina de maíz</td>
+          <td class="num"><span class="dosis">120<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="prod">Levadura</td>
+          <td class="num"><span class="dosis">1<span>kg</span></span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <span>Preparación: Wilson</span>
+    <span>Biochar: 2 quemas de caneca · entra el día 2</span>
+    <span>Dudas de cantidad: preguntar antes de mezclar</span>
+  </footer>
+
+</div>

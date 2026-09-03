@@ -108,6 +108,59 @@ reemplazo previsto de la levadura. Sacarlo resuelve tres cosas: mejor entrega de
 azufre a un suelo con S alto, y desbloquea el EM-1. **Y elimina la excepción incómoda** anotada
 en `02-nutricion/02-bioinsumos.md` sobre mantener sulfatos contra la regla.
 
+## Dónde termina entonces la ceniza que ya está en finca
+
+Al 2026-09-02 hay **dos bultos de ~15 kg**: uno de biochar mezclado con ceniza y uno de ceniza
+de leña sola. Ninguno entra al Bokashi. Se evaluaron tres destinos alternativos.
+
+| Destino | Veredicto | Razón |
+|---|---|---|
+| **Pila de compost** | 🔴 No — es el peor de los tres | Dos daños que se suman |
+| **Rosas de Inv 1** | 🔴 No | El pH no es el problema; el potasio sí |
+| **Hortensias del jardín** | 🟡 Sí, pero es una decisión de color | 1–2 kg, y cambia el color de la flor |
+
+**Por qué no a la pila.** Primero, **volatilización de nitrógeno**: la ceniza entra a pH 10–12 y
+por encima de pH ~8,5 el amonio de la equinaza y los restos de cocina se convierte en amoníaco
+gaseoso y se pierde. Se estaría volatilizando justo lo que la pila acumula — el indicador de
+campo es que la pila empieza a oler a orina. Segundo, y de fondo: **la alcalinidad favorece
+bacterias sobre hongos.** El sistema tiene dos piezas de función opuesta —
+**el Bokashi es bacteriano y alimenta, el compost es fúngico e inocula** (ver la sección
+*Para qué sirve cada uno*). La ceniza le quitaría al compost lo único que el Bokashi no da.
+
+**Por qué no a las rosas.** Aquí el pH no es el argumento: las rosas quieren 6,0–6,5 y la finca
+mide 5,6–6,2, así que la alcalinidad sería neutra o incluso ligeramente favorable. El argumento
+es el **potasio**: con saturación de K en 25–30% contra 2–5% de referencia, y rosas en
+recuperación de poda baja que necesitan **calcio** para la pared de los brotes nuevos —
+y que son además el cultivo con mildeo — más K trabaja en contra de las dos cosas.
+
+> 🔴 **Hallazgo colateral: Inv 1 nunca se ha muestreado.** Los tres informes de agosto son
+> Bloque 3, 4 y 5. Inv 1 tiene las rosas de jardín injertadas de ~7 años, marcadas
+> **alto ticket** en `04-variedades/01-mapa-variedades.md`, y no hay análisis de ese suelo.
+> Es el cultivo de mayor valor por tallo sin una sola variable de suelo medida.
+
+**Por qué a las hortensias sí, y con qué condición.** Es el único sitio donde la ceniza tiene un
+efecto visible, y es **de color**. El azul de *Hydrangea macrophylla* lo da el **aluminio
+soluble**, que solo está disponible por debajo de pH 5,5. La ceniza sube el pH y aporta calcio →
+**el aluminio se bloquea y la hortensia se vuelve rosada**, y corregirlo toma meses.
+
+| Si se quieren | La ceniza es |
+|---|---|
+| Hortensias rosadas | La enmienda correcta, y sale gratis |
+| Hortensias azules | Lo peor que se les puede aplicar |
+
+Dosis de referencia para ornamental perenne: 50–100 g/m², máximo ~250 g/m²/año. Un grupo de
+jardín de 10–20 m² **absorbe 1–2 kg** — le da buen destino a una fracción, no a los 22 kg.
+
+**Cuál bulto va a dónde.** A las hortensias va el **bulto mezclado de biochar con ceniza**, no la
+ceniza sola: en una perenne que no se voltea nunca el biochar es una ventaja (porosidad y
+retención de agua) y así el bulto contaminado deja de ser un problema sin tener que separarlo.
+Las dos quemas nuevas y limpias van completas al Bokashi. **El saco de ceniza pura queda para el
+anillo físico contra babosas y caracoles.**
+
+Y el resto, dicho sin adornos: **no tiene buen destino en esta finca.** Las dos funciones de la
+ceniza son subir pH y aportar potasio, y son precisamente las dos cosas que no se necesitan en
+ningún bloque. No vale la pena inventarle un uso.
+
 ## Por qué 200 kg de harina de maíz
 
 | Cantidad | % de los insumos | Costo |
@@ -274,6 +327,7 @@ sacar el Polyfeed no alcanzaría. Es la razón por la que este análisis es prio
 | 3 | **Dosis de EM-1 para compostaje** (por m³ de pila) | BIOEM / FUNDASES |
 | 4 | Revisar el resto del stack de cama: Cote NPK, TerraLife, Naturcomplet, micorrizas | Sesión siguiente |
 | 5 | Edáficos de la lista de Alma Agrícola | Sesión siguiente |
+| 6 | **Análisis de suelo de Inv 1** — el cultivo de mayor ticket sin una variable medida | Vanessa / Natural Control |
 
 **Nota sobre SQM edáfico:** se revisó su línea completa. **Casi todo es potasio** — Qrop KS,
 Allganic Makro 60, cloruro de potasio, SOP, MKP. **Lo único edáfico de SQM que sirve es el

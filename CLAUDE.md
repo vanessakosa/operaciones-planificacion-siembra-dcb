@@ -262,6 +262,9 @@ completa de datos pendientes en `08-roadmap/02-informacion-que-falta.md`.
 4e. **N-NH₄ y análisis de savia** — el N-NH₄ vino vacío en los tres informes de
     agosto; sin la relación nitrato:amonio el diagnóstico de Fase 1 (Kempf) es
     parcial. La savia es lo que verifica si el mineral llegó a la planta.
+4f. **Análisis de suelo de Inv 1** — los tres informes de agosto son Bloque 3, 4
+    y 5. Inv 1 tiene las rosas de jardín injertadas de ~7 años, el cultivo de
+    **mayor ticket** de la finca, y **no tiene una sola variable de suelo medida.**
 
 **Para poder decidir CUÁNTO y a QUÉ PRECIO:**
 

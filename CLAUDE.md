@@ -181,6 +181,7 @@ python3 motor/cerebro.py bouquet "Cosecha Grande"   # un producto en detalle
 python3 motor/cerebro.py valor                  # ingreso por tallo propio
 python3 motor/cerebro.py ciclos                 # ciclo y ventana por grupo
 python3 motor/cerebro.py rendimiento Campanula  # tallos/planta/día normalizado por ventana
+python3 motor/cerebro.py huecos                 # qué semanas se quedan sin cosecha
 python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallos
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
 

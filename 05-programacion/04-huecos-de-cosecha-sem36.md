@@ -344,3 +344,96 @@ https://claude.ai/code/artifact/6bb09562-bffa-4646-9c4b-39f8b8e11050
 
 Se regenera con el script del scratchpad a partir de
 `07-datos/tallos_estimados_semana.csv`.
+
+## 12. Proyección calibrada contra el registro real (v2)
+
+La versión del punto 10 usaba el techo teórico de `ciclos_variedad.csv` sin
+merma. Esta la reemplaza.
+
+**Método.** Para cada grupo se sumaron los tallos realmente cosechados entre las
+semanas ISO 22 y 33 de 2026 (`registro_tallos.csv`, 696 registros) y se
+dividieron por las plantas que estaban en ventana de cosecha en esas mismas
+semanas (`PROGRAMACION_2026 v8`). El resultado es **tallos por planta por
+semana, observado**, y ya lleva la merma adentro. Script:
+`motor/calibrar_rendimiento.py`. Factores en
+`07-datos/factores_rendimiento_observado.csv`.
+
+### La vara de medir
+
+**6.088 tallos por semana · 1.030 por día** — promedio real de diez semanas
+completas de registro (23 a 32), con seis días de cosecha cada una. Toda la
+proyección se compara contra ese número.
+
+### Qué tan optimista era la ficha
+
+| Grupo | Observado | Teórico | Es el… |
+|---|---|---|---|
+| Zinnia | 0,672 | 0,250 | **269 %** |
+| Green Ball | 0,416 | 0,333 | 125 % |
+| Girasol | 0,388 | 0,333 | 116 % |
+| Gomphrena | 0,260 | 0,500 | 52 % |
+| Statice | 0,257 | 1,000 | 26 % |
+| Amaranto | 0,168 | 0,333 | 50 % |
+| Boca de Dragón | 0,147 | 0,333 | 44 % |
+| Lisianthus | 0,137 | 0,333 | 41 % |
+| Ammi | 0,134 | 0,375 | 36 % |
+| Campanula | 0,117 | 0,333 | 35 % |
+| Ammobium | 0,104 | 0,333 | 31 % |
+| Dusty Miller | 0,089 | 2,667 | **3 %** |
+| Celosia plumosa | 0,087 | 1,000 | 9 % |
+| Matricaria | 0,044 | 0,500 | 9 % |
+| Strawflower | 0,038 | 1,000 | 4 % |
+
+**La finca rinde en promedio el 22 % del techo teórico.** Ese 22 % se aplicó a
+los grupos con ficha pero sin registro propio (Celosia cristata, Limonium,
+Trachellium). Los que tienen registro usan su propio número.
+
+Tres grupos rinden **por encima** de la ficha —Zinnia, Green Ball y Girasol—: la
+ficha los está subestimando y son candidatos a más área. Cinco rinden por debajo
+del 10 %: Dusty Miller, Celosia plumosa, Matricaria y Strawflower. En esos la
+ficha no sirve para planificar.
+
+### La proyección real
+
+| Sem | Tallos/sem | Tallos/día | % del promedio |
+|---|---|---|---|
+| 36 | 2.643 | 440 | 43 % |
+| 37 | 3.013 | 502 | 49 % |
+| **38** Amor y Amistad | **3.486** | 581 | **57 %** |
+| 39 | 2.608 | 435 | 43 % |
+| 40 | 3.322 | 554 | 55 % |
+| 41 | 4.125 | 688 | 68 % |
+| 42 | 4.295 | 716 | 71 % |
+| 43 | 5.226 | 871 | 86 % |
+| 44 | 5.630 | 938 | 92 % |
+| 45 | 5.992 | 999 | 98 % |
+| 46 | 5.266 | 878 | 86 % |
+| 47 | 5.162 | 860 | 85 % |
+| 48 | 5.044 | 841 | 83 % |
+| 49 | 6.407 | 1.068 | 105 % |
+| **50** | **6.715** | 1.119 | **110 %** |
+| 51 | 5.890 | 982 | 97 % |
+| 52 | 2.243 | 374 | 37 % |
+| 1–2 de 2027 | 605 | 101 | **10 %** |
+| 3–8 de 2027 | 570–1.672 | 95–279 | 9–27 % |
+| 9, 10, 15, 16, 17 de 2027 | **0** | 0 | 0 % |
+
+### Lo que dice este número y el anterior no decía
+
+**El segundo semestre no supera lo que ya se estaba haciendo.** La mejor semana
+del resto del año —la 50, con 6.715— apenas empata el promedio de junio y julio.
+No hay pico: hay una recuperación hasta el nivel de siempre y después una caída.
+
+**Amor y Amistad corre al 57 %.** 3.486 tallos contra 6.088. No es que falte
+color: falta la mitad del volumen.
+
+**Enero de 2027 arranca en el 10 %.** 605 tallos por semana, 101 por día.
+
+**Cinco productos siguen sin poderse estimar** porque nunca han entrado al
+registro: **Dianthus Sweet Cherry, Ptilotus Matilda, Scabiosa, Carthamus y
+Celosia Purple Flamingo.** El más grave es el Sweet Cherry, con 4.032 plantas en
+la semana 48. Registrar esos cinco una temporada cierra el último hueco del
+modelo.
+
+Detalle por producto y por día: `07-datos/cosecha_proyectada_calibrada.csv`
+(385 filas) y `07-datos/cosecha_por_grupo_semana.csv`.

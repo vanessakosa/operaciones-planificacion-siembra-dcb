@@ -183,3 +183,21 @@ tipo.
   paraguas se mezclan; conviene no colapsarlos.
 - La cristata que queda en pie está en **4A**, y solo rinde **la mitad de la
   cama**: la otra mitad se quedó enana.
+
+### Celosias de otoño — confirmadas plumosa (2026-09-03)
+
+| Lote | Cama | Sitios | Sembrada |
+|---|---|---|---|
+| **Autumn Blaze** (plumosa) | Inv 4A, cama completa | 896 | sem 27 |
+| **Sangría** (plumosa) | Inv 3A, ¾ de cama | 1.188 | sem 27 |
+
+Cosecha **semanas 41–44**, ~500 tallos/semana con realización 0,24. Que sean
+plumosa y no cristata **cuadruplica el resultado**: 4 tallos/planta contra 1.
+
+**Ninguna de las dos existe en `campo_siembras.csv`.** Es la brecha más cara
+detectada en esta sesión: 2.000 tallos que no aparecen en ninguna proyección ni
+en el calendario de Erica porque la siembra nunca se registró.
+
+→ Regla que sale de aquí: **una siembra sin fila en CAMPO no existe para el
+sistema, por más que esté en la cama.** Vale la pena revisar si hay más camas
+sembradas sin registrar antes de confiar en cualquier proyección.

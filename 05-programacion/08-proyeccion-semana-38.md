@@ -37,12 +37,12 @@ verdad del proyecto y no lo apliqué.
 | Grupo | Real s29–32 | Sem 38 | Base del número |
 |---|---|---|---|
 | **Gomphrena** | 79 | **550–900** | 🟢 **El nuevo pilar.** Carmine Inv5 (1.728 pl, inicio registrado en la 38), Salmon 4B (730 pl) y Pink 4A, las tres *"terminando de madurarse"*. Calculado con **1,14 tallos/planta medidos** en Quis Carmine, no con el teórico de 3 |
-| **Carthamus Zanzibar** | — | **SIN_DATO** | 🟡 4A, 1.900 plantas, **inicio de cosecha registrado en la semana 38** — la hoja y el campo coinciden. Pero `ciclos_variedad.csv` **no tiene tallos/planta** para Carthamus. Si diera 1 tallo/planta serían ~475/semana; si diera 2, el doble. **Es la carta más grande que queda y no se puede cuantificar** |
+| **Carthamus Zanzibar** | — | **SIN_DATO** | 🟡 **Una cama del 4A**, con inicio de cosecha registrado en la semana 38 — la hoja y el campo coinciden. Pero `ciclos_variedad.csv` **no tiene tallos/planta** para Carthamus, y las 1.900 plantas de CAMPO no cuadran con una cama 4A (112 × 8 = 896 sitios) salvo a ~2 plantas por hueco. **Dos incógnitas sobre la carta más grande del pico** |
 | Resto (Matricaria · Ammobium · Amaranto · Strawflower) | ~820 | 300–500 | Sin reporte de campo; decaimiento del promedio |
 | **Statice** | 1.299 | **250–500** | Quedan tres camas pequeñas. El blanco ya salió, Forever Happy arrancó en la 27 y se agota, Forever Silver 3C entra con **tallos cortos** |
 | **Ammi** | 290 | **100–250** | ⬇️ Solo el de **3EXT**, que empieza la 37. El **6ext no llega**: la hoja le pone inicio en la 38 pero en campo *"no se ven tallos formados"* |
 | Dusty Miller | 84 | 150–300 | *"Todavía hay bastante"* |
-| **Celosia** | 1.065 | **50–200** | 🔴 Toda la Shimmer (3A, Mini, 3B) cierra **esta semana**. Solo *"algunos centrales"* de las de otoño — que llegan tarde, ver abajo |
+| **Celosia** | 1.065 | **50–200** | 🔴 Toda la Shimmer (3A, Mini, 3B) cierra **esta semana**. Solo *"algunos centrales"* de las de otoño, que son **plumosa y entran en la 41** — ver abajo |
 | Trachelium | 15 | 100–250 | Mini agotado; el 5 con tallos torcidos; otra cama en formación |
 | Lisianthus | 999 | 100–200 | *"Insignificante"* |
 | Green Ball | 439 | 100–200 | La 4B cerró alrededor de la 36 |
@@ -52,49 +52,63 @@ verdad del proyecto y no lo apliqué.
 
 ---
 
-## Las celosias de otoño llegan tarde para el pico — pico real: semanas 41 a 43
+## Las celosias de otoño: confirmadas PLUMOSA — el rescate es octubre, no el pico
 
-Esto responde lo que preguntaste. Sembradas en la **semana 27**, en una cama del
-4A y una del 3A. Con las medidas de `capacidad_bloques.csv`:
+Confirmado por Vanessa el 2026-09-03: **las dos son plumosa**, sembradas en la
+**semana 27**, con este reparto de cama:
 
-| | Huecos × líneas | Sitios |
-|---|---|---|
-| 1 cama Inv 4A | 112 × 8 | 896 |
-| 1 cama Inv 3A | 198 × 8 | 1.584 |
-| | **Tope de cama** | **2.480** |
-
-Corriendo el ciclo desde la semana 27:
-
-| Si son… | Cosecha | Techo de tallos | Con realización 0,24 |
+| Lote | Cama | Cálculo | Sitios |
 |---|---|---|---|
-| **Cristata** (14 sem, ventana 3, 1 t/planta) | **sem 41–43** | 2.480 | ~198/semana |
-| **Plumosa** (14 sem, ventana 4, 4 t/planta) | **sem 41–44** | 9.920 | ~595/semana |
+| **Autumn Blaze** | Inv 4A, cama completa | 112 × 8 | 896 |
+| **Sangría** | Inv 3A, ¾ de cama | 198 × 8 × 0,75 | 1.188 |
+| | | **Total** | **2.084** |
 
-**Su producción máxima cae en las semanas 41 a 43, no en la 38.** Para el pico
-solo alcanzan *"algunos centrales"*, tal como dijiste — y eso es adelanto sobre
-el ciclo, coherente con el problema de luz que ya adelantó al lisianthus y a la
-cristata.
+Celosia plumosa: 14 semanas a campo, ventana 3–4, **4 tallos/planta**.
 
-🔴 **No está registrado si Autumn Blaze y Sangría son cristata o plumosa, y la
-diferencia son 4× los tallos** (2.480 contra 9.920). Es el dato más barato de
-conseguir de toda esta proyección y el que más mueve el número de octubre.
+| | |
+|---|---|
+| Cosecha | **semanas 41 a 44** |
+| Techo teórico | 8.336 tallos |
+| Con realización 0,24 | **~2.000 tallos → ~500/semana** |
+
+**Que sean plumosa y no cristata cuadruplica el resultado** — 8.336 contra 2.480
+de techo. Era la pregunta más barata de toda esta proyección y movió el número
+más que ninguna otra.
+
+### Dónde caen esos 500 tallos/semana
+
+Justo encima del segundo valle:
+
+| Sem | Sin las de otoño | Con las de otoño | |
+|---|---|---|---|
+| 41 | 2.793 | **3.293** | +18 % |
+| 42 | 2.895 | **3.395** | +17 % |
+| 43 | 4.232 | **4.732** | +12 % |
+| 44 | 5.303 | **5.803** | +9 % |
+
+**Las semanas 41 y 42 eran el segundo valle del semestre y estas dos camas se lo
+comen casi entero.** No salvan Amor y Amistad —para el pico solo dan *"algunos
+centrales"*, que ya es adelanto sobre el ciclo— pero sí sostienen octubre.
+
+🟡 **Ninguna de las dos está en CAMPO.** Sin fila y sin nombre homologado, estos
+2.000 tallos no existen para el calendario de Erica ni para ninguna proyección
+que corra el motor. Registrarlas es lo primero.
 
 ---
 
-## Las dos incógnitas que deciden si son 2.400 o 3.200
+## La incógnita que queda: el Carthamus
 
-**1. Carthamus Zanzibar no tiene tallos/planta en ningún CSV.** Es el único lote
-grande cuyo inicio de cosecha cae exactamente en la semana 38, con 1.900 plantas
-y confirmación de campo (*"en formación de botones, va a estar perfecto para esa
-época"*). Es, con diferencia, la carta más grande que le queda al pico — y el
-repositorio no puede decir cuántos tallos son.
+Con las celosias resueltas, **el Carthamus Zanzibar es lo único grande que sigue
+sin cuantificar en la semana 38** — y tiene dos huecos, no uno:
 
-→ **Contar tallos por planta en una muestra esta semana.** Es media hora de
-trabajo y es la diferencia entre planear el pico a ciegas o con número.
+1. **`ciclos_variedad.csv` no tiene tallos/planta para Carthamus.** La fila
+   existe (14 semanas a campo, ventana 2) pero la columna está vacía.
+2. **La densidad no cuadra.** Vanessa confirma que es *una cama del 4A*. Una
+   cama 4A son 112 × 8 = **896 sitios**, pero CAMPO registra **1.900 plantas**.
+   Solo cuadra a ~2 plantas por hueco.
 
-**2. Autumn Blaze y Sangría no están registradas.** Cero filas en CAMPO. No
-tienen semana de siembra, ni bloque, ni cantidad, ni nombre homologado — así que
-ni entran en esta proyección ni van a aparecer en el calendario de Erica.
+→ **Contar tallos en una muestra y verificar la densidad.** Entre las dos cosas
+es la diferencia entre ~450 y ~950 tallos en la semana del pico.
 
 ---
 

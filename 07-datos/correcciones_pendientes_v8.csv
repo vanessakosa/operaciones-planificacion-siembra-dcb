@@ -19,5 +19,6 @@ fecha,tipo,variedad,bloque,semana_siembra,dice_el_v8,debe_decir,motivo
 2026-09-03,bloque,Snapdragon Opus Appleblossom,3b / 4A,22,Bloques 3b y 4A,Bloques 4B y 3C,Vanessa: hay es appleblossom en el 4b y 3c. Confirmar cual fila lleva cual bloque
 2026-09-03,ventana,Snapdragon Opus Appleblossom,4B y 3C,22,,Fin de ciclo semana 37,Vanessa: ya terminan ciclo la semana entrante
 2026-09-03,cierre,Celosia Shimmer,"3A, MINI, 3B",17,Activa,Fin cosecha semana 36,"Vanessa: las del 3a, mini y 3b ya se acaba cosecha esta semana"
-2026-09-03,siembra_no_registrada,Celosia Autumn Blaze,4A o 3A,27,(no existe en CAMPO),AGREGAR sem 27,"Una cama 4A + una cama 3A entre Autumn Blaze y Sangria. Falta el reparto, la cantidad real y si es cristata o plumosa"
-2026-09-03,siembra_no_registrada,Celosia Sangria,4A o 3A,27,(no existe en CAMPO),AGREGAR sem 27,"Una cama 4A + una cama 3A entre Autumn Blaze y Sangria. Falta el reparto, la cantidad real y si es cristata o plumosa"
+2026-09-03,siembra_no_registrada,Celosia Autumn Blaze,4A,27,(no existe en CAMPO),"AGREGAR: sem 27, 4A, cama completa = 896 sitios (112x8), PLUMOSA",Confirmado por Vanessa 2026-09-03. Falta nombre homologado y conteo real de plantas
+2026-09-03,siembra_no_registrada,Celosia Sangria,3A,27,(no existe en CAMPO),"AGREGAR: sem 27, 3A, 3/4 de cama = 1.188 sitios (198x8x0,75), PLUMOSA","Confirmado por Vanessa 2026-09-03. Falta nombre homologado, el cuarto restante de la cama y conteo real"
+2026-09-03,verificar,Carthamus Zanzibar,4A,25,1.900 plantas,Confirmar densidad,Vanessa: es UNA cama del 4A. Una cama 4A son 112x8 = 896 sitios a 1/hueco. Las 1.900 de CAMPO implican ~2 plantas por hueco — confirmar antes de usarlas

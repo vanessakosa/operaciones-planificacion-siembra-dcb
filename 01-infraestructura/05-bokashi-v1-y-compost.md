@@ -293,6 +293,110 @@ Esa última línea es la que conecta con el problema de P soluble bajo: ver
 
 ---
 
+# Protocolo del compost térmico — V1
+
+Decidido el 2026-09-03 junto con la hoja de operario. **Es el primer protocolo de compost
+térmico de la finca**; hasta hoy los restos iban a una pila fría sin volteo ni temperatura.
+
+## La proporción: 45 % marrón · 30 % verde · 25 % estiércol, por volumen
+
+Es la **receta de dominancia fúngica** de Ingham. La receta bacteriana lleva más verde
+(25 N / 45 verde / 30 marrón); la fúngica invierte verde y marrón. **Se eligió la fúngica
+deliberadamente**, porque la función declarada de esta pila es ser el **inóculo fúngico** y la
+materia prima del extracto de compost — el Bokashi ya cubre lo bacteriano.
+
+**Y es la razón cuantitativa por la que heno y cascarilla van aquí:** son el 45 % de la pila.
+No es una asignación de sobrantes, es el componente mayoritario.
+
+Se expresa al operario como **espesor de capa**, no como kg:
+
+| Capa | Espesor | Fracción |
+|---|---|---|
+| 1 · Heno + cascarilla | 18 cm | 45 % |
+| 2 · Restos de cultivo + cocina | 12 cm | 30 % |
+| 3 · Estiércol de caballo | 10 cm | 25 % |
+
+El ciclo se repite **4 veces** → 1,6 m de alto.
+
+> **Por qué en capas y no en kg:** dos de los cinco insumos (restos de cultivo y de cocina)
+> llegan continuamente y sin pesar, y **no se conoce el peso ni el volumen de una paca** de heno
+> ni de cascarilla. El espesor de capa **se autonormaliza**: se repiten capas hasta agotar
+> material o llegar a 1,5 m, y la proporción sale correcta sin pesar nada. Cuando haya pesos de
+> paca medidos se puede convertir a kg — pero no hace falta para arrancar.
+
+## Las medidas de la pila son la restricción dura
+
+| Medida | Valor | Mínimo |
+|---|---|---|
+| Ancho de base | 1,5 m | 1,2 m |
+| Largo | 2 m | 2 m |
+| Alto | 1,5 m | **1,2 m** |
+
+**Por debajo de ~1 m³ la pila no se autoaísla y no llega a 55–65 °C.** Es la causa de falla más
+común del compostaje térmico y por eso las medidas van en la hoja como cantidad a verificar,
+no como sugerencia. Con 450 kg de equinaza (~0,9 m³ al 25 %) la pila sale de **~3,5 m³** —
+sobrada.
+
+## Volteos: días 3, 6, 9, 12, 15
+
+Cinco volteos cada 3 días, y **voltear antes si pasa de 65 °C**. Por encima de 65 °C se empiezan
+a matar los hongos y los protozoos que son justamente el producto.
+
+> 🔴 **La instrucción que decide si esto funciona: en cada volteo, el material de afuera va al
+> centro.** La capa externa nunca alcanza 55–65 °C. Si el material que entró con *Fusarium* o
+> *Botrytis* se queda en la corteza, **el patógeno sobrevive y la pila se convierte en un
+> vehículo de reinoculación** — exactamente lo que se quiere evitar con las 29 incidencias de
+> `07-datos/incidencia_fitosanitaria.csv`.
+
+## Humedad: distinta a la del Bokashi, y a propósito
+
+| | Prueba de puño | Humedad aprox. |
+|---|---|---|
+| Bokashi | Se compacta **sin soltar agua** | ~50 % |
+| Compost | Salen **1 o 2 gotas** | 55–60 % |
+
+El compost va más húmedo porque el volteo lo airea y lo seca. La prueba de puño es la única
+medición de humedad disponible en campo y **es suficiente** — no hace falta comprar nada.
+
+## Cubierta: techo o costal, nunca plástico sellado
+
+El Bokashi se cubre para excluir oxígeno; **el compost se cubre solo para excluir lluvia.**
+Sellarlo con plástico lo vuelve anaerobio y se pierde la pila. En Rionegro la protección de
+lluvia sí es necesaria — sin ella se lixivian los nutrientes y el centro se vuelve anaerobio.
+
+## Curado: 6 a 8 semanas sin voltear
+
+La fase térmica (15 días) mata patógenos. **El curado es donde aparecen los protozoos y los
+nematodos bacterívoros**, que son el grupo funcional que ningún inoculante comercial vende y el
+que libera N y P en la rizosfera. Voltear en el curado los mata. Total: 8–12 semanas.
+
+Listo cuando: **olor a tierra de bosque · no se reconoce el material original · temperatura igual
+a la del ambiente.**
+
+## Lo que NO entra
+
+Ceniza y cal (ver la sección de destino de la ceniza) · carne, huesos, lácteos y aceite
+(anaerobiosis y roedores) · plástico, cabuya, malla y alambre — **riesgo real en una finca de
+flor, donde el mulch plástico y la cabuya de tutorado están en la misma cama que el residuo** ·
+harina de maíz, melaza y levadura, que son del Bokashi.
+
+## EM-1 NO va en la hoja todavía
+
+La dosis de EM-1 para compostaje por m³ de pila **sigue pendiente** de BIOEM/FUNDASES. Por la
+regla de los PDF de operario — *cero productos en dosis 0, cero cálculos pendientes* — no puede
+aparecer en la hoja. **Y para compost térmico probablemente no hace falta:** EM es un consorcio
+de fermentación anaerobia; el compost térmico es aerobio y su inóculo viene del estiércol, la
+tierra y el propio material. Se resuelve cuando llegue la dosis.
+
+## Hoja de operario
+
+`05-programacion/hojas-operario/preparacion-camas-bokashi-y-compost.html` — tres páginas:
+clasificación de material, Bokashi V1 y compost. **La página 1 es una tabla de clasificación**
+de los 14 materiales que hay hoy en finca, porque el riesgo operativo dominante no es la dosis
+sino que un material entre a la pila equivocada.
+
+---
+
 # La muestra del Bokashi
 
 - **Tomarla de esta tanda V1**, cuando esté **terminada** — no a mitad de fermentación

@@ -41,17 +41,9 @@
   .caja{display:inline-block;width:19px;height:19px;border:1.5px solid var(--tinta-2)}
 
   .fuera td{background:var(--papel)}
-  .fuera .prod{font-weight:400;color:var(--tinta-3);text-decoration:line-through}
-  .fuera .prod small{text-decoration:none;color:var(--tinta-3)}
+  .fuera .prod{font-weight:400;color:var(--tinta-3)}
   .no-va{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
          color:var(--alerta)}
-
-  /* chip de destino — solo blanco, beige y negro */
-  .chip{display:inline-block;border:1.5px solid var(--tinta);background:var(--beige);
-        padding:5px 11px;font-size:11.5px;font-weight:700;letter-spacing:.12em;
-        text-transform:uppercase;white-space:nowrap}
-  .chip.b{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
-  .chip.x{background:var(--papel);border-color:var(--alerta);color:var(--alerta)}
 
   ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
            background:var(--regla);border:1px solid var(--regla)}
@@ -82,14 +74,6 @@
       font-size:14px;line-height:1.45}
   .no b{color:var(--alerta)}
 
-  /* resumen de las dos pilas, lado a lado */
-  .pilas{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px}
-  .pila{border:2px solid var(--tinta);padding:16px 18px}
-  .pila h3{font-size:17px;margin:0 0 12px;font-weight:700}
-  .pila dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14px}
-  .pila dt{color:var(--tinta-2)}
-  .pila dd{margin:0;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
-
   footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--regla);
          font-size:12px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 22px}
 
@@ -112,153 +96,18 @@
 
 <div class="hoja">
 
-  <!-- ==================== PÁGINA 1 ==================== -->
+  <!-- ==================== HOJA 1 · BOKASHI ==================== -->
 
   <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
-  <h1>Preparación de camas — dos pilas separadas</h1>
+  <h1>Pila 1 · Bokashi</h1>
   <div class="meta">
-    <span>Versión <b>1</b> · <b>03/09/2026</b></span>
-    <span>Hojas <b>1 de 3</b></span>
+    <span>Produce <b>53 sacos</b> de 25 kg</span>
+    <span>Lista en <b>14 días</b></span>
+    <span>Hoja <b>1 de 2</b></span>
   </div>
 
   <section>
-    <h2>Las dos pilas</h2>
-    <div class="pilas">
-      <div class="pila">
-        <h3>Pila 1 · Bokashi</h3>
-        <dl>
-          <dt>Produce</dt><dd>1.315 kg</dd>
-          <dt>Sacos de 25 kg</dt><dd>53</dd>
-          <dt>Temperatura</dt><dd>45 – 55 °C</dd>
-          <dt>Lista en</dt><dd>2 semanas</dd>
-          <dt>Altura máxima</dt><dd>1,2 m</dd>
-          <dt>Se cubre</dt><dd>Sí</dd>
-        </dl>
-      </div>
-      <div class="pila">
-        <h3>Pila 2 · Compost</h3>
-        <dl>
-          <dt>Produce</dt><dd>~3,5 m³</dd>
-          <dt>Volteos</dt><dd>5</dd>
-          <dt>Temperatura</dt><dd>55 – 65 °C</dd>
-          <dt>Lista en</dt><dd>8 – 12 semanas</dd>
-          <dt>Altura</dt><dd>1,5 m</dd>
-          <dt>Se cubre</dt><dd>Techo o costal</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Qué material va a cuál pila</h2>
-    <div class="envoltura">
-      <table>
-        <caption>Antes de mover cualquier material, buscarlo en esta tabla.</caption>
-        <thead>
-          <tr>
-            <th style="width:56%">Material</th>
-            <th style="width:28%">Va a</th>
-            <th class="mid" style="width:16%">Separado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="prod">Estiércol de caballo<small>32 sacos de 25 kg</small></td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Estiércol de caballo<small>Los 18 sacos que sobran</small></td>
-            <td><span class="chip">Compost</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Tierra negra</td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Harina de maíz</td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Melaza</td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Levadura</td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">King grass picado</td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Biochar de las 2 quemas nuevas<small>Entra en el volteo del día 2</small></td>
-            <td><span class="chip b">Bokashi</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Heno<small>3 pacas · picado a 10 cm</small></td>
-            <td><span class="chip">Compost</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Cascarilla de arroz<small>3 pacas</small></td>
-            <td><span class="chip">Compost</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Restos de cultivo<small>La pila fría actual · picados a 10 cm</small></td>
-            <td><span class="chip">Compost</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Restos de cocina</td>
-            <td><span class="chip">Compost</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Bulto de biochar mezclado con ceniza<small>Dejarlo aparte y rotulado</small></td>
-            <td><span class="chip x">No usar</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-          <tr>
-            <td class="prod">Saco de ceniza de leña<small>Dejarlo aparte y rotulado</small></td>
-            <td><span class="chip x">No usar</span></td>
-            <td class="mid"><span class="caja"></span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="no"><b>NO</b> pasar material de una pila a la otra. <b>NO</b> usar los dos bultos de ceniza sin indicación de Vanessa.</p>
-  </section>
-
-  <footer>
-    <span>Preparación: Wilson</span>
-    <span>Apoyo: Jason · José · Junior</span>
-    <span>Dudas de cantidad: preguntar antes de mezclar</span>
-  </footer>
-
-  <div class="salto"></div>
-
-  <!-- ==================== PÁGINA 2 · BOKASHI ==================== -->
-
-  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
-  <h1>Pila 1 · Tanda de Bokashi — Versión 1</h1>
-  <div class="meta">
-    <span>Produce <b>~1.315 kg</b></span>
-    <span><b>53 sacos</b> de 25 kg</span>
-    <span>Lista en <b>2 semanas</b></span>
-    <span>Hojas <b>2 de 3</b></span>
-  </div>
-
-  <section>
-    <h2>Ingredientes de esta tanda</h2>
+    <h2>Ingredientes</h2>
     <div class="envoltura">
       <table>
         <thead>
@@ -283,31 +132,31 @@
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Harina de maíz<small>80 kg en bodega + 120 kg por comprar</small></td>
+            <td class="prod">Harina de maíz</td>
             <td class="num"><span class="dosis">200<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">King grass picado<small>NO usar el heno — ese va al compost</small></td>
+            <td class="prod">King grass picado</td>
             <td class="num"><span class="dosis">160<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Biochar<small>De las 2 quemas nuevas · entra en el volteo del día 2 · NO usar el bulto viejo mezclado con ceniza</small></td>
+            <td class="prod">Biochar<small>De las 2 quemas nuevas · entra el día 2</small></td>
             <td class="num"><span class="dosis">80<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Melaza<small>2 sacos de 30 kg · disolver en agua · NO usar para Supermagro</small></td>
+            <td class="prod">Melaza<small>2 sacos de 30 kg</small></td>
             <td class="num"><span class="dosis">60<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Levadura<small>2 bloques de 500 g · disolver en agua tibia</small></td>
+            <td class="prod">Levadura<small>2 bloques de 500 g</small></td>
             <td class="num"><span class="dosis">1<span>kg</span></span></td>
             <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
@@ -318,105 +167,19 @@
   </section>
 
   <section>
-    <h2>Ingredientes que ya NO van</h2>
-    <table>
-      <tbody>
-        <tr class="fuera">
-          <td class="prod" style="width:70%">Ceniza de madera<small>Ni el saco de ceniza sola, ni el bulto de biochar mezclado con ceniza</small></td>
-          <td class="num"><span class="no-va">No va</span></td>
-        </tr>
-        <tr class="fuera">
-          <td class="prod">Humus de lombriz</td>
-          <td class="num"><span class="no-va">No va</span></td>
-        </tr>
-        <tr class="fuera">
-          <td class="prod">Sulfato de cobre</td>
-          <td class="num"><span class="no-va">No va</span></td>
-        </tr>
-        <tr class="fuera">
-          <td class="prod">Heno</td>
-          <td class="num"><span class="no-va">Al compost</span></td>
-        </tr>
-        <tr class="fuera">
-          <td class="prod">Cascarilla de arroz</td>
-          <td class="num"><span class="no-va">Al compost</span></td>
-        </tr>
-        <tr class="fuera">
-          <td class="prod">Roca fosfórica · Cal agrícola · Harina de roca · Salvado de trigo</td>
-          <td class="num"><span class="no-va">No van</span></td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="no"><b>NO</b> agregar restos de cultivo ni de cocina a esta pila. Esos van a la pila de compost, aparte.</p>
-  </section>
-
-  <section>
     <h2>Armado</h2>
     <ol class="orden">
-      <li>Disolver la <b>melaza</b> y la <b>levadura</b> en agua, por separado. La levadura en agua tibia.</li>
-      <li>Mezclar en seco la <b>equinaza</b>, la <b>tierra negra</b>, la <b>harina de maíz</b> y el <b>king grass</b>.</li>
+      <li>Disolver la <b>melaza</b> en agua. Disolver la <b>levadura</b> aparte, en <b>agua tibia</b>.</li>
+      <li>Mezclar en seco el <b>estiércol</b>, la <b>tierra negra</b>, la <b>harina de maíz</b> y el <b>king grass</b>.</li>
       <li>Regar con la <b>melaza</b> y la <b>levadura</b> mientras se sigue mezclando.</li>
       <li>Punto de humedad: apretar un puño de mezcla. <b>Debe compactarse sin soltar agua.</b></li>
       <li>Armar la pila. <b>Altura máxima 1,2 m.</b> No compactar.</li>
       <li>Cubrir.</li>
-      <li>El <b>biochar</b> no entra ahora: se incorpora en el <b>volteo del día 2</b>.</li>
+      <li><b>Día 2:</b> voltear la pila y agregar los <b>80 kg de biochar</b>.</li>
+      <li><b>Día 4:</b> voltear la pila.</li>
+      <li><b>Día 14:</b> la tanda está lista. Ensacar.</li>
     </ol>
-  </section>
-
-  <section>
-    <div class="control">
-      <h3>Control de la tanda</h3>
-      <div class="dias">
-        <div class="dia"><b>Día 1 · armado</b><span class="linea"></span><small>fecha</small></div>
-        <div class="dia v"><b>Día 2 · voltear</b><span class="linea"></span><small>temp. °C — entra el biochar</small></div>
-        <div class="dia v"><b>Día 4 · voltear</b><span class="linea"></span><small>temp. °C</small></div>
-        <div class="dia"><b>Día 7</b><span class="linea"></span><small>temp. °C</small></div>
-        <div class="dia"><b>Día 14 · lista</b><span class="linea"></span><small>fecha</small></div>
-      </div>
-      <p class="senales">
-        Temperatura correcta: <b>45 a 55 °C</b>.<br>
-        Olor correcto: <b>dulce, a fermento</b>. Si huele a podrido, avisar a Vanessa.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="control">
-      <h3>Muestra para el laboratorio</h3>
-      <div class="dias">
-        <div class="dia"><b>Tomada</b><span class="linea"></span><small>fecha</small></div>
-        <div class="dia"><b>Enviada</b><span class="linea"></span><small>fecha</small></div>
-      </div>
-      <p class="senales">
-        Tomar la muestra <b>cuando la tanda esté terminada</b>, no antes.<br>
-        Tomar de <b>cinco puntos distintos</b> de la pila y mezclar.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Por comprar antes de armar</h2>
-    <table>
-      <thead>
-        <tr>
-          <th style="width:52%">Insumo</th>
-          <th class="num" style="width:24%">Cantidad</th>
-          <th class="mid" style="width:24%">Comprado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prod">Harina de maíz</td>
-          <td class="num"><span class="dosis">120<span>kg</span></span></td>
-          <td class="mid"><span class="caja"></span></td>
-        </tr>
-        <tr>
-          <td class="prod">Levadura</td>
-          <td class="num"><span class="dosis">1<span>kg</span></span></td>
-          <td class="mid"><span class="caja"></span></td>
-        </tr>
-      </tbody>
-    </table>
+    <p class="no"><b>NO</b> agregar restos de cultivo ni de cocina a esta pila. Si la pila <b>huele a podrido</b>, avisar a Vanessa.</p>
   </section>
 
   <footer>
@@ -427,19 +190,46 @@
 
   <div class="salto"></div>
 
-  <!-- ==================== PÁGINA 3 · COMPOST ==================== -->
+  <!-- ==================== HOJA 2 · COMPOST ==================== -->
 
   <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
-  <h1>Pila 2 · Compost térmico</h1>
+  <h1>Pila 2 · Compost</h1>
   <div class="meta">
-    <span>Pila de <b>~3,5 m³</b></span>
+    <span>Pila de <b>1,5 × 2 × 1,5 m</b></span>
     <span><b>55 – 65 °C</b></span>
-    <span>Lista en <b>8 a 12 semanas</b></span>
-    <span>Hojas <b>3 de 3</b></span>
+    <span>Hoja <b>2 de 2</b></span>
   </div>
 
   <section>
-    <h2>Medidas de la pila</h2>
+    <h2>Antes de armar: sacar el compost que ya está hecho</h2>
+    <div class="envoltura">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:60%">Paso</th>
+            <th class="mid" style="width:20%">Sacos</th>
+            <th class="mid" style="width:20%">Hecho</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prod">Sacar de <b>abajo</b> de la pila actual el material que ya está compostado<small>Zarandear · ensacar aparte · rotular COMPOST y la fecha</small></td>
+            <td class="mid"><span class="linea"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+          <tr>
+            <td class="prod">Apartar el material de la pila actual que <b>todavía no</b> está compostado<small>Ese entra en la capa 2 de la pila nueva</small></td>
+            <td class="mid">—</td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="no">Los sacos rotulados <b>COMPOST</b> no se aplican a ninguna cama sin autorización de Vanessa.</p>
+  </section>
+
+  <section>
+    <h2>Medidas de la pila nueva</h2>
     <div class="envoltura">
       <table>
         <caption>Estas medidas no se reducen. Una pila más pequeña no alcanza la temperatura.</caption>
@@ -472,46 +262,40 @@
   </section>
 
   <section>
-    <h2>Materiales de esta pila</h2>
+    <h2>Materiales</h2>
     <div class="envoltura">
       <table>
         <thead>
           <tr>
-            <th style="width:46%">Material</th>
+            <th style="width:52%">Material</th>
             <th class="num" style="width:24%">Cantidad</th>
-            <th class="mid" style="width:15%">Picado</th>
-            <th class="mid" style="width:15%">A la pila</th>
+            <th class="mid" style="width:24%">A la pila</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="prod">Estiércol de caballo<small>18 sacos de 25 kg</small></td>
             <td class="num"><span class="dosis">450<span>kg</span></span></td>
-            <td class="mid">—</td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
             <td class="prod">Heno<small>Picar a trozos de máximo 10 cm</small></td>
             <td class="num"><span class="dosis">3<span>pacas</span></span></td>
             <td class="mid"><span class="caja"></span></td>
-            <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
             <td class="prod">Cascarilla de arroz<small>No se pica</small></td>
             <td class="num"><span class="dosis">3<span>pacas</span></span></td>
-            <td class="mid">—</td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Restos de cultivo<small>Toda la pila fría actual · picar a máximo 10 cm</small></td>
+            <td class="prod">Restos de cultivo<small>Lo apartado de la pila actual + los nuevos · picar a máximo 10 cm</small></td>
             <td class="num"><span class="dosis">Todo</span></td>
-            <td class="mid"><span class="caja"></span></td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="prod">Restos de cocina<small>Los que haya el día del armado</small></td>
+            <td class="prod">Restos de cocina</td>
             <td class="num"><span class="dosis">Todo</span></td>
-            <td class="mid">—</td>
             <td class="mid"><span class="caja"></span></td>
           </tr>
         </tbody>
@@ -562,32 +346,32 @@
       <li><b>No compactar</b> ni pisar la pila.</li>
       <li>Cubrir con <b>techo o costales</b>.</li>
     </ol>
-    <p class="no"><b>NO</b> cubrir con plástico sellado. <b>NO</b> agregar harina de maíz, melaza ni levadura — esos son del Bokashi.</p>
+    <p class="no"><b>NO</b> cubrir con plástico sellado. Si se acaban el <b>heno</b> y la <b>cascarilla</b>, parar la pila ahí y guardar el resto de los restos para la pila siguiente.</p>
   </section>
 
   <section>
     <div class="control">
-      <h3>Temperatura — medir todos los días</h3>
+      <h3>Temperatura — medir todos los días en el centro de la pila</h3>
       <div class="dias log">
         <div class="dia"><b>Día 1 · armado</b><span class="linea"></span><small>fecha</small></div>
         <div class="dia"><b>Día 1</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 2</b><span class="linea"></span><small>°C</small></div>
-        <div class="dia v"><b>Día 3 · V</b><span class="linea"></span><small>°C · voltear</small></div>
+        <div class="dia v"><b>Día 3 · voltear</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 4</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 5</b><span class="linea"></span><small>°C</small></div>
-        <div class="dia v"><b>Día 6 · V</b><span class="linea"></span><small>°C · voltear</small></div>
+        <div class="dia v"><b>Día 6 · voltear</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 7</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 8</b><span class="linea"></span><small>°C</small></div>
-        <div class="dia v"><b>Día 9 · V</b><span class="linea"></span><small>°C · voltear</small></div>
+        <div class="dia v"><b>Día 9 · voltear</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 10</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 11</b><span class="linea"></span><small>°C</small></div>
-        <div class="dia v"><b>Día 12 · V</b><span class="linea"></span><small>°C · voltear</small></div>
+        <div class="dia v"><b>Día 12 · voltear</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 13</b><span class="linea"></span><small>°C</small></div>
         <div class="dia"><b>Día 14</b><span class="linea"></span><small>°C</small></div>
-        <div class="dia v"><b>Día 15 · V</b><span class="linea"></span><small>°C · último volteo</small></div>
+        <div class="dia v"><b>Día 15 · voltear</b><span class="linea"></span><small>°C · último</small></div>
       </div>
       <p class="senales">
-        Rango correcto: <b>55 a 65 °C</b>, y debe mantenerse ahí <b>al menos 3 días</b>.<br>
+        Rango correcto: <b>55 a 65 °C</b>.<br>
         Si <b>pasa de 65 °C</b>: voltear ese mismo día, sin esperar la fecha.<br>
         Si <b>no llega a 55 °C</b> antes del día 3: avisar a Vanessa.
       </p>
@@ -605,34 +389,29 @@
       <p class="senales">
         Dejar quieta <b>6 a 8 semanas</b>. <b>No voltear</b> en el curado.<br>
         Regar solo si la pila se seca.<br>
-        Está lista cuando huele <b>a tierra de bosque</b>, ya <b>no se reconoce el material original</b> y la temperatura es <b>igual a la del ambiente</b>.
+        Está lista cuando huele <b>a tierra de bosque</b> y ya <b>no se reconoce el material original</b>.
       </p>
     </div>
   </section>
 
   <section>
-    <h2>Lo que NUNCA entra a esta pila</h2>
+    <h2>Lo que nunca entra a esta pila</h2>
     <table>
       <tbody>
         <tr class="fuera">
-          <td class="prod" style="width:70%">Ceniza de madera · cal</td>
-          <td class="num"><span class="no-va">No va</span></td>
+          <td class="prod" style="width:70%">Plástico · cabuya · malla · alambre</td>
+          <td class="num"><span class="no-va">Sacar</span></td>
         </tr>
         <tr class="fuera">
           <td class="prod">Carne · huesos · lácteos · aceite</td>
-          <td class="num"><span class="no-va">No va</span></td>
+          <td class="num"><span class="no-va">Sacar</span></td>
         </tr>
         <tr class="fuera">
-          <td class="prod">Plástico · cabuya · malla · alambre</td>
-          <td class="num"><span class="no-va">No va</span></td>
-        </tr>
-        <tr class="fuera">
-          <td class="prod">Harina de maíz · melaza · levadura</td>
-          <td class="num"><span class="no-va">Al Bokashi</span></td>
+          <td class="prod">Ceniza · cal</td>
+          <td class="num"><span class="no-va">Sacar</span></td>
         </tr>
       </tbody>
     </table>
-    <p class="no">Esta pila <b>no se aplica a cama</b> sin autorización de Vanessa.</p>
   </section>
 
   <footer>

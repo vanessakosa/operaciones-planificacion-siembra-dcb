@@ -47,6 +47,17 @@ Otros nombres en nómina de campo: Yeison, Fabián, Esneider, Elieser.
 
 **Reglas de los PDF de operario (rígidas):**
 - Solo cantidades a pesar o medir. **Cero explicaciones, cero cálculos pendientes, cero productos en dosis 0.**
+- 🔴 **Solo lo que se ejecuta.** Regla dictada por Vanessa el 2026-09-03: *"el operario necesita
+  la información muy específica, no necesita información de más porque se enreda."* Lo que
+  sobra y hay que quitar:
+  - **Listas de lo que ya no va.** El histórico de la receta es ruido para quien ejecuta.
+  - **Tablas de clasificación o de referencia** que obliguen a decidir antes de actuar.
+  - **Tareas de otro día** — la toma de muestra de laboratorio, las compras. Van en su propia
+    hoja el día que corresponde.
+  - **Registros que Vanessa va a leer, no él.** Excepción: cuando la medición *dispara una
+    acción suya* — la temperatura del compost decide el volteo, así que esa sí va.
+  - Un volteo, un riego o un aviso **son acciones y se quedan**, aunque tengan fecha. La regla
+    separa acción de registro, no corto de largo.
 - Fuente Helvetica, sin itálicas, tablas tamaño 10+
 - `KeepTogether` para que el título no se separe de su tabla · `PageBreak` antes de cada sección
 - Paleta: blanco, beige y negro únicamente

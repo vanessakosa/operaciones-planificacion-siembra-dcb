@@ -324,6 +324,39 @@ El ciclo se repite **4 veces** → 1,6 m de alto.
 > material o llegar a 1,5 m, y la proporción sale correcta sin pesar nada. Cuando haya pesos de
 > paca medidos se puede convertir a kg — pero no hace falta para arrancar.
 
+## La pila fría actual: se cosecha por abajo y el resto entra a la nueva
+
+Dato de Vanessa del 2026-09-03: **la pila actual ya tiene bastante material acumulado**, y de
+abajo se puede sacar lo que ya está compostado. Su plan, que es el correcto:
+
+1. **Sacar de abajo** el material ya compostado, zarandear y ensacar aparte.
+2. **El material de arriba que todavía no está compostado** entra en la capa 2 de la pila nueva.
+
+Esto adelanta la disponibilidad: hay compost **ahora**, no en 8–12 semanas. Y el material sin
+compostar deja de ser un pasivo y se convierte en el insumo verde de la pila nueva.
+
+> 🔴 **Pero ese material no está desinfectado, y es una diferencia importante.** La pila actual
+> **nunca tuvo volteo ni control de temperatura** — es una pila fría. Nunca pasó por 55–65 °C.
+> Entró con restos de cultivo, así que carga lo mismo que entró: *Fusarium*, *Botrytis*,
+> mosca blanca.
+>
+> **Y las dos funciones para las que existe el compost en este repo — inóculo fúngico y
+> materia prima del extracto — se aplican a la planta.** Aplicar a cama material no
+> desinfectado es exactamente la reinoculación que se está tratando de evitar, con inóculo ya
+> confirmado en suelo de 3C, Inv 5 e Inv 4.
+
+**Recomendación:** que esos sacos entren también a la pila nueva, repartidos en la capa 2. Se
+gana dos cosas de una vez — es **el mejor inoculante que la pila nueva puede tener y es gratis**
+(compost maduro sembrando una pila nueva es práctica estándar), y es **la única forma de
+desinfectarlo**. Queda pendiente la decisión de Vanessa; mientras tanto la hoja pide ensacarlo,
+rotularlo y **no aplicarlo a cama sin autorización**, que es la instrucción segura en cualquiera
+de los dos casos.
+
+**Si se acaban el heno y la cascarilla antes de llegar a 1,5 m**, la hoja manda parar la pila y
+guardar el resto de los restos para la siguiente. Es lo que protege la proporción de 45 %
+marrón: seguir agregando verde sin marrón vuelve la pila bacteriana y anaerobia, que es lo
+contrario del objetivo.
+
 ## Las medidas de la pila son la restricción dura
 
 | Medida | Valor | Mínimo |
@@ -402,6 +435,11 @@ sino que un material entre a la pila equivocada.
 - **Tomarla de esta tanda V1**, cuando esté **terminada** — no a mitad de fermentación
 - Pedir **análisis de abono orgánico completo**: N, P, K, Ca, Mg, S, M.O. y pH
 - **El K decide la dosis.** Los demás cierran el balance de nutrientes de la finca, que hoy no cuadra
+
+> ⚠️ **La toma de muestra salió de la hoja de operario** (regla del 2026-09-03: nada de tareas
+> de otro día). Es la tarea que **desbloquea el cálculo de dosis de toda la preparación de
+> camas**, así que no puede quedar sin dueño: va como hoja aparte cuando la tanda cumpla los
+> 14 días, alrededor del **2026-09-17**.
 
 ## Estimación previa del K del Bokashi, para tener referencia
 

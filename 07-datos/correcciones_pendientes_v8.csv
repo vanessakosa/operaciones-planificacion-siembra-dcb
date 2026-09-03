@@ -13,5 +13,11 @@ fecha,tipo,variedad,bloque,semana_siembra,dice_el_v8,debe_decir,motivo
 2026-09-03,homologado,Limonium Bubblegum Wings,4A,28,N='Opus Appleblossom',N=PENDIENTE,Arrastre de celda
 2026-09-03,homologado,Limonium Fantasia Wings,4A,28,N='Opus Fresh',N=PENDIENTE,Arrastre de celda
 2026-09-03,homologado,Limonium Max Diamond,2,28,N='Forever Silver',N=PENDIENTE,Arrastre de celda
-2026-09-03,siembra_no_registrada,Celosia Autumn Blaze,?,?,(no existe en CAMPO),AGREGAR,"Vanessa la reporta en campo. Faltan semana, bloque, cantidad y nombre homologado"
-2026-09-03,siembra_no_registrada,Celosia Sangria,?,?,(no existe en CAMPO),AGREGAR,"Vanessa la reporta en campo. Faltan semana, bloque, cantidad y nombre homologado"
+2026-09-03,ventana,Ammi Majus,6ext,25,Inicio cosecha semana 38,NO llega a la 38,Vanessa: en el de 6 no se ven tallos formados
+2026-09-03,ventana,Ammi Majus,3EXT,22,Inicio cosecha semana 35,Inicio cosecha semana 37,Vanessa: el de 3 ext esta comenzando cosecha semana entrante
+2026-09-03,cierre,Snapdragon Monaco Plumblossom,5,14,Activa,Cerrada,Vanessa: no hay plumblossom en el 5 ahora
+2026-09-03,bloque,Snapdragon Opus Appleblossom,3b / 4A,22,Bloques 3b y 4A,Bloques 4B y 3C,Vanessa: hay es appleblossom en el 4b y 3c. Confirmar cual fila lleva cual bloque
+2026-09-03,ventana,Snapdragon Opus Appleblossom,4B y 3C,22,,Fin de ciclo semana 37,Vanessa: ya terminan ciclo la semana entrante
+2026-09-03,cierre,Celosia Shimmer,"3A, MINI, 3B",17,Activa,Fin cosecha semana 36,"Vanessa: las del 3a, mini y 3b ya se acaba cosecha esta semana"
+2026-09-03,siembra_no_registrada,Celosia Autumn Blaze,4A o 3A,27,(no existe en CAMPO),AGREGAR sem 27,"Una cama 4A + una cama 3A entre Autumn Blaze y Sangria. Falta el reparto, la cantidad real y si es cristata o plumosa"
+2026-09-03,siembra_no_registrada,Celosia Sangria,4A o 3A,27,(no existe en CAMPO),AGREGAR sem 27,"Una cama 4A + una cama 3A entre Autumn Blaze y Sangria. Falta el reparto, la cantidad real y si es cristata o plumosa"

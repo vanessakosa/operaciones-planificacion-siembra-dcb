@@ -8,8 +8,8 @@
 
 ## La respuesta
 
-**Entre 1.700 y 3.550 tallos con lo que está confirmado — centro ~2.600.**
-Con las dos incógnitas grandes resueltas a favor, subiría a ~3.400.
+**Entre 1.600 y 3.400 tallos con lo que está confirmado — centro ~2.400.**
+(Tercera pasada: el Ammi del 6ext se cayó — *"no se ven tallos formados"*.)
 
 Contra un ritmo real de **6.526 tallos/semana** en las semanas 29–32, la semana
 del pico comercial llega a **menos de la mitad**.
@@ -40,19 +40,48 @@ verdad del proyecto y no lo apliqué.
 | **Carthamus Zanzibar** | — | **SIN_DATO** | 🟡 4A, 1.900 plantas, **inicio de cosecha registrado en la semana 38** — la hoja y el campo coinciden. Pero `ciclos_variedad.csv` **no tiene tallos/planta** para Carthamus. Si diera 1 tallo/planta serían ~475/semana; si diera 2, el doble. **Es la carta más grande que queda y no se puede cuantificar** |
 | Resto (Matricaria · Ammobium · Amaranto · Strawflower) | ~820 | 300–500 | Sin reporte de campo; decaimiento del promedio |
 | **Statice** | 1.299 | **250–500** | Quedan tres camas pequeñas. El blanco ya salió, Forever Happy arrancó en la 27 y se agota, Forever Silver 3C entra con **tallos cortos** |
-| **Ammi** | 290 | **150–400** | El de Inv 3 empieza a cosecharse la 37; el 6ext tiene inicio registrado en la 38 (1.644 pl, 1,5 t/planta) |
+| **Ammi** | 290 | **100–250** | ⬇️ Solo el de **3EXT**, que empieza la 37. El **6ext no llega**: la hoja le pone inicio en la 38 pero en campo *"no se ven tallos formados"* |
 | Dusty Miller | 84 | 150–300 | *"Todavía hay bastante"* |
-| **Celosia** | 1.065 | **SIN_DATO** | 🔴 Las de otoño darían *"algunos centrales"*. **Autumn Blaze y Sangría no existen en CAMPO** — ver abajo |
+| **Celosia** | 1.065 | **50–200** | 🔴 Toda la Shimmer (3A, Mini, 3B) cierra **esta semana**. Solo *"algunos centrales"* de las de otoño — que llegan tarde, ver abajo |
 | Trachelium | 15 | 100–250 | Mini agotado; el 5 con tallos torcidos; otra cama en formación |
 | Lisianthus | 999 | 100–200 | *"Insignificante"* |
 | Green Ball | 439 | 100–200 | La 4B cerró alrededor de la 36 |
-| **Boca de Dragón** | 1.049 | **0–200** | ⬇️ Arrancó en la 36. *"Claramente no van a estar"* |
+| **Boca de Dragón** | 1.049 | **0** | ⬇️ Opus Fresh arrancó en la 36; **Appleblossom (4B y 3C) termina ciclo en la 37**. No queda nada para la 38 |
 | **Campanula** | 2 | **0–100** | ⬇️ Pico en la 37 |
 | Zinnia · Girasol · Colitas de conejo | 424 | **0** | Zinnia en cero desde la 32; girasol con tallos delgados; conejo cierra la 37 |
 
 ---
 
-## Las dos incógnitas que deciden si son 2.600 o 3.400
+## Las celosias de otoño llegan tarde para el pico — pico real: semanas 41 a 43
+
+Esto responde lo que preguntaste. Sembradas en la **semana 27**, en una cama del
+4A y una del 3A. Con las medidas de `capacidad_bloques.csv`:
+
+| | Huecos × líneas | Sitios |
+|---|---|---|
+| 1 cama Inv 4A | 112 × 8 | 896 |
+| 1 cama Inv 3A | 198 × 8 | 1.584 |
+| | **Tope de cama** | **2.480** |
+
+Corriendo el ciclo desde la semana 27:
+
+| Si son… | Cosecha | Techo de tallos | Con realización 0,24 |
+|---|---|---|---|
+| **Cristata** (14 sem, ventana 3, 1 t/planta) | **sem 41–43** | 2.480 | ~198/semana |
+| **Plumosa** (14 sem, ventana 4, 4 t/planta) | **sem 41–44** | 9.920 | ~595/semana |
+
+**Su producción máxima cae en las semanas 41 a 43, no en la 38.** Para el pico
+solo alcanzan *"algunos centrales"*, tal como dijiste — y eso es adelanto sobre
+el ciclo, coherente con el problema de luz que ya adelantó al lisianthus y a la
+cristata.
+
+🔴 **No está registrado si Autumn Blaze y Sangría son cristata o plumosa, y la
+diferencia son 4× los tallos** (2.480 contra 9.920). Es el dato más barato de
+conseguir de toda esta proyección y el que más mueve el número de octubre.
+
+---
+
+## Las dos incógnitas que deciden si son 2.400 o 3.200
 
 **1. Carthamus Zanzibar no tiene tallos/planta en ningún CSV.** Es el único lote
 grande cuyo inicio de cosecha cae exactamente en la semana 38, con 1.900 plantas

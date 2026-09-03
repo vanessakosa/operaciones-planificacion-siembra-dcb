@@ -304,17 +304,22 @@ Ptilotus Matilda (14), que son follaje y textura, no flor.
 
 | Sem | Tallos de snapdragon |
 |---|---|
+| 36 | 0 |
 | 37 | 913 (Opus Appleblossom 548 + Opus Fresh 365) |
 | **38** | **913** — mismo lote, sin refuerzo |
 | 39 | 1.187 |
 | 40 | 913 |
-| 41 | 2.249 (entran Cannes Lemon y Cannes Red) |
-| 42 | 3.376 |
-| 43 | 4.124 |
-| 44–45 | ~4.500 |
+| 41 | 2.523 (entran Cannes Lemon y Cannes Red) |
+| 42 | 4.476 |
+| **43** | **5.331** ← pico |
+| 44 | 4.308 |
+| 45 | 3.477 |
+| 48–49 | ~2.150 |
+| 51 | 1.096 |
+| 52 | 0 |
 
-En Amor y Amistad hay **913 tallos de snapdragon**, contra 4.500 en la 44. Es
-el 20 %. La estructura vertical del bouquet en el pico comercial del año
+En Amor y Amistad hay **913 tallos de snapdragon**, contra 5.331 en la 43. Es
+el 17 %. La estructura vertical del bouquet en el pico comercial del año
 depende de dos lotes que ya venían floreciendo desde la 36.
 
 ### Lo que no se puede cuantificar todavía
@@ -329,3 +334,13 @@ Helipterum · Dahlia**
 Medir tallos/planta de esos siete grupos es el trabajo más barato con más
 retorno del calendario: hoy dejan un hueco de información en las semanas 46 a
 52 y en enero de 2027 justo donde hay que decidir el surtido.
+
+## 11. Tablero visual
+
+`05-programacion/calendario-tallos-sem36.html` — el calendario semana por semana
+con identidad visual DCB (Lora, paleta beige/salvia/palo de rosa), publicado
+también como artefacto para revisar y compartir:
+https://claude.ai/code/artifact/6bb09562-bffa-4646-9c4b-39f8b8e11050
+
+Se regenera con el script del scratchpad a partir de
+`07-datos/tallos_estimados_semana.csv`.

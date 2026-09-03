@@ -1,0 +1,411 @@
+<title>Calendario de Tallos DCB</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+:root{
+  --beige:#F5F0E8; --crema:#FAF7F3; --blanco:#FFFFFF;
+  --tinta:#1A1A1A; --gris-h:#555555; --gris:#888888;
+  --rosa:#EDD5D5; --salvia:#C8DCC8; --alerta:#C0392B; --regla:#D0C8B8;
+  --salvia-fuerte:#9CBF9C; --rosa-fuerte:#D9A8A8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--beige);color:var(--tinta);
+  font-family:Lora,'Iowan Old Style',Georgia,serif;font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.hoja{max-width:1080px;margin:0 auto;padding:56px 28px 88px}
+
+/* --- portada --- */
+header.tapa{text-align:center;padding-bottom:34px;border-bottom:1px solid var(--regla)}
+.marca{font-style:italic;font-size:15px;color:var(--gris);letter-spacing:.14em;text-transform:uppercase}
+h1{font-weight:500;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em;margin:16px 0 10px;text-wrap:balance}
+.sub{font-style:italic;font-size:clamp(17px,2.2vw,21px);color:var(--gris-h);margin:0 auto;max-width:34em;text-wrap:balance}
+.sello{font-style:italic;font-size:15px;color:var(--gris);margin-top:22px}
+
+/* --- vacíos --- */
+h2{font-weight:500;font-size:22px;letter-spacing:.05em;text-transform:uppercase;
+  margin:60px 0 6px;padding-bottom:9px;border-bottom:1px solid var(--regla)}
+.intro{font-style:italic;color:var(--gris-h);margin:0 0 26px;max-width:60ch}
+.vacios{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));margin:0 0 12px;padding:0;list-style:none}
+.vacio{background:var(--blanco);border:1px solid var(--regla);border-top:3px solid var(--rosa-fuerte);padding:22px 24px}
+.vacio.grave{border-top-color:var(--alerta)}
+.vacio h3{margin:0 0 4px;font-size:15px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--gris-h)}
+.cifra{font-size:34px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.15;margin:6px 0 2px}
+.vacio.grave .cifra{color:var(--alerta)}
+.vacio p{margin:8px 0 0;font-size:15px;color:var(--gris-h);font-style:italic}
+
+/* --- ledger --- */
+.sem{display:grid;grid-template-columns:112px 1fr;gap:26px;align-items:start;
+  background:var(--blanco);border:1px solid var(--regla);border-left-width:4px;
+  border-left-color:var(--salvia-fuerte);padding:20px 24px;margin-top:12px}
+.sem:nth-of-type(even){background:var(--crema)}
+.sem.bajo{border-left-color:var(--rosa-fuerte)}
+.sem.critico,.sem.cero{border-left-color:var(--alerta)}
+.rail{text-align:right;padding-top:2px}
+.wk{display:block;font-size:38px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
+.yr{display:block;font-style:italic;font-size:14px;color:var(--gris)}
+.fch{display:block;font-style:italic;font-size:13px;color:var(--gris);margin-top:4px}
+.hito{margin:0 0 12px;font-style:italic;font-size:15px;color:var(--gris-h);
+  background:var(--rosa);display:inline-block;padding:3px 12px}
+.barra{height:9px;background:var(--beige);border:1px solid var(--regla)}
+.barra span{display:block;height:100%;background:var(--salvia)}
+.sem.bajo .barra span{background:var(--rosa)}
+.sem.critico .barra span,.sem.cero .barra span{background:var(--rosa-fuerte)}
+.tot{margin:8px 0 14px;font-size:15px;color:var(--gris-h)}
+.tot strong{font-size:20px;font-weight:600;color:var(--tinta);font-variant-numeric:tabular-nums}
+.snap{float:right;font-style:italic;font-size:14px;color:var(--gris-h)}
+.snap.nil{color:var(--alerta)}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0}
+.chip{display:flex;align-items:baseline;gap:9px;background:var(--beige);
+  border:1px solid var(--regla);padding:4px 11px;font-size:14px}
+.sem:nth-of-type(even) .chip{background:var(--blanco)}
+.chip .n{font-variant-numeric:tabular-nums;color:var(--gris-h);font-size:13px}
+.chip.ball{border-bottom:2px solid var(--salvia-fuerte)}
+.chip.sd{border-style:dashed;color:var(--gris)}
+.chip.sd .n{font-style:italic}
+.chip.vacio{border-style:dashed;color:var(--alerta);font-style:italic}
+
+/* --- leyenda y notas --- */
+.leyenda{display:flex;flex-wrap:wrap;gap:22px;margin:18px 0 0;padding:0;list-style:none;
+  font-size:14px;font-style:italic;color:var(--gris-h)}
+.leyenda li{display:flex;align-items:center;gap:8px}
+.sw{width:22px;height:9px;border:1px solid var(--regla);display:inline-block}
+.notas{margin-top:60px;padding-top:22px;border-top:1px solid var(--regla);
+  font-size:15px;color:var(--gris-h);max-width:66ch}
+.notas p{margin:0 0 12px}
+.notas strong{font-weight:600;color:var(--tinta)}
+.pie{margin-top:44px;text-align:center;font-style:italic;font-size:14px;color:var(--gris)}
+@media(max-width:620px){
+  .sem{grid-template-columns:1fr;gap:12px}
+  .rail{text-align:left;display:flex;align-items:baseline;gap:10px}
+  .wk{font-size:28px}.snap{float:none;display:block}
+}
+</style>
+
+<div class="hoja">
+<header class="tapa">
+  <p class="marca">Dreams Can Bloom · Operaciones</p>
+  <h1>Calendario de Tallos</h1>
+  <p class="sub">Qué flor vamos a tener cada semana, con lo que ya está sembrado
+  en campo y lo que Ball entrega de aquí en adelante.</p>
+  <p class="sello">Corte semana 36 · 3 de septiembre de 2026 · v1</p>
+</header>
+
+<h2>Los tres vacíos</h2>
+<p class="intro">Lo que hay que resolver para poder vender y armar bouquets sin quedarse corto.</p>
+<ul class="vacios">
+  <li class="vacio">
+    <h3>Semanas 39 a 42</h3>
+    <p class="cifra">9.289</p>
+    <p>El mínimo del semestre cae en la 41. De 13.354 tallos en Amor y Amistad
+    se baja un 30 % en tres semanas.</p>
+  </li>
+  <li class="vacio grave">
+    <h3>Enero de 2027</h3>
+    <p class="cifra">−80 %</p>
+    <p>De 10.080 tallos en la semana 52 a 1.981 en la 1. Solo Statice, Ammi y
+    Campanula: blanco y durazno, sin un color fuerte.</p>
+  </li>
+  <li class="vacio grave">
+    <h3>Semanas 9 a 11 de 2027</h3>
+    <p class="cifra">0</p>
+    <p>Cero tallos. No hay nada, ni de campo ni de Ball. Es el vacío que solo se
+    cierra plantulando ahora.</p>
+  </li>
+</ul>
+
+<h2>Semana por semana</h2>
+<p class="intro">Cada barra se mide contra la mejor semana del calendario, la 45 con 20.746 tallos.</p>
+<ul class="leyenda">
+  <li><span class="sw" style="background:#C8DCC8"></span> semana holgada</li>
+  <li><span class="sw" style="background:#EDD5D5"></span> por debajo de 12.000 tallos</li>
+  <li><span class="sw" style="background:#D9A8A8"></span> por debajo de 6.000</li>
+  <li><span class="sw" style="border-bottom:2px solid #9CBF9C"></span> viene de Ball</li>
+  <li><span class="sw" style="border-style:dashed"></span> falta un dato para estimar</li>
+</ul>
+
+<article class="sem bajo">
+  <div class="rail"><span class="wk">36</span><span class="yr">2026</span><span class="fch">31 ago – 6 sep</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:53.4%"></span></div>
+      <p class="tot"><strong>11.076</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Matricaria Vegmo</span><span class="n">1.584</span></li><li class="chip"><span class="p">Lisianthus Rosado</span><span class="n">1.283</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Campanula Pink</span><span class="n">1.005</span></li><li class="chip"><span class="p">Strawflower Apricot Peach</span><span class="n">994</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">933</span></li><li class="chip"><span class="p">Strawflower Bright Rose</span><span class="n">891</span></li><li class="chip"><span class="p">Strawflower Silvery Rose</span><span class="n">800</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">790</span></li><li class="chip"><span class="p">Cristata Enda Rose</span><span class="n">711</span></li><li class="chip"><span class="p">Campanula White</span><span class="n">639</span></li><li class="chip"><span class="p">Lisianthus Pastel</span><span class="n">348</span></li><li class="chip sd"><span class="p">Dianthus Green Ball</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Dusty New Look</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Ammi Majus</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem bajo">
+  <div class="rail"><span class="wk">37</span><span class="yr">2026</span><span class="fch">7 – 13 sep</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:56.5%"></span></div>
+      <p class="tot"><strong>11.712</strong> tallos estimados <span class="snap">Boca de Dragón · 913</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Campanula Pink</span><span class="n">1.005</span></li><li class="chip"><span class="p">Strawflower Apricot Peach</span><span class="n">994</span></li><li class="chip"><span class="p">Cristata Clubs Cocktail</span><span class="n">989</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">933</span></li><li class="chip"><span class="p">Strawflower Bright Rose</span><span class="n">891</span></li><li class="chip"><span class="p">Strawflower Silvery Rose</span><span class="n">800</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">790</span></li><li class="chip"><span class="p">Cristata Enda Rose</span><span class="n">711</span></li><li class="chip"><span class="p">Cristata Reprise Orange</span><span class="n">693</span></li><li class="chip"><span class="p">Lisianthus Rosado</span><span class="n">667</span></li><li class="chip"><span class="p">Campanula White</span><span class="n">639</span></li><li class="chip"><span class="p">Opus Appleblossom</span><span class="n">548</span></li><li class="chip"><span class="p">Salmon Pink</span><span class="n">365</span></li><li class="chip"><span class="p">Opus Fresh</span><span class="n">365</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">224</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">1.918 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Dianthus Green Ball</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Dusty New Look</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Ammi Majus</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">38</span><span class="yr">2026</span><span class="fch">14 – 20 sep</span></div>
+  <div class="cuerpo">
+    <p class="hito">Amor y Amistad — sábado 19 de septiembre</p><div class="medida"><div class="barra"><span style="width:64.4%"></span></div>
+      <p class="tot"><strong>13.354</strong> tallos estimados <span class="snap">Boca de Dragón · 913</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Dusty New Look</span><span class="n">3.904</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">1.280</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Campanula Pink</span><span class="n">1.005</span></li><li class="chip"><span class="p">Cristata Clubs Cocktail</span><span class="n">989</span></li><li class="chip"><span class="p">QIS Carmine</span><span class="n">864</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">790</span></li><li class="chip"><span class="p">Lisianthus Rosado</span><span class="n">667</span></li><li class="chip"><span class="p">Campanula White</span><span class="n">639</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip"><span class="p">Opus Appleblossom</span><span class="n">548</span></li><li class="chip"><span class="p">Salmon Pink</span><span class="n">365</span></li><li class="chip"><span class="p">Opus Fresh</span><span class="n">365</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">224</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">3.818 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Dianthus Green Ball</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem bajo">
+  <div class="rail"><span class="wk">39</span><span class="yr">2026</span><span class="fch">21 – 27 sep</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:49.8%"></span></div>
+      <p class="tot"><strong>10.328</strong> tallos estimados <span class="snap">Boca de Dragón · 1.187</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Dusty New Look</span><span class="n">3.904</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">1.280</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">QIS Carmine</span><span class="n">864</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">790</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip"><span class="p">Opus Appleblossom</span><span class="n">548</span></li><li class="chip"><span class="p">Salmon Pink</span><span class="n">365</span></li><li class="chip"><span class="p">Opus Fresh</span><span class="n">365</span></li><li class="chip"><span class="p">Opus White Fresh</span><span class="n">274</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">224</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">1.900 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem bajo">
+  <div class="rail"><span class="wk">40</span><span class="yr">2026</span><span class="fch">28 sep – 4 oct</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:52.8%"></span></div>
+      <p class="tot"><strong>10.944</strong> tallos estimados <span class="snap">Boca de Dragón · 913</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Dusty New Look</span><span class="n">3.904</span></li><li class="chip"><span class="p">QIS Carmine</span><span class="n">1.695</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">1.375</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">978</span></li><li class="chip"><span class="p">Snapdragon Monaco Dark Pink</span><span class="n">639</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip"><span class="p">Salmon Pink</span><span class="n">365</span></li><li class="chip"><span class="p">Opus White Fresh</span><span class="n">274</span></li><li class="chip sd"><span class="p">Scabiosa Triple Berry</span><span class="n">446 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem bajo">
+  <div class="rail"><span class="wk">41</span><span class="yr">2026</span><span class="fch">5 – 11 oct</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:44.8%"></span></div>
+      <p class="tot"><strong>9.289</strong> tallos estimados <span class="snap">Boca de Dragón · 2.523</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">QIS Carmine</span><span class="n">1.695</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">1.375</span></li><li class="chip"><span class="p">Cannes Lemon</span><span class="n">1.101</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">978</span></li><li class="chip"><span class="p">Snapdragon Monaco Dark Pink</span><span class="n">639</span></li><li class="chip"><span class="p">Campanula Champion White</span><span class="n">639</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip"><span class="p">Cannes Red</span><span class="n">509</span></li><li class="chip"><span class="p">Salmon Pink</span><span class="n">365</span></li><li class="chip"><span class="p">Opus White Fresh</span><span class="n">274</span></li><li class="chip sd"><span class="p">Scabiosa Triple Berry</span><span class="n">446 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Strawflower King Size Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Strawflower Copper Red</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem bajo">
+  <div class="rail"><span class="wk">42</span><span class="yr">2026</span><span class="fch">12 – 18 oct</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:51.2%"></span></div>
+      <p class="tot"><strong>10.618</strong> tallos estimados <span class="snap">Boca de Dragón · 4.476</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">QIS Carmine</span><span class="n">1.695</span></li><li class="chip"><span class="p">Cannes Lemon</span><span class="n">1.101</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">978</span></li><li class="chip"><span class="p">MB Madame Butterfly</span><span class="n">698</span></li><li class="chip"><span class="p">MB Ivory</span><span class="n">698</span></li><li class="chip"><span class="p">Snapdragon Monaco Dark Pink</span><span class="n">639</span></li><li class="chip"><span class="p">Campanula Champion White</span><span class="n">639</span></li><li class="chip"><span class="p">Snapdragon Opus Lavender</span><span class="n">639</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">514</span></li><li class="chip"><span class="p">Cannes Red</span><span class="n">509</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">442</span></li><li class="chip"><span class="p">Matricaria Snowball</span><span class="n">411</span></li><li class="chip"><span class="p">Salmon Pink</span><span class="n">365</span></li><li class="chip"><span class="p">Snapdragon Opus Fresh</span><span class="n">192</span></li><li class="chip sd"><span class="p">Scabiosa Triple Berry</span><span class="n">446 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Strawflower King Size Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Strawflower Copper Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Achillea Cerise Queen</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Achillea Cloth of God</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">43</span><span class="yr">2026</span><span class="fch">19 – 25 oct</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:81.0%"></span></div>
+      <p class="tot"><strong>16.802</strong> tallos estimados <span class="snap">Boca de Dragón · 5.331</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Dusty New Look</span><span class="n">2.304</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">2.200</span></li><li class="chip"><span class="p">QIS Carmine</span><span class="n">1.695</span></li><li class="chip"><span class="p">Snapdragon Opus Lavender</span><span class="n">1.278</span></li><li class="chip"><span class="p">Cannes Lemon</span><span class="n">1.101</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Strawflower Vintage White</span><span class="n">881</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">754</span></li><li class="chip"><span class="p">MB Madame Butterfly</span><span class="n">698</span></li><li class="chip"><span class="p">MB Ivory</span><span class="n">698</span></li><li class="chip"><span class="p">Snapdragon Opus Red</span><span class="n">672</span></li><li class="chip"><span class="p">Campanula Champion White</span><span class="n">639</span></li><li class="chip"><span class="p">Dianthus Green Ball</span><span class="n">533</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">514</span></li><li class="chip"><span class="p">Cannes Red</span><span class="n">509</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">442</span></li><li class="chip"><span class="p">Matricaria Snowball</span><span class="n">411</span></li><li class="chip"><span class="p">Snapdragon Opus Fresh</span><span class="n">375</span></li><li class="chip sd"><span class="p">Strawflower King Size Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Strawflower Copper Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Achillea Cerise Queen</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Achillea Cloth of God</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">44</span><span class="yr">2026</span><span class="fch">26 oct – 1 nov</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:95.6%"></span></div>
+      <p class="tot"><strong>19.829</strong> tallos estimados <span class="snap">Boca de Dragón · 4.308</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Trachelium White</span><span class="n">3.800</span></li><li class="chip"><span class="p">Dusty New Look</span><span class="n">2.304</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">2.200</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.838</span></li><li class="chip"><span class="p">Snapdragon Opus Lavender</span><span class="n">1.278</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Strawflower Vintage White</span><span class="n">881</span></li><li class="chip"><span class="p">QIS Carmine</span><span class="n">831</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">754</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Snapdragon Opus Red</span><span class="n">672</span></li><li class="chip"><span class="p">Snapdragon Monaco Plumblossom</span><span class="n">672</span></li><li class="chip"><span class="p">Snapdragon Plumblossom</span><span class="n">639</span></li><li class="chip"><span class="p">Dianthus Green Ball</span><span class="n">533</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">514</span></li><li class="chip"><span class="p">Snapdragon Opus White Fresh</span><span class="n">480</span></li><li class="chip"><span class="p">Snapdragon Opus Fresh</span><span class="n">375</span></li><li class="chip"><span class="p">Snapdragon Monaco Dark Pink</span><span class="n">192</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">95</span></li><li class="chip sd"><span class="p">Strawflower King Size Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Strawflower Copper Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Achillea Cerise Queen</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Achillea Cloth of God</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">45</span><span class="yr">2026</span><span class="fch">2 – 8 nov</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:100.0%"></span></div>
+      <p class="tot"><strong>20.746</strong> tallos estimados <span class="snap">Boca de Dragón · 3.477</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Trachelium White</span><span class="n">3.800</span></li><li class="chip"><span class="p">Dusty New Look</span><span class="n">2.304</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">2.200</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.838</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">1.162</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Strawflower Vintage White</span><span class="n">881</span></li><li class="chip"><span class="p">QIS Carmine</span><span class="n">831</span></li><li class="chip"><span class="p">Quis Pink</span><span class="n">754</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Snapdragon Opus Red</span><span class="n">672</span></li><li class="chip"><span class="p">Snapdragon Monaco Plumblossom</span><span class="n">672</span></li><li class="chip"><span class="p">Snapdragon Opus Lavender</span><span class="n">639</span></li><li class="chip"><span class="p">Snapdragon Plumblossom</span><span class="n">639</span></li><li class="chip"><span class="p">Dianthus Green Ball</span><span class="n">533</span></li><li class="chip"><span class="p">Snapdragon Opus White Fresh</span><span class="n">480</span></li><li class="chip"><span class="p">Campanula Champion Pink</span><span class="n">457</span></li><li class="chip"><span class="p">QIS Red</span><span class="n">411</span></li><li class="chip"><span class="p">QIS Orange</span><span class="n">232</span></li><li class="chip"><span class="p">Snapdragon Monaco Dark Pink</span><span class="n">192</span></li><li class="chip"><span class="p">Snapdragon Opus Fresh</span><span class="n">183</span></li><li class="chip"><span class="p">Lisianthus Blanco</span><span class="n">95</span></li><li class="chip sd"><span class="p">Strawflower King Size Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Strawflower Copper Red</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">46</span><span class="yr">2026</span><span class="fch">9 – 15 nov</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:90.1%"></span></div>
+      <p class="tot"><strong>18.700</strong> tallos estimados <span class="snap">Boca de Dragón · 2.988</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Trachelium White</span><span class="n">3.800</span></li><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">2.200</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.838</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Matricaria Snowball</span><span class="n">1.008</span></li><li class="chip ball"><span class="p">Potomac Appleblossom</span><span class="n">1.005</span></li><li class="chip"><span class="p">Gomphrena Carmine</span><span class="n">959</span></li><li class="chip"><span class="p">Gomphrena Quis Red</span><span class="n">959</span></li><li class="chip"><span class="p">Strawflower Vintage White</span><span class="n">881</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Snapdragon Monaco Plumblossom</span><span class="n">672</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">648</span></li><li class="chip"><span class="p">Snapdragon Plumblossom</span><span class="n">639</span></li><li class="chip"><span class="p">Campanula champion White</span><span class="n">548</span></li><li class="chip"><span class="p">Snapdragon Opus White Fresh</span><span class="n">480</span></li><li class="chip"><span class="p">Campanula Champion Pink</span><span class="n">457</span></li><li class="chip"><span class="p">QIS Red</span><span class="n">411</span></li><li class="chip"><span class="p">QIS Orange</span><span class="n">232</span></li><li class="chip"><span class="p">Snapdragon Monaco Dark Pink</span><span class="n">192</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">2.016 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Strawflower King Size Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Strawflower Copper Red</span><span class="n">falta conteo de plantas</span></li><li class="chip sd"><span class="p">Lisianthus Blanco</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">47</span><span class="yr">2026</span><span class="fch">16 – 22 nov</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:86.5%"></span></div>
+      <p class="tot"><strong>17.948</strong> tallos estimados <span class="snap">Boca de Dragón · 1.644</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">2.200</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.838</span></li><li class="chip"><span class="p">Dusty New Look</span><span class="n">1.728</span></li><li class="chip ball"><span class="p">Potomac Appleblossom</span><span class="n">1.644</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">1.296</span></li><li class="chip"><span class="p">Dusty Miller</span><span class="n">1.152</span></li><li class="chip"><span class="p">Forever Silver</span><span class="n">1.098</span></li><li class="chip"><span class="p">Matricaria Snowball</span><span class="n">1.008</span></li><li class="chip"><span class="p">Gomphrena Carmine</span><span class="n">959</span></li><li class="chip"><span class="p">Gomphrena Quis Red</span><span class="n">959</span></li><li class="chip"><span class="p">Strawflower Vintage White</span><span class="n">881</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Campanula champion White</span><span class="n">548</span></li><li class="chip"><span class="p">Sunflower Pro Cut Red</span><span class="n">480</span></li><li class="chip"><span class="p">Campanula Champion Pink</span><span class="n">457</span></li><li class="chip"><span class="p">QIS Red</span><span class="n">411</span></li><li class="chip"><span class="p">Girasol Pro Cut Red</span><span class="n">384</span></li><li class="chip"><span class="p">QIS Orange</span><span class="n">232</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">2.016 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Lisianthus Blanco</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">48</span><span class="yr">2026</span><span class="fch">23 – 29 nov</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:81.2%"></span></div>
+      <p class="tot"><strong>16.847</strong> tallos estimados <span class="snap">Boca de Dragón · 2.101</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Strawflower Cranberry Rose</span><span class="n">2.200</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.838</span></li><li class="chip"><span class="p">Dusty New Look</span><span class="n">1.728</span></li><li class="chip ball"><span class="p">Potomac Appleblossom</span><span class="n">1.644</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">1.296</span></li><li class="chip"><span class="p">Dusty Miller</span><span class="n">1.152</span></li><li class="chip"><span class="p">Gomphrena Carmine</span><span class="n">959</span></li><li class="chip"><span class="p">Gomphrena Quis Red</span><span class="n">959</span></li><li class="chip"><span class="p">Strawflower Vintage White</span><span class="n">881</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Campanula champion White</span><span class="n">548</span></li><li class="chip"><span class="p">Campanulas Champion White</span><span class="n">548</span></li><li class="chip"><span class="p">Sunflower Pro Cut Red</span><span class="n">480</span></li><li class="chip"><span class="p">Campanulas Champion Pink</span><span class="n">457</span></li><li class="chip ball"><span class="p">Opus Fresh</span><span class="n">457</span></li><li class="chip"><span class="p">QIS Red</span><span class="n">411</span></li><li class="chip"><span class="p">Girasol Pro Cut Red</span><span class="n">384</span></li><li class="chip"><span class="p">QIS Orange</span><span class="n">232</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">4.032 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Lisianthus Blanco</span><span class="n">falta conteo de plantas</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">49</span><span class="yr">2026</span><span class="fch">30 nov – 6 dic</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:75.7%"></span></div>
+      <p class="tot"><strong>15.706</strong> tallos estimados <span class="snap">Boca de Dragón · 2.192</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">2.838</span></li><li class="chip"><span class="p">Dusty New Look</span><span class="n">1.728</span></li><li class="chip ball"><span class="p">Potomac Appleblossom</span><span class="n">1.278</span></li><li class="chip"><span class="p">Dusty Miller</span><span class="n">1.152</span></li><li class="chip ball"><span class="p">Campanula White</span><span class="n">1.005</span></li><li class="chip"><span class="p">Gomphrena Carmine</span><span class="n">959</span></li><li class="chip"><span class="p">Gomphrena Quis Red</span><span class="n">959</span></li><li class="chip ball"><span class="p">Opus Fresh</span><span class="n">914</span></li><li class="chip ball"><span class="p">Girasol Pro Cut Red</span><span class="n">891</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">648</span></li><li class="chip"><span class="p">Campanulas Champion White</span><span class="n">548</span></li><li class="chip"><span class="p">Green Ball</span><span class="n">533</span></li><li class="chip"><span class="p">Sunflower Pro Cut Red</span><span class="n">480</span></li><li class="chip"><span class="p">Campanulas Champion Pink</span><span class="n">457</span></li><li class="chip"><span class="p">QIS Red</span><span class="n">411</span></li><li class="chip"><span class="p">QIS Orange</span><span class="n">232</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">2.016 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">50</span><span class="yr">2026</span><span class="fch">7 – 13 dic</span></div>
+  <div class="cuerpo">
+    <p class="hito">Semana de armado de Navidad</p><div class="medida"><div class="barra"><span style="width:91.2%"></span></div>
+      <p class="tot"><strong>18.923</strong> tallos estimados <span class="snap">Boca de Dragón · 1.553</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Trachellium White Lake</span><span class="n">7.600</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">2.838</span></li><li class="chip ball"><span class="p">Campanula White</span><span class="n">1.005</span></li><li class="chip"><span class="p">Gomphrena Carmine</span><span class="n">959</span></li><li class="chip"><span class="p">Gomphrena Quis Red</span><span class="n">959</span></li><li class="chip ball"><span class="p">Opus Fresh</span><span class="n">914</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip"><span class="p">Ammi Majus</span><span class="n">648</span></li><li class="chip ball"><span class="p">Potomac Appleblossom</span><span class="n">639</span></li><li class="chip"><span class="p">Campanulas Champion White</span><span class="n">548</span></li><li class="chip"><span class="p">Green Ball</span><span class="n">533</span></li><li class="chip ball"><span class="p">Girasol Pro Cut Red</span><span class="n">507</span></li><li class="chip"><span class="p">Campanulas Champion Pink</span><span class="n">457</span></li><li class="chip"><span class="p">QIS Red</span><span class="n">411</span></li><li class="chip"><span class="p">QIS Orange</span><span class="n">232</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">2.016 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem ok">
+  <div class="rail"><span class="wk">51</span><span class="yr">2026</span><span class="fch">14 – 20 dic</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:85.1%"></span></div>
+      <p class="tot"><strong>17.650</strong> tallos estimados <span class="snap">Boca de Dragón · 1.096</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Trachellium White Lake</span><span class="n">7.600</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">2.838</span></li><li class="chip ball"><span class="p">Campanula White</span><span class="n">1.005</span></li><li class="chip"><span class="p">Gomphrena Carmine</span><span class="n">959</span></li><li class="chip"><span class="p">Gomphrena Quis Red</span><span class="n">959</span></li><li class="chip ball"><span class="p">Matricaria Snowball</span><span class="n">864</span></li><li class="chip"><span class="p">Limonium Quis Lavender</span><span class="n">673</span></li><li class="chip ball"><span class="p">Potomac Appleblossom</span><span class="n">639</span></li><li class="chip ball"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip"><span class="p">Green Ball</span><span class="n">533</span></li><li class="chip ball"><span class="p">Girasol Pro Cut Red</span><span class="n">507</span></li><li class="chip ball"><span class="p">Opus Fresh</span><span class="n">457</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">1.918 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Celosia Purple Flamingo</span><span class="n">1.096 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem bajo">
+  <div class="rail"><span class="wk">52</span><span class="yr">2026</span><span class="fch">21 – 27 dic</span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:48.6%"></span></div>
+      <p class="tot"><strong>10.080</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Trachellium White Lake</span><span class="n">7.600</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.000</span></li><li class="chip ball"><span class="p">Matricaria Snowball</span><span class="n">864</span></li><li class="chip ball"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">1.918 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Celosia Purple Flamingo</span><span class="n">1.096 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">1</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:9.5%"></span></div>
+      <p class="tot"><strong>1.981</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.000</span></li><li class="chip ball"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip ball"><span class="p">Campanula White</span><span class="n">365</span></li><li class="chip sd"><span class="p">Dianthus Sweet Cherry</span><span class="n">1.918 plantas · falta tallos/planta</span></li><li class="chip sd"><span class="p">Celosia Purple Flamingo</span><span class="n">1.096 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">2</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:9.5%"></span></div>
+      <p class="tot"><strong>1.981</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.000</span></li><li class="chip ball"><span class="p">Ammi Majus</span><span class="n">616</span></li><li class="chip ball"><span class="p">Campanula White</span><span class="n">365</span></li><li class="chip sd"><span class="p">Flamingo Purple</span><span class="n">1.096 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">3</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:11.9%"></span></div>
+      <p class="tot"><strong>2.461</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.000</span></li><li class="chip ball"><span class="p">QIS Carmine</span><span class="n">548</span></li><li class="chip ball"><span class="p">QIS Red</span><span class="n">548</span></li><li class="chip ball"><span class="p">Campanula White</span><span class="n">365</span></li><li class="chip sd"><span class="p">Flamingo Purple</span><span class="n">1.096 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">4</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:28.4%"></span></div>
+      <p class="tot"><strong>5.896</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">Trachelium White</span><span class="n">3.800</span></li><li class="chip"><span class="p">Statice Hipster Apricot</span><span class="n">1.000</span></li><li class="chip ball"><span class="p">QIS Carmine</span><span class="n">548</span></li><li class="chip ball"><span class="p">QIS Red</span><span class="n">548</span></li><li class="chip sd"><span class="p">Flamingo Purple</span><span class="n">1.096 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">5</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:23.6%"></span></div>
+      <p class="tot"><strong>4.896</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">Trachelium White</span><span class="n">3.800</span></li><li class="chip ball"><span class="p">QIS Carmine</span><span class="n">548</span></li><li class="chip ball"><span class="p">QIS Red</span><span class="n">548</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">6</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:23.6%"></span></div>
+      <p class="tot"><strong>4.896</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">Trachelium White</span><span class="n">3.800</span></li><li class="chip ball"><span class="p">QIS Carmine</span><span class="n">548</span></li><li class="chip ball"><span class="p">QIS Red</span><span class="n">548</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">7</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:5.3%"></span></div>
+      <p class="tot"><strong>1.096</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">QIS Carmine</span><span class="n">548</span></li><li class="chip ball"><span class="p">QIS Red</span><span class="n">548</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">8</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:5.3%"></span></div>
+      <p class="tot"><strong>1.096</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">QIS Carmine</span><span class="n">548</span></li><li class="chip ball"><span class="p">QIS Red</span><span class="n">548</span></li><li class="chip sd"><span class="p">Flamingo Purple</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem cero">
+  <div class="rail"><span class="wk">9</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:0.0%"></span></div>
+      <p class="tot"><strong>0</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip sd"><span class="p">Flamingo Purple</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem cero">
+  <div class="rail"><span class="wk">10</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:0.0%"></span></div>
+      <p class="tot"><strong>0</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip sd"><span class="p">Flamingo Purple</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">12</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:18.8%"></span></div>
+      <p class="tot"><strong>3.904</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">Dusty New Look</span><span class="n">3.904</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">13</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:18.8%"></span></div>
+      <p class="tot"><strong>3.904</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">Dusty New Look</span><span class="n">3.904</span></li></ul>
+  </div>
+</article>
+<article class="sem critico">
+  <div class="rail"><span class="wk">14</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:18.8%"></span></div>
+      <p class="tot"><strong>3.904</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip ball"><span class="p">Dusty New Look</span><span class="n">3.904</span></li><li class="chip sd"><span class="p">Ptilotus Matilda</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem cero">
+  <div class="rail"><span class="wk">15</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:0.0%"></span></div>
+      <p class="tot"><strong>0</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip sd"><span class="p">Ptilotus Matilda</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem cero">
+  <div class="rail"><span class="wk">16</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:0.0%"></span></div>
+      <p class="tot"><strong>0</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip sd"><span class="p">Ptilotus Matilda</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+<article class="sem cero">
+  <div class="rail"><span class="wk">17</span><span class="yr">2027</span><span class="fch"></span></div>
+  <div class="cuerpo">
+    <div class="medida"><div class="barra"><span style="width:0.0%"></span></div>
+      <p class="tot"><strong>0</strong> tallos estimados <span class="snap nil">Boca de Dragón · 0</span></p></div>
+    <ul class="chips"><li class="chip sd"><span class="p">Ptilotus Matilda</span><span class="n">1.644 plantas · falta tallos/planta</span></li></ul>
+  </div>
+</article>
+
+<div class="notas">
+<h2>Cómo se calculó</h2>
+<p><strong>Tallos estimados = plantas × tallos por planta ÷ semanas de ventana</strong>,
+con los parámetros de <em>ciclos_variedad.csv</em>. <strong>No se aplica ningún
+factor de merma ni de calidad</strong>: es techo teórico, no tallo vendible. La
+semana 38 es el ejemplo — dice 13.354 tallos, pero adentro hay Campanula en cola
+de floración, Dianthus sin desbrote y Cristata en media cama.</p>
+<p>Los lotes de Ball entran con inicio de cosecha = semana de entrega + ciclo a
+campo. La entrega más próxima es la 37 y su primera cosecha es la 46: <strong>Ball
+no llega a tiempo para Amor y Amistad</strong>.</p>
+<p>Siete grupos no tienen tallos por planta medido y salen marcados sin dato en
+vez de inventarse: <strong>Dianthus, Ptilotus, Scabiosa, Carthamus, Celosia
+Purple Flamingo, Helipterum y Dahlia</strong>. Entre ellos hay 4.032 plantas de
+Dianthus Sweet Cherry en la semana 48. Medirlos es el trabajo más barato con más
+retorno de todo el calendario.</p>
+<p>Fuentes: <em>PROGRAMACION_2026 v8</em> con 25 correcciones de campo dictadas
+por Vanessa el 3 de septiembre, y <em>Confirmacion David.xlsm</em> de Ball
+Colombia. Detalle en <em>07-datos/tallos_estimados_semana.csv</em>.</p>
+</div>
+
+<p class="pie">El campo enseña solo si lo documentamos bien.</p>
+</div>

@@ -1750,8 +1750,30 @@ def cmd_huecos(semana=None):
     ultima = max((f["semana_siembra"] for f in campo
                   if f["semana_siembra"] is not None), default=None)
     if ultima is not None:
-        print("Ultima siembra registrada: semana %d  -> %d semanas sin registrar siembra"
-              % (ultima, sem_hoy - ultima))
+        atraso = sem_hoy - ultima
+        print("Ultima siembra registrada: semana %d  (%d semanas atras)" % (ultima, atraso))
+        if atraso >= 3:
+            # Este motor NO puede distinguir "no se sembro" de "el snapshot esta
+            # viejo": las dos cosas se ven identicas desde el CSV. Presentarlas
+            # como una sola —que fue lo que paso el 2026-09-03— convierte un
+            # archivo desactualizado en un pronostico de hueco que no existe.
+            print("")
+            print("  " + "!" * 66)
+            print("  !! NO CONCLUIR TODAVIA QUE FALTAN SIEMBRAS.")
+            print("  !!")
+            print("  !! Desde este CSV, 'no se sembro en %d semanas' y 'el snapshot" % atraso)
+            print("  !! quedo viejo' se ven EXACTAMENTE IGUAL. campo_siembras.csv es un")
+            print("  !! espejo con fecha de export, no la hoja viva.")
+            print("  !!")
+            print("  !! Antes de leer la curva de abajo como pronostico:")
+            print("  !!   1. verificar contra el PROGRAMACION_2026 vivo hasta que")
+            print("  !!      semana llega la hoja CAMPO de verdad;")
+            print("  !!   2. si llega mas lejos que la semana %d, reexportar CAMPO" % ultima)
+            print("  !!      antes de decidir nada.")
+            print("  !!")
+            print("  !! Procedencia y version del espejo: 07-datos/README.md y")
+            print("  !! 07-datos/FUENTES.md.")
+            print("  " + "!" * 66)
 
     # ---- calidad del dato antes de cualquier numero ----
     fuera = sum(len(v) for v in descartes.values())

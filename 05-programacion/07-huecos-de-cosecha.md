@@ -7,12 +7,50 @@
 
 ---
 
-## Lo que hay que saber en un párrafo
+## 🔴 LEER ESTO PRIMERO — este documento corre sobre un espejo desactualizado
 
-La última siembra registrada en CAMPO es de la **semana 28**. Estamos en la 36:
-son **ocho semanas sin sembrar**. Ese vacío no se siente hoy, se siente cuando
-esas plantas tenían que estar cosechando — y eso cae en **noviembre**, el mes que
-el calendario comercial marca **ALTA**. La curva no baja: se corta.
+**La curva de abajo NO es un pronóstico. Es lo que se ve desde un CSV viejo.**
+
+`campo_siembras.csv` se exportó el **30 de julio de 2026 desde el
+`PROGRAMACION_2026` v7**, y su última siembra es de la **semana 28**. Vanessa
+confirmó el 2026-09-03 que **en el `PROGRAMACION_2026 v8 ACTUALIZADO` hay
+siembras todas las semanas hasta la 36**. Esas ocho semanas de siembras existen
+en el campo y **no están en este análisis**.
+
+La primera versión de este documento leyó ese vacío como "ocho semanas sin
+sembrar" y construyó encima un hueco de noviembre. **Eso era un artefacto del
+espejo, no un hallazgo.** El motor ahora lo advierte solo: desde el CSV, "no se
+sembró" y "el snapshot quedó viejo" se ven exactamente igual, y por eso
+`cerebro.py huecos` se niega a que se lea la curva como pronóstico mientras el
+atraso sea de 3 semanas o más.
+
+**Estado del intento de traer el v8 (2026-09-03):**
+
+| Fuente | Qué se encontró |
+|---|---|
+| `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` (`1NaGlBEY…`) | existe, pero `modifiedTime` **2026-07-22** — más viejo que el propio CSV |
+| Hoja nativa v8, 33 pestañas (`1eZdmU5b…`, registrada en `FUENTES.md`) | **el ID ya no resuelve** en Drive |
+| Búsqueda de cualquier `PROGRAMACION` nativa reciente | solo aparece `PROGRAMACION 2024-2025`, ajena a esto |
+
+Es decir: **el v8 que se edita de verdad no es ninguno de los dos IDs que tiene
+registrado este repositorio.** Hasta que se resuelva cuál es y se reexporte la
+hoja CAMPO, todo lo que sigue vale como **método, no como cifra.**
+
+Lo que sí se sostiene sin depender del espejo está marcado ✅ más abajo.
+
+---
+
+## Lo que decía este documento antes de la corrección
+
+*(Se conserva para que quede el rastro de qué se concluyó mal y por qué.)*
+
+La última siembra registrada en CAMPO es de la semana 28. Estamos en la 36:
+ocho semanas sin sembrar. Ese vacío no se siente hoy, se siente cuando esas
+plantas tenían que estar cosechando — y eso cae en noviembre, el mes que el
+calendario comercial marca ALTA. La curva no baja: se corta.
+
+**Por qué estaba mal:** las siembras de las semanas 29 a 36 sí se hicieron y sí
+están escritas — en el v8, no en el espejo v7 que leyó el motor.
 
 ```
 SEM   TALLOS   curva                        VENTA
@@ -43,27 +81,32 @@ tiene nada detrás.
 
 ---
 
-## Los tres hechos que arman el hueco
+## Los tres hechos que armaban el hueco — cuál cayó y cuáles siguen en pie
 
-**1. Ocho semanas sin sembrar.** Semana 28 la última. Cada semana sin sembrar es
-una semana sin cosechar 12–15 semanas después. Las semanas 28 a 36 sin siembra
-son exactamente las semanas 40 a 51 sin cosecha.
+**1. ❌ CAÍDO — "ocho semanas sin sembrar".** Era el espejo viejo, no el campo.
+Las siembras de la 29 a la 36 existen en el v8. **Este era el pilar del
+argumento, y sin él el hueco de noviembre queda sin base.** Cuánto lo tapan esas
+ocho semanas de siembra no se puede calcular hasta reexportar CAMPO.
 
-**2. Lisianthus está cerrando su primera floración.** Es uno de los cuatro
+**2. ✅ EN PIE — Lisianthus está cerrando su primera floración.** Es uno de los cuatro
 pilares (Statice, Bocas, Celosia, Lisianthus sostienen más de la mitad de cada
 semana). La segunda floración está documentada en `ciclos_variedad.csv` como
 **débil** — *"2a floracion debil"* — así que no reemplaza a la primera, la
 estira. Y de los 11 lotes de lisianthus con mortalidad por fusarium en la semana
 20, uno solo se documentó como resistente.
 
-**3. Noviembre es mes ALTA.** Y las semanas 45 a 48 son noviembre. Ahí caen
+**3. ✅ EN PIE — Noviembre es mes ALTA.** Y las semanas 45 a 48 son noviembre. Ahí caen
 también las **graduaciones de colegio**, que el calendario marca como `SUBE`.
 Un hueco en un mes flojo se administra; un hueco en noviembre es plata que no se
 hace.
 
 ---
 
-## Lo que la proyección NO está viendo (y hay que corregir)
+## ✅ Lo que la proyección NO está viendo (esto no depende de la versión)
+
+Estos dos hallazgos salen de `ciclos_variedad.csv`, no de la hoja CAMPO, así que
+**siguen en pie con el v8**: reexportar CAMPO agrega siembras, pero no les
+inventa una fila de ciclo a las celosias que no la tienen.
 
 La curva de arriba sale de **108 lotes**. Quedan **70 lotes fuera**, y el motor
 los reporta uno por uno en vez de estimarlos:
@@ -109,7 +152,11 @@ está subestimada.**
 
 ---
 
-## Sembrar directo amaranto y celosia: la intuición es correcta, el blanco no
+## ✅ Sembrar directo amaranto y celosia: la aritmética no depende del espejo
+
+Esta tabla sale de `ciclos_variedad.csv` y de la semana en curso. **Vale igual
+con el v8**: lo que cambia con el v8 es *cuánto* hueco hay que llenar, no *qué
+alcanza a llegar*.
 
 El motor calcula qué alcanza a llegar sembrando hoy, semana 36:
 

@@ -101,7 +101,23 @@ local con sus `references/` completas. Se agregó `dcb-bouquets` (nueva).
 | Archivo | Bytes | Drive ID |
 |---|---|---|
 | `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` | 17 212 694 | `1NaGlBEY5j-e-rLx_7NvdIWWPWCiGxv0x` |
-| `PROGRAMACION_2026_v8_ACTUALIZADO` — **hoja nativa, 33 pestañas** | — | `1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4` |
+| `PROGRAMACION_2026_v8_ACTUALIZADO` — **hoja nativa, 33 pestañas** | — | ⚠️ `1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4` |
+
+> ⚠️ **2026-09-03: ese ID de la hoja nativa ya NO resuelve** (`Requested entity
+> was not found`). Y el `.xlsx` de arriba tiene `modifiedTime` **2026-07-22**,
+> o sea **más viejo que el export del 30 de julio** que produjo los CSV. Una
+> búsqueda de cualquier `PROGRAMACION` nativa reciente solo devuelve
+> `PROGRAMACION 2024-2025`, que es otro archivo.
+>
+> Vanessa confirmó ese día que el v8 vivo **tiene siembras hasta la semana 36**.
+> Ninguno de los dos IDs registrados aquí las tiene. **El v8 que se edita de
+> verdad no está identificado en este repositorio** — hay que pedirle el link y
+> reemplazar estos IDs antes de volver a espejar CAMPO.
+>
+> Consecuencia medida: `05-programacion/07-huecos-de-cosecha.md` se escribió
+> contra el espejo v7 y concluyó "ocho semanas sin sembrar", que era falso.
+> `cerebro.py huecos` ahora advierte solo cuando la última siembra registrada
+> queda 3 o más semanas atrás de la semana en curso.
 | `Stock Productos Agro DCB.xlsx` | 638 333 | `1lqk28pyr6Fd00U1nuPmwH9_hfVL8yZE4` |
 | `DCB_Calculadora_Bouquets.xlsx` | 76 823 | `14eKUYrRhmseyqrHXxDFt2Siq97E71yVN` |
 | `DCB_Registro_Tallos_v7_ORGANIZADO` | 30 986 | `14OP0GgkNmV1ty8Jz0hmASEts64ptI3y9L0i2FYsedHc` |

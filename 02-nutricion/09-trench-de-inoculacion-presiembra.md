@@ -42,34 +42,137 @@ Tres preguntas, tres columnas de una tabla, cero decisiones para el operario.
 
 ## El filtro que reduce 78 variedades a dos reglas
 
-La tentación es armar una matriz variedad × producto. **No hace falta, y la razón está en los
-datos:** de las 29 incidencias de `07-datos/incidencia_fitosanitaria.csv`,
+> 🔴 **CORREGIDO 2026-09-08 por objeción de Vanessa.** La primera versión de este documento
+> partía las incidencias en dos —"vive en el suelo" contra "vive en el aire"— y **esa partición
+> era falsa.** Vanessa preguntó si las esporas de botrytis y de mildeo no se quedan en el suelo.
+> Se quedan, pero **no en el suelo mineral: en el residuo de cosecha que queda sobre la cama.**
+> Son tres categorías, no dos, y la del medio es la que estaba faltando — y es la que más
+> incidencias explica después del Fusarium.
 
-| Dónde vive el problema | Incidencias | ¿El trench puede hacer algo? |
+La tentación es armar una matriz variedad × producto. No hace falta, pero el filtro correcto no
+es "suelo o aire": es **qué estructura sobrevive entre ciclos, y dónde.**
+
+| Dónde sobrevive | Estructura | Incidencias | **Qué lo ataca de verdad** |
+|---|---|---|---|
+| **En el suelo mineral, por años** | Clamidosporas | **Fusarium · 14** | **El inoculante del trench.** La única categoría donde el trench es la herramienta correcta |
+| **En el residuo de cosecha, sobre la cama** | Esclerocios · micelio · pupas | **Botrytis 7 · mosca blanca 6** | **Sacar el residuo.** El inoculante solo compite por lo que quede |
+| **Solo en tejido vivo** | Conidios en yema · hospedante alterno | **Oidio 2 · mildeo polvoso** | Foliar y **maleza**. El suelo no juega |
+
+*(14 y 7 incluyen la fila mixta Fusarium+Botrytis+Oidio de lisianthus en 3B, contada en las tres.)*
+
+> **La consecuencia de la corrección:** el trench, tal como está diseñado, es la herramienta
+> correcta para **14 de las 29 incidencias**. El paso que faltaba —sacar el residuo— cubre otras
+> **13**. Es decir: **el paso que no estaba escrito valía casi tanto como todo lo que sí estaba.**
+> Ya se agregó a la hoja de operario, en la fila *"Al cerrar la cama anterior"*.
+
+Y no es una práctica nueva ni una idea de laboratorio: **la finca ya la ejecutó y la escribió.**
+El registro del colapso de Limonium Forever Happy en Inv 4 dice textualmente
+*"retirar plantas en colapso **en bolsa cerrada fuera del invernadero**, cerrar camas
+gradualmente"* y *"NO sembrar lisianthus ni campanula en estas camas inmediatamente — ciclo
+biosupresor primero (gomphrena o matricaria)"*. **Estaba enterrado en un comentario de
+`campo_siembras.csv` y no estaba en ningún protocolo.**
+
+### El Statice sigue sin llevar nada especial en el trench — pero por otra razón
+
+La conclusión no cambia, el motivo sí. No es que su botrytis "viva en el aire": es que **su
+esclerocio vive en el residuo, y contra el residuo la herramienta es la bolsa cerrada, no el
+inoculante.** Lo que el trench sí puede hacer con el residuo que inevitablemente queda es
+**colonizarlo antes que la botrytis** — y eso ya lo hacen el Fitoderma (Trichoderma + Bacillus) y
+el Promobac (Bacillus) que están en la tabla. **No hay que agregar producto: hay que agregar el
+paso de limpieza.** *(Competencia por residuo: microbiología general, jerarquía nivel 4.)*
+
+### 🔴 Y hay que separar dos cosas que en español se llaman igual
+
+| | Sobrevive en suelo o residuo | Qué se ve en la hoja |
 |---|---|---|
-| **En el suelo** — Fusarium (13) · mosca blanca (6) | **19** | **Sí** |
-| **En el aire** — Botrytis (6) · mildeo (2) · oidio (1) | **9** | **Nunca** |
-| Mixta — Fusarium+Botrytis+Oidio | 1 | Solo la parte de suelo |
+| **Mildeo polvoso** (oidio, biótrofo obligado) | **No.** Necesita tejido vivo | Polvo blanco, **cara superior** |
+| **Mildeo velloso** (*Peronospora*) | **Sí — oosporas, años** | Manchas arriba, **vello grisáceo en la cara inferior** |
 
-> **Regla: el reto de una variedad entra al trench solo si el patógeno vive en el suelo.
-> Si vive en el aire, el trench no lo toca — y meterle producto es plata botada.**
+Los dos registros de mildeo del repositorio —**Dahlia en Inv 2** y **rosas en Inv 1**— **no dicen
+cuál de los dos es.** Y el inventario tiene Regalia y ADN Fun etiquetados *"mildeo polvoso"*, que
+es producto para el biótrofo. **Si alguno de los dos casos es velloso, el producto está mal
+elegido y el suelo sí entra en la cuenta.** Se resuelve mirando la cara inferior de la hoja:
+es un dato de campo que cuesta un minuto. *(Biología de los dos patógenos: jerarquía nivel 4.)*
 
-Esto es lo que hay que decir en voz alta, porque es contraintuitivo: **el Statice es la variedad
-con más incidencias después del lisianthus, y no lleva nada especial en el trench.** Su problema
-es Botrytis, que llega por el aire a la semana 14–15 de cosecha. Su manejo es foliar —
-Botrycid + Equifun, ya está en `04-variedades/02-notas-campo.md` — y ninguna cantidad de
-inoculante en el suelo lo adelanta.
+## 🔴 La mosca blanca no tiene etapa de suelo — y eso invalida un protocolo vigente
 
-Aplicado el filtro, quedan **dos reglas de variedad**, no setenta y ocho:
+Vanessa lo planteó como duda y el registro le da la razón.
 
-| Variedad | Patógeno de suelo | Qué cambia en el trench |
-|---|---|---|
-| **Lisianthus** | Fusarium — **11 de los 13 registros son suyos**, 10 de ellos mortalidad en campo | Lleva **Fitoderma en cualquier bloque**, y se tapa a **20–25 cm** |
-| **Matricaria Vegmo Single** | Mosca blanca — inóculo confirmado en suelo de 3C e Inv 5 | Nunca en 3C ni Inv 5. En otro bloque, **drench previo de Beauveria/Paecilomyces** |
+**La mosca blanca no pone huevos en el suelo.** Los pone en la cara inferior de la hoja, y tanto
+*Bemisia tabaci* como *Trialeurodes vaporariorum* **empupan sobre la hoja, no en el suelo.**
+No hay una fase que viva en el suelo mineral. *(Ciclo del insecto: jerarquía nivel 4.)*
 
-Dianthus Green Ball tiene un registro de Fusarium grave en 3C, pero 3C ya lleva Fitoderma por
-bloque: no necesita regla propia. Esa es la señal de que la arquitectura está bien repartida —
-**la variedad solo agrega regla cuando el bloque no la cubre.**
+Y al mirar de dónde salió la afirmación contraria:
+
+| | |
+|---|---|
+| Las dos filas que dicen **`INOCULO_EN_SUELO`** (3C e Inv 5) | Su columna `fuente` es **`01-infraestructura/01-invernaderos.md`** — un markdown, jerarquía nivel 3 |
+| Las **cuatro** filas de observación real de campo | Dicen *"les dio mosca blanca y no florecieron"*, *"sacrificada por mosca blanca"*. **Ninguna menciona el suelo** |
+
+> **"Inóculo de mosca blanca en el suelo" es una inferencia del repositorio, no una observación de
+> campo.** Y probablemente sea el mecanismo equivocado.
+
+Lo que sí explica que se repitan **los mismos dos bloques** es más simple: la población nunca
+salió del bloque. Sobrevive en la **maleza de dentro y del borde** y en las **pupas del residuo
+de cosecha** que se dejó en la cama. Eso no es suelo: es residuo y hospedante alterno — la
+categoría del medio del filtro de arriba.
+
+**Consecuencia sobre el protocolo:** el *"drench pre-siembra obligatorio con Beauveria bassiana o
+Paecilomyces"* de la Matricaria Vegmo **está aplicando el producto correcto en el lugar
+equivocado.** Se sacrificaron dos lotes con ese protocolo escrito. Si el reservorio es la
+población en pie y el residuo, las palancas son:
+
+1. **Sacar el residuo del ciclo anterior** en bolsa cerrada — ya está en la hoja de operario
+2. **Desyerbe del bloque y de sus bordes** antes de sembrar
+3. **Beauveria/Paecilomyces FOLIAR** sobre la siembra nueva — y esa dosis **sí existe**:
+   No Fly a **10 g / 25 L**, en `07-datos/aplicaciones_historial.csv`
+
+Y la forma correcta ya está escrita para la variedad hermana: la Matricaria **Snowball** tiene
+*"protocolo preventivo mosca blanca sem 6–8 y 10"* en `04-variedades/02-notas-campo.md`.
+**Ese es el molde. El drench de suelo de la Vegmo es la excepción sin fundamento.**
+
+## 🔴 El hueco del plástico — la observación más fuerte, y es un riesgo nuevo
+
+Vanessa: *"tienes plástico encima, pero el plástico tiene el hueco donde va la planta."*
+
+El hueco es **el único punto de la cama donde el suelo queda expuesto**, y es el punto de mayor
+humedad. Tres cosas convergen exactamente ahí:
+
+1. Es la **única vía** por la que el inóculo del suelo alcanza la planta.
+2. Es la **única vía** por la que el residuo infectado llega al suelo — y el plástico, al ser
+   liso e impermeable, **conduce hacia el hueco** el pétalo caído y la limpieza basal.
+3. El plástico **retiene calor nocturno y humedad** — documentado en `01-invernaderos.md` como
+   beneficioso porque las noches bajan a 11 °C.
+
+**Cálido + húmedo + residuo acumulado en el cuello de la planta son las condiciones exactas de la
+pudrición de cuello.**
+
+Y el registro ya tiene la firma de esa falla: el colapso de Limonium Forever Happy dice
+**"pudrición de cuello activa en varias plantas"** y **"necrosis basal severa en camas más
+antiguas"**.
+
+> **Ojo con la conclusión:** ese caso fue en **Inv 4, que no tiene plástico.** El plástico no lo
+> causó. Lo que significa es peor y más útil: **la pudrición de cuello ya es un modo de falla real
+> de esta finca, y el plástico le está construyendo el microclima ideal** justo cuando se está
+> expandiendo para eliminar el desyerbe.
+
+### Lo bueno: el experimento ya está montado
+
+`01-invernaderos.md` registra **Ext Inv4-5, 2 camas, comparativo plástico vs sin plástico en
+curso**, y hoy mide *retención de humedad, tiempo de instalación y durabilidad*.
+
+> **Agregarle una sola variable: contar plantas con pudrición de cuello y necrosis basal, por
+> cama, al cierre del lote.** Costo cero, y es la única forma de saber si el ahorro de 2–3
+> operarios de desyerbe se está pagando con enfermedad de cuello.
+
+**Y sobre el trench:** en cama con plástico, **la ventana pre-siembra deja de ser la mejor y pasa
+a ser la única.** Una vez puesto el plástico, cualquier corrección por suelo entra por el hueco o
+no entra. Por eso la hoja de operario ahora dice explícitamente que **el plástico va después del
+trench, nunca antes.**
+
+⚠️ **Contradicción de paso, sin resolver:** `01-invernaderos.md` dice que las 7 camas de Inv 6
+están *"todas con mulch plástico negro"*; la hoja de operario v9 dice **"Inv 6 NO tiene
+plástico"**. Una de las dos está mal, y la que Wilson tiene en la mano es la v9.
 
 ## La profundidad — la única variable genuinamente de variedad
 
@@ -189,7 +292,7 @@ Precios de `07-programa-biologico.md`: Estabios y Promobac $59.000/L · Fitoderm
 | **Micorrizas (Endhoriza)** | Ya decidido: solo camas nuevas sin historial. Y la ficha del Terra Life dejó el argumento de que las propágulas **no viajan bien en líquido** — si se quieren, van granuladas |
 | **Sáfer Terra Life** | Salió del programa el 2026-09-03. Aporta 0,0009 % del Trichoderma que ya hay |
 | **Fosfolip** | Va a entrar y **reemplaza al Estabios en la función de fósforo**, pero todavía no está en la finca. Cuando llegue, va al trench: es la ventana correcta para un solubilizador de P |
-| **Botrycid · Equifun · Regalia** | Botrytis, oidio y mildeo **viven en el aire**. Son foliares, nunca trench |
+| **Botrycid · Equifun · Regalia** | Son fungicidas de tejido, no de suelo: actúan sobre la hoja y la flor. Contra el esclerocio de botrytis que queda en la cama la palanca es **sacar el residuo**, y contra el que quede, el Trichoderma y el Bacillus que ya están en la tabla |
 | **Cualquier fertilizante químico** | La ficha del Fosforiz lo prohíbe junto a biológicos, y el instinto de *"Inv 3 — Haifa: NO esa semana"* era correcto. **Se extiende a todos los bloques:** el día del trench la cama va con agua sola |
 
 ## Decisiones abiertas — piden confirmación de Vanessa
@@ -209,11 +312,21 @@ Por eso la hoja lo dejó en *"solo si la cama va a lisianthus"* — la mitad pru
 Extenderlo a todo Inv 4 cuesta **+339 g de Fitoderma por vuelta = $41.000**.
 Lo que lo resolvería de verdad: **pedir el microbiológico por bloque, no por finca.**
 
-**3. Falta la dosis del drench de Beauveria/Paecilomyces para Matricaria Vegmo.**
-La obligación está escrita en el repositorio desde hace tiempo; **el número no está en ninguna
-parte.** No se inventó. La hoja de operario dice *"no sembrarla sin la hoja aparte"*, que es una
-prohibición ejecutable y no un cálculo pendiente. Hay Safer Mix (Beauveria, 500 g) y No Fly
-(Paecilomyces, 600 g) en bodega. **Pedir la dosis de drench de suelo al proveedor.**
+**3. El drench de suelo de la Matricaria Vegmo: la dosis no falta — el protocolo está mal.**
+La primera versión de este documento pedía la dosis del drench pre-siembra de
+Beauveria/Paecilomyces al proveedor. **Ya no hace falta pedirla:** la mosca blanca no tiene etapa
+de suelo, así que el drench de suelo es el producto correcto en el lugar equivocado (ver arriba).
+La propuesta es **reemplazarlo por residuo + desyerbe + foliar sem 6–8 y 10**, copiando el molde
+que ya tiene la Matricaria Snowball, con la dosis de No Fly que ya está registrada (10 g / 25 L).
+La hoja de operario sigue diciendo *"no sembrarla sin la hoja aparte"* hasta que decidas.
+**Esto necesita tu confirmación: es cambiar un protocolo marcado como obligatorio.**
+
+**3b. Mirar la cara inferior de la hoja en la Dahlia de Inv 2 y en las rosas de Inv 1**, para
+saber si el mildeo es polvoso o velloso. Si es velloso, el suelo entra en la cuenta y el producto
+está mal elegido. Cuesta un minuto de campo.
+
+**3c. Agregar el conteo de pudrición de cuello al comparativo de plástico de Ext Inv4-5.**
+Costo cero, y es lo que dice si el plástico se está pagando con enfermedad de cuello.
 
 **4. 🔴 La hoja v9 manda aflojar 25–30 cm en TODA cama. Eso contradice el No-Dig.**
 `03-no-dig-y-preparacion-camas.md` dice **No-Dig completo en Inv 4** y **horquilla 5 cm en Inv 5

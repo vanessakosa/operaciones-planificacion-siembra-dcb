@@ -49,6 +49,14 @@ Las semillas del documento base solo se usan cuando no hay ninguna cosecha regis
 - **Trachelium y matricaria en Inv 5:** se quedaron vegetativos sin florar.
   Causa confirmada: estrés hídrico. Consecuencia práctica: **no programar estas dos variedades
   en Inv 5 hasta que se instale la bomba**
+- **Pudrición de cuello y necrosis basal — modo de falla a vigilar con el plástico:** el colapso
+  de Limonium Forever Happy en Inv 4 (sem 23–24) registra *"pudrición de cuello activa en varias
+  plantas"* y *"necrosis basal severa en camas más antiguas"*. **Inv 4 no tiene plástico**, así
+  que el plástico no lo causó — pero el hueco del plástico concentra residuo y humedad justo en el
+  cuello, que es donde falló. **Acción: agregar el conteo de pudrición de cuello al comparativo
+  plástico vs sin plástico de Ext Inv4-5**, que hoy solo mide humedad, instalación y durabilidad.
+  Si aparece un segundo caso, se promueve a regla. Razonamiento en
+  `02-nutricion/09-trench-de-inoculacion-presiembra.md`
 - **Pérdida por polinizadores — patrón que cruza variedades:** ya son dos casos distintos
   (Campanula Champion Lavender y Snapdragon color rojo) con pérdidas altas atribuidas a
   polinizadores. No es todavía la misma variedad+zona+comportamiento que exige la regla de

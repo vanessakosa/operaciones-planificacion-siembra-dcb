@@ -740,3 +740,71 @@ frase para que quede sin ambigüedad. Cuatro razones:
 | Vocabulario unificado a **larga / corta** en 3B, 3C, 4C, Ext 3B y Mini | Antes mezclaba *grande/pequeña* con *larga/corta*. Una sola palabra para el mismo concepto |
 
 **17 filas de cama en una página carta**, con el armado en 6 pasos y las tres prohibiciones.
+
+
+---
+
+# v10 · 2026-09-08 — tres correcciones de Vanessa
+
+## 🔴 1. El armado contradecía el No-Dig. Error de fondo, no de redacción
+
+La hoja decía **"aflojar y descompactar hasta 25–30 cm"** en una finca que hace **No-Dig**.
+Vanessa lo señaló: *"estás poniendo a aflojar y justamente estamos haciendo no dig."*
+
+**Es el error más serio de toda la hoja**, porque destruye exactamente lo que sostiene la apuesta:
+
+> `02-analisis-de-suelo.md` ya lo dice: *"Esta cifra es la que justifica todo el enfoque No-Dig:
+> **el Trichoderma en 1,4×10⁶ se destruye** [con el volteo]."*
+
+Voltear a 25–30 cm rompe la red de hifas y el bucle microbiano — el mecanismo entero de la apuesta
+a Ingham que se decidió el 2026-09-03. **La hoja mandaba destruir lo que el programa quiere
+construir.**
+
+| | Antes | **v10** |
+|---|---|---|
+| Suelo | Aflojar y descompactar 25–30 cm | **NO voltear. Aflojar solo donde esté compactada** |
+| Bokashi + leonardita + yeso | Incorporar en los primeros 10–15 cm | **Mezclarlos entre sí y aplicar EN SUPERFICIE. No enterrar** |
+| Nivelado | Nivelar sin voltear profundo | **Nivelar la superficie sin remover** |
+
+### Y corrijo también lo que dije del yeso
+
+El 2026-09-03 escribí que *"el yeso va incorporado con el Bokashi, no superficial: tiene que
+llegar a donde está el potasio en el complejo de intercambio."* **Bajo No-Dig eso está mal.**
+
+El yeso superficial es **práctica estándar en siembra directa** y funciona: el sulfato es móvil,
+baja con el agua y arrastra el calcio consigo. Es más lento que incorporado, **pero no requiere
+romper las hifas** — y ese es el intercambio correcto en este sistema. La v10 lo pone en
+superficie con el resto.
+
+## 🔴 2. TODA cama va con plástico. Sin excepciones
+
+Regla dictada por Vanessa: *"siempre de tener plástico… **que no existe nada que no tenga
+plástico**."*
+
+Va en la hoja como **banda enmarcada**, no como línea de una lista:
+
+> **TODA CAMA VA CON PLÁSTICO.** No existe ninguna cama sin plástico. Ninguna.
+
+**Y elimina la excepción de Inv 6.** El 2026-09-03 Vanessa había descrito Inv 6 como exterior sin
+plástico; eso era **el estado actual, no la regla**. Inv 6 pasa a llevar plástico como todo lo
+demás, y su fila ya no dice *"NO tiene plástico"*.
+
+## 🔴 3. Se inocula el suelo SIEMPRE
+
+Entra como paso propio y en negrita, con remisión explícita a la hoja de inoculación que Vanessa
+entrega aparte. Antes decía *"aplicar el drench"* como si fuera opcional o condicional.
+
+## El armado de la v10
+
+| # | Paso |
+|---|---|
+| 1 | **NO voltear la cama.** Aflojar **solo donde esté compactada** |
+| 2 | Mezclar el **Bokashi con la leonardita** —y el **yeso** solo en Bloque 4— y aplicar **EN SUPERFICIE**. No enterrar |
+| 3 | Nivelar la superficie sin remover |
+| 4 | Riego suave, **con agua sola** |
+| 5 | **Inocular el suelo. SIEMPRE.** Ver la hoja de inoculación |
+| 6 | Poner el **plástico** |
+
+**Y el nombre del archivo ya no lleva versión** — `preparacion-camas.html`. Es la misma lección
+que la hoja de fertirriego: dos versiones del mismo documento compitiendo en el repo es cómo
+sobrevivió la v1 con el defecto de los 2,4 g de cobre.

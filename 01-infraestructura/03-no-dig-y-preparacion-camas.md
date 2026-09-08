@@ -136,3 +136,33 @@ Ver `02-nutricion/04-diagnostico-kempf-ingham.md`.
 - Confirmar raíces de Inv 4B con fotos
 - Evaluar si los Cotes siguen siendo necesarios una vez resuelta la presión de agua
   (su utilidad principal es compensar riego irregular)
+
+
+---
+
+# 🔴 Reglas duras del armado · confirmadas 2026-09-08
+
+Dictadas por Vanessa y ya escritas en la hoja de operario
+`05-programacion/hojas-operario/preparacion-camas.html`.
+
+## 1. No se voltea. Se aflOJa solo donde esté compactado
+
+**El No-Dig no es una preferencia: es lo que protege el Trichoderma de 1,4×10⁶ UFC/g.** Cualquier
+protocolo que diga "aflojar y descompactar a 25–30 cm" como paso general **está mal** y hay que
+corregirlo donde aparezca.
+
+## 2. Las enmiendas van EN SUPERFICIE
+
+Bokashi, leonardita y —solo en Bloque 4— yeso: se mezclan entre sí y se aplican encima.
+**No se entierran a 10–15 cm.** El agua y la biología los incorporan.
+
+*Incluye el yeso. El sulfato es móvil, baja con el agua y arrastra el calcio; es más lento que
+incorporado pero no rompe las hifas, y ese es el intercambio correcto aquí.*
+
+## 3. Se inocula SIEMPRE
+
+Ninguna cama se siembra sin inoculación. No es condicional ni depende de la variedad.
+
+## 4. TODA cama va con plástico
+
+*"No existe nada que no tenga plástico."* **Incluye Inv 6**, que hasta ahora era la excepción.

@@ -562,3 +562,52 @@ sacar el Polyfeed no alcanzaría. Es la razón por la que este análisis es prio
 **Nota sobre SQM edáfico:** se revisó su línea completa. **Casi todo es potasio** — Qrop KS,
 Allganic Makro 60, cloruro de potasio, SOP, MKP. **Lo único edáfico de SQM que sirve es el
 MAP 12-61-0 para Bloque 4**, que ya estaba identificado. No hay nada nuevo ahí.
+
+
+---
+
+# ✅ CORRECCIÓN 2026-09-08 — la pila vieja NO es el riesgo que describí
+
+Vanessa: *"ahí no es tan así, porque yo normalmente ese material no lo mando para allá, y yo sí
+creo que igual se ha calentado, no ha estado completamente frío, porque tiene todos los restos de
+cocina. Y cuando hemos sacado compost de la parte de más abajo, eso es una belleza, o sea, eso
+está dulce y polvoso."*
+
+**Tiene razón y me retracto.** Mi objeción entera se apoyaba en una premisa falsa:
+
+| Lo que asumí | Lo que es |
+|---|---|
+| La pila recibía **restos de cultivo** | 🔴 **No los recibe.** Vanessa no manda ese material ahí |
+| Nunca se calentó | Los **restos de cocina** son nitrógeno puro y sí calientan la pila |
+| Podía estar anaerobia | **"Dulce y polvoso" es diagnóstico de compost maduro aerobio.** Un material anaerobio o podrido **no huele dulce** |
+
+**Sin restos de cultivo, el argumento del *Fusarium*, la *Botrytis* y la mosca blanca se cae** —
+ese inóculo venía de ahí, no de los restos de cocina. Y el olor dulce descarta la anaerobiosis,
+que era el otro riesgo.
+
+> **Lección de método:** construí un riesgo entero sobre una suposición del flujo de materiales
+> que nunca verifiqué. Bastaba preguntar **qué entra a esa pila.**
+
+## Decisión: el primer té sale de la pila vieja
+
+**Y es la jugada correcta**, por la razón que Vanessa dio: **estira el material mientras la pila
+nueva madura.** El primer compost térmico no está listo hasta la **semana 44–46**, y un compost
+maduro y dulce es exactamente de donde debe salir un extracto.
+
+**El filtro es el criterio de Vanessa, no uno mío:**
+
+| Va al té | Va a la pila nueva |
+|---|---|
+| **Dulce y polvoso**, de la parte de abajo | Lo que huela **ácido o a podrido** |
+| | Lo que todavía tenga **pedazos reconocibles** |
+
+## Lo que NO cambia
+
+**El extracto sigue siendo un cultivo, no una dilución** — se airea 24–48 h, muchas veces con
+melaza, y lo que esté dentro se multiplica. Por eso el filtro de arriba no es cosmético: es lo
+que decide si el té reparte biología o reparte un problema. La diferencia con lo que escribí antes
+es **cuál es el contenido probable de esa pila**, no cómo funciona un extracto.
+
+Y el **compost térmico nuevo sigue siendo necesario** por lo que la pila vieja no puede dar: los
+**55–65 °C sostenidos** que permiten meterle restos de cultivo sin reinocular, que es lo que
+convierte un pasivo de la finca en insumo.

@@ -111,6 +111,11 @@ Ver `02-nutricion/04-diagnostico-kempf-ingham.md`.
 
 ## Stack de inoculación al preparar — qué queda y qué sale
 
+> 🔴 **DESACTUALIZADA desde el 2026-09-03.** Esta tabla todavía dice *TerraLife SÍ siempre* y
+> *Naturcomplet solo PREMIUM*: **los dos salieron del programa** (`00-contexto/05-bitacora-de-cambios.md`).
+> El stack vigente del trench pre-siembra, con dosis por m² y hoja de operario, está en
+> `02-nutricion/09-trench-de-inoculacion-presiembra.md`.
+
 | Producto | Decisión | Condición | Razón |
 |---|---|---|---|
 | TerraLife | **SÍ siempre** | Todas las camas | Biología superficial imprescindible |
@@ -132,7 +137,12 @@ Ver `02-nutricion/04-diagnostico-kempf-ingham.md`.
 
 ## Pendiente de decisión
 
-- Definir si el **trench de inoculación reemplaza completamente el volteo**
+- ✅ **Cerrado 2026-09-08:** el trench de inoculación **no reemplaza el volteo** — va montado en
+  la pasada de horquilla que ya se hace. Ver `02-nutricion/09-trench-de-inoculacion-presiembra.md`
+- 🔴 **Nuevo, sin resolver:** la hoja de operario **v9 manda aflojar 25–30 cm en TODA cama**, lo
+  que contradice el *No-Dig completo* de Inv 4 y la *horquilla 5 cm* de Inv 5 y 3C de este mismo
+  documento — y el volteo profundo es justo lo que destruye el Trichoderma de 1,4×10⁶.
+  **La v9 es la que está en manos de Wilson.** Decidir cuál manda
 - Confirmar raíces de Inv 4B con fotos
 - Evaluar si los Cotes siguen siendo necesarios una vez resuelta la presión de agua
   (su utilidad principal es compensar riego irregular)

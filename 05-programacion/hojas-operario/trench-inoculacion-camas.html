@@ -1,0 +1,268 @@
+<title>Trench de Inoculación de Camas</title>
+<style>
+  :root{
+    --papel:#FFFFFF; --beige:#F5F0E8; --crema:#FAF7F3;
+    --tinta:#1A1A1A; --tinta-2:#555555; --tinta-3:#888888;
+    --regla:#D0C8B8; --alerta:#C0392B;
+    --op:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--op);
+       margin:0;padding:26px 20px 50px;-webkit-font-smoothing:antialiased}
+  .hoja{max-width:840px;margin:0 auto}
+  .marca{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 5px}
+  h1{font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.01em;margin:0 0 6px}
+  .clave{font-size:14px;color:var(--tinta);margin:0 0 10px;line-height:1.35}
+  .clave b{font-weight:700}
+  .meta{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:12px;color:var(--tinta-2);
+        padding-bottom:10px;border-bottom:2px solid var(--regla);margin-bottom:18px}
+  .meta b{color:var(--tinta);font-weight:700}
+  section{margin-bottom:18px;page-break-inside:avoid}
+  h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
+     font-weight:700;margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--regla)}
+  .envoltura{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:var(--beige);color:var(--tinta-2);font-size:10px;letter-spacing:.08em;
+     text-transform:uppercase;font-weight:700;text-align:left;padding:6px 9px;
+     border-bottom:1px solid var(--regla);vertical-align:bottom}
+  td{padding:6px 9px;border-bottom:1px solid var(--regla);vertical-align:middle}
+  tbody tr:nth-child(even) td{background:var(--crema)}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.mid,td.mid{text-align:center}
+  .grp td{background:var(--tinta)!important;color:var(--papel);font-size:10px;font-weight:700;
+          letter-spacing:.14em;text-transform:uppercase;padding:4px 9px}
+  .grp.rojo td{background:var(--alerta)!important}
+  .cama{font-weight:700;font-size:14px;line-height:1.2}
+  .cama small{display:block;font-weight:400;font-size:11px;color:var(--tinta-2);margin-top:0}
+  .g{font-size:16px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .g span{font-size:10.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
+  .nada{color:var(--tinta-3)}
+  .caja{display:inline-block;width:16px;height:16px;border:1.5px solid var(--tinta-2)}
+  ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
+           background:var(--regla);border:1px solid var(--regla);
+           grid-template-columns:1fr 1fr}
+  ol.orden li{counter-increment:paso;background:var(--papel);padding:8px 10px 8px 34px;
+              position:relative;font-size:13px;line-height:1.35}
+  ol.orden li::before{content:counter(paso);position:absolute;left:11px;top:8px;
+                      font-weight:700;font-size:13px;color:var(--tinta-2)}
+  .no{margin-top:10px;border-left:3px solid var(--alerta);padding:8px 0 8px 12px;
+      font-size:13px;line-height:1.4}
+  .no b{color:var(--alerta)}
+  footer{margin-top:18px;padding-top:10px;border-top:1px solid var(--regla);
+         font-size:11px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:3px 20px}
+  @media print{
+    @page{margin:11mm 13mm}
+    body{padding:0;font-size:10pt}
+    .hoja{max-width:none}
+    .marca{font-size:7pt;margin-bottom:2px}
+    h1{font-size:15pt;margin-bottom:3px}
+    .clave{font-size:9pt;margin-bottom:6px}
+    .meta{font-size:7.5pt;padding-bottom:5px;margin-bottom:9px;gap:2px 14px}
+    section{margin-bottom:10px}
+    h2{font-size:7pt;margin-bottom:4px;padding-bottom:3px}
+    table{font-size:8.5pt}
+    th{font-size:6.5pt;padding:3px 6px}
+    td{padding:2.8px 6px}
+    .cama{font-size:8.5pt}.cama small{font-size:6.5pt}
+    .g{font-size:9.5pt}.g span{font-size:6.5pt}
+    .grp td{font-size:6.5pt;padding:2px 6px}
+    .caja{width:11px;height:11px}
+    ol.orden li{font-size:8pt;padding:4.5px 7px 4.5px 24px}
+    ol.orden li::before{font-size:8pt;left:8px;top:4.5px}
+    .no{font-size:8pt;margin-top:6px;padding:4px 0 4px 9px}
+    footer{font-size:7pt;margin-top:9px;padding-top:5px}
+  }
+</style>
+
+<div class="hoja">
+
+  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
+  <h1>Trench de inoculación — al preparar la cama</h1>
+  <p class="clave">Se aplica sobre la cama <b>ya armada y ya regada con agua sola</b>, y <b>antes de sembrar</b>. La cantidad depende <b>solo de la cama</b>. Lo único que cambia por variedad es la <b>profundidad</b>.</p>
+  <div class="meta">
+    <span><b>2 productos</b> en todas las camas</span>
+    <span><b>+1</b> en Bloque 3 y Mini</span>
+    <span>Versión <b>1</b> · <b>08/09/2026</b></span>
+  </div>
+
+  <section>
+    <h2>Cantidad por cama</h2>
+    <div class="envoltura">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:29%">Cama</th>
+            <th class="num" style="width:8%">m²</th>
+            <th class="num" style="width:14%">Agua</th>
+            <th class="num" style="width:15%">Estabios</th>
+            <th class="num" style="width:15%">Promobac</th>
+            <th class="num" style="width:12%">Fitoderma</th>
+            <th class="mid" style="width:7%">Hecho</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="grp"><td colspan="7">Bloque 3 — todas llevan Fitoderma</td></tr>
+          <tr><td class="cama">Inv 3A<small>11 camas</small></td><td class="num">35,6</td>
+            <td class="num"><span class="g">36<span>L</span></span></td>
+            <td class="num"><span class="g">36<span>cc</span></span></td>
+            <td class="num"><span class="g">36<span>cc</span></span></td>
+            <td class="num"><span class="g">18<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 3B larga<small>9 camas</small></td><td class="num">48,1</td>
+            <td class="num"><span class="g">48<span>L</span></span></td>
+            <td class="num"><span class="g">48<span>cc</span></span></td>
+            <td class="num"><span class="g">48<span>cc</span></span></td>
+            <td class="num"><span class="g">24<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 3B corta<small>3 camas</small></td><td class="num">11,7</td>
+            <td class="num"><span class="g">12<span>L</span></span></td>
+            <td class="num"><span class="g">12<span>cc</span></span></td>
+            <td class="num"><span class="g">12<span>cc</span></span></td>
+            <td class="num"><span class="g">6<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 3C larga<small>5 camas</small></td><td class="num">25,2</td>
+            <td class="num"><span class="g">25<span>L</span></span></td>
+            <td class="num"><span class="g">25<span>cc</span></span></td>
+            <td class="num"><span class="g">25<span>cc</span></span></td>
+            <td class="num"><span class="g">13<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 3C corta<small>3 camas</small></td><td class="num">12,6</td>
+            <td class="num"><span class="g">13<span>L</span></span></td>
+            <td class="num"><span class="g">13<span>cc</span></span></td>
+            <td class="num"><span class="g">13<span>cc</span></span></td>
+            <td class="num"><span class="g">6<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+
+          <tr class="grp"><td colspan="7">Mini — lleva Fitoderma</td></tr>
+          <tr><td class="cama">Mini larga<small>4 camas</small></td><td class="num">12,6</td>
+            <td class="num"><span class="g">13<span>L</span></span></td>
+            <td class="num"><span class="g">13<span>cc</span></span></td>
+            <td class="num"><span class="g">13<span>cc</span></span></td>
+            <td class="num"><span class="g">6<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Mini corta<small>3 camas</small></td><td class="num">6,3</td>
+            <td class="num"><span class="g">6<span>L</span></span></td>
+            <td class="num"><span class="g">6<span>cc</span></span></td>
+            <td class="num"><span class="g">6<span>cc</span></span></td>
+            <td class="num"><span class="g">3<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+
+          <tr class="grp"><td colspan="7">Bloque 4 — Fitoderma SOLO si la cama va a lisianthus</td></tr>
+          <tr><td class="cama">Inv 4A · Inv 4B<small>28 camas · también Inv 1 e Inv 2</small></td><td class="num">20,2</td>
+            <td class="num"><span class="g">20<span>L</span></span></td>
+            <td class="num"><span class="g">20<span>cc</span></span></td>
+            <td class="num"><span class="g">20<span>cc</span></span></td>
+            <td class="num"><span class="g">10<span>g</span><i style="display:block;font-style:normal;font-size:10px;font-weight:400;color:var(--tinta-2)">solo lisianthus</i></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 4C larga<small>225 huecos</small></td><td class="num">40,5</td>
+            <td class="num"><span class="g">40<span>L</span></span></td>
+            <td class="num"><span class="g">40<span>cc</span></span></td>
+            <td class="num"><span class="g">40<span>cc</span></span></td>
+            <td class="num"><span class="g">20<span>g</span><i style="display:block;font-style:normal;font-size:10px;font-weight:400;color:var(--tinta-2)">solo lisianthus</i></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 4C media<small>212 huecos</small></td><td class="num">38,2</td>
+            <td class="num"><span class="g">38<span>L</span></span></td>
+            <td class="num"><span class="g">38<span>cc</span></span></td>
+            <td class="num"><span class="g">38<span>cc</span></span></td>
+            <td class="num"><span class="g">19<span>g</span><i style="display:block;font-style:normal;font-size:10px;font-weight:400;color:var(--tinta-2)">solo lisianthus</i></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 4C corta<small>200 huecos</small></td><td class="num">36,0</td>
+            <td class="num"><span class="g">36<span>L</span></span></td>
+            <td class="num"><span class="g">36<span>cc</span></span></td>
+            <td class="num"><span class="g">36<span>cc</span></span></td>
+            <td class="num"><span class="g">18<span>g</span><i style="display:block;font-style:normal;font-size:10px;font-weight:400;color:var(--tinta-2)">solo lisianthus</i></span></td>
+            <td class="mid"><span class="caja"></span></td></tr>
+
+          <tr class="grp"><td colspan="7">Bloque 5</td></tr>
+          <tr><td class="cama">Inv 5<small>13 camas</small></td><td class="num">31,7</td>
+            <td class="num"><span class="g">32<span>L</span></span></td>
+            <td class="num"><span class="g">32<span>cc</span></span></td>
+            <td class="num"><span class="g">32<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+
+          <tr class="grp"><td colspan="7">Exterior</td></tr>
+          <tr><td class="cama">Ext 3A<small>181 huecos</small></td><td class="num">32,6</td>
+            <td class="num"><span class="g">33<span>L</span></span></td>
+            <td class="num"><span class="g">33<span>cc</span></span></td>
+            <td class="num"><span class="g">33<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Ext 3B larga</td><td class="num">48,1</td>
+            <td class="num"><span class="g">48<span>L</span></span></td>
+            <td class="num"><span class="g">48<span>cc</span></span></td>
+            <td class="num"><span class="g">48<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Ext 3B corta</td><td class="num">11,7</td>
+            <td class="num"><span class="g">12<span>L</span></span></td>
+            <td class="num"><span class="g">12<span>cc</span></span></td>
+            <td class="num"><span class="g">12<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Ext 4<small>UNA sola cama · 4A + 4B seguidas</small></td><td class="num">40,3</td>
+            <td class="num"><span class="g">40<span>L</span></span></td>
+            <td class="num"><span class="g">40<span>cc</span></span></td>
+            <td class="num"><span class="g">40<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Ext 5<small>176 huecos</small></td><td class="num">31,7</td>
+            <td class="num"><span class="g">32<span>L</span></span></td>
+            <td class="num"><span class="g">32<span>cc</span></span></td>
+            <td class="num"><span class="g">32<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+          <tr><td class="cama">Inv 6<small>176 huecos · NO tiene plástico</small></td><td class="num">31,7</td>
+            <td class="num"><span class="g">32<span>L</span></span></td>
+            <td class="num"><span class="g">32<span>cc</span></span></td>
+            <td class="num"><span class="g">32<span>cc</span></span></td>
+            <td class="num nada">—</td>
+            <td class="mid"><span class="caja"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cómo se hace</h2>
+    <ol class="orden">
+      <li><b>Caneca</b> limpia. Echar <b>los litros de agua</b> de la cama.</li>
+      <li>Medir el <b>Estabios</b> con jeringa y echar a la caneca.</li>
+      <li>Medir el <b>Promobac</b> con jeringa y echar a la caneca.</li>
+      <li><b>Bloque 3 y Mini:</b> pesar el <b>Fitoderma</b> en gramera y echar a la caneca.</li>
+      <li>Revolver <b>1 minuto</b>.</li>
+      <li>Regar <b>toda la cama, parejo</b>, con regadera, hasta acabar la caneca. <b>Revolver cada vez que se llene la regadera.</b></li>
+      <li>Pasar la horquilla <b>10 – 15 cm</b> para tapar.</li>
+      <li><b>Cama de lisianthus:</b> tapar a <b>20 – 25 cm</b>, no a 15.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Cuándo</h2>
+    <div class="envoltura">
+      <table>
+        <thead><tr><th style="width:34%">Momento</th><th>Qué</th></tr></thead>
+        <tbody>
+          <tr><td class="cama">Antes</td><td>La cama ya tiene <b>Bokashi, leonardita</b> —y <b>yeso</b> si es Bloque 4— y ya se regó con <b>agua sola</b>.</td></tr>
+          <tr><td class="cama">El trench</td><td><b>El mismo día</b> en que se termina de armar la cama.</td></tr>
+          <tr><td class="cama">Después</td><td>Sembrar. En exterior, volver a poner el plástico. Inv 6 no lleva.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="no">
+      <b>NO</b> regar con <b>fertirriego</b> el día del trench — ni antes ni después. Ese día la cama va con <b>agua sola</b>.<br>
+      <b>NO</b> mezclar el trench con <b>ningún otro producto</b>: solo los que están en la tabla.<br>
+      <b>NO</b> guardar mezcla de un día para otro. Se prepara la cama que se va a aplicar y se aplica.<br>
+      <b>Matricaria Vegmo Single:</b> <b>no</b> se siembra en <b>Inv 5</b> ni en <b>3C</b>. En cualquier otro bloque, <b>no sembrarla</b> sin la hoja aparte que entrega Vanessa.<br>
+      Las <b>3 camas de Ext Inv 2</b> no están en la tabla: preguntar antes de prepararlas.
+    </p>
+  </section>
+
+  <footer>
+    <span>Trench: Wilson</span>
+    <span>Apoyo: Jason · José · Junior · Cindy</span>
+    <span>Jeringa de 60 cc · gramera de 1 g</span>
+    <span>Dudas de cantidad: preguntar antes de aplicar</span>
+  </footer>
+
+</div>

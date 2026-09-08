@@ -726,3 +726,17 @@ frase para que quede sin ambigüedad. Cuatro razones:
 | **Dianthus** en 3A superior | Falló por calor y agua. **La bomba cambia la premisa** — merece re-ensayo, no receta especial | Ensayo por definir |
 
 **Ninguno de los cinco se resuelve cambiando la dosis de Bokashi.**
+
+
+## Ajustes de la hoja pedidos por Vanessa · 2026-09-03
+
+| Cambio | Razón |
+|---|---|
+| **El Mini queda en UNA fila**, con la regla *"en la cama corta va la MITAD de todo"* | *"Es mejor una sola porque se van a confundir."* Y la mitad es exacta: 12,6 → 6,3 m² es literalmente la mitad, así que la mitad del Bokashi y de la leonardita da la misma tasa por m² |
+| **Sale "mismas cantidades que Inv 5"** del encabezado del Mini | Es el razonamiento del espejo, no una instrucción. Al operario no le sirve |
+| **Bloque 4 con barra roja** — *"el ÚNICO que lleva yeso"* | Y los valores de yeso de esas cuatro filas van también en rojo, para que el ojo conecte la barra con la columna |
+| **Ext 3B entra a la tabla**, con **una larga (48,1 m²) y una corta (11,7 m²)** | Dato de Vanessa. Antes decía *"medir y usar la fila de Inv 3B"*; ya no hace falta |
+| **Todo en UNA sola hoja** | Eran 3. Escala de impresión a 8 pt, filas a 2,6 px de padding, y el armado en dos columnas |
+| Vocabulario unificado a **larga / corta** en 3B, 3C, 4C, Ext 3B y Mini | Antes mezclaba *grande/pequeña* con *larga/corta*. Una sola palabra para el mismo concepto |
+
+**17 filas de cama en una página carta**, con el armado en 6 pasos y las tres prohibiciones.

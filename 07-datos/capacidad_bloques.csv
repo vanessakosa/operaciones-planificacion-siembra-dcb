@@ -12,7 +12,7 @@ Inv 4 baja (200),200,8,,,,1,MEDIDO,Cama baja larga aprox | Es Inv 4C (Vanessa 20
 Inv 5,176,8,,,,,MEDIDO,Todas iguales
 Ext 4,224,8,,,,,MEDIDO,"UNA sola cama = 4A + 4B seguidas, sin corredor (Vanessa 2026-09-03). CORREGIDO: decia 176"
 Ext 5,176,8,,,,,MEDIDO,Mismo largo que Inv 5 (Vanessa 2026-09-03)
-Ext 3B,267,8,,,,,PENDIENTE MEDIR,Paralela a Inv 3B: misma tasa por m2. LARGO SIN MEDIR — usar la fila de Inv 3B (grande o pequena) que corresponda al largo real de la cama
+Ext 3B,267,8,,,,2,PENDIENTE MEDIR,"Espeja Inv 3B: UNA cama larga (48,1 m2) y UNA corta (11,7 m2). Vanessa 2026-09-03"
 Inv 2,,,,,,,NO UNIFORME,PENDIENTE MEDIR CAMA POR CAMA — camas de distinta medida (Vanessa 2026-08-13). Es ademas el bloque de ensayos
 Mini,70,8,,,,,MEDIDO (huecos) / ASUMIDO (8 lineas),Sin muestra de suelo. Invernadero nuevo; performance se parece a Inv 5 (Vanessa 2026-09-03)
 Inv 4C,,,,,,,"ALIAS — ver las tres filas ""Inv 4 baja""","ES EL MISMO BLOQUE que las tres filas ""Inv 4 baja"" (225, 212, 200 huecos). Vanessa 2026-08-13: ""el 4C es una cama del 4A y una del 4B juntas, porque es una cama larga"". El registro de cosecha escribe 4C / Inv 4C; capacidad_bloques lo tenia como ""Inv 4 baja"". MISMO SITIO, DOS NOMBRES"

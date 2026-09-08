@@ -9,7 +9,7 @@
   *{box-sizing:border-box}
   body{background:var(--papel);color:var(--tinta);font-family:var(--op);
        margin:0;padding:28px 20px 60px;-webkit-font-smoothing:antialiased}
-  .hoja{max-width:900px;margin:0 auto}
+  .hoja{max-width:820px;margin:0 auto}
   .marca{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 6px}
   h1{font-size:29px;line-height:1.15;font-weight:700;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
   .meta{display:flex;flex-wrap:wrap;gap:6px 26px;font-size:13px;color:var(--tinta-2);
@@ -19,25 +19,26 @@
   h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
      font-weight:700;margin:0 0 12px;padding-bottom:7px;border-bottom:1px solid var(--regla)}
   .envoltura{overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:14px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
   caption{caption-side:top;text-align:left;font-size:13px;color:var(--tinta-2);padding:0 0 9px}
   th{background:var(--beige);color:var(--tinta-2);font-size:10.5px;letter-spacing:.09em;
-     text-transform:uppercase;font-weight:700;text-align:left;padding:8px 9px;
+     text-transform:uppercase;font-weight:700;text-align:left;padding:8px 10px;
      border-bottom:1px solid var(--regla);vertical-align:bottom}
-  td{padding:9px;border-bottom:1px solid var(--regla);vertical-align:middle}
+  td{padding:10px;border-bottom:1px solid var(--regla);vertical-align:middle}
   tbody tr:nth-child(even) td{background:var(--crema)}
   th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
   th.mid,td.mid{text-align:center}
   .grp td{background:var(--tinta)!important;color:var(--papel);font-size:11px;font-weight:700;
-          letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
-  .cama{font-weight:700;font-size:14.5px;line-height:1.2}
-  .cama small{display:block;font-weight:400;font-size:11.5px;color:var(--tinta-2);margin-top:1px}
-  .sac{font-size:18px;font-weight:700;white-space:nowrap;letter-spacing:-.01em}
+          letter-spacing:.14em;text-transform:uppercase;padding:6px 10px}
+  .cama{font-weight:700;font-size:15px;line-height:1.2}
+  .cama small{display:block;font-weight:400;font-size:12px;color:var(--tinta-2);margin-top:1px}
+  .sac{font-size:20px;font-weight:700;white-space:nowrap;letter-spacing:-.01em}
   .kg{font-size:12.5px;color:var(--tinta-2);white-space:nowrap;display:block;margin-top:1px;
       font-variant-numeric:tabular-nums}
-  .g{font-size:16px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .g{font-size:17px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
   .g span{font-size:11.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
   .nada{color:var(--tinta-3)}
+  .caja{display:inline-block;width:18px;height:18px;border:1.5px solid var(--tinta-2)}
   ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
            background:var(--regla);border:1px solid var(--regla)}
   ol.orden li{counter-increment:paso;background:var(--papel);padding:12px 14px 12px 46px;
@@ -49,14 +50,12 @@
   .no{margin-top:14px;border-left:3px solid var(--alerta);padding:10px 0 10px 14px;
       font-size:14px;line-height:1.45}
   .no b{color:var(--alerta)}
-  .cual{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-  .caja2{border:2px solid var(--tinta);padding:14px 16px}
-  .caja2 h3{font-size:13px;margin:0 0 8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-  .caja2 p{margin:0;font-size:14px;line-height:1.5}
+  .clave{border:2px solid var(--tinta);padding:14px 18px;font-size:15px;line-height:1.5}
+  .clave b{font-weight:700}
   footer{margin-top:36px;padding-top:13px;border-top:1px solid var(--regla);
          font-size:12px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 22px}
   @media print{
-    @page{margin:10mm 11mm}
+    @page{margin:10mm 12mm}
     body{padding:0;font-size:9.5pt}
     .hoja{max-width:none}
     section{page-break-inside:avoid;margin-bottom:14px}
@@ -65,17 +64,18 @@
     .meta{font-size:8.5pt;padding-bottom:7px;margin-bottom:13px;gap:3px 16px}
     h2{font-size:8pt;margin-bottom:6px;padding-bottom:4px}
     caption{font-size:8pt;padding-bottom:4px}
-    table{font-size:8.5pt}
-    th{font-size:7pt;padding:4px 6px}
-    td{padding:4px 6px}
-    .cama{font-size:9pt}.cama small{font-size:7pt}
-    .sac{font-size:11pt}.kg{font-size:7.5pt}
-    .g{font-size:10pt}.g span{font-size:7.5pt}
-    .grp td{font-size:7.5pt;padding:3px 6px}
-    ol.orden li{font-size:9pt;padding:6px 9px 6px 30px}
-    ol.orden li::before{font-size:9pt;left:9px;top:6px}
+    table{font-size:9pt}
+    th{font-size:7pt;padding:4px 7px}
+    td{padding:5px 7px}
+    .cama{font-size:9.5pt}.cama small{font-size:7.5pt}
+    .sac{font-size:12pt}.kg{font-size:7.5pt}
+    .g{font-size:10.5pt}.g span{font-size:7.5pt}
+    .grp td{font-size:7.5pt;padding:3px 7px}
+    .caja{width:13px;height:13px}
+    ol.orden li{font-size:9pt;padding:6px 10px 6px 30px}
+    ol.orden li::before{font-size:9pt;left:10px;top:6px}
     .no{font-size:9pt;margin-top:8px;padding:6px 0 6px 10px}
-    .caja2{padding:9px 11px}.caja2 h3{font-size:9pt}.caja2 p{font-size:9pt}
+    .clave{font-size:9.5pt;padding:9px 12px}
     footer{font-size:8pt;margin-top:16px;padding-top:8px}
   }
 </style>
@@ -86,203 +86,141 @@
   <h1>Preparación de camas — todos los bloques</h1>
   <div class="meta">
     <span><b>3 productos</b></span>
-    <span>Versión <b>8.1</b> · <b>03/09/2026</b></span>
+    <span>Versión <b>9</b> · <b>03/09/2026</b></span>
     <span>Reemplaza el <b>Protocolo v7</b></span>
   </div>
 
   <section>
-    <h2>Primero: ¿esta cama es Estándar o Premium?</h2>
-    <div class="cual">
-      <div class="caja2">
-        <h3>Estándar</h3>
-        <p>Gomphrena · Ammi · Trachelium · Matricaria · Amaranto · Campánula · Ammobium</p>
-      </div>
-      <div class="caja2">
-        <h3>Premium</h3>
-        <p>Lisianthus · Boca de dragón · Celosia · Statice · Dusty Miller · Matilda · Zinnia · Marigold</p>
-      </div>
-    </div>
-    <p class="no">Lo único que cambia entre Estándar y Premium es <b>la cantidad de Bokashi</b>. La leonardita y el yeso son iguales.</p>
+    <div class="clave">La cantidad depende <b>solo de la cama</b>. <b>No cambia según la variedad
+    que se vaya a sembrar.</b> Buscar la cama en la tabla y leer la fila completa.</div>
   </section>
 
   <section>
     <h2>Cantidades por cama</h2>
     <div class="envoltura">
       <table>
-        <caption>Buscar la cama en la primera columna y leer la fila completa.</caption>
         <thead>
           <tr>
-            <th style="width:22%">Cama</th>
-            <th class="num" style="width:8%">m²</th>
-            <th class="num" style="width:16%">Bokashi<br>Estándar</th>
-            <th class="num" style="width:16%">Bokashi<br>Premium</th>
-            <th class="num" style="width:13%">Leonardita<br>Black Diamond</th>
-            <th class="num" style="width:13%">Yeso<br>agrícola</th>
-            <th class="mid" style="width:12%">Hecho</th>
+            <th style="width:29%">Cama</th>
+            <th class="num" style="width:9%">m²</th>
+            <th class="num" style="width:21%">Bokashi</th>
+            <th class="num" style="width:16%">Leonardita<br>Black Diamond</th>
+            <th class="num" style="width:15%">Yeso<br>agrícola</th>
+            <th class="mid" style="width:10%">Hecho</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="grp"><td colspan="7">Bloque 3</td></tr>
+          <tr class="grp"><td colspan="6">Bloque 3</td></tr>
           <tr>
-            <td class="cama">Inv 3A<small>11 camas</small></td>
-            <td class="num">35,6</td>
+            <td class="cama">Inv 3A<small>11 camas</small></td><td class="num">35,6</td>
             <td class="num"><span class="sac">2 sacos</span><span class="kg">50 kg</span></td>
-            <td class="num"><span class="sac">3 sacos</span><span class="kg">75 kg</span></td>
             <td class="num"><span class="g">445<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 3B grande</td>
-            <td class="num">48,1</td>
+            <td class="cama">Inv 3B grande</td><td class="num">48,1</td>
             <td class="num"><span class="sac">3 sacos</span><span class="kg">75 kg</span></td>
-            <td class="num"><span class="sac">4 sacos</span><span class="kg">100 kg</span></td>
             <td class="num"><span class="g">600<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 3B pequeña<small>3 camas</small></td>
-            <td class="num">11,7</td>
+            <td class="cama">Inv 3B pequeña<small>3 camas</small></td><td class="num">11,7</td>
             <td class="num"><span class="sac">¾ saco</span><span class="kg">19 kg</span></td>
-            <td class="num"><span class="sac">1 saco</span><span class="kg">25 kg</span></td>
             <td class="num"><span class="g">146<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 3C grande<small>5 camas</small></td>
-            <td class="num">25,2</td>
+            <td class="cama">Inv 3C grande<small>5 camas</small></td><td class="num">25,2</td>
             <td class="num"><span class="sac">1 saco</span><span class="kg">25 kg</span></td>
-            <td class="num"><span class="sac">1 ½ sacos</span><span class="kg">38 kg</span></td>
             <td class="num"><span class="g">315<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 3C pequeña<small>3 camas</small></td>
-            <td class="num">12,6</td>
+            <td class="cama">Inv 3C pequeña<small>3 camas</small></td><td class="num">12,6</td>
             <td class="num"><span class="sac">½ saco</span><span class="kg">13 kg</span></td>
-            <td class="num"><span class="sac">¾ saco</span><span class="kg">19 kg</span></td>
             <td class="num"><span class="g">158<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
-        </tbody>
-        <tbody>
-          <tr class="grp"><td colspan="7">Mini — mismas cantidades que Invernadero 5</td></tr>
+
+          <tr class="grp"><td colspan="6">Mini — mismas cantidades que Invernadero 5</td></tr>
           <tr>
-            <td class="cama">Mini grande<small>4 camas</small></td>
-            <td class="num">12,6</td>
+            <td class="cama">Mini grande<small>4 camas</small></td><td class="num">12,6</td>
             <td class="num"><span class="sac">¾ saco</span><span class="kg">19 kg</span></td>
-            <td class="num"><span class="sac">1 saco</span><span class="kg">25 kg</span></td>
             <td class="num"><span class="g">82<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Mini pequeña<small>3 camas</small></td>
-            <td class="num">6,3</td>
+            <td class="cama">Mini pequeña<small>3 camas</small></td><td class="num">6,3</td>
             <td class="num"><span class="sac">1 ¼ sacos</span><span class="kg">para las 3 camas</span></td>
-            <td class="num"><span class="sac">1 ½ sacos</span><span class="kg">para las 3 camas</span></td>
             <td class="num"><span class="g">41<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
 
-          <tr class="grp"><td colspan="7">Bloque 4 — el único que lleva yeso</td></tr>
+          <tr class="grp"><td colspan="6">Bloque 4 — el único que lleva yeso</td></tr>
           <tr>
-            <td class="cama">Inv 4A · Inv 4B<small>28 camas · también Inv 1 e Inv 2</small></td>
-            <td class="num">20,2</td>
+            <td class="cama">Inv 4A · Inv 4B<small>28 camas · también Inv 1 e Inv 2</small></td><td class="num">20,2</td>
             <td class="num"><span class="sac">1 saco</span><span class="kg">25 kg</span></td>
-            <td class="num"><span class="sac">1 ½ sacos</span><span class="kg">38 kg</span></td>
             <td class="num"><span class="g">131<span>g</span></span></td>
-            <td class="num"><span class="g">2,02<span>kg</span></span></td>
-            <td class="mid">☐</td>
+            <td class="num"><span class="g">2,02<span>kg</span></span></td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 4C larga<small>225 huecos</small></td>
-            <td class="num">40,5</td>
+            <td class="cama">Inv 4C larga<small>225 huecos</small></td><td class="num">40,5</td>
             <td class="num"><span class="sac">2 ½ sacos</span><span class="kg">63 kg</span></td>
-            <td class="num"><span class="sac">3 sacos</span><span class="kg">75 kg</span></td>
             <td class="num"><span class="g">263<span>g</span></span></td>
-            <td class="num"><span class="g">4,05<span>kg</span></span></td>
-            <td class="mid">☐</td>
+            <td class="num"><span class="g">4,05<span>kg</span></span></td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 4C media<small>212 huecos</small></td>
-            <td class="num">38,2</td>
+            <td class="cama">Inv 4C media<small>212 huecos</small></td><td class="num">38,2</td>
             <td class="num"><span class="sac">2 ¼ sacos</span><span class="kg">56 kg</span></td>
-            <td class="num"><span class="sac">2 ¾ sacos</span><span class="kg">69 kg</span></td>
             <td class="num"><span class="g">248<span>g</span></span></td>
-            <td class="num"><span class="g">3,82<span>kg</span></span></td>
-            <td class="mid">☐</td>
+            <td class="num"><span class="g">3,82<span>kg</span></span></td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 4C corta<small>200 huecos</small></td>
-            <td class="num">36,0</td>
+            <td class="cama">Inv 4C corta<small>200 huecos</small></td><td class="num">36,0</td>
             <td class="num"><span class="sac">2 ¼ sacos</span><span class="kg">56 kg</span></td>
-            <td class="num"><span class="sac">2 ¾ sacos</span><span class="kg">69 kg</span></td>
             <td class="num"><span class="g">234<span>g</span></span></td>
-            <td class="num"><span class="g">3,60<span>kg</span></span></td>
-            <td class="mid">☐</td>
+            <td class="num"><span class="g">3,60<span>kg</span></span></td><td class="mid"><span class="caja"></span></td>
           </tr>
 
-          <tr class="grp"><td colspan="7">Bloque 5</td></tr>
+          <tr class="grp"><td colspan="6">Bloque 5</td></tr>
           <tr>
-            <td class="cama">Inv 5<small>13 camas</small></td>
-            <td class="num">31,7</td>
+            <td class="cama">Inv 5<small>13 camas</small></td><td class="num">31,7</td>
             <td class="num"><span class="sac">2 sacos</span><span class="kg">50 kg</span></td>
-            <td class="num"><span class="sac">2 ½ sacos</span><span class="kg">63 kg</span></td>
             <td class="num"><span class="g">206<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
 
-          <tr class="grp"><td colspan="7">Exterior — cada uno igual al invernadero de al lado</td></tr>
+          <tr class="grp"><td colspan="6">Exterior — cada uno igual al invernadero de al lado</td></tr>
           <tr>
-            <td class="cama">Ext 3A<small>181 huecos</small></td>
-            <td class="num">32,6</td>
+            <td class="cama">Ext 3A<small>181 huecos</small></td><td class="num">32,6</td>
             <td class="num"><span class="sac">1 ¾ sacos</span><span class="kg">44 kg</span></td>
-            <td class="num"><span class="sac">2 ¾ sacos</span><span class="kg">69 kg</span></td>
             <td class="num"><span class="g">408<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Ext 3B<small>Medir el largo y usar la fila de Inv 3B que corresponda — grande o pequeña</small></td>
-            <td class="num">—</td>
-            <td class="num" colspan="2" style="font-size:13.5px;font-weight:700">Usar la fila de <b>Inv 3B</b></td>
-            <td class="num" style="font-size:13.5px">Igual que Inv 3B</td>
+            <td class="cama">Ext 3B<small>Medir el largo y usar la fila de Inv 3B que corresponda</small></td>
             <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num" style="font-weight:700;font-size:13.5px">Usar la fila de Inv 3B</td>
+            <td class="num" style="font-size:13px">Igual que Inv 3B</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Ext 4<small>UNA sola cama · 4A + 4B seguidas, sin corredor</small></td>
-            <td class="num">40,3</td>
+            <td class="cama">Ext 4<small>UNA sola cama · 4A + 4B seguidas, sin corredor</small></td><td class="num">40,3</td>
             <td class="num"><span class="sac">2 sacos</span><span class="kg">50 kg</span></td>
-            <td class="num"><span class="sac">3 sacos</span><span class="kg">75 kg</span></td>
             <td class="num"><span class="g">262<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Ext 5<small>Igual a una cama de Inv 5</small></td>
-            <td class="num">31,7</td>
+            <td class="cama">Ext 5<small>176 huecos</small></td><td class="num">31,7</td>
             <td class="num"><span class="sac">2 sacos</span><span class="kg">50 kg</span></td>
-            <td class="num"><span class="sac">2 ½ sacos</span><span class="kg">63 kg</span></td>
             <td class="num"><span class="g">206<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
           <tr>
-            <td class="cama">Inv 6<small>Igual a una cama de Inv 5 · ESTE NO TIENE PLÁSTICO</small></td>
-            <td class="num">31,7</td>
+            <td class="cama">Inv 6<small>176 huecos · ESTE NO TIENE PLÁSTICO</small></td><td class="num">31,7</td>
             <td class="num"><span class="sac">2 sacos</span><span class="kg">50 kg</span></td>
-            <td class="num"><span class="sac">2 ½ sacos</span><span class="kg">63 kg</span></td>
             <td class="num"><span class="g">206<span>g</span></span></td>
-            <td class="num nada">—</td>
-            <td class="mid">☐</td>
+            <td class="num nada">—</td><td class="mid"><span class="caja"></span></td>
           </tr>
         </tbody>
       </table>

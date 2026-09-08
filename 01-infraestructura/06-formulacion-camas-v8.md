@@ -601,3 +601,85 @@ esos dos, el mapa de suelo de la finca queda completo:
 | **Inv 1** | 🔴 nunca — y es el cultivo de mayor ticket |
 | **Exterior (compuesta)** | 🔴 nunca — 5 filas de la tabla dependen de ella |
 | Mini | 🟡 cubierto por proxy de performance (Inv 5) |
+
+
+---
+
+# v9 · 2026-09-03 — se elimina ESTÁNDAR / PREMIUM
+
+**Decisión de Vanessa**, después de que ella misma señalara la contradicción: la hoja v8
+diferenciaba la dosis por variedad, mientras el análisis de esta sesión concluía que
+*"la variedad se ajusta eligiendo el bloque, no cambiando la receta."*
+
+> 🔴 **De dónde venía:** yo **copié la clasificación ESTÁNDAR / PREMIUM del Protocolo v7 sin
+> examinarla.** Cambié los cotes, la leonardita y el yeso, pero heredé su tabla de variedades
+> como si fuera dato. **Nunca la justifiqué, y contradecía mi propia recomendación.**
+
+## La prueba: PREMIUM no clasifica por ciclo
+
+| Ciclo a campo | ESTÁNDAR | PREMIUM |
+|---|---|---|
+| **9 sem** | — | **Boca de dragón** |
+| 10 | Amaranto | — |
+| 12 | Campánula · Matricaria · Ammi | Zinnia · Boca de dragón MB |
+| 13 | **Gomphrena · Ammobium** | **Statice** · Celosia spicata |
+| 14 | — | Celosia · **Marigold** |
+| 15 | — | Celosia Purple Flamingo |
+| 19 | — | Lisianthus |
+| 25 | — | Dusty Miller |
+
+**Los rangos se superponen por completo:** ESTÁNDAR va de 10 a 13 semanas y ese rango entero cabe
+dentro de PREMIUM, que va de 9 a 25. Tres casos lo rompen sin ambigüedad:
+
+- **La boca de dragón, con el ciclo más corto de la finca (9 sem), recibía 50 % más Bokashi por
+  preparación que la gomphrena de 13 sem.**
+- **Statice, gomphrena y ammobium tienen los tres 13 semanas.** Uno era PREMIUM y dos ESTÁNDAR.
+- **Marigold era PREMIUM** — y es el cultivo que se usa como **rotación biosupresora entre ciclos
+  de lisianthus.** El cultivo de limpieza recibía la dosis premium.
+
+**PREMIUM clasificaba por valor comercial. El precio de venta no es una variable de suelo.**
+
+## Y el doble conteo, que es el argumento decisivo
+
+La materia orgánica que un cultivo recibe **al año** depende de cuántas veces se prepara su cama,
+o sea de su ciclo — no de su precio:
+
+| Cultivo | Ciclo + ventana | Ciclos/año | **kg/m²/año** | vs Gomphrena |
+|---|---|---|---|---|
+| **Boca de dragón** | 11 sem | 4,73 | **5,86** | **+29 %** |
+| Gomphrena | 16 sem | 3,25 | 4,55 | referencia |
+| Statice · Celosia | 17 sem | 3,06 | 4,28 | −6 % |
+| Lisianthus | 23 sem | 2,26 | 3,17 | −30 % |
+| Dusty Miller | 28 sem | 1,86 | 2,60 | −43 % |
+
+> **La boca de dragón ya recibía 29 % más materia orgánica al año que la gomphrena solo por tener
+> el ciclo más corto — y encima 50 % más por preparación por ser PREMIUM. Estaba contado doble en
+> la misma dirección.**
+
+⚠️ **Corrección de un número mío:** en el mensaje anterior afirmé que un cultivo de ocupación
+larga recibe *"2,5× menos"* materia orgánica al año. **Es −30 % para lisianthus y −43 % para Dusty
+Miller, no 2,5×.** Lo calculé mal y lo sobredimensioné. La diferencia existe pero es modesta.
+
+## La v9
+
+**Una sola dosis por cama, que depende del bloque y no de la variedad.** La hoja arranca con esa
+frase para que quede sin ambigüedad. Cuatro razones:
+
+1. **No hay mecanismo.** Más materia orgánica no mejora un cultivo de alto valor; lo hacen la M.O.
+   del bloque y la nutrición del tanque.
+2. **La nutrición de la variedad va por el tanque**, que es semanal y ajustable. La cama se
+   prepara una vez por ciclo — es el lugar equivocado para diferenciar por planta.
+3. **Le quita al operario una clasificación** antes de preparar.
+4. Ahorra el 20–50 % del Bokashi en cada cama que corría PREMIUM.
+
+## Lo que se atiende por otra vía, no por la dosis de Bokashi
+
+| Caso | Mecanismo | Dónde vive |
+|---|---|---|
+| **Matricaria Vegmo Single** — mosca blanca en suelo de 3C e Inv 5 | Drench de *Beauveria* o *Paecilomyces* pre-siembra, obligatorio · y nunca sembrarla ahí | `02-nutricion/03-drench-inoculacion.md` — ya existe y es correcto |
+| **Statice** — botrytis de corona | Cascarilla 2–3 cm en superficie: seca la corona y aporta sílice | 🔴 **Pendiente:** la cascarilla está asignada al compost. Decisión de Vanessa |
+| **Rosas de Inv 1** — perenne | Leonardita **125 kg/ha cada 4 meses en superficie**, no incorporada. Único cultivo al que le aplica esa línea de la etiqueta | Régimen aparte, no preparación de cama |
+| **Lisianthus** — el bloque, no la dosis | Mover a Bloque 4: Ca más bajo (yeso indicado), mejor riego, Fusarium manejado por rotación. 3B tiene **C.E. 0,829** y 3C la peor humedad nocturna | `01-infraestructura/01-invernaderos.md` |
+| **Dianthus** en 3A superior | Falló por calor y agua. **La bomba cambia la premisa** — merece re-ensayo, no receta especial | Ensayo por definir |
+
+**Ninguno de los cinco se resuelve cambiando la dosis de Bokashi.**

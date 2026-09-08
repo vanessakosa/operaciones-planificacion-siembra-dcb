@@ -639,7 +639,46 @@ dentro de PREMIUM, que va de 9 a 25. Tres casos lo rompen sin ambigüedad:
 
 **PREMIUM clasificaba por valor comercial. El precio de venta no es una variable de suelo.**
 
-## Y el doble conteo, que es el argumento decisivo
+## 🔴 RETIRADO — el argumento del "doble conteo" era inválido
+
+**Corrección de Vanessa, 2026-09-03:** *"Ese conteo de que recibe más no sé si sea lógico, porque
+nosotros hacemos rotación de camas. Donde hubo una boca de dragón después viene una celosia, una
+matricaria o una campánula, y después vuelve una boca de dragón."*
+
+**Tiene razón y el argumento se cae.** La tabla de abajo calcula kg/m²/año **por cultivo**, lo que
+asume que cada cultivo ocupa su cama todo el año — monocultivo por cama. **Con rotación eso es
+falso:** la boca de dragón está 11 semanas y se va. **La materia orgánica se acumula en la CAMA,
+no en el cultivo.** Se deja la tabla como registro del error, no como argumento.
+
+> **Y la corrección hace el caso de la v9 más limpio, no más débil.** Si lo que acumula es la cama
+> y los cultivos rotan por ella, entonces **no existe ninguna diferencia anual por cultivo que
+> haya que compensar con la dosis.** La dosis pertenece a la cama, punto. La v9 es correcta por
+> una razón más simple de la que yo di.
+
+### Lo único que sobrevive de la idea anual, y es de cama, no de variedad
+
+Bajo rotación, **el número de preparaciones al año de una cama depende del ciclo promedio de su
+secuencia**, no de ningún cultivo suyo:
+
+| Secuencia de la cama | Ciclo promedio | Preparaciones/año |
+|---|---|---|
+| Rápida — boca de dragón · amaranto · campánula | ~12 sem | **~4,3** |
+| Media — celosia · statice · gomphrena · matricaria | ~16 sem | ~3,3 |
+| Lenta — lisianthus · Dusty Miller | ~25 sem | **~2,1** |
+
+**Eso sí es real, y es una propiedad de la cama en el tiempo.** Una cama de rotación rápida recibe
+del orden del **doble** de Bokashi al año que una de rotación lenta — y con él, el doble de
+potasio.
+
+**No sirve para diferenciar la dosis** (al preparar no se sabe qué van a ser los tres cultivos
+siguientes). **Sirve como predicción comprobable para el próximo análisis de suelo:**
+
+> 🟢 **Las camas de rotación rápida deberían mostrar mayor saturación de K que las de rotación
+> lenta dentro del mismo bloque.** Vale muestrear el próximo análisis **por intensidad de
+> rotación**, no solo por bloque — es la misma lógica que ya destapó que el muestreo compuesto de
+> Bloque 3 escondió la salinidad de 3B.
+
+## La tabla del error, conservada como registro
 
 La materia orgánica que un cultivo recibe **al año** depende de cuántas veces se prepara su cama,
 o sea de su ciclo — no de su precio:
@@ -652,13 +691,17 @@ o sea de su ciclo — no de su precio:
 | Lisianthus | 23 sem | 2,26 | 3,17 | −30 % |
 | Dusty Miller | 28 sem | 1,86 | 2,60 | −43 % |
 
-> **La boca de dragón ya recibía 29 % más materia orgánica al año que la gomphrena solo por tener
-> el ciclo más corto — y encima 50 % más por preparación por ser PREMIUM. Estaba contado doble en
-> la misma dirección.**
+> ⚠️ **Esta conclusión era falsa.** Solo valdría si cada cultivo ocupara su cama todo el año.
+> Con rotación, la cama se prepara N veces al año independientemente de qué cultivo siga, así que
+> no hay nada que la boca de dragón "reciba al año".
 
-⚠️ **Corrección de un número mío:** en el mensaje anterior afirmé que un cultivo de ocupación
-larga recibe *"2,5× menos"* materia orgánica al año. **Es −30 % para lisianthus y −43 % para Dusty
-Miller, no 2,5×.** Lo calculé mal y lo sobredimensioné. La diferencia existe pero es modesta.
+**El argumento válido para eliminar PREMIUM es el otro: la tabla de ciclos de arriba, donde los
+rangos se superponen por completo y tres casos lo rompen sin ambigüedad.** Ese no depende de
+ninguna cuenta anual y sigue en pie.
+
+⚠️ **Dos correcciones sobre esta cuenta, en orden:** primero afirmé que un cultivo largo recibe
+*"2,5× menos"* al año (era −30 % y −43 %); y después Vanessa señaló que **la cuenta entera no
+aplica bajo rotación.** Queda retirada.
 
 ## La v9
 

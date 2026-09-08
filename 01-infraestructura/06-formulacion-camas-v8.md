@@ -508,3 +508,96 @@ La regla de las hojas de operario dice *solo lo que se ejecuta*, y por eso sali�
 la receta del Bokashi. **Pero el Cote NP, el Cote NPK y el Terra Life están físicamente en la
 bodega y Wilson los ha venido aplicando en cada cama.** Omitirlos en silencio garantiza que los
 agregue por costumbre. Van como **una línea de instrucción**, no como tabla de historia.
+
+
+---
+
+# ✅ Mini y exterior resueltos por Vanessa · 2026-09-03
+
+Las cinco tasas provisionales de la sección anterior quedan **reemplazadas por el mapeo que dio
+Vanessa**, que es mejor que mi asignación por adyacencia porque usa dos criterios distintos y
+correctos:
+
+| Cama | Espejo | Criterio de Vanessa |
+|---|---|---|
+| **Mini** | **Inv 5** | *"No se le tomó muestra y es uno de los invernaderos más nuevos. Si tuviese que comparar el performance, se parece más a lo que sucede en el Invernadero 5."* → criterio de **comportamiento**, no de geometría |
+| **Ext 3A** | Inv 3A | *"Están hechos paralelos a los invernaderos"* — mismo largo de cama |
+| **Ext 3B** | Inv 3B | Igual |
+| **Ext 4** | Inv 4 | *"Es una sola, es la combinación de una cama del 4A y una del 4B, **porque no tiene división**"* |
+| **Ext 5** | Inv 5 | *"**Exactamente** del mismo largo que las camas del 5"* |
+| **Inv 6** | Inv 5 | *"No es un invernadero, **ese no está con plástico**, también es exterior, y el largo es muy similar a las del 5"* |
+
+## Correcciones que esto obliga en `capacidad_bloques.csv`
+
+| Cama | Decía | Ahora | Por qué |
+|---|---|---|---|
+| **Ext 4** | 176 huecos | **224 huecos** · 40,3 m² | Es **4A + 4B seguidas sin corredor**. El 176 era casi con certeza una copia de Ext 5 |
+| **Ext 3B** | *(vacío)* | 8 líneas · largo por medir | Existía sin ningún dato |
+| **Inv 6** | — | Nota: **exterior SIN plástico** | El repo decía *"7 camas exteriores, todas con mulch plástico negro"*. Inv 6 no lo tiene |
+
+## Dos cosas donde NO tomé la semejanza como medida
+
+**Ext 3A se queda en sus 181 huecos medidos**, no en los 198 de Inv 3A. Vanessa dijo *"muy
+similares"*, no *"exactamente iguales"* — y para Ext 5 sí dijo *"exactamente"*. La diferencia es
+del 9 % en área, así que **sobrescribir un largo medido con una semejanza cualitativa sería
+inventar un dato.** Ext 3A lleva su propia fila: 32,6 m², 1 ¾ sacos, 408 g de leonardita.
+
+**Ext 3B no tiene largo medido**, así que la hoja no le pone número: manda **medir la cama y usar
+la fila de Inv 3B** que corresponda, grande o pequeña. Wilson puede ver de qué tamaño es la cama;
+yo no puedo.
+
+## La tabla final
+
+| Cama | Huecos | m² | Bokashi STD | Bokashi PREM | Leonardita | Yeso |
+|---|---|---|---|---|---|---|
+| **Mini grande** | 70 | 12,6 | ¾ saco · 19 kg | 1 saco · 25 kg | **82 g** | — |
+| **Mini pequeña** | 35 | 6,3 | **1 ¼ sacos para las 3 camas** | 1 ½ sacos para las 3 | **41 g** | — |
+| **Ext 3A** | 181 | 32,6 | 1 ¾ · 44 kg | 2 ¾ · 69 kg | 408 g | — |
+| **Ext 3B** | por medir | — | *usar la fila de Inv 3B* | *idem* | *idem* | — |
+| **Ext 4** | **224** | **40,3** | 2 sacos · 50 kg | 3 sacos · 75 kg | 262 g | — |
+| **Ext 5** | 176 | 31,7 | 2 sacos · 50 kg | 2 ½ · 63 kg | 206 g | — |
+| **Inv 6** | 176 | 31,7 | 2 sacos · 50 kg | 2 ½ · 63 kg | 206 g | — |
+
+**La Mini pequeña de 6,3 m² es la única cama que va en instrucción de grupo.** Un cuarto de saco
+son 6,25 kg = 0,99 kg/m² (26 % por debajo) y medio saco son 12,5 = 1,98 kg/m² (25 % por encima):
+**ninguna fracción de saco cae cerca.** Se pesan **1 ¼ sacos y se reparten entre las 3 camas.**
+
+**Ningún exterior lleva yeso**, aunque Ext 4 tome la tasa de Bokashi de Bloque 4: la decisión del
+yeso se apoya en el azufre **medido** de Bloque 4, y el exterior no tiene análisis.
+
+---
+
+## 🔴 El límite del mapeo: sirve para el ÁREA, no para la TASA
+
+El criterio de Vanessa es correcto para lo que resuelve. *"Paralelos a los invernaderos"* da el
+**largo de cama**, y el largo es lo que convierte una tasa por m² en cantidad. Y para el Mini el
+criterio fue de **performance**, que sí es un proxy legítimo del suelo.
+
+**Pero para los exteriores, "misma geometría" no dice nada del suelo — y hay una diferencia que
+sí importa: la lluvia.**
+
+| | Invernadero | Exterior |
+|---|---|---|
+| Lluvia directa | No | **Sí** |
+| Lixiviación de bases solubles (K, Mg, Ca) | Baja | **Alta** |
+| Ciclos de humectación y secado | Suaves | Marcados → más mineralización de M.O. |
+
+> **El exceso de potasio que gobierna todo el diagnóstico —saturación de 23,7 a 30 % contra una
+> referencia de 2 a 5 %— es un fenómeno de suelo cubierto.** Un suelo que recibe lluvia directa
+> lleva años lixiviando ese potasio. **Lo más probable es que los exteriores tengan menos exceso
+> de K y menos M.O. que su invernadero espejo**, lo que significa que la tasa del interior los
+> **subdosifica**, no los sobredosifica.
+>
+> Es decir: **el error, si existe, va en la dirección de quedarse corto.** Eso es preferible al
+> revés, y hace que el mapeo sea un punto de partida seguro. Pero no es el número final.
+
+**Y se resuelve con UNA muestra.** Un análisis compuesto de "exterior" cierra las cinco filas de
+golpe, por el costo de un informe de laboratorio — el mismo argumento del análisis de Inv 1. Con
+esos dos, el mapa de suelo de la finca queda completo:
+
+| Muestra | Estado |
+|---|---|
+| Bloque 3 · 4 · 5 | ✅ agosto 2026 |
+| **Inv 1** | 🔴 nunca — y es el cultivo de mayor ticket |
+| **Exterior (compuesta)** | 🔴 nunca — 5 filas de la tabla dependen de ella |
+| Mini | 🟡 cubierto por proxy de performance (Inv 5) |

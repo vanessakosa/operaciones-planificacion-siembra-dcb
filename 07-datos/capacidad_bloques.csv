@@ -3,17 +3,17 @@ Inv 3A,198,8,,,,,MEDIDO,
 Inv 3B,267,8,,,,,NO UNIFORME,"PENDIENTE MEDIR CAMA POR CAMA. Vanessa 2026-08-13: ""es muy particular, hay camas mas largas y otras mas pequenas"". Los 267 huecos NO son uniformes — no usar ese numero como area de todas las camas"
 Inv 3C (5 camas),141,8,,,,5,MEDIDO,Parte de 5 camas
 Inv 3C (3 camas),90,8,,,,3,MEDIDO,Parte de 3 camas
-Ext 3A,181,8,,,,,MEDIDO,
+Ext 3A,181,8,,,,,MEDIDO,"Paralela a Inv 3A: MISMA tasa por m2, pero largo propio MEDIDO de 181 huecos (198 en 3A). Vanessa 2026-09-03: ""muy similares"", no identicas"
 Inv 4A,112,8,,,,,MEDIDO,Lado A
 Inv 4B,112,8,,,,,MEDIDO,Lado B
 Inv 4 baja (225),225,8,,,,1,MEDIDO,Cama baja larga | Es Inv 4C (Vanessa 2026-08-13)
 Inv 4 baja (212),212,8,,,,1,MEDIDO,Cama baja larga | Es Inv 4C (Vanessa 2026-08-13)
 Inv 4 baja (200),200,8,,,,1,MEDIDO,Cama baja larga aprox | Es Inv 4C (Vanessa 2026-08-13)
 Inv 5,176,8,,,,,MEDIDO,Todas iguales
-Ext 4,176,8,,,,,MEDIDO,Igual que Inv 5
-Ext 5,176,8,,,,,MEDIDO,Igual que Inv 5
-Ext 3B,,,,,,,PENDIENTE MEDIR,PENDIENTE MEDIR
+Ext 4,224,8,,,,,MEDIDO,"UNA sola cama = 4A + 4B seguidas, sin corredor (Vanessa 2026-09-03). CORREGIDO: decia 176"
+Ext 5,176,8,,,,,MEDIDO,Mismo largo que Inv 5 (Vanessa 2026-09-03)
+Ext 3B,267,8,,,,,PENDIENTE MEDIR,Paralela a Inv 3B: misma tasa por m2. LARGO SIN MEDIR — usar la fila de Inv 3B (grande o pequena) que corresponda al largo real de la cama
 Inv 2,,,,,,,NO UNIFORME,PENDIENTE MEDIR CAMA POR CAMA — camas de distinta medida (Vanessa 2026-08-13). Es ademas el bloque de ensayos
-Mini,70,8,,,,,MEDIDO (huecos) / ASUMIDO (8 lineas),"70 huecos a lo largo — Vanessa 2026-08-13. Las 8 lineas se asumen por analogia con el resto, CONFIRMAR"
+Mini,70,8,,,,,MEDIDO (huecos) / ASUMIDO (8 lineas),Sin muestra de suelo. Invernadero nuevo; performance se parece a Inv 5 (Vanessa 2026-09-03)
 Inv 4C,,,,,,,"ALIAS — ver las tres filas ""Inv 4 baja""","ES EL MISMO BLOQUE que las tres filas ""Inv 4 baja"" (225, 212, 200 huecos). Vanessa 2026-08-13: ""el 4C es una cama del 4A y una del 4B juntas, porque es una cama larga"". El registro de cosecha escribe 4C / Inv 4C; capacidad_bloques lo tenia como ""Inv 4 baja"". MISMO SITIO, DOS NOMBRES"
-Inv 6,176,8,,,,,ESTIMADO,"NO MEDIDO. Vanessa 2026-08-13: ""son parecidas a las del Inv 5"". Se copia 176x8 de Inv 5 como ESTIMACION — no usar para decisiones de area sin medir"
+Inv 6,176,8,,,,,ESTIMADO,Exterior SIN plastico. Largo similar a Inv 5 (Vanessa 2026-09-03)

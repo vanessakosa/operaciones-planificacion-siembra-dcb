@@ -78,8 +78,19 @@ sacos por cama.
 **Acción pendiente de validación: reescribir este protocolo en kg/m²**, y traducir a sacos al
 momento de aplicar según el área de esa cama concreta. Costo cero.
 
-**Lo que sí está bien y no hay que tocar:** la lógica inversa. Bloque 3 (M.O. 18.6%, la más baja,
-suelo erosionado) recibe más; Bloque 4 (M.O. 23.4%, la más alta) recibe menos. Correcto.
+> 🔴 **CORREGIDO 2026-09-03: esta afirmación era falsa.** Decía que *"la lógica inversa está bien
+> orientada: Bloque 3 recibe más, Bloque 4 recibe menos."* **En kg/m² es al revés:**
+>
+> | Bloque | M.O. | Bokashi real |
+> |---|---|---|
+> | Bloque 3 | **18,6 %** la más baja | **1,32 kg/m²** — el MENOS |
+> | Bloque 4 | 23,4 % la más alta | 1,39 kg/m² |
+> | Bloque 5 | 22,9 % | **1,58 kg/m²** — el MÁS |
+>
+> Era cierto solo **en sacos por cama**, y únicamente porque las camas de 3B son las más grandes
+> de la finca. **El artefacto de la expresión en sacos no solo desnivelaba camas dentro de un
+> bloque: escondía que el reparto entre bloques va invertido.** Detalle y tabla completa en
+> `01-infraestructura/06-formulacion-camas-v8.md`.
 
 **Contexto que cambia la dosis objetivo:** con M.O. en 18.6–23.4% el objetivo de construir
 materia orgánica está **cumplido**, y el Bokashi es además una fuente de potasio no contabilizada

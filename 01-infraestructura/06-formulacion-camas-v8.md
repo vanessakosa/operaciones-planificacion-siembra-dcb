@@ -415,3 +415,96 @@ Life en 0–3 cm.
 | 5 | 🔴 Terra Life 0–3 cm | *(fuera)* |
 | 6 | Riego suave con agua | Igual — **y tiene que ser agua sola** |
 | 7 | — | **Drench de inoculación** |
+
+
+---
+
+# Tabla completa de camas · 2026-09-03
+
+Hoja de operario: `05-programacion/hojas-operario/preparacion-camas-v8.html` y su PDF.
+**Llena los dos huecos que arrastraba el v7: el Mini y el exterior.**
+
+## La regla de área que lo hace posible: 0,18 m² por hueco
+
+Verificada contra seis bloques con área ya registrada — 3A (198 h / 35,6 m²), 3B (267 / 48,1),
+3C (140 / 25,2), Inv 4A (112 / 20,2), Inv 4C (225 / 40,5) e Inv 5 (176 / 31,7). **El cociente da
+0,1798 a 0,1804 en los seis.** Con eso, cualquier cama con conteo de huecos tiene área, y las
+tasas por m² del v8 se convierten en cantidad.
+
+| Cama | Huecos | m² | Bokashi STD | Bokashi PREM | Leonardita | Yeso |
+|---|---|---|---|---|---|---|
+| Inv 3A | 198 | 35,6 | 2 sacos · 50 kg | 3 sacos · 75 kg | 445 g | — |
+| Inv 3B grande | 267 | 48,1 | 3 sacos · 75 kg | 4 sacos · 100 kg | 600 g | — |
+| Inv 3B pequeña | 65 | 11,7 | ¾ saco · 19 kg | 1 saco · 25 kg | 146 g | — |
+| Inv 3C grande | 140 | 25,2 | 1 saco · 25 kg | 1 ½ · 38 kg | 315 g | — |
+| Inv 3C pequeña | 70 | 12,6 | ½ saco · 13 kg | ¾ saco · 19 kg | 158 g | — |
+| **Mini grande** | 70 | 12,6 | ¾ saco · 19 kg | 1 saco · 25 kg | 158 g | — |
+| **Mini pequeña** | 35 | 6,3 | 1 saco / 3 camas | ½ saco · 13 kg | 79 g | — |
+| Inv 4A · 4B | 112 | 20,2 | 1 saco · 25 kg | 1 ½ · 38 kg | 131 g | **2,02 kg** |
+| Inv 4C larga | 225 | 40,5 | 2 ½ · 63 kg | 3 sacos · 75 kg | 263 g | **4,05 kg** |
+| Inv 4C media | 212 | 38,2 | 2 ¼ · 56 kg | 2 ¾ · 69 kg | 248 g | **3,82 kg** |
+| Inv 4C corta | 200 | 36,0 | 2 ¼ · 56 kg | 2 ¾ · 69 kg | 234 g | **3,60 kg** |
+| Inv 5 | 176 | 31,7 | 2 sacos · 50 kg | 2 ½ · 63 kg | 206 g | — |
+| **Ext 3A** | 181 | 32,6 | 1 ¾ · 44 kg | 2 ¾ · 69 kg | 408 g | — |
+| **Ext 4** | 176 | 31,7 | 1 ½ · 38 kg | 2 ¼ · 56 kg | 206 g | — |
+| **Ext 5** | 176 | 31,7 | 2 sacos · 50 kg | 3 sacos · 75 kg | 206 g | — |
+| **Inv 6 exterior** | 176 | 31,7 | 1 ¾ · 44 kg | 2 ¾ · 69 kg | 206 g | — |
+
+*Bokashi redondeado al **cuarto de saco** — 6,25 kg. El error queda en ±6 % por cama, muy dentro
+de la incertidumbre de una dosis que todavía espera el análisis. Es un rango de campo, no de
+báscula.*
+
+**Ext 3B, Inv 2 y Ext Inv 2 no tienen conteo de huecos** — quedan fuera de la tabla y la hoja
+manda preguntar antes de prepararlas. **Inv 1 e Inv 2 usan la fila de Inv 4A/4B**, como ya decía
+el v7.
+
+## 🔴 Hallazgo: la diferenciación por bloque está INVERTIDA
+
+Al pasar los sacos por cama del v7 a kg/m², aparece que **el reparto entre bloques hace lo
+contrario de lo que el repositorio declara.**
+
+| Bloque | M.O. | Bokashi vigente | ¿Coincide con la intención? |
+|---|---|---|---|
+| **Bloque 3** | **18,6 %** — la más baja | **1,32 kg/m²** promedio (3A 1,40 · 3B 1,56 · 3C 0,99) | 🔴 **Recibe el MENOS** |
+| Bloque 4 | **23,4 %** — la más alta | 1,39 kg/m² (4A/B 1,24 · 4C 1,54) | 🔴 Recibe más que Bloque 3 |
+| Bloque 5 | 22,9 % | **1,58 kg/m²** | 🔴 **Recibe el MÁS** |
+
+**`03-no-dig-y-preparacion-camas.md` afirma que "la lógica inversa está bien orientada" y que
+Bloque 3 recibe la dosis más alta. Es falso en kg/m².** Era cierto solo en sacos por cama, y
+únicamente porque las camas de 3B son las más grandes de la finca. **El artefacto de expresar la
+dosis en sacos no solo desnivelaba camas dentro de un bloque: escondía que el reparto entre
+bloques va al revés.**
+
+## Lo que esta hoja cambia y lo que NO
+
+| | |
+|---|---|
+| ✅ **Cambia la expresión** — cada cama recibe la **tasa por m² de su bloque**, así que las camas chicas dejan de estar sobredosificadas. La cama pequeña de 3B pasaba de **6,41 kg/m²** contra 1,56 de la grande | Sin efecto agronómico en las camas principales: reciben lo mismo que hoy |
+| 🔴 **NO cambia el nivel ni el reparto entre bloques** | Sigue trabado en el análisis del Bokashi. **El % de K es lo que convierte la dosis en cálculo en vez de estimación** |
+
+**Cuando llegue el análisis, la decisión pendiente es corregir la inversión** — y la propuesta
+sigue siendo de dos escalones: M.O. bajo 20 % (Bloque 3) → dosis alta · M.O. de 20 % o más
+(Bloques 4 y 5) → dosis baja.
+
+## ⚠️ Tasas provisionales, que el operario no ve y Vanessa sí
+
+Cinco filas de la tabla no tienen análisis de suelo ni fila en el v7. La tasa se asignó **por
+adyacencia al bloque interior vecino**, y queda marcada aquí para que no se lea como dato:
+
+| Cama | Tasa asignada | De dónde sale | Qué falta |
+|---|---|---|---|
+| **Mini** | 1,40 kg/m² · leonardita 12,5 g/m² | La tasa de Inv 3A | **¿El Mini está dentro de la muestra de suelo de Bloque 3?** Pregunta abierta desde el 2026-09-02 |
+| **Ext 3A** | 1,40 · leonardita 12,5 | La tasa de Inv 3A | Análisis de suelo propio |
+| **Ext 4** | 1,24 · leonardita 6,5 | La tasa de Inv 4A/4B | Análisis de suelo propio |
+| **Ext 5** | 1,58 · leonardita 6,5 | La tasa de Inv 5 | Análisis de suelo propio |
+| **Inv 6** | 1,40 · leonardita 6,5 | Sin bloque adyacente — asignada al promedio | Análisis de suelo propio |
+
+**Ningún exterior lleva yeso**, aunque Ext 4 tome la tasa de Bokashi de Bloque 4: la decisión del
+yeso se apoya en el azufre medido de Bloque 4, y los exteriores no tienen análisis.
+
+## Por qué la hoja sí lista los tres productos que salieron
+
+La regla de las hojas de operario dice *solo lo que se ejecuta*, y por eso salió el histórico de
+la receta del Bokashi. **Pero el Cote NP, el Cote NPK y el Terra Life están físicamente en la
+bodega y Wilson los ha venido aplicando en cada cama.** Omitirlos en silencio garantiza que los
+agregue por costumbre. Van como **una línea de instrucción**, no como tabla de historia.

@@ -148,3 +148,67 @@ mosca blanca, mildeo, oidio y roya. Inóculo confirmado en suelo de **3C, Inv 5 
 - El **Cote NP** ya era difícil de conseguir, y por eso se venía aplicando solo NPK a dosis menor
 - **Calcinit** en Alma Agrícola a **$3.183/kg** contra $7.614/kg del Haifa N-Cal, **con ficha
   idéntica** ([Y-FPT215], 15,5-0-0-26,0 CaO, doble sal, grado fertirriego)
+
+---
+
+# 2026-09-09 · Protocolo de inoculación nuevo · **T=0 de la inoculación**
+
+**Aprobado por Vanessa. Vigente para toda siembra.** Ejecución en
+`02-nutricion/03-drench-inoculacion.md` y en la hoja
+`05-programacion/hojas-operario/inoculacion.html`.
+
+## Qué reemplaza
+
+| | Antes | Desde hoy |
+|---|---|---|
+| **Método** | Tanque de 2.000 L por bloque, por goteo | **Bomba de espalda de 20 L, cama por cama** |
+| **Alcance** | El bloque entero, camas en producción incluidas | **Solo las camas que se están preparando** |
+| **Momento** | Calendario, cada 3–4 semanas (≈15/año) | **Una vez por vuelta de cama**, más la bandeja |
+| **Etapas** | Una | **Dos: bandeja (raíz) y cama (suelo)** |
+| **Productos** | Fitoderma · Estabios · Promobac · Raizal · Fullfert | **Bandeja:** Endorhiza · Nube · Promobac (+ Fitoderma o Interactor según variedad) · **Cama:** Fosfolip |
+| **Costo** | **$4.446.915/año** | **≈$290.000/año**, con más cobertura |
+
+## Línea base contra la que se va a medir
+
+| Indicador | Valor de partida | Qué contesta |
+|---|---|---|
+| **P soluble** | **0,107 mg/L** | Si el Fosfolip a 2× etiqueta está trabajando. Directo, barato, sin esperar tallos |
+| ***Trichoderma*** | 1,4×10⁶ UFC/g *(compuesto Bloque 3+4)* | Si el drench era el motor del 127× o lo era el Bokashi + No-Dig |
+| ***Fusarium*** | 3×10⁴ UFC/g *(mismo compuesto)* | El blanco del Fitoderma en bandeja |
+| **Mortalidad por *Fusarium* en lisianthus** | 11 eventos registrados | El desenlace que importa en Bloque 3 |
+| **Infiltración del drench** | **no medida** | Abrir un hueco y medir los centímetros del frente de humedad |
+| **Bacterias del suelo** | **nunca medidas** | Convertiría el "51× sobre el umbral" en un % de la población real |
+| **Colonización micorrízica** | **nunca medida** | Prueba directa de la hipótesis de pérdida de diversidad |
+
+## Lo que hay que pedir para cerrarlo
+
+**A Bioquirama, en un solo correo:** ¿Endorhiza, Nube, Promobac, Interactor y Fitoderma se pueden
+aplicar en la misma mezcla? · Panel completo de Ingham (F:B, protozoos por grupo, nematodos por
+grupo funcional, % de colonización micorrízica) · **separar el compuesto: Bloque 3 solo, Bloque 4
+solo, y Bloque 5, que nunca se ha medido** · conteo de viabilidad del Promobac de la bodega, con
+fecha y lote · ¿qué es el Biohar Forte y cuál es su dosis?
+
+**A Alma Agrícola:** precio del Endorhiza, del Interactor y del Nube · UFC/g del No Fly · ¿el
+Fosfolip es 1 o 2 L/ha? *(el repositorio tenía 2, Vanessa confirma 1)* · UFC por organismo del
+Estabios.
+
+**En la finca:** análisis de agua del nacimiento (pH · C.E. · bicarbonatos · Ca · Mg · Na · K ·
+S-SO₄ · Fe · B · dureza) — la fórmula de fertirriego se diseñó tratando el agua como un blanco ·
+y refrigerar el Promobac y el Fosfolip.
+
+## Cómo se construyó, para el registro
+
+El protocolo salió de **quince correcciones de Vanessa en una sola sesión**. Las de fondo:
+
+1. **El método:** bomba de espalda, no tanque — las camas están mezcladas dentro de cada bloque.
+2. **La base de la dosis:** si la etiqueta la da en la unidad de la mezcla, se usa esa. No se
+   deriva, no se convierte, y **no se "verifica" contra otra cifra del mismo análisis** (mi
+   comprobación del Fitoderma era circular).
+3. **La arquitectura:** base para todas + el específico de cada debilidad, en **un solo pase** —
+   separar en dos días no separa nada, porque los organismos conviven en el mismo sustrato
+   durante semanas.
+4. **Sin duplicados:** ningún producto en dos etapas. Bandeja = raíz, cama = suelo.
+5. **Una bomba es una sección de la cama**, no una fracción de la mezcla.
+6. **Un umbral biológico se busca y se cita.** El "10⁵–10⁶ UFC/planta" que usé para tres
+   decisiones lo había afirmado de memoria; el rango publicado real es **10⁶–10¹¹ UFC/ha**, y
+   contra él la etiqueta del Fosfolip resultó bien calibrada y la del Promobac 281× inflada.

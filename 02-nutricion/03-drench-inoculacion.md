@@ -1,84 +1,80 @@
 # Drench / trench de inoculación
 
-> **🔴 REESCRITO EL 2026-09-09** con las fichas de Promobac, Fitoderma, Raizal 400 y Fullfert, y
-> corregido tres veces el mismo día por Vanessa: el método (bomba de espalda, no tanque), el
-> volumen (80–100 L por cama) y la base de la dosis. **El razonamiento completo y lo que se
-> retiró están en `02-nutricion/09-inoculacion-el-analisis.md`.** Hoja de operario:
-> `05-programacion/hojas-operario/inoculacion.html`.
+> # 🟢 PROTOCOLO VIGENTE desde 2026-09-09
+> **Aprobado por Vanessa. Aplica a TODA siembra, en todos los bloques.** Reemplaza el tanque de
+> 2.000 L cada 3–4 semanas.
+> Hoja de operario: `05-programacion/hojas-operario/inoculacion.html` ·
+> Razonamiento completo y las 15 correcciones que lo produjeron:
+> `02-nutricion/10-protocolo-inoculacion-por-etapas.md` y `09-inoculacion-el-analisis.md`.
 
-## Lo que cambió
+## ETAPA 1 · BANDEJA — el viernes, un solo pase
 
-| | Antes | Ahora |
-|---|---|---|
-| **Método** | Tanque de 2.000 L por bloque, por goteo | **Bomba de espalda de 20 L, cama por cama** |
-| **Alcance** | El bloque entero, camas en producción incluidas | **Solo las camas que se están preparando** |
-| **Momento** | Calendario, cada 3–4 semanas (≈15/año) | **Una vez por vuelta de cama**, el día que se prepara |
-| **Dosis** | 500 cc fijos por tanque → 4,9 L/ha en Inv 3, 12,1 en Inv 5 | **10 mL por bomba de 20 L** → 12,6 L/ha en todas |
-| **Técnica** | Sin riego de arrastre | **Arrastre con agua sola después, antes del plástico** |
-| **Productos** | Fitoderma · Estabios · Promobac · Raizal · Fullfert | **Promobac · Fosfolip** (Fitoderma solo en el ensayo de Inv 3) |
-| **Costo/año** | $4.446.915 | **$900.234** con más cobertura |
+Las plántulas llegan el **jueves**. Se inocula el **viernes**. Se siembra el **lunes**.
 
-## 🔴 Cama por cama, con bomba de espalda de 20 L
+**En 5 litros de agua, para 4 bandejas:**
 
-**Corrige lo que decía este archivo hasta el 2026-09-09** (*"por tanque… es más eficiente y
-reduce jornal"*). Esa eficiencia era real pero se pagaba aplicando producto a camas que no lo
-necesitaban — y **con las camas mezcladas dentro de cada bloque, a camas que no lo debían
-recibir.** Y es lo único compatible con inocular el día que se prepara la cama.
+| | Producto | Cantidad | Base de la dosis |
+|---|---|---|---|
+| **BASE — toda bandeja, sin excepción** | **Endorhiza** | **10 cc** | 2 cc/L de su etiqueta (semillero) |
+| | **Nube** | **10 cc** | 2 cc/L (rango 1–2,5, etiqueta ornamentales presiembra) |
+| | **Promobac** | **13 cc** | 2,5 cc/L de su etiqueta |
+| **\+ Lisianthus · Dianthus · Green Ball** | **Fitoderma** | **5 g** | 1 g/L · *Fusarium*, 13 eventos documentados |
+| **\+ Matricaria** | **Interactor** | **10 cc** | 2 cc/L · mosca blanca en suelo, 4 eventos |
+| **\+ Todas las demás** | — | solo la base | |
 
-## La dosis: 10 mL de cada uno por bomba de 20 L
+Un solo pase, todo en la misma mezcla. Regar hasta que escurra por debajo. Si hace falta más para
+mojar las 4 bandejas, se agrega **agua sola**, no más producto.
 
-> **Por cada bomba de 20 L: 10 mL de Promobac + 10 mL de Fosfolip.**
-> **De cada uno va la misma cantidad. Todas las bombas se dosifican igual.**
+## ETAPA 2 · CAMA — el día que se prepara, al final de la tarde
 
-**Se moja la cama con 80–100 L**, o sea 4 a 5 bombas. Eso da **45 mL de cada producto por cama
-de 35,6 m²**, que son **0,5 cc/L · 1,26 mL/m² · 12,6 L/ha.**
+Es el **paso 5** de `05-programacion/hojas-operario/preparacion-camas.html`.
 
-**No hace falta tabla por cama.** Mientras se moje igual por m², la dosis por bomba y la dosis
-por área son la misma cosa: cama más grande → más bombas → más producto, en proporción.
+> ## Por cada bomba LLENA de 20 L: **1,5 cc de Fosfolip**
+> **En TODAS las bombas.** 1,5 cc en toda la bomba — **no es por litro**.
 
-**Por qué 12,6 L/ha y no la etiqueta (1 L/ha) ni la convención de 1–2 cc/L (22–56 L/ha):** en un
-drench la dosis va **por área** y el agua es un parámetro aparte; los cc/L son el cociente. La
-regla de 1–2 cc/L coincide con la etiqueta cuando el carrier es el típico de drench (1.200–2.000
-L/ha), y se dispara a 22–56× cuando el agua son 80–100 L por cama (22.500–28.100 L/ha). Los 12,6
-L/ha son **el techo de lo que la finca ya aplicaba** (Inv 5) — no un recorte y no una invención.
-Detalle y retractación en el análisis.
+**80–100 L por cama** (≈5 bombas). Una bomba es **una sección de la cama**, así que todas llevan
+su dosis: concentrar el producto en una deja el resto de la cama sin tratar.
 
-**Costo: $5.001 por cama**, los dos productos. **Si el Fosfolip no ha llegado**, va Estabios en
-la misma cantidad.
+**Base:** 2 L/ha = 0,20 cc/m² → 1,43 cc por bomba (cada bomba moja 20/2,8 = 7,1 m²). Es **2× su
+etiqueta de 1 L/ha**, y queda en **2,1×10¹¹ UFC/ha** contra un rango publicado de aplicación al
+suelo de **10⁶–10¹¹ UFC/ha** — o sea justo por encima del techo. La duplicación se justifica
+porque a etiqueta simple serían 0,71 cc por bomba, que no se miden con jeringa.
 
-## 🔴 La técnica — es aquí donde se decide si "queda corto"
+**Después del drench: riego de arrastre con agua sola, y ahí sí el plástico.** El arrastre baja el
+producto a los 5–10 cm donde va la raíz nueva; sin él el inoculante se queda en superficie.
 
-**La dosis está dentro de un factor de 2–3. La técnica puede dejar la aplicación en cero.**
+**Costo: $78 por bomba · $391 por cama.**
 
-1. **🟢 El agua: cloro descartado.** Las guías piden cloro libre bajo 0,5 ppm y pH 5,5–7,5.
-   **El agua es de nacimiento y no tiene cloro** (Vanessa, 2026-09-09). Era el único riesgo que
-   podía anular todo el programa biológico y no existe. *Corrige a
-   `00-contexto/01-empresa-y-objetivos.md`, que decía "agua de acueducto (no nacimiento)".*
-2. **Suelo húmedo, no saturado, antes de aplicar.** Ya está: es el paso 4 de la preparación
-   (riego suave con agua sola). Estaba bien puesto.
-3. **🔴 Riego de arrastre con agua sola inmediatamente después del drench, ANTES del plástico.**
-   Descartado el cloro, **este es el candidato #1 a "queda corto"**. No estaba en el protocolo:
-   los 90 L por cama son
-   2,5 mm de agua, que sobre suelo húmedo mueven el producto unos pocos centímetros. Sin
-   arrastre el inoculante se queda en la superficie, donde le da el sol y no hay raíz. Después
-   del plástico ya no hay forma de moverlo.
-4. **Al final de la tarde**, nunca a pleno sol — UV y calor.
-5. **Usar la bomba dentro de 2–3 horas** de mezclada. No se guarda de un día para otro.
-6. **Agitar durante la aplicación** — las esporas de *Bacillus* sedimentan: la primera bomba
-   sale cargada y la última pobre.
-7. **Bomba lavada, nunca la de fungicidas.** Residuo en el tanque anula la aplicación completa.
-8. **Boquilla de chorro o abanico grueso, baja presión.** Aquí se quiere volumen sobre el suelo,
-   no niebla.
+## ETAPA 3 · por evento, no por calendario
 
-### La medición gratis que contesta la pregunta
+**No hay inoculación de mitad de ciclo programada.** A mitad de ciclo la rizosfera ya está
+colonizada: es la ventana con menos apertura biológica, y lo que sirve ahí es nutrición, que ya
+está resuelta en el fertirriego.
 
-> **Después de la próxima cama inoculada: abrir un hueco con pala o barreno y medir en
-> centímetros hasta dónde llegó el frente de humedad.** Si no llegó a 10 cm, falta arrastre o
-> falta agua.
+**Excepción, y se dispara por evento:** después de un **encharcamiento** o de una **aplicación de
+fungicida que barrió la biología**, el nicho vuelve a estar vacío y se repite la etapa 2.
 
-Sin laboratorio, sin proveedor, sin presupuesto. Anotar cama, litros aplicados y centímetros en
-`07-datos/decisiones_manejo.csv`. **Tres aplicaciones y la pregunta queda cerrada con datos de
-la finca.**
+## El reparto que ordena todo el protocolo
+
+> **BANDEJA = lo que va a la RAÍZ.** Colonizadores — micorriza, *Bacillus*, *Streptomyces*,
+> *Trichoderma*, entomopatógenos. Ahí la raíz está limpia y el agua por planta es 45× menor, así
+> que el producto llega concentrado y cuesta ~1 % del programa: **la diversidad va aquí.**
+>
+> **CAMA = lo que va al SUELO.** Solo el Fosfolip, a solubilizar el fósforo del volumen de suelo
+> que la raíz va a explorar. Ese blanco está en la cama y la bandeja no lo alcanza.
+
+**Ningún producto va en las dos etapas.** Si aparece dos veces, una de las dos está mal.
+
+## Lo que salió del programa
+
+| Producto | Dónde queda |
+|---|---|
+| **Raizal 400** | 🔴 Fuera. Producto de trasplante por etiqueta; en el tanque su auxina llegaba 33–67× diluida |
+| **Fullfert** | 🔴 Fuera del drench. Sigue en el tanque de fertirriego, que es donde su rol de complejante aplica |
+| **Estabios** | 🟡 Ensayo partido en Inv 4. Su ficha dice que sus fijadoras de N *"se asocian principalmente a gramíneas"*, y el catálogo no tiene ninguna |
+| **Promobac en la CAMA** | 🔴 Fuera. Ya va en la bandeja, sobre la misma raíz, y ahí cuesta 7,8× menos |
+| **No Fly** | 🟡 Sigue en el **programa foliar**, donde su etiqueta aplica. En bandeja lo reemplaza el Interactor |
+| **Pokonia** | 🟡 En espera del conteo de nematodos: es el único producto comprado contra un problema no medido |
 
 ## Reglas
 
@@ -92,11 +88,9 @@ la finca.**
   Vanessa**: su dosis por cama son 1,8 g y eso no es pesable en campo. Lo que sostiene el
   ensayo no es el *Trichoderma* sino su 40 % de oligosacarinas, que son elicitores y actúan a
   concentraciones bajas — sin dosis-respuesta, así que se mide.
-- **🔴 El Promobac se aplica a 2× etiqueta, no a etiqueta.** No está refrigerado (su ficha
-  exige ≤12 °C; Rionegro está a 18–22 °C), así que la carga real es desconocida y los 500 cc de
-  hoy eran justamente el margen que cubría ese error. El 2× cuesta $37.170/año y **se retira
-  con un conteo de viabilidad** sobre el frasco de la bodega.
-- **Meter el Promobac a la nevera hoy**, y anotar fecha de compra y lote.
+- **🔴 El Promobac y el Fosfolip van a la nevera** (≤12 °C, su ficha lo exige; Rionegro está a
+  18–22 °C ambiente). 🟡 Si el frasco lleva meses sin refrigerar la carga real es desconocida:
+  **pedir un conteo de viabilidad** sobre el frasco de la bodega, con fecha y lote.
 - **No fertirriego** en ese bloque en toda la semana de la inoculación. Solo agua. (Antes
   decía *"Haifa: sí reducido"* en Inv 4 y 5 — se extendió a un no plano.)
 - **No mezclar con ningún fungicida.** La ficha del Promobac: *"no mezclar con fungicidas de

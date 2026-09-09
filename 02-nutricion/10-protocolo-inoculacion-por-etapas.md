@@ -1,4 +1,18 @@
-# Protocolo de inoculación por etapas · evaluación del razonamiento de Vanessa
+# Protocolo de inoculación por etapas
+
+> # 🟢 APROBADO Y VIGENTE · 2026-09-09
+> **El protocolo listo para ejecutar está en `02-nutricion/03-drench-inoculacion.md`** y en la hoja
+> `05-programacion/hojas-operario/inoculacion.html`. **Este documento es el razonamiento**: cómo se
+> llegó ahí, y las **quince correcciones de Vanessa** que lo produjeron.
+>
+> **En una línea:** bandeja el viernes con base de tres productos + el específico de la variedad ·
+> cama el día de la preparación con 1,5 cc de Fosfolip por bomba llena · nada a mitad de ciclo
+> salvo por evento. **$4,45 M/año → ~$0,29 M/año**, con más cobertura.
+>
+> Este archivo se lee de arriba abajo como una cadena de correcciones. **Si busca la dosis, no lo
+> lea: vaya a la hoja.** Si busca *por qué* una dosis es esa, está aquí.
+
+---
 
 > **2026-09-09.** Vanessa plantea cuatro cosas: que la microbiología en No-Dig es **acumulativa**;
 > que aplicar lo mismo por años **coloniza siempre los mismos organismos**; que hace falta una

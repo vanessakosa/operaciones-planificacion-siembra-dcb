@@ -1,173 +1,88 @@
-<title>Protocolo de Inoculación</title>
+<title>Inoculación</title>
 <style>
-  :root{
-    --papel:#FFFFFF; --beige:#F5F0E8; --crema:#FAF7F3;
-    --tinta:#1A1A1A; --tinta-2:#555555; --tinta-3:#888888;
-    --regla:#D0C8B8; --alerta:#C0392B;
-    --op:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
+  :root{--tinta:#1A1A1A;--tinta-2:#555;--regla:#D0C8B8;--alerta:#C0392B;--beige:#F5F0E8}
   *{box-sizing:border-box}
-  body{background:var(--papel);color:var(--tinta);font-family:var(--op);
-       margin:0;padding:26px 20px 50px;-webkit-font-smoothing:antialiased}
-  .hoja{max-width:840px;margin:0 auto}
-  .marca{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 5px}
-  h1{font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.01em;margin:0 0 6px}
-  .clave{font-size:14px;color:var(--tinta);margin:0 0 10px;line-height:1.35}
-  .clave b{font-weight:700}
-  .meta{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:12px;color:var(--tinta-2);
-        padding-bottom:10px;border-bottom:2px solid var(--regla);margin-bottom:18px}
-  .meta b{color:var(--tinta);font-weight:700}
-  section{margin-bottom:18px;page-break-inside:avoid}
-  h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
-     font-weight:700;margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--regla)}
-  .envoltura{overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:14px}
-  th{background:var(--beige);color:var(--tinta-2);font-size:10px;letter-spacing:.08em;
-     text-transform:uppercase;font-weight:700;text-align:left;padding:6px 9px;
-     border-bottom:1px solid var(--regla);vertical-align:bottom}
-  td{padding:6px 9px;border-bottom:1px solid var(--regla);vertical-align:middle}
-  tbody tr:nth-child(even) td{background:var(--crema)}
-  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
-  th.mid,td.mid{text-align:center}
-  .grp td{background:var(--tinta)!important;color:var(--papel);font-size:10px;font-weight:700;
-          letter-spacing:.14em;text-transform:uppercase;padding:4px 9px}
-  .cama{font-weight:700;font-size:14px;line-height:1.2}
-  .cama small{display:block;font-weight:400;font-size:11px;color:var(--tinta-2);margin-top:0}
-  .m2{font-size:12px;color:var(--tinta-2)}
-  .g{font-size:17px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-  .g span{font-size:10.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
-  .caja{display:inline-block;width:16px;height:16px;border:1.5px solid var(--tinta-2)}
-  ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
-           background:var(--regla);border:1px solid var(--regla);
-           grid-template-columns:1fr 1fr}
-  ol.orden li{counter-increment:paso;background:var(--papel);padding:8px 10px 8px 34px;
-              position:relative;font-size:13px;line-height:1.35}
-  ol.orden li::before{content:counter(paso);position:absolute;left:11px;top:8px;
-                      font-weight:700;font-size:13px;color:var(--tinta-2)}
-  .mitad{margin-top:12px;border:2.5px solid var(--tinta);background:var(--beige);
-         padding:11px 14px;font-size:15px;line-height:1.35;text-align:center}
-  .mitad b{font-size:17px;font-weight:700;letter-spacing:.02em}
-  .no{margin-top:10px;border-left:3px solid var(--alerta);padding:8px 0 8px 12px;
-      font-size:13px;line-height:1.5}
-  .no b{color:var(--alerta)}
-  .no p{margin:0 0 3px}
-  footer{margin-top:18px;padding-top:10px;border-top:1px solid var(--regla);
-         font-size:11px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:3px 20px}
+  body{background:#fff;color:var(--tinta);margin:0;padding:34px 28px;
+       font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .hoja{max-width:760px;margin:0 auto}
+  .marca{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 4px}
+  h1{font-size:30px;font-weight:700;margin:0 0 30px;letter-spacing:-.01em}
+  h2{font-size:20px;font-weight:700;margin:0 0 4px}
+  .cuando{font-size:15px;color:var(--tinta-2);margin:0 0 16px}
+  .receta{border:3px solid var(--tinta);padding:16px 18px;text-align:center;
+          font-size:23px;font-weight:700;line-height:1.35;letter-spacing:-.01em;margin:0 0 16px}
+  table{width:100%;border-collapse:collapse;font-size:19px;margin:0 0 14px}
+  td{padding:9px 0;border-bottom:1px solid var(--regla)}
+  td.v{font-weight:700}
+  td.p{text-align:right;font-weight:700}
+  td.no{text-align:right;color:var(--tinta-2);font-weight:400}
+  ol{margin:0 0 14px;padding-left:26px;font-size:18px;line-height:1.6}
+  ol b{font-weight:700}
+  p.dato{font-size:17px;line-height:1.5;margin:0 0 14px}
+  p.nunca{font-size:17px;line-height:1.55;margin:0;padding:12px 16px;background:var(--beige);
+          border-left:4px solid var(--alerta)}
+  p.nunca b{color:var(--alerta)}
+  section{margin-bottom:38px}
   @media print{
-    @page{margin:7mm 10mm}
-    body{padding:0;font-size:7.5pt}
+    @page{margin:11mm 14mm}
+    body{padding:0}
     .hoja{max-width:none}
-    .marca{font-size:7pt;margin-bottom:2px}
-    h1{font-size:13pt;margin-bottom:2px}
-    .clave{font-size:8pt;margin-bottom:4px}
-    .meta{font-size:7pt;padding-bottom:3px;margin-bottom:6px;gap:1px 12px}
-    section{margin-bottom:6px}
-    h2{font-size:6.5pt;margin-bottom:3px;padding-bottom:2px}
-    table{font-size:7.5pt}
-    th{font-size:6pt;padding:2px 6px}
-    td{padding:1.5px 6px}
-    .cama{font-size:8pt}.cama small{font-size:6pt}
-    .m2{font-size:7pt}
-    .g{font-size:9pt}.g span{font-size:6pt}
-    .grp td{font-size:6pt;padding:1.5px 6px}
-    .caja{width:11px;height:11px}
-    ol.orden li{font-size:7.5pt;padding:3.5px 7px 3.5px 22px}
-    ol.orden li::before{font-size:7.5pt;left:7px;top:3.5px}
-    .mitad{font-size:8.5pt;margin-top:5px;padding:5px 9px}
-    .mitad b{font-size:10pt}
-    .no{font-size:7pt;margin-top:4px;padding:3px 0 3px 8px;line-height:1.35}
-    .no p{margin-bottom:1px}
-    footer{font-size:6.5pt;margin-top:5px;padding-top:3px}
+    .marca{font-size:8pt}
+    h1{font-size:20pt;margin-bottom:14px}
+    h2{font-size:13pt}
+    .cuando{font-size:10pt;margin-bottom:9px}
+    .receta{font-size:14pt;padding:9px 12px;margin-bottom:9px;border-width:2.5px}
+    table{font-size:12pt;margin-bottom:8px}
+    td{padding:4px 0}
+    ol{font-size:11pt;margin-bottom:8px;line-height:1.5}
+    p.dato{font-size:10.5pt;margin-bottom:8px;line-height:1.45}
+    p.nunca{font-size:10.5pt;padding:7px 11px;line-height:1.45}
+    section{margin-bottom:18px}
   }
 </style>
 
 <div class="hoja">
 
-  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
-  <h1>Inoculación — bandeja y cama</h1>
-  <p class="clave">Son <b>dos momentos distintos</b>. La bandeja es <b>según la variedad</b>. La cama es
-  <b>igual para todas</b> y es el <b>paso 5</b> de la preparación.</p>
-
-  <div class="meta">
-    <span>Operario: <b>Alexander</b></span>
-    <span>Hora: <b>al final de la tarde</b>, nunca a pleno sol</span>
-    <span>Medir con: <b>jeringa de 10 mL</b></span>
-    <span>Fecha: ______________</span>
-  </div>
+  <p class="marca">Dreams Can Bloom</p>
+  <h1>Inoculación</h1>
 
   <section>
-    <h2>1 · Bandeja — 2 o 3 días antes de trasplantar</h2>
-    <div class="envoltura">
+    <h2>1 · Bandeja</h2>
+    <p class="cuando">El viernes, el día después de que llegan las plántulas.</p>
+
+    <div class="receta">5 LITROS DE AGUA<br>+ 50 GRAMOS DEL PRODUCTO</div>
+
     <table>
-      <thead><tr><th>Variedad que va a sembrar</th><th>Qué se le echa a la bandeja</th><th class="mid">✓</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="cama">Lisianthus · Dianthus · Green Ball</td>
-          <td class="cama" style="font-weight:400"><b>FITODERMA</b><small>Vanessa entrega la cantidad ya pesada</small></td>
-          <td class="mid"><span class="caja"></span></td>
-        </tr>
-        <tr>
-          <td class="cama">Matricaria<small>toda matricaria, no solo la Vegmo Single</small></td>
-          <td class="cama" style="font-weight:400"><b>BEAUVERIA</b> o <b>PAECILOMYCES</b><small>Vanessa entrega la cantidad ya medida</small></td>
-          <td class="mid"><span class="caja"></span></td>
-        </tr>
-        <tr>
-          <td class="cama">Todas las demás</td>
-          <td class="nada">No se le echa nada a la bandeja</td>
-          <td class="mid">—</td>
-        </tr>
-      </tbody>
+      <tr><td class="v">Lisianthus</td><td class="p">FITODERMA</td></tr>
+      <tr><td class="v">Dianthus</td><td class="p">FITODERMA</td></tr>
+      <tr><td class="v">Green Ball</td><td class="p">FITODERMA</td></tr>
+      <tr><td class="v">Matricaria</td><td class="p">NO FLY</td></tr>
+      <tr><td class="v">Todas las demás</td><td class="no">no se inocula</td></tr>
     </table>
-    </div>
-    <p class="no" style="border-color:var(--tinta-2)">Se moja la bandeja con la solución hasta que escurra por debajo. <b>Sembrar 2 o 3 días después</b>, no el mismo día.</p>
+
+    <p class="dato">Regar la bandeja hasta que escurra por debajo.<br>
+    <b>5 litros alcanzan para 4 bandejas.</b><br>
+    Sembrar de <b>1 a 3 días después</b>.</p>
   </section>
 
   <section>
-    <h2>2 · Cama — el día que se prepara</h2>
+    <h2>2 · Cama</h2>
+    <p class="cuando">El día que se prepara, al final de la tarde.</p>
 
-    <div class="mitad"><b>POR CADA BOMBA DE 20 L:<br>10 mL DE FOSFOLIP + 10 mL DE PROMOBAC.</b><br>
-    Una jeringa llena de cada uno. <b>Todas las bombas van iguales.</b></div>
+    <div class="receta">BOMBA DE 20 LITROS<br>+ 10 mL DE FOSFOLIP<br>+ 10 mL DE PROMOBAC</div>
 
-    <p class="no" style="border-color:var(--tinta-2);margin-top:10px">Si Vanessa cambia el <b>Promobac</b> por otro producto, ella lo escribe aquí:
-    &nbsp;Producto <b>___________________</b> &nbsp;·&nbsp; Cantidad por bomba <b>_________ mL</b></p>
+    <p class="dato"><b>Igual para todas las camas y todas las variedades.</b><br>
+    Usar las bombas que necesite hasta mojar bien la cama. Todas las bombas van iguales.</p>
 
-    <div class="envoltura" style="margin-top:10px">
-    <table>
-      <thead><tr><th class="num">Bombas de 20 L</th><th>Camas</th><th class="mid">✓</th></tr></thead>
-      <tbody>
-        <tr><td class="num g">6</td><td class="cama" style="font-weight:400">Inv 3B larga · Inv 4C larga · Ext 3B larga · Ext 4</td><td class="mid"><span class="caja"></span></td></tr>
-        <tr><td class="num g">5</td><td class="cama" style="font-weight:400">Inv 3A · Inv 4C media · Inv 4C corta · Ext 3A</td><td class="mid"><span class="caja"></span></td></tr>
-        <tr><td class="num g">4</td><td class="cama" style="font-weight:400">Inv 3C larga · Inv 5 · Ext 5 · Inv 6</td><td class="mid"><span class="caja"></span></td></tr>
-        <tr><td class="num g">3</td><td class="cama" style="font-weight:400">Inv 4A · Inv 4B<small>también Inv 1 e Inv 2</small></td><td class="mid"><span class="caja"></span></td></tr>
-        <tr><td class="num g">2</td><td class="cama" style="font-weight:400">Inv 3B corta · Inv 3C corta · Mini larga · Ext 3B corta</td><td class="mid"><span class="caja"></span></td></tr>
-        <tr><td class="num g">1</td><td class="cama" style="font-weight:400">Mini corta</td><td class="mid"><span class="caja"></span></td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <ol class="orden" style="margin-top:10px">
-      <li>La cama debe estar <b>húmeda, no encharcada</b>. Ya quedó así con el riego de agua sola.</li>
-      <li>Bomba con <b>20 L de agua</b> + <b>10 mL de cada producto</b>. <b>Agitar.</b></li>
-      <li>Mojar la cama <b>parejo</b>, con <b>chorro grueso y baja presión</b>. <b>Agitar mientras aplica.</b></li>
-      <li><b>RIEGO DE ARRASTRE: apenas termine, regar con AGUA SOLA</b> para que el producto baje al suelo.</li>
-      <li>Ahí sí, <b>poner el plástico.</b></li>
+    <ol>
+      <li>Bomba con 20 L de agua, los dos productos, <b>agitar</b>.</li>
+      <li>Mojar la cama parejo. <b>Agitar mientras aplica.</b></li>
+      <li><b>Regar encima con agua sola.</b></li>
+      <li>Poner el plástico.</li>
     </ol>
 
-    <div class="no">
-      <p><b>NO</b> poner el plástico antes del riego de arrastre. Después ya no se puede bajar el producto.</p>
-      <p><b>NO</b> aplicar a pleno sol ni al mediodía. <b>El sol mata el producto.</b></p>
-      <p><b>NO</b> usar la bomba de los fungicidas. <b>Bomba lavada, siempre.</b></p>
-      <p><b>NO</b> preparar la bomba y dejarla para después. Se usa en <b>2 o 3 horas</b>.</p>
-      <p><b>NO</b> regar con fertirriego esa cama en toda la semana. Solo agua.</p>
-      <p><b>Fosfolip y Promobac se guardan en la nevera</b>, tapados, nunca al lado de fungicidas ni fertilizantes.</p>
-      <p><b>Las 3 camas de Ext Inv 2:</b> preguntar a Vanessa.</p>
-    </div>
+    <p class="nunca"><b>NUNCA</b> a pleno sol · <b>NUNCA</b> sin el riego de agua sola encima ·
+    <b>NUNCA</b> en la bomba de los fungicidas · <b>NUNCA</b> guardar la bomba para el otro día.</p>
   </section>
-
-  <footer>
-    <span>Inoculación: Alexander</span>
-    <span>Aprueba: Vanessa Kosa</span>
-    <span>v4 · 2026-09-09</span>
-  </footer>
 
 </div>

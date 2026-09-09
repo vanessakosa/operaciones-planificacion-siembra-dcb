@@ -278,43 +278,76 @@ un indicador que se puede seguir vuelta a vuelta.
 
 ---
 
-## La hoja de operario · `05-programacion/hojas-operario/inoculacion.html` v4
+## La hoja de operario v5 · `05-programacion/hojas-operario/inoculacion.html`
 
-Una página, dos etapas. **Tres decisiones de qué NO poner**, y las tres son por la misma regla:
-*ninguna cantidad entra a una hoja de operario si no está confirmada.*
+Vanessa, 2026-09-09: *"está muy mal el archivo, tiene demasiados números, notas, cuadros, rayas,
+tiene que ser muchísimo más simple. Y no, es 'Vanessa te lo da', 'Vanessa te lo pesa', no: tiene
+que quedar todo bien específico."*
 
-| Lo que quedó fuera | Por qué |
+**Las dos cosas que estaban mal, y son distintas:**
+
+1. **Densidad visual.** Cuadros, rayas, columnas de m², checkboxes, letra chica, notas al pie.
+   La hoja v5 tiene **dos recetas en caja, una tabla de cinco filas, cuatro pasos y una línea de
+   NUNCA.** Nada más.
+2. **🔴 "Vanessa entrega la cantidad ya pesada" no es una instrucción: es un aplazamiento.** Yo lo
+   había puesto porque ninguna ficha da dosis de inmersión de raíz — y eso era cierto, pero la
+   salida correcta no era dejarlo en blanco. **Una hoja de operario con un hueco no es una hoja.**
+
+### De dónde sale la dosis de bandeja: 50 g por 5 L
+
+Lo único con fuente que tengo para un drench de biológicos es la concentración de los ensayos de
+campo citados en la literatura de drench: **10 mL/L de una suspensión de conidios a 1×10⁸/mL**, o
+sea **1×10⁹ UFC por litro de drench**.
+
+El **Fitoderma declara 1×10⁸ UFC/g**. Para llegar a 1×10⁹ UFC/L hacen falta **10 g/L → 50 g en
+5 L.** No es una invención: es la única concentración de drench con fuente, convertida con la UFC
+de la ficha.
+
+**Y se verifica hacia atrás:** 5 L mojan 4 bandejas ≈ 800 plántulas ≈ 144 m² de cama futura. Los
+50 g dan **0,35 g/m²** — **por debajo de los 0,49 g/m² que se estaban aplicando al voleo** (500 g
+sobre 1.025 m² de Inv 3). Así que la bandeja **gasta menos producto que el voleo que reemplaza, y
+lo pone en la raíz.**
+
+**El No Fly va a la misma concentración**, y eso sí es un cambio deliberado: la finca lo usa a
+10 g por bomba de 25 L = **0,4 g/L**, que es una tasa **foliar** — 25× por debajo de la
+referencia de drench. Para un drench a la raíz contra inóculo de suelo se usa la referencia de
+drench, no la foliar. 🟡 **Confirmar con el proveedor la UFC/g del No Fly**: si no es 1×10⁸, los
+50 g cambian.
+
+Que las dos filas queden en la misma cifra es lo que permite **una sola receta en la hoja: 5 L +
+50 g, y lo único que cambia es cuál producto.**
+
+### 🔴 Micorrizas en bandeja: sí es el momento, y el Biohar Forte no puede entrar todavía
+
+Vanessa pregunta si la bandeja es el momento de inocular micorrizas, con el **Biohar Forte** de
+Bioquirama.
+
+**Sobre el momento: es el sí más fuerte de todo este análisis.** Una micorriza coloniza la raíz y
+después la hifa explora; en bandeja el propágulo toca la raíz directamente, con la densidad por
+raíz órdenes de magnitud más alta que al voleo. **Esto resuelve por completo la objeción que las
+había eliminado** (*"2.000 esporas/m² en 90 kg de suelo, muy diluido"*): esa objeción era contra
+el voleo, no contra la bandeja. En bandeja el argumento se cae y las micorrizas vuelven a ser
+candidatas de primera línea — y es además la práctica comercial estándar: las micorrizas van al
+plug o al hueco, nunca al voleo.
+
+**Sobre el producto: el Biohar Forte no puede entrar.** El repositorio lo tiene a $123.000/L y lo
+describe literalmente como **"sin rol ni dosis"**; su composición y su dosis ya son una pregunta
+abierta desde antes de esta sesión (*"Qué es el Biohar Forte y su dosis — Proveedor"*). No sé si
+es micorrizas, y no aparece como micorrízico en ninguna parte: figura en la lista de fitosanitarios
+junto a Pokonia, Nube SC y Deep Green.
+
+> **Una sola pregunta a Bioquirama lo desbloquea: ¿qué organismos trae el Biohar Forte, en qué
+> UFC o esporas por gramo, y cuál es su dosis?** Con eso entra a la hoja como tercera fila de la
+> bandeja al día siguiente.
+
+Y si no es micorrízico, la alternativa es el **Sáfer Micorrizas** — que también está bloqueado,
+por precio en disputa ($1.519 vs $3.272/kg) y dosis standalone desconocida.
+
+### Lo que sigue fuera de la hoja
+
+| | Por qué |
 |---|---|
-| **Etapa 3 (mitad de ciclo)** | Es por evento —encharcamiento, fungicida que barrió la biología— no por calendario. Una hoja no puede decidir eso; Vanessa sí |
-| **Extracto de compost** | Es la mejor palanca de diversidad y **no tengo receta de extracción con base**: cuánto compost, cuánta agua, cuánto tiempo de agitación. Inventarla sería exactamente lo que la regla 1 prohíbe. **Entra a la hoja cuando haya procedimiento y un conteo del compost** |
-| **Micorrizas en la rotación** | Precio en disputa en el propio repositorio ($1.519 vs $3.272/kg), **dosis standalone desconocida**, y la decisión depende del % de colonización que todavía no se ha medido |
-| **Cantidades de la etapa 1 (bandeja)** | **Ninguna ficha da dosis de inmersión de raíz.** La hoja dice qué producto va en cuál variedad y que **Vanessa entrega la cantidad ya medida** — eso sí es ejecutable y no inventa nada |
-
-### Y la rotación, resuelta sin conditionals para el operario
-
-La rotación entre vueltas es una decisión de Vanessa, no del operario: las camas rotan en fechas
-distintas y él no puede llevar esa cuenta. Así que la hoja fija **Fosfolip + Promobac** como base
-estándar y deja **una línea en blanco** donde Vanessa escribe el producto y la cantidad cuando
-cambia el segundo. Un solo renglón, sin explicación, sin ramas.
-
-**Consecuencia honesta: hoy la rotación tiene dos posiciones, no cuatro** — solo el Promobac y el
-Fosfolip tienen dosis derivada. El Estabios entra cuando llegue su dosis en L/ha; las micorrizas,
-cuando se decidan. Una rotación de dos no cumple todavía la hipótesis de diversidad de Vanessa;
-la cumple el compost, que es el que está bloqueado por procedimiento y no por plata.
-
-### Agua por cama, agrupada por número de bombas
-
-Redondeado **hacia arriba** desde 2,5 L/m² — bajo el criterio de que quedarse corto pierde la
-aplicación completa.
-
-| Bombas de 20 L | Camas | m² |
-|---|---|---|
-| **6** | Inv 3B larga · Inv 4C larga · Ext 3B larga · Ext 4 | 40–48 |
-| **5** | Inv 3A · Inv 4C media · Inv 4C corta · Ext 3A | 33–38 |
-| **4** | Inv 3C larga · Inv 5 · Ext 5 · Inv 6 | 25–32 |
-| **3** | Inv 4A · Inv 4B (también Inv 1 e Inv 2) | 20 |
-| **2** | Inv 3B corta · Inv 3C corta · Mini larga · Ext 3B corta | 12 |
-| **1** | Mini corta | 6 |
-
-Seis renglones en vez de 17: como la dosis va **por bomba**, el operario solo necesita saber
-cuántas bombas, y el producto escala solo.
+| **Cuántas bombas por cama** | **Lo determina el operario** según la cama (decisión de Vanessa, 2026-09-09). La dosis va por bomba, así que el producto escala solo y la tabla de 17 filas sobraba |
+| **Etapa 3 (mitad de ciclo)** | Es por evento —encharcamiento, un fungicida que barrió la biología— no por calendario |
+| **Rotación entre vueltas** | Hoy solo hay dos posiciones con dosis derivada. Entra cuando llegue la dosis del Estabios en L/ha |
+| **Extracto de compost** | Es la mejor palanca de diversidad y **no tengo receta de extracción con base**. Entra cuando haya procedimiento y un conteo del compost |

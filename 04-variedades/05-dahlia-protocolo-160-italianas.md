@@ -1,10 +1,23 @@
 # Dahlia · protocolo completo para las 160 italianas
 
-> **Fecha:** 2026-09-09 · semana ISO 37
+> **Fecha:** 2026-09-09 · semana ISO 37 · **actualizado el mismo día** con las
+> respuestas de Vanessa sobre material, luz y propósito del lote.
 > **Alcance:** 160 dalias italianas de regalo — presiembra, inoculación, siembra,
 > posiembra, fertilización, control fitosanitario y nutrición foliar.
-> **Estado:** propuesta técnica. Tres decisiones necesitan confirmación de Vanessa
-> antes de ejecutar (ver *Lo que falta confirmar*, al final).
+>
+> **Tres datos confirmados por Vanessa el 2026-09-09 que gobiernan todo lo demás:**
+>
+> 1. **Llegan esquejes enraizados de planta madre**, no bulbos → riego inmediato,
+>    aclimatación, y el virus entra por propagación vegetativa (sección 4).
+> 2. **El proveedor pide luz de 18:00 a 22:00, extensión de día, LED** →
+>    fotoperiodo de ~16 h, y el ciclo de 12 semanas del CSV deja de aplicar
+>    (sección 2.2).
+> 3. **Son pruebas: la cantidad por color todavía no se sabe** → **esto no es un
+>    lote de producción, es una evaluación de cultivares**, y eso decide cómo se
+>    planta y qué se mide (secciones 4.3 y 12).
+>
+> **Estado:** propuesta técnica. Cuatro puntos bloqueantes pendientes — ver
+> *Lo que falta confirmar*, sección 13.
 
 ---
 
@@ -163,25 +176,105 @@ en vez de a construir tallo. Es la explicación más probable de *"ya semana 6 p
 productivas"* — y encaja con que el proveedor italiano advierta que **requieren
 luz**.
 
-## 2.2 · Recomendación de luz
+## 2.2 · Recomendación de luz — **CONFIRMADA por el proveedor 2026-09-09**
 
-> **Interrupción nocturna (NI) de 4 horas, de 22:00 a 02:00, desde el trasplante
-> hasta la semana 7 post-trasplante. Después se retira y se deja florecer.**
+> **Vanessa 2026-09-09:** *"el proveedor me sugirió luz de 6 a 10 pm, extensión de
+> día, LED."*
 
-- **Intensidad:** baja — la NI es una señal fotoperiódica, no fotosíntesis.
-- **Espectro:** luz **blanca o rica en rojo**. **No usar rojo lejano solo** — en
-  el ensayo la floración quedó incompleta.
-- **Ahorro:** la NI **cíclica** (pulsos cada 20–30 min dentro de la ventana)
-  reduce el consumo hasta ~80 % con retraso de floración mínimo.
-- **Costo en calendario:** retrasa el inicio de cosecha. Con ciclo base de 12
-  semanas, **contar 14–15 semanas** con NI hasta semana 7. Ese retraso **se paga
-  en longitud de tallo**, que es donde está el precio en un producto ★★★ de B2B
-  por encargo.
+**El proveedor tiene razón, y su propuesta es mejor que la mía.** Yo había
+propuesto interrupción nocturna (NI) de 22:00 a 02:00. Fotobiológicamente las dos
+funcionan — las dos rompen la noche larga. **Pero para DCB la extensión de día
+gana por una razón operativa, no técnica:**
 
-⚠️ **Esto NO se aplica a ciegas.** Ver la pregunta 2 al final: hay que saber si
-lo que dijo el proveedor es fotoperiodo (esto) o simplemente pleno sol (otra
-cosa). Y hay que confirmar qué equipo de iluminación existe hoy en la finca —
-el `Light = SI` de Campanula sugiere que sí hay algo.
+| | Interrupción nocturna (22:00–02:00) | **Extensión de día (18:00–22:00)** |
+|---|---|---|
+| Efecto fotoperiódico | Equivalente | Equivalente |
+| Consumo | Igual (4 h) | Igual (4 h) |
+| **¿Alguien puede verificar que prendió?** | **Nadie está en la finca a esa hora** | **Sí — el turno de la tarde lo ve** |
+
+En una finca donde el repositorio repite *"al operario se le entrega el número
+total de bombas, no la concentración"* y *"crítico con Wilson"*, **una intervención
+que nadie puede verificar es una intervención que va a fallar en silencio.** A las
+18:00 se ve si el LED está encendido. A las 23:00 no.
+
+### El fotoperiodo que resulta
+
+A 4–5° N el sol se pone alrededor de las **18:00–18:20 todo el año**, y el día
+natural es de **~12 h 05 min**.
+
+> **12 h 05 min naturales + 4 h de LED = fotoperiodo de ~16 h.**
+
+Eso es exactamente el umbral que la literatura señala: **días de 16 h o más
+inhiben la tuberización** y mantienen la planta en producción de hoja y flor. Es
+lo que se busca en flor de corte.
+
+### 🔴 Especificación del LED — aquí es donde se puede botar la plata
+
+Dos números que hay que exigirle al proveedor del equipo, porque un LED comprado
+por lumen o por vatio puede **no servir**:
+
+| Parámetro | Valor | Por qué |
+|---|---|---|
+| **Intensidad** | **1–2 µmol/m²/s medidos SOBRE el dosel** (≈ 2 µmol/m²/s, o 10 pie-candela) | Es iluminación **fotoperiódica**, no fotosintética: ~1/100 de la intensidad de una luz de crecimiento. Más es plata tirada |
+| **Espectro** | **Rojo (630–660 nm) + rojo lejano (730–760 nm)** | El fitocromo responde a rojo y rojo lejano. **La combinación rojo + rojo lejano a baja intensidad es la más eficaz para promover floración en plantas de día largo** |
+
+> 🔴 **El error caro: comprar un LED blanco frío.** El azul necesita
+> **~30 µmol/m²/s para dar la misma respuesta fotoperiódica — 15 a 30 veces más
+> que el rojo o el rojo lejano.** Un panel blanco frío (rico en azul, pobre en
+> rojo lejano) puesto a 2 µmol/m²/s **puede sencillamente no producir el efecto**,
+> y el ensayo quedaría diciendo "la luz no sirvió" cuando lo que no sirvió fue la
+> lámpara.
+>
+> **Pregunta concreta al proveedor del LED: ¿cuál es el PPFD sobre el dosel y qué
+> proporción de rojo y rojo lejano emite?** Si no sabe responder eso, no es el
+> equipo.
+
+### Cuánto tiempo se deja prendida
+
+**Se deja todo el ciclo del ensayo, sin retirarla.** La razón es que la dalia en
+DCB es **perenne con reset** (`ciclos_variedad.csv`) y el objetivo es tallo, no
+tubérculo. Mantener 16 h la deja produciendo en vez de mandar asimilados a
+tuberizar.
+
+**El intercambio, dicho de frente:** con 16 h **no se van a formar tubérculos de
+almacenamiento**, o van a ser pobres. **Eso aquí no importa, y es una ventaja:**
+
+- El material llega como **esqueje de planta madre**, no como bulbo. La vía de
+  multiplicación de esta colección **son esquejes, no división de tubérculo** — y
+  esa vía es compatible con 16 h. Es más rápida además.
+- Si algún día se quisieran tubérculos para almacenar o vender, **se retira la luz
+  6–8 semanas antes** y la planta tuberiza sola: días cortos + 15–20 °C es
+  exactamente el clima de la Sabana, que es la condición óptima de tuberización.
+
+### 🔴 Y una consecuencia que arruina ensayos: la luz se derrama
+
+Como el umbral fotoperiódico es de **1–2 µmol/m²/s**, **cualquier luz difusa que
+llegue a la cama vecina la afecta.** Es por esto que en crisantemo se usan
+cortinas de oscurecimiento.
+
+> **Consecuencia práctica: no se puede tener una cama testigo sin luz al lado de
+> una cama con luz, dentro del mismo invernadero.** Inv 4A e Inv 4B son los dos
+> lados de la misma nave: el testigo quedaría contaminado y el resultado no
+> significaría nada.
+>
+> **Por eso las 148 plantas van todas con luz.** El testigo con y sin luz, si se
+> quiere hacer, va en la segunda vuelta —con esquejes propios y en naves
+> separadas—, no aquí.
+
+### 🔴 Y el ciclo de 12 semanas deja de aplicar
+
+`ciclos_variedad.csv` tiene **12 semanas CONFIRMADO por Vanessa 2026-08-13**.
+**Ese dato se midió sobre bulbos y sin manejo de luz.** Este lote cambia las dos
+cosas a la vez:
+
+- **Esqueje enraizado en vez de bulbo:** sin la reserva de carbono del tubérculo,
+  el arranque es más lento.
+- **Fotoperiodo de 16 h:** retrasa deliberadamente la floración para alargar el
+  tallo.
+
+> **El ciclo de este lote es `SIN_DATO`.** Por la regla 1 del repositorio no se
+> estima: se mide y se registra. **No entregar todavía una fecha de cosecha a
+> Erica** — ver la sección 12.
 
 ## 2.3 · Y "luz" en el sentido de radiación: dónde NO sembrarlas
 
@@ -223,12 +316,15 @@ A campo abierto el oídio se controla casi solo: llueve, y la lluvia lava y
 revienta los conidios. Es como se produce dalia comercialmente en casi todo el
 mundo. **Pero aquí hay dos riesgos que no valen sobre 160 plantas de regalo:**
 
-1. **Heladas.** Sembradas ahora (sem 38–39), con NI hasta la semana 7, la cosecha
-   cae en **diciembre–febrero**, que es la ventana clásica de heladas en la
-   Sabana. La dalia es **sensible a helada — una noche la mata**. Y
-   `clima_semanal.csv` **está vacío**: la finca no tiene un solo registro de
-   temperatura mínima semanal con el que dimensionar ese riesgo. Decidir a favor
-   del exterior hoy sería decidir a ciegas.
+1. **Heladas.** Sembradas ahora (sem 38–39), la cosecha cae en **diciembre–
+   febrero**, que es la ventana clásica de heladas en la Sabana. La dalia es
+   **sensible a helada — una noche la mata**. Y el riesgo se agrava porque el
+   ciclo de este lote es `SIN_DATO`: con esqueje y 16 h de fotoperiodo **no se
+   sabe en qué semana va a florecer** (ver 2.2), así que ni siquiera se puede
+   apuntar a esquivar la ventana. Además `clima_semanal.csv` **está vacío**: la
+   finca no tiene un solo registro de temperatura mínima semanal con el que
+   dimensionar ese riesgo. Decidir a favor del exterior hoy sería decidir a
+   ciegas dos veces.
 2. **La flor.** La lluvia directa daña el capítulo de las dalias decorativas y
    dispara botrytis en la flor abierta.
 
@@ -237,8 +333,9 @@ mundo. **Pero aquí hay dos riesgos que no valen sobre 160 plantas de regalo:**
 > **empezando por el lavado de dosel, que reproduce bajo plástico lo que hace la
 > lluvia afuera.**
 >
-> El ensayo exterior vale la pena, pero **con los hijos de la primera división**,
-> no con el regalo, y programado para salir de la ventana de heladas.
+> El ensayo exterior vale la pena, pero **con los esquejes propios de la segunda
+> vuelta**, no con el regalo, y programado para salir de la ventana de heladas —
+> con `clima_semanal.csv` ya empezado a llenar (sección 12).
 
 ## 3.3 · Densidad — aquí hay un error a corregir
 
@@ -274,58 +371,137 @@ desbotonar, deshojar y cosechar sin pisar la cama.
 
 ---
 
-# 4 · Etapa 0 · Recepción y sanidad del material
+# 4 · Etapa 0 · Recepción del material — **esquejes enraizados**
 
-⚠️ **Esta etapa tiene dos versiones porque falta un dato.** El repositorio dice
-que la Dahlia entra como **"Bulbos externos"** (`variedades_bitacora.csv`), así
-que la **ruta A (tubérculo) es la que se asume por defecto**. Si llegan plántulas
-o esquejes enraizados, aplica la ruta B.
+> **Confirmado por Vanessa 2026-09-09:** *"plántulas que vienen de plantas madre,
+> son esquejes."*
+>
+> **Esto cierra la pregunta 1 y cambia tres cosas del manejo.** Lo que sigue
+> reemplaza por completo la ruta de tubérculo. La ruta de tubérculo queda descrita
+> en el anexo 4.4 solo porque **volverá a hacer falta** si algún día se retira la
+> luz y la colección se multiplica por división.
 
-## 4.1 · Ruta A — llegan tubérculos
+## 4.1 · Las tres reversiones respecto a un bulbo
+
+Un tubérculo es un depósito de almidón y agua. **Un esqueje enraizado no tiene
+nada de eso.** Todo lo que se sabe de sembrar dalia de bulbo se invierte:
+
+| | Bulbo / tubérculo | **Esqueje enraizado — lo que aplica aquí** |
+|---|---|---|
+| **Riego a la siembra** | **Sin riego hasta que brote.** Regar antes es la causa #1 de pudrición | 🔴 **AL REVÉS: se riega de inmediato y no se deja secar.** No tiene reserva. Un esqueje que se seca una tarde no se recupera |
+| **Reserva de arranque** | Semanas de autonomía | **Ninguna.** Las **dos primeras semanas deciden el lote** |
+| **Riesgo dominante los primeros días** | Pudrición del tubérculo | **Desecación y estrés de trasplante** — más el damping-off (*Rhizoctonia*, *Pythium*) en la base del tallo |
+
+🔴 **Y esto choca de frente con la limitante histórica de la finca.** El
+diagnóstico de la sección 1 dice que las dalias fracasaron por estrés hídrico.
+**Con esquejes ese riesgo no es del ciclo: es de la primera semana, y es
+irreversible.** Por eso Inv 4A y 4B —riego `ALTA_UNIFORME`— dejan de ser una
+preferencia y pasan a ser condición.
+
+## 4.2 · Recepción y aclimatación
 
 | # | Paso | Detalle |
 |---|---|---|
-| 1 | **Inspección planta por planta** | Descartar tubérculos blandos, con pudrición seca, o con costra fúngica blanca a rosada — **eso es Fusarium**, la causa más común de pudrición seca de tubérculo, y sobrevive indefinidamente en el suelo |
-| 2 | **Cirugía si vale la pena** | Cortar la zona podrida hasta tejido sano y sellar el corte con **azufre + cal hidratada 50:50**. Solo si el cultivar es irremplazable |
-| 3 | **Cuello vivo obligatorio** | Un tubérculo sin yema visible en el cuello **no brota**. Se descarta o se etiqueta como dudoso y va aparte |
-| 4 | **Cuchillo desinfectado entre plantas** | **Hipoclorito 10 % un minuto, o alcohol 70 %**, entre cada tubérculo. Es transmisión mecánica de virus, no formalismo — ver 4.3 |
-| 5 | **Etiquetar cultivar uno por uno** | Sin esto no hay receta de bouquet ni color de punto de venta posible |
-| 6 | **Bodega hasta sembrar** | Fresco, seco, aireado, **nunca en bolsa cerrada** |
+| 1 | **Abrir la caja el mismo día** | Un esqueje en caja cerrada se pudre o se estira. Si llega tarde, abrir igual y regar |
+| 2 | **Aclimatar 3–5 días antes de trasplantar** | Bajo media sombra o malla, protegidos de viento y del sol de mediodía, **húmedos permanentemente**. El esqueje viene de un cuarto de propagación con humedad alta: pasarlo directo a cama es el otro error clásico |
+| 3 | **Revisar la base del tallo planta por planta** | Descartar los que tengan la base **acuosa, oscura o estrangulada** — eso es damping-off, y en bandeja se propaga a los vecinos |
+| 4 | **Revisar la raíz** | Debe estar **blanca y ocupando el cepellón**. Raíz café o cepellón suelto = no está listo. Ese se deja más tiempo, no se siembra |
+| 5 | **🔴 Etiquetar el cultivar uno por uno** | Ver la sección 4.3 — en este lote esto no es orden, es el objetivo del ensayo |
+| 6 | **Inocular** | Etapa 2, sección 6.3 — la base de bandeja de DCB, sin cambios |
+| 7 | **Trasplantar** | Cepellón **al ras del suelo o 1 cm por debajo**, nunca enterrando el punto de crecimiento |
 
-## 4.2 · Ruta B — llegan plántulas o esquejes enraizados
+**El deshoje basal (sección 7) no empieza hasta que la planta tenga raíz nueva
+afuera del cepellón** — quitarle hoja a un esqueje sin anclar es quitarle su
+única fábrica de azúcar.
 
-Entran al protocolo de bandeja estándar de DCB tal cual está escrito en
-`02-nutricion/10-protocolo-inoculacion-por-etapas.md` — ver Etapa 2.
+## 4.3 · 🔴 Lo más importante: esto no es un lote de producción, es una evaluación de cultivares
 
-## 4.3 · 🔴 El punto que decide si esta colección dura años o una temporada
+> **Vanessa 2026-09-09:** *"son pruebas entonces no sé bien cantidad por color
+> aún."*
 
-**El virus del mosaico de la dalia (DMV) se transmite por 16 especies de pulgón,
-de forma NO PERSISTENTE, y se hereda en el tubérculo.**
+**Eso cambia cuál es el producto de esta siembra.** Si no se sabe la mezcla de
+color, entonces el resultado que importa no son los tallos: es **saber cuáles de
+estos cultivares italianos merecen comprarse a escala** — y ese resultado se gana
+o se pierde en cómo se plantan, no en cómo se cosechan.
 
-Tres consecuencias, todas contraintuitivas y todas importantes:
+La susceptibilidad al mildeo polvoso **varía enormemente entre cultivares de
+dalia.** Un lote plantado revuelto da un promedio y no sirve para nada. Un lote
+plantado por cultivar identificado da, con el mismo trabajo:
 
-1. **Los insecticidas no previenen la virosis.** En transmisión no persistente el
-   pulgón adquiere e inocula el virus **en segundos**, antes de que cualquier
-   insecticida lo mate. Matar pulgones reduce la población, no la transmisión.
-2. **Lo que sí funciona son los aceites minerales.** En bulbosas ornamentales las
-   aspersiones de aceite mineral fueron **significativamente más eficaces que los
-   piretroides, que rindieron en promedio la mitad**. El mecanismo es directo:
-   el aceite **interfiere la retención de viriones en el estilete y el
-   proventrículo del pulgón**. **DCB tiene Agroemulsión en inventario** (700 cc,
-   aceites, *"asfixia: ácaros, mosca blanca, áfidos"*).
-3. **Un tubérculo infectado infecta para siempre.** Si se multiplica, se
-   multiplica el virus. Por eso la regla de cuchillo desinfectado y por eso hay
-   que marcar y sacar las plantas con síntoma (mosaico, aclaramiento de nervadura,
-   enanismo) **antes** de la división.
+1. **Un ranking de resistencia a oídio** — probablemente lo más valioso, porque
+   dice qué comprar en grande.
+2. **Longitud de tallo por cultivar** — el que fija el precio.
+3. **Ciclo real por cultivar** bajo 16 h de luz — el que Erica necesita.
+4. **Color confirmado en campo**, que es lo que después entra a `paleta_color.csv`
+   con `confianza_color = alta` en vez de inferido.
 
-> **Regla que se propone para el repositorio:** *en dalia, el objetivo del
-> programa de pulgón no es la plaga — es el virus del stock. Se mide en plantas
+### Las cuatro reglas que hacen que el ensayo sirva
+
+| # | Regla | Por qué |
+|---|---|---|
+| 1 | **Un cultivar por grupo contiguo, nunca revuelto** | Sin esto no hay atribución posible. Es la diferencia entre datos y anécdotas |
+| 2 | **Estaca al inicio de cada grupo, con nombre y número de posición** | La etiqueta plástica del proveedor se decolora y se pierde en 3 meses |
+| 3 | **Registrar cultivar → cama → posición inicial → posición final → n.º de plantas** | Nuevo archivo: `07-datos/ensayo_dahlia_posiciones.csv`. Se llena el día de la siembra, no después |
+| 4 | **🔴 TODAS reciben exactamente el mismo manejo** | Luz, riego, lavado de dosel, bombas, fertirriego: **idénticos**. **El cultivar tiene que ser la única variable.** Nada de "a estas les pongo más" |
+
+**La regla 4 corrige algo que yo mismo había propuesto:** en la primera versión de
+este documento sugerí usar 4A con lavado de dosel y 4B sin, para medir el efecto
+del lavado. **Con material desconocido eso está mal.** Se estarían moviendo dos
+variables a la vez (cultivar y manejo) sobre un n pequeño, y no se podría separar
+ninguna de las dos. **El lavado de dosel va a las dos camas**, porque su mecanismo
+está bien establecido en la literatura y en la propia historia de Vanessa, y no
+necesita que se le sacrifique la mitad del lote para demostrarlo.
+
+### Si sobran o faltan plantas de un cultivar
+
+Lo normal en un regalo es que las cantidades por cultivar sean desiguales.
+**No se rellena para emparejar.** Se anota el n real de cada uno y se acepta que
+los cultivares con pocas plantas dan una señal más débil. **Un cultivar con 3
+plantas sigue diciendo algo si está identificado; no dice nada si está revuelto.**
+
+## 4.4 · 🔴 Virosis — y por qué con esquejes el riesgo entra por otra puerta
+
+Con bulbos el virus del mosaico de la dalia (DMV) entra con el tubérculo. **Con
+esquejes de planta madre entra igual, y es la vía de introducción más probable
+que existe:** *"DMV es persistente y se propaga fácilmente por propagación
+vegetativa"*, y *"la vía más probable de introducción de cepas de DMV a una finca
+es vía tubérculos o esquejes infectados"*.
+
+**La consecuencia es dura y hay que decirla:** si la planta madre estaba
+infectada, **el 100 % de sus esquejes lo está.** No es probabilidad, es clonación.
+
+Y el segundo golpe: **la vía de multiplicación de esta colección son esquejes.**
+Cada ronda de esquejes que Vanessa saque de una planta infectada multiplica el
+virus, no la colección.
+
+### Lo que se hace
+
+| # | Acción | Detalle |
+|---|---|---|
+| 1 | **🔴 Preguntarle al proveedor si el material es indexado** | *"¿las plantas madre están indexadas / libres de virus?"* Existe material comercial **virus-indexed**, propagado por cultivo de meristemo desde madres verificadas en laboratorio. Es la pregunta más barata de este documento y la de mayor consecuencia |
+| 2 | **Registrar la respuesta, sea cual sea** | Si no están indexadas no se rechaza el regalo — se sabe que el stock arranca con riesgo, y eso cambia la regla 4 de abajo |
+| 3 | **Marcar y NO propagar sintomáticas** | Mosaico, aclaramiento de nervadura, deformación, enanismo. **Pero no descartar antes del pinch** — muchas sospechas resultan ser deficiencia o daño de trasplante |
+| 4 | **🔴 Solo se sacan esquejes de plantas sin síntoma** | Ésta es la regla que decide si la colección crece o se degrada |
+| 5 | **Cuchillo desinfectado entre plantas** | **Hipoclorito 10 % un minuto, o alcohol 70 %.** Al cosechar y al esquejar. Es transmisión mecánica |
+| 6 | **Aceite mineral contra el vector** | Ver 10.6 — **los insecticidas casi no previenen la transmisión no persistente; el aceite sí** |
+
+> **Regla que se propone para el repositorio:** *en dalia, el objetivo del programa
+> de pulgón no es la plaga — es el virus del stock. Se mide en plantas
 > sintomáticas descartadas por temporada, no en pulgones vivos.*
 
-**Nota de manejo:** las plantas con síntoma **no se descartan antes del pinch**.
-La práctica de los productores especializados es esperar a que la planta esté
-establecida y haya recibido nitrógeno, porque muchas sospechas resultan ser
-deficiencia nutricional o daño de trasplante, no virus.
+## 4.5 · Anexo — la ruta de tubérculo, para cuando haga falta
+
+No aplica a esta entrega. Queda escrita porque **volverá a aplicar** si se retira
+la luz y la colección se multiplica por división en vez de por esqueje:
+
+- Descartar tubérculo blando, con pudrición seca, o con **costra fúngica blanca a
+  rosada — eso es *Fusarium***, causa principal de pudrición seca de tubérculo, y
+  sobrevive indefinidamente en el suelo.
+- Cortar la zona podrida hasta tejido sano y sellar con **azufre + cal hidratada
+  50:50**, solo si el cultivar es irremplazable.
+- **Un tubérculo sin yema visible en el cuello no brota.**
+- **Sin riego hasta que emerja la yema**, y siembra horizontal a 10–15 cm.
+- Cuchillo desinfectado entre tubérculos, igual que arriba.
 
 ---
 
@@ -359,14 +535,15 @@ coincidir la aplicación de leonardita con un fertirriego de N-Cal.
 
 ## 5.2 · La adición para dalia: drenaje del cuello
 
-**Único cambio respecto a cualquier otra cama.** El tubérculo de dalia se pudre
-con agua estancada alrededor del cuello, y el suelo de DCB tiene **saturación de
-humedad de 133–155 %** y **densidad aparente de 0,56–0,71 g/cm³** — un suelo que
-retiene muchísima agua.
+**Único cambio respecto a cualquier otra cama, y con esquejes sigue aplicando —
+por otra razón.** Con bulbo el problema era la pudrición del tubérculo; con
+esqueje es el **damping-off en la base del tallo**, que necesita las mismas
+condiciones: agua estancada alrededor del cuello. Y el suelo de DCB las da solas —
+**saturación de humedad de 133–155 %** y **densidad aparente de 0,56–0,71 g/cm³**.
 
-> **Sembrar el tubérculo en un lomo o camellón de 10–15 cm sobre el nivel de la
-> cama**, no en depresión. El agua se va, la corona queda seca, y el resto del
-> perfil sigue húmedo para la raíz.
+> **Sembrar sobre un lomo o camellón de 10–15 cm** por encima del nivel de la cama,
+> nunca en depresión. El agua se va del cuello, y el resto del perfil sigue húmedo
+> para la raíz — que es justo lo que un esqueje sin reserva necesita.
 
 Esto **no contradice el No-Dig**: es modelado de superficie, no volteo.
 
@@ -406,56 +583,52 @@ oídio.
 ⚠️ **Regla que protege el drench:** **no regar con fertirriego el día de la
 inoculación.** El fertilizante químico mata el inoculante.
 
-## 6.2 · Tubérculo — Ruta A
+## 6.2 · Bandeja — el estándar de DCB, sin ninguna adición
 
-**Aquí sí hay una excepción justificada, y se justifica con la regla propia del
-repositorio.** La regla dice: *"¿el patógeno tiene una etapa EN EL SUELO? Un
-drench a la raíz solo puede atacar lo que está en el suelo."*
+Un solo pase, **en 5 L de agua**, el día después de que llegan y antes de
+trasplantar:
 
-| Patógeno | ¿Etapa en suelo? | ¿Aplica producto dirigido? |
+> **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc.**
+>
+> Rinde **4 bandejas**. Si hace falta más agua para mojarlas, se agrega **agua
+> sola**, no más producto. Bases: Endorhiza y Nube por su etiqueta; Promobac
+> **2,5 cc/L × 5 L = 12,5 → 13 cc**, que es su etiqueta aplicada literal porque en
+> bandeja el volumen de agua es el normal de un drench.
+
+| Producto | Qué aporta |
+|---|---|
+| **Endorhiza** | Micorriza — la única vía al P por exploración de hifas. **Y el P soluble es uno de los dos limitantes de Fase 3** |
+| **Nube** | *Streptomyces* — *"induce a la planta a producir fitoalexinas que le dan resistencia sistémica"*. Es el único género que no está en ninguna otra parte del programa |
+| **Promobac** | *Bacillus* — segundo género de resistencia inducida. Su ficha lista *Fusarium*, *Oidium*, *Botrytis*, *Erysiphe*, *Peronospora* y ***Rizoctonia*, que es el damping-off de bandeja** |
+
+## 6.3 · 🔴 Retiro la excepción del Fitoderma que había propuesto
+
+En la primera versión de este documento propuse agregar **Fitoderma 5 g** al baño,
+como excepción a la regla *"Fitoderma solo en Inv 3"*, argumentando el **Fusarium
+generalizado en suelo de Inv 4A**. **Ese argumento se cae al saber que llegan
+esquejes y no bulbos, y lo retiro.**
+
+Lo que justificaba la excepción era el **órgano**, no el bloque:
+
+| | Tubérculo | **Esqueje enraizado** |
 |---|---|---|
-| **Fusarium de tubérculo** | **Sí** — *"vive indefinidamente en el suelo"* y `microclima_bloques.csv` marca **Inv 4A: "Fusarium generalizado en suelo"** | 🟢 **Sí** |
-| Mildeo polvoso | No — inóculo aéreo | 🔴 No. Solo resistencia inducida |
+| Qué se entierra | **Depósito de almidón, herido en la división** | Cepellón con raíz viva, **sin herida y sin almidón** |
+| Atractivo para *Fusarium* | Máximo | Normal |
+| ¿Justifica romper la regla del repo? | Se podía discutir | **No** |
 
-> **Baño de tubérculo, el día de la siembra, en 5 L de agua:**
->
-> | Producto | Cantidad en 5 L | Función |
-> |---|---|---|
-> | **Endorhiza** | **10 cc** | Micorriza — la única vía al P por exploración de hifas |
-> | **Nube** | **10 cc** | *Streptomyces* — resistencia sistémica inducida por fitoalexinas |
-> | **Promobac** | **13 cc** | *Bacillus* — segundo género de resistencia inducida; su ficha lista *Fusarium*, *Oidium*, *Botrytis*, *Erysiphe* y *Rizoctonia* |
-> | **Fitoderma** | **5 g** | *Trichoderma* — **la excepción**: antagonista directo de *Fusarium*, contra el inóculo documentado de Inv 4A |
->
-> **Sumergir 10–15 minutos, escurrir, sembrar en el mismo día. No secar al sol.**
+Y las tres razones para no meterlo se sostienen solas:
 
-Las tres primeras líneas son **la base de bandeja de DCB tal cual está definida**
-(Endorhiza 10 + Nube 10 + Promobac 13 en 5 L). Solo se cambia el vehículo: en vez
-de regar una bandeja se sumerge un tubérculo, porque no hay bandeja.
+1. **En Inv 4 el *Trichoderma* nativo ya está en 1,4×10⁶ UFC/g** — que es
+   exactamente por lo que el repositorio restringe el Fitoderma a Inv 3.
+2. **El damping-off, que sí es el riesgo real de un esqueje, ya está cubierto**
+   por el *Rizoctonia* que lista la ficha del Promobac.
+3. **Se elimina el único conflicto de compatibilidad de la mezcla.** El
+   *Trichoderma* es micoparásito de amplio espectro y las fichas de Bioquirama
+   dicen *"consultar al Departamento Técnico"* sobre mezclarlo con micorriza y con
+   *Streptomyces*. Sin Fitoderma, esa pregunta deja de bloquear esta siembra.
 
-**Sobre el Fitoderma:** el repositorio lo restringe a Inv 3 *porque el Trichoderma
-en Inv 4+5 ya está alto (1,4×10⁶ UFC/g)*. La excepción aquí es que **el órgano
-que se siembra es un tubérculo carnoso**, el blanco más fácil que existe para
-*Fusarium*, entrando a una cama marcada como Fusarium-positiva. **Esto es una
-excepción propuesta, no una regla — necesita el visto bueno de Vanessa.**
-
-🟡 **Pendiente heredado que aplica aquí:** las fichas de Bioquirama dicen
-literalmente *"consultar al Departamento Técnico"* sobre compatibilidad cruzada
-entre *Trichoderma*, micorriza y *Streptomyces*. Es la misma pregunta del correo
-que ya está pendiente. Si preocupa, **la alternativa limpia es sacar el Fitoderma
-de la mezcla y aplicarlo aparte, al hueco de siembra** — no en otro día, que no
-separa nada.
-
-## 6.3 · Ruta B — bandeja
-
-Base estándar sin cambios, en 5 L de agua, un solo pase el viernes:
-
-> **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc.** Rinde 4 bandejas. Si hace
-> falta más agua para mojarlas, se agrega **agua sola**, no más producto.
-
-**Nada extra por el mildeo.** Es enfermedad aérea: un drench no la alcanza. Lo
-único que un drench puede hacer contra ella es resistencia inducida, y **eso ya
-está en la base** — dos géneros distintos, *Streptomyces* del Nube y *Bacillus*
-del Promobac.
+> **La pregunta 4 queda respondida por la biología, no por Vanessa. La base va
+> sola, y la regla "Fitoderma solo en Inv 3" queda intacta.**
 
 ---
 
@@ -463,13 +636,15 @@ del Promobac.
 
 | Práctica | Qué se hace | Cuándo | Fuente |
 |---|---|---|---|
-| **Profundidad** | Tubérculo **acostado horizontal**, yema hacia arriba, **10–15 cm** de profundidad, sobre el lomo de la 5.2 | Siembra | práctica estándar |
-| **Sin riego hasta el brote** | El tubérculo trae su propia reserva de agua; regar antes de que emerja la yema es **la causa #1 de pudrición** | Siembra → emergencia | práctica estándar |
+| **Trasplante** | Cepellón **al ras del suelo o 1 cm por debajo**, sobre el lomo de la 5.2. **Nunca enterrar el punto de crecimiento** | Siembra | esqueje enraizado |
+| **🔴 Riego inmediato** | **Regar al momento de sembrar y no dejar secar en las 2 primeras semanas.** El esqueje **no tiene reserva**: es la reversión total de la regla del bulbo | Siembra → sem 2 | ver 4.1 |
+| **Sombra las primeras 48–72 h** | Malla o tela sobre el lomo si el sol de mediodía pega fuerte. Se retira apenas la planta deje de marchitarse al mediodía | Siembra → 72 h | manejo de esqueje |
+| **Un cultivar por grupo, con estaca** | Ver 4.3 — **es el objetivo del ensayo, no orden**. Registrar posiciones en `ensayo_dahlia_posiciones.csv` el mismo día | Siembra | 🔴 regla del ensayo |
 | **Malla — 2 capas, no 1** | `variedades_parametros_siembra.csv` dice `Net = 1`. Con planta de 1–1,5 m y capítulo pesado, **1 capa no sostiene**. Primera a **30 cm**, segunda a **60 cm** | Antes de que la planta las alcance | 🔴 **cambio propuesto al CSV** |
 | **Pinch** | Despuntar sobre el **3.º–4.º par de hojas verdaderas**, con la planta a ~30 cm | ~**semana 4** post-trasplante | `variedades_parametros_siembra.csv` (`Pinch = Si, semana 4`) ✅ coincide con la literatura |
 | **Desbotone** | Quitar los **dos botones laterales** junto al terminal → un tallo largo con una flor | Cuando los botones son distinguibles | práctica estándar de dalia de corte |
-| **Deshoje basal (faldeo)** | Quitar **todas las hojas de los 30–40 cm inferiores** cuando la planta pasa de 60 cm, y repetir | Desde semana 6, cada 2 semanas | **medida anti-oídio directa** |
-| **Tallos por planta** | **4** | — | `variedades_parametros_siembra.csv` |
+| **Deshoje basal (faldeo)** | Quitar **todas las hojas de los 30–40 cm inferiores** cuando la planta pasa de 60 cm, y repetir. **No empezar hasta que haya raíz nueva fuera del cepellón** | Desde semana 6, cada 2 semanas | **medida anti-oídio directa** |
+| **Tallos por planta** | **4** — a confirmar bajo 16 h de fotoperiodo | — | `variedades_parametros_siembra.csv` |
 
 ## 7.1 · Por qué el deshoje basal es la medida más subestimada
 
@@ -494,8 +669,8 @@ protocolo con nombre, semana y criterio.**
 
 | Etapa | Manejo |
 |---|---|
-| Siembra → emergencia | **Sin riego.** Humedad residual de la preparación |
-| Emergencia → pinch | Riego regular, suelo **húmedo, nunca saturado** |
+| **🔴 Trasplante → semana 2** | **Riego inmediato y sostenido. NO dejar secar ni una tarde.** Con esqueje no hay reserva que aguante — es lo contrario de lo que se hace con bulbo (ver 4.1) |
+| Semana 2 → pinch | Riego regular, suelo **húmedo, nunca saturado** |
 | Pinch → floración | **Máxima demanda.** Es la etapa donde se pierde el ciclo |
 | Cosecha | Sostenido. **El fertirriego NO se suspende bajo presión fúngica** — regla #2 de la finca |
 
@@ -797,49 +972,97 @@ No estaba en lo pedido, pero decide si el tallo extraordinario llega vendible.
 
 ---
 
-# 12 · Qué medir — o esto no sirve para la siguiente siembra
+# 12 · Qué medir — es el producto de esta siembra
 
-`CLAUDE.md`: *"El campo enseña solo si lo documentamos bien."* Este lote puede
-cerrar cuatro huecos de la matriz de decisión de una sola vez.
+`CLAUDE.md`: *"El campo enseña solo si lo documentamos bien."* Y como Vanessa
+dijo que **son pruebas**, aquí el dato **no es un subproducto de la cosecha: es la
+cosecha.** Este lote puede cerrar cinco huecos de la matriz de decisión a la vez.
 
-| Qué | Dónde va | Hueco de la matriz que cierra |
-|---|---|---|
-| **Longitud de tallo, planta por planta, en cada corte** | `calidad_tallo.csv` | Variable 9 — **la calidad no se registra en ninguna parte del repositorio** |
-| **Termómetro de mínima/máxima en la cama de dalia** | `microclima_bloques.csv` | Variable 3 — hoy el microclima es cualitativo. **El único dato numérico de temperatura del repo son los 11 °C de Inv 6** |
-| **Lluvia y temperatura mín/máx por semana ISO** | `clima_semanal.csv` | Variable 7 — **el archivo está vacío**, y es lo que decidiría el ensayo exterior del año que viene |
-| **Semana de ciclo en que aparece la primera pústula de oídio, y severidad** | `incidencia_fitosanitaria.csv` | Variable 6 — el registro id 8 dice *"semana 21"* pero sin severidad estructurada |
-| **Ventana de cosecha real** | `ciclos_variedad.csv` | Bitácora dice 4 semanas, PROGRAMACION dice 6. **Sin confirmar** |
-| **Vida en vaso** | `vida_en_vaso.csv` | Archivo vacío |
-| **Plantas sintomáticas de virosis descartadas** | nuevo | El indicador que dice si la colección sobrevive a la multiplicación |
+## 12.1 · El registro que hay que abrir el día de la siembra
 
-**Diseño mínimo que hace comparables los datos:** las dos camas reciben protocolo
-idéntico. **La única diferencia deliberada permitida es el lavado de dosel** — si
-Vanessa quiere medirlo, se hace en 4A y no en 4B, y se cuenta la semana de
-aparición de la primera pústula en cada una. Es la única forma de convertir una
-hipótesis en dato con el material disponible.
+**`07-datos/ensayo_dahlia_posiciones.csv`** — sin este archivo, ninguno de los de
+abajo sirve, porque no habrá cómo atribuir nada a un cultivar.
+
+| Columna | Contenido |
+|---|---|
+| `cultivar` | Nombre exacto del proveedor, tal cual venga |
+| `color_declarado` | Lo que dice la etiqueta |
+| `color_confirmado_campo` | Se llena en la primera floración |
+| `cama` | `Inv 4A` o `Inv 4B` |
+| `linea` | `2` o `7` |
+| `posicion_inicio` / `posicion_fin` | Número de hueco a lo largo de la cama |
+| `n_plantas` | Reales, sin emparejar |
+| `fecha_trasplante` | — |
+
+## 12.2 · Lo que se mide, y qué hueco cierra
+
+| Qué | Cada cuánto | Dónde va | Hueco que cierra |
+|---|---|---|---|
+| **🔴 Semana de aparición de la primera pústula de oídio, POR CULTIVAR, y severidad 0–3** | Revisión semanal desde la sem 4 | `incidencia_fitosanitaria.csv` | **El resultado más valioso del ensayo: qué cultivar italiano comprar a escala.** Hoy el registro id 8 solo dice *"semana 21"*, sin severidad y sin cultivar |
+| **Longitud de tallo, tallo por tallo, en cada corte** | Cada cosecha | `calidad_tallo.csv` | Variable 9 — **la calidad no se registra en ninguna parte del repositorio**. Es lo que separa *"produjo"* de *"produjo vendible"* |
+| **🔴 Ciclo real: fecha de trasplante → primer corte, por cultivar** | Una vez | `ciclos_variedad.csv` | **Las 12 semanas del CSV se midieron con bulbo y sin luz. Aquí no aplican** — ver 2.2. Es `SIN_DATO` hasta que se mida |
+| **Ventana de cosecha real** | Una vez | `ciclos_variedad.csv` | Bitácora dice 4 semanas, PROGRAMACION dice 6. **Sin confirmar desde siempre** |
+| **Tallos por planta reales bajo 16 h** | Al cierre | `ciclos_variedad.csv` | El CSV dice 4; con fotoperiodo extendido puede ser otro |
+| **Termómetro de mínima/máxima en la cama** | Lectura diaria | `microclima_bloques.csv` | Variable 3 — hoy el microclima es cualitativo. **El único dato numérico de temperatura de todo el repositorio son los 11 °C de Inv 6** |
+| **Lluvia y temperatura mín/máx por semana ISO** | Semanal | `clima_semanal.csv` | Variable 7 — **el archivo está vacío**. Es lo que va a decidir si el ensayo exterior del año que viene se puede hacer sin riesgo de helada |
+| **Color confirmado en campo** | Primera floración | `paleta_color.csv` | Entra con `confianza_color = alta`, no inferido del nombre — regla 8 |
+| **Vida en vaso** | 3 tallos por cultivar | `vida_en_vaso.csv` | Archivo vacío |
+| **Plantas sintomáticas de virosis marcadas** | Semanal desde el pinch | `ensayo_dahlia_posiciones.csv` | El indicador que dice si la colección sobrevive a la multiplicación |
+
+## 12.3 · 🔴 El diseño: una sola variable
+
+**Todas las plantas reciben exactamente el mismo manejo — luz incluida.**
+Cultivar es la única variable. Las razones están en 4.3 y en 2.2:
+
+- **Con material desconocido, partir el manejo arruina las dos lecturas.** No se
+  podría separar *"este cultivar es malo"* de *"a esta mitad le hicimos otra cosa"*.
+- **La luz no se puede partir dentro de la misma nave:** el umbral fotoperiódico
+  es de **1–2 µmol/m²/s** y la luz difusa alcanza esa cifra en la cama vecina. Un
+  testigo sin luz al lado de uno con luz **no es un testigo**.
+
+**Esto corrige la primera versión de este documento**, donde propuse usar 4A con
+lavado de dosel y 4B sin, para medir el lavado. Con este material, no.
+
+## 12.4 · Y lo que NO se le entrega a Erica todavía
+
+Por la regla 6 del repositorio —*"nunca dar a Erica datos históricos de cosecha en
+crudo, solo estimados a futuro"*— y por la regla 1 —*"nunca inventar ciclos"*—:
+
+> **No hay fecha de cosecha que dar.** Esqueje + 16 h de fotoperiodo dejan el
+> ciclo en `SIN_DATO`. Se entrega un estimado **solo cuando aparezca el primer
+> botón visible** en el lote, que es el primer punto donde se puede proyectar
+> honestamente.
 
 ---
 
 # 13 · Lo que falta confirmar
 
-## 🔴 Bloqueantes — hay que responderlos antes de ejecutar
+## ✅ Resuelto en la sesión del 2026-09-09
+
+| # | Pregunta | Respuesta | Qué cambió |
+|---|---|---|---|
+| 1 | ¿Tubérculos o esquejes? | **Esquejes enraizados de planta madre** | Etapa 0 reescrita (sección 4): riego inmediato en vez de "sin riego hasta el brote", aclimatación de 3–5 días, y el riesgo de virosis pasa a ser el de propagación vegetativa |
+| 2 | ¿Qué significaba "requieren luz"? | **Extensión de día, LED, 18:00–22:00**, sugerido por el proveedor | Sección 2.2 reescrita. Fotoperiodo de ~16 h. **Mejor que la interrupción nocturna que yo había propuesto**, porque es verificable por el turno de la tarde |
+| 4 | ¿Fitoderma en el baño? | **Retirado** | Lo justificaba el tubérculo herido, no el bloque. Con esqueje no aplica, y la regla *"Fitoderma solo en Inv 3"* queda intacta (sección 6.3) |
+
+## 🔴 Bloqueantes — hay que responderlos antes de sembrar
 
 | # | Pregunta | Qué cambia |
 |---|---|---|
-| 1 | **¿Llegan tubérculos o plántulas/esquejes enraizados?** | Define Ruta A (baño de tubérculo, siembra en lomo, sin riego hasta brote) o Ruta B (bandeja estándar). Es la Etapa 0 completa |
-| 2 | **¿Qué dijo exactamente el proveedor con "requieren luz"?** ¿Fotoperiodo/iluminación suplementaria, o pleno sol? **¿Y qué equipo de iluminación existe hoy en la finca?** (Campanula tiene `Light = SI`, así que algo hay) | Define si entra el programa de interrupción nocturna de la sección 2.2 — que es la palanca de longitud de tallo, y suma 2–3 semanas al ciclo |
-| 3 | **¿Cultivar o serie exacta, y color?** | Sin esto no hay receta de bouquet, ni distribución de color en punto de venta, ni `paleta_color.csv`. Y la susceptibilidad a oídio varía muchísimo entre cultivares de dalia |
-| 4 | **¿Se aprueba el baño de tubérculo con Fitoderma en Inv 4?** | Es una excepción a la regla *"Fitoderma solo en Inv 3"*, justificada por el Fusarium documentado de Inv 4A sobre un órgano carnoso |
+| A | **🔴 ¿Las plantas madre están indexadas / libres de virus?** Preguntárselo al proveedor por escrito | **Es la pregunta más barata de este documento y la de mayor consecuencia.** Si la madre estaba infectada, **el 100 % de los esquejes lo está** — y la vía de multiplicación de esta colección son esquejes. Ver 4.4 |
+| B | **🔴 Especificación del LED: ¿cuántos µmol/m²/s sobre el dosel, y qué proporción de rojo y rojo lejano emite?** | Un blanco frío rico en azul a 2 µmol/m²/s **puede no producir ningún efecto fotoperiódico** — el azul necesita ~30 µmol/m²/s, 15–30× más que el rojo. Se gastaría el equipo y el ensayo diría "la luz no sirvió". Ver 2.2 |
+| C | **¿Cuántos cultivares distintos vienen, y cuántas plantas de cada uno?** | No hace falta saber la mezcla de color —eso se confirma en campo—, **pero sí cuántos grupos hay**, para trazar las posiciones antes de sembrar. Es la sección 4.3 y el `ensayo_dahlia_posiciones.csv` |
+| D | **Fecha de entrega** | Fija la semana ISO de siembra, y con ella cuándo cae la floración respecto de la ventana de heladas |
 
 ## 🟡 Necesarios para completar, no para arrancar
 
 | # | Qué | Para qué |
 |---|---|---|
-| 5 | **`aplicaciones_historial.csv` actualizado, semanas 28 a 37** | **Sin esto la rotación de la 10.5 queda como estructura, no como bomba.** Es lo primero que hay que traer |
-| 6 | **Fecha de entrega de las 160** | Fija la semana ISO de siembra y con ella la ventana de cosecha y el riesgo de helada |
-| 7 | **Dosis de etiqueta de Azufral, Timorex Gold, Agroemulsión y Alysin** | Cuatro productos con ficha confirmada y **sin dosis en el repositorio** |
-| 8 | **Stock real de Neofat** | El inventario es del 26/03/2026 y dice *"probablemente agotado"* |
-| 9 | **Análisis del Bokashi terminado** (pendiente 4c de `CLAUDE.md`) | Sin él no se puede decir cuánto N y cuánto K están entrando ya por la base |
+| E | **`aplicaciones_historial.csv` actualizado, semanas 28 a 37** | **Sin esto la rotación de la 10.5 queda como estructura, no como bomba.** Es lo primero que hay que traer |
+| F | **Dosis de etiqueta de Azufral, Timorex Gold, Agroemulsión y Alysin** | Cuatro productos con ficha confirmada y **sin dosis en el repositorio** |
+| G | **Stock real de Neofat** | El inventario es del 26/03/2026 y dice *"probablemente agotado"*. En hoja de dalia, grande y cerosa, el surfactante pesa más que en otras |
+| H | **Análisis del Bokashi terminado** (pendiente 4c de `CLAUDE.md`) | Sin él no se puede decir cuánto N y cuánto K están entrando ya por la base |
+| I | **Decisión sobre Polyfeed y Bitter Mag** (sección 9.2) | Pendiente de validación desde el 2026-09-02. En dalia sobre Bloque 4 es donde más pesa |
 
 ## 🔴 Nombre homologado — PAUSA
 
@@ -848,20 +1071,23 @@ hipótesis en dato con el material disponible.
 
 > **Sin nombre homologado, esta siembra no aparece en el calendario de Erica.**
 >
-> Por la regla 5 del repositorio, **no se improvisa**: hay que proponerlo y que
-> Vanessa lo apruebe. Cuando esté el cultivar (pregunta 3), se propone la forma
-> `Dahlia <Serie> <Color>` siguiendo el patrón de la bitácora, y **eso pasa por
-> `dcb-programacion`, no por este documento.**
+> Por la regla 5, **no se improvisa**. Y aquí hay un matiz: como son varios
+> cultivares en ensayo, la pregunta no es *un* nombre sino **si el ensayo entra al
+> calendario como un solo renglón o como uno por cultivar.** Eso lo decide
+> `dcb-programacion`, no este documento — y de todos modos **no hay fecha de
+> cosecha que dar todavía** (ver 12.4).
 
-## 🔴 Tres cambios propuestos a los CSV — no aplicados
+## 🔴 Cambios propuestos a los CSV — no aplicados
 
 Ninguno se escribió. Requieren validación:
 
 | Archivo | Campo | Hoy | Propuesto | Razón |
 |---|---|---|---|---|
-| `variedades_parametros_siembra.csv` | Dahlias · `Light` | `NO` | **`SI`** | Vanessa 2026-09-09 + planta de día corto facultativa a 12 h de fotoperiodo |
+| `variedades_parametros_siembra.csv` | Dahlias · `Light` | `NO` | **`SI — extensión de día 18:00–22:00, LED R+FR, 1–2 µmol/m²/s`** | Vanessa + proveedor 2026-09-09. Día corto facultativa a 12 h de fotoperiodo natural |
 | `variedades_parametros_siembra.csv` | Dahlias · `DISTANCIA SIEMBRA` | `15 cm` | **`45 cm (2 líneas)`** | 15 cm son ~44 pl/m²; la referencia de dalia de corte es 30–45 cm. La densidad es causa directa de oídio |
 | `variedades_parametros_siembra.csv` | Dahlias · `Net` | `1` | **`2`** | Planta de 1–1,5 m con capítulo pesado |
+| `ciclos_variedad.csv` | Dahlia · ciclo | `12` | **anotar que el 12 es de BULBO sin luz; para esqueje bajo 16 h es `SIN_DATO`** | Regla 1: no se estima, se mide |
+| `07-datos/` | — | — | **crear `ensayo_dahlia_posiciones.csv`** | Sin él el ensayo no produce dato atribuible |
 
 ---
 
@@ -869,17 +1095,22 @@ Ninguno se escribió. Requieren validación:
 
 | Etapa | Qué se hace |
 |---|---|
-| **0 · Recepción** | Inspección planta por planta · descarte de tubérculo con pudrición · **cuchillo desinfectado entre plantas** · etiquetar cultivar |
-| **1 · Presiembra** | **Inv 4A + Inv 4B.** No-Dig v10: no voltear · Bokashi 1 saco + leonardita 130 g + yeso 2 kg **en superficie** · **lomo de 10–15 cm** para el cuello |
-| **2 · Inoculación** | **Cama:** Fosfolip **1,5 cc en CADA bomba** de 20 L, 4–5 bombas, arrastre con agua sola, luego plástico. **Tubérculo:** baño 10–15 min en 5 L con Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc + Fitoderma 5 g |
-| **3 · Siembra** | **2 líneas (2 y 7) × 1 planta cada 3 huecos = 74/cama = 148 + 12 en materas.** Tubérculo horizontal a 10–15 cm. **Sin riego hasta el brote** |
-| **4 · Posiembra** | **Pinch semana 4** al 3.º–4.º par · **2 mallas** (30 y 60 cm) · **desbotone lateral** · **deshoje basal desde sem 6, cada 2 semanas** |
-| **5 · Agua** | Nunca al atardecer · **LAVADO DE DOSEL con agua sola, 10:00–13:00, 2–3×/semana, desde sem 4 hasta el primer color** |
-| **6 · Fertirriego** | Fórmula Inv 4+5 vigente · **Haifa Micro siempre 180 g** · **MKP 0 en el tanque** · pedir aprobación para sacar Polyfeed y Bitter Mag |
-| **7 · Foliar** | Kempf por fase · **MKP foliar 125 g/bomba desde sem 7** (previa prueba de fitotoxicidad) · rotación de 4 semanas · **aceite y azufre a 21 días** · **entomopatógeno nunca con fungicida de amplio espectro** |
-| **8 · Virus** | Aceite mineral en cobertura completa · bajar N soluble · descarte de sintomáticas **después del pinch** · cuchillo desinfectado |
-| **9 · Cosecha** | **⅔–¾ abierta**, antes de las 9 am, agua a 70–80 °C, vida en vaso 4–6 días |
-| **10 · Medir** | Longitud de tallo · termómetro en cama · semana de primera pústula · ventana real · vida en vaso |
+| **0 · Recepción** | **Abrir la caja el mismo día** · aclimatar **3–5 días** en media sombra, **siempre húmedos** · descartar base acuosa u oscura (damping-off) · **🔴 etiquetar cultivar uno por uno** · preguntar al proveedor si las madres están **indexadas** |
+| **1 · Presiembra** | **Inv 4A + Inv 4B.** No-Dig v10: no voltear · Bokashi 1 saco + leonardita 130 g + yeso 2 kg **en superficie** · **lomo de 10–15 cm** para drenar el cuello |
+| **2 · Inoculación** | **Cama:** Fosfolip **1,5 cc en CADA bomba** de 20 L, 4–5 bombas, arrastre con agua sola, luego plástico. **Bandeja:** **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc en 5 L** (rinde 4 bandejas). **Sin Fitoderma** |
+| **3 · Siembra** | **2 líneas (2 y 7) × 1 planta cada 3 huecos = 74/cama = 148 + 12 en materas.** Cepellón al ras · **🔴 un cultivar por grupo, con estaca y posición registrada** |
+| **4 · Agua** | **🔴 Riego inmediato al sembrar y sin dejar secar 2 semanas** — el esqueje no tiene reserva · nunca regar al atardecer · **LAVADO DE DOSEL con agua sola, 10:00–13:00, 2–3×/semana, desde sem 4 hasta el primer color** |
+| **5 · Luz** | **Extensión de día, LED, 18:00–22:00, todo el ciclo** · **1–2 µmol/m²/s sobre el dosel** · **rojo + rojo lejano, NO blanco frío** · **todas las plantas, sin testigo** (la luz se derrama entre camas) |
+| **6 · Posiembra** | **Pinch semana 4** al 3.º–4.º par · **2 mallas** (30 y 60 cm) · **desbotone lateral** · **deshoje basal desde sem 6, cada 2 semanas**, no antes de que haya raíz nueva |
+| **7 · Fertirriego** | Fórmula Inv 4+5 vigente · **Haifa Micro siempre 180 g** · **MKP 0 en el tanque** · pedir aprobación para sacar Polyfeed y Bitter Mag |
+| **8 · Foliar** | Kempf por fase · **MKP foliar 125 g/bomba desde sem 7** (previa prueba de fitotoxicidad en 5 plantas) · rotación de 4 semanas · **aceite y azufre a 21 días** · **entomopatógeno nunca con fungicida de amplio espectro** · **Revus e Infinito NO — son para oomicetos** |
+| **9 · Virus** | Aceite mineral en cobertura completa · bajar N soluble · marcar sintomáticas **después del pinch** · **🔴 solo esquejar de plantas sin síntoma** · cuchillo desinfectado |
+| **10 · Cosecha** | **⅔–¾ abierta**, antes de las 9 am, agua a 70–80 °C, vida en vaso 4–6 días |
+| **11 · Medir** | **🔴 Semana de primera pústula POR CULTIVAR** (el resultado principal) · longitud de tallo tallo por tallo · ciclo real · termómetro en cama · color confirmado · vida en vaso |
+
+**Lo que NO se hace:** no se parte el manejo entre camas · no se planta revuelto ·
+no se le da fecha de cosecha a Erica todavía · no entra Fitoderma · no entra
+Revus ni Infinito · no se agrega K ni Mg al suelo.
 
 ---
 
@@ -912,12 +1143,19 @@ Ninguno se escribió. Requieren validación:
 - [Control of Flowering Using Night-Interruption and Day-Extension LED Lighting · Springer](https://link.springer.com/chapter/10.1007/978-981-10-1848-0_14) — *Dahlia hortensis*, día de 9 h ± NI de 4 h; longitud de tallo cuadrática con la R:FR; floración incompleta bajo día corto y bajo NI de solo rojo lejano
 - [Effects of LED Applications on Dahlia Seedling Quality · PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12348901/)
 - [Manipulating Light to Improve Quality of Cut Flowers · American Floral Endowment](https://endowment.org/news/manipulating-light-to-improve-quality-of-cut-flowers)
+- [OSU · Photoperiodic Lighting](https://u.osu.edu/indoorberry/photoperiodic-lighting/) y [Ohio CEAC · Photoperiodic Lighting](https://ohceac.osu.edu/CEBPI-Photoperiodic-Lighting) — **1–2 µmol/m²/s sobre el dosel**, ~1/100 de la intensidad de una luz de crecimiento
+- [Greenhouse Grower · Greenhouse Lighting for Long Days](https://www.greenhousegrower.com/technology/greenhouse-lighting-for-long-days/) — 2 µmol/m²/s o 10 pie-candela como mínimo; rojo + rojo lejano a baja intensidad es lo más eficaz en plantas de día largo; **el azul necesita ~30 µmol/m²/s, 15–30× más**
+- [GPN · Including Far Red in an LED Lighting Spectrum](https://gpnmag.com/article/including-far-red-in-an-led-lighting-spectrum/) — el fitocromo responde a rojo (630–660 nm) y rojo lejano (730–760 nm)
+- [Thrive Agritech · Greenhouse Photoperiod Lighting Guide](https://www.thriveagritech.com/blog-posts/greenhouse-photoperiod-lighting-guide)
 
 **Virosis y pulgón**
 
 - [USU Extension · Dahlia Mosaic Virus](https://extension.usu.edu/planthealth/news/dahlia-mosaic-virus) — 16 especies de pulgón, transmisión no persistente, herencia en tubérculo
 - [UMaine Extension Bulletin #5070 · Common Questions about Dahlia Mosaic Virus](https://extension.umaine.edu/publications/5070e/) — hipoclorito 10 % un minuto entre plantas; no descartar sintomáticas antes del pinch y dos aplicaciones de N
 - [American Dahlia Society · Understanding Virus in Dahlia](https://www.dahlia.org/docsinfo/understanding_virus_in_dahlia-3/)
+- [Dahlia Mosaic Virus · ScienceDirect Topics](https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/dahlia-mosaic-virus) — **el DMV se propaga fácilmente por propagación vegetativa; la vía más probable de introducción a una finca son tubérculos o esquejes infectados**
+- [Spring Hill Nursery · What Are Virus-Indexed Dahlias?](https://springhillnursery.com/pages/what-are-virus-indexed-dahlias) — qué significa material indexado y por qué se pregunta
+- [USU Extension · Dahlia Mosaic Virus on Dahlia (ficha PDF)](https://extension.usu.edu/planthealth/factsheets/Dahlia-Mosaic-Virus.pdf)
 - [Control of field spread of non-persistent viruses in flower-bulb crops by pyrethroid, pirimicarb and mineral oils · Crop Protection](https://www.sciencedirect.com/science/article/abs/pii/0261219485900547) — el aceite mineral duplicó la eficacia de los piretroides
 - [Use of horticultural mineral oils to control PVY and other non-persistent aphid-vectored viruses · Crop Protection](https://www.sciencedirect.com/science/article/abs/pii/S0261219419300031)
 - [Khelifa · Mineral oil interferes with potato virus Y in aphid stylets · Plant Pathology 2023](https://bsppjournals.onlinelibrary.wiley.com/doi/10.1111/ppa.13639)

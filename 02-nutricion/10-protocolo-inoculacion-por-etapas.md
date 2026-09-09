@@ -939,3 +939,95 @@ que un drench puede hacer contra una enfermedad aérea.
 2. **El Promobac: 1 L/ha y 2,5 cc/L no coinciden. ¿En cuántos litros de agua está pensado el
    1 L/ha?** — es la pregunta que vuelve la dosis de la cama un dato en vez de un juicio.
 3. **El Endorhiza tiene la misma contradicción:** 2 cc/L y 1 L/ha. ¿Cuál aplica en semillero?
+
+---
+
+## 🔴 El 1 L/ha es del Fosfolip, no del Promobac · se cae el marco anterior y se corrige la cama
+
+> *"No, la que dice un litro por hectárea es el Fosfolip, no Promobac."* — Vanessa
+
+**Tiene razón, y esto tumba el análisis que acabo de escribir.** Peor: **su primera intuición era
+la correcta y yo la corregí.**
+
+### Por qué me confundí — y es una trampa real de estas fichas
+
+La frase *"se sugiere utilizar 1 L/ha y realizar una aplicación al menos cada mes"* es **texto
+repetido que Bioquirama pone en toda su línea.** Aparece **verbatim** en las fichas de
+**Endorhiza** y de **Interactor** que llegaron hoy. Lo tomé como si fuera la dosis por área del
+Promobac, y sobre eso construí todo el marco del mensaje anterior.
+
+**Consecuencia: el Promobac NO tiene tasa por área propia. Lo único citable de su etiqueta es
+2,5 cc/L.** Así que:
+
+- 🔴 **"La ficha se contradice consigo misma" — falso.** No había dos números; había uno.
+- 🔴 **"70× sobre etiqueta por área" — no existe.** No había etiqueta por área contra la cual
+  comparar.
+- 🟢 **Y su razón —la carga— era la correcta desde el principio.** Yo le dije que no era la
+  principal. Sí lo era: es el único argumento que queda en pie para no aplicar los 2,5 cc/L, y es
+  suyo, no mío.
+
+### El error de fondo en la cama: puse dos productos en la misma base cuando sus etiquetas usan bases distintas
+
+| | Su etiqueta | Por cama de 35,6 m² (100 L) | Lo que yo puse | Error |
+|---|---|---|---|---|
+| **PROMOBAC** | **2,5 cc/L** — por concentración | **250 cc** | 50 cc | **1/5 · quedaba corto** |
+| **FOSFOLIP** | **1 L/ha** — por área | **3,6 cc** | 50 cc | **14× · sobraba** |
+
+**El "10 mL + 10 mL, simétrico y elegante" estaba mal en las DOS direcciones, y por la misma
+causa:** los forcé a la misma unidad porque se veía limpio, cuando el Promobac se dosifica por
+litro de agua y el Fosfolip por metro cuadrado de cama. **La simetría era la señal de que algo
+estaba mal, no de que estuviera bien.**
+
+### La cama, corregida
+
+| | Cantidad | Base |
+|---|---|---|
+| **PROMOBAC** | **50 cc en CADA bomba de 20 L** | 2,5 cc/L de su etiqueta |
+| **FOSFOLIP** | **5 cc en la PRIMERA bomba de cada cama, y nada en las demás** | 1 L/ha → 3,6 cc, redondeado hacia arriba |
+
+El Fosfolip va todo en una bomba porque **0,7 cc repartidos en cinco bombas no se pueden medir.**
+El riego de arrastre lo distribuye.
+
+### Y el costo real, que es peor de lo que le venía diciendo
+
+| | Por cama | Al año (60 camas × 3 vueltas) |
+|---|---|---|
+| Promobac 250 cc | $14.750 | |
+| Fosfolip 5 cc | $261 | |
+| **TOTAL** | **$15.011** | **$2.701.926** |
+| **HOY** | | **$4.446.915** |
+| **Ahorro real** | | **$1.744.989** |
+
+🔴 **Yo venía anunciando un ahorro de $3,5 M. A dosis de etiqueta es $1,74 M.** La diferencia era
+enteramente mi subdosis de Promobac.
+
+### La decisión que sigue siendo suya, ahora bien planteada
+
+| Opción | cc/L | Por cama | Al año | Argumento |
+|---|---|---|---|---|
+| **Etiqueta** | 2,5 | $15.011 | **$2,70 M** | Es el único número citable. Y su principio: quedarse corto pierde la aplicación entera |
+| **Práctica de hoy** | 0,25 | $1.288 | **$0,23 M** | 10× más barato. **Y la carga —su argumento— dice que a etiqueta el aporte sigue siendo 0,03–3,5 % de las bacterias residentes** |
+| Lo que yo puse | 0,50 | $2.911 | $0,52 M | **Sin base citable.** Era 2× la práctica de hoy y nada más |
+
+**Mi recomendación: ir a etiqueta (2,5 cc/L) en la primera vuelta**, porque es el único número
+defendible y porque aun así se ahorra $1,74 M contra hoy — el ahorro ya no viene de recortar la
+dosis sino de **pasar de 15 aplicaciones al año a 3 y de aplicar solo a las camas que se
+preparan.** Y con esa vuelta medida (infiltración en centímetros, y el conteo de Bioquirama), se
+decide si bajar.
+
+## Las dos reglas que salen de este error
+
+> **1. Cuidado con el texto repetido de un fabricante.** Bioquirama pone la misma frase de
+> *"1 L/ha mensual"* en varias fichas de su línea. Antes de atribuir una dosis a un producto, hay
+> que verla **en la sección de dosis de ese producto**, no en su párrafo de instrucciones
+> generales.
+
+> **2. Si dos productos quedan con la misma cifra, sospechar.** El "10 + 10" se veía limpio y era
+> el síntoma: cada producto se dosifica en la unidad de **su** etiqueta, y dos etiquetas distintas
+> casi nunca dan el mismo número.
+
+## Pendiente inmediato
+
+🟡 **¿El Fosfolip es 1 L/ha o 2 L/ha?** Vanessa dice 1; el repositorio tenía 2 en
+`02-nutricion/07-programa-biologico.md` y sobre ese 2 se construyó la comparación contra el
+Estabios. **Hay que resolverlo:** cambia el cc por cama (3,6 vs 7,1) y cambia esa comparación.

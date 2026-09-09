@@ -535,3 +535,179 @@ Todo se mide con **una jeringa de 10 mL**. Nada por debajo de 1,5 mL.
 jornal."* Corregido en `02-nutricion/03-drench-inoculacion.md`. La eficiencia de jornal era real
 pero se pagaba aplicando producto a camas que no lo necesitaban — **y con las camas mezcladas,
 a camas que no lo debían recibir.**
+
+---
+
+## 🔴 R4. La dosis, investigada · **retiro la sobredosis de 5–12×**
+
+> *"7 cc por cama es una locura, cuando suelen recomendar 1 cc a 2 cc por litro."*
+> *"Normalmente para mojar una cama son entre 80 y 100 litros."*
+> *"Debes investigar más sobre la mejor forma de aplicar un drench, porque si no se cumple el
+> objetivo y queda corto es una absoluta pérdida de tiempo."* — Vanessa, 2026-09-09
+
+Tiene razón, y el error mío es más de fondo que un número: **estaba mezclando dos bases de
+dosificación distintas y comparando una contra la otra.**
+
+### Lo que dice la literatura de drench
+
+Lo decisivo (Sprayers101, extensión agrícola): **en un drench la dosis va por área y el volumen
+de agua es un parámetro APARTE**, elegido por la profundidad de infiltración que se quiere, y
+ajustado por textura, compactación y porosidad del suelo. El carrier típico que citan para un
+drench es **1.200–2.000 L/ha** — muy por encima de un volumen foliar, y aun así muy por debajo
+del suyo.
+
+Los cc/L **no son la especificación: son el cociente de las dos cosas.**
+
+### Y aquí las dos reglas se reconcilian
+
+| | Dosis resultante |
+|---|---|
+| **1 cc/L en 1.200–2.000 L/ha** (el carrier típico) | **1,2–2,0 L/ha** ← **es exactamente la etiqueta del Promobac (1 L/ha)** |
+| 1 cc/L en 80–100 L por cama | **22–28 L/ha** |
+| 2 cc/L en 80–100 L por cama | **45–56 L/ha** |
+
+**La regla de 1–2 cc/L y la etiqueta no se contradicen: coinciden.** Se separan porque
+**80–100 L por una cama de 35,6 m² son 22.500–28.100 L/ha** — de 11 a 23 veces el carrier de
+drench típico. A ese volumen de agua, sostener 1–2 cc/L multiplica la dosis por área entre 22 y
+56 veces.
+
+Dicho de otro modo: **dos fincas que las dos "aplican a 1 cc/L" aplican cantidades
+completamente distintas si mojan distinto.** Por eso mis 7 mL y sus 20–40 cc por bomba están tan
+lejos: no es un desacuerdo sobre la dosis, es un desacuerdo sobre la base.
+
+### 🔴 Lo que retiro
+
+**La "sobredosis de 4,9× a 12,1× contra etiqueta" no es un hallazgo válido.** La medí contra un
+número por hectárea que la ficha da **sin especificar volumen de aplicación**, lo que lo vuelve
+inutilizable para un drench sin ese dato. Puesta en la banda de lo que la práctica de campo
+realmente usa, la tasa por área de hoy **está dentro de lo defendible, no por encima.**
+
+| | L/ha | Contra etiqueta |
+|---|---|---|
+| Etiqueta Promobac | 1,0 | 1× |
+| **HOY, Inv 3** | 4,9 | 4,9× |
+| **HOY, Inv 5** | 12,1 | 12,1× |
+| Lo que yo propuse | 2,0 | 2× |
+| 1–2 cc/L a 80–100 L/cama | 22–56 | 22–56× |
+
+**El nivel de hoy no estaba mal. Lo que estaba mal era el ALCANCE** — aplicarlo al bloque
+entero, incluidas las camas en producción, en vez de a las camas que se están preparando — **y
+la variación de 2,5× entre bloques**, que sí es real: Inv 3 recibe 4,9 L/ha e Inv 5 recibe 12,1
+por la misma dosis fija de 500 cc. **Estandarizar esa tasa sigue siendo un arreglo. Recortarla
+5–12× no.** Y todo el ahorro viene del alcance y del momento, no de bajar la dosis.
+
+### La dosis que propongo, y por qué
+
+El criterio de decisión es el que ella puso: **si queda corto, se pierde la aplicación, el
+jornal y la ventana de trasplante; si sobra, se pierde plata.** El error es asimétrico, así que
+bajo incertidumbre se va arriba. Pero 22–56× la etiqueta no lo puedo justificar con nada de lo
+que encontré.
+
+> **10 mL de Promobac y 10 mL de Fosfolip por cada bomba de 20 L.**
+
+Que a 90 L por cama son **0,5 cc/L · 1,26 mL/m² · 12,6 L/ha · 45 mL por cama.**
+
+Por qué ahí:
+
+- Es **el techo de lo que la finca ya aplica** por área (los 12,1 L/ha de Inv 5), no una
+  invención. Nadie ha reportado que sobre.
+- Es **la mitad del extremo bajo de la convención** (1 cc/L), y esa diferencia es exactamente el
+  exceso de agua contra el carrier típico.
+- Cubre el problema de refrigeración: 12,6 L/ha deja margen de sobra si la viabilidad decayó.
+- **Y se autoajusta al tamaño de la cama sin ninguna tabla:** cama más grande → más bombas →
+  más producto, en proporción. La dosis por bomba y la dosis por m² son la misma cosa mientras
+  se moje igual. Eso elimina la tabla de 17 filas y el problema de "¿va en la cama o en la
+  bomba?" de un solo golpe.
+
+**Lo que cierra la discusión de verdad es una pregunta al proveedor: *el 1 L/ha de la etiqueta,
+¿en cuántos litros de agua?*** Con ese dato las dos bases se reconcilian y la dosis deja de ser
+un juicio.
+
+### Costo
+
+| | Al año |
+|---|---|
+| **HOY** — 15 aplicaciones × 4 bloques por goteo + Fitoderma | **$4.446.915** |
+| **Propuesto** — 60 camas × 3 vueltas, 45 mL de cada uno por cama | **$900.234** |
+| | **ahorro $3.546.681, y con MÁS cobertura** (hoy el Mini y los exteriores no reciben nada) |
+
+$5.001 por cama, los dos productos.
+
+---
+
+## 🔴 R5. La técnica: donde de verdad se decide si "queda corto"
+
+Esto es lo que la investigación cambió más, y no es la dosis. **La dosis está dentro de un
+factor de 2–3; la técnica puede dejar la aplicación en cero.**
+
+### 1. El agua puede estar matando el inóculo
+
+Las guías coinciden en dos límites para inoculantes microbianos:
+
+- **Cloro libre por debajo de 0,5 ppm** — hay que declorar (filtro de carbón, o dejar reposar el
+  agua destapada). El cloro residual mata *Bacillus* y *Trichoderma*.
+- **pH del agua entre 5,5 y 7,5.**
+
+🔴 **Esta es la primera pregunta y no está en el repositorio: ¿de dónde sale el agua de la
+finca?** Si es de quebrada, reservorio o pozo, no hay problema de cloro. Si tiene cualquier
+tratamiento con cloro, **puede ser la explicación completa de por qué el programa no rinde**, y
+ninguna discusión de dosis importa hasta resolverlo. El pH sí lo conocemos: el fertirriego corre
+a 5,6–5,8, que está dentro de rango.
+
+### 2. Suelo húmedo, no saturado — y **riego de arrastre después**
+
+La secuencia que la literatura da para un drench:
+
+1. **Suelo húmedo pero no saturado antes** de aplicar. En seco el producto se adsorbe en la
+   superficie y el agua se va por grietas. → **Esto ya lo hacen**: es el paso 4 de la
+   preparación de camas, el riego suave con agua sola. Estaba bien puesto.
+2. **Aplicar el drench.**
+3. **🔴 Riego de arrastre con agua sola inmediatamente después**, para mover el producto de la
+   superficie a los 5–10 cm donde va a estar la raíz nueva. **Este paso NO está en el protocolo
+   y es el candidato más fuerte a "queda corto".**
+
+Los 90 L por cama son **2,5 mm de agua**. Sobre suelo ya húmedo eso mueve el producto unos pocos
+centímetros; sobre suelo seco, apenas uno. **Sin el arrastre, el inoculante se queda arriba** —
+donde le da el sol, se seca, y no hay raíz.
+
+### 3. La medición que responde la pregunta directamente, y es gratis
+
+La misma fuente dice cómo ajustar el volumen: **con un barreno o una pala, mirar hasta dónde
+llegó el frente de humedad.**
+
+> **Después de la próxima cama inoculada: abrir un hueco y medir en centímetros hasta dónde
+> mojó.** Si no llegó a 10 cm, falta arrastre o falta agua. **Eso no requiere laboratorio, ni
+> proveedor, ni presupuesto — y contesta "¿quedó corto?" hoy mismo.**
+
+Anotarlo en `07-datos/decisiones_manejo.csv`: cama, litros aplicados, centímetros de
+infiltración. Tres aplicaciones y la pregunta queda cerrada con datos de la finca.
+
+### 4. Lo demás de la técnica
+
+| Regla | Por qué |
+|---|---|
+| **Aplicar al final de la tarde**, nunca a pleno sol | UV y calor matan el inóculo en la superficie |
+| **Usar la bomba dentro de las 2–3 horas** de mezclada | No se guarda de un día para otro |
+| **Agitar durante la aplicación** | Las esporas de *Bacillus* sedimentan; la última bomba queda pobre y la primera cargada |
+| **Bomba lavada, nunca la de fungicidas** | Residuo de fungicida en el tanque anula la aplicación completa |
+| **Boquilla de chorro/abanico grueso, a baja presión** | Un abanico fino es para follaje; aquí se quiere volumen sobre el suelo, no niebla |
+| **Nada de fertirriego esa semana** en esa cama | Ya estaba en el protocolo |
+
+### Y una consecuencia sobre el plástico
+
+El paso 6 de la preparación es poner el plástico. **Eso juega a favor**: sella la humedad y
+protege el inóculo del sol y del secado. Pero **el arrastre tiene que ir antes del plástico**, o
+después ya no hay forma de mover nada.
+
+---
+
+## Lo que hay que preguntar, en orden de lo que desbloquea
+
+1. **🔴 ¿De dónde sale el agua de la finca y tiene cloro?** Gratis de averiguar, y puede anular
+   todo lo demás.
+2. **🔴 Al proveedor: el 1 L/ha del Promobac, ¿en cuántos litros de agua?** Es la pregunta que
+   convierte la dosis de juicio en dato.
+3. **🔴 Medir los centímetros de infiltración** en la próxima cama inoculada.
+4. **🔴 Conteo de viabilidad del Promobac** de la bodega, con fecha y lote.
+5. **🟡 Bioquirama: separar el compuesto** (Bloque 3 solo, Bloque 4 solo, Bloque 5).
+6. **🟡 Dosis de inmersión de raíz del Fitoderma.**

@@ -1,75 +1,84 @@
 # Drench / trench de inoculación
 
-> **🔴 REESCRITO EL 2026-09-09.** Llegaron las fichas de Promobac, Fitoderma, Raizal 400 y
-> Fullfert — los cuatro renglones del tanque que nunca habían pasado por el filtro de UFC
-> por organismo y dosis de etiqueta. El resultado cambió la dosis, el momento y la lista de
-> productos. **El razonamiento completo, con los números, está en
-> `02-nutricion/09-inoculacion-el-analisis.md`.** La hoja de operario es
+> **🔴 REESCRITO EL 2026-09-09** con las fichas de Promobac, Fitoderma, Raizal 400 y Fullfert, y
+> corregido tres veces el mismo día por Vanessa: el método (bomba de espalda, no tanque), el
+> volumen (80–100 L por cama) y la base de la dosis. **El razonamiento completo y lo que se
+> retiró están en `02-nutricion/09-inoculacion-el-analisis.md`.** Hoja de operario:
 > `05-programacion/hojas-operario/inoculacion.html`.
 
 ## Lo que cambió
 
 | | Antes | Ahora |
 |---|---|---|
-| **Método** | Tanque de 2.000 L por bloque, por goteo | **Bomba de espalda de 20 L, cama por cama** (Vanessa, 2026-09-09) |
-| **Dosis** | Fija por tanque, igual para todos los bloques | **0,2 mL/m² de cada producto**, por cama |
-| **Momento** | Calendario, cada 3–4 semanas (≈15 al año) | **Una vez por vuelta de cama**, el día que se prepara |
+| **Método** | Tanque de 2.000 L por bloque, por goteo | **Bomba de espalda de 20 L, cama por cama** |
+| **Alcance** | El bloque entero, camas en producción incluidas | **Solo las camas que se están preparando** |
+| **Momento** | Calendario, cada 3–4 semanas (≈15/año) | **Una vez por vuelta de cama**, el día que se prepara |
+| **Dosis** | 500 cc fijos por tanque → 4,9 L/ha en Inv 3, 12,1 en Inv 5 | **10 mL por bomba de 20 L** → 12,6 L/ha en todas |
+| **Técnica** | Sin riego de arrastre | **Arrastre con agua sola después, antes del plástico** |
 | **Productos** | Fitoderma · Estabios · Promobac · Raizal · Fullfert | **Promobac · Fosfolip** (Fitoderma solo en el ensayo de Inv 3) |
-| **Costo/año** | $3.688.155 | **$700.182** solo con la dosis · **$140.036** con dosis y momento |
+| **Costo/año** | $4.446.915 | **$900.234** con más cobertura |
 
 ## 🔴 Cama por cama, con bomba de espalda de 20 L
 
-**Corrige lo que decía este archivo hasta el 2026-09-09** (*"por tanque, no por cama
-individual… es más eficiente y reduce jornal"*). Esa eficiencia era real pero se pagaba
-aplicando producto a camas que no lo necesitaban — y **con las camas mezcladas dentro de cada
-bloque, a camas que no lo debían recibir.**
+**Corrige lo que decía este archivo hasta el 2026-09-09** (*"por tanque… es más eficiente y
+reduce jornal"*). Esa eficiencia era real pero se pagaba aplicando producto a camas que no lo
+necesitaban — y **con las camas mezcladas dentro de cada bloque, a camas que no lo debían
+recibir.** Y es lo único compatible con inocular el día que se prepara la cama.
 
-Y es lo único compatible con inocular el día que se prepara la cama: por el goteo de un bloque
-entero el producto le cae también a las camas en plena producción.
+## La dosis: 10 mL de cada uno por bomba de 20 L
 
-> **El número de la tabla es lo que va en la CAMA, no en la bomba.
-> Si la cama necesita dos bombas, va la MITAD de la dosis en cada una.**
+> **Por cada bomba de 20 L: 10 mL de Promobac + 10 mL de Fosfolip.**
+> **De cada uno va la misma cantidad. Todas las bombas se dosifican igual.**
 
-Sin esa regla, "tanto por bomba" se vuelve otra dosis fija por envase — el cuarto error de la
-misma familia en este repositorio.
+**Se moja la cama con 80–100 L**, o sea 4 a 5 bombas. Eso da **45 mL de cada producto por cama
+de 35,6 m²**, que son **0,5 cc/L · 1,26 mL/m² · 12,6 L/ha.**
 
-## Dosis por cama · 0,2 mL/m² de cada producto
+**No hace falta tabla por cama.** Mientras se moje igual por m², la dosis por bomba y la dosis
+por área son la misma cosa: cama más grande → más bombas → más producto, en proporción.
 
-Etiquetas: **Promobac 1 L/ha** (se aplica a **2× etiqueta** mientras no haya conteo de
-viabilidad — ver abajo) · **Fosfolip 2 L/ha** · Fitoderma 500 g/ha. Los dos líquidos quedan en
-la misma cifra: **de cada uno va la misma cantidad.**
+**Por qué 12,6 L/ha y no la etiqueta (1 L/ha) ni la convención de 1–2 cc/L (22–56 L/ha):** en un
+drench la dosis va **por área** y el agua es un parámetro aparte; los cc/L son el cociente. La
+regla de 1–2 cc/L coincide con la etiqueta cuando el carrier es el típico de drench (1.200–2.000
+L/ha), y se dispara a 22–56× cuando el agua son 80–100 L por cama (22.500–28.100 L/ha). Los 12,6
+L/ha son **el techo de lo que la finca ya aplicaba** (Inv 5) — no un recorte y no una invención.
+Detalle y retractación en el análisis.
 
-| Cama | m² | Promobac | Fosfolip |
-|---|---|---|---|
-| Inv 3A | 35,6 | 7 mL | 7 mL |
-| Inv 3B larga | 48,1 | 9,5 mL | 9,5 mL |
-| Inv 3B corta | 11,7 | 2,5 mL | 2,5 mL |
-| Inv 3C larga | 25,2 | 5 mL | 5 mL |
-| Inv 3C corta | 12,6 | 2,5 mL | 2,5 mL |
-| Mini (larga · en la corta la mitad) | 12,6 | 2,5 mL | 2,5 mL |
-| Inv 4A · Inv 4B | 20,2 | 4 mL | 4 mL |
-| Inv 4C larga | 40,5 | 8 mL | 8 mL |
-| Inv 4C media | 38,2 | 7,5 mL | 7,5 mL |
-| Inv 4C corta | 36,0 | 7 mL | 7 mL |
-| Inv 5 | 31,7 | 6,5 mL | 6,5 mL |
-| Ext 3A | 32,6 | 6,5 mL | 6,5 mL |
-| Ext 3B larga | 48,1 | 9,5 mL | 9,5 mL |
-| Ext 3B corta | 11,7 | 2,5 mL | 2,5 mL |
-| Ext 4 | 40,3 | 8 mL | 8 mL |
-| Ext 5 | 31,7 | 6,5 mL | 6,5 mL |
-| Inv 6 | 31,7 | 6,5 mL | 6,5 mL |
+**Costo: $5.001 por cama**, los dos productos. **Si el Fosfolip no ha llegado**, va Estabios en
+la misma cantidad.
 
-Redondeado a los 0,5 mL, medido con **jeringa de 10 mL**. Son las **mismas 17 filas y en el
-mismo orden** que la hoja de preparación de camas. **Costo: $22,23 por m² inoculado.**
+## 🔴 La técnica — es aquí donde se decide si "queda corto"
 
-**Inv 1, Inv 2 y las 3 camas de Ext Inv 2** no tienen área medida y quedan fuera hasta
-medirlas.
+**La dosis está dentro de un factor de 2–3. La técnica puede dejar la aplicación en cero.**
 
-**Si el Fosfolip no ha llegado**, va Estabios en la misma cantidad. El Estabios está en ensayo
-partido en Inv 4 — ver `02-nutricion/07-programa-biologico.md`.
+1. **🔴 El agua: cloro libre por debajo de 0,5 ppm y pH entre 5,5 y 7,5.** El cloro residual
+   mata *Bacillus* y *Trichoderma*. **Pregunta abierta y de primera prioridad: ¿de dónde sale el
+   agua de la finca y tiene cloro?** Si lo tiene, puede ser la explicación completa de por qué
+   el programa no rinde, y ninguna discusión de dosis importa antes de resolverlo. El pH sí se
+   conoce: el fertirriego corre a 5,6–5,8, dentro de rango.
+2. **Suelo húmedo, no saturado, antes de aplicar.** Ya está: es el paso 4 de la preparación
+   (riego suave con agua sola). Estaba bien puesto.
+3. **🔴 Riego de arrastre con agua sola inmediatamente después del drench, ANTES del plástico.**
+   No estaba en el protocolo y es el candidato más fuerte a "queda corto": los 90 L por cama son
+   2,5 mm de agua, que sobre suelo húmedo mueven el producto unos pocos centímetros. Sin
+   arrastre el inoculante se queda en la superficie, donde le da el sol y no hay raíz. Después
+   del plástico ya no hay forma de moverlo.
+4. **Al final de la tarde**, nunca a pleno sol — UV y calor.
+5. **Usar la bomba dentro de 2–3 horas** de mezclada. No se guarda de un día para otro.
+6. **Agitar durante la aplicación** — las esporas de *Bacillus* sedimentan: la primera bomba
+   sale cargada y la última pobre.
+7. **Bomba lavada, nunca la de fungicidas.** Residuo en el tanque anula la aplicación completa.
+8. **Boquilla de chorro o abanico grueso, baja presión.** Aquí se quiere volumen sobre el suelo,
+   no niebla.
 
-🟡 **El jornal sube:** es cama por cama en vez de abrir una válvula. Es el único renglón donde
-esta propuesta cuesta más que hoy, y no está cuantificado.
+### La medición gratis que contesta la pregunta
+
+> **Después de la próxima cama inoculada: abrir un hueco con pala o barreno y medir en
+> centímetros hasta dónde llegó el frente de humedad.** Si no llegó a 10 cm, falta arrastre o
+> falta agua.
+
+Sin laboratorio, sin proveedor, sin presupuesto. Anotar cama, litros aplicados y centímetros en
+`07-datos/decisiones_manejo.csv`. **Tres aplicaciones y la pregunta queda cerrada con datos de
+la finca.**
 
 ## Reglas
 
@@ -136,21 +145,19 @@ Hay inóculo de mosca blanca en el suelo de Inv 5 y 3C. Antes de plantar Vegmo S
 
 ## Pendiente de decidir
 
-- **🔴 Bioquirama: separar el compuesto** — Bloque 3 solo, Bloque 4 solo, **y Bloque 5, que
-  nunca se ha medido.** El compuesto promedia, y Bloque 4 tiene la M.O. más alta de la finca:
-  es posible que el 1,4×10⁶ sea mayoritariamente suyo. Es lo que ya pasó con la salinidad de 3B
-  (C.E. 0,829), que el compuesto de Bloque 3 había vuelto invisible
-- **🔴 Conteo de viabilidad del Promobac** que está en la bodega, con fecha y lote — decide si
-  es el producto más barato del programa o el más caro
-- **🔴 *Trichoderma* por bloque en el tiempo** — sostiene o cae el cambio de calendario
-- **🟡 Cuántas bombas de 20 L se gastan por cama** — para poder cuantificar el jornal
+- **🔴 ¿De dónde sale el agua de la finca y tiene cloro?** Gratis de averiguar y puede anular
+  todo lo demás
+- **🔴 Al proveedor: el 1 L/ha del Promobac, ¿en cuántos litros de agua?** Es la pregunta que
+  convierte la dosis de juicio en dato, y reconcilia la etiqueta con la regla de 1–2 cc/L
+- **🔴 Medir los centímetros de infiltración** en la próxima cama inoculada
+- **🔴 Conteo de viabilidad del Promobac** que está en la bodega, con fecha y lote — decide si es
+  el producto más barato del programa o el más caro
+- **🟡 Bioquirama: separar el compuesto** — Bloque 3 solo, Bloque 4 solo, **y Bloque 5, que nunca
+  se ha medido.** El compuesto promedia, y Bloque 4 tiene la M.O. más alta de la finca. Es lo
+  que ya pasó con la salinidad de 3B (C.E. 0,829), que el compuesto había vuelto invisible
+- **🟡 *Trichoderma* por bloque en el tiempo** — sostiene o cae el cambio de calendario
+- **🟡 Dosis de inmersión de raíz del Fitoderma** — es la única vía que le queda al producto
 - **🟡 Temperatura de almacenamiento del Fosfolip y del Estabios** — también son líquidos
-- **🟡 Dosis de inmersión de raíz / hueco de trasplante del Fitoderma.** Su ficha da 500 g/ha
-  al suelo y menciona uso foliar, pero no da tasa para plúgula. Es donde su 1×10⁸ UFC/g
-  realmente gana, porque la raíz nueva no tiene colonizadores. **No inventarla** — pedirla a
-  Alma Agrícola
-- **🟡 ¿El Promobac se está guardando refrigerado?**
-- **🟡 ¿Llegó el Fosfolip?** Si no, corre con Estabios a 2 L/ha
-- **🟡 Precio del Raizal 400**, para cerrar el ahorro completo
-- **🟡 Área de Inv 1 e Inv 2** — el único bloque que seguiría con dosis fija
+- **🟡 Jornal real:** 4–5 bombas por cama × 60 camas es el único renglón donde esta propuesta
+  cuesta más que hoy, y no está cuantificado
 - Si el trench de inoculación **reemplaza completamente el volteo** de cama

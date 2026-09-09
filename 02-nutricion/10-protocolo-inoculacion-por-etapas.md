@@ -1266,3 +1266,79 @@ dosis por bomba, y yo lo había abandonado justo cuando aplicaba.
 > **Si un producto va en la bomba, va en TODAS las bombas de esa cama.** Una bomba es una
 > sección de la cama, no una fracción de la mezcla. Concentrar la dosis en una bomba no
 > concentra la dosis: **deja el resto de la cama sin tratar.**
+
+---
+
+## 🔴 "¿De dónde sacaste eso? ¿Lo buscaste científicamente?" · No. Ahora sí
+
+> *"1,5 cc en cada bomba es una cosa loca, no es nada. ¿De dónde sacas tú eso? ¿Buscaste
+> científicamente que esa carga en esa cantidad es suficiente para veinte litros?"* — Vanessa
+
+**No lo busqué.** El "umbral de 10⁵–10⁶ UFC por planta" lo afirmé **de memoria**, lo presenté como
+si fuera un dato establecido, y construí tres capas de decisión encima: la duplicación del
+Fosfolip, el recorte del Promobac y la dosis por bomba. **Nunca lo verifiqué.**
+
+Buscado ahora, esto es lo que dice la literatura de aplicación al suelo de hongos solubilizadores
+de fosfato:
+
+| Base | Rango publicado |
+|---|---|
+| **Aplicación al suelo** | **1×10⁶ a 1×10¹¹ UFC por hectárea** |
+| Recubrimiento de semilla | 1×10² a 1×10⁶ UFC por semilla |
+
+### Y el resultado invierte la preocupación: 1,5 cc no queda corto — queda arriba
+
+| | cc/bomba | L/ha | UFC/ha | vs techo (10¹¹) |
+|---|---|---|---|---|
+| **Etiqueta 1 L/ha** | 0,71 | 1,0 | **1,00×10¹¹** | **exactamente el techo** |
+| **2× etiqueta (la nuestra)** | **1,43 → 1,5** | 2,0 | **2,00×10¹¹** | **2× el techo** |
+
+**Dos cosas salen de aquí:**
+
+1. **La etiqueta del Fosfolip cae exactamente en el techo del rango publicado.** No está inflada:
+   está bien calibrada. Es lo contrario del Promobac.
+2. **Nuestros 2× quedan justo por encima del techo.** Así que la duplicación que recomendé
+   —justificada con mi umbral inventado— **resulta generosa, no ajustada.** Se sostiene porque
+   resuelve la medición (0,71 cc no se mide con jeringa; 1,5 sí) y porque el margen contra el
+   techo es de 2×, no de 20×. **Pero la justificación correcta es esa, no la que di.**
+
+### Por qué 1,5 cc "no parece nada" y sí lo es
+
+**1,5 cc × 1×10⁸ UFC/mL = 150 millones de propágulos por bomba.**
+
+La intuición de que "no es nada" viene de comparar con fertilizantes y fungicidas, donde hacen
+falta gramos porque lo que actúa es la **masa** de una molécula. En un biológico lo que actúa es
+el **conteo de organismos**, y el producto trae 100 millones por mililitro. **La masa es
+irrelevante; el conteo es lo que cuenta.**
+
+Y por eso el rango publicado está escrito **por hectárea y por semilla, no por mililitro de
+mezcla** — los 7.500 UFC/mL de la bomba no son la unidad relevante para una aplicación al suelo.
+Eso también resuelve una duda que yo mismo tenía y no había podido cerrar.
+
+### El mismo rango confirma el recorte del Promobac, ahora con fuente
+
+| | L/ha | UFC/ha | vs techo publicado |
+|---|---|---|---|
+| **Práctica de hoy (0,25 cc/L)** | 7,0 | 2,81×10¹² | **28× el techo** |
+| **Etiqueta (2,5 cc/L)** | 70,2 | 2,81×10¹³ | **281× el techo** |
+
+La recomendación de dejar el Promobac en 0,25 cc/L pasa de ser un juicio mío a tener respaldo: **a
+esa dosis ya va 28 veces sobre el techo de lo publicado.** Y abre una pregunta nueva y legítima:
+**podría bajar más.**
+
+## La lección, y es sobre método
+
+**Tenía la conclusión correcta por casualidad, no por método.** El 10⁵–10⁶ por planta que inventé
+resultó estar dentro de un rango real —el de recubrimiento de semilla— pero eso fue suerte. Si
+hubiera errado en un orden de magnitud, tres decisiones habrían salido mal y la hoja habría ido a
+campo con un número inventado presentado como establecido.
+
+> **Regla: un umbral biológico se busca y se cita, o se declara como suposición. No se afirma.**
+> Yo escribí *"la referencia de orden de magnitud, de los tratamientos de semilla comerciales, es
+> 10⁵–10⁶ UFC por planta"* — con la forma de una cita y sin cita. Eso es peor que no dar el
+> número: le da autoridad prestada a una suposición.
+
+**Fuentes de la búsqueda:**
+- [Phosphate solubilizing fungi enhance insoluble phosphate dissolution — Frontiers in Microbiology, 2025](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2025.1600231/full)
+- [Phosphate-solubilizing fungi: isolation, characterization and impact on soil as potential biofertilizers — ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1674676726000344)
+- [Use of phosphate-solubilizing microorganisms for enhancing plant growth — USPTO 12459875](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12459875) *(rangos de 10⁶–10¹¹ UFC/ha y 10²–10⁶ UFC/semilla)*

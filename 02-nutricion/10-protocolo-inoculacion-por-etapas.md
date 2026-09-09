@@ -1147,3 +1147,71 @@ del suelo propio → función real del producto → y la etiqueta al final**, co
 opinión de quien vende. En los cuatro intentos anteriores empecé por la etiqueta y terminé
 justificando el número del fabricante o inventando una base para contradecirlo. **La etiqueta es
 un dato, no una autoridad.**
+
+---
+
+## 🔴 El Promobac estaba dos veces · sale de la cama
+
+> *"¿Por qué usar Promobac 2 veces?"* — Vanessa
+
+**No hay razón. Es redundancia mía.** El viernes va a la bandeja, el lunes se siembra, y la cama
+se prepara la misma semana con Promobac otra vez: **el mismo organismo, sobre la misma raíz, con
+días de diferencia.**
+
+| | cc/planta | UFC/planta | Agua/planta | $ por cama-equivalente |
+|---|---|---|---|---|
+| **Bandeja** | 0,0163 | 6,50×10⁶ | **10 mL** | **$190** |
+| **Cama** | 0,1264 | 5,06×10⁷ | 505 mL | **$1.475** |
+
+La cama entrega 8× más UFC por planta, **pero en 50× más agua** — así que por unidad de contacto
+con la raíz **la bandeja es ~6× más eficiente, y cuesta 7,8× menos** por el mismo organismo en la
+misma raíz.
+
+Y el argumento de la cama era el más débil de todos: tratar el *suelo* con un *Bacillus*, cuando
+mi propio cálculo dice que un drench aporta 0,03–3,5 % de la población bacteriana residente. **Se
+estaba pagando la vía ineficiente de las dos.**
+
+### El principio que lo resuelve, y que debió estar desde el principio
+
+> **BANDEJA = lo que va a la RAÍZ.** Colonizadores: micorriza, *Bacillus*, *Trichoderma*,
+> entomopatógenos. Ahí la raíz está limpia y el agua por planta es mínima.
+>
+> **CAMA = lo que va al SUELO.** Fosfolip: solubilizar el fósforo del volumen de suelo que la
+> raíz va a explorar. Ese blanco está en la cama y la bandeja no lo alcanza.
+
+**Sin traslape. Cada producto donde su blanco está.** Y de paso resuelve el reparto que ella misma
+había planteado: la **diversidad va en la bandeja** (hasta cuatro géneros, y ahí cuesta ~1 %), y la
+**cama lleva la única función que es de suelo.**
+
+### La cama queda con un solo producto
+
+> **Primera bomba de 20 L + 7 cc de Fosfolip. Las demás bombas: agua sola.**
+
+| | Por cama | Al año (60 camas × 3 vueltas) |
+|---|---|---|
+| **Cama** — Fosfolip 7 cc | $365 | $65.700 |
+| **Bandeja** — Promobac (parte proporcional) | $190 | $34.128 |
+| **Los dos renglones con precio conocido** | **$555** | **$99.828** |
+| **HOY** | | **$4.446.915** |
+
+**Solo sacar el Promobac de la cama libera $265.500/año.**
+
+*(Falta el precio del Endorhiza, del Nube y del Interactor para cerrar el total. Los tres van en
+la bandeja, donde el producto es ~1 % del programa, así que no van a mover mucho la cifra.)*
+
+### 🟡 La única excepción que vale considerar, y es de ella
+
+Hay un caso donde una aplicación **a la cama** tiene un blanco que la bandeja no alcanza: **las
+camas con inóculo documentado en el suelo** — 3C e Inv 5 con mosca blanca (*"INOCULO_EN_SUELO"*,
+dos lotes sacrificados). Ahí el patógeno está en la cama, no en la plántula.
+
+Si se quisiera atacar eso, el producto correcto **no es el Promobac: es el Interactor** (los
+cuatro entomopatógenos), aplicado a la cama y **solo en esas dos zonas.** Es gasto dirigido, no
+de finca completa — y es una decisión suya, no un default.
+
+## La regla que sale de este error
+
+> **Ningún producto va en dos etapas del mismo ciclo.** Si aparece dos veces, una de las dos está
+> mal: hay que preguntarse dónde está su blanco —la raíz o el suelo— y dejarlo solo ahí. La
+> duplicación no es "refuerzo": es pagar dos veces por llegar al mismo sitio, y por la vía más
+> cara de las dos.

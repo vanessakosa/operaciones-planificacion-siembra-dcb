@@ -553,3 +553,87 @@ Encharcamiento, o un fungicida que barrió la biología. No va en hoja.
 | 🟡 **Conidios/mL del Interactor** | Para poder compararlo por unidad del organismo útil |
 | 🟡 **% de colonización micorrízica en raíz** | Decide el caso del lisianthus, y mide la hipótesis de diversidad |
 | 🟡 **¿Qué es el Biohar Forte?** | Sigue sin rol ni dosis. Con Endorhiza identificado, ya no bloquea nada — pero se está pagando $123.000/L por algo sin uso definido |
+
+---
+
+# 🔴 Corrección · los 50 g de Fitoderma eran 7× la etiqueta, y mi comprobación fue circular
+
+> *"Necesito entender por qué pusiste cincuenta gramos. Si la dosis, por ejemplo, es un gramo por
+> litro, serían cinco. ¿Por qué pusiste cincuenta?"* — Vanessa, 2026-09-09
+
+**Tiene razón. Corregido a 8 g.** Y el error de fondo es peor que el número.
+
+## De dónde salieron los 50 g
+
+De **una sola referencia genérica** de la literatura de drench: ensayos de campo a *"10 mL/L de
+una suspensión de conidios a 1×10⁸/mL"* = **1×10⁹ UFC por litro**. Como el Fitoderma declara
+1×10⁸ UFC/g, para llegar a 10⁹ UFC/L hacen falta 10 g/L → 50 g en 5 L.
+
+**El problema: usé una referencia genérica de otro producto en lugar de la etiqueta del que
+tengo en la mano.**
+
+## Las tres bases, puestas una al lado de otra
+
+4 bandejas de 200 = **800 plántulas** = 800 × 0,18 m² = **144 m² de cama futura** = 0,0144 ha.
+
+| Base | Cantidad en 5 L | g/L |
+|---|---|---|
+| **a) La etiqueta del Fitoderma: 500 g/ha** | **7,2 g** | 1,44 |
+| **b) La convención que usted nombra: 1–2 g/L** | **5 a 10 g** | 1–2 |
+| c) Lo que puse yo (referencia genérica, 10 g/L) | 50 g | 10 |
+
+**(a) y (b) coinciden en 7–10 g. (c) está 5–7× por encima de las dos.** Cuando dos bases
+independientes —la etiqueta del fabricante y la práctica de campo— dan el mismo número, ese es
+el número. **Queda en 8 g.**
+
+## 🔴 Y mi comprobación no comprobaba nada: era circular
+
+Yo "verifiqué" los 50 g así: *5 L cubren 4 bandejas = 144 m² → 0,35 g/m², **por debajo** de los
+0,49 g/m² que se aplicaban al voleo.*
+
+**Pero esos 0,49 g/m² del voleo son 4,9 kg/ha — que yo mismo había identificado, en el mismo
+análisis, como ~10× la etiqueta de 0,5 kg/ha.** Validé un número alto contra otro número alto que
+ya sabía que estaba alto. **Eso no es una verificación, es un espejo.**
+
+Regla que sale de esto: **una dosis nueva se verifica contra la etiqueta o contra una práctica
+independiente — nunca contra otra cifra del mismo análisis.**
+
+## Y el error conceptual: conté la ventaja de la bandeja dos veces
+
+La razón para inocular en bandeja es que **la concentración sube sola**: la misma masa en 45×
+menos agua es 45× más concentrada en la raíz. **Esa ventaja ya está pagada por el volumen de
+agua.** Subir además la masa 7× era cobrar la misma ventaja dos veces.
+
+**La bandeja no necesita más producto. Necesita el mismo producto en menos agua.**
+
+## Las otras dos dosis: se sostienen, y por una razón distinta
+
+El Endorhiza y el Interactor **no tienen el mismo problema**, porque sus etiquetas dan dosis
+**por planta al trasplante** — no por hectárea. Y una dosis por planta ya es la magnitud
+correcta para una bandeja:
+
+| | Etiqueta, por planta | Lo que da nuestra mezcla | |
+|---|---|---|---|
+| **ENDORHIZA 50 cc** | 13,5–27 propágulos (25–50 mL de solución a 2 cc/L) | **16,9 propágulos** | ✅ dentro |
+| **INTERACTOR 50 cc** | 0,050–0,200 cc (100 mL de solución a 0,5–2 cc/L) | **0,0625 cc** | ✅ extremo bajo |
+
+🟡 **Con una salvedad en el Endorhiza:** su ficha da **dos** bases que no coinciden. La de
+trasplante da 50 cc; la genérica de *"1 L/ha mensual"* daría **14,4 cc** — 3,5× menos. Se aplica
+la de trasplante, porque lo que se está haciendo **es** un trasplante. Pero la diferencia es
+real y conviene confirmarla con Bioquirama.
+
+## Lo que cambió en la hoja
+
+| | Antes | Ahora |
+|---|---|---|
+| Fitoderma | 50 g | **8 g** |
+| Endorhiza | 50 cc | 50 cc |
+| Interactor | 50 cc | 50 cc |
+| El encabezado | *"5 litros + 50 del producto"* | **"5 litros de agua para 4 bandejas"** |
+| El agua | *"5 L alcanzan para 4 bandejas"* (mi estimación) | **"Esta mezcla es para 4 bandejas. Si necesita más para mojarlas, agregue AGUA SOLA"** |
+
+El último cambio importa: **"5 L alcanza para 4 bandejas" era una estimación mía, no un dato.**
+Si en la práctica 5 L solo mojan 2 bandejas, la dosis por planta se duplicaba. Fijando la mezcla
+**por número de bandejas** y dejando el agua libre, la dosis por planta queda pinchada sin
+importar cuánta agua se necesite. **Es la misma regla que ya rige la cama: la dosis es por cama,
+no por bomba.**

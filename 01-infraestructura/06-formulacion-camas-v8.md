@@ -502,12 +502,18 @@ adyacencia al bloque interior vecino**, y queda marcada aquí para que no se lea
 **Ningún exterior lleva yeso**, aunque Ext 4 tome la tasa de Bokashi de Bloque 4: la decisión del
 yeso se apoya en el azufre medido de Bloque 4, y los exteriores no tienen análisis.
 
-## Por qué la hoja sí lista los tres productos que salieron
+## ~~Por qué la hoja sí lista los tres productos que salieron~~ · 🔴 RETIRADO 2026-09-09
 
-La regla de las hojas de operario dice *solo lo que se ejecuta*, y por eso salió el histórico de
-la receta del Bokashi. **Pero el Cote NP, el Cote NPK y el Terra Life están físicamente en la
-bodega y Wilson los ha venido aplicando en cada cama.** Omitirlos en silencio garantiza que los
-agregue por costumbre. Van como **una línea de instrucción**, no como tabla de historia.
+Se argumentó que el Cote NP, el Cote NPK y el Terra Life debían quedar como línea de prohibición
+en la hoja **porque estaban en la bodega y Wilson los agregaría por costumbre.**
+
+**La premisa era falsa. Vanessa: *"de eso no hay stock."*** Sin existencias no hay nada que
+agregar por costumbre, así que la línea era exactamente lo que la regla prohíbe: información de
+más. **Eliminada de la hoja.**
+
+**Lección:** una excepción a una regla de diseño necesita que su premisa se verifique, no que
+suene razonable. Antes de defender la excepción había que preguntar si esos productos existían
+en bodega.
 
 
 ---
@@ -808,3 +814,14 @@ entrega aparte. Antes decía *"aplicar el drench"* como si fuera opcional o cond
 **Y el nombre del archivo ya no lleva versión** — `preparacion-camas.html`. Es la misma lección
 que la hoja de fertirriego: dos versiones del mismo documento compitiendo en el repo es cómo
 sobrevivió la v1 con el defecto de los 2,4 g de cobre.
+
+
+## Ajuste 2026-09-09 · sale la línea de los cotes
+
+Del bloque rojo del pie quedan solo las dos frases que **sí son de ejecución** y no de inventario:
+
+> **NO** regar con fertirriego el día de la inoculación. Las **3 camas de Ext Inv 2** no están en
+> la tabla: preguntar antes de prepararlas.
+
+La primera protege el drench —el fertilizante químico mata el inoculante, por la ficha del
+solubilizador— y la segunda cubre el único hueco que queda en la tabla de camas.

@@ -20,8 +20,13 @@
 > sección 3 completa:** entra riego en Inv 2 · **el corte es diario**, así que dos
 > sitios con dalia son dos rondas diarias · **las dalias fallaron también en Inv 2
 > zona baja y en Inv 1** —las zonas frescas—, lo que refuta que el bloque fuera la
-> causa · y **la densidad propuesta era demasiado holgada**. Sitio y densidad
-> quedaron revisados en la sección 3.
+> causa · y **la densidad propuesta era demasiado holgada**.
+>
+> **3.ª vuelta — el sitio quedó decidido:** **la cama baja de Inv 3A**, donde hoy
+> están las celosias cristata (sección 3.3). Es decisión de Vanessa, y el
+> protocolo se ajustó a ella: dosis de Bloque 3, **el Fitoderma vuelve** porque en
+> Inv 3 es la regla del bloque, y las tres medidas anti-oídio pasan de
+> recomendables a obligatorias.
 >
 > **Estado:** propuesta técnica. Los puntos bloqueantes están en
 > *Lo que falta confirmar*, sección 13.
@@ -354,42 +359,99 @@ comportamiento). La generalización *"la dalia no va en zona fresca ni sombreada
 quedó como **candidata a regla pendiente del juicio de Vanessa**, porque son zonas
 distintas con una característica en común, no la misma zona repetida.
 
-## 3.3 · El corte diario cambia la cuenta, y Vanessa tiene razón
+## 3.3 · 🔴 DECISIÓN DE VANESSA 2026-09-09 (3.ª vuelta): cama baja de Inv 3A
 
-> *"La ventana de corte de ellas es diaria… sí sería un ajuste tener que hacer un
-> corte allá y un corte aquí."*
+> *"Voy a escoger una cama del 3A, que es baja, que es donde ahorita están las
+> celosias cristata, que siento que es la que está más pegada al humedal, entonces
+> debe tener buen agua y refresca más en la noche."*
 
-**Es un argumento duro y no lo había considerado.** La dalia se corta **todos los
-días** y es **perenne sin cierre de cama**. Dos sitios con dalia no son dos rondas
-de corte: son **dos rondas de corte diarias, indefinidamente**. Es probablemente
-el mayor costo de jornal de cosecha por m² del catálogo.
+**La decisión es suya y el protocolo se ajusta a ella.** Pero tengo que dejar
+escrito, porque es mi trabajo, que **es el mismo criterio de los tres intentos
+anteriores** — fresco, húmedo, con más agua — y ese criterio es el que la sección
+3.2 identificó como la causa probable del oídio recurrente.
 
-**Y hay un segundo argumento a favor de Inv 2 que tampoco había visto:**
-`01-invernaderos.md` dice que Inv 2 tiene **malla de tutorado de 15×15 cm, 6
-huecos de alto**, ya instalada. La dalia necesita dos capas de malla y es de tallo
-alto — **esa infraestructura ya está montada ahí y en Inv 4 habría que ponerla.**
+### Lo que dice el repositorio de esa cama exacta
 
-Sumado a que Inv 2 **va a tener riego**, la objeción principal que yo tenía contra
-ese bloque se cae.
+`microclima_bloques.csv`, fila **Inv 3A · camas inferiores**:
 
-> ### Recomendación de sitio: **Inv 2, zona ALTA**
->
-> No la zona baja. La **alta**: `temperatura_rel = ALTA`, `humedad_rel = BAJA`,
-> `radiacion_rel = ALTA` — **el perfil opuesto al de los tres fracasos**, y el
-> mejor microclima anti-oídio de la finca para este cultivo.
->
-> Gana por cuatro razones a la vez: **una sola ronda de corte** · **microclima
-> correcto** · **malla ya instalada** · **riego entrando**.
-
-### Tres condiciones que no son opcionales
-
-| # | Condición | Por qué |
+| Variable | Valor | Lo que la dalia necesita |
 |---|---|---|
-| 1 | **Verificar el conflicto con el ensayo de Limonium** | `01-invernaderos.md`: *"zona alta y seca de Inv 2: destinada al ensayo de Limonium sinensis serie Diamond"*. Hay que saber si sigue en pie antes de comprometer la zona |
-| 2 | **Anotar la CAMA EXACTA, no "bloque 2"** | Regla del propio repositorio: *"si un ensayo va mal en Inv 2, el resultado es ambiguo entre la variedad y la cama… conviene anotar en qué cama exacta está"*. Con un ensayo de cultivares esto pasa de recomendable a indispensable |
-| 3 | **🔴 Medir la cama y probar la uniformidad del riego ANTES de sembrar** | El riego de Inv 2 es nuevo: **sin historial y sin calibrar**. Prueba de vasos a lo largo de la cama, no después. Y `capacidad_bloques.csv` tiene Inv 2 como `PENDIENTE MEDIR CAMA POR CAMA` — esta siembra es la ocasión de cerrar ese hueco |
+| `temperatura_rel` | BAJA | — |
+| **`humedad_rel`** | **ALTA** | 🔴 **Es la condición que el oídio necesita para germinar** |
+| **`radiacion_rel`** | **MEDIA** | ALTA. Y *baja luz* es condición predisponente del oídio |
+| `presion_agua` | MEDIA | Alta y uniforme |
+| `uniformidad_riego` | **SIN_DATO** | 🔴 No está medida |
+| `suelo_estado` | BUENO | ✅ |
+| **Nota del repo** | *"Frescas y húmedas. Exitosas: larkspur, gomphrena — **toleran frescura sin botrytis**"* | **La cama está caracterizada por servirle a cultivos que toleran frescura. La dalia no está en esa lista** |
 
-## 3.4 · 🔴 El riesgo que la consolidación trae consigo, y que hay que resolver antes
+Y del análisis de suelo de **Bloque 3**, dos cifras que pesan aquí:
+
+| | Bloque 3 | Comparación |
+|---|---|---|
+| **P soluble** | **0,036 mg/L** | 🔴 **El más bajo de los tres bloques** (B4 0,107 · B5 0,059). Y el **P soluble es uno de los dos limitantes de Fase 3** — la fase que gobierna la inmunidad al oídio |
+| **Saturación de humedad** | **154,8 %** | 🔴 **La más alta de los tres** (B4 141,5 %). Sobre una cama que ella misma describe como *"tiene buen agua"* |
+| M.O. | 18,6 % | La más baja — por eso lleva **más** bokashi y **el doble** de leonardita |
+
+### 🟢 Y lo que la decisión sí resuelve, que es real
+
+| | |
+|---|---|
+| **Sin dalias viejas al lado** | **Elimina de un golpe el riesgo que yo había marcado como el que podía costar la colección:** el foco de oídio y la transmisión de virus desde las plantas viejas por pulgón (sección 3.4) |
+| **Cama medida y con análisis de suelo** | 198 huecos · 35,6 m² · `MEDIDO`. Inv 2 no tiene ni lo uno ni lo otro |
+| **Sin registro de incidencia fitosanitaria** | `incidencia_fitosanitaria.csv` **no tiene ni un evento en 3A**. 3B y 3C sí |
+| **Fitoderma autorizado** | La regla del repo es *"Fitoderma solo en Inv 3"*. En 3A **deja de ser una excepción y pasa a ser la regla del bloque** — ver 6.3 |
+| Presión de agua MEDIA | Mejor que las camas superiores de 3A (BAJA) y que Inv 5 (`LA_PEOR_DEL_SISTEMA`) |
+
+### 🔴 Pero el argumento del corte diario ya no aplica, y conviene saberlo
+
+La razón por la que en la 2.ª vuelta se recomendó Inv 2 era **consolidar toda la
+dalia en un sitio** para no hacer dos rondas de corte diarias. **Con la cama en
+3A, las dalias viejas siguen en Inv 2 y las rondas van a ser dos de todos modos.**
+
+> **El costo de jornal se paga igual.** Así que la elección de sitio ya no tiene
+> que balancear logística contra agronomía: **puede decidirse solo por agronomía.**
+> Y si de todos modos se va a cortar en dos sitios, vale la pena volver a mirar la
+> pregunta E de la sección 13 —qué pasa con las dalias viejas—, porque su respuesta
+> ya no depende de dónde vayan las nuevas.
+
+### Lo que se ajusta en el protocolo por elegir esta cama
+
+Como el sitio sube el riesgo de oídio en vez de bajarlo, **las tres medidas que lo
+compensan dejan de ser recomendables y pasan a ser obligatorias**:
+
+| Medida | Sección | Por qué aquí no es opcional |
+|---|---|---|
+| **Lavado de dosel de mediodía** | 8.2 | Es lo único que mata conidios en una cama de humedad ALTA. Sin esto, el sitio decide el resultado |
+| **Deshoje basal desde la semana 6** | 7.1 | Abre el flujo de aire en la base del dosel, que es donde la humedad se acumula |
+| **Camellón de 10–15 cm** | 5.2 | **Sat. de humedad 154,8 % + "buen agua" + esqueje sin reserva** = pudrición de cuello. Es la combinación exacta del damping-off |
+| **Densidad abierta** | 3.5 | Es la palanca que queda. En esta cama **no se puede ceder más** |
+
+### 🟡 Dos cosas que hay que verificar en campo antes de trazar
+
+1. **¿"Pegada al humedal" es 3A o es 3C?** El repositorio le atribuye *"pegado al
+   humedal"* a **Inv 3C**, no a 3A (`microclima_bloques.csv`, fila Inv 3C). Si la
+   cama elegida está efectivamente en ese borde, su microclima real puede
+   parecerse más al de 3C —`radiacion BAJA`, `humedad ALTA_NOCTURNA` y **inóculo de
+   mosca blanca en suelo**— que al de 3A. **Vale la pena confirmarlo antes de
+   sembrar**, porque cambia el pronóstico.
+2. **Medir la uniformidad de riego de esa cama.** `uniformidad_riego` está en
+   `SIN_DATO` para las camas inferiores de 3A. Prueba de vasos a lo largo de la
+   cama, antes de sembrar.
+
+### 🟢 Y una nota sobre las celosias cristata que están ahí
+
+La skill `dcb-variedades` dice: *"Celosia cristata — excelente **con calor** ·
+Inv2 zona alta, Inv5 · **necesita calor**"*. Está sembrada en una cama de
+`temperatura_rel = BAJA`. **Si esa cristata no ha rendido, la causa probable es
+esa**, y liberar la cama es una buena decisión por partida doble.
+
+**Al cerrar el lote:** seguir `09-procedimientos/C-cierre-de-lote.md`, retirar el
+residuo completo fuera del invernadero, **y no traslapar los dos cultivos**. La
+celosia tiene pérdidas documentadas por **pulgón negro**
+(`variedades_parametros_siembra.csv`, Celosia Sylphid) y el pulgón es
+justamente el vector del virus que amenaza a la colección nueva.
+
+## 3.4 · El riesgo de consolidar en Inv 2 — queda como registro, ya no aplica al sitio elegido
 
 Consolidar en Inv 2 significa poner **160 esquejes vírgenes en la misma nave que
 las dalias viejas**, que están registradas con **mildeo persistente `EN_MANEJO`** y
@@ -485,14 +547,50 @@ sembrado en el sitio equivocado.
 precisamente lo que `calidad_tallo.csv` y el registro de la primera pústula por
 cultivar (sección 12) van a permitir decidir.
 
-### El marco, para pasarlo a campo
+### 🟢 Corroborado sobre la cama real de Inv 3A — 198 huecos · 35,6 m²
 
-> **1 de cada 3 líneas (45 cm entre líneas) × 1 planta cada 2 huecos (30 cm a lo
-> largo).** Sobre retícula de 15 × 15 cm.
->
-> **160 plantas ≈ 20 m².** ⚠️ Las camas de Inv 2 son de distinta medida y están
-> `PENDIENTE MEDIR` — **hay que medir la cama elegida antes de trazar**, y ajustar
-> el largo ocupado a las 160 plantas reales.
+La cama está `MEDIDO` en `capacidad_bloques.csv`: **198 huecos de largo × 8
+líneas**, y por la regla verificada de **0,18 m² por hueco** eso da **35,6 m²**.
+De ahí sale todo lo demás sin estimar nada:
+
+| | |
+|---|---|
+| Largo de la cama | 198 × 0,15 m = **29,7 m** |
+| Ancho | 35,6 / 29,7 = **1,2 m** |
+| Líneas usadas | **3 de las 8** — líneas **1, 4 y 7** → **45 cm entre líneas** |
+| Paso a lo largo | **1 planta cada 2 huecos** → **30 cm** |
+| Plantas por m² | (3 / 1,2) × (1 / 0,30) = **8,3 pl/m²** |
+| **Para 150 plantas** | **50 tramos de 3 plantas = 100 de los 198 huecos** |
+| **Largo ocupado** | 50 × 0,30 m = **15 m** |
+| **Área ocupada** | 15 × 1,2 = **18 m² — exactamente la mitad de la cama** |
+
+> **Marco para campo: líneas 1, 4 y 7 · una planta cada 2 huecos · los primeros
+> 100 huecos de la cama.** 150 plantas en campo + 10 en materas.
+
+### Qué hacer con la otra mitad de la cama
+
+**Dejarla para la primera vuelta de esquejes propios.** Tres razones:
+
+1. **Mantiene toda la dalia junta**, que era el criterio operativo de Vanessa.
+2. **Evita un conflicto de manejo.** El **lavado de dosel de mediodía** (8.2) moja
+   todo lo que esté en esa cama. Un vecino susceptible a botrytis se dañaría, y un
+   vecino que no tolere el programa foliar de dalia obliga a partir las bombas.
+3. **No se prepara todavía** — se prepara cuando se siembre, con su propia dosis
+   (5.3). Preparar hoy lo que se siembra en tres meses es lixiviar el bokashi.
+
+### ⚠️ Y una advertencia que viene del sitio elegido
+
+Los 45 × 30 cm se acordaron cuando el destino iba a ser una zona **seca y de alta
+radiación**. **La cama de 3A es de humedad `ALTA`**, que es la condición que el
+oídio necesita. **La densidad deja de tener margen de sobra: es la palanca que
+queda.**
+
+- **45 × 30 cm es ahora el piso, no el punto medio.** No se puede ceder más aquí.
+- **Si se le puede dar más aire, 45 × 45 cm** (1 de cada 3 huecos → **5,5 pl/m²**,
+  150 plantas en 27 m² = 76 % de la cama) **es la mejor apuesta contra el oídio**
+  que ofrece este sitio, y sigue dejando cama libre.
+- **Y las tres medidas compensatorias de la sección 3.3 dejan de ser opcionales:**
+  lavado de dosel, deshoje basal desde la semana 6, y camellón.
 
 ---
 
@@ -637,81 +735,135 @@ la luz y la colección se multiplica por división en vez de por esqueje:
 Se sigue **la v10 de `01-infraestructura/06-formulacion-camas-v8.md`** sin
 inventar nada, con **una sola adición justificada** para dalia.
 
-## 5.1 · El armado v10, tal como está
+## 5.1 · Lo más importante de toda la preparación, en tres frases
+
+Antes de las dosis, porque las dosis son la parte fácil:
+
+> **1. No voltear.** El No-Dig es lo que protege el *Trichoderma* de 1,4×10⁶ UFC/g.
+> Aflojar **solo donde esté compactada**.
+>
+> **2. Las enmiendas van EN SUPERFICIE.** Bokashi y leonardita se mezclan entre sí
+> y se aplican encima. **No se entierran.** El agua y la biología las incorporan.
+>
+> **3. En esta cama, el camellón es la línea que decide.** Bloque 3 tiene la
+> **saturación de humedad más alta de la finca (154,8 %)**, la cama es de humedad
+> `ALTA`, Vanessa la eligió porque *"tiene buen agua"*, y lo que se siembra es un
+> **esqueje sin reserva**. Sembrar al ras en esa combinación es damping-off.
+
+Todo lo demás —cuánto bokashi, cuánta leonardita— mueve el resultado mucho menos
+que esas tres.
+
+## 5.2 · El armado, paso por paso (v10)
 
 | # | Paso |
 |---|---|
-| 1 | **NO voltear la cama.** Aflojar **solo donde esté compactada** |
-| 2 | Mezclar **Bokashi + leonardita** y aplicar **EN SUPERFICIE**. No enterrar |
-| 3 | Nivelar la superficie sin remover |
-| 4 | Riego suave, **con agua sola** |
-| 5 | **Inocular el suelo. SIEMPRE.** (Etapa 2) |
-| 6 | Poner el **plástico** |
+| 1 | **Cerrar el lote de celosia** — `09-procedimientos/C-cierre-de-lote.md`. Residuo completo fuera del invernadero. **Sin traslape con la dalia** |
+| 2 | **NO voltear.** Aflojar **solo donde esté compactada** |
+| 3 | Mezclar **Bokashi + leonardita** y aplicar **EN SUPERFICIE**. No enterrar |
+| 4 | **Armar el camellón de 10–15 cm** sobre la línea de siembra. Modelado de superficie, no volteo |
+| 5 | Nivelar el resto de la superficie sin remover |
+| 6 | Riego suave, **con agua sola** |
+| 7 | **Inocular. SIEMPRE.** (Etapa 2) |
+| 8 | Poner el **plástico** |
 
-### 🔴 Y aquí Inv 2 abre dos huecos que hay que cerrar antes de preparar
+## 5.3 · Las dosis — Inv 3A, cama de 198 huecos · 35,6 m²
 
-**Inv 2 no está en la tabla de camas de la v10.** `06-formulacion-camas-v8.md` lo
-dice en dos sitios: *"Ext 3B, **Inv 2** y Ext Inv 2 no tienen conteo de huecos —
-quedan fuera de la tabla y la hoja manda **preguntar antes de prepararlas**"*, y
-*"**Inv 1 e Inv 2 usan la fila de Inv 4A/4B**"*.
+La cama está en la tabla de la v10 con dosis ya calculadas. **Y la v9 eliminó la
+distinción ESTÁNDAR / PREMIUM**: hay **una sola dosis por cama, que depende del
+bloque y no de la variedad** — *"la variedad se ajusta eligiendo el bloque, no
+cambiando la receta"*.
 
-Las dos cosas juntas dan la salida: **la tasa por m² sí está definida; lo que falta
-es el área.**
+| Producto | **Cama completa (35,6 m²)** | **Solo la mitad que se siembra (~18 m²)** | Tasa | Base |
+|---|---|---|---|---|
+| **Bokashi V1** | **2 sacos · 50 kg** | **1 saco · 25 kg** | **1,40 kg/m²** | Tabla v10, fila Inv 3A |
+| **Black Diamond GR** (leonardita) | **450 g** | **230 g** | **12,5 g/m²** | Tasa de Bloque 3 |
+| **Yeso agrícola** | **NO** | **NO** | — | *"Solo Bloque 4"* — se apoya en el azufre medido de ese bloque |
+| **Compost** | **NO va a la cama** | — | — | Ver 5.4 |
 
-| Producto | **Tasa de Inv 4A/4B** | Cantidad |
+> **Como solo se siembra la mitad de la cama (sección 3.5), se prepara la mitad**
+> — 1 saco de Bokashi y 230 g de leonardita. **La otra mitad se prepara cuando se
+> siembre**, con su propia dosis. Preparar ahora lo que se va a sembrar en tres
+> meses es lixiviar el bokashi.
+
+**Dos cosas que llaman la atención en esas cifras y no son error:**
+
+- **Bloque 3 lleva el DOBLE de leonardita que Bloque 4** (12,5 contra 6,5 g/m²) y
+  **más bokashi por m²** (1,40 contra 1,24). Es deliberado: la dosis va **inversa a
+  la M.O.**, y Bloque 3 tiene la más baja de los tres (18,6 % contra 23,4 %).
+- **Sin yeso.** No es un olvido: el yeso entró solo en Bloque 4 porque ahí el
+  azufre está **medido** y bajo (26,55 M). Bloque 3 tiene **S en 51,67 = ALTO**.
+  Meterle yeso sería agregar sulfato donde ya sobra.
+
+⚠️ **Incompatibilidad ya registrada:** el Black Diamond granulado es
+**incompatible con nitrato de calcio**, que es la línea #1 del tanque. **No hacer
+coincidir la leonardita con un fertirriego de N-Cal.**
+
+## 5.4 · El compost: la respuesta es que NO va a la cama, y la razón importa
+
+**El compost no está en la fórmula de preparación de cama, y no debe estarlo.** El
+repositorio ya separó los dos procesos y les dio funciones distintas:
+
+| | **Bokashi** | **Compost térmico** |
 |---|---|---|
-| **Bokashi V1** | **1,24 kg/m²** | = m² de la cama × 1,24, redondeado al ¼ de saco de 25 kg |
-| **Black Diamond GR** (leonardita) | **6,5 g/m²** | = m² × 6,5, redondeado al múltiplo de 10 |
-| **Yeso agrícola** | 🔴 **NO va** | Ver abajo |
+| Proceso | Fermentación, bajo oxígeno | Aeróbico, con volteo |
+| **Función** | **ALIMENTA** | **INOCULA** |
+| Perfil | Bacteriano | **Fúngico + protozoos + nematodos** |
+| Dónde se usa | **Preparación de cama** | **Extracto / té — no como enmienda** |
 
-> **1. Medir la cama.** Largo en huecos × 0,18 m²/hueco, que es la regla de área ya
-> verificada en seis bloques. Eso da los m² y con ellos las dos dosis. **Y de paso
-> cierra el `PENDIENTE MEDIR CAMA POR CAMA` que `capacidad_bloques.csv` arrastra
-> para Inv 2.**
->
-> **2. Sin yeso.** El yeso es *"solo Bloque 4"* y se justifica en el **azufre
-> medido** de ese bloque. **Inv 2 no tiene análisis de suelo** —
-> `analisis_suelo.csv` solo tiene Bloques 3, 4 y 5— así que aplica el mismo
-> criterio que el repositorio ya usa para el exterior: *"ningún exterior lleva
-> yeso… la decisión del yeso se apoya en el azufre medido de Bloque 4, y el
-> exterior no tiene análisis."*
+**Y hay dos razones específicas de esta cama para no echarle compost como
+enmienda:**
 
-### 🟡 Y un pendiente que esta siembra vuelve urgente
+1. **El objetivo de materia orgánica ya está cumplido.** `CLAUDE.md` lo dice:
+   *"con M.O. en 18,6–23,4 % el objetivo de construir materia orgánica está
+   cumplido"*. Un suelo mineral normal tiene 3–6 %.
+2. **Esta cama ya retiene demasiada agua.** Sat. de humedad **154,8 %**, densidad
+   aparente **0,71 g/cm³**, y Vanessa la eligió porque *"tiene buen agua"*.
+   **Más materia orgánica empuja justo en la dirección equivocada** para un esqueje
+   que se pudre por el cuello.
 
-**Inv 2 no tiene una sola variable de suelo medida.** Es el mismo hueco que
-`CLAUDE.md` ya tiene abierto como bloqueo **4f** para Inv 1 — y ahora Inv 2 se le
-suma, con riego entrando y con el cultivo de mayor ticket por tallo del ensayo.
+### 🟢 Pero sí hay una vía de compost que en ESTA cama vale más que en ninguna otra
 
-> **Meter Inv 2 en el próximo muestreo de suelo.** No bloquea esta siembra —las
-> tasas de Inv 4A/4B son el default acordado— pero **sin él no se puede afinar ni
-> el fertirriego ni el bokashi de ese bloque**, y todo Inv 2 seguiría manejándose
-> por analogía.
+El **extracto de compost (té)** — no el compost como bulto. El repositorio ya
+explica por qué existe:
 
-## 5.2 · La adición para dalia: drenaje del cuello
+> *"**Inóculo fúngico** + materia prima del **extracto de compost**, que es lo que
+> trae protozoos y nematodos bacterívoros — el grupo funcional que **ningún
+> inoculante comercial vende** y que es el que **libera N y P en la rizosfera**."*
 
-**Único cambio respecto a cualquier otra cama, y con esquejes sigue aplicando —
-por otra razón.** Con bulbo el problema era la pudrición del tubérculo; con
-esqueje es el **damping-off en la base del tallo**, que necesita las mismas
-condiciones: agua estancada alrededor del cuello. Y el suelo de DCB las da solas —
-**saturación de humedad de 133–155 %** y **densidad aparente de 0,56–0,71 g/cm³**.
+**Y el P es exactamente el problema de Bloque 3:** P soluble **0,036 mg/L, el más
+bajo de los tres bloques**, sobre un P total ALTO de 40,73. Hay fósforo; **lo que
+falta es quien lo libere.** Ese es literalmente el trabajo del bucle
+bacteria → protozoo → N y P disponibles.
 
-> **Sembrar sobre un lomo o camellón de 10–15 cm** por encima del nivel de la cama,
-> nunca en depresión. El agua se va del cuello, y el resto del perfil sigue húmedo
-> para la raíz — que es justo lo que un esqueje sin reserva necesita.
+**Estado, sin adornos:**
 
-Esto **no contradice el No-Dig**: es modelado de superficie, no volteo.
+| | |
+|---|---|
+| Compost térmico nuevo | 🔴 **No estará listo hasta la semana 44–46.** Hoy es la 37 |
+| **Pila vieja** | 🟢 **Disponible ahora.** Decisión del 2026-09-08: *"el primer té sale de la pila vieja"*, y el filtro es de Vanessa — **va lo "dulce y polvoso" de abajo; no va lo que huela ácido o a podrido, ni lo que tenga pedazos reconocibles** |
+| **Dosis y protocolo del té** | 🔴 **NO EXISTEN en el repositorio.** Solo está el principio: *"el extracto es un cultivo, no una dilución — se airea 24–48 h"* |
 
-## 5.3 · Lo que NO se hace
+> **Recomendación:** el té **no entra a este protocolo todavía**, porque escribir
+> una dosis sin base sería exactamente el error que el repositorio ya documentó
+> tres veces con el Fitoderma. **Pero esta cama es el mejor caso de la finca para
+> estrenarlo**, y vale la pena definir su protocolo aparte — la dalia estará ahí
+> meses y el té se aplica en cualquier momento del ciclo, no solo a la siembra.
 
-- ❌ **No se aplica roca fosfórica** aunque el P esté bajo. Salió de la fórmula y
-  el problema es de **P soluble**, no de P total — el P total de Bloque 4 ya es
-  10,74 y sigue sin ser disponible. La vía correcta es biológica (Fosfolip,
-  Etapa 2) y foliar (Etapa 6).
-- ❌ **No se agrega potasio en ninguna forma.** Bloque 4: saturación de K **30 %**
+## 5.5 · Lo que NO se hace
+
+- ❌ **No se aplica roca fosfórica**, aunque el P soluble de Bloque 3 sea el más
+  bajo de la finca. El **P total es ALTO (40,73)**: el fósforo está ahí y no falta
+  — lo que falta es quien lo libere. Agregar más P total no resuelve nada. Las
+  vías correctas son **biológica** (Fosfolip, sección 6.1) y **foliar**
+  (MKP, sección 10.4).
+- ❌ **No se agrega potasio en ninguna forma.** Bloque 3: saturación de K **25,3 %**
   contra un rango de balance de 2–5 %.
-- ❌ **No se agrega magnesio.** Saturación de Mg **32,1 %** contra 10–20 %.
-- ❌ **No se voltea a 25–30 cm.** Destruye el Trichoderma de 1,4×10⁶ UFC/g, que es
-  justamente lo que protege a la dalia de los patógenos de suelo.
+- ❌ **No se agrega magnesio.** Bloque 3: saturación de Mg **32,2 %** contra 10–20 %.
+- ❌ **No se agrega yeso.** Bloque 3 tiene **S en 51,67 = ALTO**. El yeso es solo
+  de Bloque 4, y por su azufre medido y bajo.
+- ❌ **No se agrega compost como enmienda.** Ver 5.4 — la M.O. ya está cumplida y
+  esta cama ya retiene demasiada agua.
+- ❌ **No se voltea a 25–30 cm.** Destruye el Trichoderma de 1,4×10⁶ UFC/g.
 
 ---
 
@@ -729,10 +881,14 @@ porque a 1× no se mide con jeringa. Da **2,10 L/ha en toda cama**, sin tabla.
 **Por qué solo Fosfolip:** por la regla del repositorio — *"BANDEJA = lo que va a
 la RAÍZ. CAMA = lo que va al SUELO."* El blanco del Fosfolip (solubilizar el P
 del volumen de suelo que la raíz va a explorar) **está en la cama y la bandeja no
-lo alcanza**. Y en dalia sobre Bloque 4 este producto vale doble: **Bloque 4 es el
-único bloque que el diagnóstico marca como candidato a fuente mineral de P**, y
-el **P soluble es uno de los dos limitantes de Fase 3** — la fase que decide el
-oídio.
+lo alcanza**.
+
+> 🟢 **Y en la cama de 3A este producto es el más importante del protocolo de
+> suelo.** Bloque 3 tiene el **P soluble más bajo de la finca — 0,036 mg/L** sobre
+> un **P total ALTO de 40,73**: el fósforo está ahí, sin liberar. Y el **P soluble
+> es uno de los dos limitantes de Fase 3**, que es la fase que decide el oídio.
+> **Solubilizar ese fósforo es atacar el mildeo por la raíz**, que es lo único que
+> se puede hacer contra una enfermedad aérea desde el suelo.
 
 ⚠️ **Regla que protege el drench:** **no regar con fertirriego el día de la
 inoculación.** El fertilizante químico mata el inoculante.
@@ -755,36 +911,46 @@ trasplantar:
 | **Nube** | *Streptomyces* — *"induce a la planta a producir fitoalexinas que le dan resistencia sistémica"*. Es el único género que no está en ninguna otra parte del programa |
 | **Promobac** | *Bacillus* — segundo género de resistencia inducida. Su ficha lista *Fusarium*, *Oidium*, *Botrytis*, *Erysiphe*, *Peronospora* y ***Rizoctonia*, que es el damping-off de bandeja** |
 
-## 6.3 · 🔴 Retiro la excepción del Fitoderma que había propuesto
+## 6.3 · 🔴 El Fitoderma VUELVE — porque cambió el bloque, no porque cambié de opinión
 
-En la primera versión de este documento propuse agregar **Fitoderma 5 g** al baño,
-como excepción a la regla *"Fitoderma solo en Inv 3"*, argumentando el **Fusarium
-generalizado en suelo de Inv 4A**. **Ese argumento se cae al saber que llegan
-esquejes y no bulbos, y lo retiro.**
+Dos vueltas atrás propuse meter Fitoderma como **excepción** a la regla del repo,
+cuando el sitio era Inv 4. Luego lo **retiré**, al saber que llegaban esquejes.
+**Ahora vuelve, y por una razón distinta de las dos anteriores: el sitio es Inv 3.**
 
-Lo que justificaba la excepción era el **órgano**, no el bloque:
+> **La regla del repositorio es literal:** *"Fitoderma — **SOLO Inv 3**, por
+> Fusarium activo. Trichoderma ya alto en Inv 4+5."*
+>
+> **En 3A el Fitoderma no es una excepción: es la regla del bloque.** Y el motivo
+> por el que estaba prohibido en Inv 4 —que ahí el *Trichoderma* nativo ya está en
+> 1,4×10⁶ UFC/g— **no aplica en Bloque 3.**
 
-| | Tubérculo | **Esqueje enraizado** |
-|---|---|---|
-| Qué se entierra | **Depósito de almidón, herido en la división** | Cepellón con raíz viva, **sin herida y sin almidón** |
-| Atractivo para *Fusarium* | Máximo | Normal |
-| ¿Justifica romper la regla del repo? | Se podía discutir | **No** |
+Y hay tres razones propias de esta cama que lo hacen valer más aquí que en
+cualquier otra:
 
-Y las tres razones para no meterlo se sostienen solas:
+| # | Razón |
+|---|---|
+| 1 | **La cama es fría y húmeda, y lo que se siembra es un esqueje.** Frío + húmedo + base de tallo tierna = **damping-off** (*Pythium*, *Rhizoctonia*). Es el riesgo #1 de las dos primeras semanas |
+| 2 | **Sat. de humedad 154,8 %** — la más alta de la finca. Un suelo que retiene tanto es donde los patógenos de raíz mandan |
+| 3 | **Es el único producto de la bandeja que lista *Peronospora sparsa*** — mildeo **velloso**, que sí tiene etapa en el suelo y sí se favorece con frío y humedad. No es el problema de la dalia (el suyo es polvoso), pero en esta cama es un riesgo que no cuesta cubrir |
 
-1. **En Inv 4 el *Trichoderma* nativo ya está en 1,4×10⁶ UFC/g** — que es
-   exactamente por lo que el repositorio restringe el Fitoderma a Inv 3.
-2. **El damping-off, que sí es el riesgo real de un esqueje, ya está cubierto**
-   por el *Rizoctonia* que lista la ficha del Promobac.
-3. **Se elimina el único conflicto de compatibilidad de la mezcla.** El
-   *Trichoderma* es micoparásito de amplio espectro y las fichas de Bioquirama
-   dicen *"consultar al Departamento Técnico"* sobre mezclarlo con micorriza y con
-   *Streptomyces*. Sin Fitoderma, esa pregunta deja de bloquear esta siembra.
+### La mezcla de bandeja queda así
 
-> **La pregunta 4 queda respondida por la biología, no por Vanessa. La base va
-> sola, y la regla "Fitoderma solo en Inv 3" queda intacta.**
+> **En 5 L de agua, un solo pase:**
+>
+> **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc + Fitoderma 5 g**
 
----
+**Es exactamente la mezcla que ya reciben lisianthus, dianthus y Green Ball** — no
+se inventa nada, no se cambia ninguna base de dosificación, y el Fitoderma entra a
+la misma concentración corregida de 5 g (no los 50 g que estuvieron mal escritos
+tres veces).
+
+🟡 **La única salvedad, que es la misma de siempre y no es nueva:** las fichas de
+Bioquirama dicen *"consultar al Departamento Técnico"* sobre la compatibilidad
+cruzada entre *Trichoderma*, micorriza y *Streptomyces*. **Es la misma pregunta del
+correo pendiente**, y aplica igual a las otras tres variedades que ya llevan esta
+mezcla. **No introduce un riesgo nuevo.** Si preocupa, la alternativa limpia —ya
+escrita en el repositorio— es **poner el Fitoderma en el hueco de trasplante en vez
+de en la mezcla**, no en otro día, que no separa nada.
 
 # 7 · Etapa 3 · Siembra y trabajos culturales
 
@@ -1277,10 +1443,10 @@ Ninguno se escribió. Requieren validación:
 | Etapa | Qué se hace |
 |---|---|
 | **0 · Recepción** | **Abrir la caja el mismo día** · aclimatar **3–5 días** en media sombra, **siempre húmedos** · descartar base acuosa u oscura (damping-off) · **🔴 etiquetar cultivar uno por uno** · preguntar al proveedor si las madres están **indexadas** |
-| **1 · Sitio** | **Inv 2, zona ALTA** — no la baja · verificar el ensayo de Limonium · **medir la cama** · **prueba de vasos del riego nuevo antes de sembrar** · decidir qué pasa con las dalias viejas |
-| **2 · Presiembra** | No-Dig v10: no voltear · **Bokashi 1,24 kg/m² + leonardita 6,5 g/m²** (tasa de Inv 4A/4B) **en superficie** · **SIN yeso** (Inv 2 no tiene análisis) · **lomo de 10–15 cm** para drenar el cuello |
-| **3 · Siembra** | **1 de cada 3 líneas (45 cm) × 1 planta cada 2 huecos (30 cm) = 7,9 pl/m².** **150 en cama (~19 m²) + 10 en materas aisladas como núcleo madre limpio.** Cepellón al ras · **🔴 un cultivar por grupo, con estaca y posición registrada** |
-| **4 · Inoculación** | **Cama:** Fosfolip **1,5 cc en CADA bomba** de 20 L, 4–5 bombas, arrastre con agua sola, luego plástico. **Bandeja:** **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc en 5 L** (rinde 4 bandejas). **Sin Fitoderma** |
+| **1 · Sitio** | **Cama baja de Inv 3A** (decisión de Vanessa, 2026-09-09) · cerrar el lote de celosia sin traslape · **confirmar si la cama es 3A o borde de 3C** · **prueba de vasos del riego antes de sembrar** |
+| **2 · Presiembra** | No-Dig: **no voltear** · **Bokashi 1 saco (25 kg) + leonardita 230 g** para la mitad que se siembra · **EN SUPERFICIE, no enterrar** · **SIN yeso** (S alto en Bloque 3) · **SIN compost como enmienda** · **🔴 camellón de 10–15 cm** — es la línea que decide en esta cama |
+| **3 · Siembra** | **1 de cada 3 líneas (45 cm) × 1 planta cada 2 huecos (30 cm) = 8,3 pl/m².** **150 en la mitad de la cama (100 de los 198 huecos, ~18 m²) + 10 en materas aisladas como núcleo madre limpio.** Cepellón al ras sobre el camellón · **🔴 un cultivar por grupo, con estaca y posición registrada** |
+| **4 · Inoculación** | **Cama:** Fosfolip **1,5 cc en CADA bomba** de 20 L, 4–5 bombas, arrastre con agua sola, luego plástico. **Bandeja:** **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc + Fitoderma 5 g en 5 L** (rinde 4 bandejas) — **el Fitoderma entra porque el sitio es Inv 3, donde es la regla del bloque** |
 | **5 · Agua** | **🔴 Riego inmediato al sembrar y sin dejar secar 2 semanas** — el esqueje no tiene reserva · nunca regar al atardecer · **LAVADO DE DOSEL con agua sola, 10:00–13:00, 2–3×/semana, desde sem 4 hasta el primer color** |
 | **6 · Luz** | **Extensión de día, LED, 18:00–22:00, todo el ciclo** · **1–2 µmol/m²/s sobre el dosel** · **rojo + rojo lejano, NO blanco frío** · **todas las plantas, sin testigo** (la luz se derrama entre camas) |
 | **7 · Posiembra** | **Pinch semana 4** al 3.º–4.º par · **2 mallas** (30 y 60 cm) · **desbotone lateral** · **deshoje basal desde sem 6, cada 2 semanas**, no antes de que haya raíz nueva |

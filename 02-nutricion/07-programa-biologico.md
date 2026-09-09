@@ -1,5 +1,13 @@
 # Programa biológico — inoculantes, drench y comparativo de proveedores
 
+> **🔴 ACTUALIZADO EL 2026-09-09 — llegaron las cuatro fichas que faltaban.** Promobac,
+> Fitoderma, Raizal 400 y Fullfert pasaron por el filtro de UFC por organismo y dosis de
+> etiqueta. Resultado: **el Promobac es el biológico más barato del programa por UFC útil
+> ($148 por 10⁹, contra $521 del Fosfolip y $590 del Estabios)**, y a la vez **todo el tanque
+> estaba sobredosificado 5–12× contra etiqueta**. El Raizal y el Fullfert salen. Análisis
+> completo en `02-nutricion/09-inoculacion-el-analisis.md`; dosis nuevas en
+> `02-nutricion/03-drench-inoculacion.md`.
+
 > **Estado: PROPUESTA. Pendiente de revisión conjunta con Vanessa — sesión del 2026-09-03.**
 > Nada aplicado a `03-drench-inoculacion.md` ni a `01-infraestructura/03-no-dig-y-preparacion-camas.md`.
 >
@@ -47,8 +55,8 @@ El Fitoderma solo es el **51%** del tanque de Inv 3.
 | $/tanque | Producto | Función | Veredicto |
 |---|---|---|---|
 | **$29.500** | **Estabios** | PGPR + solubilización de fosfatos | ⚠️ Ver análisis por organismo abajo |
-| $29.500 | Promobac | Bacillus PGPR | ✅ Género distinto, no redundante |
-| $60.461 | Fitoderma | Trichoderma + Bacillus | ✅ Solo Inv 3 por Fusarium activo — correcto |
+| $29.500 | Promobac | Bacillus PGPR | ✅ Género distinto, no redundante. **Ficha 2026-09-09: 1×10⁸ UFC/mL POR organismo — el más barato del programa por UFC útil.** Pero la dosis va 4,9–12,1× sobre etiqueta |
+| $60.461 | Fitoderma | Trichoderma + Bacillus | 🟡 Solo Inv 3 por *Fusarium* activo — pero **el análisis microbiológico no registra de qué bloque se tomó**, y a 500 g aportaba **0,04 % del *Trichoderma* residente** (el Terra Life se descartó en 0,0009 %). Baja a etiqueta: 50 g |
 | — | Pokonia | *Pochonia chlamydosporia*, nematófago | ⚠️ Función única, pero **sin verificar que el problema exista** |
 
 ---
@@ -252,6 +260,9 @@ registrada y no se sabe su rol. Segundo producto más caro del programa.
 | 3 | Precio del **Paecilomyces** de FUNDASES | FUNDASES |
 | 4 | **cc de Pokonia por tanque** que aplica Alexander | Campo |
 | 5 | **Dosis del Estabios en L/ha** y si el 1×10⁸ es total o por organismo | Proveedor |
+| 6 | **¿De qué bloque es el análisis microbiológico de Bioquirama?** y ***Trichoderma* por bloque** — sostienen o tumban la restricción del Fitoderma a Inv 3 y el cambio de calendario | Bioquirama |
+| 7 | **Dosis de inmersión de raíz / hueco de trasplante del Fitoderma** — su ficha solo da 500 g/ha al suelo | Alma Agrícola |
+| 8 | **¿El Promobac se guarda a ≤12 °C?** Su ficha lo exige y Rionegro está a 18–22 °C | Vanessa |
 | 6 | **Qué es el Biohar Forte** y su dosis | Proveedor |
 | 7 | **Conteo de nematodos por grupo funcional** | Bioquirama |
 

@@ -1,0 +1,194 @@
+<title>Inoculación del Suelo por Bloque</title>
+<style>
+  :root{
+    --papel:#FFFFFF; --beige:#F5F0E8; --crema:#FAF7F3;
+    --tinta:#1A1A1A; --tinta-2:#555555; --tinta-3:#888888;
+    --regla:#D0C8B8; --alerta:#C0392B;
+    --op:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--op);
+       margin:0;padding:26px 20px 50px;-webkit-font-smoothing:antialiased}
+  .hoja{max-width:840px;margin:0 auto}
+  .marca{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 5px}
+  h1{font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.01em;margin:0 0 6px}
+  .clave{font-size:14px;color:var(--tinta);margin:0 0 10px;line-height:1.35}
+  .clave b{font-weight:700}
+  .meta{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:12px;color:var(--tinta-2);
+        padding-bottom:10px;border-bottom:2px solid var(--regla);margin-bottom:18px}
+  .meta b{color:var(--tinta);font-weight:700}
+  section{margin-bottom:18px}
+  h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
+     font-weight:700;margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--regla)}
+  .envoltura{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:var(--beige);color:var(--tinta-2);font-size:10px;letter-spacing:.08em;
+     text-transform:uppercase;font-weight:700;text-align:left;padding:6px 9px;
+     border-bottom:1px solid var(--regla);vertical-align:bottom}
+  td{padding:6px 9px;border-bottom:1px solid var(--regla);vertical-align:middle}
+  tbody tr:nth-child(even) td{background:var(--crema)}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.mid,td.mid{text-align:center}
+  .cama{font-weight:700;font-size:14px;line-height:1.2}
+  .cama small{display:block;font-weight:400;font-size:11px;color:var(--tinta-2);margin-top:0}
+  .g{font-size:17px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .g span{font-size:10.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
+  .agua{font-size:15px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .agua span{font-size:10.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
+  .solo3{color:var(--alerta)}
+  .nada{color:var(--tinta-3)}
+  .caja{display:inline-block;width:16px;height:16px;border:1.5px solid var(--tinta-2)}
+  ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
+           background:var(--regla);border:1px solid var(--regla);
+           grid-template-columns:1fr 1fr}
+  ol.orden li{counter-increment:paso;background:var(--papel);padding:8px 10px 8px 34px;
+              position:relative;font-size:13px;line-height:1.35}
+  ol.orden li::before{content:counter(paso);position:absolute;left:11px;top:8px;
+                      font-weight:700;font-size:13px;color:var(--tinta-2)}
+  .plastico{margin-top:12px;border:2.5px solid var(--tinta);background:var(--beige);
+            padding:11px 14px;font-size:15px;line-height:1.35;text-align:center}
+  .plastico b{font-size:17px;font-weight:700;letter-spacing:.02em}
+  .no{margin-top:10px;border-left:3px solid var(--alerta);padding:8px 0 8px 12px;
+      font-size:13px;line-height:1.5}
+  .no b{color:var(--alerta)}
+  .no p{margin:0 0 3px}
+  footer{margin-top:18px;padding-top:10px;border-top:1px solid var(--regla);
+         font-size:11px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:3px 20px}
+  @media print{
+    @page{margin:9mm 10mm}
+    body{padding:0;font-size:8pt}
+    .hoja{max-width:none}
+    .marca{font-size:7pt;margin-bottom:2px}
+    h1{font-size:14pt;margin-bottom:3px}
+    .clave{font-size:8.5pt;margin-bottom:6px}
+    .meta{font-size:7.5pt;padding-bottom:5px;margin-bottom:9px;gap:2px 14px}
+    section{margin-bottom:9px}
+    h2{font-size:7pt;margin-bottom:4px;padding-bottom:3px}
+    table{font-size:8pt}
+    th{font-size:6.5pt;padding:3px 6px}
+    td{padding:3px 6px}
+    .cama{font-size:8.5pt}.cama small{font-size:6.5pt}
+    .g{font-size:10pt}.g span{font-size:6.5pt}
+    .agua{font-size:9pt}.agua span{font-size:6.5pt}
+    .caja{width:11px;height:11px}
+    ol.orden li{font-size:8pt;padding:5px 7px 5px 24px}
+    ol.orden li::before{font-size:8pt;left:8px;top:5px}
+    .plastico{font-size:9pt;margin-top:7px;padding:6px 9px}
+    .plastico b{font-size:10.5pt}
+    .no{font-size:8pt;margin-top:6px;padding:5px 0 5px 9px}
+    footer{font-size:7pt;margin-top:9px;padding-top:5px}
+  }
+</style>
+
+<div class="hoja">
+
+  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
+  <h1>Inoculación del suelo — todos los bloques</h1>
+  <p class="clave">Es el <b>paso 5</b> de la preparación de camas: va <b>después del riego con agua sola</b> y
+  <b>antes de poner el plástico</b>. La cantidad depende <b>solo del bloque</b>. <b>No cambia según la variedad.</b></p>
+
+  <div class="meta">
+    <span>Operario: <b>Alexander</b></span>
+    <span>Cuándo: <b>el mismo día que se prepara la cama</b></span>
+    <span>Cada cuánto: <b>una vez por vuelta de cama</b></span>
+    <span>Fecha: ______________</span>
+  </div>
+
+  <section>
+    <h2>Cuánto va en el tanque</h2>
+    <div class="envoltura">
+    <table>
+      <thead>
+        <tr>
+          <th>Bloque</th>
+          <th class="num">Agua</th>
+          <th class="num">Promobac</th>
+          <th class="num">Fosfolip</th>
+          <th class="num">Fitoderma</th>
+          <th class="mid">✓</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cama">Inv 3<small>3A + 3B + 3C, todo el bloque</small></td>
+          <td class="num agua">2.000 <span>L</span></td>
+          <td class="num g">100 <span>cc</span></td>
+          <td class="num g">200 <span>cc</span></td>
+          <td class="num g solo3">50 <span>g</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Inv 4<small>4A + 4B + 4C, todo el bloque</small></td>
+          <td class="num agua">1.400 <span>L</span></td>
+          <td class="num g">70 <span>cc</span></td>
+          <td class="num g">140 <span>cc</span></td>
+          <td class="num nada">—</td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Inv 5<small>las 13 camas</small></td>
+          <td class="num agua">800 <span>L</span></td>
+          <td class="num g">40 <span>cc</span></td>
+          <td class="num g">80 <span>cc</span></td>
+          <td class="num nada">—</td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Mini<small>las 7 camas juntas</small></td>
+          <td class="num agua">140 <span>L</span></td>
+          <td class="num g">7 <span>cc</span></td>
+          <td class="num g">14 <span>cc</span></td>
+          <td class="num nada">—</td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Ext 3A + Ext 3B<small>las dos juntas, en el mismo tanque</small></td>
+          <td class="num agua">185 <span>L</span></td>
+          <td class="num g">9 <span>cc</span></td>
+          <td class="num g">19 <span>cc</span></td>
+          <td class="num nada">—</td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Ext 4 + Ext 5 + Inv 6<small>las tres juntas, en el mismo tanque</small></td>
+          <td class="num agua">210 <span>L</span></td>
+          <td class="num g">10 <span>cc</span></td>
+          <td class="num g">21 <span>cc</span></td>
+          <td class="num nada">—</td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cómo se arma el tanque</h2>
+    <ol class="orden">
+      <li>Llenar el tanque con <b>los litros de agua de la tabla</b>. Agua sola, sin nada más.</li>
+      <li>Medir el <b>Promobac</b> y el <b>Fosfolip</b> con jeringa y echarlos al tanque. Revolver.</li>
+      <li><b>Solo en Inv 3:</b> pesar los <b>50 g de Fitoderma</b>, disolverlos en un balde con agua y echar el balde al tanque.</li>
+      <li>Revolver otra vez y <b>regar por goteo hasta vaciar el tanque.</b></li>
+      <li>Cuando termine de escurrir, <b>poner el plástico.</b></li>
+    </ol>
+
+    <div class="plastico"><b>EL FITODERMA VA SOLO EN INV 3.</b><br>
+    En Inv 4, Inv 5, Mini y exteriores <b>no se echa Fitoderma.</b></div>
+
+    <div class="no">
+      <p><b>NO</b> regar con fertirriego ese bloque en toda la semana de la inoculación. Solo agua.</p>
+      <p><b>NO</b> mezclar en este tanque <b>ningún fungicida</b>, ni antes ni después el mismo día.</p>
+      <p><b>NO</b> echar <b>Raizal ni Fullfert</b> a este tanque. Ya no van aquí.</p>
+      <p><b>El Promobac se guarda en la nevera</b>, en su envase cerrado. Nunca al lado de fungicidas ni de fertilizantes.</p>
+      <p><b>Inv 1, Inv 2 y las 3 camas de Ext Inv 2</b> no están en la tabla: preguntar a Vanessa antes de inocularlas.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Inoculación: Alexander</span>
+    <span>Aprueba: Vanessa Kosa</span>
+    <span>Reemplaza el tanque de inoculación cada 3–4 semanas</span>
+    <span>v1 · 2026-09-09</span>
+  </footer>
+
+</div>

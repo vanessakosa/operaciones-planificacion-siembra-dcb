@@ -76,6 +76,17 @@ elementos saturados que bloquean al Ca. **Ahorra plata y mejora el cultivo a la 
 > **Tanque limpio: N-Cal ≈47–52% + Micro ≈34–38% + Fullfert ≈13–17%.** Los tres hay que cotizar,
 > en ese orden de peso.
 
+> **🟢 CERRADA EL 2026-09-09 — llegó la ficha del Fullfert.** CEHT **150 g/L** (húmicos 90,
+> fúlvicos 60) · K₂O 40 g/L · S 9 g/L · pH 12 al 10 % · dosis **4–15 L/ha** drench. Eso lo pone
+> en **$224.433 por kg de carbono húmico**, y permite por fin comparar contra el Campofert
+> Humus 15 ($26.165/L) por carbono y no por litro. **La respuesta a la pregunta de abajo es que
+> su masa no importa:** a dosis de etiqueta aporta 0,06–0,23 g de C/m² contra los **450 g de
+> C/m² del Bokashi** — 7.500× menos. Su valor, si lo tiene, es como **complejante** en la
+> solución del suelo (competir con el alofano por los sitios de sorción de P, quelatar los
+> micros), que es un efecto de concentración y no de masa. **Se queda en el tanque de
+> fertirriego a la dosis de hoy, y sale del tanque de biológicos.** Ver
+> `02-nutricion/09-inoculacion-el-analisis.md`.
+
 **Pregunta abierta de $3.366 por tanque:** el Fullfert es acondicionador de húmicos/fúlvicos,
 aplicado sobre un suelo con **M.O. de 18,6–23,4%** — que es donde vive la fracción húmica natural.
 Vale preguntarse cuánto aporta comprar húmicos para un suelo que ya tiene la M.O. más alta que se
@@ -316,8 +327,8 @@ limpio** (N-Cal ≈47–52%, Micro ≈34–38%, Fullfert ≈13–17%):
 - [x] ~~Precio del Fullfert~~ **RECIBIDO** — $33.665/L
 - [x] ~~Ficha técnica de Haifa Micro — el % de Cu~~ **RECIBIDA** — Cu 0,2%, ver análisis arriba
 - [ ] **Precio del balde de 20 kg del Haifa Micro** (hoy se compra el de 5 kg a $40.294/kg)
-- [ ] **% de húmicos y fúlvicos del Fullfert** y su dosis por ficha — $2.693–$3.366 por tanque
-      sobre un suelo con M.O. de 18,6–23,4%
+- [x] ~~**% de húmicos y fúlvicos del Fullfert** y su dosis por ficha~~ **RECIBIDA 2026-09-09** —
+      CEHT 150 g/L (húmicos 90, fúlvicos 60), K₂O 40 g/L, pH 12, dosis 4–15 L/ha
 
 ## De la casa nueva
 Por cada producto de la lista:
@@ -352,7 +363,7 @@ La comparación NO es precio por kg de producto. Es en tres columnas:
 |---|---|---|---|---|---|---|---|---|
 | Nitrato de calcio | **Haifa N-Cal** | 25 kg | $190.360 | $7.614 | 15,5% N + 18,8% Ca = 34,3% | **$22.199** | — | Nitrato |
 | Micro completo | **Haifa Micro** | 5 kg | $201.468 | $40.294 | 9,4% micros, de los cuales **19% útil** | **$2,29M/kg útil** · Cu a **$20,1M/kg** | 🔴 81% Fe+Mn+Zn no requeridos | EDDHA + EDTA |
-| Húmicos/fúlvicos | **Fullfert** | 1 L | $33.665 | $33.665 | **SIN FICHA** | **SIN DATO** | — | — |
+| Húmicos/fúlvicos | **Fullfert** | 1 L | $33.665 | $33.665 | **CEHT 150 g/L** (húm. 90 + fúlv. 60) | **$224.433/kg de C húmico** | 🟡 K₂O 40 g/L · pH 12 | Ácidos húmicos |
 | NPK alto en K | Polyfeed | 25 kg | $273.608 | $10.944 | 14,4% (N+P) | $76.002 | 🔴 35,7% K | Nitrato/amonio |
 | Sulfato de Mg | Bitter Mag | 25 kg | $171.360 | $6.854 | **0%** | **NO APLICA** | 🔴 9,65% Mg + 12,8% S | Sulfato |
 

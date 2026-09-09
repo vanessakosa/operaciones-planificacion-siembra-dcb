@@ -726,3 +726,56 @@ Los cuatro son la misma cosa: **elegí una base de cálculo cuando ya había una
 estructura cuando ya había una acordada.** El Fitoderma pasó por 50 g → 8 g → 5 g, y en las tres
 iteraciones el problema no era el aritmética: era que cambiaba de base cada vez en lugar de leer
 la que tenía. **Cuando existe una etiqueta o un acuerdo previo, no hay nada que derivar.**
+
+---
+
+## 🔴 Y el quinto: los dos pases · un día de separación no separa nada
+
+> *"Orquestas separando en dos aplicaciones, eso es ineficiente."* — Vanessa
+
+**Tiene razón, y mi argumento se cae solo.** Separé el Endorhiza del Fitoderma en dos días para
+evitar el antagonismo *Trichoderma*–micorriza. Pero **los dos terminan en el mismo sustrato de
+todos modos**, y ahí conviven las semanas que dura la bandeja y después toda la cama. Si van a
+competir, compiten igual lleguen juntos o con 24 horas de diferencia.
+
+**Separé en el tiempo una coincidencia que dura todo el ciclo — y pagué un pase entero de jornal
+por una protección que no existe.**
+
+La separación real, si algún día se quisiera, no es de un día: es **poner el Fitoderma en otro
+sitio** (el hueco de trasplante, o nada). No en otro día.
+
+### Un solo pase, tres mezclas
+
+**El viernes, una sola vez.**
+
+| | En 5 L de agua |
+|---|---|
+| **BASE — toda bandeja, sin excepción** | **Endorhiza 10 cc + Nube 10 cc** |
+| **\+ Lisianthus · Dianthus · Green Ball** | **\+ Fitoderma 5 g** |
+| **\+ Matricaria** | **\+ Interactor 10 cc** |
+| **\+ Todas las demás** | nada más |
+
+**Por qué el Nube pasa a la base y no a "específico":** su etiqueta apunta a patógenos
+radiculares generales (*Cylindrocarpon*, *Erwinia*, *Pseudomonas*, *Ralstonia*, y *Fusarium* en
+banano y tomate), no a la debilidad de una variedad. Y es el único género del programa que no está
+en ninguna otra parte — que es justo lo que se busca en una base.
+
+### Por qué mezclar es el default correcto, y qué falta confirmar
+
+**A favor de mezclar:** los cuatro son del mismo fabricante y se venden como línea; **ninguna
+ficha prohíbe mezclar con otro biológico** — solo con *"fungicidas de compatibilidad
+desconocida"*, que se refiere a fungicidas químicos; y el costo de la alternativa (un pase
+completo de jornal) es real y medible, contra un riesgo que no lo es.
+
+🟡 **Lo que no puedo resolver desde las fichas** son las compatibilidades cruzadas entre
+biológicos: *Trichoderma* con micorriza, y *Streptomyces* con *Trichoderma* — los dos últimos son
+antagonistas de amplio espectro y podrían suprimirse entre sí. **Las tres fichas dicen literalmente
+"consultar al Departamento Técnico de BIOQUIRAMA".** Son cuatro productos del mismo proveedor:
+**un solo correo con los cuatro nombres y la pregunta "¿se pueden aplicar en la misma mezcla?"**
+
+🟡 **Y una opción que elimina el único conflicto real, si ella quiere considerarla:** sacar el
+Fitoderma de la bandeja. El lisianthus quedaría con **micorriza** (que por sí sola reduce
+severidad de marchitez por *Fusarium*), **Nube** (que lista *Fusarium*) y **Promobac en la cama**
+(cuya ficha también lista *Fusarium*). Se pierde el antagonista directo, que es lo que la
+evidencia de campo pide con 13 eventos documentados — **por eso no lo hago por mi cuenta, y el
+default se queda con el Fitoderma dentro.**

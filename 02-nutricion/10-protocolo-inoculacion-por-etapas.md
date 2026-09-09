@@ -1215,3 +1215,54 @@ de finca completa — y es una decisión suya, no un default.
 > mal: hay que preguntarse dónde está su blanco —la raíz o el suelo— y dejarlo solo ahí. La
 > duplicación no es "refuerzo": es pagar dos veces por llegar al mismo sitio, y por la vía más
 > cara de las dos.
+
+---
+
+## 🔴 El Fosfolip solo en la primera bomba · error básico de distribución
+
+> *"Es supertonto lo de que la primera bomba de Fosfolip tenga siete cc y las otras ninguna,
+> porque claramente eso es por secciones. Él va mojando la cama por secciones, entonces si después
+> fuese agua, una parte de la cama no tendría."* — Vanessa
+
+**Tiene razón y el error es elemental.** El operario moja la cama **por secciones**, una bomba
+por sección. Con el producto solo en la primera, **cuatro quintos de la cama quedan sin nada.**
+
+Y mi justificación era peor que el error: dije *"el riego de arrastre lo distribuye"*. **El
+arrastre va hacia abajo, no hacia los lados.** Empuja el producto a la profundidad de la raíz en
+el sitio donde cayó — no lo mueve a lo ancho de la cama. El producto no migra lateralmente en un
+suelo. Eso lo debí ver solo.
+
+### La corrección: 1,5 cc en CADA bomba
+
+Cada bomba de 20 L moja **20 / 2,8 = 7,1 m²**. Así que la dosis por bomba sale de la tasa por
+área:
+
+| | cc/m² | cc por bomba |
+|---|---|---|
+| Etiqueta 1 L/ha | 0,10 | **0,71 cc** — no se mide bien con jeringa |
+| **2× etiqueta (recomendado por carga)** | **0,20** | **1,43 → 1,5 cc** ✅ |
+
+**Y aquí las dos decisiones se resuelven con la misma cifra:** los 2× etiqueta que ya había
+recomendado por el análisis de carga son también lo que vuelve la dosis **medible por bomba**. A
+etiqueta simple habría que preparar solución madre; a 2× se mide con jeringa y se acabó.
+
+### Y se autoajusta al tamaño de la cama, sin tabla
+
+| Bombas | cc totales | m² de cama | L/ha |
+|---|---|---|---|
+| 1 | 1,5 | 7,1 | **2,10** |
+| 3 | 4,5 | 21,4 | **2,10** |
+| 5 | 7,5 | 35,7 | **2,10** |
+| 6 | 9,0 | 42,9 | **2,10** |
+
+**La tasa por hectárea es idéntica en toda cama, sin importar su tamaño** — porque las bombas por
+cama ya son proporcionales al área. Es exactamente el mismo mecanismo que hacía funcionar la
+dosis por bomba, y yo lo había abandonado justo cuando aplicaba.
+
+**Costo: $78 por bomba · $391 por cama de 5 bombas.**
+
+## La regla que sale
+
+> **Si un producto va en la bomba, va en TODAS las bombas de esa cama.** Una bomba es una
+> sección de la cama, no una fracción de la mezcla. Concentrar la dosis en una bomba no
+> concentra la dosis: **deja el resto de la cama sin tratar.**

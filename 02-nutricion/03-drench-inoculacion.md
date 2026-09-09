@@ -107,6 +107,39 @@ la finca.**
 - Requisito para variedades donde se usan micorrizas al trasplante: suelo sin fungicidas
   recientes.
 
+## 🔴 Por qué solo dos productos — y por qué eso NO está demostrado
+
+El programa de dos productos es el resultado de **tachar de una lista**, no de diseñar desde las
+funciones que el suelo necesita. Auditado desde las funciones aparecen **tres huecos**:
+
+| Función | ¿Cubierta? |
+|---|---|
+| Antagonismo a *Fusarium* | 🟢 Sí — los 4 *Bacillus* del Promobac |
+| Solubilización de P (soluble en 0,107 mg/L) | 🟡 Sí, por **una** de las dos vías posibles |
+| PGPR | 🟢 Sí — Promobac |
+| **Micorrizas** | 🔴 **NO, y salieron con un argumento equivocado** |
+| **Inóculo de mosca blanca en suelo de 3C e Inv 5** | 🔴 **NO en el drench de rutina** |
+| Nematodos | 🟡 Pokonia existe y **nunca se han contado nematodos** |
+| Fijación de N | 🟢 Correctamente ausente (Kempf Fase 1) |
+| Carbono / alimento | 🟢 Correctamente ausente (lo hace el Bokashi, 7.500×) |
+
+**Micorrizas:** el repositorio las sacó con *"2.000 esporas/m² en 90 kg de suelo, muy diluido"*.
+Ese es un argumento de **paridad de población**, y las micorrizas no funcionan por población: una
+espora coloniza una raíz y después la hifa crece. Basta un evento de colonización por planta. Y
+son **la otra vía al fósforo** del andisol — alcanzarlo por exploración en vez de solubilizarlo —
+así que **se compró el Fosfolip sin compararlo con ellas**, y comparándolos por aplicación en vez
+de por año se favorece artificialmente al Fosfolip, porque una micorriza establecida persiste
+(más aún en No-Dig). *Puede que el argumento correcto también las elimine* — el No-Dig ya
+conserva la red, marigold y matricaria de la rotación biosupresora son fuertemente micorrízicas,
+y gomphrena, amaranto, celosia y dianthus están en familias mal micorrizadas. **Lo decide el % de
+colonización micorrízica en raíz.**
+
+**Mosca blanca:** el inóculo está en el suelo de 3C e Inv 5 independientemente de lo que se
+siembre. Hoy el drench de *Beauveria*/*Paecilomyces* es un requisito **de la variedad** Vegmo
+Single. **Pregunta abierta: ¿debería ser una condición de esas camas, siempre?**
+
+Detalle completo en `02-nutricion/09-inoculacion-el-analisis.md` § R7.
+
 ## Lo que salió del tanque, y por qué
 
 | Producto | Por qué sale |
@@ -154,6 +187,15 @@ Hay inóculo de mosca blanca en el suelo de Inv 5 y 3C. Antes de plantar Vegmo S
   se ha medido.** El compuesto promedia, y Bloque 4 tiene la M.O. más alta de la finca. Es lo
   que ya pasó con la salinidad de 3B (C.E. 0,829), que el compuesto había vuelto invisible
 - **🟡 *Trichoderma* por bloque en el tiempo** — sostiene o cae el cambio de calendario
+- **🔴 % de colonización micorrízica en raíz** — decide si las micorrizas entran o no, y si el
+  Fosfolip es la mejor forma de cubrir el fósforo o solo la que quedó
+- **🔴 Nematodos por grupo funcional** — el Pokonia ($129.000/L) es el único producto comprado
+  contra un problema que no está medido
+- **🔴 ¿El drench de 3C e Inv 5 debe llevar *Beauveria*/*Paecilomyces* siempre**, y no solo con
+  Vegmo Single? Depende de si el daño de mosca blanca aparece en las otras variedades de esas
+  camas — eso lo sabe el campo
+- **🟡 Precio y dosis standalone del Sáfer Micorrizas** — el repositorio lo tiene a $1.519/kg en
+  un archivo y a $3.272/kg en otro, y los 100 g/m² son la dosis del Terra Life, no la suya
 - **🟡 Dosis de inmersión de raíz del Fitoderma** — es la única vía que le queda al producto
 - **🟡 Temperatura de almacenamiento del Fosfolip y del Estabios** — también son líquidos
 - **🟡 Jornal real:** 4–5 bombas por cama × 60 camas es el único renglón donde esta propuesta

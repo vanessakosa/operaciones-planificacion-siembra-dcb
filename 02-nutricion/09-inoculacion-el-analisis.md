@@ -750,3 +750,143 @@ Y hay un segundo motivo, operativo: el agua de nacimiento **arrastra sedimento**
 nueva y el goteo, eso es taponamiento de goteros — que es precisamente el problema de
 uniformidad de riego que el repositorio ya identifica como *la limitante dominante* (solo ~22 %
 del área rinde a potencial). **Vale preguntar si hay filtro y de qué malla.**
+
+---
+
+## 🔴 R7. ¿Por qué solo esos dos? · auditoría del argumento
+
+> *"Muéstrame el argumento de que esos dos productos son los únicos para el drench."*
+> — Vanessa, 2026-09-09
+
+### Primero, cómo se construyó realmente
+
+**Es un argumento de eliminación, no de diseño.** Tomé la lista de productos que ya estaban en
+el tanque y fui tachando:
+
+| Producto | Por qué salió | Fuerza del argumento |
+|---|---|---|
+| **Raizal 400** | Producto de trasplante por etiqueta · auxina 33–67× diluida · P que el alofano fija | 🟢 **Fuerte.** Tres razones independientes, todas de su propia ficha |
+| **Fullfert** | Aporta 0,06 g C/m² contra 450 del Bokashi · ya está en el fertirriego | 🟢 **Fuerte.** Es un balance de masa, no una opinión |
+| **Estabios** | 1×10⁸ UFC **total** entre 4 organismos: $590 por 10⁹ contra $148 | 🟡 **Medio.** Es un argumento de precio por función, no de que no sirva. Por eso quedó en ensayo partido |
+| **Fitoderma** | 0,0045 % del *Trichoderma* residente | 🟡 **Medio.** El conteo residente es un compuesto de Bloque 3+4, y sus oligosacarinas no las cubre ese argumento. Por eso quedó en ensayo |
+| **Terra Life** | 0,0009 % del residente | 🟢 Fuerte para su *Trichoderma* · 🔴 **débil para sus micorrizas** — ver abajo |
+
+Y lo que quedó, quedó **por sobrevivir, no por haber sido elegido:**
+
+| Producto | Por qué se queda |
+|---|---|
+| **Promobac** | El más barato del programa por UFC útil, y **no hay línea base de *Bacillus*** que permita aplicarle el argumento de futilidad |
+| **Fosfolip** | Solubilizador de P — el cuello de botella químico del andisol — y es hongo, que a pH 5,6–5,8 tiene ventaja |
+
+**El problema de un argumento por eliminación es que nunca pregunta la otra dirección:** ¿qué
+funciones necesita este suelo en el momento del trasplante, y el conjunto que sobrevivió las
+cubre? Eso no lo verifiqué. Al verificarlo aparecen tres huecos.
+
+### La auditoría por función
+
+| Función que este suelo necesita | Evidencia de que la necesita | ¿Cubierta? |
+|---|---|---|
+| **Antagonismo a *Fusarium*** | 13 eventos en Bloque 3 · Inv 4 *"generalizado en suelo"* · 3×10⁴ UFC/g | 🟢 Sí — los 4 *Bacillus* del Promobac |
+| **Solubilización de fósforo** | P soluble **0,107 mg/L**, fijación por alofano | 🟡 Sí, por **una** de las dos vías posibles — ver hueco #1 |
+| **PGPR / promoción radicular** | — | 🟢 Sí — Promobac |
+| **🔴 Micorrizas** | Andisol que fija P. Es **la otra vía** al fósforo, y la única que lo alcanza por exploración en vez de por solubilización | 🔴 **NO. Y salió con un argumento equivocado** |
+| **🔴 Inóculo de mosca blanca en suelo** | Documentado en **3C e Inv 5**. Dos lotes de Matricaria sacrificados | 🔴 **NO en el drench de rutina** — solo como protocolo aparte para Vegmo Single |
+| **🟡 Nematodos** | Ninguna. **Nunca se han contado** | 🟡 Pokonia existe, cuesta $129.000/L, y nunca lo analicé |
+| **Fijación de N** | Ninguna: se fertirriega N, y Kempf Fase 1 pide **no** exceso de nitrato soluble | 🟢 Correctamente ausente |
+| **Carbono / alimento** | — | 🟢 Correctamente ausente: lo hace el Bokashi, 7.500× |
+
+---
+
+### 🔴 Hueco #1 · Micorrizas — apliqué el argumento equivocado
+
+El repositorio las sacó con esto: *"20 esporas/g a 100 g/m² son 2.000 esporas/m² repartidas en
+90 kg de suelo. Muy diluido."* Y yo lo dejé pasar sin revisarlo.
+
+**Ese es un argumento de paridad de población, y las micorrizas no funcionan por población.** Un
+*Trichoderma* tiene que competir contra 1,4×10⁶ UFC/g que ya están ahí — ahí la paridad manda, y
+el argumento es correcto. **Una espora micorrízica no compite contra nada: coloniza una raíz y
+después la hifa crece.** Basta un evento de colonización por planta. Es el mismo error que ya
+cometí dos veces hoy — juzgar un mecanismo con la vara de otro.
+
+Y hay tres razones más por las que este hueco importa:
+
+1. **Es la otra solución al problema central del suelo.** El andisol fija fósforo; hay dos
+   maneras de llegar a ese P: **solubilizarlo** (Fosfolip) o **alcanzarlo con hifas**
+   (micorrizas). **Compré una sin compararla con la otra.**
+2. **Las condiciones son ideales.** La colonización micorrízica se suprime con P soluble alto.
+   El suyo es 0,107 mg/L. No hay nada suprimiéndola.
+3. **La comparación de costo está mal planteada.** El Fosfolip se paga **cada aplicación**; una
+   micorriza que se establece **persiste y se extiende**, sobre todo en No-Dig. Compararlos por
+   aplicación favorece artificialmente al Fosfolip. Hay que compararlos **por año o por vida de
+   la cama.**
+
+**Y sin embargo, el argumento correcto puede terminar eliminándolas igual**, por tres razones
+distintas de la que se usó:
+
+| | |
+|---|---|
+| **El No-Dig ya es la intervención micorrízica principal** | No voltear conserva la red de hifas. Es, otra vez, la práctica y no el producto |
+| **La rotación biosupresora ya las siembra** | *Marigold* y *matricaria* son Asteraceae, **fuertemente micorrízicas** — la rotación que ya se hace contra el *Fusarium* está construyendo la red gratis |
+| **🟡 Casi un tercio del catálogo no es micorrízico** | **Gomphrena, amaranto y celosia** son Amaranthaceae y **dianthus / Green Ball** es Caryophyllaceae: familias mal o no micorrizadas. Una inoculación a toda la finca se desperdicia en esas camas |
+
+**Lo que decide:** el **% de colonización micorrízica en raíz** — análisis estándar, y Bioquirama
+ya hace el microbiológico. Con ese número la pregunta se cierra: si la colonización ya es alta,
+no se compra nada y el Fosfolip sigue solo; si es baja, hay que comparar en serio contra el
+Fosfolip, por año y no por aplicación.
+
+*Nota de precio: el repositorio tiene el Sáfer Micorrizas a **$1.519/kg** en un archivo y a
+**$3.272/kg** en otro. Antes de comparar hay que resolver cuál es, y conseguir su **dosis
+standalone** — la de 100 g/m² es la del Terra Life, no la suya.*
+
+---
+
+### 🔴 Hueco #2 · La mosca blanca de 3C e Inv 5
+
+El protocolo exige drench de *Beauveria* o *Paecilomyces* antes de plantar **Matricaria Vegmo
+Single**, por inóculo de mosca blanca en el suelo de 3C e Inv 5. Eso está bien y es correcto.
+
+**Pero el inóculo está en el suelo independientemente de lo que se siembre encima.** El drench de
+preparación de cama en 3C y en Inv 5 es exactamente la oportunidad de atacarlo, y hoy no lo hace:
+el protocolo lo trata como un requisito de una variedad, no como una condición de esas camas.
+
+**Pregunta, no recomendación:** ¿el drench de preparación de 3C e Inv 5 debería llevar
+*Beauveria*/*Paecilomyces* **siempre**, y no solo cuando entra Vegmo Single? No lo decido solo,
+porque depende de si el daño de mosca blanca aparece también en las otras variedades de esas
+camas — y eso lo sabe el campo, no el repositorio. Los registros muestran 3 eventos en Inv 5 y 3
+en 3C, pero uno de ellos está marcado *"TODAS"*, lo que apunta a que sí.
+
+---
+
+### 🟡 Hueco #3 · Pokonia
+
+*Pochonia chlamydosporia*, nematófago. **Función única — ningún otro producto la cubre.** Cuesta
+$129.000/L y está en el protocolo como drench mensual. **No lo analicé**, no tiene ficha en el
+repositorio, y sobre todo: **nunca se han contado nematodos en esta finca.** Es el único producto
+del programa comprado contra un problema que no está medido.
+
+Se queda como estaba: **ensayo partido en Inv 4** (el único bloque con riego uniforme, o sea el
+único donde un ensayo es válido) y **conteo de nematodos por grupo funcional** a Bioquirama.
+
+---
+
+### La respuesta corta a la pregunta
+
+**No, no están demostrados como los dos únicos.** Están demostrados como **los dos que sobreviven
+el filtro de costo por UFC entre los productos que ya se estaban comprando** — que es un filtro
+bueno para elegir entre productos que hacen lo mismo, y ciego para las funciones que nadie está
+comprando.
+
+Lo que sí sostengo con confianza:
+
+- 🟢 **El Raizal y el Fullfert salen.** Balance de masa y etiqueta propia. No dependen de nada
+  por medir.
+- 🟢 **El Promobac se queda.** Nada lo desplaza por costo por UFC.
+- 🟢 **El Fosfolip cubre una función real.** El P soluble en 0,107 mg/L no es discutible.
+- 🟡 **Que el Fosfolip sea la MEJOR forma de cubrirla** — eso no lo demostré. Compite con las
+  micorrizas y la comparación no se hizo.
+- 🔴 **Que sean los únicos DOS** — eso es falso hasta resolver micorrizas y la mosca blanca de
+  3C/Inv 5.
+
+**Lo que hay que medir, en orden de lo que desbloquea:** % de colonización micorrízica ·
+nematodos por grupo funcional · viabilidad del Promobac. Los tres van en la misma muestra a
+Bioquirama, con la separación del compuesto Bloque 3 / Bloque 4 / Bloque 5.

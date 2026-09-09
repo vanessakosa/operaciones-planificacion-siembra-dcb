@@ -50,15 +50,15 @@ la misma cantidad.
 
 **La dosis está dentro de un factor de 2–3. La técnica puede dejar la aplicación en cero.**
 
-1. **🔴 El agua: cloro libre por debajo de 0,5 ppm y pH entre 5,5 y 7,5.** El cloro residual
-   mata *Bacillus* y *Trichoderma*. **Pregunta abierta y de primera prioridad: ¿de dónde sale el
-   agua de la finca y tiene cloro?** Si lo tiene, puede ser la explicación completa de por qué
-   el programa no rinde, y ninguna discusión de dosis importa antes de resolverlo. El pH sí se
-   conoce: el fertirriego corre a 5,6–5,8, dentro de rango.
+1. **🟢 El agua: cloro descartado.** Las guías piden cloro libre bajo 0,5 ppm y pH 5,5–7,5.
+   **El agua es de nacimiento y no tiene cloro** (Vanessa, 2026-09-09). Era el único riesgo que
+   podía anular todo el programa biológico y no existe. *Corrige a
+   `00-contexto/01-empresa-y-objetivos.md`, que decía "agua de acueducto (no nacimiento)".*
 2. **Suelo húmedo, no saturado, antes de aplicar.** Ya está: es el paso 4 de la preparación
    (riego suave con agua sola). Estaba bien puesto.
 3. **🔴 Riego de arrastre con agua sola inmediatamente después del drench, ANTES del plástico.**
-   No estaba en el protocolo y es el candidato más fuerte a "queda corto": los 90 L por cama son
+   Descartado el cloro, **este es el candidato #1 a "queda corto"**. No estaba en el protocolo:
+   los 90 L por cama son
    2,5 mm de agua, que sobre suelo húmedo mueven el producto unos pocos centímetros. Sin
    arrastre el inoculante se queda en la superficie, donde le da el sol y no hay raíz. Después
    del plástico ya no hay forma de moverlo.
@@ -145,8 +145,6 @@ Hay inóculo de mosca blanca en el suelo de Inv 5 y 3C. Antes de plantar Vegmo S
 
 ## Pendiente de decidir
 
-- **🔴 ¿De dónde sale el agua de la finca y tiene cloro?** Gratis de averiguar y puede anular
-  todo lo demás
 - **🔴 Al proveedor: el 1 L/ha del Promobac, ¿en cuántos litros de agua?** Es la pregunta que
   convierte la dosis de juicio en dato, y reconcilia la etiqueta con la regla de 1–2 cc/L
 - **🔴 Medir los centímetros de infiltración** en la próxima cama inoculada

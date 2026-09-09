@@ -640,19 +640,23 @@ $5.001 por cama, los dos productos.
 Esto es lo que la investigación cambió más, y no es la dosis. **La dosis está dentro de un
 factor de 2–3; la técnica puede dejar la aplicación en cero.**
 
-### 1. El agua puede estar matando el inóculo
+### 1. 🟢 El agua: cloro descartado
 
-Las guías coinciden en dos límites para inoculantes microbianos:
+Las guías piden **cloro libre por debajo de 0,5 ppm** (el cloro residual mata *Bacillus* y
+*Trichoderma*) y **pH entre 5,5 y 7,5**.
 
-- **Cloro libre por debajo de 0,5 ppm** — hay que declorar (filtro de carbón, o dejar reposar el
-  agua destapada). El cloro residual mata *Bacillus* y *Trichoderma*.
-- **pH del agua entre 5,5 y 7,5.**
+> **🟢 CERRADO (Vanessa, 2026-09-09): el agua es de nacimiento y no tiene cloro.**
 
-🔴 **Esta es la primera pregunta y no está en el repositorio: ¿de dónde sale el agua de la
-finca?** Si es de quebrada, reservorio o pozo, no hay problema de cloro. Si tiene cualquier
-tratamiento con cloro, **puede ser la explicación completa de por qué el programa no rinde**, y
-ninguna discusión de dosis importa hasta resolverlo. El pH sí lo conocemos: el fertirriego corre
-a 5,6–5,8, que está dentro de rango.
+Era el riesgo que podía anular todo el programa biológico, y no existe. **Con eso, la falta de
+riego de arrastre pasa a ser el candidato #1 a "queda corto".**
+
+**Y esto corrige el repositorio:** `00-contexto/01-empresa-y-objetivos.md` decía *"Agua de
+acueducto (no nacimiento)"* — exactamente al revés. De haberlo tomado como cierto, la conclusión
+habría sido la contraria. Corregido.
+
+*Detalle menor:* un nacimiento a 2.100 m puede salir a 12–16 °C. El agua fría no mata la espora
+de *Bacillus*, solo retrasa su germinación. No cambia la dosis ni la técnica; solo es una razón
+más para aplicar al final de la tarde y no en la madrugada.
 
 ### 2. Suelo húmedo, no saturado — y **riego de arrastre después**
 
@@ -703,11 +707,46 @@ después ya no hay forma de mover nada.
 
 ## Lo que hay que preguntar, en orden de lo que desbloquea
 
-1. **🔴 ¿De dónde sale el agua de la finca y tiene cloro?** Gratis de averiguar, y puede anular
-   todo lo demás.
-2. **🔴 Al proveedor: el 1 L/ha del Promobac, ¿en cuántos litros de agua?** Es la pregunta que
+1. **🔴 Al proveedor: el 1 L/ha del Promobac, ¿en cuántos litros de agua?** Es la pregunta que
    convierte la dosis de juicio en dato.
+2. **🔴 Análisis de agua del nacimiento** — ver § R6, abajo. No es de inoculación: es de
+   fertirriego, y es plata.
 3. **🔴 Medir los centímetros de infiltración** en la próxima cama inoculada.
 4. **🔴 Conteo de viabilidad del Promobac** de la bodega, con fecha y lote.
 5. **🟡 Bioquirama: separar el compuesto** (Bloque 3 solo, Bloque 4 solo, Bloque 5).
 6. **🟡 Dosis de inmersión de raíz del Fitoderma.**
+
+---
+
+## 🔴 R6. No hay análisis de agua, y eso no es un problema de inoculación: es de fertirriego
+
+Buscando el dato del cloro apareció algo más grande. **No hay una sola variable del agua medida
+en ningún archivo del repositorio** — cero resultados para análisis de agua, bicarbonatos,
+dureza, C.E. del agua. Las tres analíticas de agosto son de **suelo**.
+
+Para la inoculación no importa mucho: sin cloro y con pH probablemente en rango, el agua sirve.
+**Para el fertirriego importa mucho, y en pesos.**
+
+La fórmula de fertirriego que se cerró en esta sesión se diseñó desde el análisis de suelo,
+**tratando el agua como un blanco**. Pero un nacimiento en zona volcánica aporta cosas, y dos de
+ellas van directo contra decisiones que ya se tomaron:
+
+| Lo que puede traer el agua | Contra qué decisión choca |
+|---|---|
+| **Calcio y magnesio** | El **Haifa N-Cal es 47–52 % del costo del tanque**. Si el agua ya trae Ca, parte de ese nitrato de calcio es redundante |
+| **Bicarbonatos (HCO₃⁻)** | Suben el pH y **consumen ácido**. El tanque corre a 5,6–5,8, que es el pH sobre el que se construyó todo el argumento del quelato de cobre y del *Penicillium* del Fosfolip. Con bicarbonatos altos, mantener ese pH cuesta ácido que hoy no está presupuestado |
+| **Azufre como sulfato** | Ya se eliminó el Bitter Mag por exceso de azufre en Bloques 3 y 5. Si el agua trae sulfato, ese diagnóstico está incompleto |
+| **Sodio** | El suelo tiene C.E. muy baja (0,202–0,280), pero 3B ya mostró salinidad activa (0,829). El agua es la fuente que nadie ha mirado |
+| **Hierro y boro** | El Haifa Micro se compró por sus micros. El agua puede estar aportando parte |
+
+**No estoy afirmando que el agua traiga nada de esto** — no hay dato, y ese es exactamente el
+punto. Es una entrada sin medir en una fórmula que ya está corriendo.
+
+**Qué pedir**, al mismo laboratorio que hizo los suelos, en una sola muestra: **pH · C.E. ·
+bicarbonatos · Ca · Mg · Na · K · S-SO₄ · Fe · B · dureza total**. Es un análisis estándar y
+barato, y es el único insumo que le falta a la fórmula de fertirriego para estar completa.
+
+Y hay un segundo motivo, operativo: el agua de nacimiento **arrastra sedimento**. Con la bomba
+nueva y el goteo, eso es taponamiento de goteros — que es precisamente el problema de
+uniformidad de riego que el repositorio ya identifica como *la limitante dominante* (solo ~22 %
+del área rinde a potencial). **Vale preguntar si hay filtro y de qué malla.**

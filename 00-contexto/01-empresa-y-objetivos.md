@@ -34,7 +34,13 @@ El cultivo se maneja bajo dos marcos que hay que respetar en toda recomendación
   Este es el reto fitopatológico #1 del cultivo y explica la mayoría de las decisiones de manejo.
 - Fusarium presente en suelo desde el análisis inicial — **condición base del terreno**, no contaminación puntual
 - Reto entomológico: trips, pulgones, mosca blanca
-- Agua de acueducto (no nacimiento)
+- **🔴 CORREGIDO 2026-09-09 (Vanessa): el agua es de NACIMIENTO y NO tiene cloro.** Este archivo
+  decía *"Agua de acueducto (no nacimiento)"* — exactamente al revés. Importa: de acueducto
+  habría cloro residual, y el cloro mata *Bacillus* y *Trichoderma*, lo que habría anulado todo
+  el programa biológico. Con agua de nacimiento ese riesgo no existe
+- **🔴 No hay análisis de agua en ningún archivo del repositorio.** La fórmula de fertirriego se
+  diseñó tratando el agua como un blanco, y el agua de nacimiento en zona volcánica aporta
+  bicarbonatos, calcio y magnesio. Ver `02-nutricion/09-inoculacion-el-analisis.md` § R6
 - **Limitante crítica: presión de agua insuficiente en Inv3B e Inv5** — inversión pendiente ~6M COP.
   Desbloquea 949 m² problemáticos. Es la inversión de mayor retorno identificada.
 - Lluvia intensa frecuente — causa principal de pérdida en exterior (maleza/desyerbe)

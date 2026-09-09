@@ -16,7 +16,14 @@
 >    lote de producción, es una evaluación de cultivares**, y eso decide cómo se
 >    planta y qué se mide (secciones 4.3 y 12).
 >
-> **Estado:** propuesta técnica. Cuatro puntos bloqueantes pendientes — ver
+> **Y cuatro más, de la segunda vuelta del mismo día, que obligaron a rehacer la
+> sección 3 completa:** entra riego en Inv 2 · **el corte es diario**, así que dos
+> sitios con dalia son dos rondas diarias · **las dalias fallaron también en Inv 2
+> zona baja y en Inv 1** —las zonas frescas—, lo que refuta que el bloque fuera la
+> causa · y **la densidad propuesta era demasiado holgada**. Sitio y densidad
+> quedaron revisados en la sección 3.
+>
+> **Estado:** propuesta técnica. Los puntos bloqueantes están en
 > *Lo que falta confirmar*, sección 13.
 
 ---
@@ -253,11 +260,11 @@ llegue a la cama vecina la afecta.** Es por esto que en crisantemo se usan
 cortinas de oscurecimiento.
 
 > **Consecuencia práctica: no se puede tener una cama testigo sin luz al lado de
-> una cama con luz, dentro del mismo invernadero.** Inv 4A e Inv 4B son los dos
-> lados de la misma nave: el testigo quedaría contaminado y el resultado no
-> significaría nada.
+ una cama con luz, dentro del mismo invernadero.** El testigo quedaría
+> contaminado y el resultado no significaría nada — y en Inv 2, con circulación
+> central y camas a lado y lado, menos todavía.
 >
-> **Por eso las 148 plantas van todas con luz.** El testigo con y sin luz, si se
+> **Por eso las plantas van todas con luz.** El testigo con y sin luz, si se
 > quiere hacer, va en la segunda vuelta —con esquejes propios y en naves
 > separadas—, no aquí.
 
@@ -290,84 +297,202 @@ descartados por `microclima_bloques.csv`:
 
 ---
 
-# 3 · Dónde van: bloque, cama y densidad
+# 3 · Dónde van, y con qué densidad — **revisado 2026-09-09 (2.ª vuelta)**
 
-## 3.1 · El bloque
-
-> **Inv 4A e Inv 4B.**
-
-**Razón — la limitante dominante de la finca es el agua, y la dalia es el cultivo
-que más la castiga.** `CLAUDE.md` lo dice de frente: *"solo ~22 % del área rinde a
-potencial"* por presión y uniformidad de riego, y *"camas cortas = presión
-uniforme = riego homogéneo… la lección transferible más importante de la finca"*.
-
-| Candidato | Uniformidad de riego | Radiación | Veredicto |
-|---|---|---|---|
-| **Inv 4A** | `ALTA_UNIFORME` / `UNIFORME` · M.O. **25,6 %** | Media | ✅ **Elegido** |
-| **Inv 4B** | `ALTA_UNIFORME` / `UNIFORME` | Media | ✅ **Elegido** |
-| Inv 4C | `ALTA_UNIFORME` pero **camas largas**, con alerta *"revisar si pierden uniformidad"* | Media | Segunda opción |
-| Inv 2 | `TANQUE_EN_REPARACION`, `NO UNIFORME`, el más irregular | Alta/media | ❌ **Donde fallaron** |
-| Inv 5 | `LA_PEOR_DEL_SISTEMA` en presión de agua | Media | ❌ |
-| Exterior (Inv 6, Ext 4) | Ventilación ALTA y lluvia — **lo mejor contra oídio** | Alta | ⚠️ ver 3.2 |
-
-## 3.2 · Por qué no van afuera, aunque el oídio lo pediría
-
-A campo abierto el oídio se controla casi solo: llueve, y la lluvia lava y
-revienta los conidios. Es como se produce dalia comercialmente en casi todo el
-mundo. **Pero aquí hay dos riesgos que no valen sobre 160 plantas de regalo:**
-
-1. **Heladas.** Sembradas ahora (sem 38–39), la cosecha cae en **diciembre–
-   febrero**, que es la ventana clásica de heladas en la Sabana. La dalia es
-   **sensible a helada — una noche la mata**. Y el riesgo se agrava porque el
-   ciclo de este lote es `SIN_DATO`: con esqueje y 16 h de fotoperiodo **no se
-   sabe en qué semana va a florecer** (ver 2.2), así que ni siquiera se puede
-   apuntar a esquivar la ventana. Además `clima_semanal.csv` **está vacío**: la
-   finca no tiene un solo registro de temperatura mínima semanal con el que
-   dimensionar ese riesgo. Decidir a favor del exterior hoy sería decidir a
-   ciegas dos veces.
-2. **La flor.** La lluvia directa daña el capítulo de las dalias decorativas y
-   dispara botrytis en la flor abierta.
-
-> **Decisión:** las 160 van bajo cubierta, en las camas de riego más parejo de la
-> finca, y el oídio se ataca con las cinco palancas de la sección 7 —
-> **empezando por el lavado de dosel, que reproduce bajo plástico lo que hace la
-> lluvia afuera.**
+> **Cuatro datos nuevos de Vanessa que obligan a rehacer esta sección entera:**
 >
-> El ensayo exterior vale la pena, pero **con los esquejes propios de la segunda
-> vuelta**, no con el regalo, y programado para salir de la ventana de heladas —
-> con `clima_semanal.csv` ya empezado a llenar (sección 12).
+> 1. *"Ya vamos a empezar a aplicar planes de riego en el 2."*
+> 2. *"La ventana de corte de ellas es **diaria**… sí sería un ajuste tener que
+>    hacer un corte allá y un corte aquí."*
+> 3. *"Cuando la sembré en el 2, la sembré en **la parte baja porque es la parte
+>    más fresca**… pero **igual han tenido mildeo, igual han tenido pulgones**.
+>    **También la sembré en el 1. Ahí pasó lo mismo.**"*
+> 4. *"Esa densidad que tú me diste me parece excesiva… **yo ahorita las tengo
+>    sembradas a una por hueco**… si las siembro en zigzag serían 448."*
 
-## 3.3 · Densidad — aquí hay un error a corregir
+## 3.1 · 🔴 Primero: mi diagnóstico anterior estaba parcialmente equivocado
 
-`variedades_parametros_siembra.csv` dice **`DISTANCIA SIEMBRA = 15 cm`** para
-Dahlias. Con la retícula de la finca (8 líneas a 15 cm × huecos cada 15 cm) eso
-son **~44 plantas/m²**.
+La primera versión de este documento decía que **el sitio explicaba el fracaso** —
+Inv 2 sin fertirriego, camas desiguales— y que mover el cultivo a Inv 4 era la
+palanca. **El punto 3 de arriba lo refuta**, y hay que decirlo claro:
 
-**Para una dalia eso es entre 8 y 12 veces demasiado denso.** La referencia
-comercial de dalia de corte es **30–45 cm entre plantas** (12–18 pulgadas, más
-para tipos dinnerplate). Y la densidad excesiva es **causa directa de oídio**:
-dosel cerrado → humedad de dosel alta de noche → la condición exacta que el
-patógeno necesita.
+> **Las dalias fallaron en Inv 2 zona baja, que es la fresca y la que más agua
+> recibe. Y fallaron igual en Inv 1.** Dos zonas distintas, mismo resultado.
+> **El bloque no es la variable.** Cambiar de invernadero, por sí solo, no iba a
+> arreglar nada.
 
-> **Marco propuesto: 2 líneas × 1 planta cada 3 huecos.**
+## 3.2 · 🟢 Y lo que sí comparten los tres intentos, dicho por ella sin darse cuenta
 
-| | Valor |
+> *"La sembré en la parte baja **porque es la parte más fresca**."*
+
+Los tres sitios donde la dalia ha fallado tienen el mismo perfil, y no es
+coincidencia — **se eligieron a propósito por frescos**, para protegerlas del
+achicopalamiento de mediodía:
+
+| Sitio | Perfil en `microclima_bloques.csv` | Antecedente de mildeo del propio repo |
+|---|---|---|
+| **Inv 2 zona baja** | *"zona baja sombreada"* · `radiacion_rel = BAJA` | `incidencia_fitosanitaria.csv` id 8: MILDEO, sem 21, **PERSISTENTE** |
+| **Inv 1** | `humedad_rel = ALTA_NOCTURNA` · `SIN_FERTIRRIEGO` | `01-invernaderos.md`: *"humedad nocturna alta → **mildeo en rosas**"* |
+
+Y la literatura sobre *Golovinomyces cichoracearum* en dalia da como condiciones
+predisponentes: **humedad alta, temperaturas moderadas de 20–30 °C, y BAJA LUZ.**
+
+> ### 🔴 El hallazgo de esta sesión
+>
+> **Buscando protegerlas del calor de mediodía, las ha puesto tres veces
+> exactamente en el microclima que el oídio necesita. La sombra resuelve el
+> achicopalamiento y crea el mildeo.**
+>
+> Y la salida no es sombra: **es radiación alta con agua y enfriamiento
+> evaporativo** — que es justamente para lo que sirve el lavado de dosel de la
+> sección 8.2. Ésa es la pieza que permite poner la dalia a pleno sol sin que se
+> achicopale, y es la que ha faltado en los tres intentos.
+
+**Registrado en `.claude/skills/dcb-variedades/references/`:** la observación de
+Inv 2 se promovió a regla establecida (segunda vez documentada, misma zona, mismo
+comportamiento). La generalización *"la dalia no va en zona fresca ni sombreada"*
+quedó como **candidata a regla pendiente del juicio de Vanessa**, porque son zonas
+distintas con una característica en común, no la misma zona repetida.
+
+## 3.3 · El corte diario cambia la cuenta, y Vanessa tiene razón
+
+> *"La ventana de corte de ellas es diaria… sí sería un ajuste tener que hacer un
+> corte allá y un corte aquí."*
+
+**Es un argumento duro y no lo había considerado.** La dalia se corta **todos los
+días** y es **perenne sin cierre de cama**. Dos sitios con dalia no son dos rondas
+de corte: son **dos rondas de corte diarias, indefinidamente**. Es probablemente
+el mayor costo de jornal de cosecha por m² del catálogo.
+
+**Y hay un segundo argumento a favor de Inv 2 que tampoco había visto:**
+`01-invernaderos.md` dice que Inv 2 tiene **malla de tutorado de 15×15 cm, 6
+huecos de alto**, ya instalada. La dalia necesita dos capas de malla y es de tallo
+alto — **esa infraestructura ya está montada ahí y en Inv 4 habría que ponerla.**
+
+Sumado a que Inv 2 **va a tener riego**, la objeción principal que yo tenía contra
+ese bloque se cae.
+
+> ### Recomendación de sitio: **Inv 2, zona ALTA**
+>
+> No la zona baja. La **alta**: `temperatura_rel = ALTA`, `humedad_rel = BAJA`,
+> `radiacion_rel = ALTA` — **el perfil opuesto al de los tres fracasos**, y el
+> mejor microclima anti-oídio de la finca para este cultivo.
+>
+> Gana por cuatro razones a la vez: **una sola ronda de corte** · **microclima
+> correcto** · **malla ya instalada** · **riego entrando**.
+
+### Tres condiciones que no son opcionales
+
+| # | Condición | Por qué |
+|---|---|---|
+| 1 | **Verificar el conflicto con el ensayo de Limonium** | `01-invernaderos.md`: *"zona alta y seca de Inv 2: destinada al ensayo de Limonium sinensis serie Diamond"*. Hay que saber si sigue en pie antes de comprometer la zona |
+| 2 | **Anotar la CAMA EXACTA, no "bloque 2"** | Regla del propio repositorio: *"si un ensayo va mal en Inv 2, el resultado es ambiguo entre la variedad y la cama… conviene anotar en qué cama exacta está"*. Con un ensayo de cultivares esto pasa de recomendable a indispensable |
+| 3 | **🔴 Medir la cama y probar la uniformidad del riego ANTES de sembrar** | El riego de Inv 2 es nuevo: **sin historial y sin calibrar**. Prueba de vasos a lo largo de la cama, no después. Y `capacidad_bloques.csv` tiene Inv 2 como `PENDIENTE MEDIR CAMA POR CAMA` — esta siembra es la ocasión de cerrar ese hueco |
+
+## 3.4 · 🔴 El riesgo que la consolidación trae consigo, y que hay que resolver antes
+
+Consolidar en Inv 2 significa poner **160 esquejes vírgenes en la misma nave que
+las dalias viejas**, que están registradas con **mildeo persistente `EN_MANEJO`** y
+con insectos. Dos consecuencias, y la segunda es la grave:
+
+1. **El oídio es inóculo aéreo dentro de la nave.** Va a llegar. Manejable con
+   programa foliar, pero hay que contar con ello desde el día uno.
+2. **🔴 Si las viejas tienen virus del mosaico, los pulgones lo pasan a las
+   nuevas.** Y como la vía de multiplicación de esta colección **son esquejes**
+   (sección 4.4), un lote nuevo infectado en su primera temporada **no se recupera
+   nunca**: cada ronda de esquejes multiplica el virus, no la colección.
+
+> **La cuenta es asimétrica: lo que se gana consolidando es jornal. Lo que se
+> arriesga es la colección entera.**
+
+### La decisión que resuelve las dos cosas, y es de Vanessa
+
+**¿Qué pasa con las dalias viejas?** Lo que hay registrado:
+
+| Fuente | Dato |
 |---|---|
-| Líneas usadas de las 8 | **líneas 2 y 7** → **75 cm entre líneas** |
-| A lo largo de la cama | **1 planta cada 3 huecos** → **45 cm** |
-| Densidad resultante | **3,7 plantas/m²** |
-| Plantas por cama de 112 huecos (Inv 4A o 4B) | **74** |
-| **Inv 4A + Inv 4B** | **148 plantas** |
-| **Reserva en materas** | **12 plantas** para reponer fallos |
-| **Total** | **160** ✅ |
+| `campo_siembras.csv` · lote Ball 696 | *"Ya semana 6 **poco productivas, no me gustaron**"* |
+| `campo_siembras.csv` · lote DCB 100 | *"**mildeo persistente**, insectos y mildeo semana 24"* |
+| `registro_tallos.csv` | **90 tallos en 2 registros** (agosto 2026). ⚠️ El registro puede estar incompleto — no se afirma que hayan producido solo eso |
+| `ciclos_variedad.csv` | **Perenne sin cierre de cama** → ocupan Inv 2 **indefinidamente** |
 
-Las 12 de reserva no son sobra: en una colección de regalo **siempre se guarda
-material de reposición**, y sirven además como testigo sano si aparece virosis
-(sección 4.3).
+**Si el juicio de campo es que ese lote no va a mejorar, cerrarlo antes de que
+lleguen los esquejes resuelve todo de una vez:** elimina el foco de inóculo,
+elimina el riesgo de virus, libera el área, y deja la nave limpia para empezar
+bien. Es la decisión de mayor apalancamiento de todo este documento.
 
-**El corredor central de 75 cm entre las dos líneas es deliberado:** es el
-pasillo de aire que baja la humedad del dosel, y es por donde se entra a
-desbotonar, deshojar y cosechar sin pisar la cama.
+Y encaja con la unidad de medida del repositorio — **margen por m² por semana de
+cama ocupada**: un lote perenne del que la propia Vanessa dijo *"no me gustaron"*,
+con mildeo persistente, ocupando cama sin fecha de cierre, es la peor cuenta
+posible. **`CLAUDE.md` dice que este repositorio existe justamente para tomar esa
+decisión.**
+
+### Si las viejas se quedan — el mínimo no negociable
+
+| # | Medida |
+|---|---|
+| 1 | **Limpieza física del foco** (tejido afectado en bolsas, fuera del invernadero) **antes** de que entren las nuevas — es regla de la finca |
+| 2 | **Programa foliar corriendo en las viejas desde ya**, no cuando lleguen las nuevas. Bajar el inóculo antes, no después |
+| 3 | **Máxima separación dentro de la nave:** viejas abajo, nuevas en la zona alta. No elimina el inóculo aéreo, pero el gradiente cae con la distancia |
+| 4 | **Aceite mineral en las nuevas desde la primera semana** — es la barrera contra la transmisión no persistente de virus (sección 10.6), y aquí el vector viene de al lado |
+| 5 | **Nunca sacar esquejes de las viejas** para ampliar la colección |
+
+### Si el sitio no puede ser Inv 2
+
+La alternativa sigue siendo **una sola cama de Inv 4A o 4B** — riego
+`ALTA_UNIFORME` probado, M.O. 25,6 %, cama uniforme y sin dalias vecinas. Se paga
+con la ronda doble de corte y con montar malla. **Es la opción correcta si las
+viejas se quedan y no se les va a hacer manejo.**
+
+## 3.5 · Densidad — cedo la mitad del área, con el número
+
+Vanessa tiene razón en que dos camas para 160 plantas es demasiado, sobre todo en
+un cultivo **perenne sin cierre de cama**, donde el m² se compromete
+indefinidamente. Las cuatro referencias, sobre la retícula de 15×15 cm:
+
+| Marco | Distancia efectiva | pl/m² | Área para 160 |
+|---|---|---|---|
+| **1 por hueco — lo que tiene hoy** | 15 × 15 cm | **44** | 3,6 m² |
+| **Zigzag (448 por cama de Inv 4)** | ~21 cm tresbolillo | **22** | 7,2 m² |
+| **🟢 PROPUESTO: 1 de cada 3 líneas × 1 de cada 2 huecos** | **45 × 30 cm** | **7,9** | **~20 m² · UNA cama** |
+| ~~Propuesta anterior: 2 líneas × cada 3 huecos~~ | 75 × 45 cm | 3,7 | ~43 m² · dos camas |
+
+**Referencia comercial de dalia de corte: 30–45 cm entre plantas.** Los 45 × 30 cm
+propuestos caen dentro de ese rango; los 15 × 15 y los 21 cm de zigzag están muy
+por debajo.
+
+### Por qué no bajo hasta el zigzag, aunque el área lo pida
+
+**Porque el dosel cerrado es el mecanismo del problema declarado.** El oídio
+germina en el aire húmedo *dentro* del dosel (97–99 % HR nocturna); un dosel
+impenetrable **fabrica esa humedad**. Y hay evidencia de campo propia:
+
+> **Las dalias actuales están sembradas a 1 por hueco — 44 pl/m² — y tienen mildeo
+> persistente.** Eso es un argumento a favor de bajar la densidad, no de subirla.
+
+### El límite hasta donde puedo ceder
+
+**Si el área es la restricción que manda, el piso son 30 × 30 cm** — 1 de cada 2
+líneas × 1 de cada 2 huecos, **11 pl/m², ~14,5 m² para las 160**. Sigue dentro del
+rango publicado (30 cm = 12 pulgadas) y sigue siendo **4 veces más abierto que hoy**.
+
+**Por debajo de eso volvemos al dosel que causó el problema**, y el ensayo perdería
+su sentido: no se podría distinguir un cultivar susceptible de un cultivar bien
+sembrado en el sitio equivocado.
+
+**Y esto tiene salida por dato:** si al final del ciclo el oídio quedó controlado,
+**la siguiente vuelta se densifica con evidencia**, no con estimación. Eso es
+precisamente lo que `calidad_tallo.csv` y el registro de la primera pústula por
+cultivar (sección 12) van a permitir decidir.
+
+### El marco, para pasarlo a campo
+
+> **1 de cada 3 líneas (45 cm entre líneas) × 1 planta cada 2 huecos (30 cm a lo
+> largo).** Sobre retícula de 15 × 15 cm.
+>
+> **160 plantas ≈ 20 m².** ⚠️ Las camas de Inv 2 son de distinta medida y están
+> `PENDIENTE MEDIR` — **hay que medir la cama elegida antes de trazar**, y ajustar
+> el largo ocupado a las 160 plantas reales.
 
 ---
 
@@ -395,8 +520,10 @@ nada de eso.** Todo lo que se sabe de sembrar dalia de bulbo se invierte:
 🔴 **Y esto choca de frente con la limitante histórica de la finca.** El
 diagnóstico de la sección 1 dice que las dalias fracasaron por estrés hídrico.
 **Con esquejes ese riesgo no es del ciclo: es de la primera semana, y es
-irreversible.** Por eso Inv 4A y 4B —riego `ALTA_UNIFORME`— dejan de ser una
-preferencia y pasan a ser condición.
+irreversible.** Por eso la **prueba de uniformidad de riego antes de sembrar**
+(condición 3 de la sección 3.3) deja de ser una recomendación y pasa a ser
+condición: en Inv 2 el riego es nuevo y no está calibrado, y un esqueje no
+perdona una cama que riega desigual.
 
 ## 4.2 · Recepción y aclimatación
 
@@ -515,23 +642,50 @@ inventar nada, con **una sola adición justificada** para dalia.
 | # | Paso |
 |---|---|
 | 1 | **NO voltear la cama.** Aflojar **solo donde esté compactada** |
-| 2 | Mezclar **Bokashi + leonardita** — y **yeso**, porque Inv 4 es Bloque 4 — y aplicar **EN SUPERFICIE**. No enterrar |
+| 2 | Mezclar **Bokashi + leonardita** y aplicar **EN SUPERFICIE**. No enterrar |
 | 3 | Nivelar la superficie sin remover |
 | 4 | Riego suave, **con agua sola** |
 | 5 | **Inocular el suelo. SIEMPRE.** (Etapa 2) |
 | 6 | Poner el **plástico** |
 
-**Dosis para Inv 4A y 4B (20,2 m² cada una), de la tabla v10 ya redondeada:**
+### 🔴 Y aquí Inv 2 abre dos huecos que hay que cerrar antes de preparar
 
-| Producto | Dosis | Base |
+**Inv 2 no está en la tabla de camas de la v10.** `06-formulacion-camas-v8.md` lo
+dice en dos sitios: *"Ext 3B, **Inv 2** y Ext Inv 2 no tienen conteo de huecos —
+quedan fuera de la tabla y la hoja manda **preguntar antes de prepararlas**"*, y
+*"**Inv 1 e Inv 2 usan la fila de Inv 4A/4B**"*.
+
+Las dos cosas juntas dan la salida: **la tasa por m² sí está definida; lo que falta
+es el área.**
+
+| Producto | **Tasa de Inv 4A/4B** | Cantidad |
 |---|---|---|
-| Bokashi V1 | 1 saco de 25 kg por cama = **1,24 kg/m²** | tabla v8/v10 por cama |
-| **Black Diamond GR** (leonardita) | **130 g** por cama = **6,5 g/m²** | ficha 2026-09-03, dosis diferenciada inversa a la M.O. |
-| **Yeso agrícola** | **2 kg** por cama = **100 g/m²** | solo Bloque 4 |
+| **Bokashi V1** | **1,24 kg/m²** | = m² de la cama × 1,24, redondeado al ¼ de saco de 25 kg |
+| **Black Diamond GR** (leonardita) | **6,5 g/m²** | = m² × 6,5, redondeado al múltiplo de 10 |
+| **Yeso agrícola** | 🔴 **NO va** | Ver abajo |
 
-⚠️ **Incompatibilidad ya registrada:** el Black Diamond granulado es
-**incompatible con nitrato de calcio**, que es la línea #1 del tanque. No
-coincidir la aplicación de leonardita con un fertirriego de N-Cal.
+> **1. Medir la cama.** Largo en huecos × 0,18 m²/hueco, que es la regla de área ya
+> verificada en seis bloques. Eso da los m² y con ellos las dos dosis. **Y de paso
+> cierra el `PENDIENTE MEDIR CAMA POR CAMA` que `capacidad_bloques.csv` arrastra
+> para Inv 2.**
+>
+> **2. Sin yeso.** El yeso es *"solo Bloque 4"* y se justifica en el **azufre
+> medido** de ese bloque. **Inv 2 no tiene análisis de suelo** —
+> `analisis_suelo.csv` solo tiene Bloques 3, 4 y 5— así que aplica el mismo
+> criterio que el repositorio ya usa para el exterior: *"ningún exterior lleva
+> yeso… la decisión del yeso se apoya en el azufre medido de Bloque 4, y el
+> exterior no tiene análisis."*
+
+### 🟡 Y un pendiente que esta siembra vuelve urgente
+
+**Inv 2 no tiene una sola variable de suelo medida.** Es el mismo hueco que
+`CLAUDE.md` ya tiene abierto como bloqueo **4f** para Inv 1 — y ahora Inv 2 se le
+suma, con riego entrando y con el cultivo de mayor ticket por tallo del ensayo.
+
+> **Meter Inv 2 en el próximo muestreo de suelo.** No bloquea esta siembra —las
+> tasas de Inv 4A/4B son el default acordado— pero **sin él no se puede afinar ni
+> el fertirriego ni el bokashi de ese bloque**, y todo Inv 2 seguiría manejándose
+> por analogía.
 
 ## 5.2 · La adición para dalia: drenaje del cuello
 
@@ -557,7 +711,7 @@ Esto **no contradice el No-Dig**: es modelado de superficie, no volteo.
   contra un rango de balance de 2–5 %.
 - ❌ **No se agrega magnesio.** Saturación de Mg **32,1 %** contra 10–20 %.
 - ❌ **No se voltea a 25–30 cm.** Destruye el Trichoderma de 1,4×10⁶ UFC/g, que es
-  justamente lo que protege a la dalia del Fusarium de Inv 4A.
+  justamente lo que protege a la dalia de los patógenos de suelo.
 
 ---
 
@@ -712,10 +866,26 @@ con hora, ventana y fecha de corte. **Si aparece botrytis, se suspende.**
 
 `01-fertirriego-formulas.md` es explícito: *"la foliar es complementaria e
 irremplazable para las defensas. **El ajuste fino por variedad se hace en la
-foliar, no en el fertirriego.**"* Y operativamente el tanque sirve a Inv 4+5
-completo — **no se puede darle a una cama una fórmula distinta.**
+foliar, no en el fertirriego.**"* Y operativamente el tanque sirve al bloque
+entero — **no se le puede dar a una cama una fórmula distinta.** Esa es la razón
+de fondo por la que todo el manejo dirigido a dalia de este documento vive en la
+foliar y no en el tanque.
 
-Las dalias van con las fórmulas **Inv 4+5 vigentes**, tal cual:
+### 🔴 Inv 2 no tiene fórmula de fertirriego
+
+Las fórmulas vigentes son **Inv 3** e **Inv 4+5**. **Inv 2 no tiene ninguna**, y
+tampoco tiene análisis de suelo (ver 5.1). El riego apenas está entrando.
+
+> **Default propuesto: usar la fórmula de Inv 4+5**, por la misma analogía que el
+> repositorio ya acepta para la preparación de cama (*"Inv 1 e Inv 2 usan la fila
+> de Inv 4A/4B"*). **Es una analogía, no una medición** — y por eso hay que
+> declararla como tal en la hoja de operario, no presentarla como fórmula
+> calibrada de Inv 2.
+
+⚠️ **Y hay que verificar de qué tanque cuelga Inv 2** antes de entregar dosis: si
+comparte tanque con otro bloque, la fórmula la manda ese bloque, no la dalia.
+
+Con esa salvedad, las fórmulas **Inv 4+5 vigentes**:
 
 | Producto | Vegetativo | Floración | Tanque 2.000 L |
 |---|---|---|---|
@@ -734,11 +904,16 @@ catálogo**, por tres razones que se suman:
 
 1. **Bloque 4 tiene saturación de K en 30 % y de Mg en 32,1 %.** El Polyfeed
    (43 % K₂O) y el Bitter Mag están alimentando los dos elementos que sobran.
+   ⚠️ **Este número es de Bloque 4, no de Inv 2** — que no tiene análisis. Pero el
+   patrón es **el mismo en los tres bloques medidos** (K 24–30 %, Mg 32–38 %), así
+   que la presunción razonable es que Inv 2 se le parece. **Presunción, no dato:**
+   se confirma con el muestreo pedido en 5.1.
 2. **El K y el Mg altos bloquean el Ca por antagonismo catiónico** — y el eslabón
    2 del diagnóstico de la dalia es, precisamente, calcio que no llega.
 3. **El bokashi ya es una fuente de K no contabilizada** (equinaza + ceniza +
-   melaza + king grass, a 1,24 kg/m² en Inv 4). La dalia recibe K por dos vías
-   sobre un suelo saturado.
+   melaza + king grass, a 1,24 kg/m² — la misma tasa que hereda Inv 2). La dalia
+   recibiría K por dos vías sobre un suelo que muy probablemente ya lo tiene
+   saturado.
 
 > **Recomendación:** aprobar la eliminación de Polyfeed y Bitter Mag para el ciclo
 > Inv 4+5 que empieza con esta siembra. El tanque queda en **N-Cal GG + Haifa
@@ -988,7 +1163,7 @@ abajo sirve, porque no habrá cómo atribuir nada a un cultivar.
 | `cultivar` | Nombre exacto del proveedor, tal cual venga |
 | `color_declarado` | Lo que dice la etiqueta |
 | `color_confirmado_campo` | Se llena en la primera floración |
-| `cama` | `Inv 4A` o `Inv 4B` |
+| `cama` | Identificación exacta de la cama — **en Inv 2 esto es indispensable**, no basta "bloque 2" (ver 3.3) |
 | `linea` | `2` o `7` |
 | `posicion_inicio` / `posicion_fin` | Número de hueco a lo largo de la cama |
 | `n_plantas` | Reales, sin emparejar |
@@ -1053,6 +1228,9 @@ crudo, solo estimados a futuro"*— y por la regla 1 —*"nunca inventar ciclos"
 | B | **🔴 Especificación del LED: ¿cuántos µmol/m²/s sobre el dosel, y qué proporción de rojo y rojo lejano emite?** | Un blanco frío rico en azul a 2 µmol/m²/s **puede no producir ningún efecto fotoperiódico** — el azul necesita ~30 µmol/m²/s, 15–30× más que el rojo. Se gastaría el equipo y el ensayo diría "la luz no sirvió". Ver 2.2 |
 | C | **¿Cuántos cultivares distintos vienen, y cuántas plantas de cada uno?** | No hace falta saber la mezcla de color —eso se confirma en campo—, **pero sí cuántos grupos hay**, para trazar las posiciones antes de sembrar. Es la sección 4.3 y el `ensayo_dahlia_posiciones.csv` |
 | D | **Fecha de entrega** | Fija la semana ISO de siembra, y con ella cuándo cae la floración respecto de la ventana de heladas |
+| **E** | **🔴 ¿Qué pasa con las dalias viejas de Inv 2 — se cierran o se quedan?** | **Es la decisión de mayor apalancamiento de todo el documento** (sección 3.4). Si se cierran, se resuelven de un golpe el foco de oídio, el riesgo de virus sobre la colección nueva, el área y la ronda doble de corte. Si se quedan, entra el mínimo no negociable de la 3.4 y hay que reconsiderar Inv 4 |
+| **F** | **¿Sigue en pie el ensayo de Limonium sinensis Diamond en la zona alta de Inv 2?** | `01-invernaderos.md` tiene esa zona asignada. Es el sitio que se recomienda para la dalia |
+| **G** | **¿De qué tanque cuelga Inv 2, y comparte fórmula con otro bloque?** | Sin eso no se puede entregar dosis de fertirriego (sección 9.1) |
 
 ## 🟡 Necesarios para completar, no para arrancar
 
@@ -1062,7 +1240,9 @@ crudo, solo estimados a futuro"*— y por la regla 1 —*"nunca inventar ciclos"
 | F | **Dosis de etiqueta de Azufral, Timorex Gold, Agroemulsión y Alysin** | Cuatro productos con ficha confirmada y **sin dosis en el repositorio** |
 | G | **Stock real de Neofat** | El inventario es del 26/03/2026 y dice *"probablemente agotado"*. En hoja de dalia, grande y cerosa, el surfactante pesa más que en otras |
 | H | **Análisis del Bokashi terminado** (pendiente 4c de `CLAUDE.md`) | Sin él no se puede decir cuánto N y cuánto K están entrando ya por la base |
-| I | **Decisión sobre Polyfeed y Bitter Mag** (sección 9.2) | Pendiente de validación desde el 2026-09-02. En dalia sobre Bloque 4 es donde más pesa |
+| I | **Decisión sobre Polyfeed y Bitter Mag** (sección 9.2) | Pendiente de validación desde el 2026-09-02 |
+| J | **🟡 ¿Se valida la regla "la dalia no va en zona fresca ni sombreada"?** | Quedó como candidata en `notas_campo.md` de la skill: son tres fracasos en zonas distintas con la misma característica, no la misma zona repetida, así que no se promovió sola. **Es la regla que evitaría el cuarto intento en el sitio equivocado** |
+| K | **Medición de la cama de Inv 2 y análisis de suelo de Inv 2** | La medición desbloquea las dosis de bokashi y leonardita (5.1) y cierra el `PENDIENTE MEDIR` de `capacidad_bloques.csv`. El análisis es el mismo hueco 4f de `CLAUDE.md`, que hasta ahora solo señalaba Inv 1 |
 
 ## 🔴 Nombre homologado — PAUSA
 
@@ -1084,7 +1264,8 @@ Ninguno se escribió. Requieren validación:
 | Archivo | Campo | Hoy | Propuesto | Razón |
 |---|---|---|---|---|
 | `variedades_parametros_siembra.csv` | Dahlias · `Light` | `NO` | **`SI — extensión de día 18:00–22:00, LED R+FR, 1–2 µmol/m²/s`** | Vanessa + proveedor 2026-09-09. Día corto facultativa a 12 h de fotoperiodo natural |
-| `variedades_parametros_siembra.csv` | Dahlias · `DISTANCIA SIEMBRA` | `15 cm` | **`45 cm (2 líneas)`** | 15 cm son ~44 pl/m²; la referencia de dalia de corte es 30–45 cm. La densidad es causa directa de oídio |
+| `variedades_parametros_siembra.csv` | Dahlias · `DISTANCIA SIEMBRA` | `15 cm` | **`45 × 30 cm — 1 de cada 3 líneas × 1 de cada 2 huecos, ~8 pl/m²`** | 15 cm son ~44 pl/m² y hoy las dalias están así **con mildeo persistente**. La referencia de dalia de corte es 30–45 cm. La densidad es causa directa de oídio |
+| `variedades_parametros_siembra.csv` | Dahlias · nueva columna | — | **`frecuencia de cosecha = DIARIA`** | Dato de Vanessa 2026-09-09. No estaba en ningún CSV y es lo que decide el costo de jornal de tener dalia en dos sitios |
 | `variedades_parametros_siembra.csv` | Dahlias · `Net` | `1` | **`2`** | Planta de 1–1,5 m con capítulo pesado |
 | `ciclos_variedad.csv` | Dahlia · ciclo | `12` | **anotar que el 12 es de BULBO sin luz; para esqueje bajo 16 h es `SIN_DATO`** | Regla 1: no se estima, se mide |
 | `07-datos/` | — | — | **crear `ensayo_dahlia_posiciones.csv`** | Sin él el ensayo no produce dato atribuible |
@@ -1096,17 +1277,18 @@ Ninguno se escribió. Requieren validación:
 | Etapa | Qué se hace |
 |---|---|
 | **0 · Recepción** | **Abrir la caja el mismo día** · aclimatar **3–5 días** en media sombra, **siempre húmedos** · descartar base acuosa u oscura (damping-off) · **🔴 etiquetar cultivar uno por uno** · preguntar al proveedor si las madres están **indexadas** |
-| **1 · Presiembra** | **Inv 4A + Inv 4B.** No-Dig v10: no voltear · Bokashi 1 saco + leonardita 130 g + yeso 2 kg **en superficie** · **lomo de 10–15 cm** para drenar el cuello |
-| **2 · Inoculación** | **Cama:** Fosfolip **1,5 cc en CADA bomba** de 20 L, 4–5 bombas, arrastre con agua sola, luego plástico. **Bandeja:** **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc en 5 L** (rinde 4 bandejas). **Sin Fitoderma** |
-| **3 · Siembra** | **2 líneas (2 y 7) × 1 planta cada 3 huecos = 74/cama = 148 + 12 en materas.** Cepellón al ras · **🔴 un cultivar por grupo, con estaca y posición registrada** |
-| **4 · Agua** | **🔴 Riego inmediato al sembrar y sin dejar secar 2 semanas** — el esqueje no tiene reserva · nunca regar al atardecer · **LAVADO DE DOSEL con agua sola, 10:00–13:00, 2–3×/semana, desde sem 4 hasta el primer color** |
-| **5 · Luz** | **Extensión de día, LED, 18:00–22:00, todo el ciclo** · **1–2 µmol/m²/s sobre el dosel** · **rojo + rojo lejano, NO blanco frío** · **todas las plantas, sin testigo** (la luz se derrama entre camas) |
-| **6 · Posiembra** | **Pinch semana 4** al 3.º–4.º par · **2 mallas** (30 y 60 cm) · **desbotone lateral** · **deshoje basal desde sem 6, cada 2 semanas**, no antes de que haya raíz nueva |
-| **7 · Fertirriego** | Fórmula Inv 4+5 vigente · **Haifa Micro siempre 180 g** · **MKP 0 en el tanque** · pedir aprobación para sacar Polyfeed y Bitter Mag |
-| **8 · Foliar** | Kempf por fase · **MKP foliar 125 g/bomba desde sem 7** (previa prueba de fitotoxicidad en 5 plantas) · rotación de 4 semanas · **aceite y azufre a 21 días** · **entomopatógeno nunca con fungicida de amplio espectro** · **Revus e Infinito NO — son para oomicetos** |
-| **9 · Virus** | Aceite mineral en cobertura completa · bajar N soluble · marcar sintomáticas **después del pinch** · **🔴 solo esquejar de plantas sin síntoma** · cuchillo desinfectado |
-| **10 · Cosecha** | **⅔–¾ abierta**, antes de las 9 am, agua a 70–80 °C, vida en vaso 4–6 días |
-| **11 · Medir** | **🔴 Semana de primera pústula POR CULTIVAR** (el resultado principal) · longitud de tallo tallo por tallo · ciclo real · termómetro en cama · color confirmado · vida en vaso |
+| **1 · Sitio** | **Inv 2, zona ALTA** — no la baja · verificar el ensayo de Limonium · **medir la cama** · **prueba de vasos del riego nuevo antes de sembrar** · decidir qué pasa con las dalias viejas |
+| **2 · Presiembra** | No-Dig v10: no voltear · **Bokashi 1,24 kg/m² + leonardita 6,5 g/m²** (tasa de Inv 4A/4B) **en superficie** · **SIN yeso** (Inv 2 no tiene análisis) · **lomo de 10–15 cm** para drenar el cuello |
+| **3 · Siembra** | **1 de cada 3 líneas (45 cm) × 1 planta cada 2 huecos (30 cm) = 7,9 pl/m².** **150 en cama (~19 m²) + 10 en materas aisladas como núcleo madre limpio.** Cepellón al ras · **🔴 un cultivar por grupo, con estaca y posición registrada** |
+| **4 · Inoculación** | **Cama:** Fosfolip **1,5 cc en CADA bomba** de 20 L, 4–5 bombas, arrastre con agua sola, luego plástico. **Bandeja:** **Endorhiza 10 cc + Nube 10 cc + Promobac 13 cc en 5 L** (rinde 4 bandejas). **Sin Fitoderma** |
+| **5 · Agua** | **🔴 Riego inmediato al sembrar y sin dejar secar 2 semanas** — el esqueje no tiene reserva · nunca regar al atardecer · **LAVADO DE DOSEL con agua sola, 10:00–13:00, 2–3×/semana, desde sem 4 hasta el primer color** |
+| **6 · Luz** | **Extensión de día, LED, 18:00–22:00, todo el ciclo** · **1–2 µmol/m²/s sobre el dosel** · **rojo + rojo lejano, NO blanco frío** · **todas las plantas, sin testigo** (la luz se derrama entre camas) |
+| **7 · Posiembra** | **Pinch semana 4** al 3.º–4.º par · **2 mallas** (30 y 60 cm) · **desbotone lateral** · **deshoje basal desde sem 6, cada 2 semanas**, no antes de que haya raíz nueva |
+| **8 · Fertirriego** | Fórmula Inv 4+5 vigente · **Haifa Micro siempre 180 g** · **MKP 0 en el tanque** · pedir aprobación para sacar Polyfeed y Bitter Mag |
+| **9 · Foliar** | Kempf por fase · **MKP foliar 125 g/bomba desde sem 7** (previa prueba de fitotoxicidad en 5 plantas) · rotación de 4 semanas · **aceite y azufre a 21 días** · **entomopatógeno nunca con fungicida de amplio espectro** · **Revus e Infinito NO — son para oomicetos** |
+| **10 · Virus** | Aceite mineral en cobertura completa · bajar N soluble · marcar sintomáticas **después del pinch** · **🔴 solo esquejar de plantas sin síntoma** · cuchillo desinfectado |
+| **11 · Cosecha** | **⅔–¾ abierta**, antes de las 9 am, agua a 70–80 °C, vida en vaso 4–6 días |
+| **12 · Medir** | **🔴 Semana de primera pústula POR CULTIVAR** (el resultado principal) · longitud de tallo tallo por tallo · ciclo real · termómetro en cama · color confirmado · vida en vaso |
 
 **Lo que NO se hace:** no se parte el manejo entre camas · no se planta revuelto ·
 no se le da fecha de cosecha a Erica todavía · no entra Fitoderma · no entra

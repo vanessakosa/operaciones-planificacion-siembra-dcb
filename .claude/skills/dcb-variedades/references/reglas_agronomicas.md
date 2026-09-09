@@ -37,6 +37,9 @@ Cortar en el punto óptimo y colgar a secar de inmediato para eliminar pérdida 
 ## Strawflower — cosecha
 Cosechar solo al mediodía con la flor abierta.
 
+## Dahlia en Inv 2 — mildeo polvoso recurrente
+Patrón documentado dos veces: `07-datos/incidencia_fitosanitaria.csv` id 8 (*"MILDEO, semana 21, PERSISTENTE"*) y el reporte de Vanessa del 2026-09-09 sobre la zona baja. **El mildeo polvoso en dalia sembrada en Inv 2 no es un evento aislado: es el resultado esperado.** La zona baja se eligió por fresca y con más agua, y falló igual — así que el factor no es el estrés hídrico. Acompañado siempre de pulgones. Cualquier siembra nueva de dalia en Inv 2 tiene que llevar programa foliar dirigido desde el trasplante, no desde que aparece el síntoma, y no debe repetir la zona baja sombreada.
+
 ## Rosas de jardín injertadas (Inv1)
 Verificar el punto de injerto antes de invertir en recuperación — si los brotes vienen de ABAJO del injerto, la planta no es recuperable (es portainjerto, no la variedad deseada).
 

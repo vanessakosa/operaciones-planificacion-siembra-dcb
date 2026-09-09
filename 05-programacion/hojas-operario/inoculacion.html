@@ -1,4 +1,4 @@
-<title>Inoculación del Suelo por Bloque</title>
+<title>Inoculación del Suelo por Cama</title>
 <style>
   :root{
     --papel:#FFFFFF; --beige:#F5F0E8; --crema:#FAF7F3;
@@ -17,7 +17,7 @@
   .meta{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:12px;color:var(--tinta-2);
         padding-bottom:10px;border-bottom:2px solid var(--regla);margin-bottom:18px}
   .meta b{color:var(--tinta);font-weight:700}
-  section{margin-bottom:18px}
+  section{margin-bottom:18px;page-break-inside:avoid}
   h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
      font-weight:700;margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--regla)}
   .envoltura{overflow-x:auto}
@@ -29,14 +29,13 @@
   tbody tr:nth-child(even) td{background:var(--crema)}
   th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
   th.mid,td.mid{text-align:center}
+  .grp td{background:var(--tinta)!important;color:var(--papel);font-size:10px;font-weight:700;
+          letter-spacing:.14em;text-transform:uppercase;padding:4px 9px}
   .cama{font-weight:700;font-size:14px;line-height:1.2}
   .cama small{display:block;font-weight:400;font-size:11px;color:var(--tinta-2);margin-top:0}
+  .m2{font-size:12px;color:var(--tinta-2)}
   .g{font-size:17px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
   .g span{font-size:10.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
-  .agua{font-size:15px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .agua span{font-size:10.5px;font-weight:400;color:var(--tinta-2);margin-left:2px}
-  .solo3{color:var(--alerta)}
-  .nada{color:var(--tinta-3)}
   .caja{display:inline-block;width:16px;height:16px;border:1.5px solid var(--tinta-2)}
   ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
            background:var(--regla);border:1px solid var(--regla);
@@ -45,9 +44,9 @@
               position:relative;font-size:13px;line-height:1.35}
   ol.orden li::before{content:counter(paso);position:absolute;left:11px;top:8px;
                       font-weight:700;font-size:13px;color:var(--tinta-2)}
-  .plastico{margin-top:12px;border:2.5px solid var(--tinta);background:var(--beige);
-            padding:11px 14px;font-size:15px;line-height:1.35;text-align:center}
-  .plastico b{font-size:17px;font-weight:700;letter-spacing:.02em}
+  .mitad{margin-top:12px;border:2.5px solid var(--tinta);background:var(--beige);
+         padding:11px 14px;font-size:15px;line-height:1.35;text-align:center}
+  .mitad b{font-size:17px;font-weight:700;letter-spacing:.02em}
   .no{margin-top:10px;border-left:3px solid var(--alerta);padding:8px 0 8px 12px;
       font-size:13px;line-height:1.5}
   .no b{color:var(--alerta)}
@@ -55,106 +54,185 @@
   footer{margin-top:18px;padding-top:10px;border-top:1px solid var(--regla);
          font-size:11px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:3px 20px}
   @media print{
-    @page{margin:9mm 10mm}
-    body{padding:0;font-size:8pt}
+    @page{margin:7mm 10mm}
+    body{padding:0;font-size:7.5pt}
     .hoja{max-width:none}
     .marca{font-size:7pt;margin-bottom:2px}
-    h1{font-size:14pt;margin-bottom:3px}
-    .clave{font-size:8.5pt;margin-bottom:6px}
-    .meta{font-size:7.5pt;padding-bottom:5px;margin-bottom:9px;gap:2px 14px}
-    section{margin-bottom:9px}
-    h2{font-size:7pt;margin-bottom:4px;padding-bottom:3px}
-    table{font-size:8pt}
-    th{font-size:6.5pt;padding:3px 6px}
-    td{padding:3px 6px}
-    .cama{font-size:8.5pt}.cama small{font-size:6.5pt}
-    .g{font-size:10pt}.g span{font-size:6.5pt}
-    .agua{font-size:9pt}.agua span{font-size:6.5pt}
+    h1{font-size:13pt;margin-bottom:2px}
+    .clave{font-size:8pt;margin-bottom:4px}
+    .meta{font-size:7pt;padding-bottom:3px;margin-bottom:6px;gap:1px 12px}
+    section{margin-bottom:6px}
+    h2{font-size:6.5pt;margin-bottom:3px;padding-bottom:2px}
+    table{font-size:7.5pt}
+    th{font-size:6pt;padding:2px 6px}
+    td{padding:1.5px 6px}
+    .cama{font-size:8pt}.cama small{font-size:6pt}
+    .m2{font-size:7pt}
+    .g{font-size:9pt}.g span{font-size:6pt}
+    .grp td{font-size:6pt;padding:1.5px 6px}
     .caja{width:11px;height:11px}
-    ol.orden li{font-size:8pt;padding:5px 7px 5px 24px}
-    ol.orden li::before{font-size:8pt;left:8px;top:5px}
-    .plastico{font-size:9pt;margin-top:7px;padding:6px 9px}
-    .plastico b{font-size:10.5pt}
-    .no{font-size:8pt;margin-top:6px;padding:5px 0 5px 9px}
-    footer{font-size:7pt;margin-top:9px;padding-top:5px}
+    ol.orden li{font-size:7.5pt;padding:3.5px 7px 3.5px 22px}
+    ol.orden li::before{font-size:7.5pt;left:7px;top:3.5px}
+    .mitad{font-size:8.5pt;margin-top:5px;padding:5px 9px}
+    .mitad b{font-size:10pt}
+    .no{font-size:7pt;margin-top:4px;padding:3px 0 3px 8px;line-height:1.35}
+    .no p{margin-bottom:1px}
+    footer{font-size:6.5pt;margin-top:5px;padding-top:3px}
   }
 </style>
 
 <div class="hoja">
 
   <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
-  <h1>Inoculación del suelo — todos los bloques</h1>
+  <h1>Inoculación del suelo — cama por cama</h1>
   <p class="clave">Es el <b>paso 5</b> de la preparación de camas: va <b>después del riego con agua sola</b> y
-  <b>antes de poner el plástico</b>. La cantidad depende <b>solo del bloque</b>. <b>No cambia según la variedad.</b></p>
+  <b>antes de poner el plástico</b>. Se aplica con <b>bomba de espalda de 20 L</b>. La cantidad depende
+  <b>solo de la cama</b>. <b>No cambia según la variedad.</b></p>
 
   <div class="meta">
     <span>Operario: <b>Alexander</b></span>
     <span>Cuándo: <b>el mismo día que se prepara la cama</b></span>
     <span>Cada cuánto: <b>una vez por vuelta de cama</b></span>
+    <span>Medir con: <b>jeringa de 10 mL</b></span>
     <span>Fecha: ______________</span>
   </div>
 
   <section>
-    <h2>Cuánto va en el tanque</h2>
+    <h2>Cuánto va en cada cama</h2>
     <div class="envoltura">
     <table>
       <thead>
         <tr>
-          <th>Bloque</th>
-          <th class="num">Agua</th>
+          <th>Cama</th>
+          <th class="num">m²</th>
           <th class="num">Promobac</th>
           <th class="num">Fosfolip</th>
-          <th class="num">Fitoderma</th>
           <th class="mid">✓</th>
         </tr>
       </thead>
       <tbody>
+        <tr class="grp"><td colspan="5">Bloque 3</td></tr>
         <tr>
-          <td class="cama">Inv 3<small>3A + 3B + 3C, todo el bloque</small></td>
-          <td class="num agua">2.000 <span>L</span></td>
-          <td class="num g">100 <span>cc</span></td>
-          <td class="num g">200 <span>cc</span></td>
-          <td class="num g solo3">50 <span>g</span></td>
+          <td class="cama">Inv 3A<small>11 camas</small></td>
+          <td class="num m2">35,6</td>
+          <td class="num g">7 <span>mL</span></td>
+          <td class="num g">7 <span>mL</span></td>
           <td class="mid"><span class="caja"></span></td>
         </tr>
         <tr>
-          <td class="cama">Inv 4<small>4A + 4B + 4C, todo el bloque</small></td>
-          <td class="num agua">1.400 <span>L</span></td>
-          <td class="num g">70 <span>cc</span></td>
-          <td class="num g">140 <span>cc</span></td>
-          <td class="num nada">—</td>
+          <td class="cama">Inv 3B larga</td>
+          <td class="num m2">48,1</td>
+          <td class="num g">9,5 <span>mL</span></td>
+          <td class="num g">9,5 <span>mL</span></td>
           <td class="mid"><span class="caja"></span></td>
         </tr>
         <tr>
-          <td class="cama">Inv 5<small>las 13 camas</small></td>
-          <td class="num agua">800 <span>L</span></td>
-          <td class="num g">40 <span>cc</span></td>
-          <td class="num g">80 <span>cc</span></td>
-          <td class="num nada">—</td>
+          <td class="cama">Inv 3B corta<small>3 camas</small></td>
+          <td class="num m2">11,7</td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="num g">2,5 <span>mL</span></td>
           <td class="mid"><span class="caja"></span></td>
         </tr>
         <tr>
-          <td class="cama">Mini<small>las 7 camas juntas</small></td>
-          <td class="num agua">140 <span>L</span></td>
-          <td class="num g">7 <span>cc</span></td>
-          <td class="num g">14 <span>cc</span></td>
-          <td class="num nada">—</td>
+          <td class="cama">Inv 3C larga<small>5 camas</small></td>
+          <td class="num m2">25,2</td>
+          <td class="num g">5 <span>mL</span></td>
+          <td class="num g">5 <span>mL</span></td>
           <td class="mid"><span class="caja"></span></td>
         </tr>
         <tr>
-          <td class="cama">Ext 3A + Ext 3B<small>las dos juntas, en el mismo tanque</small></td>
-          <td class="num agua">185 <span>L</span></td>
-          <td class="num g">9 <span>cc</span></td>
-          <td class="num g">19 <span>cc</span></td>
-          <td class="num nada">—</td>
+          <td class="cama">Inv 3C corta<small>3 camas</small></td>
+          <td class="num m2">12,6</td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr class="grp"><td colspan="5">Mini</td></tr>
+        <tr>
+          <td class="cama">Mini<small>4 camas largas y 3 cortas · <b>en la cama corta va la MITAD</b></small></td>
+          <td class="num m2">12,6</td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr class="grp"><td colspan="5">Bloque 4</td></tr>
+        <tr>
+          <td class="cama">Inv 4A · Inv 4B<small>28 camas · también Inv 1 e Inv 2</small></td>
+          <td class="num m2">20,2</td>
+          <td class="num g">4 <span>mL</span></td>
+          <td class="num g">4 <span>mL</span></td>
           <td class="mid"><span class="caja"></span></td>
         </tr>
         <tr>
-          <td class="cama">Ext 4 + Ext 5 + Inv 6<small>las tres juntas, en el mismo tanque</small></td>
-          <td class="num agua">210 <span>L</span></td>
-          <td class="num g">10 <span>cc</span></td>
-          <td class="num g">21 <span>cc</span></td>
-          <td class="num nada">—</td>
+          <td class="cama">Inv 4C larga<small>225 huecos</small></td>
+          <td class="num m2">40,5</td>
+          <td class="num g">8 <span>mL</span></td>
+          <td class="num g">8 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Inv 4C media<small>212 huecos</small></td>
+          <td class="num m2">38,2</td>
+          <td class="num g">7,5 <span>mL</span></td>
+          <td class="num g">7,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Inv 4C corta<small>200 huecos</small></td>
+          <td class="num m2">36,0</td>
+          <td class="num g">7 <span>mL</span></td>
+          <td class="num g">7 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr class="grp"><td colspan="5">Bloque 5</td></tr>
+        <tr>
+          <td class="cama">Inv 5<small>13 camas</small></td>
+          <td class="num m2">31,7</td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr class="grp"><td colspan="5">Exterior</td></tr>
+        <tr>
+          <td class="cama">Ext 3A<small>181 huecos</small></td>
+          <td class="num m2">32,6</td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Ext 3B larga</td>
+          <td class="num m2">48,1</td>
+          <td class="num g">9,5 <span>mL</span></td>
+          <td class="num g">9,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Ext 3B corta</td>
+          <td class="num m2">11,7</td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="num g">2,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Ext 4<small>UNA sola cama · 4A + 4B seguidas</small></td>
+          <td class="num m2">40,3</td>
+          <td class="num g">8 <span>mL</span></td>
+          <td class="num g">8 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Ext 5<small>176 huecos</small></td>
+          <td class="num m2">31,7</td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="mid"><span class="caja"></span></td>
+        </tr>
+        <tr>
+          <td class="cama">Inv 6<small>176 huecos · exterior</small></td>
+          <td class="num m2">31,7</td>
+          <td class="num g">6,5 <span>mL</span></td>
+          <td class="num g">6,5 <span>mL</span></td>
           <td class="mid"><span class="caja"></span></td>
         </tr>
       </tbody>
@@ -162,25 +240,27 @@
     </div>
   </section>
 
+  <div class="mitad"><b>ESTA CANTIDAD ES POR CAMA, NO POR BOMBA.</b><br>
+  Si la cama necesita <b>dos bombas</b>, va <b>la mitad en cada una</b>.</div>
+
   <section>
-    <h2>Cómo se arma el tanque</h2>
+    <h2>Cómo se arma la bomba</h2>
     <ol class="orden">
-      <li>Llenar el tanque con <b>los litros de agua de la tabla</b>. Agua sola, sin nada más.</li>
-      <li>Medir el <b>Promobac</b> y el <b>Fosfolip</b> con jeringa y echarlos al tanque. Revolver.</li>
-      <li><b>Solo en Inv 3:</b> pesar los <b>50 g de Fitoderma</b>, disolverlos en un balde con agua y echar el balde al tanque.</li>
-      <li>Revolver otra vez y <b>regar por goteo hasta vaciar el tanque.</b></li>
+      <li>Llenar la bomba de <b>20 L con agua sola</b>.</li>
+      <li>Medir con la jeringa el <b>Promobac</b> y el <b>Fosfolip</b>. <b>De cada uno va la misma cantidad.</b></li>
+      <li>Echar los dos a la bomba y <b>agitar bien</b>.</li>
+      <li><b>Mojar toda la cama</b> de forma uniforme, hasta vaciar la bomba.</li>
       <li>Cuando termine de escurrir, <b>poner el plástico.</b></li>
     </ol>
 
-    <div class="plastico"><b>EL FITODERMA VA SOLO EN INV 3.</b><br>
-    En Inv 4, Inv 5, Mini y exteriores <b>no se echa Fitoderma.</b></div>
-
     <div class="no">
-      <p><b>NO</b> regar con fertirriego ese bloque en toda la semana de la inoculación. Solo agua.</p>
-      <p><b>NO</b> mezclar en este tanque <b>ningún fungicida</b>, ni antes ni después el mismo día.</p>
-      <p><b>NO</b> echar <b>Raizal ni Fullfert</b> a este tanque. Ya no van aquí.</p>
-      <p><b>El Promobac se guarda en la nevera</b>, en su envase cerrado. Nunca al lado de fungicidas ni de fertilizantes.</p>
-      <p><b>Inv 1, Inv 2 y las 3 camas de Ext Inv 2</b> no están en la tabla: preguntar a Vanessa antes de inocularlas.</p>
+      <p><b>NO</b> regar con fertirriego esa cama en toda la semana. Solo agua.</p>
+      <p><b>NO</b> mezclar en esta bomba <b>ningún fungicida</b>, ni usar la misma bomba de fungicidas sin lavarla.</p>
+      <p><b>NO</b> echar <b>Raizal ni Fullfert</b> a esta bomba. Ya no van aquí.</p>
+      <p><b>NO</b> preparar la bomba y dejarla para el otro día. Se arma y se aplica el mismo día.</p>
+      <p><b>El Promobac y el Fosfolip se guardan en la nevera</b>, en su envase cerrado. Nunca al lado de fungicidas ni de fertilizantes.</p>
+      <p><b>Fitoderma:</b> va solo en las camas que <b>Vanessa marque</b>, y ella entrega la cantidad ya pesada.</p>
+      <p><b>Inv 1, Inv 2 y las 3 camas de Ext Inv 2</b> no están en la tabla: preguntar a Vanessa.</p>
     </div>
   </section>
 
@@ -188,7 +268,7 @@
     <span>Inoculación: Alexander</span>
     <span>Aprueba: Vanessa Kosa</span>
     <span>Reemplaza el tanque de inoculación cada 3–4 semanas</span>
-    <span>v1 · 2026-09-09</span>
+    <span>v2 · 2026-09-09</span>
   </footer>
 
 </div>

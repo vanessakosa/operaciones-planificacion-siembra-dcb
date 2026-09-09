@@ -7,46 +7,87 @@
 > `02-nutricion/09-inoculacion-el-analisis.md`.** La hoja de operario es
 > `05-programacion/hojas-operario/inoculacion.html`.
 
-## Lo que cambió, en cuatro líneas
+## Lo que cambió
 
 | | Antes | Ahora |
 |---|---|---|
-| **Dosis** | Fija por tanque de 2.000 L, igual para todos los bloques | **Por m² del bloque**, a la dosis de etiqueta |
+| **Método** | Tanque de 2.000 L por bloque, por goteo | **Bomba de espalda de 20 L, cama por cama** (Vanessa, 2026-09-09) |
+| **Dosis** | Fija por tanque, igual para todos los bloques | **0,2 mL/m² de cada producto**, por cama |
 | **Momento** | Calendario, cada 3–4 semanas (≈15 al año) | **Una vez por vuelta de cama**, el día que se prepara |
-| **Productos** | Fitoderma · Estabios · Promobac · Raizal · Fullfert | **Promobac · Fosfolip** (+ **Fitoderma solo en Inv 3**) |
-| **Costo/año** | $3.688.159 | **$611.550** solo con la dosis · **$122.310** con dosis y momento |
+| **Productos** | Fitoderma · Estabios · Promobac · Raizal · Fullfert | **Promobac · Fosfolip** (Fitoderma solo en el ensayo de Inv 3) |
+| **Costo/año** | $3.688.155 | **$700.182** solo con la dosis · **$140.036** con dosis y momento |
 
-## Lógica: por tanque, no por cama individual
+## 🔴 Cama por cama, con bomba de espalda de 20 L
 
-Alexander prepara el tanque completo y riega por goteo. Es más eficiente que aplicar cama
-por cama y reduce jornal. **Eso no cambia** — lo que cambia es que la cantidad se calcula
-con el **área real del bloque**, no con un número fijo por tanque.
+**Corrige lo que decía este archivo hasta el 2026-09-09** (*"por tanque, no por cama
+individual… es más eficiente y reduce jornal"*). Esa eficiencia era real pero se pagaba
+aplicando producto a camas que no lo necesitaban — y **con las camas mezcladas dentro de cada
+bloque, a camas que no lo debían recibir.**
 
-## Dosis por bloque
+Y es lo único compatible con inocular el día que se prepara la cama: por el goteo de un bloque
+entero el producto le cae también a las camas en plena producción.
 
-Etiquetas: **Promobac 1 L/ha · Fosfolip 2 L/ha · Fitoderma 500 g/ha.** Agua a ~2 L/m², que
-es la práctica actual (2.000 L para los 1.025 m² de Inv 3).
+> **El número de la tabla es lo que va en la CAMA, no en la bomba.
+> Si la cama necesita dos bombas, va la MITAD de la dosis en cada una.**
 
-| Grupo | m² | Agua | Promobac | Fosfolip | Fitoderma |
-|---|---|---|---|---|---|
-| **Inv 3** | 1.025 | 2.000 L | 100 cc | 200 cc | **50 g** |
-| **Inv 4** | 680 | 1.400 L | 70 cc | 140 cc | — |
-| **Inv 5** | 412 | 800 L | 40 cc | 80 cc | — |
-| Mini (7 camas) | 69 | 140 L | 7 cc | 14 cc | — |
-| Ext 3A + Ext 3B | 92 | 185 L | 9 cc | 19 cc | — |
-| Ext 4 + Ext 5 + Inv 6 | 104 | 210 L | 10 cc | 21 cc | — |
+Sin esa regla, "tanto por bomba" se vuelve otra dosis fija por envase — el cuarto error de la
+misma familia en este repositorio.
 
-Redondeado hacia arriba desde etiqueta. **Inv 1, Inv 2 y las 3 camas de Ext Inv 2 no tienen
-área medida** y quedan fuera de la tabla hasta medirlas.
+## Dosis por cama · 0,2 mL/m² de cada producto
 
-**Si el Fosfolip no ha llegado**, va Estabios en la misma cantidad (2 L/ha). El Estabios
-está en ensayo partido en Inv 4 — ver `02-nutricion/07-programa-biologico.md`.
+Etiquetas: **Promobac 1 L/ha** (se aplica a **2× etiqueta** mientras no haya conteo de
+viabilidad — ver abajo) · **Fosfolip 2 L/ha** · Fitoderma 500 g/ha. Los dos líquidos quedan en
+la misma cifra: **de cada uno va la misma cantidad.**
+
+| Cama | m² | Promobac | Fosfolip |
+|---|---|---|---|
+| Inv 3A | 35,6 | 7 mL | 7 mL |
+| Inv 3B larga | 48,1 | 9,5 mL | 9,5 mL |
+| Inv 3B corta | 11,7 | 2,5 mL | 2,5 mL |
+| Inv 3C larga | 25,2 | 5 mL | 5 mL |
+| Inv 3C corta | 12,6 | 2,5 mL | 2,5 mL |
+| Mini (larga · en la corta la mitad) | 12,6 | 2,5 mL | 2,5 mL |
+| Inv 4A · Inv 4B | 20,2 | 4 mL | 4 mL |
+| Inv 4C larga | 40,5 | 8 mL | 8 mL |
+| Inv 4C media | 38,2 | 7,5 mL | 7,5 mL |
+| Inv 4C corta | 36,0 | 7 mL | 7 mL |
+| Inv 5 | 31,7 | 6,5 mL | 6,5 mL |
+| Ext 3A | 32,6 | 6,5 mL | 6,5 mL |
+| Ext 3B larga | 48,1 | 9,5 mL | 9,5 mL |
+| Ext 3B corta | 11,7 | 2,5 mL | 2,5 mL |
+| Ext 4 | 40,3 | 8 mL | 8 mL |
+| Ext 5 | 31,7 | 6,5 mL | 6,5 mL |
+| Inv 6 | 31,7 | 6,5 mL | 6,5 mL |
+
+Redondeado a los 0,5 mL, medido con **jeringa de 10 mL**. Son las **mismas 17 filas y en el
+mismo orden** que la hoja de preparación de camas. **Costo: $22,23 por m² inoculado.**
+
+**Inv 1, Inv 2 y las 3 camas de Ext Inv 2** no tienen área medida y quedan fuera hasta
+medirlas.
+
+**Si el Fosfolip no ha llegado**, va Estabios en la misma cantidad. El Estabios está en ensayo
+partido en Inv 4 — ver `02-nutricion/07-programa-biologico.md`.
+
+🟡 **El jornal sube:** es cama por cama en vez de abrir una válvula. Es el único renglón donde
+esta propuesta cuesta más que hoy, y no está cuantificado.
 
 ## Reglas
 
-- **Fitoderma solo en Inv 3** — por *Fusarium* activo (3×10⁴ UFC/g). 🟡 Pero el análisis
-  microbiológico **no registra de qué bloque se tomó**, y toda esta restricción descansa en
-  que Inv 3 sea distinto, que nunca se midió. Pregunta abierta a Bioquirama.
+- **🔴 El Fitoderma sale del drench de rutina.** La muestra microbiológica es un **compuesto de
+  Bloque 3 + Bloque 4** (Vanessa, 2026-09-09), así que Inv 3 **está dentro** de la medición de
+  1,4×10⁶ UFC/g: los 500 g aportaban 0,044 % y a etiqueta aportarían 0,0045 %. Y la regla vieja
+  estaba invertida en los dos extremos — Inv 4 es el bloque con *Fusarium* descrito como
+  *"generalizado en suelo"* e **Inv 5 nunca se midió**, que era la razón declarada para
+  excluirlo. Queda en **ensayo partido en Inv 3** (mitad de las camas con 50 g/ha, mitad sin
+  nada, leído en mortalidad por *Fusarium* en lisianthus), **con la cantidad ya pesada por
+  Vanessa**: su dosis por cama son 1,8 g y eso no es pesable en campo. Lo que sostiene el
+  ensayo no es el *Trichoderma* sino su 40 % de oligosacarinas, que son elicitores y actúan a
+  concentraciones bajas — sin dosis-respuesta, así que se mide.
+- **🔴 El Promobac se aplica a 2× etiqueta, no a etiqueta.** No está refrigerado (su ficha
+  exige ≤12 °C; Rionegro está a 18–22 °C), así que la carga real es desconocida y los 500 cc de
+  hoy eran justamente el margen que cubría ese error. El 2× cuesta $37.170/año y **se retira
+  con un conteo de viabilidad** sobre el frasco de la bodega.
+- **Meter el Promobac a la nevera hoy**, y anotar fecha de compra y lote.
 - **No fertirriego** en ese bloque en toda la semana de la inoculación. Solo agua. (Antes
   decía *"Haifa: sí reducido"* en Inv 4 y 5 — se extendió a un no plano.)
 - **No mezclar con ningún fungicida.** La ficha del Promobac: *"no mezclar con fungicidas de
@@ -95,9 +136,15 @@ Hay inóculo de mosca blanca en el suelo de Inv 5 y 3C. Antes de plantar Vegmo S
 
 ## Pendiente de decidir
 
-- **🔴 ¿De qué bloque es el análisis microbiológico de Bioquirama?** Sostiene o cae la
-  restricción del Fitoderma a Inv 3
-- **🔴 *Trichoderma* por bloque** — sostiene o cae el cambio de calendario
+- **🔴 Bioquirama: separar el compuesto** — Bloque 3 solo, Bloque 4 solo, **y Bloque 5, que
+  nunca se ha medido.** El compuesto promedia, y Bloque 4 tiene la M.O. más alta de la finca:
+  es posible que el 1,4×10⁶ sea mayoritariamente suyo. Es lo que ya pasó con la salinidad de 3B
+  (C.E. 0,829), que el compuesto de Bloque 3 había vuelto invisible
+- **🔴 Conteo de viabilidad del Promobac** que está en la bodega, con fecha y lote — decide si
+  es el producto más barato del programa o el más caro
+- **🔴 *Trichoderma* por bloque en el tiempo** — sostiene o cae el cambio de calendario
+- **🟡 Cuántas bombas de 20 L se gastan por cama** — para poder cuantificar el jornal
+- **🟡 Temperatura de almacenamiento del Fosfolip y del Estabios** — también son líquidos
 - **🟡 Dosis de inmersión de raíz / hueco de trasplante del Fitoderma.** Su ficha da 500 g/ha
   al suelo y menciona uso foliar, pero no da tasa para plúgula. Es donde su 1×10⁸ UFC/g
   realmente gana, porque la raíz nueva no tiene colonizadores. **No inventarla** — pedirla a

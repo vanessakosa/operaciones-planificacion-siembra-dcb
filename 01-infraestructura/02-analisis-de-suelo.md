@@ -147,6 +147,19 @@ Detalle completo en `02-nutricion/05-comparativo-casas-comerciales.md`.
 | Ago 2024 | 1.1×10⁴ UFC/g | 5×10⁴ | Bajo — cultivo vulnerable |
 | Nov 2025 | **1.4×10⁶ UFC/g** | 3×10⁴ | Excelente — **127× más Trichoderma** |
 
+> **🔴 PROCEDENCIA (Vanessa, 2026-09-09): la muestra es un COMPUESTO de Bloque 3 + Bloque 4.**
+> Dos consecuencias:
+> 1. **Bloque 5 nunca se ha medido.** El repositorio decía *"en Inv 4+5 el Trichoderma ya está
+>    alto (1,4×10⁶)"* — falso para Inv 5, y falso al excluir a Inv 3, que **sí está dentro** de
+>    la muestra. La regla del Fitoderma estaba invertida en los dos extremos. Corregido en
+>    `02-nutricion/03-drench-inoculacion.md`.
+> 2. **El compuesto promedia dos bloques con M.O. muy distinta** (Bloque 3 al 18,6 %, Bloque 4
+>    al 23,4 %): es posible que el 1,4×10⁶ sea mayoritariamente de Bloque 4 y que Bloque 3 esté
+>    materialmente más abajo. Es exactamente lo que pasó con la salinidad de 3B (C.E. 0,829),
+>    que el compuesto de Bloque 3 había vuelto invisible.
+>
+> → **Pedirle a Bioquirama: Bloque 3 solo, Bloque 4 solo, y Bloque 5.**
+
 **Conclusión: el programa biológico funciona.** Fusarium bajando pero persiste.
 
 Esta cifra es la que justifica todo el enfoque No-Dig: **el Trichoderma en 1.4×10⁶ se destruye

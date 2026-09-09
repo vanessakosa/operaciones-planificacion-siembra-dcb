@@ -275,3 +275,46 @@ un indicador que se puede seguir vuelta a vuelta.
 | El mapa de variedades | 🟢 3 confirmados (lisianthus/dianthus/Green Ball · matricaria · dahlias) · 🟡 3 sin historia en la finca · 🔴 **falta Statice, que es 5 de 7 eventos de botrytis y dos cierres anticipados** |
 | Pre-siembra más concentrada | 🟢 **Sí, y más de lo que pensaba:** la bandeja es 45× más concentrada que la cama para la misma dosis por planta |
 | Trench a mitad de ciclo | 🟡 **La más débil.** Es la ventana con menos apertura biológica. Por evento (encharcamiento, fungicida), no por calendario |
+
+---
+
+## La hoja de operario · `05-programacion/hojas-operario/inoculacion.html` v4
+
+Una página, dos etapas. **Tres decisiones de qué NO poner**, y las tres son por la misma regla:
+*ninguna cantidad entra a una hoja de operario si no está confirmada.*
+
+| Lo que quedó fuera | Por qué |
+|---|---|
+| **Etapa 3 (mitad de ciclo)** | Es por evento —encharcamiento, fungicida que barrió la biología— no por calendario. Una hoja no puede decidir eso; Vanessa sí |
+| **Extracto de compost** | Es la mejor palanca de diversidad y **no tengo receta de extracción con base**: cuánto compost, cuánta agua, cuánto tiempo de agitación. Inventarla sería exactamente lo que la regla 1 prohíbe. **Entra a la hoja cuando haya procedimiento y un conteo del compost** |
+| **Micorrizas en la rotación** | Precio en disputa en el propio repositorio ($1.519 vs $3.272/kg), **dosis standalone desconocida**, y la decisión depende del % de colonización que todavía no se ha medido |
+| **Cantidades de la etapa 1 (bandeja)** | **Ninguna ficha da dosis de inmersión de raíz.** La hoja dice qué producto va en cuál variedad y que **Vanessa entrega la cantidad ya medida** — eso sí es ejecutable y no inventa nada |
+
+### Y la rotación, resuelta sin conditionals para el operario
+
+La rotación entre vueltas es una decisión de Vanessa, no del operario: las camas rotan en fechas
+distintas y él no puede llevar esa cuenta. Así que la hoja fija **Fosfolip + Promobac** como base
+estándar y deja **una línea en blanco** donde Vanessa escribe el producto y la cantidad cuando
+cambia el segundo. Un solo renglón, sin explicación, sin ramas.
+
+**Consecuencia honesta: hoy la rotación tiene dos posiciones, no cuatro** — solo el Promobac y el
+Fosfolip tienen dosis derivada. El Estabios entra cuando llegue su dosis en L/ha; las micorrizas,
+cuando se decidan. Una rotación de dos no cumple todavía la hipótesis de diversidad de Vanessa;
+la cumple el compost, que es el que está bloqueado por procedimiento y no por plata.
+
+### Agua por cama, agrupada por número de bombas
+
+Redondeado **hacia arriba** desde 2,5 L/m² — bajo el criterio de que quedarse corto pierde la
+aplicación completa.
+
+| Bombas de 20 L | Camas | m² |
+|---|---|---|
+| **6** | Inv 3B larga · Inv 4C larga · Ext 3B larga · Ext 4 | 40–48 |
+| **5** | Inv 3A · Inv 4C media · Inv 4C corta · Ext 3A | 33–38 |
+| **4** | Inv 3C larga · Inv 5 · Ext 5 · Inv 6 | 25–32 |
+| **3** | Inv 4A · Inv 4B (también Inv 1 e Inv 2) | 20 |
+| **2** | Inv 3B corta · Inv 3C corta · Mini larga · Ext 3B corta | 12 |
+| **1** | Mini corta | 6 |
+
+Seis renglones en vez de 17: como la dosis va **por bomba**, el operario solo necesita saber
+cuántas bombas, y el producto escala solo.

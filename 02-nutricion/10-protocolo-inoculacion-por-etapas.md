@@ -779,3 +779,62 @@ severidad de marchitez por *Fusarium*), **Nube** (que lista *Fusarium*) y **Prom
 (cuya ficha también lista *Fusarium*). Se pierde el antagonista directo, que es lo que la
 evidencia de campo pide con 13 eventos documentados — **por eso no lo hago por mi cuenta, y el
 default se queda con el Fitoderma dentro.**
+
+---
+
+## Por qué la matricaria lleva Interactor y el girasol, la dalia y la boca de dragón no llevan nada extra
+
+> *"Lo único que no me queda claro es por qué esa que pusiste para las matricarias, pero por
+> ejemplo con las bocas de dragón, con las dalias y girasoles que son mildeo polvoso, tampoco
+> vamos a poner nada."* — Vanessa
+
+**La regla que decide es una sola: ¿el patógeno tiene una etapa EN EL SUELO?** Un drench a la
+raíz solo puede atacar lo que está en el suelo. Contra lo que llega por el aire, lo único que
+puede hacer es inducir resistencia en la planta — indirecto, y se desvanece en semanas.
+
+| Problema | ¿Dónde vive el inóculo? | ¿Lo alcanza un drench? |
+|---|---|---|
+| **Mosca blanca de la matricaria** | **EN EL SUELO** — 3C e Inv 5 marcados *"INOCULO_EN_SUELO"*, dos lotes sacrificados | 🟢 **Sí, directo.** Los cuatro hongos del Interactor atacan larvas y pupas en el suelo. **Por eso lleva producto propio** |
+| ***Fusarium* de lisianthus, dianthus, Green Ball** | **EN EL SUELO** — condición base del terreno | 🟢 **Sí, directo.** Por eso llevan Fitoderma |
+| **Mildeo polvoso** (girasol, dalia) · **botrytis** (boca de dragón, statice) | **EN EL AIRE.** Esporas que llegan por viento e infectan la superficie de la hoja. **No hay etapa en el suelo que atacar** | 🔴 **No directo.** Solo por resistencia inducida |
+
+### Y no es que no lleven nada: llevan la base, que es exactamente el producto de resistencia inducida
+
+El **Nube** de la base es *Streptomyces*, y su ficha dice literalmente que **"induce a la planta a
+producir fitoalexinas que le dan resistencia sistémica"**. Es lo único que un drench puede hacer
+contra una enfermedad del aire, y ya lo están recibiendo todas las bandejas.
+
+**Cambio en la hoja:** *"nada más"* → **"solo la base"**. Decía algo distinto de lo que quería
+decir.
+
+### La consecuencia real, y es la importante
+
+**El mildeo y la botrytis no se ganan en la bandeja. Se ganan en el programa foliar.** Y el
+patrón temporal lo demuestra: el statice pide preventivo desde la **semana 14–15 de cosecha** —
+más de tres meses después del trasplante. Ninguna inoculación de bandeja está actuando ahí.
+
+**Cargar la bandeja con productos para enfermedades aéreas sería gastar en una ventana que no
+sirve.** Esas variedades no necesitan más en bandeja: necesitan que el **programa foliar por
+etapa fenológica** esté armado — que sigue bloqueado esperando el `aplicaciones_historial`
+actualizado.
+
+### 🟡 Una excepción que sí importa: polvoso y velloso no son lo mismo
+
+- **Mildeo POLVOSO** (oídio, *Erysiphe*/*Sphaerotheca*): no tiene etapa en el suelo. Sobrevive en
+  yemas y restos aéreos. Nada que agregar en bandeja.
+- **Mildeo VELLOSO** (*Peronospora*): **sí produce oosporas que sobreviven en el suelo y en
+  restos de cosecha.** Ahí un drench sí tiene blanco. Y el **Fitoderma lista *Peronospora
+  sparsa*** en su ficha — así que el lisianthus, que es el que usted asocia al velloso, **ya está
+  cubierto por el producto que le corresponde.** No es coincidencia: es el único de los tres
+  problemas foliares con etapa edáfica, y es el único que ya tiene producto en la bandeja.
+
+### 🟡 Un candidato para la base que NO voy a meter todavía
+
+El **Promobac** —que ya está en la cama— tiene en su ficha control de *Oidium*, *Erysiphe*,
+*Peronospora*, *Botrytis*, *Alternaria* y *Rizoctonia*. En bandeja, con el costo en ~1 %, sería
+un segundo género de resistencia inducida (*Bacillus*, con lipopéptidos) junto al *Streptomyces*
+del Nube. **Encaja con la hipótesis de diversidad.**
+
+**Pero su etiqueta no da cc/L: da 1 L/ha.** Meterlo obligaría a derivar una base de dosificación
+— que es exactamente el error que cometí tres veces con el Fitoderma. **Va en el mismo correo a
+Bioquirama:** *¿cuál es la dosis en cc/L del Promobac para drench en semillero?*

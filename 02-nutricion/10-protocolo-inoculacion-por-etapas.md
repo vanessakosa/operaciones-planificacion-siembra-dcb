@@ -838,3 +838,104 @@ del Nube. **Encaja con la hipótesis de diversidad.**
 **Pero su etiqueta no da cc/L: da 1 L/ha.** Meterlo obligaría a derivar una base de dosificación
 — que es exactamente el error que cometí tres veces con el Fitoderma. **Va en el mismo correo a
 Bioquirama:** *¿cuál es la dosis en cc/L del Promobac para drench en semillero?*
+
+---
+
+## 🔴 Los 2,5 cc/L del Promobac · no lo bajé por la carga, lo bajé por el agua — y no lo dije
+
+> *"En la ficha técnica de Promobac dice 2,5 cc por litro. Que tú lo bajes porque, viendo la carga
+> que tenga, te parece que es suficiente, es una cosa. Pero quiero entender que fue así."*
+> — Vanessa
+
+**Tiene toda la razón en exigir la razón escrita. Y la razón que usted me ofrece no es la mía:
+la real es el agua.** Yo puse **0,5 cc/L** (10 mL en la bomba de 20 L), que es **la quinta parte
+de la etiqueta**, y lo derivé por área sin decirlo. Eso es la tercera vez en esta sesión que elijo
+una base sin declararla.
+
+### La ficha del Promobac se contradice consigo misma
+
+| Lo que dice la ficha | |
+|---|---|
+| *"se sugiere utilizar **1 L/ha**"* | dosis por área |
+| **2,5 cc/L** | dosis por concentración |
+
+**Las dos solo coinciden si el agua son 400 L/ha.** Y aquí el agua es 100 L por cama de 35,6 m²
+= **28.090 L/ha** — **70 veces** el volumen al que la propia ficha es consistente.
+
+Así que **la ficha no se puede obedecer literalmente en las dos unidades a la vez.** Hay que
+elegir, y decir cuál:
+
+| Base | cc por bomba de 20 L | cc por cama | L/ha | vs etiqueta por área |
+|---|---|---|---|---|
+| **Concentración (2,5 cc/L)** | 50 | 250 | 70,2 | **70×** |
+| **Lo que puse (0,5 cc/L)** | **10** | **50** | **14,0** | 14× |
+| Área pura (1 L/ha) | 0,7 | 3,6 | 1,0 | 1× |
+
+Los 0,5 cc/L quedan **entre las dos**, anclados en lo que la finca ya aplicaba: los 4,9–12,1 L/ha
+del tanque de hoy. No hay evidencia de que a ese nivel quedara corto, ni de que necesite 70×.
+
+### Y la carga —su hipótesis— también apunta al mismo lado
+
+Vale la pena correrla, porque es una comprobación independiente:
+
+| | UFC/g añadidos al suelo |
+|---|---|
+| 2,5 cc/L (etiqueta) | **35.100** |
+| 0,5 cc/L | 7.000 |
+| **Bacterias residentes de un suelo** | **10⁷ a 10⁹** |
+
+**Aun a 2,5 cc/L el aporte es 0,03–3,5 % de lo que ya vive ahí.** Quintuplicar la dosis es
+quintuplicar algo que sigue por debajo del 4 %. **Así que su razón también sirve — no es la
+principal, pero converge.**
+
+### Y la plata
+
+| | Por cama | Al año (60 camas × 3 vueltas) |
+|---|---|---|
+| **2,5 cc/L** | $14.750 | **$2.655.000** |
+| **0,5 cc/L** | $2.950 | **$531.000** |
+
+**$2,1 M de diferencia** por un producto que en ninguno de los dos casos mueve la población. La
+decisión es suya, y ahora está escrita con las dos razones y el precio al lado.
+
+---
+
+## 🟢 Y en la bandeja sí manda la concentración: el Promobac entra a la base
+
+**Aquí la lógica se invierte, y por la misma variable.** La bandeja son 5 L para 4 bandejas — un
+drench de volumen bajo, que es exactamente el régimen que asume una dosis en cc/L. **Ahí la
+etiqueta se aplica literal:**
+
+> **2,5 cc/L × 5 L = 12,5 cc → 13 cc** (redondeado hacia arriba)
+
+Es el principio que resuelve toda la confusión de esta sesión:
+
+> **La concentración (cc/L) es la base correcta cuando el volumen de agua es normal. Se rompe
+> cuando el volumen es extremo. En la bandeja el volumen es normal — en la cama es 70× lo
+> normal.**
+
+### La base de bandeja queda en tres productos
+
+| En 5 L de agua | |
+|---|---|
+| **Endorhiza 10 cc** | micorriza — la única vía al P por exploración de hifas |
+| **Nube 10 cc** | *Streptomyces* — resistencia inducida por fitoalexinas, y el género que falta |
+| **Promobac 13 cc** | *Bacillus* — segundo género de resistencia inducida, y su ficha lista *Fusarium*, *Oidium*, *Botrytis*, *Erysiphe*, *Peronospora* y *Rizoctonia* (esta última es el damping-off de bandeja) |
+
+**Y esto cierra el hueco que le señalé hace dos mensajes:** el girasol, la dalia y la boca de
+dragón ahora reciben **dos géneros distintos de resistencia inducida** en la base, que es todo lo
+que un drench puede hacer contra una enfermedad aérea.
+
+## La regla que sale de esto, y va a `00-contexto/`
+
+> **Toda dosis escrita en este repositorio lleva al lado la base de la que salió** — cc/L,
+> g/m², por planta, o por hectárea — **y de qué ficha o práctica viene.** No basta que el número
+> sea correcto: si la base no está escrita, nadie puede revisarlo, y yo mismo cambié de base tres
+> veces con el Fitoderma y una con el Promobac sin darme cuenta.
+
+## El correo a Bioquirama, ahora con tres preguntas
+
+1. **¿Endorhiza, Nube, Promobac, Interactor y Fitoderma se pueden aplicar en la misma mezcla?**
+2. **El Promobac: 1 L/ha y 2,5 cc/L no coinciden. ¿En cuántos litros de agua está pensado el
+   1 L/ha?** — es la pregunta que vuelve la dosis de la cama un dato en vez de un juicio.
+3. **El Endorhiza tiene la misma contradicción:** 2 cc/L y 1 L/ha. ¿Cuál aplica en semillero?

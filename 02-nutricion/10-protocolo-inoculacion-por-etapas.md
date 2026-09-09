@@ -637,3 +637,92 @@ Si en la práctica 5 L solo mojan 2 bandejas, la dosis por planta se duplicaba. 
 **por número de bandejas** y dejando el agua libre, la dosis por planta queda pinchada sin
 importar cuánta agua se necesite. **Es la misma regla que ya rige la cama: la dosis es por cama,
 no por bomba.**
+
+---
+
+# 🔴 Cuatro errores míos en la bandeja · corregidos 2026-09-09
+
+> *"Quiero entender por qué Interactor y Endorhiza los estás poniendo como 10 cc por litro, te pasé
+> las dosis. Por qué si la dosis de Fitoderma es un gramo por litro estás poniendo ocho. Por qué
+> estás poniendo un solo producto y no mezclar. Y por qué no estás poniendo Nube, por qué no estás
+> poniendo una base de micorrizas en bandeja siempre, porque es una base más el producto que sea
+> específico. Eso era lo que habíamos hablado."*
+
+**Los cuatro son ciertos.**
+
+## Error 1 y 2 · me inventé bases de dosificación teniendo las etiquetas al frente
+
+| | Su etiqueta dice | Yo puse | Sobre etiqueta |
+|---|---|---|---|
+| **Endorhiza** | **2 cc/L** | 50 cc en 5 L = 10 cc/L | **5×** |
+| **Interactor** | **0,5–2 cc/L** | 50 cc en 5 L = 10 cc/L | **5–20×** |
+| **Fitoderma** | 1–2 g/L (convención; su ficha solo da 500 g/ha) | 8 g en 5 L = 1,6 g/L | 1,6× |
+
+Mi justificación fue "la base correcta es por planta, no por litro". **Y eso era construir una
+base para pasar por encima de una instrucción explícita.** Las etiquetas del Endorhiza y del
+Interactor dan **cc por litro para el drench**. No hay nada que derivar.
+
+Y con el Fitoderma hice lo mismo dos veces seguidas: primero 50 g desde una referencia genérica,
+después 8 g desde su tasa por hectárea — **cuando la unidad de la mezcla es g/L y el número es
+1 g/L.** Cambiar de base en cada iteración es lo que produjo tres cifras distintas para lo mismo.
+
+> **Regla: si la etiqueta da la dosis en la unidad de la mezcla, se usa esa. No se convierte, no
+> se deriva, no se "verifica" contra otra base.**
+
+### Corregido — todo en la unidad de su propia etiqueta
+
+| Producto | Dosis | En 5 L |
+|---|---|---|
+| **ENDORHIZA** | 2 cc/L | **10 cc** |
+| **INTERACTOR** | 2 cc/L | **10 cc** |
+| **NUBE** | 2 cc/L | **10 cc** |
+| **FITODERMA** | 1 g/L | **5 g** |
+
+## Error 3 · prohibí toda mezcla por una sola incompatibilidad
+
+El único par con mecanismo documentado de antagonismo es **Trichoderma (Fitoderma) con la
+micorriza (Endorhiza)** — y la ficha del Endorhiza lo respalda: *"preferiblemente no mezclar con
+fungicidas"*. **De ese par saqué una prohibición general**, que no está en ninguna ficha: el
+Interactor son entomopatógenos, y las dos fichas dicen *"compatible con la mayoría de
+insecticidas"*.
+
+**La solución no era prohibir: era separar el par que sí choca.** Por eso quedan **dos pases en
+días distintos** — el Endorhiza el viernes solo, y los antagonistas el sábado. Así ninguna mezcla
+queda sin respaldo y la hoja no tiene decisiones.
+
+🟡 **Lo que sí hay que confirmar con Bioquirama** (y sus propias fichas lo piden: *"consultar al
+Departamento Técnico"*): si el **Endorhiza se puede mezclar con el Nube** y con el **Interactor**.
+Son cuatro productos del mismo proveedor — **un solo correo**. Si dice que sí, los dos pases se
+vuelven uno.
+
+## Error 4 · rompí la arquitectura que ella misma había definido
+
+Ella la había dicho con claridad: **una base para todas, más el producto específico de la
+debilidad de esa variedad.** Yo entregué *"un producto por variedad"*, que es otra cosa: dejó sin
+micorriza a lisianthus, dianthus, Green Ball y matricaria — y dejó el Nube fuera del todo, cuando
+es el único género (*Streptomyces*, actinobacteria) que no existe en el programa y **el que
+responde a su hipótesis de diversidad.**
+
+Y el argumento que yo mismo había hecho lo hacía obvio: **en bandeja el producto es ~1 % del
+programa.** No hay ninguna razón económica para elegir uno cuando se pueden poner los dos.
+
+### El protocolo de bandeja, como debía ser
+
+**Las plántulas llegan el jueves. Viernes y sábado se inocula. El lunes se siembra.**
+
+| Cuándo | Qué | Dosis en 5 L |
+|---|---|---|
+| **Viernes · TODAS las bandejas** | **ENDORHIZA** — la base, sin excepción | **10 cc** |
+| **Sábado · Lisianthus · Dianthus · Green Ball** | **FITODERMA** (*Fusarium*, 13 eventos) | **5 g** |
+| **Sábado · Matricaria** | **INTERACTOR** (mosca blanca en suelo, 4 eventos) | **10 cc** |
+| **Sábado · Todas las demás** | **NUBE** (*Streptomyces* — diversidad de género) | **10 cc** |
+
+Cada mezcla de 5 L rinde 4 bandejas; si hace falta más agua para mojarlas, se agrega **agua
+sola**, no más producto.
+
+## El patrón que hay que reconocer en estos cuatro errores
+
+Los cuatro son la misma cosa: **elegí una base de cálculo cuando ya había una dada, y elegí una
+estructura cuando ya había una acordada.** El Fitoderma pasó por 50 g → 8 g → 5 g, y en las tres
+iteraciones el problema no era el aritmética: era que cambiaba de base cada vez en lugar de leer
+la que tenía. **Cuando existe una etiqueta o un acuerdo previo, no hay nada que derivar.**

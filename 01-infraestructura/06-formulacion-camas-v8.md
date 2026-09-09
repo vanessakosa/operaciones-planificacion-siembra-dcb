@@ -825,3 +825,34 @@ Del bloque rojo del pie quedan solo las dos frases que **sí son de ejecución**
 
 La primera protege el drench —el fertilizante químico mata el inoculante, por la ficha del
 solubilizador— y la segunda cubre el único hueco que queda en la tabla de camas.
+
+
+## Ajuste 2026-09-09 · cifras redondeadas para campo
+
+Petición de Vanessa: *"redondea los números en gramos para que no quede 382 por ejemplo, sino
+380."* **Leonardita al múltiplo de 10 · yeso a un decimal.**
+
+| Cama | Leonardita exacta | **En la hoja** | Error |
+|---|---|---|---|
+| Inv 3A · Ext 3A | 445 · 408 | **450 · 410** | +1,1 % · +0,5 % |
+| Inv 3B larga · Ext 3B larga | 600 | **600** | — |
+| Inv 3B corta · Ext 3B corta | 146 | **150** | +2,7 % |
+| Inv 3C larga | 315 | **320** | +1,6 % |
+| Inv 3C corta | 158 | **160** | +1,3 % |
+| Mini | 82 | **80** | −2,4 % |
+| Inv 4A · 4B | 131 | **130** | −0,8 % |
+| Inv 4C larga · media · corta | 263 · 248 · 234 | **260 · 250 · 230** | −1,1 % · +0,8 % · −1,7 % |
+| Inv 5 · Ext 5 · Inv 6 | 206 | **210** | +1,9 % |
+| Ext 4 | 262 | **260** | −0,8 % |
+
+| Yeso exacto | **En la hoja** |
+|---|---|
+| 2,02 kg | **2 kg** |
+| 4,05 kg | **4,1 kg** |
+| 3,82 kg | **3,8 kg** |
+| 3,60 kg | **3,6 kg** |
+
+**El error máximo es 2,7 %**, muy por debajo del ±6 % que ya se acepta al redondear el Bokashi al
+cuarto de saco. **Una cifra de tres dígitos en una hoja de campo es precisión falsa:** sugiere una
+báscula que no existe y una exactitud que la dosis —todavía pendiente del análisis del Bokashi—
+no tiene.

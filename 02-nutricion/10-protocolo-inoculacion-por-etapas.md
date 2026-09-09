@@ -351,3 +351,205 @@ por precio en disputa ($1.519 vs $3.272/kg) y dosis standalone desconocida.
 | **Etapa 3 (mitad de ciclo)** | Es por evento —encharcamiento, un fungicida que barrió la biología— no por calendario |
 | **Rotación entre vueltas** | Hoy solo hay dos posiciones con dosis derivada. Entra cuando llegue la dosis del Estabios en L/ha |
 | **Extracto de compost** | Es la mejor palanca de diversidad y **no tengo receta de extracción con base**. Entra cuando haya procedimiento y un conteo del compost |
+
+---
+
+# Las cinco fichas de Bioquirama · 2026-09-09
+
+Vanessa entregó **Endorhiza, Estabios, Interactor, Nube y Tornado** (más el texto completo del
+Promobac). **Tres de las cinco tapan exactamente los tres huecos** que la auditoría de R7 había
+encontrado, y una descarta media función.
+
+## 🟢 El criterio que reorganiza todo
+
+> *"Si vamos a inocular en bandeja, la cantidad de producto es mínima, entonces ahí podemos usar
+> el producto que queramos. Y para la cama sí debería ser el mejor costo/beneficio, porque ahí
+> serían más o menos 100 litros por preparación de cama."* — Vanessa
+
+**Correcto, y se puede poner un número.** Por m² de cama futura:
+
+| | Agua por m² | Relación |
+|---|---|---|
+| **Bandeja** (5 L → 4 bandejas → 800 plántulas → 144 m² de cama futura) | **0,035 L/m²** | 1× |
+| **Cama** (100 L por cama de 35 m²) | **2,9 L/m²** | **83×** |
+
+**La bandeja mueve ~1 % del producto del programa.** Así que:
+
+- **Bandeja → se elige por EFICACIA.** El precio es irrelevante ahí.
+- **Cama → se elige por COSTO POR UNIDAD DE FUNCIÓN.** 100 L × ~60 camas por vuelta.
+
+**Y esto resuelve la pregunta de la diversidad mejor que rotar frascos en la cama:** la
+diversidad va donde es casi gratis **y** donde cae sobre una raíz sin competencia. La cama se
+queda con los dos más baratos por función. Su hipótesis y el costo dejan de estar en conflicto.
+
+---
+
+## 🟢 Hueco #1 cerrado · ENDORHIZA es la micorriza, y trae dosis de semillero
+
+*Rhizophagus* spp. + *Claroideoglomus* sp., **270 propágulos/mL**, suspensión concentrada.
+
+**Lo decisivo: la etiqueta tiene dosis de semillero y de trasplante**, que es justo lo que
+faltaba. *"Aplicar en forma de drench en el semillero. Al momento del trasplante, aplicar en
+drench 25 a 50 c.c. de la solución en la dosis indicada (2 cc/L)."*
+
+De ahí sale la carga **por planta**, que es la magnitud que importa en una micorriza —no la
+concentración— porque lo que se necesita es un evento de colonización por raíz:
+
+| | Propágulos por planta |
+|---|---|
+| Etiqueta: 25 mL de solución a 2 cc/L | **13,5** |
+| Etiqueta: 50 mL de solución a 2 cc/L | **27,0** |
+| **Nuestra bandeja: 50 cc en 5 L, 4 bandejas (800 plántulas)** | **16,9** ✅ |
+
+**Dentro de la banda de etiqueta.** La concentración sale en 10 cc/L —5× los 2 cc/L de la
+etiqueta— y eso es correcto, no un error: el volumen por planta en una celda de bandeja es ~7×
+menor que en la bolsa de banano de la etiqueta, así que para entregar los mismos propágulos por
+planta la solución tiene que ir más concentrada. **La etiqueta manda por planta, no por litro.**
+
+Y el modo de acción de la ficha confirma por qué la bandeja es el lugar: *"cuando las esporas
+germinan, sus hifas penetran en el tejido cortical de la raíz"*. **Necesita raíz, no suelo.** El
+argumento que las había eliminado —*"2.000 esporas/m² en 90 kg de suelo, muy diluido"*— era un
+argumento contra el voleo, y en bandeja no aplica.
+
+🟡 **Falta su precio.** No está en el repositorio.
+
+---
+
+## 🟢 Hueco #2 cerrado · INTERACTOR desplaza al No Fly en la bandeja
+
+*Beauveria bassiana* + *Metarhizium anisopliae* + *Lecanicillium lecanii* + *Paecilomyces
+fumosoroseus*. Dosis **0,5–2 cc/L**, y otra vez con dosis de trasplante: *"al momento del
+trasplante, aplicar en drench 100 mL de la solución"*.
+
+| | cc de producto por planta |
+|---|---|
+| Etiqueta a 0,5 cc/L | 0,050 |
+| Etiqueta a 2 cc/L | 0,200 |
+| **Nuestra bandeja: 50 cc en 5 L, 800 plántulas** | **0,0625** ✅ |
+
+**Por qué desplaza al No Fly, y son tres razones:**
+
+1. **Tiene dosis de drench en semillero.** El No Fly tiene 10 g por bomba de 25 L, que es una
+   tasa **foliar** — es lo que me obligaba a extrapolarla.
+2. **Es líquido.** No hay que pesar polvo en gramos.
+3. **Trae *Lecanicillium lecanii*, patógeno específico de mosca blanca**, además del mismo
+   *Paecilomyces fumosoroseus* del No Fly, más *Beauveria* y *Metarhizium*. **Cuatro
+   entomopatógenos contra uno.**
+
+**El No Fly no sale de la finca: se queda en el programa foliar**, que es donde su etiqueta
+aplica. En bandeja lo reemplaza el Interactor.
+
+---
+
+## 🟢 Hueco #3 · NUBE es el producto de diversidad, con etiqueta ornamental de presiembra
+
+*Streptomyces griseoviridis* + *S. lydicus*. **Actinobacterias — un género que no existe en
+ninguna parte del programa actual.** Ni *Bacillus*, ni *Pseudomonas*, ni hongo.
+
+Y su etiqueta es la más pertinente de las cinco: **"Ornamentales: Rosas, Hortensias,
+Crisantemos. Aplicar al suelo EN PRESIEMBRA y mensualmente. 1 a 2,5 cc/L."** Controla
+*Cylindrocarpon*, *Erwinia*, *Pseudomonas*, *Ralstonia*; y en banano y tomate, **Fusarium**.
+
+**Es exactamente el producto que la hipótesis de diversidad de Vanessa pide.** Pero:
+
+| | |
+|---|---|
+| En **bandeja** | 🟢 Entra cuando quiera: el costo ahí es irrelevante |
+| En **cama** | 🟡 A 1–2,5 cc/L son **20–50 cc por bomba de 20 L** — de 2 a 5 veces la concentración de Fosfolip y Promobac (0,5 cc/L). Con 100 L por cama eso es plata real. **Falta su precio para decidir** |
+
+---
+
+## 🔴 ESTABIOS · la ficha descarta la mitad del producto, con sus propias palabras
+
+Ahora se sabe qué trae: *Azotobacter vinelandii* + *Azospirillum brasilense* (fijadoras de N) +
+*Bacillus subtilis* + *Pseudomonas fluorescens* (solubilizadora de fosfatos).
+
+**Y la ficha dice, textual, que las fijadoras de N *"se asocian a los sistemas radicales de
+diversas especies de plantas, principalmente gramíneas"*.** El catálogo de DCB no tiene una sola
+gramínea. **Dos de sus cuatro organismos están fuera de su cultivo objetivo, por la propia
+etiqueta.**
+
+Eso refuerza lo que ya se había dicho por otra vía (Kempf Fase 1: no hace falta más nitrato
+soluble; y el N se fertirriega). Lo que queda útil del Estabios es la *Pseudomonas fluorescens*
+solubilizadora — que es la función del Fosfolip.
+
+🟡 **Y una corrección a mi propio cálculo: esta ficha NO trae UFC.** El "$590 por 10⁹" que
+reporté descansaba en el dato de "1×10⁸ **total** entre cuatro" que estaba en el repositorio, y
+esta ficha no lo confirma ni lo niega. **Ese número sigue sin verificar.** Falta pedir UFC por
+organismo.
+
+---
+
+## 🟡 TORNADO · no es para el drench
+
+Ocho organismos: *Beauveria*, *Lecanicillium*, cinco *Bacillus*/*Lysinibacillus*. Pero su blanco
+son **larvas, prepupas y pupas** de Dasiops, Prodiplosis, mosca del Mediterráneo y minadores —
+es un insecticida de contacto, orientado a foliar, y la ficha entregada **no trae dosis.**
+Queda en el programa foliar, no aquí.
+
+---
+
+## 🟢 PROMOBAC · el texto completo agrega dos cosas
+
+1. **Su ficha lista control de *Fusarium*, *Oidium*, *Botrytis*, *Alternaria*, *Erysiphe*,
+   *Monilia*, *Rizoctonia*, *Verticilium*, *Peronospora* y *Uromyces*.** Cubre el *Fusarium* del
+   suelo desde la cama, lo que hace que el Fitoderma en bandeja sea refuerzo dirigido y no la
+   única línea.
+2. **Dice que también fija y solubiliza N y P.** Se solapa parcialmente con el Fosfolip. No es
+   razón para sacar el Fosfolip —su *Penicillium* es solubilizador dedicado a 1×10⁸— pero sí hay
+   que tenerlo presente cuando llegue el precio del Nube y haya que elegir el tercer renglón.
+
+---
+
+## El protocolo, cerrado
+
+### Etapa 1 · BANDEJA — el viernes, día después de que llegan las plántulas
+
+**5 litros de agua + 50 del producto. Un solo producto por bandeja.**
+
+| Variedad | Producto | Cantidad |
+|---|---|---|
+| **Lisianthus · Dianthus · Green Ball** | **FITODERMA** | 50 g |
+| **Matricaria** | **INTERACTOR** | 50 cc |
+| **Todas las demás** | **ENDORHIZA** | 50 cc |
+
+**Por qué no se mezclan:** el *Trichoderma* del Fitoderma es micoparásito de amplio espectro —
+mezclarlo con la micorriza del Endorhiza en la misma solución es ponerlos a competir a máxima
+concentración. Y la ficha del Endorhiza pide *"preferiblemente no mezclar con fungicidas"*.
+
+**Dos precisiones que van al repositorio y no a la hoja:**
+
+- **Gomphrena, amaranto y celosia son Amaranthaceae, y Dianthus/Green Ball son Caryophyllaceae:
+  familias mal o no micorrizadas.** El Endorhiza en ellas rinde poco. Se deja en *"todas las
+  demás"* de todos modos porque el costo en bandeja es ~1 % y una lista de excepciones le suma
+  ruido a la hoja — **la simplicidad vale más que ese ahorro.**
+- 🟡 **Pregunta abierta: ¿el lisianthus debería llevar Endorhiza en vez de Fitoderma?** La
+  colonización micorrízica reduce severidad de marchitez por *Fusarium*, y el Promobac ya cubre
+  *Fusarium* desde la cama. Pero hay **11 eventos de mortalidad documentados** con un programa
+  que ya incluía Fitoderma, y cambiarlo sin datos no se justifica. **Lo decide el % de
+  colonización micorrízica.**
+
+### Etapa 2 · CAMA — el día que se prepara, al final de la tarde
+
+**Bomba de 20 L + 10 mL de Fosfolip + 10 mL de Promobac.** Igual para todas las camas y
+variedades; el operario usa las bombas que necesite (≈100 L, 5 bombas). Riego de arrastre con
+agua sola, y después el plástico.
+
+**Son los dos más baratos por unidad de función**, que es el criterio correcto para los 100 L ×
+60 camas. El tercer renglón —Nube, por diversidad de género— entra cuando llegue su precio.
+
+### Etapa 3 · por evento, no por calendario
+
+Encharcamiento, o un fungicida que barrió la biología. No va en hoja.
+
+---
+
+## Lo que falta, ahora que las fichas llegaron
+
+| | Para qué |
+|---|---|
+| 🔴 **Precio del Endorhiza, del Interactor y del Nube** | El Nube decide si entra a la cama; los otros dos ya entran (costo irrelevante en bandeja) |
+| 🔴 **UFC por organismo del Estabios** | Mi $590 por 10⁹ sigue sin verificar: su ficha no trae UFC |
+| 🟡 **Conidios/mL del Interactor** | Para poder compararlo por unidad del organismo útil |
+| 🟡 **% de colonización micorrízica en raíz** | Decide el caso del lisianthus, y mide la hipótesis de diversidad |
+| 🟡 **¿Qué es el Biohar Forte?** | Sigue sin rol ni dosis. Con Endorhiza identificado, ya no bloquea nada — pero se está pagando $123.000/L por algo sin uso definido |

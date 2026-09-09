@@ -107,6 +107,22 @@ la finca.**
 - Requisito para variedades donde se usan micorrizas al trasplante: suelo sin fungicidas
   recientes.
 
+> **🟢 2026-09-09 · el protocolo se estructuró en TRES ETAPAS** a partir del razonamiento de
+> Vanessa (microbiología acumulativa en No-Dig → aplicar lo mismo por años sesga la comunidad →
+> hace falta base genérica + adaptaciones por variedad + etapas). Este archivo cubre **la etapa 2
+> (cama)**. La etapa 1 (bandeja, la de mayor palanca y hoy vacía) y la etapa 3 están en
+> **`02-nutricion/10-protocolo-inoculacion-por-etapas.md`**, junto con la evaluación del
+> razonamiento y el mapa de variedades verificado contra los 24 eventos.
+>
+> Tres cosas de ahí que cambian **esta** etapa:
+> 1. **La base rota entre vueltas** para no colonizar siempre los mismos organismos: Fosfolip
+>    fijo + Promobac / Estabios / micorrizas alternando. **El *Trichoderma* NO entra en la
+>    rotación** — está dominante (1,4×10⁶ UFC/g) y es micoparásito de amplio espectro.
+> 2. **El extracto de compost maduro es el candidato a base**, no un frasco: cientos de taxones
+>    contra 2–4, y trae los protozoos y nematodos bacterívoros que ningún producto vende.
+> 3. **Botrytis, oidio y mildeo son aéreos.** No se previenen con un drench al suelo. Esa
+>    diferenciación por variedad va al programa foliar, no aquí.
+
 ## 🔴 Por qué solo dos productos — y por qué eso NO está demostrado
 
 El programa de dos productos es el resultado de **tachar de una lista**, no de diseñar desde las

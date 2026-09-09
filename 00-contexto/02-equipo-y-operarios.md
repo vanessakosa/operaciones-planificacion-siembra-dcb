@@ -4,8 +4,8 @@
 
 | Persona | Rol | Notas de manejo |
 |---|---|---|
-| **Alexander** | Jefe de campo · riego, fertilización, bombas | Recibe los PDF semanales por WhatsApp los domingos. Ejecuta, no decide agronomía. El más confiable para programas complejos. |
-| **Wilson** | Desyerbe + preparación camas + bombas | **Requiere conteo total de tanques explícito en las instrucciones**, no solo concentración por tanque — si no, subaplica. |
+| **Alexander** | Jefe de campo · riego, fertilización, bombas · **preparación de camas** | Recibe los PDF semanales por WhatsApp los domingos. Ejecuta, no decide agronomía. El más confiable para programas complejos. **Corrección 2026-09-09: la preparación de camas es suya, no de Wilson.** |
+| **Wilson** | Desyerbe + bombas | **Requiere conteo total de tanques explícito en las instrucciones**, no solo concentración por tanque — si no, subaplica. |
 | **Atilio** | Fertirriego / bombas (asignación más reciente) | Detectó el error de copia en la fórmula de Floración de Inv3. Buen ojo. |
 | **Diana** | Líder de corte · registro de cosecha en campo | Maneja el Google Sheet de registro de tallos. |
 | **Gregorio** | Auxiliar de riego · plántulas | |

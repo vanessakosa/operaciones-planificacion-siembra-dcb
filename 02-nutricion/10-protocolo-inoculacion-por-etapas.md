@@ -1031,3 +1031,119 @@ decide si bajar.
 🟡 **¿El Fosfolip es 1 L/ha o 2 L/ha?** Vanessa dice 1; el repositorio tenía 2 en
 `02-nutricion/07-programa-biologico.md` y sobre ese 2 se construyó la comparación contra el
 Estabios. **Hay que resolverlo:** cambia el cc por cama (3,6 vs 7,1) y cambia esa comparación.
+
+---
+
+# La dosis de la cama, construida desde la carga y desde el suelo · no desde la etiqueta
+
+> *"Más que solamente leer la etiqueta, prefiero que leas la carga que tiene y con eso me digas
+> una sugerencia aplicada a nuestro análisis de suelo, a las prácticas de siembra, para que tenga
+> costo/beneficio. No solamente responder en base a lo que ellos sugieren, porque ellos quieren
+> vender más y nosotros queremos economizar — pero sin crear una acción ineficiente que no
+> repercuta en nada. Que sea lo justo."* — Vanessa
+
+**Confirmado: Fosfolip 1 L/ha.** Y aquí está el análisis que pide, hecho al revés de como lo
+venía haciendo: primero el umbral biológico, después el suelo, y la etiqueta al final como una
+opinión más del vendedor.
+
+## 1 · El umbral: qué se necesita para colonizar una raíz
+
+La colonización de la rizosfera es un fenómeno **por planta**, no por m³ de suelo — el organismo
+tiene que llegar a *esa* raíz. La referencia de orden de magnitud, de los tratamientos de semilla
+comerciales, es **10⁵–10⁶ UFC por planta** entregadas a la zona radicular.
+
+Cama tipo: 35,6 m² · 100 L de agua · **198 plantas** (0,18 m²/hueco).
+
+| | cc/cama | UFC/planta | × umbral 10⁶ | $/cama |
+|---|---|---|---|---|
+| **FOSFOLIP** *(Penicillium 1×10⁸ UFC/mL)* | | | | |
+| Etiqueta 1 L/ha | 3,6 | 1,80×10⁶ | **2×** | $186 |
+| **2× etiqueta (2 L/ha)** | **7,1** | **3,60×10⁶** | **4×** | **$371** |
+| **PROMOBAC** *(4×10⁸ UFC/mL)* | | | | |
+| Etiqueta 2,5 cc/L | 250 | 5,06×10⁸ | **506×** | $14.750 |
+| 1,0 cc/L | 100 | 2,02×10⁸ | 202× | $5.900 |
+| 0,5 cc/L | 50 | 1,01×10⁸ | 101× | $2.950 |
+| **Práctica de hoy 0,25 cc/L** | **25** | **5,06×10⁷** | **51×** | **$1.475** |
+
+**El hallazgo central: los dos productos están en extremos opuestos respecto de su propia
+etiqueta.**
+
+- **El Fosfolip a etiqueta apenas dobla el umbral.** Tiene **poco margen** — y es el único
+  producto que ataca el cuello de botella real del suelo.
+- **El Promobac a etiqueta va 506× sobre el umbral.** Aun a la práctica actual va **51×**. Los
+  2,5 cc/L no son una dosis biológica: son una dosis comercial.
+
+## 2 · Qué dice *su* suelo sobre cuánto aplicar
+
+| Dato del análisis | Qué implica | Dirección |
+|---|---|---|
+| **M.O. 18,6–23,4 %** — de las más altas que se ven en horticultura | Carbono y hábitat abundantes: la supervivencia del inoculante es **alta**, no hay que compensar mortalidad | **← menos** |
+| ***Trichoderma* 1,4×10⁶ UFC/g** | Comunidad densa ya establecida: competencia alta y **valor marginal de añadir bajo** | **← menos** |
+| **pH 5,6–5,8** | **Favorece hongos y desfavorece *Bacillus*** (su óptimo es 6,5–7,5). El *Penicillium* del Fosfolip tiene ventaja; el *Bacillus* del Promobac no establece bien — **y pagar más de algo que no establece es peor, no mejor** | **← menos Promobac** |
+| **P soluble 0,107 mg/L** — fijación por alofano | Es **el cuello de botella real de la finca**, y es exactamente lo que el Fosfolip ataca. La única función con blanco medible | **→ más Fosfolip** |
+| **Bokashi 1–2 kg/m², 2–3 veces/año** | El alimento ya está puesto. **Se siembra el organismo, no se inunda** | **← menos** |
+| **Agua 2,8 L/m²** | El producto queda en los primeros centímetros, que es donde va la raíz nueva: **la entrega al blanco es eficiente** | **← menos** |
+| **No-Dig + sistema acumulativo** (su propio argumento) | Se inocula para sembrar y después se alimenta. Una dosis de siembra es pequeña | **← menos** |
+
+**Seis de los siete factores apuntan a menos producto. El único que apunta a más señala al
+Fosfolip, no al Promobac.**
+
+## 3 · Y el argumento que decide el Promobac: su función viva no escala con la dosis
+
+¿Para qué sirve el Promobac **en este suelo**?
+
+| Función | ¿Sirve aquí? |
+|---|---|
+| Solubilizar P | 🔴 El Fosfolip lo hace mejor **y el pH lo favorece**. Redundante |
+| Antagonizar *Fusarium* | 🔴 El *Trichoderma* residente a 1,4×10⁶ ya es el antagonista dominante. Marginal |
+| Fijar N | 🔴 No se necesita: el N se fertirriega, y Kempf Fase 1 pide **no** exceso de nitrato |
+| **Resistencia sistémica inducida (ISR)** | 🟢 **Esta sí.** Es lo único que queda en pie |
+
+**Y la ISR no escala con la dosis.** Es un efecto de señalización — lipopéptidos y volátiles que
+la raíz detecta — y satura a concentraciones bajas. **Se está pagando biomasa cuando lo que se
+quiere es una señal.** Ese es el argumento decisivo, y es el mismo que ya se usó para las
+oligosacarinas del Fitoderma.
+
+## 4 · La recomendación
+
+| | Cantidad | Por qué |
+|---|---|---|
+| **FOSFOLIP** | **7 cc por cama** = 2× su etiqueta, en la primera bomba | A etiqueta solo dobla el umbral. Ataca el único cuello de botella medible. El pH lo favorece. Y doblarlo cuesta **$185 más por cama** |
+| **PROMOBAC** | **5 cc por bomba** = 0,25 cc/L, la práctica actual | Ya va **51× sobre el umbral**. Su función viva es ISR, que no escala. Y el pH no le favorece |
+
+**El principio: subir donde el margen es corto y la función es medible; no subir donde ya hay
+50× de sobra y la función es una señal.**
+
+| | Por cama | Al año (60 camas × 3 vueltas) |
+|---|---|---|
+| Fosfolip 7 cc | $371 | |
+| Promobac 25 cc | $1.475 | |
+| **TOTAL** | **$1.846** | **$332.323** |
+| **HOY** | | **$4.446.915** |
+| **Ahorro** | | **$4.114.592** |
+| *(Contra seguir la etiqueta del Promobac)* | *$15.121* | *$2.721.823 — se liberan $2,39 M* |
+
+## 5 · El riesgo de esto, dicho de frente
+
+**Es un recorte de 13× contra el gasto de hoy.** No se puede hacer a ciegas, y el indicador ya
+está definido en el repositorio con línea base:
+
+> **P soluble al cierre del ciclo. Línea base 0,107 mg/L.** Es directo, barato, y no hay que
+> esperar tallos. Si sube, el Fosfolip a 2× etiqueta está trabajando. Si no se mueve, el problema
+> no es la dosis: es el producto o la vía.
+
+Y el ensayo partido de Inv 4 —el único bloque con riego uniforme, o sea el único donde un ensayo
+es válido— sigue siendo el lugar para probarlo.
+
+🟡 **Lo que sostiene o corrige todo este cálculo:** el **conteo de bacterias del suelo**, que
+nunca se ha medido. Bioquirama entrega *Trichoderma* y *Fusarium*. Con un conteo bacteriano, el
+"51× sobre el umbral" se convierte en un porcentaje de la población real, que es la cifra que de
+verdad decide. **Va en el mismo pedido que el panel de Ingham.**
+
+## Y una nota sobre el método, que es lo que ella pidió
+
+Este es el primer análisis de la sesión hecho en el orden correcto: **umbral biológico → datos
+del suelo propio → función real del producto → y la etiqueta al final**, como lo que es: la
+opinión de quien vende. En los cuatro intentos anteriores empecé por la etiqueta y terminé
+justificando el número del fabricante o inventando una base para contradecirlo. **La etiqueta es
+un dato, no una autoridad.**

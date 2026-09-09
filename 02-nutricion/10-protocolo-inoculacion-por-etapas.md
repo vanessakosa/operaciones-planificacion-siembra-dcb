@@ -1342,3 +1342,31 @@ campo con un número inventado presentado como establecido.
 - [Phosphate solubilizing fungi enhance insoluble phosphate dissolution — Frontiers in Microbiology, 2025](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2025.1600231/full)
 - [Phosphate-solubilizing fungi: isolation, characterization and impact on soil as potential biofertilizers — ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1674676726000344)
 - [Use of phosphate-solubilizing microorganisms for enhancing plant growth — USPTO 12459875](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12459875) *(rangos de 10⁶–10¹¹ UFC/ha y 10²–10⁶ UFC/semilla)*
+
+---
+
+## ⚠️ Aclaración de unidad · 1,5 cc **por bomba**, no por litro
+
+> *"¿Entonces sigue quedando a 1,5 cc x lt?"* — Vanessa
+
+**No. Son 1,5 cc en TODA la bomba de 20 litros** — o sea **0,075 cc/L**. Leerlo como 1,5 cc por
+litro sería **20 veces la dosis**:
+
+| Lectura | cc/bomba | cc/L | L/ha | UFC/ha | vs techo 10¹¹ | cc/cama |
+|---|---|---|---|---|---|---|
+| **1,5 cc por BOMBA** ← lo especificado | **1,5** | 0,075 | **2,1** | 2,10×10¹¹ | **2,1×** ✅ | 7,5 |
+| 1,5 cc por LITRO | 30 | 1,500 | 42,0 | 4,20×10¹² | **42×** 🔴 | 150 |
+
+A 1,5 cc/L quedaría **42 veces sobre el techo del rango publicado** y costaría 20× más.
+
+**Que la pregunta haya surgido es señal de un riesgo real en la hoja**, no un malentendido: si a
+usted el número se le lee como "por litro", al operario también puede. Y a diferencia de otros
+errores de esta sesión, **este se ejecutaría 20× mal sin que nadie lo note.**
+
+Corregido en la hoja: la receta ahora dice **"POR CADA BOMBA LLENA DE 20 LITROS: 1,5 cc de
+Fosfolip"** con la línea **"1,5 cc en toda la bomba · NO es por litro"** debajo, y el paso 2
+quedó como *"llenar la bomba con 20 L de agua y echarle 1,5 cc, medidos con jeringa"*.
+
+> **Regla: en una hoja de operario, toda cantidad pequeña lleva su unidad de referencia en la
+> misma línea** — "por bomba llena", no "por bomba". Un número de un dígito junto a un volumen
+> grande se lee como concentración por defecto.

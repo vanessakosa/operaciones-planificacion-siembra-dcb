@@ -52,6 +52,27 @@ Eso baja en una sola columna las 96 variedades de LISTAS, sin repetidos y en
 orden alfabético. **Se actualiza sola**: si mañana se agrega un cultivar nuevo
 en LISTAS, aparece aquí sin tocar nada. Ocultar la hoja al terminar.
 
+> ⚠️ **Si da error, es el separador de argumentos.** La hoja está configurada en
+> formato de Colombia (fechas dd/mm/aaaa), y en esa configuración las fórmulas
+> separan los argumentos con **punto y coma**, no con coma. Le pasó a Vanessa el
+> 2026-09-10 y se resolvió con eso. La versión que funciona en esta hoja es:
+>
+> ```
+> =SORT(UNIQUE(FILTER(FLATTEN(LISTAS!B2:S100); FLATTEN(LISTAS!B2:S100)<>"")))
+> ```
+>
+> Vale para cualquier fórmula que se pegue en estos archivos, no solo esta. Es
+> la primera cosa que hay que revisar cuando una fórmula pegada da `#ERROR!`.
+
+**Alternativa sin fórmula, si vuelve a fallar:** pegar la lista de variedades
+como texto plano en `A1` (una por fila). Pierde la actualización automática — hay
+que regenerarla cuando entre un cultivar nuevo — pero no puede dar error. La
+lista se saca del repositorio con:
+
+```bash
+python3 -c "import csv;print(chr(10).join(sorted({o.strip() for f in list(csv.reader(open('07-datos/listas_desplegables.csv',encoding='utf-8')))[1:] for o in f[1:] if o.strip()}, key=str.lower)))"
+```
+
 **2. Aplicar la validación a toda la columna C de una vez.** Seleccionar
 `C3:C2000` en REGISTRO → *Datos → Validación de datos → Agregar regla*:
 
@@ -211,7 +232,12 @@ el importador reporta cuántas columnas sin título conservó.
 
 ### Cuatro celdas sueltas para limpiar en Drive
 
-En la columna **S** de LISTAS hay cuatro variedades de **Statice** metidas en
+Dos variedades que el campo **ya está cortando** no están en LISTAS, así que el
+desplegable no las ofrece: **`Cristata Enda Rose`** (Celosia, confirmada por
+Vanessa el 2026-09-10 y con 2 registros de cosecha) y **`Potomac Appleblossom`**
+(Boca de Dragón, 1 registro). Agregarlas a la fila de su grupo en LISTAS.
+
+Y en la columna **S** de LISTAS hay cuatro variedades de **Statice** metidas en
 filas de otros grupos, separadas del bloque por columnas vacías:
 
 | Fila del grupo | Celda suelta en columna S |

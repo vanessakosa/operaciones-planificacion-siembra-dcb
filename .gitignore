@@ -1,0 +1,3 @@
+# Cache de Python. Se regenera solo al correr el motor: no es fuente.
+__pycache__/
+*.pyc

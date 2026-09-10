@@ -105,46 +105,44 @@ a que el archivo se copie.
 
 ### El mismo arreglo, en un clic
 
-Este script hace los tres pasos. Es **idempotente**: correrlo dos veces deja lo
-mismo. Y a diferencia del `onEdit`, **corre una vez y se puede olvidar** — lo que
-queda instalado es la validación, no el programa.
+⚠️ **Este script NO toca `_LISTAS_PLANA`.** Una versión anterior de esta ficha
+la borraba y le metía la fórmula con **comas**, que en esta hoja falla por el
+separador de argumentos. Si la lista de variedades se cargó como texto plano,
+esa versión la habría **borrado**. El script asume que `_LISTAS_PLANA` ya existe
+y usa lo que tenga, sea fórmula o texto.
 
 ```javascript
 /**
  * Instala la validacion PERMANENTE de la hoja REGISTRO.
- * Correr UNA vez desde el menu DCB Registro -> Instalar desplegables.
- * Si algo se rompe, volver a correrlo. No hace falta que quede corriendo.
+ * Correr UNA vez. Si algo se rompe, volver a correrlo.
+ * NO toca _LISTAS_PLANA: usa lo que ya tenga, formula o texto pegado.
  */
 function instalarDesplegablesRegistro() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const reg = ss.getSheetByName('REGISTRO');
   const listas = ss.getSheetByName('LISTAS');
-  if (!reg || !listas) {
-    SpreadsheetApp.getUi().alert('Falta la hoja REGISTRO o LISTAS');
+  const plana = ss.getSheetByName('_LISTAS_PLANA');
+  if (!reg || !listas || !plana) {
+    SpreadsheetApp.getUi().alert(
+      'Falta REGISTRO, LISTAS o _LISTAS_PLANA. Crear _LISTAS_PLANA primero.');
     return;
   }
-  const ULTIMA = 2000;   // filas cubiertas por adelantado
+  const ULTIMA = 2000;
 
-  // 1. Hoja de apoyo con la lista plana, calculada por formula.
-  let plana = ss.getSheetByName('_LISTAS_PLANA');
-  if (!plana) plana = ss.insertSheet('_LISTAS_PLANA');
-  plana.clear();
-  plana.getRange('A1').setFormula(
-    '=SORT(UNIQUE(FILTER(FLATTEN(LISTAS!B2:S100), FLATTEN(LISTAS!B2:S100)<>"")))');
-  SpreadsheetApp.flush();
-  plana.hideSheet();
-
-  // 2. Grupo (B) desde la primera columna de LISTAS.
+  // Grupo (B). El rango de origen va HASTA A100, no hasta el ultimo grupo de
+  // hoy: si se queda corto, los grupos nuevos de LISTAS no aparecen en el
+  // desplegable y la cosecha de esos grupos no se puede registrar. Le paso
+  // exactamente eso a Diana con Craspedia y Scabiosa el 2026-09-10.
   reg.getRange(3, 2, ULTIMA - 2, 1).setDataValidation(
     SpreadsheetApp.newDataValidation()
       .requireValueInRange(listas.getRange('A2:A100'), true)
-      .setAllowInvalid(true)          // advertencia, no rechazo
+      .setAllowInvalid(true)
       .setHelpText('Grupo — si falta uno, agregarlo en la hoja LISTAS')
       .build());
 
-  // 3. Variedad (C) desde la lista plana. Sin cascada, pero permanente:
-  //    el desplegable de Sheets filtra al escribir, asi que "mona" ya
-  //    deja solo las Monaco.
+  // Variedad (C) desde la lista plana. Sin cascada, pero permanente: el
+  // desplegable de Sheets filtra al escribir, asi que "mona" deja solo las
+  // Monaco.
   reg.getRange(3, 3, ULTIMA - 2, 1).setDataValidation(
     SpreadsheetApp.newDataValidation()
       .requireValueInRange(plana.getRange('A1:A200'), true)
@@ -153,7 +151,7 @@ function instalarDesplegablesRegistro() {
                    'en rojo hasta que se agregue a LISTAS')
       .build());
 
-  // 4. Rojo cuando la variedad no pertenece al grupo elegido.
+  // Rojo cuando la variedad no pertenece al grupo elegido.
   const destino = reg.getRange(3, 3, ULTIMA - 2, 1);
   const regla = SpreadsheetApp.newConditionalFormatRule()
     .whenFormulaSatisfied('=AND($B3<>"", $C3<>"", IFERROR(COUNTIF(INDEX('
@@ -161,24 +159,34 @@ function instalarDesplegablesRegistro() {
     .setBackground('#F4C7C3')
     .setRanges([destino])
     .build();
-  // Se reemplazan solo las reglas de esta columna: las demas se respetan.
   const otras = reg.getConditionalFormatRules().filter(function (r) {
-    return !r.getRanges().some(function (x) { return x.getA1Notation() === destino.getA1Notation(); });
+    return !r.getRanges().some(function (x) {
+      return x.getA1Notation() === destino.getA1Notation();
+    });
   });
   reg.setConditionalFormatRules(otras.concat([regla]));
 
   SpreadsheetApp.getUi().alert(
-    'Listo.\n\nValidacion permanente aplicada a B3:C' + ULTIMA + '.\n\n'
-    + 'Ya no depende de ningun script: las filas nuevas la heredan solas.');
-}
-
-function onOpen() {
-  SpreadsheetApp.getUi()
-    .createMenu('DCB Registro')
-    .addItem('Instalar desplegables (correr una vez)', 'instalarDesplegablesRegistro')
-    .addToUi();
+    'Listo. Validacion permanente en B3:C' + ULTIMA + '.\n\n'
+    + 'Grupo lee LISTAS!A2:A100 — hay aire para grupos nuevos.');
 }
 ```
+
+### Los dos rangos que hay que dejar anchos
+
+Este es el fallo que se repitió el 2026-09-10 y conviene entenderlo, porque no
+se ve: **una validación tiene dos rangos y los dos se quedan cortos.**
+
+| Rango | Si se queda corto | Síntoma |
+|---|---|---|
+| **A dónde se aplica** (`B3:B2000`) | Las filas nuevas del registro nacen sin desplegable | *"Se me cortó el desplegable en la fila 718"* |
+| **De dónde lee** (`LISTAS!A2:A100`) | Los grupos nuevos de LISTAS no se ofrecen | *"Agregué Craspedia a LISTAS y a Diana no le aparece"* |
+
+El primero fue el problema original de la columna C. El segundo apareció después:
+Vanessa agregó 6 grupos a LISTAS en las filas 21 a 26, y el desplegable de Grupo
+seguía leyendo el rango angosto con el que se creó cuando había 19. **Los dos se
+arreglan de una vez con rangos generosos** — 2000 filas de registro y 100 de
+LISTAS — porque agrandarlos no cuesta nada y quedarse corto falla en silencio.
 
 ### Capa 2, opcional: la cascada como comodidad, no como cimiento
 

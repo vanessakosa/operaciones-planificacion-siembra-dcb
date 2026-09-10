@@ -3,22 +3,26 @@
 """Ficha de completitud por grupo: que se puede decidir hoy de cada uno.
 
     python3 motor/ficha_variedad.py            # la tabla completa
-    python3 motor/ficha_variedad.py faltantes  # solo que hay que traer
+    python3 motor/ficha_variedad.py faltantes  # solo lo que hay que traer
 
 POR QUE ESTE SCRIPT EXISTE
 --------------------------
-`cerebro.py cartera` ya dice si un grupo SOBRA o FALTA en VOLUMEN. Lo que no
-dice es si ese grupo es RENTABLE, y no lo dice porque el dato no existe.
+Vanessa 2026-09-10, sobre para que sirve esta mesa: "vamos a evaluar variedad
+por variedad. Si nos esta dando la rentabilidad, segun el registro de tallos,
+que estamos esperando si se esta vendiendo, si esta aportando y ver cuales son
+los huecos de siembras y los sobrantes para ajustar la programacion."
 
-Este script no estima el margen que falta: audita, campo por campo y grupo por
-grupo, cual de las dos preguntas se puede contestar hoy y cual no.
+Son CUATRO preguntas, no una, y tienen salud de datos muy distinta. Este script
+no las contesta: audita, grupo por grupo, cual se puede contestar hoy y con que.
 
-    pregunta A — sobra o falta en la programacion  -> volumen
-    pregunta B — es rentable                       -> plata
+    1. RENTA   da rentabilidad?        tallos x precio - costo, por m2 y semana
+    2. VENTA   se esta vendiendo?      lo cosechado contra lo que salio
+    3. APORTA  esta aportando?         lo pide el catalogo, y en que rol
+    4. AJUSTE  huecos y sobrantes?     para mover la programacion
 
-A se contesta con demanda y oferta, que estan. B necesita area, costo y precio
-de venta por lote. Se marca FALTA y no se rellena con supuestos: un margen
-inventado manda a arrancar una cama que estaba dando plata.
+La regla es no rellenar con supuestos. Un margen inventado manda a arrancar una
+cama que estaba dando plata, y un "se vende bien" sin dato manda a sembrar mas
+de lo que nadie pidio. Lo que falta se marca FALTA y se pide.
 """
 
 import os
@@ -89,6 +93,83 @@ def ingreso_por_grupo():
     return {g: ing[g] / tallos[g] for g in ing if tallos.get(g)}
 
 
+def _por_grupo_desde(archivo, grupos, campo_variedad="variedad"):
+    """Agrupa las filas de un CSV de senales por grupo de cartera.
+
+    Los archivos de senales (desajuste_demanda, picos_cosecha) nombran la
+    VARIEDAD como la escribio campo — "Snapdragon Monaco Dark Pink" — no el
+    grupo. Se emparejan por alias, igual que las plantas: sin eso las nueve
+    filas de Snapdragon no llegan a Boca de Dragón.
+    """
+    ordenados = sorted(grupos, key=lambda g: -len(g))
+    salida = {}
+    for f in C._leer_opcional(archivo):
+        v = f.get(campo_variedad) or ""
+        n = C.norm(v)
+        g = next((x for x in ordenados
+                  if any(a in n for a in C.alias_grupo(x))), None)
+        if not g:
+            continue
+        salida.setdefault(g, []).append(f)
+    return salida
+
+
+def venta_cuantitativa():
+    """Cuantos tallos VENDIDOS hay registrados, por grupo.
+
+    Existe para dejar constancia de que la pregunta 2 no tiene numerador. En
+    campo_siembras.csv hay cuatro columnas para esto y las cuatro estan vacias:
+
+        idx14  Tallos vendidos                    0 de 302
+        idx18  Ventas WIX                         0 de 302
+        idx19  Utilidad                           0 de 302
+        idx20  Ventas por tallos calculados MG    0 de 302
+
+    Asi que "se esta vendiendo" hoy solo se puede responder con las senales
+    cualitativas que quedaron en los COMENTARIOS, ya extraidas a
+    desajuste_demanda.csv. El esqueleto de la columna esta; el dato no.
+    """
+    cols = ("Tallos vendidos", "Ventas WIX", "Utilidad",
+            "Ventas por tallos calculados MG")
+    tot = {c: 0 for c in cols}
+    for f in C._leer_csv("campo_siembras.csv"):
+        for c in cols:
+            if (f.get(c) or "").strip():
+                tot[c] += 1
+    # El archivo propio del despacho, que es el que deberia mandar cuando se
+    # empiece a llenar: una fila por variedad y semana, del lado de la SALIDA.
+    # Se cuenta aparte para que la pregunta 2 pase a SI sola en cuanto tenga
+    # filas, sin que haya que volver a tocar este script.
+    desp = [f for f in C._leer_opcional("tallos_despachados.csv")
+            if (f.get("tallos_despachados") or "").strip()]
+    tot["tallos_despachados.csv (filas)"] = len(desp)
+    return tot
+
+
+def area_por_grupo(grupos):
+    """Area en m2 recortada a la ventana del registro, por grupo.
+
+    Se delega en ocupacion.py, que es donde vive el recorte por ventana. El
+    import es tardio a proposito: ocupacion importa este modulo, y a nivel de
+    modulo seria una importacion circular.
+    """
+    try:
+        import ocupacion as O
+    except Exception:
+        return {}, {}
+    ciclos = C.cargar_ciclos()
+    ofe = C.oferta_registrada()
+    ventana_de = {g: (ofe["primera"][g], ofe["ultima"][g])
+                  for g in ofe["primera"] if g in ofe["ultima"]}
+    en_vent, _, _ = O.plantas_en_ventana(grupos, ciclos, ventana_de)
+    areas = {}
+    for g, pl in en_vent.items():
+        dist = (ciclos.get(C.norm(g)) or {}).get("distancia_cm")
+        if dist and pl:
+            areas[g] = pl * O.MALLA_M * (dist / 100.0)
+    return areas, en_vent
+
+
 def main(argv):
     solo_faltantes = len(argv) > 1 and argv[1].startswith("falt")
 
@@ -103,23 +184,31 @@ def main(argv):
         ingreso = ingreso_por_grupo()
     except Exception:
         ingreso = {}
+    areas, en_vent = area_por_grupo(grupos)
+    desaj = _por_grupo_desde("desajuste_demanda.csv", grupos)
+    picos = _por_grupo_desde("picos_cosecha.csv", grupos)
+    vq = venta_cuantitativa()
+    hay_venta_cuant = any(vq.values())
 
-    def marca(ok):
-        return "si" if ok else "--"
-
-    print("=" * 92)
-    print("FICHA POR GRUPO — que dato hay para decidir, y cual falta")
-    print("=" * 92)
+    print("=" * 100)
+    print("FICHA POR GRUPO — cual de las cuatro preguntas se puede contestar")
+    print("=" * 100)
     print()
-    print("A = se puede decidir SOBRA/FALTA (volumen)   B = se puede decidir RENTABLE (plata)")
+    print("  1 RENTA   da rentabilidad?     tallos x precio - costo, por m2 y por semana")
+    print("  2 VENTA   se esta vendiendo?   lo cosechado contra lo que salio")
+    print("  3 APORTA  esta aportando?      lo pide el catalogo, y en que rol")
+    print("  4 AJUSTE  huecos y sobrantes?  para mover la programacion")
     print()
-    print("%-20s %-6s %6s %7s %8s %4s %4s %6s %7s %5s %s" % (
-        "GRUPO", "ROL", "DEM", "COSECHO", "$/TALLO",
-        "CIC", "T/P", "PLANTAS", "AREA_M2", "COSTO", "A/B"))
-    print("-" * 92)
+    print("  SI = se puede decidir   ~ = solo cualitativo, sin numero   NO = falta el dato")
+    print()
+    print("%-19s %-6s %7s %8s %8s %7s  %-5s %-5s %-6s %-6s  %s" % (
+        "GRUPO", "ROL", "COSECHO", "$/TALLO", "AREA m2", "PLANTAS",
+        "RENTA", "VENTA", "APORTA", "AJUSTE", "QUE LE FALTA"))
+    print("-" * 100)
 
-    faltan = {"area": [], "costo": [], "ciclo": [], "planta": [],
-              "precio": [], "calidad": []}
+    faltan = {"costo": [], "venta": [], "ciclo": [], "planta": [],
+              "precio": [], "calidad": [], "area": [], "distancia": []}
+    cuenta = {"renta": 0, "venta": 0, "aporta": 0, "ajuste": 0}
 
     for g in grupos:
         rol = (roles.get(g, {}) or {}).get("rol", "") or "SIN_ROL"
@@ -127,84 +216,180 @@ def main(argv):
         o = ofe["tallos"].get(g, 0)
         cic = ciclos.get(C.norm(g)) or {}
         tiene_ciclo = bool(cic.get("sem_a_campo_min"))
-        tp = cic.get("tallos_planta")
-        tiene_tp = bool(tp)
+        tiene_dist = bool(cic.get("distancia_cm"))
         pl = plantas.get(g, 0)
+        area = areas.get(g)
         val = ingreso.get(g)
 
-        # AREA y COSTO no existen para ningun grupo: los archivos estan vacios.
-        tiene_area = False
+        # 1 RENTA — el costo no existe para ningun grupo, asi que ninguno llega
+        # a SI. Lo que ya se puede es el INGRESO por m2 por semana, que es media
+        # respuesta: ordena, pero no dice si da perdida.
         tiene_costo = False
+        if val and area and tiene_ciclo:
+            renta = "~"          # ingreso/m2/sem si; margen no
+        elif o:
+            renta = "NO"
+        else:
+            renta = "NO"
 
-        puede_a = bool(d or o)
-        puede_b = tiene_area and tiene_costo and bool(val)
+        # 2 VENTA — sin tallos vendidos no hay numerador. Queda la senal
+        # cualitativa de los COMENTARIOS, que para varios grupos es explicita
+        # ("no tengo a quien venderselo").
+        sen_venta = [f for f in desaj.get(g, [])
+                     if (f.get("tipo") or "") in ("sobra", "falta", "calidad_venta")]
+        if hay_venta_cuant:
+            venta = "SI"
+        elif sen_venta:
+            venta = "~"
+        else:
+            venta = "NO"
 
-        if not tiene_area:
-            faltan["area"].append(g)
+        # 3 APORTA — el catalogo lo pide, o tiene rol asignado. Es la pregunta
+        # mas sana de las cuatro: se contesta con lo que ya esta en el repo.
+        aporta = "SI" if (d or rol != "SIN_ROL") else "NO"
+
+        # 4 AJUSTE — para mover la programacion hacen falta las dos puntas:
+        # saber si sobra o falta (demanda contra cosecha) y saber cuando
+        # sembrar (ciclo). Con senal de campo o pico, mejor.
+        if (d or o) and tiene_ciclo:
+            ajuste = "SI"
+        elif d or o:
+            ajuste = "~"
+        else:
+            ajuste = "NO"
+
+        for k, v in (("renta", renta), ("venta", venta),
+                     ("aporta", aporta), ("ajuste", ajuste)):
+            if v == "SI":
+                cuenta[k] += 1
+
+        f = []
         if not tiene_costo:
-            faltan["costo"].append(g)
+            f.append("costo"); faltan["costo"].append(g)
+        if not hay_venta_cuant:
+            faltan["venta"].append(g)
+            if not sen_venta:
+                f.append("venta")
         if not tiene_ciclo:
-            faltan["ciclo"].append(g)
+            f.append("ciclo"); faltan["ciclo"].append(g)
+        if not tiene_dist:
+            f.append("distancia"); faltan["distancia"].append(g)
         if not pl:
-            faltan["planta"].append(g)
+            f.append("plantas"); faltan["planta"].append(g)
         if not val:
-            faltan["precio"].append(g)
+            f.append("precio"); faltan["precio"].append(g)
+        if not area:
+            faltan["area"].append(g)
         faltan["calidad"].append(g)
 
-        if solo_faltantes and puede_b:
+        if solo_faltantes and not f:
             continue
 
-        print("%-20s %-6s %6.0f %7.0f %8s %4s %4s %6s %7s %5s %s/%s" % (
-            g[:20], rol[:6], d, o,
+        print("%-19s %-6s %7.0f %8s %8s %7s  %-5s %-5s %-6s %-6s  %s" % (
+            g[:19], rol[:6], o,
             ("{:,.0f}".format(val).replace(",", ".") if val else "--"),
-            marca(tiene_ciclo), marca(tiene_tp),
+            ("%.1f" % area) if area else "--",
             ("{:,.0f}".format(pl).replace(",", ".") if pl else "--"),
-            "FALTA", "FALTA",
-            "si" if puede_a else "--", "si" if puede_b else "NO"))
+            renta, venta, aporta, ajuste, ", ".join(f) or "nada"))
 
     n = len(grupos)
     print()
-    print("=" * 92)
-    print("VEREDICTO")
-    print("=" * 92)
+    print("=" * 100)
+    print("VEREDICTO POR PREGUNTA")
+    print("=" * 100)
     print()
-    print("  Pregunta A — sobra / falta en la programacion")
-    print("    SE PUEDE HOY para %d de %d grupos. Es lo que ya hace `cerebro.py cartera`," % (
-        sum(1 for g in grupos if dem["demanda"].get(g) or ofe["tallos"].get(g)), n))
-    print("    con la advertencia de la ventana truncada (semanas ISO 33-37 sin registrar).")
+    print("  3 APORTA  — SE PUEDE en %d de %d grupos." % (cuenta["aporta"], n))
+    print("     Es la mas sana: sale del catalogo y de roles_cartera.csv, que ya estan.")
+    print("     `cerebro.py cartera` la contesta grupo por grupo.")
     print()
-    print("  Pregunta B — cual variedad es rentable")
-    print("    NO SE PUEDE PARA NINGUNO DE LOS %d GRUPOS. Faltan tres piezas," % n)
-    print("    y las tres son de archivo, no de calculo:")
+    print("  4 AJUSTE  — SE PUEDE en %d de %d grupos." % (cuenta["ajuste"], n))
+    print("     Demanda contra cosecha da el balance, y el ciclo da cuando sembrar.")
+    print("     Ya hay 13 senales de campo extraidas en desajuste_demanda.csv y")
+    print("     %d picos de cosecha en picos_cosecha.csv." % sum(len(v) for v in picos.values()))
+    print("     ADVERTENCIA: el registro corta el %s, asi que un grupo puede" % ofe["corte"])
+    print("     verse corto solo porque su cosecha todavia no esta anotada.")
     print()
-    print("      1. FECHA DE SIEMBRA del lote  -> 87% de las plantas no la tiene")
-    print("         El area SI se deriva: la geometria de la finca esta resuelta en")
-    print("         area_camas.csv (0,18 m2 por hueco, verificada contra los 677 m2")
-    print("         de Inv 4 y los 412 de Inv 5). Lo que no se puede es recortar esa")
-    print("         area a la ventana del registro, y sin eso tallos/m2 no compara.")
+    print("  1 RENTA   — SE PUEDE en %d de %d grupos. Falta UNA cosa: el COSTO."
+          % (cuenta["renta"], n))
+    print("     Ya corre la mitad: `ocupacion.py` da INGRESO por m2 por semana de")
+    print("     cama, con el area recortada a la ventana del registro. Lo que no")
+    print("     se puede es restarle el costo, y por eso no dice si algo da perdida.")
+    print("     Lo desbloquea la fila 'Tallos vendidos en el mes' de DCB_Modelo_Costos:")
+    print("     doce numeros, unico campo manual, en 0 en los doce meses. El modelo")
+    print("     ya tiene los costos de 2026 cargados.")
     print()
-    print("      2. TALLOS VENDIDOS por mes    -> en 0 en los 12 meses del modelo")
-    print("         Es el UNICO campo manual de DCB_Modelo_Costos, que YA tiene los")
-    print("         costos de 2026 cargados. Doce numeros sacan el costo por tallo")
-    print("         real. Piso ya calculable: $1.379/tallo en junio, $869 en julio")
-    print("         (06-costos/02-costo-por-tallo.md).")
+    print("  2 VENTA   — SE PUEDE en %d de %d grupos. ES LA QUE PEOR ESTA."
+          % (cuenta["venta"], n))
+    print("     No hay numerador. campo_siembras.csv tiene cuatro columnas para")
+    print("     esto y las cuatro estan vacias:")
+    for c, k in vq.items():
+        # El archivo de despacho se cuenta en filas propias; las cuatro
+        # columnas de campo_siembras, sobre sus 302 filas.
+        if c.endswith("(filas)"):
+            print("       %-34s %3d filas" % (c, k))
+        else:
+            print("       %-34s %3d de 302" % (c, k))
     print()
-    print("      3. CALIDAD DE TALLO           -> calidad_tallo.csv VACIO")
-    print("         Separa 'produjo' de 'produjo vendible'. Un grupo con mucho")
-    print("         volumen y descarte alto se ve rentable y no lo es.")
+    print("     Es la unica de las cuatro preguntas a la que le falta el")
+    print("     ESQUELETO. Se creo 07-datos/tallos_despachados.csv (2026-09-10)")
+    print("     con las columnas propuestas y CERO filas, igual que calidad_tallo.csv:")
+    print("     en cuanto tenga filas, esta pregunta pasa a SI sola. Las columnas")
+    print("     son una PROPUESTA — confirmar con Vanessa antes de llenarlo.")
+    print("     Hoy se responde solo con las senales cualitativas que quedaron en")
+    print("     los COMENTARIOS, y son buenas pero son 13 filas:")
+    con_senal = sorted((g for g in grupos if desaj.get(g)),
+                       key=lambda g: -len(desaj[g]))
+    for g in con_senal:
+        tipos = {}
+        for fila in desaj[g]:
+            t = fila.get("tipo") or "?"
+            tipos[t] = tipos.get(t, 0) + 1
+        print("       %-19s %s" % (g[:19], ", ".join(
+            "%s x%d" % (t, k) for t, k in sorted(tipos.items()))))
     print()
-    print("      (costos_productos.csv tambien esta vacio, pero NO es el bloqueo del")
-    print("       margen: es la lista de precios de insumos para costo por aplicacion.)")
+    print("=" * 100)
+    print("LO QUE FALTA DEL ESQUELETO, ORDENADO POR LO QUE DESBLOQUEA")
+    print("=" * 100)
     print()
-    print("  Lo que SI se tiene y sirve de inmediato:")
-    print("    * ingreso por tallo propio de %d grupos (de las recetas y el precio)" % len(ingreso))
+    print("  1. TALLOS DESPACHADOS por variedad y semana — NO EXISTE EL ARCHIVO.")
+    print("     Es la pregunta 2 entera. Sin esto, 'se esta vendiendo' se contesta")
+    print("     de memoria. El registro de cosecha ya tiene la forma exacta que")
+    print("     haria falta (fecha, grupo, variedad, cantidad): seria su gemelo")
+    print("     del lado de la salida. Es tambien lo que convierte el sobrante de")
+    print("     'sobra' en un numero en vez de una impresion.")
+    print()
+    print("  2. 'Tallos vendidos en el mes' en DCB_Modelo_Costos — doce numeros.")
+    print("     Es la pregunta 1. Ya esta todo lo demas.")
+    print()
+    print("  3. calidad_tallo.csv — VACIO (0 filas, 16 columnas).")
+    print("     El esqueleto esta, el dato no. Separa 'produjo' de 'produjo")
+    print("     vendible': un grupo con mucho volumen y descarte alto se ve")
+    print("     rentable y no lo es. Afecta a las preguntas 1 y 2 a la vez.")
+    print()
+    print("  4. distancia de siembra de %d grupos — bloquea su area, y con ella"
+          % len(faltan["distancia"]))
+    print("     su ocupacion: %s%s" % (", ".join(faltan["distancia"][:8]),
+                                  " ... y %d mas" % (len(faltan["distancia"]) - 8)
+                                  if len(faltan["distancia"]) > 8 else ""))
+    print("     El caso mas caro es Celosia: su distancia depende del subtipo")
+    print("     (cristata 7,5 cm, plumosa 15) y el grupo no tiene una sola.")
+    print()
+    print("  5. precio por tallo de %d grupos — sin el no entran al eje de plata:"
+          % len(faltan["precio"]))
+    print("     %s%s" % (", ".join(faltan["precio"][:8]),
+                       " ... y %d mas" % (len(faltan["precio"]) - 8)
+                       if len(faltan["precio"]) > 8 else ""))
+    print()
+    print("  Lo que SI esta y sirve hoy:")
+    print("    * cosecha real de %d grupos, hasta el %s" % (
+        len(ofe["tallos"]), ofe["corte"]))
+    print("    * area recortada a la ventana de %d grupos" % len(areas))
+    print("    * ingreso por tallo propio de %d grupos" % len(ingreso))
     print("    * ciclo y ventana de %d grupos" % sum(
         1 for g in grupos if (ciclos.get(C.norm(g)) or {}).get("sem_a_campo_min")))
     print("    * plantas trasplantadas de %d grupos (%d lotes con el dato)" % (
         len(plantas), sum(lotes_con_planta.values())))
-    print()
-    print("  Con eso alcanza para ordenar por INGRESO por tallo y por ocupacion")
-    print("  aproximada. NO alcanza para decir 'esta variedad da perdida'.")
+    print("    * rol de cartera, cadencia y alternancia de %d grupos" % len(roles))
     print()
 
 

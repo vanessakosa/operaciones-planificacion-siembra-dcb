@@ -293,10 +293,46 @@ lo fija `cerebro.plan_siembra` (`sem_campo = sem_cosecha - sem_a_campo`, y solo
 despues resta la germinacion para llegar a la bandeja). Por eso las semanas de
 cama son `sem_a_campo + ventana` y la germinacion no entra.
 
-`ficha_variedad.py` audita, grupo por grupo, cual de las dos preguntas se puede
-contestar hoy: **sobra/falta** (volumen) se puede en 21 de 24 grupos;
-**rentable** (plata) en 0 de 24 — pero el eje de **ocupacion** ya ordena, que
-era la mitad que faltaba.
+## Las cuatro preguntas de la mesa de variedad
+
+Vanessa 2026-09-10, sobre para que sirve esta mesa: *"vamos a evaluar variedad
+por variedad. Si nos esta dando la rentabilidad, segun el registro de tallos,
+que estamos esperando si se esta vendiendo, si esta aportando y ver cuales son
+los huecos de siembras y los sobrantes para ajustar la programacion."*
+
+Son **cuatro** preguntas con salud de datos muy distinta.
+`python3 motor/ficha_variedad.py` audita grupo por grupo cual se puede
+contestar:
+
+| # | Pregunta | Hoy | Qué la desbloquea |
+|---|---|---|---|
+| 3 | **APORTA** — ¿lo pide el catálogo? | **23 de 24** | ya está: catálogo + `roles_cartera.csv` |
+| 4 | **AJUSTE** — ¿huecos y sobrantes? | **16 de 24** | ya está: demanda vs cosecha + ciclo |
+| 1 | **RENTA** — ¿da rentabilidad? | **0 de 24** | falta UNA cosa: el **costo** |
+| 2 | **VENTA** — ¿se está vendiendo? | **0 de 24** | **le falta el esqueleto entero** |
+
+**La pregunta 1 ya corre a medias:** `ocupacion.py` da INGRESO por m² por semana
+con el área recortada a la ventana. Lo que no se puede es restarle el costo, y
+por eso no dice si algo da pérdida. La desbloquean los doce números de `Tallos
+vendidos en el mes` en `DCB_Modelo_Costos`.
+
+**La pregunta 2 es la que peor está, y es distinta de las otras: no le falta
+relleno, le faltaba estructura.** Las cuatro columnas de venta de
+`campo_siembras.csv` (`Tallos vendidos`, `Ventas WIX`, `Utilidad`, `Ventas por
+tallos calculados MG`) están en **0 de 302**, y ningún archivo de `07-datos/`
+registraba la salida. Se creó **`07-datos/tallos_despachados.csv`** con las
+columnas propuestas y **cero filas** —igual que `calidad_tallo.csv`— y el motor
+ya lo lee: en cuanto tenga filas, la pregunta 2 pasa a `SI` sola. **Las columnas
+son una propuesta: confirmarlas antes de llenarlo.**
+
+Sería el gemelo del registro de cosecha, del lado de la salida. Es también lo
+que convierte un `sobra` en un número en vez de una impresión.
+
+Mientras no exista, "se está vendiendo" se contesta solo con las **13 señales
+cualitativas** ya extraídas de los COMENTARIOS a `07-datos/desajuste_demanda.csv`
+(`sobra` · `falta` · `calidad_venta`), y son buenas pero son 13: *"no tengo a
+quien vendérselo"* (Boca de Dragón 4A), *"mucha producción para lo que
+vendemos"* (Gomphrena), *"las usamos todas en MADRES y se quedaron cortas"*.
 
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada

@@ -250,6 +250,13 @@ Las reglas de estructura y color viven en constantes al inicio de
 `MAX_FAMILIAS_CROMATICAS`, `NEUTRO_MIN`, `NEUTROS`). Se cambian ahí, en un solo
 lugar, no repartidas por el código.
 
+## Para retomar la sesión del 2026-09-10
+
+**`08-roadmap/03-donde-quedamos.md`** tiene el estado completo: en qué quedó la
+sesión de cartera, las tres cosas que cambiaron el marco del análisis, los 8
+pendientes de Vanessa ordenados por desbloqueo, lo siguiente que hay que hacer, y
+las preguntas abiertas. **Leerlo antes de retomar cartera o siembra.**
+
 ## Cómo arranca cada sesión
 
 Vanessa hace un brain dump de la semana en campo. El flujo es:

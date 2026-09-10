@@ -212,6 +212,71 @@ function onEdit(e) {
 }
 ```
 
+## La columna Bloque (F) — el mismo arreglo, y el premio es mayor
+
+**45 formas distintas de escribir 13 lugares** en el registro de cosecha, medido
+el 2026-09-10. `cerebro.py` normaliza casi todo (`Inv 4B`, `Inv4b`, `inv4b` son
+lo mismo para el motor), así que el desorden **no es el argumento principal**:
+
+| | Registros |
+|---|---|
+| El normalizador los resuelve bien | 650 |
+| **Ambiguos: `Inv4` y `Inv3`** — no dicen qué cama | **32** |
+| Combinaciones de varias camas (`3a+3b+4c`) | 10 |
+| Imposibles de ubicar (`Invt`, `In4a`, `4z`) | 3 |
+
+**El argumento real es el cruce con el área.** `capacidad_bloques.csv` tiene los
+m² de cada cama. Si REGISTRO escribe los mismos nombres que ese archivo, la
+cosecha se puede dividir por área y sale **tallos por m²**, que es el paso que
+falta para llegar a margen por m² por semana de cama ocupada — el eje central
+del proyecto. Con `Inv4` ese cruce no se puede hacer: no se sabe si fue 4A, 4B
+o 4C.
+
+Los 32 ambiguos no son un error de escritura: son **cosecha que no se puede
+atribuir a una cama.**
+
+### Instalador — escribe la lista y aplica la validación
+
+Se escribe la lista desde el script en vez de pegarla a mano: pegar una lista
+multilínea en una celda depende de cómo el navegador maneje el portapapeles, y
+si cae todo en `C1` el desplegable ofrece una sola opción gigante.
+
+```javascript
+/** Bloques: escribe la lista en _LISTAS_PLANA!C y valida REGISTRO!F.
+ *  Idempotente. No toca la columna A (las variedades). */
+function instalarBloquesRegistro() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const reg = ss.getSheetByName('REGISTRO');
+  const plana = ss.getSheetByName('_LISTAS_PLANA');
+  if (!reg || !plana) {
+    SpreadsheetApp.getUi().alert('Falta REGISTRO o _LISTAS_PLANA');
+    return;
+  }
+  // Los 16 lugares de capacidad_bloques.csv, mas las 5 combinaciones que el
+  // campo ya usa: a veces se corta de varias camas al mismo balde, y el
+  // desplegable no debe obligar a elegir una sola y mentir.
+  const BLOQUES = [
+    'Inv 1', 'Inv 2', 'Inv 3A', 'Inv 3B', 'Inv 3C', 'Inv 4A', 'Inv 4B',
+    'Inv 4C', 'Inv 5', 'Inv 6', 'Mini', 'Ext 3A', 'Ext 3B', 'Ext 4',
+    'Ext 5', 'Exterior',
+    '3A+3B+3C', '3A+3B+4C', '3B+3C', '3B+4C', '3B+3C+Mini'
+  ];
+  plana.getRange('C1:C40').clearContent();
+  plana.getRange(1, 3, BLOQUES.length, 1)
+       .setValues(BLOQUES.map(function (b) { return [b]; }));
+
+  reg.getRange(3, 6, 1998, 1).setDataValidation(
+    SpreadsheetApp.newDataValidation()
+      .requireValueInRange(plana.getRange('C1:C40'), true)
+      .setAllowInvalid(true)
+      .setHelpText('Bloque — si aparece una cama nueva, se escribe igual')
+      .build());
+
+  SpreadsheetApp.getUi().alert(
+    BLOQUES.length + ' bloques en la lista y desplegable puesto en F3:F2000');
+}
+```
+
 ## El segundo hallazgo: el desplegable estaba además casi vacío
 
 Al revisar esto salió algo peor que el desplegable roto. **La hoja LISTAS de

@@ -73,7 +73,7 @@ Ordenado por lo que más desbloquea.
 | 1 | **Las 4 semanas del registro** (13/08 → hoy) | La operaria las estaba subiendo. Sin ellas, 16 grupos salen subestimados. Cuando estén: bajar el XLSX **binario** y correr `importar_tallos.py` |
 | 2 | **`Tallos vendidos` por mes** en `DCB_Modelo_Costos` | 12 números → costo por tallo real, y las decisiones de cartera pasan de volumen a plata |
 | 3 | **Contar el larkspur y el ammobium secos** en bodega | El material seco es el fuerte en dinero de diciembre (coronas y guirnaldas) y no se cuenta en ninguna parte. Archivo listo: `07-datos/inventario_seco.csv` |
-| 4 | **Tres arreglos en LISTAS (Drive)** | `Craspedias` → `Craspedia` y `Esparragos` → `Esparrago` (en plural no cruzan con `campo_siembras.csv` ni con los 40 tallos ya registrados). Y `Potomac Appleblossom` en `S2` |
+| 4 | **Tres arreglos en LISTAS (Drive)** | ⚠️ **Los 5 grupos nuevos YA los agregó Vanessa** el 2026-09-10 — LISTAS tiene 25 grupos, no volver a pedirlo. Lo que queda es quitar el plural: `Craspedias` → `Craspedia` y `Esparragos` → `Esparrago` (en plural no cruzan con `campo_siembras.csv` ni con los 40 tallos ya registrados), y poner `Potomac Appleblossom` en `S2` |
 | 5 | **Precio de los dos Yugos** | Son los únicos productos sin precio, los de mayor color libre (75 % y 84 %), y **las únicas dos recetas que piden Celosia** — la siembra más grande de la finca |
 | 6 | **Composición de "Dusty con colitas"** | Producto nuevo, solo se sabe que lleva 7 colitas. Ver `11-bouquets/03-recetas-pendientes.md` |
 | 7 | **Semilla de Girasol `Pro Cut Plum`** por Andrés | Ball no la germina. Es el girasol más vendible por paquete |

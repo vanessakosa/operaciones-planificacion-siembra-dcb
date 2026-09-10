@@ -106,11 +106,20 @@ Y la causa probable es mecánica: **ninguno de los tres está en la hoja LISTAS*
 así que no aparecen en el desplegable de la columna Grupo. Un grupo que no se
 puede elegir es un grupo que no se registra.
 
-O sea que **la pierna de la estrategia que genera la recompra es la única que no
-se está midiendo.** `cerebro.py cartera` ahora lo reporta en su propia sección.
+O sea que **la pierna de la estrategia que genera la recompra era la única que no
+se estaba midiendo.** `cerebro.py cartera` lo reporta en su propia sección.
 
-Agregarlos a LISTAS es la acción de menor esfuerzo y mayor efecto de toda esta
-ficha — ver `05-programacion/07-desplegables-registro.md`.
+✅ **Resuelto el mismo día.** Vanessa agregó los grupos a LISTAS y la hoja pasó
+de 19 a 25 grupos: `Craspedias`, `Scabiosa` (Estrella), `Cynoglossum` (Blue),
+`Colitas de conejo`, `Esparragos` y `Dianthus` (Sweet Cherry). Ya se pueden
+elegir en el desplegable, así que la cosecha de los toques por fin se puede
+registrar.
+
+**Queda un residuo de escritura:** `Craspedias` y `Esparragos` entraron en
+plural, y `campo_siembras.csv` dice `Craspedia` mientras el registro ya tiene
+`Esparrago` con 40 tallos. Mientras no coincidan, el motor los cuenta como
+grupos distintos y el cruce siembra↔cosecha falla. Es quitar dos letras — ver
+la acción 15b de `05-programacion/06-plan-semanal.md`.
 
 ## Lo que falta para cerrar el marco
 

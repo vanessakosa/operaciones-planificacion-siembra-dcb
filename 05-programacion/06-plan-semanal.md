@@ -266,7 +266,9 @@ disfrazado de éxito.
 | 12 | **Registrar la siembra de dahlias italianas** | Drive + campo | Se siembran esta semana (sem 37). Homologado `Dahlia Italiana` |
 | 13 | **Decidir si Misty Lavender se retira** | 3A | Si el canal del larkspur es seco y Light Blue seca mejor, las dos compiten por la misma cama |
 | 14 | Cargar `Tallos vendidos` mes a mes en `DCB_Modelo_Costos` | Drive | 12 números y el costo por tallo real del año queda calculado |
-| 15 | **Agregar a LISTAS: Craspedia, Scabiosa Estrella, Cynoglossum, Colitas de conejo, Espárrago** | Drive | Están cosechando y **no se pueden elegir en el desplegable**, así que no se registran. Es la acción de menor esfuerzo y mayor efecto de toda la sesión |
+| 15 | ~~Agregar a LISTAS los 5 grupos que faltaban~~ | Drive | ✅ **CERRADA 2026-09-10 por Vanessa.** LISTAS pasó de 19 a 25 grupos: Craspedias, Scabiosa (Estrella), Cynoglossum (Blue), Colitas de conejo, Esparragos y Dianthus (Sweet Cherry). Ya se pueden elegir en el desplegable |
+| 15b | **Quitar el plural: `Craspedias` → `Craspedia` y `Esparragos` → `Esparrago`** | Drive, LISTAS A21 y A25 | En plural **no cruzan**: `campo_siembras.csv` dice `Craspedia` (338 plantas) y el registro ya tiene `Esparrago` con 40 tallos. El motor los ve como grupos distintos y `cerebro.py cartera` sigue reportando Craspedia como "NO está en LISTAS" |
+| 15c | `Potomac Appleblossom` en `S2` | Drive, LISTAS | La única de las dos variedades que quedó sin agregar. S2 quedó libre al borrar el `Forever Happy` que estaba mal ahí |
 | 16 | ~~Asignar rol de cartera a los 14 grupos~~ | — | ✅ **CERRADA 2026-09-10.** 23 grupos con rol en `roles_cartera.csv` |
 | 17 | **Calcular la cadencia de Green Ball** | 4A vs 4B | Las 2 camas de 4A se solaparon en cosecha con la de 4B y *"perdemos un montón"*. Hay que contrastar sembrado vs cosechado, ventana real y tallos, contra la programación, para decidir si espaciar más la siembra |
 | 18 | **Pedir semilla de Girasol Pro Cut Plum a Andrés** | — | Ball no la germina, no tiene acceso. Es el girasol más vendible por paquete y no se ha podido sembrar |

@@ -179,12 +179,32 @@ Lo que aporta `m2` y hoy no existe en `main`: la vista **por lote** (grupo ×
 variedad × bloque) y la comparación **dentro de un mismo bloque** — mismo riego,
 misma luz, mismo suelo, que es donde la comparación es limpia.
 
-## 9. Las tres preguntas para Vanessa siguen abiertas
+## 9. Las preguntas para Vanessa
 
-1. **Inv 3C pequeña**: `capacidad_bloques.csv` dice 90 huecos (16,2 m²) y
-   `01-invernaderos.md` dice 12,6 m² (=70 huecos). 28,6 % de diferencia.
+1. ~~**Inv 3C pequeña**: 90 huecos o 70.~~ **CERRADO 2026-09-10.** No eran dos
+   fuentes contradiciéndose: eran **dos secciones distintas**, y cada fuente
+   tenía razón sobre una parte. Vanessa: *"hay una sección que podríamos llamar
+   A que tiene las camas largas y tiene cuatro camas largas que tienen noventa
+   huecos. Y luego hay una sección B que tiene tres camas cortas que tienen
+   setenta huecos."* Los 90 huecos que `capacidad_bloques.csv` le tenía puestos
+   a la sección de 3 camas eran de las **largas**. Inv 3C queda en **7 camas y
+   102,6 m²** (antes 8 camas y 175,5), y el total de la finca baja de 1.857 a
+   **1.784,7 m²**.
+
+   **Pero abrió una discrepancia nueva en la sección A**, y es grande: este
+   dictado dice 4 camas de 90 huecos (64,8 m²), mientras `capacidad_bloques.csv`
+   (5 × 141h) y `01-invernaderos.md` (5 × 140h) **coincidían entre sí** en
+   126,9 m². Son 72,9 m² —el 41 % del bloque— y una cama de diferencia. Se
+   aplicó el dictado por jerarquía de verdad y quedó marcado en los tres
+   archivos. **Vale una segunda confirmación en campo.**
 2. **Cuántas camas tienen Inv 3A e Inv 3B** — hay área por cama pero no cuántas,
-   así que no suman al total.
+   así que no suman al total. **Subió de prioridad:** es la que despeja la
+   discrepancia de 3C-A. `01-invernaderos.md` dice que Inv3A + Inv3C suman
+   556 m²; con 3C en 102,6 quedan 453,4 m² para 3A, que son **12,72 camas** de
+   35,64 — no es entero. Con el 3C anterior daban 10,68, tampoco. Así que
+   **uno de los tres datos está mal**: el 556 de la zona, el área por cama de
+   3A, o la sección A de 3C. Saber cuántas camas tiene 3A resuelve los otros
+   dos.
 3. **`MADRES` y `AMOR`** en la columna `Inicio cosecha` de `campo_siembras.csv`
    son nombres de evento comercial, no meses. `MAYO MADRES` confirma que Madres
    es mayo; `AMOR` sola no se deduce. Son ~13 filas y hoy quedan sin ubicar.

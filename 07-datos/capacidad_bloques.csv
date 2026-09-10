@@ -1,8 +1,8 @@
 Bloque,Huecos (largo),Líneas,1/hueco,2/hueco,Zigzag,# Camas,confianza,Notas
 Inv 3A,198,8,,,,,MEDIDO,
 Inv 3B,267,8,,,,,NO UNIFORME,"PENDIENTE MEDIR CAMA POR CAMA. Vanessa 2026-08-13: ""es muy particular, hay camas mas largas y otras mas pequenas"". Los 267 huecos NO son uniformes — no usar ese numero como area de todas las camas"
-Inv 3C (5 camas),141,8,,,,5,MEDIDO,Parte de 5 camas
-Inv 3C (3 camas),90,8,,,,3,MEDIDO,Parte de 3 camas
+Inv 3C-A (4 camas largas),90,8,,,,4,CONFIRMADO,"Seccion A, camas largas. Vanessa 2026-09-10. Antes este 90 estaba en la fila de 3 camas, que era el error"
+Inv 3C-B (3 camas cortas),70,8,,,,3,CONFIRMADO,"Seccion B, camas cortas. Vanessa 2026-09-10. Antes decia 90 huecos: corregido"
 Ext 3A,181,8,,,,,MEDIDO,"Paralela a Inv 3A: MISMA tasa por m2, pero largo propio MEDIDO de 181 huecos (198 en 3A). Vanessa 2026-09-03: ""muy similares"", no identicas"
 Inv 4A,112,8,,,,,MEDIDO,Lado A
 Inv 4B,112,8,,,,,MEDIDO,Lado B

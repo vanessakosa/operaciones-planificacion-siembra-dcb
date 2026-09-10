@@ -196,8 +196,9 @@ python3 motor/dictar_tallos.py aplicar          # la mezcla en registro_tallos.c
 python3 motor/dictar_tallos.py pegar            # bloque TSV para subirla a la hoja de Drive
 
 python3 motor/ficha_variedad.py                 # que dato hay por grupo, y cual falta
-python3 motor/ocupacion.py                      # tallos y $ por m2 por semana de cama
+python3 motor/ocupacion.py                      # ingreso por m2 por semana de cama
 python3 motor/ocupacion.py camas                # area de cada cama de la finca
+python3 motor/calibrar_rendimiento.py           # lo teorico del ciclo contra lo que dio el campo
 ```
 
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas
@@ -257,21 +258,45 @@ area m² = plantas trasplantadas × 0,15 × (distancia_cm / 100)
 
 La malla es de 0,15 m **fijo en una direccion**; la distancia de siembra manda
 solo en la otra. Sembrar mas denso mete mas plantas en la MISMA cama, no en menos
-cama — por eso la distancia entra una sola vez, no al cuadrado. Es la formula de
-`cerebro.py m2` (2026-08-13). Detalle en `07-datos/area_camas.csv` (21 camas).
+cama — por eso la distancia entra una sola vez, no al cuadrado. Es la formula
+que corre en `motor/ocupacion.py`. Detalle en `07-datos/area_camas.csv` (21
+camas).
 
-**Pero el eje margen/m²/semana todavia no corre**, y por una razon distinta a la
-que se creia: el area sale de plantas **acumuladas de todo el historico** y los
-tallos de una ventana de 12 semanas. Solo el **13 % de las plantas tiene fecha de
-siembra**, asi que el area no se puede recortar a esa ventana — un grupo con
-historico viejo sale artificialmente mal (Statice aparece con 977 m², media
-finca) y uno recien sembrado, artificialmente bien. `ocupacion.py` detecta la
-condicion y **se niega a nombrar mejor ni peor** mientras dure. Falta UNA
-columna: `Fecha siembra campo` en `campo_siembras.csv` (llena en 112 de 302).
+**El eje ingreso/m²/semana YA CORRE** (2026-09-10). Se creia bloqueado por
+falta de la columna `Fecha siembra campo` — llena en 112 de 302 filas, el 14 %
+de las plantas. No estaba bloqueado: **esa columna se dejo de usar.** Vanessa
+2026-08-14: *"deje de usarla, ahora trabajo solo con las semanas... la columna
+que sigue es la semana que se trasplanto."* La columna `Semana` de trasplante
+esta llena en **294 de 302 filas — el 95 % de las plantas.**
+
+No se veia por una razon mecanica: `campo_siembras.csv` tiene **dos columnas
+llamadas `Semana`** (trasplante e inicio de cosecha), y `csv.DictReader`
+colapsa encabezados repetidos quedandose con la ultima. Asi que `_leer_csv()`
+nunca pudo ver la de siembra. **Se leen por POSICION, no por nombre** (idx 7 y
+10). El ano no esta en el archivo: se infiere por secuencia — las 302 filas son
+un log cronologico y una caida grande en el numero de semana es el cruce de
+diciembre a enero. Verificado contra las 111 filas que aun traen fecha exacta:
+coinciden las 111.
+
+`ocupacion.py` recorta el area a la ventana de cosecha **propia de cada grupo**
+—el denominador tiene que cubrir el mismo periodo que el numerador— y trae su
+propia validacion: el `tallos/planta` implicito se acerca al documentado en 11
+grupos de 15. **Sigue siendo INGRESO, no margen:** falta la fila de tallos
+vendidos del modelo de costos.
+
+**Dos advertencias que no hay que perder de vista.** El orden es **sensible al
+largo del registro**: al entrar las semanas 33-35, Lisianthus paso de
+$78.474/m²/sem a $17.749 y de primero a cuarto. Un cultivo de ocupacion larga
+y ventana corta de cosecha es el mas expuesto. Y `sem_a_campo` de
+`ciclos_variedad.csv` **se cuenta desde el TRASPLANTE**, no desde la semilla —
+lo fija `cerebro.plan_siembra` (`sem_campo = sem_cosecha - sem_a_campo`, y solo
+despues resta la germinacion para llegar a la bandeja). Por eso las semanas de
+cama son `sem_a_campo + ventana` y la germinacion no entra.
 
 `ficha_variedad.py` audita, grupo por grupo, cual de las dos preguntas se puede
 contestar hoy: **sobra/falta** (volumen) se puede en 21 de 24 grupos;
-**rentable** (plata) en 0 de 24.
+**rentable** (plata) en 0 de 24 — pero el eje de **ocupacion** ya ordena, que
+era la mitad que faltaba.
 
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada
@@ -284,10 +309,19 @@ lugar, no repartidas por el código.
 
 ## Para retomar la sesión del 2026-09-10
 
-**`08-roadmap/03-donde-quedamos.md`** tiene el estado completo: en qué quedó la
-sesión de cartera, las tres cosas que cambiaron el marco del análisis, los 8
-pendientes de Vanessa ordenados por desbloqueo, lo siguiente que hay que hacer, y
-las preguntas abiertas. **Leerlo antes de retomar cartera o siembra.**
+Tres documentos, en este orden — cada uno continúa al anterior:
+
+1. **`08-roadmap/03-donde-quedamos.md`** — la sesión de **cartera** (mañana): las
+   tres cosas que cambiaron el marco, los 8 pendientes de Vanessa ordenados por
+   desbloqueo. **Leerlo antes de retomar cartera o siembra.**
+2. **`08-roadmap/04-donde-quedamos-rentabilidad.md`** — la sesión de
+   **rentabilidad** (tarde): las dos preguntas con salud de datos opuesta, y el
+   mapa de las ramas sueltas.
+3. **`08-roadmap/05-donde-quedamos-ocupacion.md`** — **el más reciente** (noche):
+   el eje ingreso/m²/semana ya corre, por qué el bloqueo que reportaba el doc 04
+   no existía, el registro al 27/08, y la decisión de arquitectura que quedó
+   abierta con `cerebro.py m2`. **Empezar por acá si el tema es ocupación,
+   margen o rentabilidad.**
 
 ## Cómo arranca cada sesión
 

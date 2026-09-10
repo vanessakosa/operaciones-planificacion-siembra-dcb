@@ -1,5 +1,15 @@
 # Dónde quedamos — sesión de rentabilidad, 2026-09-10 (tarde)
 
+> **SUPERADO EN PARTE — leer `05-donde-quedamos-ocupacion.md`.** La sección 3 de
+> este documento nombra como bloqueo dominante la falta de `Fecha siembra campo`
+> en `campo_siembras.csv` (13 % de las plantas). **Ese bloqueo no existía:** esa
+> columna se dejó de usar y la de `Semana` de trasplante, que hace el mismo
+> trabajo, está llena en el 95 % de las plantas. No se veía porque el archivo
+> tiene dos columnas llamadas `Semana` y `csv.DictReader` colapsa encabezados
+> repetidos. El eje ingreso/m²/semana **ya corre y ordena** desde el 2026-09-10.
+> La sección 5 (la tensión volumen contra $/tallo) sigue válida, pero sus
+> números de Lisianthus cambiaron al entrar las semanas 33-35.
+
 **Para retomar en otra conversación.** Este archivo continúa
 `03-donde-quedamos.md`, que cubre la sesión de cartera de la mañana.
 

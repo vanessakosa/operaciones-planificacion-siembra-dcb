@@ -4,6 +4,23 @@
 python3 motor/cerebro.py m2            # todo el cultivo
 python3 motor/cerebro.py m2 Statice    # un grupo
 ```
+> **ESTADO EN `main` (2026-09-10).** Este documento viene de la rama
+> `dcb-planning-system-wvnda6` y describe comandos de `cerebro.py` que
+> **todavia NO estan en `main`**: `m2`, `prorratear` y `chequear`. Los dos
+> linajes de `cerebro.py` divergieron — `main` gano `cartera` y sus ayudantes,
+> la rama gano `m2` y una familia de ~900 lineas para ubicar cada siembra en el
+> tiempo. Quince funciones compartidas difieren entre los dos.
+>
+> Lo que SI corre en `main` hoy es el equivalente **por grupo**:
+> `python3 motor/ocupacion.py`, que ya recorta el area a la ventana de cosecha
+> de cada grupo usando la semana ISO de trasplante. Lo que falta de este
+> documento es la vista **por lote** (grupo x variedad x bloque) y la
+> comparacion dentro de un mismo bloque.
+>
+> Antes de portarlo hay que decidir una cosa: `ocupacion.py` ya implementa
+> "ubicar una siembra en el tiempo" por su lado. Portar la familia de la rama
+> tal cual dejaria la misma logica en dos lugares, que es justo lo que
+> `CLAUDE.md` prohibe. Ver `08-roadmap/05-donde-quedamos-ocupacion.md`.
 
 > Construido el 2026-08-13 sobre `registro_tallos.csv` (697 filas, 66.417
 > tallos) y `campo_siembras.csv`. Nace del pedido de Vanessa: *"lo que yo

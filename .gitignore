@@ -1,3 +1,7 @@
 # Cache de Python. Se regenera solo al correr el motor: no es fuente.
 __pycache__/
 *.pyc
+
+# Salida derivada de motor/calibrar_rendimiento.py. Se regenera corriendolo:
+# no es fuente, y versionarla haria parecer dato de campo a un calculo.
+07-datos/factores_rendimiento.json

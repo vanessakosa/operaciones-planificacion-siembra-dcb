@@ -1,0 +1,19 @@
+grupo,cultivar,subtipo,confianza,fuente,notas
+Celosia,Shimmer,Celosia plumosa,alta,Vanessa 2026-08-13,"Dictado textual: ""Shimmer es Plumosa"""
+Celosia,Summer Sherbet,Celosia plumosa,alta,Vanessa 2026-08-13,De Floret. Todas las celosias de Floret del cultivo son plumosas
+Celosia,Rose Gold,Celosia plumosa,alta,Vanessa 2026-08-13,De Floret
+Celosia,Spun Sugar,Celosia plumosa,alta,Vanessa 2026-08-13,De Floret
+Celosia,Raspberry Lemonade,Celosia plumosa,alta,Vanessa 2026-08-13,De Floret
+Celosia,Glowing Embers,Celosia plumosa,alta,Vanessa 2026-08-13,De Floret. Sin siembra registrada en campo_siembras.csv — cultivar nuevo
+Celosia,Dreams,Celosia spicata,alta,Vanessa 2026-08-13,"Dictado textual: ""Dreams, Flamingo, Celway todas son spicatas"""
+Celosia,Flamingo,Celosia spicata,alta,Vanessa 2026-08-13,Incluye Purple Flamingo
+Celosia,Celway,Celosia spicata,alta,Vanessa 2026-08-13,
+Celosia,Verda Green,Celosia cristata,alta,campo_siembras.csv,"CAMPO lo escribe completo: ""Celosia Cristata Verda Green"". No es deduccion del nombre corto"
+Celosia,Indian Summer,Celosia cristata,alta,campo_siembras.csv,"CAMPO: ""Celosia Cristata Indian Summer Burgundy"""
+Celosia,Enda Rose,Celosia cristata,alta,campo_siembras.csv,"CAMPO: ""Celosia Cristata Enda Rose"""
+Celosia,Reprise Velvet,Celosia cristata,alta,campo_siembras.csv,Homologado Cristata Reprise Velvet
+Celosia,Reprise Orange,Celosia cristata,alta,campo_siembras.csv,"CAMPO: ""Celosia Cristata Reprise Orange"""
+Celosia,Clubs Cocktail,Celosia cristata,alta,campo_siembras.csv,"CAMPO: ""Celosia Cristata Clubs Cocktail"""
+Celosia,Chief Carmine,Celosia cristata,alta,campo_siembras.csv,Homologado Cristata Chief Carmine
+Celosia,Sunday,SIN_CONFIRMAR,,,NO deducir del catalogo del proveedor — regla 8. Ademas no esta sembrada
+Celosia,Sylphid,SIN_CONFIRMAR,,,NO deducir del catalogo del proveedor — regla 8. Ademas no esta sembrada

@@ -10,10 +10,29 @@ que **no compiten entre sí**.
 
 > *"Yo no siembro todo, todo el tiempo."*
 
-## Los tres niveles
+## Los seis niveles
 
-`07-datos/roles_cartera.csv` guarda el rol de cada grupo. No son etiquetas
+`07-datos/roles_cartera.csv` guarda el rol de cada grupo — **23 grupos
+clasificados** en los dos dictados del 2026-09-10. No son etiquetas
 descriptivas: cada nivel se juzga con una regla distinta.
+
+A los tres que Vanessa dictó primero se sumaron tres más al clasificar el resto:
+
+- **`BASE_ENCAJE`** — el encaje es un rol, no una especie (Ammi ↔ Trachelium)
+- **`FOLLAJE`** — Dusty Miller y Espárrago. Base/focal/toque describen flor y no
+  tenían dónde poner el follaje, que importa porque **el propio desplaza compra**
+  de Ruscus: es costo evitado, no ingreso
+- **`TOQUE_ENSAYO`** — con criterio de salida explícito
+
+Y el archivo guarda cuatro dimensiones más que el dictado pidió y el modelo no
+tenía: **cadencia de siembra** (Amaranto y Celosia spicata cada 3 semanas,
+Cristata mensual), **alternancia** (Ammobium ↔ Matricaria, además de Ammi ↔
+Trachelium), **ventana de eventos** (Zinnia en agosto·diciembre·marzo, Cristata
+en épocas de calor, Silver Dust solo Navidad) y **anti-solapamiento** (Green Ball
+y Dusty Miller: dos camas en cosecha al tiempo es pérdida).
+
+**El rol puede ser por subtipo**, no solo por grupo: Celosia tiene una regla
+distinta para plumosa, cristata y spicata, y Dusty Miller una por cultivar.
 
 ### 1. BASE — siempre debe haber
 
@@ -123,11 +142,18 @@ la acción 15b de `05-programacion/06-plan-semanal.md`.
 
 ## Lo que falta para cerrar el marco
 
-**14 grupos siguen sin rol asignado**, y no se les asigna por deducción: Gomphrena
-(el de mayor peso en el catálogo, 8 productos), Statice (10 productos), Green
-Ball, Amaranto, Ammobium, Girasol, Strawflower, Celosia, Zinnia, Dusty Miller,
-Dahlias, Matricaria, Espárrago, Limonium.
+✅ **La clasificación está completa.** Los 14 grupos que quedaban sin rol se
+asignaron en el segundo dictado del 2026-09-10. Tres de mis hipótesis salieron
+mal y quedan anotadas porque el error es instructivo:
 
-`cerebro.py cartera` los agrupa en `SIN_CLASIFICAR` con la nota
-*"PREGUNTAR antes de juzgarlo"*, porque un grupo sin rol no se puede evaluar:
-depende de si su trabajo es estar siempre o aparecer de vez en cuando.
+| Yo suponía | Vanessa corrigió |
+|---|---|
+| Gomphrena = BASE (era mi "FALTA" #1) | **TOQUE.** Da toques de color, es juguetona, tiene paquete propio. Va en ciclos **con respiro**, cambiando color o combinación |
+| Green Ball = BASE | **TOQUE** de ciclo largo. Su problema no es el volumen: es el **solapamiento** de camas en cosecha |
+| Amaranto velvet = error de tipeo | **Estrategia deliberada** de color puntual (Velvet + Cocoa, exterior, 1–2 veces al año). *Y también* está mal escrito como grupo en el registro — las dos cosas son verdad |
+
+**Lo que sigue es convertir las cadencias en calendario:** cruzar la cadencia de
+cada grupo con `capacidad_bloques.csv` y con las camas ocupadas, para ver si
+caben. Y la tarea de análisis que Vanessa dejó nombrada: **calcular la cadencia
+de Green Ball** contrastando las dos camas de 4A contra la de 4B — sembrado vs
+cosechado, ventana real y tallos.

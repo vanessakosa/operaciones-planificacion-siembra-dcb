@@ -12,7 +12,7 @@ Verificado contra el libro el **2026-08-12**: son **6 hojas**, no 7.
 | Hoja | Contenido | Estado |
 |---|---|---|
 | **REGISTRO** | Una fila por corte: Fecha · Grupo · Variedad/Serie · Tallos frescos · Tallos secos · Bloque · ¿Cierre cama? · Notas · CLAVE_LOTE (auto) | ✅ **696 registros** con fecha válida, hasta el **12/08/2026**. Columna `Tallos secos` **vacía en las 696 filas** |
-| **LISTAS** | Grupos y sus opciones — alimenta los desplegables en cascada | ✅ 18 grupos |
+| **LISTAS** | Grupos y sus opciones — alimenta los desplegables en cascada | ✅ **19 grupos, 96 opciones** en hasta 19 columnas por fila. El espejo tenía solo 19 (una por grupo) hasta el 2026-09-10 |
 | **RESUMEN** | Semana · Fecha · Total tallos | ⚠️ Con fórmulas. Solo 4 filas: se quedó en la semana 22 |
 | **CONSOLIDADO** | Grupo · Variedad · Bloque · Frescos · Secos · Total · #Registros · Primera cosecha · Última cosecha · key_helper | ✅ **141 lotes — sí se calcula solo** |
 | **RENDIMIENTO** | Grupo · Variedad · Bloque · Fecha siembra · Total tallos · Área m² · Tallos/m² · Costo semilla · Costo insumos · Costo total · $/tallo · Ingreso estimado · Utilidad · Decisión | ❌ **VACÍA — faltan los datos, no las fórmulas** |
@@ -53,6 +53,12 @@ en la columna B, usando la hoja LISTAS.
 **Causa raíz del fallo histórico:** la nueva UI de validación de datos de Google Sheets
 **no acepta fórmulas INDIRECT directamente en el campo de rango**. Por eso se resolvió con
 Apps Script en lugar de validación nativa.
+
+⚠️ **Y por eso el desplegable de la columna C se sigue rompiendo.** Un `onEdit` solo actúa
+sobre la fila que se está editando, así que cada fila nueva nace sin desplegable y volver a
+pegar el script no recupera las que quedaron huérfanas. `INDIRECT` no es necesario: la
+validación puede leer un rango cuyo contenido lo calcule una fórmula, y eso sí es permanente.
+**El arreglo definitivo, con los scripts, está en `07-desplegables-registro.md`.**
 
 ## Nombres a homologar
 

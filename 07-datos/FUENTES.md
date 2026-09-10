@@ -23,7 +23,7 @@ pueden espejar como texto.
 |---|---|---|---|
 | ✅ | `formulas_productos_bouquets.csv` | 8209 | `1Y9KhyA71M3DAcZBdWlpPl7Dd5DQvYeT6` |
 | ✅ | `capacidad_bloques.csv` | 684 | `1c2wBglS9gXkj50vUIzSaZifIhcH8iw4B` |
-| ✅ | `listas_desplegables.csv` | 1671 | `1YmXr9XrBhaLf1J7XJJtWvOSHgyF5hYeJ` |
+| ✅ | `listas_desplegables.csv` | 1482 | `1YmXr9XrBhaLf1J7XJJtWvOSHgyF5hYeJ` — **RECONSTRUIDO 2026-09-10 desde Drive: tenía 19 opciones y la hoja tiene 96.** El encabezado de LISTAS son 2 celdas y las filas llegan a 19 columnas (18 bocas de dragón, 12 lisianthus, 8 celosias); `importar_tallos.py` cortaba cada fila al ancho del encabezado y perdía 77 variedades **en silencio**. Bug corregido: el ancho lo manda ahora la fila más ancha. **Pendiente en Drive:** 4 celdas sueltas en la columna S — variedades de Statice en las filas de Gomphrena, Campanula, Statice y Zinnia. Ver `05-programacion/07-desplegables-registro.md` |
 | 🔨 | `paleta_color.csv` | — | derivado de `listas_desplegables.csv` + recetas. **2026-09-10:** columna nueva `subtipo` (llena para los 8 cultivares de Celosia según el mapeo confirmado en `04-variedades/04-celosia-subtipos.md`) y 4 filas nuevas — `Celosia Cristata Enda Rose` (CORAL, color tomado de la columna Color de `campo_siembras.csv`, no del nombre), `Dahlias Mix` (MIX, colección sin segmentar), `Espárrago` (VERDE/FOLLAJE, único follaje propio) y `Colitas de conejo` (familia **SIN_DATO — pendiente de confirmar en campo**) |
 | 🔨 | `ciclos_variedad.csv` | — | derivado de `dcb-variedades/references/parametros_siembra.md` |
 | 🔨 | `objetivo_color_pdv.csv` | — | propuesta sin validar — requiere datos de `03_Ventas` |

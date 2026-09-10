@@ -260,12 +260,30 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
                  if re.search(r"fecha|cosecha", (h or ""), re.I)]
     indice = {h: i for i, h in enumerate(encabezado)}
 
+    # ANCHO REAL DE LA HOJA. No el del encabezado.
+    #
+    # La hoja LISTAS tiene un encabezado de 2 celdas ("GRUPO" y "OPCIONES (en
+    # orden)") y filas de hasta 19: las opciones de cada grupo se extienden a
+    # la derecha sin un titulo por columna. Cortar cada fila al ancho del
+    # encabezado borraba TODAS las opciones menos la primera — 77 variedades
+    # perdidas en silencio, y el desplegable de la hoja quedaba ofreciendo
+    # solo "Mix". Es el mismo tipo de fallo que el truncamiento de filas: no
+    # avisa, y lo que se pierde no se nota hasta que alguien lo busca.
+    #
+    # Regla: el ancho lo manda la fila mas ancha con datos, y las columnas sin
+    # titulo se reportan en vez de descartarse.
+    ancho_datos = max((len(c) for n, c in filas if n > fila_encabezado),
+                      default=0)
+    ancho = max(len(encabezado), ancho_datos)
+    sin_titulo = ancho - len(encabezado)
+    encabezado = list(encabezado) + [""] * sin_titulo
+
     hoy = datetime.date.today()
     cuerpo, correcciones, sospechosas, futuras = [], [], [], []
     for numero, celdas in filas:
         if numero <= fila_encabezado:
             continue
-        celdas = list(celdas) + [""] * (len(encabezado) - len(celdas))
+        celdas = list(celdas) + [""] * (ancho - len(celdas))
         if not any((c or "").strip() for c in celdas):
             continue
 
@@ -288,7 +306,7 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
             celdas[i] = _formatear(buena, fmt)
 
         cuerpo.append([_limpiar_numero(c) if i not in col_fecha else c
-                       for i, c in enumerate(celdas[:len(encabezado)])])
+                       for i, c in enumerate(celdas[:ancho])])
 
     with open(os.path.join(DATOS, destino), "w", newline="",
               encoding="utf-8") as fh:
@@ -297,6 +315,7 @@ def exportar(z, cadenas, nombre, ruta_hoja, destino, fila_encabezado, fmt):
         w.writerows(cuerpo)
 
     return {"filas": len(cuerpo), "destino": destino,
+            "sin_titulo": sin_titulo,
             "correcciones": correcciones, "sospechosas": sospechosas,
             "futuras": futuras}
 
@@ -327,8 +346,10 @@ def main():
             print("  %-14s sin encabezado en la fila %d — omitida"
                   % (nombre, fila_enc))
             continue
-        print("  %-14s %4d filas  ->  07-datos/%s"
-              % (nombre, r["filas"], r["destino"]))
+        extra = ("  (+%d columnas sin titulo, conservadas)" % r["sin_titulo"]
+                 if r["sin_titulo"] else "")
+        print("  %-14s %4d filas  ->  07-datos/%s%s"
+              % (nombre, r["filas"], r["destino"], extra))
         total_corr.extend(r["correcciones"])
         total_sosp.extend((nombre,) + s for s in r["sospechosas"])
         total_fut.extend((nombre,) + s for s in r["futuras"])

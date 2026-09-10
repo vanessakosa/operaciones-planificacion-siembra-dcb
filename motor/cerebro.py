@@ -116,6 +116,11 @@ def cargar_paleta():
             "origen": fila["origen"].strip(),
             "confianza": fila["confianza_color"].strip(),
             "notas": fila["notas"].strip(),
+            # El subtipo es la unidad de manejo cuando el grupo es un
+            # paraguas: en Celosia, cristata va a 7,5 cm y 1 tallo/planta y
+            # plumosa a 15 cm y 4. La receta pide el SUBTIPO y el cultivar es
+            # el que este en cosecha (Vanessa 2026-09-10).
+            "subtipo": (fila.get("subtipo") or "").strip(),
         }
         # Una variedad retirada del cultivo sigue en la paleta como memoria
         # historica, pero NO es una opcion de color disponible.
@@ -125,6 +130,16 @@ def cargar_paleta():
         if not reg["retirada"]:
             por_grupo[reg["grupo"]].append(reg)
     return por_nombre, dict(por_grupo)
+
+
+def por_subtipo(por_grupo):
+    """(grupo, subtipo) -> cultivares de ese subtipo, no retirados."""
+    salida = defaultdict(list)
+    for grupo, regs in por_grupo.items():
+        for reg in regs:
+            if reg.get("subtipo"):
+                salida[(grupo, reg["subtipo"])].append(reg)
+    return dict(salida)
 
 
 def cargar_ciclos():
@@ -142,6 +157,11 @@ def cargar_ciclos():
             "perenne": (fila.get("perenne") or "").strip().lower() == "si",
             "fuente": fila["fuente"].strip(),
             "notas": fila["notas"].strip(),
+            # El subtipo es la unidad de manejo cuando el grupo es un
+            # paraguas: en Celosia, cristata va a 7,5 cm y 1 tallo/planta y
+            # plumosa a 15 cm y 4. La receta pide el SUBTIPO y el cultivar es
+            # el que este en cosecha (Vanessa 2026-09-10).
+            "subtipo": (fila.get("subtipo") or "").strip(),
         }
     return ciclos
 
@@ -342,6 +362,10 @@ ALIAS = {
     "girasol sin petalos": ("EXACTA", "Girasol Pro Cut (sin pétalos)"),
     "girasol pro cut sin petalos": ("EXACTA", "Girasol Pro Cut (sin pétalos)"),
     "gomphrena sequin": ("EXACTA", "Gomphrena Quis Sequin"),
+    # La receta escribe "Dahlia", el registro de cosecha "Dahlias".
+    "dahlia": ("GRUPO", "Dahlias"),
+    # La receta escribe "Trachelium", la paleta el grupo "Trachellium".
+    "trachelium": ("GRUPO", "Trachellium"),
 }
 
 
@@ -408,11 +432,49 @@ def resolver(ingrediente, por_nombre, por_grupo):
     """Clasifica un ingrediente de receta.
 
     Devuelve dict con:
-      tipo: EXACTA | GRUPO | GRUPO_PARCIAL | FOLLAJE | NO_FLOR | DESCONOCIDA
+      tipo: EXACTA | GRUPO | GRUPO_PARCIAL | SUBTIPO | SUSTITUCION |
+            FOLLAJE | NO_FLOR | DESCONOCIDA
       reg:  registro de paleta si la resolucion es exacta
       opciones: variedades candidatas si el color queda abierto
     """
     clave = norm(ingrediente)
+
+    # "Trachelium o Ammi" — la receta declara dos grupos intercambiables.
+    # Vanessa 2026-08-13: "SUSTITUCION: el que haya". No es un ingrediente sin
+    # resolver: es una receta que a proposito no se compromete. Se resuelve a
+    # los dos grupos y el que suma la demanda decide que hacer con eso.
+    if re.search(r"\bo\b", clave):
+        partes = [p.strip() for p in re.split(r"\bo\b", clave) if p.strip()]
+        if len(partes) > 1:
+            grupos = []
+            for parte in partes:
+                g = next((gr for gr in por_grupo if norm(gr) == parte), None)
+                # La receta escribe "Trachelium" y la paleta "Trachellium".
+                # ALIAS es el lugar donde viven esas diferencias de escritura.
+                if not g and parte in ALIAS:
+                    modo, valor = ALIAS[parte]
+                    if modo != "EXACTA" and valor in por_grupo:
+                        g = valor
+                if g:
+                    grupos.append(g)
+            if len(grupos) == len(partes):
+                return {"tipo": "SUSTITUCION", "reg": None,
+                        "opciones": [r for g in grupos for r in por_grupo[g]],
+                        "grupos": grupos}
+
+    # "Celosia plumosa" — grupo paraguas + subtipo. El cultivar queda abierto
+    # a proposito: es el que este en cosecha esa semana.
+    subs = por_subtipo(por_grupo)
+    for (grupo, subtipo), regs in subs.items():
+        if clave == norm("%s %s" % (grupo, subtipo)):
+            return {"tipo": "SUBTIPO", "reg": None, "opciones": regs,
+                    "grupo": grupo, "subtipo": subtipo}
+    # "Celosia Dreams (spicata)" — nombra cultivar Y subtipo. norm() ya quito
+    # el parentesis, asi que lo que queda es "celosia dreams spicata".
+    for (grupo, subtipo), regs in subs.items():
+        if clave.startswith(norm(grupo)) and clave.endswith(norm(subtipo)):
+            return {"tipo": "SUBTIPO", "reg": None, "opciones": regs,
+                    "grupo": grupo, "subtipo": subtipo}
 
     if clave in NO_FLOR:
         return {"tipo": "NO_FLOR", "reg": None, "opciones": []}
@@ -451,6 +513,12 @@ def analizar_producto(prod, por_nombre, por_grupo):
     total = 0.0
     tallos_dcb = 0.0
     tallos_color_libre = 0.0
+    # Abierto POR DISENO: la receta fija el subtipo y el cultivar es el que
+    # este en cosecha (Celosia, Vanessa 2026-09-10). Sigue siendo color
+    # libre — cristata tiene hoy VERDE y CORAL en cosecha simultanea — pero
+    # no es un descuido que haya que cerrar, y meterlo en el mismo saco que
+    # un ingrediente sin definir hace que el numero mienta.
+    tallos_abierto_diseno = 0.0
     incidencias = []
 
     for ing in prod["ingredientes"]:
@@ -470,6 +538,32 @@ def analizar_producto(prod, por_nombre, por_grupo):
             reg = res["reg"]
             por_macro[reg["macro_rol"]] += cant
             por_familia[reg["familia_color"]] += cant
+        elif res["tipo"] == "SUBTIPO":
+            opciones = res["opciones"]
+            if opciones:
+                por_macro[opciones[0]["macro_rol"]] += cant
+            por_familia["COLOR_LIBRE"] += cant
+            tallos_color_libre += cant
+            tallos_abierto_diseno += cant
+            colores = sorted({o["familia_color"] for o in opciones
+                              if o["familia_color"] not in ("MIX", "SIN_DATO")})
+            incidencias.append(
+                "'%s' fija el SUBTIPO y deja el cultivar abierto A PROPOSITO: "
+                "%d tallos son el cultivar que este en cosecha. Color abierto "
+                "entre %d familia(s): %s"
+                % (ing["ingrediente"], cant, len(colores),
+                   ", ".join(colores[:6]) or "sin datos")
+            )
+        elif res["tipo"] == "SUSTITUCION":
+            opciones = res["opciones"]
+            if opciones:
+                por_macro[opciones[0]["macro_rol"]] += cant
+            por_familia["COLOR_LIBRE"] += cant
+            tallos_color_libre += cant
+            incidencias.append(
+                "'%s' es SUSTITUIBLE entre %s: %d tallos sin grupo fijado"
+                % (ing["ingrediente"], " o ".join(res["grupos"]), cant)
+            )
         elif res["tipo"] in ("GRUPO", "GRUPO_PARCIAL"):
             opciones = res["opciones"]
             if opciones:
@@ -545,6 +639,7 @@ def analizar_producto(prod, por_nombre, por_grupo):
         "total_tallos": total,
         "tallos_dcb": tallos_dcb,
         "tallos_color_libre": tallos_color_libre,
+        "tallos_abierto_diseno": tallos_abierto_diseno,
         "pct_color_libre": pct_libre,
         "estructura": estructura,
         "familias": familias_ord,
@@ -599,8 +694,16 @@ def explotar(demanda, productos, por_nombre, por_grupo, merma=0.15):
             if res["tipo"] in ("EXACTA", "FOLLAJE"):
                 reg = res["reg"]
                 tallos[(d["semana"], reg["grupo"], reg["familia_color"])] += need
-            elif res["tipo"] in ("GRUPO", "GRUPO_PARCIAL"):
+            elif res["tipo"] in ("GRUPO", "GRUPO_PARCIAL", "SUBTIPO"):
+                # SUBTIPO cae aqui a proposito: el grupo esta fijado y el
+                # color queda abierto entre los cultivares de ese subtipo.
                 tallos[(d["semana"], res.get("grupo", "?"), "COLOR_LIBRE")] += need
+            elif res["tipo"] == "SUSTITUCION":
+                # No hay un grupo al que cargarle el tallo: la receta acepta
+                # cualquiera de los dos. Se reporta como sustitucion en vez de
+                # elegir uno, que seria inventar la siembra.
+                tallos[(d["semana"], "SUSTITUIBLE:%s" % " o ".join(res["grupos"]),
+                        "COLOR_LIBRE")] += need
             else:
                 tallos[(d["semana"], "DESCONOCIDA:%s" % ing["ingrediente"], "SIN_DATO")] += need
     return tallos, sorted(faltantes)
@@ -723,10 +826,11 @@ def cmd_auditar():
     print("\n%-38s %6s %7s %8s %s" % ("PRODUCTO", "TALLOS", "S/COLOR", "NEUTRO", "ALERTAS"))
     print("-" * 78)
 
-    total_libre = total_dcb = 0.0
+    total_libre = total_dcb = total_diseno = 0.0
     for p in productos:
         a = analizar_producto(p, por_nombre, por_grupo)
         total_libre += a["tallos_color_libre"]
+        total_diseno += a["tallos_abierto_diseno"]
         total_dcb += a["tallos_dcb"]
         alertas = len(a["diagnostico"]) + sum(
             1 for e in a["estructura"] if e["estado"] in ("bajo", "alto"))
@@ -739,6 +843,15 @@ def cmd_auditar():
           % (100 * total_libre / total_dcb if total_dcb else 0, total_libre, total_dcb))
     print("quedan sin cultivar definido en la receta. Ese es el porcentaje del")
     print("color del punto de venta que hoy NO esta gobernado por la receta.")
+    if total_diseno:
+        print()
+        print("De esos, %.0f tallos estan abiertos POR DISENO: la receta fija el"
+              % total_diseno)
+        print("subtipo de Celosia y el cultivar es el que este en cosecha esa")
+        print("semana (Vanessa 2026-09-10). No son un descuido por cerrar.")
+        print("Descontandolos, el descubierto real es %.0f%% (%.0f de %.0f)."
+              % (100 * (total_libre - total_diseno) / total_dcb if total_dcb else 0,
+                 total_libre - total_diseno, total_dcb))
 
     # Cobertura de ciclos
     usados = set()
@@ -1528,6 +1641,8 @@ def demanda_catalogo():
 
     demanda = defaultdict(float)
     en_productos = defaultdict(set)
+    por_subtipo_dem = defaultdict(float)
+    sustituciones = defaultdict(lambda: {"cant": 0.0, "prods": set()})
     pendientes = []
 
     for prod in productos:
@@ -1536,11 +1651,23 @@ def demanda_catalogo():
                 continue
             cant = ing["cant_max"] or ing["cant_min"] or 0.0
             res = resolver(ing["ingrediente"], por_nombre, por_grupo)
+
+            # Ingrediente sustituible ("Trachelium o Ammi"). NO se suma a
+            # ningun grupo: inflaria los dos. Se cuenta una vez en su propio
+            # cajon y se reporta aparte.
+            if res["tipo"] == "SUSTITUCION":
+                clave = " o ".join(res["grupos"])
+                sustituciones[clave]["cant"] += cant
+                sustituciones[clave]["prods"].add(prod["producto"])
+                continue
+
             grupo = None
             if res["tipo"] == "EXACTA" and res["reg"]:
                 grupo = res["reg"].get("grupo")
             elif res.get("grupo"):
                 grupo = res["grupo"]
+            if res["tipo"] == "SUBTIPO":
+                por_subtipo_dem[(res["grupo"], res["subtipo"])] += cant
             if grupo:
                 demanda[grupo] += cant
                 en_productos[grupo].add(prod["producto"])
@@ -1557,7 +1684,9 @@ def demanda_catalogo():
                 "cantidad": cant,
                 "candidato": candidato,
             })
-    return demanda, en_productos, pendientes, len(productos)
+    return {"demanda": demanda, "en_productos": en_productos,
+            "pendientes": pendientes, "n_productos": len(productos),
+            "subtipos": por_subtipo_dem, "sustituciones": sustituciones}
 
 
 def oferta_registrada():
@@ -1642,13 +1771,16 @@ def cmd_cartera(grupo=None):
     de que hay que sembrar mas y de que menos. No decide sola — pone la
     evidencia y marca en que se apoya y en que no.
     """
-    demanda, en_prod, pendientes, n_prod = demanda_catalogo()
+    cat = demanda_catalogo()
+    demanda, en_prod = cat["demanda"], cat["en_productos"]
+    pendientes, n_prod = cat["pendientes"], cat["n_productos"]
     ofe = oferta_registrada()
     senales = _senales_campo()
     ciclos = cargar_ciclos()
 
     if grupo:
-        return _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod)
+        return _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos,
+                                n_prod, cat["subtipos"])
 
     tot_dem = sum(demanda.values()) or 1.0
     tot_ofe = sum(ofe["tallos"].values()) or 1.0
@@ -1686,6 +1818,11 @@ def cmd_cartera(grupo=None):
         pct_dem = 100 * dem / tot_dem
         pct_ofe = 100 * of / tot_ofe
         etiqueta, pp = _etiqueta_balance(pct_dem, pct_ofe, dem, of)
+        # Un grupo que solo aparece como parte de un ingrediente sustituible
+        # NO esta fuera del catalogo: esta dentro, sin cantidad propia.
+        if etiqueta == "COSECHA SIN RECETA" and any(
+                g in clave.split(" o ") for clave in cat["sustituciones"]):
+            etiqueta = "SOLO SUSTITUIBLE"
         filas.append({"grupo": g, "dem": dem, "prods": len(en_prod.get(g, ())),
                       "pct_dem": pct_dem, "ofe": of, "pct_ofe": pct_ofe,
                       "sem": len(ofe["semanas"].get(g, ())),
@@ -1714,7 +1851,9 @@ def cmd_cartera(grupo=None):
             ("SOBRA — el campo lo da mas de lo que el catalogo lo pide",
              lambda f: f["etiqueta"] == "SOBRA"),
             ("COSECHA SIN RECETA — produce y ninguna receta lo nombra",
-             lambda f: f["etiqueta"] == "COSECHA SIN RECETA")):
+             lambda f: f["etiqueta"] == "COSECHA SIN RECETA"),
+            ("SOLO SUSTITUIBLE — en el catalogo, pero sin cantidad propia",
+             lambda f: f["etiqueta"] == "SOLO SUSTITUIBLE")):
         elegidas = [f for f in filas if cond(f)]
         if not elegidas:
             continue
@@ -1739,6 +1878,24 @@ def cmd_cartera(grupo=None):
             print("  %-18s %+6.1f pp   %s"
                   % (f["grupo"][:18], f["pp"] if abs(f["pp"]) < 100 else 0,
                      " | ".join(extra) or "sin senales de campo registradas"))
+        print()
+
+    if cat["subtipos"]:
+        print("DEMANDA POR SUBTIPO — donde el grupo es un paraguas")
+        print("La receta pide el SUBTIPO y el cultivar es el que este en")
+        print("cosecha esa semana (Vanessa 2026-09-10). Cada subtipo tiene su")
+        print("propia densidad y sus propios tallos por planta, asi que la")
+        print("siembra se decide por subtipo, no por grupo:")
+        for (g, st), cant in sorted(cat["subtipos"].items(), key=lambda kv: -kv[1]):
+            print("  %-12s %-10s %5.0f tallos por canasta" % (g, st, cant))
+        print()
+
+    if cat["sustituciones"]:
+        print("INGREDIENTES SUSTITUIBLES — la receta no se compromete")
+        print("No se suman a ningun grupo: sumarlos a los dos inflaria los dos.")
+        for clave, d in sorted(cat["sustituciones"].items(), key=lambda kv: -kv[1]["cant"]):
+            print("  %-24s %5.0f tallos en %d producto(s)"
+                  % (clave, d["cant"], len(d["prods"])))
         print()
 
     con_calidad = [f for f in filas if senales.get(f["grupo"], {}).get("calidad_venta")]
@@ -1802,7 +1959,8 @@ def cmd_cartera(grupo=None):
     return 0
 
 
-def _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod):
+def _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod,
+                     subtipos=None):
     """Ficha de un grupo para decidir sobre el: se queda, se va, mas o menos."""
     clave = norm(grupo)
     reales = [g for g in set(list(demanda) + list(ofe["tallos"]))
@@ -1830,6 +1988,9 @@ def _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod):
             print("  ninguna receta lo nombra con un vinculo resuelto a la")
             print("  paleta. Correr 'cartera' sin argumento para ver si es un")
             print("  ingrediente sin vinculo o una ausencia real.")
+            for (sg, st), cant in sorted((subtipos or {}).items()):
+                if sg == g:
+                    print("    subtipo %s: %.0f tallos" % (st, cant))
         print()
         print("EN EL CAMPO")
         if of:

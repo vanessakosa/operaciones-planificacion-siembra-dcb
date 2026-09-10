@@ -21,6 +21,36 @@ tallos por planta y rol en el bouquet **distintos**:
 Un error de subtipo no es un error de etiqueta: **cristata a 15 cm desperdicia
 la mitad de la cama, y plumosa a 7,5 cm ahoga cuatro tallos por planta.**
 
+## La receta fija el SUBTIPO, no el cultivar (Vanessa 2026-09-10)
+
+> *"Cada vez que una receta pida Celosia Plumosa va a ser una de ellas, la que
+> esté en cosecha en ese momento."*
+
+Esto cierra una pregunta que estaba abierta. Las recetas del catálogo piden
+`Celosia plumosa`, `Celosia cristata` y `Celosia Dreams (spicata)` sin nombrar
+cultivar, y eso **no es un dato faltante: es el diseño.** El cultivar es el que
+esté cortándose esa semana.
+
+Es coherente con la cama: en 3A y MINI las plumosas van intercaladas, así que
+exigirle a la receta un cultivar sería exigirle algo que la cama no puede
+entregar.
+
+**Consecuencia para el bloqueo #6 del `CLAUDE.md`** ("fijar el cultivar en las
+recetas", causa raíz de la inconsistencia de color en punto de venta): para
+Celosia **no aplica**. Lo que hay que fijar es el subtipo, y ya está fijado. Lo
+que sí sigue abierto es el **color**, porque cristata tiene hoy dos colores en
+cosecha simultánea — `Verda Green` (VERDE) y `Cristata Enda Rose` (CORAL) — y la
+receta que pide "cristata" no dice cuál de los dos. Ahí la indeterminación es
+real y sí afecta la exhibición.
+
+**Cómo lo lee el motor.** `paleta_color.csv` tiene desde el 2026-09-10 una
+columna `subtipo`, llena para los 8 cultivares de Celosia según el mapeo
+confirmado de esta ficha. `cerebro.py` resuelve `"<grupo> <subtipo>"` a la lista
+de cultivares de ese subtipo (tipo de resolución `SUBTIPO`), y
+`cerebro.py cartera` reporta la demanda desglosada por subtipo — que es la
+unidad en la que se decide la siembra, porque cristata va a 7,5 cm con 1
+tallo/planta y plumosa a 15 cm con 4.
+
 ## El mapeo — qué está confirmado y qué no
 
 ### Confirmado por Vanessa (2026-08-13)
@@ -37,7 +67,8 @@ la mitad de la cama, y plumosa a 7,5 cm ahoga cuatro tallos por planta.**
 
 ### Confirmado por dato — CAMPO escribe el subtipo en el nombre
 
-**cristata:** `Verda Green` · `Indian Summer` · `Enda Rose` · `Reprise Velvet`
+**cristata:** `Verda Green` · `Indian Summer` · `Enda Rose` (en cosecha hoy,
+color CORAL — ver abajo) · `Reprise Velvet`
 · `Reprise Orange` · `Clubs Cocktail` · `Chief Carmine`
 
 Estos no se dedujeron del nombre corto: `campo_siembras.csv` los registra

@@ -38,6 +38,7 @@ pueden espejar como texto.
 | 🔨 | `cierres_lote.csv` | — | derivado del barrido de los 202 COMENTARIOS de `campo_siembras.csv` (2026-08-13). 36 lotes con **motivo de cierre** y cita literal. Hallazgo: solo el 11 % cerró por agotamiento real |
 | 🔨 | `picos_cosecha.csv` | — | mismo barrido. 16 lotes con semana de inicio y de **pico** dichas en prosa |
 | 🔨 | `desajuste_demanda.csv` | — | mismo barrido. 13 registros de flor que **sobró o faltó**, incluidos 5 lotes de Zinnia en pico simultáneo la semana 28 |
+| ⬜ | `inventario_seco.csv` | — | **NUEVO 2026-09-10, solo encabezado.** Existencias de material seco por lote y ubicación. Se creó al descubrir que el material seco es un **activo que no se cuenta en ninguna parte**, y que en diciembre es el que más pesa: el calendario comercial dice que el fuerte en dinero de diciembre son coronas y guirnaldas. Hoy hay larkspur seco del lote de la semana 24 y colitas de conejo secándose, y de ninguno de los dos se sabe la cantidad |
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |

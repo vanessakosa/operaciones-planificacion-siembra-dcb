@@ -256,6 +256,22 @@ disfrazado de éxito.
 
 ---
 
+## Acciones nuevas — sesión 2026-09-10
+
+| # | Acción | Dónde | Por qué |
+|---|---|---|---|
+| 9 | **Contar el larkspur seco en bodega** | Bodega | Es lo único que puede cubrir las coronas de diciembre. Sembrando hoy, el primer corte cae el **14/01/2027** |
+| 10 | **Crear 3 filas de dahlia en VARIEDADES_BITACORA** | Drive | `Dahlia Ball` · `Dahlia Mix DCB` · `Dahlia Italiana` (aprobados por Vanessa 2026-09-10). Sin fila en la BITÁCORA no hay homologado, y sin homologado no entran al calendario de Erica |
+| 11 | **Llenar columna N de los 2 lotes de dahlia en CAMPO** | Drive | Lote Ball (696 plantas, 2025-11-11) → `Dahlia Ball`; lote DCB (100 plantas) → `Dahlia Mix DCB`. Hoy los dos tienen la columna vacía |
+| 12 | **Registrar la siembra de dahlias italianas** | Drive + campo | Se siembran esta semana (sem 37). Homologado `Dahlia Italiana` |
+| 13 | **Decidir si Misty Lavender se retira** | 3A | Si el canal del larkspur es seco y Light Blue seca mejor, las dos compiten por la misma cama |
+| 14 | Cargar `Tallos vendidos` mes a mes en `DCB_Modelo_Costos` | Drive | 12 números y el costo por tallo real del año queda calculado |
+
+⚠️ **Las acciones 10, 11 y 12 son de Drive, no del repositorio.** `campo_siembras.csv`
+y la BITÁCORA son espejos: escribirlos aquí se pierde en la próxima importación.
+
+---
+
 ## Cómo va a funcionar esto cada semana
 
 1. **Refrescar el registro** — bajar el XLSX y correr `importar_tallos.py`

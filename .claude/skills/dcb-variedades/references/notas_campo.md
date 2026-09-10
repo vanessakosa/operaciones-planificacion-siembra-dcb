@@ -8,6 +8,58 @@ Si una observación nueva contradice una regla ya establecida (no la repite, la 
 
 ---
 
+## 2026-09-10 — DECISIÓN: Larkspur se queda, como cultivo de SECO, con Light Blue
+
+Vanessa confirmó las tres cosas que faltaban:
+
+> *"Larkspur es un ingrediente más en nuestros arreglos secos, sí. El Light Blue
+> se seca mejor. No lo hemos vuelto a sembrar."*
+
+**Eso resuelve la contradicción.** El despetalado en el carrito era un fracaso de
+**flor fresca**, y el canal real de larkspur es **seco** — donde el despetalado
+importa mucho menos. El lote de 3A se sacó en la semana 24 *para secar*, no por
+agotamiento: era la cosecha yendo a su destino correcto, no un fracaso.
+
+**Se queda `Light Blue`.** Seca mejor y es el **único azul verdadero del
+catálogo** (`paleta_color.csv`: AZUL_CLARO). Registrado en
+`07-datos/secado_variedad.csv`.
+
+`Misty Lavender` queda **pendiente de decidir**: si el canal es seco y Light Blue
+seca mejor, sembrar las dos compite por la misma cama sin aportar surtido —
+LAVANDA ya lo dan las Snapdragon Cannes Lavender. No se retira sin que Vanessa lo
+diga.
+
+### El problema urgente que esto destapa
+
+**No hay larkspur sembrado.** Y el ciclo no perdona: germinación 6 semanas + 12 a
+cosecha. Sembrando bandeja hoy (semana 37), el **primer corte cae el 14 de enero
+de 2027** — después de Navidad.
+
+Y diciembre es justo cuando importa: el `calendario_comercial_colombia.csv` dice
+que **el fuerte en dinero de diciembre son las coronas y guirnaldas**, alto ticket
+por unidad. El larkspur seco es ingrediente de eso.
+
+**Así que lo único que puede cubrir diciembre es el larkspur que ya está seco en
+bodega, del lote de la semana 24 — y nadie sabe cuánto hay.** No existía ningún
+archivo de inventario de material seco: se creó
+`07-datos/inventario_seco.csv` (solo encabezado) para poder anotarlo. Es un activo
+del negocio que hoy no se cuenta, y es el mismo caso de las colitas de conejo,
+cuyo excedente también va a coronas.
+
+Aparte: **4 productos del catálogo dependen de larkspur fresco.**
+`Larkspur (paquete solo)` a $65.000 es **100 % larkspur** — no se puede armar.
+`Larkspur combinado` ($55.000) y `Paquete amaranto velvet y larkspur` ($62.000)
+son 67 %. `Centro de mesa pequeño` ($145.000) es 19 %.
+
+### Dahlias — homologados aprobados
+
+Vanessa aprobó los tres nombres, uno por origen: **`Dahlia Ball`** (esquejes
+comprados a Ball), **`Dahlia Mix DCB`** (propias por división) y
+**`Dahlia Italiana`** (las regaladas, a sembrar la sem 37). Las filas hay que
+crearlas en VARIEDADES_BITACORA **en Drive** y llenar la columna N de los dos
+lotes que ya están en CAMPO — ver acciones 10 a 12 de
+`05-programacion/06-plan-semanal.md`.
+
 ## 2026-09-10 — CORRECCIÓN: Larkspur no produjo poco, el registro empezó tarde
 
 **Lo que se dijo mal en esta sesión:** que Larkspur era el caso más claro de

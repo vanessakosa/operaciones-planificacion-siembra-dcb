@@ -172,21 +172,56 @@ function instalarDesplegablesRegistro() {
 }
 ```
 
+### La columna Grupo tenía la lista CLAVADA, no un rango
+
+**Segundo fallo del 2026-09-10, y la causa no era la que supuse.** Vanessa agregó
+6 grupos a LISTAS y a Diana seguían sin aparecerle Craspedia ni Scabiosa. Yo
+propuse dos causas — que el rango de origen fuera angosto, o que Diana estuviera
+en filas sin validación. **Las dos estaban mal.**
+
+El panel de validación de datos de la hoja lo dijo claro:
+
+```
+Value contains one from list     B3:B663, B665:B1999
+Value contains one from list     B664
+Value contains one from list     C1:C1999
+Date is between ...              A3:A735, A737:A1999
+```
+
+**`Value contains one from list` significa que los valores están escritos DENTRO
+de la regla**, no que lea un rango. Si leyera un rango, el panel diría
+`Dropdown (from a range)` y mostraría `LISTAS!A2:A...`.
+
+O sea que **el desplegable de Grupo y la hoja LISTAS nunca estuvieron
+conectados.** Los 19 grupos se teclearon a mano dentro de la validación, y cada
+grupo nuevo exigía editar la regla — algo que nadie sabía que había que hacer.
+Agregar filas a LISTAS no iba a servir nunca.
+
+**Cómo distinguirlo en 3 clics:** clic en una celda de la columna →
+*Datos → Validación de datos*. Si el tipo dice **"from list"**, los valores están
+clavados. Si dice **"from a range"**, lee de una hoja y se actualiza sola.
+
+El mismo panel mostró dos cicatrices de parcheo manual: la regla de B está
+**partida** (`B3:B663` + otra regla solo para `B664`) y la de fecha tiene un hueco
+en `A736`. Son señales de que alguien editó celdas sueltas en el pasado.
+
+`instalarDesplegablesRegistro` lo arregla de raíz porque usa
+`requireValueInRange`: reemplaza la lista clavada por la referencia a
+`LISTAS!A2:A100` y unifica las reglas partidas al aplicarse sobre `B3:B2000`
+completo.
+
 ### Los dos rangos que hay que dejar anchos
 
-Este es el fallo que se repitió el 2026-09-10 y conviene entenderlo, porque no
-se ve: **una validación tiene dos rangos y los dos se quedan cortos.**
+Una vez que el desplegable **sí lee un rango**, tiene dos rangos y los dos fallan
+en silencio:
 
 | Rango | Si se queda corto | Síntoma |
 |---|---|---|
 | **A dónde se aplica** (`B3:B2000`) | Las filas nuevas del registro nacen sin desplegable | *"Se me cortó el desplegable en la fila 718"* |
-| **De dónde lee** (`LISTAS!A2:A100`) | Los grupos nuevos de LISTAS no se ofrecen | *"Agregué Craspedia a LISTAS y a Diana no le aparece"* |
+| **De dónde lee** (`LISTAS!A2:A100`) | Los grupos nuevos de LISTAS no se ofrecen | *"Agregué Craspedia a LISTAS y no aparece"* |
 
-El primero fue el problema original de la columna C. El segundo apareció después:
-Vanessa agregó 6 grupos a LISTAS en las filas 21 a 26, y el desplegable de Grupo
-seguía leyendo el rango angosto con el que se creó cuando había 19. **Los dos se
-arreglan de una vez con rangos generosos** — 2000 filas de registro y 100 de
-LISTAS — porque agrandarlos no cuesta nada y quedarse corto falla en silencio.
+**Dejar los dos generosos** — 2000 filas de registro y 100 de LISTAS — porque
+agrandarlos no cuesta nada y quedarse corto no avisa.
 
 ### Capa 2, opcional: la cascada como comodidad, no como cimiento
 

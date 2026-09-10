@@ -105,13 +105,18 @@ Ordenado por lo que más desbloquea.
   scripts está en `05-programacion/07-desplegables-registro.md`. **Y ojo: en esa
   hoja las fórmulas van con punto y coma**, no con coma (configuración de
   Colombia).
-- **Una validación tiene DOS rangos y los dos se quedan cortos.** El de *a dónde
-  se aplica* (`B3:B2000`) y el de *de dónde lee* (`LISTAS!A2:A100`). El primero
-  fue el fallo de la columna C; el segundo apareció después — Vanessa agregó 6
-  grupos a LISTAS y el desplegable de Grupo seguía leyendo el rango angosto con
-  el que se creó cuando había 19, así que a Diana no le aparecían Craspedia ni
-  Scabiosa. **Dejar los dos rangos generosos**: agrandarlos no cuesta nada y
-  quedarse corto falla en silencio.
+- **El desplegable de Grupo tenía la lista CLAVADA dentro de la regla**, no una
+  referencia a LISTAS. El panel de validación lo delata: dice
+  `Value contains one from list` en vez de `Dropdown (from a range)`. Por eso
+  agregar 6 grupos a LISTAS no le hizo aparecer nada a Diana — **esa columna y esa
+  hoja nunca estuvieron conectadas.** Se arregla con `requireValueInRange`, que
+  además unifica las reglas partidas que había (`B3:B663` + una regla solo para
+  `B664`). Regla de diagnóstico: *"from list"* = valores clavados;
+  *"from a range"* = lee de una hoja y se actualiza sola.
+- **Y una vez que lee un rango, hay DOS rangos que se quedan cortos:** el de *a
+  dónde se aplica* (`B3:B2000`) y el de *de dónde lee* (`LISTAS!A2:A100`).
+  Dejarlos generosos: agrandarlos no cuesta nada y quedarse corto falla en
+  silencio.
 - **`listas_desplegables.csv` tenía 19 opciones y la hoja tiene 96.** Era un bug
   de `importar_tallos.py`, que cortaba cada fila al ancho del encabezado.
   Corregido, pero **verificar en la próxima importación** que reporte las

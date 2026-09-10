@@ -1,0 +1,22 @@
+bloque,alias_registro,huecos_largo,lineas,dist_hueco_m,ancho_cama_m,area_cama_m2,n_camas,area_bloque_m2,confianza,fuente,notas
+Inv 3A,3A,198,8,0.15,1.2,35.64,,,MEDIDO,capacidad_bloques.csv + 01-invernaderos.md,"Area coincide con la documentada (35.6). n_camas SIN_DATO: la zona Inv3A+Inv3C suma 556 m2, lo que implicaria ~11 camas — CONFIRMAR"
+Inv 3B grande,3B,267,8,0.15,1.2,48.06,,,NO UNIFORME,capacidad_bloques.csv,"El bloque NO es uniforme (Vanessa 2026-08-13). Los 267 huecos son de la cama larga: NO usar como area de todas las camas de 3B"
+Inv 3B pequena,3B,65,8,0.15,1.2,11.70,,,NO UNIFORME,01-invernaderos.md,"Huecos DERIVADOS de los 11.7 m2 documentados (11.7 / 0.18). Confirmar contando huecos"
+Inv 3C grande,3C,141,8,0.15,1.2,25.38,5,126.90,MEDIDO,capacidad_bloques.csv,"Doc dice 25.2 m2; el calculo da 25.38. Diferencia 0.7% — redondeo, no conflicto"
+Inv 3C pequena,3C,90,8,0.15,1.2,16.20,3,48.60,CONFLICTO,capacidad_bloques.csv vs 01-invernaderos.md,"DISCREPANCIA ABIERTA: capacidad_bloques dice 90 huecos (=16.2 m2), 01-invernaderos.md dice 12.6 m2 (=70 huecos). 28.6% de diferencia. PREGUNTAR A VANESSA antes de usar"
+Inv 4A,4A,112,8,0.15,1.2,20.16,14,282.24,MEDIDO,capacidad_bloques.csv + 01-invernaderos.md,"14 camas lado A. Corredor central"
+Inv 4B,4B,112,8,0.15,1.2,20.16,14,282.24,MEDIDO,capacidad_bloques.csv + 01-invernaderos.md,"14 camas lado B"
+Inv 4C larga,4C,225,8,0.15,1.2,40.50,1,40.50,MEDIDO,capacidad_bloques.csv,"Cama baja larga. 4C = una cama de 4A y una de 4B juntas (Vanessa 2026-08-13)"
+Inv 4C media,4C,212,8,0.15,1.2,38.16,1,38.16,MEDIDO,capacidad_bloques.csv,Cama baja larga
+Inv 4C corta,4C,200,8,0.15,1.2,36.00,1,36.00,APROX,capacidad_bloques.csv vs 01-invernaderos.md,"capacidad_bloques dice 200 huecos; 01-invernaderos.md dice ~190. Diferencia 5%. Se toma 200 y se marca APROX"
+Inv 5,5,176,8,0.15,1.2,31.68,13,411.84,MEDIDO,capacidad_bloques.csv + 01-invernaderos.md,"13 camas parejas, sin corredor. El total 411.84 confirma los 412 m2 usados en 02-analisis-de-suelo.md"
+Inv 6,6,176,8,0.15,1.2,31.68,7,221.76,ESTIMADO,capacidad_bloques.csv + 01-invernaderos.md,"Exterior sin plastico, con mulch negro. Largo similar a Inv 5 — no medido directo"
+Mini grande,Mini,70,8,0.15,1.2,12.60,4,50.40,MEDIDO,capacidad_bloques.csv + 01-invernaderos.md,"4 camas. Lineas ASUMIDAS en 8"
+Mini pequena,Mini,35,8,0.15,1.2,6.30,3,18.90,MEDIDO,01-invernaderos.md,"3 camas. Sombra de pinos: produccion historicamente menor"
+Ext 3A,Ext 3A,181,8,0.15,1.2,32.58,,,MEDIDO,capacidad_bloques.csv,"Paralela a Inv 3A pero largo propio medido (181 vs 198). Misma tasa por m2 (Vanessa 2026-09-03)"
+Ext 4,Ext 4,224,8,0.15,1.2,40.32,1,40.32,MEDIDO,capacidad_bloques.csv,"UNA sola cama = 4A + 4B seguidas, sin corredor (Vanessa 2026-09-03)"
+Ext 5,Ext 5,176,8,0.15,1.2,31.68,,,MEDIDO,capacidad_bloques.csv,Mismo largo que Inv 5 (Vanessa 2026-09-03)
+Ext 3B larga,Ext 3B,267,8,0.15,1.2,48.06,1,48.06,PENDIENTE MEDIR,capacidad_bloques.csv,"Espeja Inv 3B. Area 48.1 m2 ya documentada (Vanessa 2026-09-03)"
+Ext 3B corta,Ext 3B,65,8,0.15,1.2,11.70,1,11.70,PENDIENTE MEDIR,capacidad_bloques.csv,"Huecos DERIVADOS de los 11.7 m2 documentados"
+Inv 2,2,,,,,,,200.00,NO UNIFORME,01-invernaderos.md,"~200 m2 de zona. Camas de distinta medida — PENDIENTE MEDIR CAMA POR CAMA. Es el bloque de ensayos"
+Inv 1,1,,,,,,6,,SIN_DATO,01-invernaderos.md,"6 camas. C1-C3 rosas de jardin injertadas ~7 anos. SIN una sola variable de suelo ni area medida — es el cultivo de mayor ticket de la finca"

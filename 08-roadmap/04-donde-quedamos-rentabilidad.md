@@ -70,20 +70,32 @@ la otra — sembrar más denso mete más plantas en la MISMA cama. Statice pasó
 
 ## 5. La tensión que hay que resolver cuando entren los datos
 
-Cruzando el balance de volumen con el ingreso por tallo:
+**Actualizado 19:05 UTC, tras importar las semanas ISO 33–36.** El registro pasó
+de 696 a 860 filas y de cortar el 2026-08-12 a cortar el 2026-08-31: entraron
+164 filas y 20.936 tallos. Eso cambió el veredicto de volumen:
 
-| Grupo | $/tallo | Balance en `cartera` |
-|---|---|---|
-| Lisianthus | 9.531 | SOBRA +6,7 pp |
-| Zinnia | 8.021 | SOBRA +5,3 pp |
-| Boca de Dragón | 6.029 | SOBRA +10,5 pp |
-| Campanula | 5.200 | FALTA −6,3 pp |
+| Grupo | Antes (corte 08-12) | Ahora (corte 08-31) | $/tallo |
+|---|---|---|---|
+| **Campanula** | **FALTA −6,3 pp** | **en equilibrio** | 5.200 |
+| **Zinnia** | **SOBRA +5,3 pp** | **en equilibrio** | 8.021 |
+| Celosia | SOBRA +6,7 pp | **SOBRA, y peor** (6.221 → 12.450 tallos) | — |
+| Boca de Dragón | SOBRA +10,5 pp | SOBRA (17,3 % de la oferta) | 6.029 |
+| Lisianthus | SOBRA +6,7 pp | SOBRA (8,1 %) | 9.531 |
 
-**Tres de los cuatro grupos que "sobran" son el top 4 de ingreso por tallo.**
-Decidir por volumen solo arrancaría lo que más plata deja. Y al revés: Lisianthus
-rinde $9.531 por tallo pero ocupa la cama 29 semanas; Boca de Dragón $6.029 en
-~15. Por semana de cama el orden puede invertirse — eso es lo que la fecha de
-siembra permitiría calcular.
+**Ya no hay ningún grupo en FALTA.** El de Campanula era un artefacto del hueco
+de registro: parecía sin cosecha desde el 15/07 y en realidad venía cosechando
+hasta el 31/08. Es la lección del día: **no decidir sacar ni meter una variedad
+con el registro atrasado.** Zinnia salió de SOBRA sin cosechar un tallo nuevo
+(su última cosecha sigue siendo 2026-07-29) — bajó de peso porque subió el
+total de la finca.
+
+Quedan **9 grupos con `<TRUNCADO`** porque aún faltan las semanas ISO 36 y 37.
+La 36 entró parcial: solo 1.700 tallos.
+
+Y la tensión de fondo sigue en pie: los tres que sobran incluyen a **Lisianthus,
+el de mayor ingreso por tallo del catálogo ($9.531)**. Pero ocupa la cama 29
+semanas contra las ~15 de Boca de Dragón, así que por semana de cama el orden
+puede invertirse. Eso es lo que la fecha de siembra permitiría calcular.
 
 ## 6. Preguntas abiertas para Vanessa
 

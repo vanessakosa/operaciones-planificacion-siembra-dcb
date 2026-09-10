@@ -64,7 +64,7 @@ MACRO_ROL = {
 # Familias que NO cuentan como color en la lectura cromatica: son los neutros
 # que dan descanso visual y sirven de puente entre familias.
 NEUTROS = {
-    "BLANCO", "MARFIL", "CREMA", "PLATA",
+    "BLANCO", "MARFIL", "CREMA", "PLATA", "BEIGE",
     "VERDE", "VERDE_GRIS", "VERDE_PLATA", "VERDE_MARRON", "BLANCO_CREMA",
 }
 
@@ -366,6 +366,12 @@ ALIAS = {
     "dahlia": ("GRUPO", "Dahlias"),
     # La receta escribe "Trachelium", la paleta el grupo "Trachellium".
     "trachelium": ("GRUPO", "Trachellium"),
+    # "cabeza grande" y "cabeza pequena" son GRADO, no cultivares distintos
+    # (Vanessa 2026-09-10). El grado es un atributo de calidad del tallo, no de
+    # variedad: la receta lo pide y hoy no se mide en ninguna parte — es el
+    # primer caso de uso real de calidad_tallo.csv, que esta vacio.
+    "lisianthus cabeza grande": ("GRUPO", "Lisianthus"),
+    "lisianthus cabeza pequena": ("GRUPO", "Lisianthus"),
 }
 
 

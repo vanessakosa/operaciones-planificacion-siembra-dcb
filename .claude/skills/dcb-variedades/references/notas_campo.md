@@ -8,6 +8,36 @@ Si una observación nueva contradice una regla ya establecida (no la repite, la 
 
 ---
 
+## 2026-09-10 — respuestas al cierre de la sesión de cartera
+
+**Colitas de conejo · color BEIGE confirmado**
+Vanessa lo confirmó en campo. Entró a `paleta_color.csv` como BEIGE, confianza
+alta, y **BEIGE se agregó al conjunto de NEUTROS** del motor: Lagurus es textura
+neutra, así que cuenta para el mínimo de neutro del bouquet y no como surtido de
+color. El bouquet se llama **"Dusty con colitas"** y lleva 7 — no existe en el
+catálogo todavía, ver `11-bouquets/03-recetas-pendientes.md`.
+
+**Espárrago · Bloque 2 · ciclo 15 semanas ESTIMADO**
+Vanessa: *"el ciclo calcúlalo con la ventana de inicio de cosecha, pero calculo
+como 15 semanas."* Se registró como **estimado por ella, no medido**, porque no
+hay fila de siembra en `campo_siembras.csv` contra la que verificar. Con ciclo 15
+y primer corte el 2026-08-10 (sem 33), la siembra caería cerca de la semana 18 —
+por confirmar. ~30 plantas aproximadas.
+
+**Dahlias · "Ball" es el PROVEEDOR, no la forma**
+Se resolvió la ambigüedad del dictado anterior: cuando Vanessa dijo *"rojas de
+bol"* se refería a que ese bloque se compró como esquejes a **Ball**, el
+proveedor que ya aparece en `campo_siembras.csv` (lote de 696 plantas, sembrado
+el 2025-11-11 en bloque 2). No son dalias de forma "bola". Corregido en la nota
+de `paleta_color.csv`.
+
+**Lisianthus · "cabeza grande" y "cabeza pequeña" son GRADO, no cultivares**
+Vanessa: *"es grado, no es cultivar distinto."* Las dos recetas que los piden
+resuelven ahora al grupo Lisianthus. **Y esto destapa algo:** el catálogo ya pide
+un grado de tallo que **no se mide en ninguna parte** — `calidad_tallo.csv` está
+vacío. Es el primer caso de uso concreto de ese archivo: no es una mejora
+teórica, hay dos recetas que dependen de él.
+
 ## 2026-09-10 — sesión de cartera (dictado de Vanessa)
 
 **Celosia cristata · en cosecha ahora · Enda Rose es el segundo color**

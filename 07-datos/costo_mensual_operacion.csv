@@ -1,0 +1,57 @@
+mes,concepto,valor,estado,fuente,nota
+2026-01,insumos_poscosecha_empaque,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-01,logistico_laban,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-01,nomina_poscosecha_mo_campo,14975138,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-01,overhead_admin_seguridad_social,8814904,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-01,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-01,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-01,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-02,insumos_poscosecha_empaque,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-02,logistico_laban,1052945,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-02,nomina_poscosecha_mo_campo,14067928,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-02,overhead_admin_seguridad_social,8320560,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-02,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-02,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-02,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-03,insumos_poscosecha_empaque,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-03,logistico_laban,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-03,nomina_poscosecha_mo_campo,10797505,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-03,overhead_admin_seguridad_social,12332157,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-03,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-03,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-03,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-04,insumos_poscosecha_empaque,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-04,logistico_laban,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-04,nomina_poscosecha_mo_campo,8736920,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-04,overhead_admin_seguridad_social,10286870,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-04,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-04,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-04,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-05,insumos_poscosecha_empaque,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-05,logistico_laban,1445769,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-05,nomina_poscosecha_mo_campo,11224027,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-05,overhead_admin_seguridad_social,11186828,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-05,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-05,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-05,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-06,insumos_poscosecha_empaque,2630425,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-06,logistico_laban,5405331,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-06,nomina_poscosecha_mo_campo,22988459,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-06,overhead_admin_seguridad_social,4391800,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-06,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-06,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-06,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-07,insumos_poscosecha_empaque,4598774,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-07,logistico_laban,4454676,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-07,nomina_poscosecha_mo_campo,10477451,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-07,overhead_admin_seguridad_social,3879100,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-07,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-07,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-07,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"
+2026-08,insumos_poscosecha_empaque,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-Insumos Poscosecha + 3E-Empaque
+2026-08,logistico_laban,387000,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3F-Logistico. Se reparte sobre el 93% de tallos que mueve la van
+2026-08,nomina_poscosecha_mo_campo,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 3E-MO Poscosecha + 3C-MO campo
+2026-08,overhead_admin_seguridad_social,0,SIN_CARGAR,"DCB_Modelo_Costos (Drive, leido 2026-09-10)",auto en el modelo: 4C-Administracion + Seguridad social
+2026-08,pct_descarte_poscosecha,0.1,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 10%, ajustable"
+2026-08,pct_tallos_por_van,0.93,OK,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","default 93%, ajustable"
+2026-08,tallos_vendidos,0,SIN_DATO,"DCB_Modelo_Costos (Drive, leido 2026-09-10)","SIN_DATO — es el UNICO campo manual del modelo y esta en 0 en los 12 meses. Sin el, todo el costo por tallo sale en $0"

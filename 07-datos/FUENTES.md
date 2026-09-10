@@ -52,7 +52,8 @@ pueden espejar como texto.
 | ⬜ | `rendimiento_costo_lote.csv` | 169 | `12NowlTiTZU2izfeBNiMpLUgOSdD4DmV4` — **solo encabezado, confirmado 2026-08-12 contra Drive.** La pestaña RENDIMIENTO del libro está vacía en la fuente: no es un problema de espejado sino de dato inexistente. Pide área m², costo semilla y costo insumos por lote — el mismo bloqueo que `costos_productos.csv` |
 | ✅ | `consolidado_lotes.csv` | — | **REEXPORTADO 2026-08-12** con `motor/importar_tallos.py`. 141 lotes con tallos, número de registros y primera/última cosecha. Antes estaba **vacío (solo encabezado)**: la pestaña CONSOLIDADO de Drive sí se calculaba sola, simplemente nunca se había espejado |
 | ✅ | `resumen_tallos_dia.csv` | 106 | `1_8Na6wvwys0I0ruRdRBOshRAlaeP1AZJ` |
-| ✅ | `costos_productos.csv` | 58 | `1SR6YgzymEy3xqRLQmc7aPclUr323UUhh` — **vacío (bloqueo #6)** |
+| ✅ | `costos_productos.csv` | 58 | `1SR6YgzymEy3xqRLQmc7aPclUr323UUhh` — **vacío.** Encabezado `Producto, Presentación, Precio $, Costo por cc/g, Proveedor`: es una **lista de precios de insumos** para el costo por aplicación, NO el modelo de margen por tallo |
+| 🔨 | `costo_mensual_operacion.csv` | — | **NUEVO 2026-09-10.** Costos mensuales de operación leídos de `DCB_Modelo_Costos` (Google Sheet `1MGX0ISxS_UbeUfgC5gHuPlennqCjAlhYr4uU0GBg0Qw`, hoja "Parámetros mensuales de costo por tallo"). Nómina, insumos, logístico y overhead por mes, más los dos parámetros fijos (10 % descarte, 93 % van). `tallos_vendidos` viene en **0 en los doce meses** y está marcado `SIN_DATO`: es el único campo manual del modelo y sin él todo el costo por tallo sale en $0. **Solo se espejó esta hoja** — el P&G, el balance, los pasivos y la nómina detallada son de `05_Administracion`, fuera del alcance de este proyecto |
 | ✅ | `README.md` (diccionario de datos) | 3253 | `1RucCK0U3kZDYKiLjRp3y1ELWRmzuNIfo` |
 
 ## Documentación (`.md`)

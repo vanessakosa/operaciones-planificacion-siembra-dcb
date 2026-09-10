@@ -39,8 +39,11 @@ El objetivo tiene tres piernas, y la tercera es la más grande:
 **Toda decisión se evalúa desde tres ejes: calidad del tallo, rentabilidad, uso
 eficiente de recursos.** La unidad de medida que los une es **margen por m² por
 semana de cama ocupada** — no tallos por planta. Una cama ocupada 30 semanas por
-un cultivo barato pierde contra 18 semanas de uno caro. Hoy esa cuenta todavía
-no se puede correr porque `costos_productos.csv` está vacío.
+un cultivo barato pierde contra 18 semanas de uno caro. Esa cuenta todavía no
+corre completa, pero ya no está a ciegas: `DCB_Modelo_Costos` tiene los costos
+de 2026 cargados y solo le falta la fila de tallos vendidos, y el piso de costo
+por tallo ya se puede calcular contra la cosecha registrada
+(`06-costos/02-costo-por-tallo.md`).
 
 ## La decisión de siembra no es una fecha: es una matriz
 
@@ -60,7 +63,7 @@ qué manejo.** Las variables que entran en ese cruce:
 | 8 | Histórico de tallos, normalizado por ventana | Mide productividad real sin el sesgo de ventana truncada | `registro_tallos.csv` → `cerebro.py rendimiento` |
 | 9 | Calidad del tallo: longitud y grado | Separa "produjo" de "produjo vendible" | `calidad_tallo.csv` |
 | 10 | Capacidad de camas libres en esa semana | Restricción dura del calendario | `capacidad_bloques.csv` |
-| 11 | Costo de semilla, insumos y mano de obra | Convierte todo lo anterior en margen | `costos_productos.csv` |
+| 11 | Costo de semilla, insumos y mano de obra | Convierte todo lo anterior en margen | `costo_mensual_operacion.csv` `costos_productos.csv` |
 
 **El acierto de una siembra no está en la fecha: está en el cruce.** El
 repositorio ya documenta el patrón, aunque en prosa y sin poder consultarse:
@@ -289,8 +292,15 @@ completa de datos pendientes en `08-roadmap/02-informacion-que-falta.md`.
 
 **Para poder decidir CUÁNTO y a QUÉ PRECIO:**
 
-5. **Llenar `costos_productos.csv`** — desbloquea margen por m² por semana, que
-   es el eje que une los otros tres.
+5. **Cargar `Tallos vendidos en el mes` en `DCB_Modelo_Costos`** — el modelo de
+   costo por tallo **ya está construido y con los costos de 2026 cargados**
+   (verificado en Drive el 2026-09-10). Su único campo manual es esa fila, y
+   está en 0 en los doce meses, así que todo sale en $0. Doce números
+   desbloquean el costo por tallo real del año. Piso ya calculable con cosecha
+   como denominador: **$1.379/tallo en junio, $869 en julio**. Ver
+   `06-costos/02-costo-por-tallo.md`.
+   *(`costos_productos.csv` es otra cosa: una lista de precios de insumos para
+   el costo por aplicación. Sigue vacía, pero no es el bloqueo del margen.)*
 6. **Fijar el cultivar en las recetas** — 24 % de los tallos DCB del catálogo
    no lo tienen. Es la causa raíz de la inconsistencia de color en punto de venta.
 7. **Confirmar el color de Statice Forever Happy** — está en 9 de 24 productos

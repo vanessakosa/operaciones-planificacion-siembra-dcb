@@ -29,17 +29,77 @@ Suma de los tres: **$1.329 COP/tallo de costo no agrícola.** Ese número por s�
 qué el análisis de rentabilidad por variedad importa tanto: si el costo fijo por tallo es
 $1.329, una variedad de bajo rendimiento por m² no se salva bajando el costo agrícola.
 
+## El modelo YA está construido — lo que falta es UNA fila (2026-09-10)
+
+Se leyó `DCB_Modelo_Costos` en Drive (Google Sheet
+`1MGX0ISxS_UbeUfgC5gHuPlennqCjAlhYr4uU0GBg0Qw`, modificado el 2026-09-10). La
+hoja **"Parámetros mensuales de costo por tallo"** existe, con sus fórmulas
+corriendo y los costos reales del año ya cargados mes a mes. El propio archivo lo
+dice: *"Los campos en azul se calculan automáticamente desde el Registro Gastos.
+Solo ingresar los campos en amarillo."*
+
+**Y el único campo manual es `Tallos vendidos en el mes`, que está en 0 en los
+doce meses.** Por eso todos los resultados salen en $0: no falta construir el
+modelo ni cargar los costos, falta **el denominador.**
+
+Los costos que ya están cargados (espejados en
+`07-datos/costo_mensual_operacion.csv`):
+
+| Concepto | Junio 2026 | Julio 2026 |
+|---|---|---|
+| Nómina poscosecha + MO campo | $22.988.459 | $10.477.451 |
+| Insumos poscosecha + empaque | $2.630.425 | $4.598.774 |
+| Logístico LABAN | $5.405.331 | $4.454.676 |
+| Overhead admin + seguridad social | $4.391.800 | $3.879.100 |
+| **Total** | **$35.416.015** | **$23.410.001** |
+
+Agosto todavía no está cerrado en el modelo: solo tiene $387.000 de logístico,
+con nómina y overhead en $0.
+
+### El piso del costo por tallo, que sí se puede calcular hoy
+
+Falta *tallos vendidos*, pero el repositorio tiene **tallos cosechados**. Como
+lo vendido nunca es más que lo cosechado, dividir por la cosecha da un **piso**:
+el costo real por tallo vendido no puede ser menor que esto.
+
+| Mes | Costo total | Tallos cosechados | **Piso $/tallo** |
+|---|---|---|---|
+| Junio 2026 | $35.416.015 | 25.691 | **$1.379** |
+| Julio 2026 | $23.410.001 | 26.951 | **$869** |
+
+Es un piso, no una estimación: el número verdadero es **mayor**, porque el
+denominador correcto es menor y porque esto todavía no incluye semilla ni
+insumos de cultivo.
+
+**Contra qué se compara:** `cerebro.py valor` da el ingreso por tallo propio de
+cada producto, y va de **$10.000** (Dream Big) a **$1.731**
+(Paquete gomphrenas frambuesa). Ese último producto está **por debajo del piso
+de junio** y apenas por encima del de julio. Es el primer candidato a revisar
+precio o composición — y no es un detalle menor, porque es Gomphrena, el grupo
+con el mayor déficit del catálogo.
+
+⚠️ **Corrección al roadmap.** El bloqueo #5 del `CLAUDE.md` decía "llenar
+`costos_productos.csv` desbloquea margen por m² por semana". Eso está mal
+planteado: el encabezado de ese archivo es
+`Producto, Presentación, Precio $, Costo por cc/g, Proveedor` — es una **lista de
+precios de insumos**, útil para el componente 2B (costo por aplicación
+fitosanitaria), no el modelo de margen. El margen por tallo vive en
+`DCB_Modelo_Costos` y está construido. Son dos bloqueos distintos y el segundo
+es mucho más pequeño de lo que el roadmap suponía.
+
 ## Lo que bloquea el análisis de rentabilidad hoy
 
-Tres cadenas rotas, en orden de impacto:
+En orden de esfuerzo contra desbloqueo:
 
-1. **CONSOLIDADO y RENDIMIENTO vacías** → no hay tallos/m² real por lote → no hay costo agrícola real
-2. **`costos_productos.csv` vacío** → no hay costo por aplicación → el componente 2B (insumos
-   cultivo) no se puede atribuir por variedad ni por bloque
-3. **Los 3 parámetros congelados en sept 2025** → el denominador está desactualizado
-
-Arreglar (1) y (2) es lo que convierte este repositorio en un sistema de decisión y no solo
-de documentación.
+1. **`Tallos vendidos en el mes` en `DCB_Modelo_Costos`** → una fila de doce
+   números y el costo por tallo real del año queda calculado. Es el dato de
+   ventas, no de cosecha.
+2. **CONSOLIDADO y RENDIMIENTO** → sin tallos/m² real por lote no hay costo
+   agrícola por variedad, que es lo que permite comparar variedades entre sí.
+3. **`costos_productos.csv` vacío** → el costo por aplicación no se puede
+   atribuir por variedad ni por bloque.
+4. **Los 3 parámetros congelados en sept 2025** ($1.329/tallo) → ya no hace
+   falta usarlos: el modelo tiene los costos de 2026 cargados.
 
 ## Precios de venta de referencia
 

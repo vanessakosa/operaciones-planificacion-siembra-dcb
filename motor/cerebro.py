@@ -25,6 +25,7 @@ Uso:
     python3 motor/cerebro.py auditar
     python3 motor/cerebro.py bouquet "Cosecha Grande"
     python3 motor/cerebro.py ciclos
+    python3 motor/cerebro.py cartera [grupo]
     python3 motor/cerebro.py rendimiento [grupo]
     python3 motor/cerebro.py explotar demanda.csv
     python3 motor/cerebro.py sembrar demanda.csv
@@ -1503,6 +1504,395 @@ def cobertura_matriz():
     return filas
 
 
+# --------------------------------------------------------------------------
+# Cartera de variedades: que se queda, que se va, de que falta y de que sobra
+# --------------------------------------------------------------------------
+
+def demanda_catalogo():
+    """Tallos DCB que pide el catalogo, por grupo.
+
+    CANASTA NO PONDERADA: asume una unidad de cada producto. El volumen de
+    venta por producto vive en 03_Ventas, fuera del alcance de este proyecto,
+    y ponderar a ojo seria inventar demanda. Asi que este numero dice
+    "cuanto pesa el grupo en el CATALOGO", no "cuanto pesa en la CAJA".
+    Es un proxy, y como proxy se reporta.
+
+    Devuelve (demanda, en_productos, pendientes, n_productos):
+      pendientes = ingredientes DCB que la paleta no resuelve. NO se suman a
+      ningun grupo: se listan con su grupo candidato para que Vanessa decida.
+      Meterlos por deduccion del nombre violaria la regla 8.
+    """
+    productos, _ = cargar_recetas()
+    por_nombre, por_grupo = cargar_paleta()
+    grupos = sorted(por_grupo, key=lambda g: -len(g))
+
+    demanda = defaultdict(float)
+    en_productos = defaultdict(set)
+    pendientes = []
+
+    for prod in productos:
+        for ing in prod["ingredientes"]:
+            if (ing["origen"] or "").lower().startswith("compr"):
+                continue
+            cant = ing["cant_max"] or ing["cant_min"] or 0.0
+            res = resolver(ing["ingrediente"], por_nombre, por_grupo)
+            grupo = None
+            if res["tipo"] == "EXACTA" and res["reg"]:
+                grupo = res["reg"].get("grupo")
+            elif res.get("grupo"):
+                grupo = res["grupo"]
+            if grupo:
+                demanda[grupo] += cant
+                en_productos[grupo].add(prod["producto"])
+                continue
+            if res["tipo"] == "NO_FLOR":
+                continue
+            # Sin vinculo. Se busca un grupo candidato por prefijo, y se
+            # reporta como candidato — no se cuenta como demanda.
+            clave = norm(ing["ingrediente"])
+            candidato = next((g for g in grupos if clave.startswith(norm(g))), None)
+            pendientes.append({
+                "ingrediente": ing["ingrediente"],
+                "producto": prod["producto"],
+                "cantidad": cant,
+                "candidato": candidato,
+            })
+    return demanda, en_productos, pendientes, len(productos)
+
+
+def oferta_registrada():
+    """Tallos cosechados por grupo, con corte y semanas del registro."""
+    oferta = defaultdict(float)
+    semanas = defaultdict(set)
+    ultima, primera = {}, {}
+    por_semana = defaultdict(lambda: defaultdict(float))
+    for fila in _leer_csv("registro_tallos.csv"):
+        fecha = (fila.get("Fecha") or "").strip()
+        try:
+            d = datetime.date.fromisoformat(fecha)
+        except ValueError:
+            continue
+        grupo = (fila.get("Grupo") or "").strip()
+        if not grupo:
+            continue
+        tallos = num((fila.get("Tallos frescos") or "").strip())
+        seco = num((fila.get("Tallos secos") or "").strip())
+        total = (tallos or 0) + (seco or 0)
+        oferta[grupo] += total
+        iso = d.isocalendar()[1]
+        semanas[grupo].add(iso)
+        por_semana[grupo][iso] += total
+        primera[grupo] = min(primera.get(grupo, d), d)
+        ultima[grupo] = max(ultima.get(grupo, d), d)
+    corte = max(ultima.values()) if ultima else None
+    return {"tallos": oferta, "semanas": semanas, "primera": primera,
+            "ultima": ultima, "por_semana": por_semana, "corte": corte}
+
+
+def _senales_campo():
+    """Lo que el campo ya dijo en prosa, indexado por grupo."""
+    idx = defaultdict(lambda: defaultdict(list))
+
+    def grupo_de(nombre, grupos):
+        n = norm(nombre)
+        return next((g for g in grupos if norm(g) in n), None)
+
+    grupos = sorted({(f.get("Grupo") or "").strip()
+                     for f in _leer_csv("registro_tallos.csv")
+                     if (f.get("Grupo") or "").strip()}, key=lambda g: -len(g))
+
+    for fila in cargar_cierres():
+        g = grupo_de(fila.get("variedad", ""), grupos)
+        if g:
+            idx[g]["cierres"].append(fila)
+    for fila in _leer_opcional("desajuste_demanda.csv"):
+        g = grupo_de(fila.get("variedad", ""), grupos)
+        if g:
+            # Los tipos vienen del barrido de COMENTARIOS: sobra, falta y
+            # calidad_venta (despetalado, pudricion, devoluciones). No se
+            # normalizan a mano: si aparece uno nuevo, entra igual.
+            idx[g][(fila.get("tipo") or "otro").strip()].append(fila)
+    for fila in _leer_opcional("picos_cosecha.csv"):
+        g = grupo_de(fila.get("variedad", ""), grupos)
+        if g:
+            idx[g]["picos"].append(fila)
+    return idx
+
+
+def _etiqueta_balance(pct_dem, pct_ofe, dem, ofe):
+    """Traduce la brecha a una etiqueta. La etiqueta es evidencia, no orden."""
+    if dem and not ofe:
+        return "EN RECETA, SIN COSECHA", -100.0
+    if ofe and not dem:
+        return "COSECHA SIN RECETA", 100.0
+    if not dem and not ofe:
+        return "SIN DATO", 0.0
+    pp = pct_ofe - pct_dem
+    if pp <= -5:
+        return "FALTA", pp
+    if pp >= 5:
+        return "SOBRA", pp
+    return "en equilibrio", pp
+
+
+def cmd_cartera(grupo=None):
+    """Demanda del catalogo contra cosecha real, grupo por grupo.
+
+    Es la mesa de trabajo de la sesion de cartera: que se queda, que se va,
+    de que hay que sembrar mas y de que menos. No decide sola — pone la
+    evidencia y marca en que se apoya y en que no.
+    """
+    demanda, en_prod, pendientes, n_prod = demanda_catalogo()
+    ofe = oferta_registrada()
+    senales = _senales_campo()
+    ciclos = cargar_ciclos()
+
+    if grupo:
+        return _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod)
+
+    tot_dem = sum(demanda.values()) or 1.0
+    tot_ofe = sum(ofe["tallos"].values()) or 1.0
+    hoy = datetime.date.today()
+    corte = ofe["corte"]
+
+    print("=" * 78)
+    print("CARTERA DE VARIEDADES — que se queda, que se va, de que falta")
+    print("=" * 78)
+    print()
+    if corte:
+        atraso = (hoy - corte).days
+        print("Registro de cosecha: %s -> %s. Hoy es %s: %d dias sin registrar."
+              % (min(ofe["primera"].values()), corte, hoy, atraso))
+        if atraso > 7:
+            faltan = sorted({(corte + datetime.timedelta(days=i)).isocalendar()[1]
+                             for i in range(1, atraso + 1)})
+            print("ADVERTENCIA: faltan las semanas ISO %s. Todo lote abierto al"
+                  % ", ".join(str(s) for s in faltan))
+            print("%s sale SUBESTIMADO, y la columna OFERTA con el." % corte)
+            print("Lo que se decida hoy sobre produccion es provisional hasta")
+            print("cerrar ese hueco.")
+    print()
+    print("DEMANDA = canasta NO ponderada: una unidad de cada uno de los %d"
+          % n_prod)
+    print("productos del catalogo. El volumen real de venta por producto vive")
+    print("en 03_Ventas, fuera del alcance. Es un proxy del peso en el")
+    print("CATALOGO, no del peso en la CAJA.")
+    print()
+
+    filas = []
+    for g in set(list(demanda) + list(ofe["tallos"])):
+        dem = demanda.get(g, 0.0)
+        of = ofe["tallos"].get(g, 0.0)
+        pct_dem = 100 * dem / tot_dem
+        pct_ofe = 100 * of / tot_ofe
+        etiqueta, pp = _etiqueta_balance(pct_dem, pct_ofe, dem, of)
+        filas.append({"grupo": g, "dem": dem, "prods": len(en_prod.get(g, ())),
+                      "pct_dem": pct_dem, "ofe": of, "pct_ofe": pct_ofe,
+                      "sem": len(ofe["semanas"].get(g, ())),
+                      "ultima": ofe["ultima"].get(g),
+                      "etiqueta": etiqueta, "pp": pp})
+    filas.sort(key=lambda f: (-f["pct_dem"], -f["pct_ofe"]))
+
+    print("%-18s %6s %5s %6s %8s %6s %4s %-11s %s"
+          % ("GRUPO", "PIDE", "PROD", "%DEM", "COSECHO", "%OFE", "SEM",
+             "ULTIMA", "BALANCE"))
+    print("-" * 78)
+    for f in filas:
+        print("%-18s %6s %5s %5.1f%% %8.0f %5.1f%% %4d %-11s %s"
+              % (f["grupo"][:18],
+                 "%.0f" % f["dem"] if f["dem"] else "—",
+                 "%d/%d" % (f["prods"], n_prod) if f["prods"] else "—",
+                 f["pct_dem"], f["ofe"], f["pct_ofe"], f["sem"],
+                 f["ultima"] or "—",
+                 f["etiqueta"] if f["etiqueta"] in ("FALTA", "SOBRA")
+                 and abs(f["pp"]) < 100 else f["etiqueta"]))
+    print()
+
+    for titulo, cond in (
+            ("FALTA — el catalogo lo pide mas de lo que el campo lo da",
+             lambda f: f["etiqueta"] in ("FALTA", "EN RECETA, SIN COSECHA")),
+            ("SOBRA — el campo lo da mas de lo que el catalogo lo pide",
+             lambda f: f["etiqueta"] == "SOBRA"),
+            ("COSECHA SIN RECETA — produce y ninguna receta lo nombra",
+             lambda f: f["etiqueta"] == "COSECHA SIN RECETA")):
+        elegidas = [f for f in filas if cond(f)]
+        if not elegidas:
+            continue
+        print(titulo)
+        for f in sorted(elegidas, key=lambda x: x["pp"]):
+            extra = []
+            s = senales.get(f["grupo"], {})
+            if s.get("sobra"):
+                extra.append("campo dijo SOBRA sem %s"
+                             % "/".join(x.get("semana", "?") for x in s["sobra"][:3]))
+            if s.get("falta"):
+                extra.append("campo dijo FALTA sem %s"
+                             % "/".join(x.get("semana", "?") for x in s["falta"][:3]))
+            if s.get("calidad_venta"):
+                extra.append("PROBLEMA DE VENTA/CALIDAD (%d)"
+                             % len(s["calidad_venta"]))
+            motivos = {x.get("motivo") for x in s.get("cierres", ()) if x.get("motivo")}
+            if motivos:
+                extra.append("cierres: %s" % ", ".join(sorted(motivos)))
+            if f["ultima"] and corte and (corte - f["ultima"]).days > 21:
+                extra.append("sin cosecha desde %s" % f["ultima"])
+            print("  %-18s %+6.1f pp   %s"
+                  % (f["grupo"][:18], f["pp"] if abs(f["pp"]) < 100 else 0,
+                     " | ".join(extra) or "sin senales de campo registradas"))
+        print()
+
+    con_calidad = [f for f in filas if senales.get(f["grupo"], {}).get("calidad_venta")]
+    if con_calidad:
+        print("SENALES DE CALIDAD O DE VENTA — candidatos a salir aunque el")
+        print("balance de volumen se vea bien. Un tallo que se despetala en el")
+        print("carrito o que vuelve devuelto no es produccion, es costo.")
+        for f in con_calidad:
+            for x in senales[f["grupo"]]["calidad_venta"]:
+                print("  %-18s %-9s \"%s\""
+                      % (f["grupo"][:18], x.get("bloque") or "?",
+                         (x.get("evidencia_literal") or "")[:60]))
+        print()
+
+    grupos_lista = {norm(f["GRUPO"]) for f in _leer_csv("listas_desplegables.csv")
+                    if (f.get("GRUPO") or "").strip()}
+    huerfanos = [f["grupo"] for f in filas
+                 if f["ofe"] and norm(f["grupo"]) not in grupos_lista]
+    if huerfanos:
+        print("GRUPOS QUE COSECHAN Y NO ESTAN EN EL DESPLEGABLE (%d)"
+              % len(huerfanos))
+        print("Diana los escribio a mano en REGISTRO. Mientras no esten en la")
+        print("hoja LISTAS no hay desplegable que los proteja del error de")
+        print("tipeo, y cada variante nueva se vuelve un grupo distinto:")
+        for g in huerfanos:
+            print("  %-20s %6.0f tallos" % (g, next(f["ofe"] for f in filas if f["grupo"] == g)))
+        print()
+
+    if pendientes:
+        print("INGREDIENTES DE RECETA SIN VINCULO A LA PALETA (%d)"
+              % len(pendientes))
+        print("Estos tallos NO estan contados en la columna PIDE. La receta los")
+        print("nombra, el campo los cosecha, y paleta_color.csv no los tiene:")
+        print("por eso el grupo aparece como COSECHA SIN RECETA. Se resuelve")
+        print("agregando la fila a paleta_color.csv — con color CONFIRMADO en")
+        print("campo, no deducido del nombre (regla 8).")
+        agrup = defaultdict(lambda: {"cant": 0.0, "prods": set(), "cand": None})
+        for p in pendientes:
+            k = p["ingrediente"]
+            agrup[k]["cant"] += p["cantidad"]
+            agrup[k]["prods"].add(p["producto"])
+            agrup[k]["cand"] = p["candidato"]
+        for ing, d in sorted(agrup.items(), key=lambda kv: -kv[1]["cant"]):
+            print("  %-28s %5.0f tallos en %d producto(s)  candidato: %s"
+                  % (ing[:28], d["cant"], len(d["prods"]),
+                     d["cand"] or "NINGUNO — preguntar"))
+        print()
+
+    print("LO QUE ESTE COMANDO NO PUEDE DECIDIR")
+    print("  margen         costos_productos.csv esta vacio. Sin costo no hay")
+    print("                 margen por m2 por semana, que es el eje que")
+    print("                 ordena de verdad la cartera. FALTA y SOBRA de")
+    print("                 arriba son de VOLUMEN, no de plata.")
+    print("  calidad        calidad_tallo.csv esta vacio: no se separa")
+    print("                 'produjo' de 'produjo vendible'.")
+    print("  ocupacion      falta area por lote para pasar de tallos a")
+    print("                 tallos por m2 por semana de cama ocupada.")
+    print("  venta real     la canasta no esta ponderada por volumen de venta.")
+    print()
+    print("Detalle de un grupo:  python3 motor/cerebro.py cartera Gomphrena")
+    return 0
+
+
+def _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod):
+    """Ficha de un grupo para decidir sobre el: se queda, se va, mas o menos."""
+    clave = norm(grupo)
+    reales = [g for g in set(list(demanda) + list(ofe["tallos"]))
+              if clave in norm(g) or norm(g) in clave]
+    if not reales:
+        print("No hay ni demanda ni cosecha registrada para %r." % grupo)
+        print("Grupos con dato: %s"
+              % ", ".join(sorted(set(list(demanda) + list(ofe["tallos"])))))
+        return 1
+
+    for g in sorted(reales):
+        print("=" * 78)
+        print("CARTERA — %s" % g.upper())
+        print("=" * 78)
+        dem = demanda.get(g, 0.0)
+        of = ofe["tallos"].get(g, 0.0)
+        print()
+        print("EN EL CATALOGO")
+        if dem:
+            print("  pide %.0f tallos por canasta, en %d de %d productos:"
+                  % (dem, len(en_prod.get(g, ())), n_prod))
+            for p in sorted(en_prod.get(g, ())):
+                print("    - %s" % p)
+        else:
+            print("  ninguna receta lo nombra con un vinculo resuelto a la")
+            print("  paleta. Correr 'cartera' sin argumento para ver si es un")
+            print("  ingrediente sin vinculo o una ausencia real.")
+        print()
+        print("EN EL CAMPO")
+        if of:
+            semanas = sorted(ofe["por_semana"][g])
+            print("  %.0f tallos entre %s y %s, en %d semanas ISO"
+                  % (of, ofe["primera"][g], ofe["ultima"][g], len(semanas)))
+            pico = max(ofe["por_semana"][g].items(), key=lambda kv: kv[1])
+            print("  pico registrado: semana %d con %.0f tallos" % pico)
+            ancho = max(ofe["por_semana"][g].values()) or 1
+            for s in semanas:
+                v = ofe["por_semana"][g][s]
+                print("    sem %2d %-30s %6.0f"
+                      % (s, "#" * int(30 * v / ancho), v))
+        else:
+            print("  sin un solo tallo en registro_tallos.csv")
+        print()
+
+        c = next((f for k, f in ciclos.items() if k and (k in norm(g) or norm(g) in k)), None)
+        print("CICLO (ciclos_variedad.csv — referencia agronomica interna)")
+        if c:
+            print("  germinacion %s sem | a campo %s-%s sem | ventana %s-%s sem"
+                  % (c["sem_germinacion"] or "SIN_DATO",
+                     c["sem_a_campo_min"] or "SIN_DATO", c["sem_a_campo_max"] or "?",
+                     c["ventana_min"] or "SIN_DATO", c["ventana_max"] or "?"))
+            print("  distancia %s cm | tallos/planta %s | %s"
+                  % (c["distancia_cm"] or "SIN_DATO",
+                     c["tallos_planta"] or "SIN_DATO",
+                     "PERENNE" if c["perenne"] else "anual"))
+            if c["notas"]:
+                print("  nota: %s" % c["notas"])
+        else:
+            print("  SIN_DATO — no hay fila para este grupo")
+        print()
+
+        s = senales.get(g, {})
+        print("LO QUE EL CAMPO YA DIJO")
+        vacio = True
+        for etiqueta, filas in (("SOBRO", s.get("sobra", [])),
+                                ("FALTO", s.get("falta", [])),
+                                ("CALIDAD/VENTA", s.get("calidad_venta", []))):
+            for f in filas:
+                vacio = False
+                print("  %s sem %s (%s): \"%s\""
+                      % (etiqueta, f.get("semana") or "?", f.get("bloque") or "?",
+                         (f.get("evidencia_literal") or "")[:80]))
+        for f in s.get("picos", []):
+            vacio = False
+            print("  PICO sem %s, inicio sem %s (%s)"
+                  % (f.get("sem_pico") or "?", f.get("sem_inicio") or "?",
+                     f.get("bloque") or "?"))
+        for f in s.get("cierres", []):
+            vacio = False
+            print("  CIERRE sem %s por %s (%s): \"%s\""
+                  % (f.get("semana_cierre") or "?", f.get("motivo") or "?",
+                     f.get("bloque") or "?",
+                     (f.get("evidencia_literal") or "")[:70]))
+        if vacio:
+            print("  nada registrado en cierres_lote, picos_cosecha ni")
+            print("  desajuste_demanda")
+        print()
+    return 0
+
+
 def cmd_matriz():
     filas = cobertura_matriz()
     print("\n" + "=" * 78)
@@ -1552,6 +1942,8 @@ def main(argv):
         cmd_valor()
     elif cmd == "ciclos":
         cmd_ciclos()
+    elif cmd == "cartera":
+        cmd_cartera(argv[2] if len(argv) > 2 else None)
     elif cmd == "rendimiento":
         cmd_rendimiento(argv[2] if len(argv) > 2 else None)
     elif cmd == "bouquet":

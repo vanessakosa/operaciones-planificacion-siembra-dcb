@@ -180,6 +180,8 @@ python3 motor/cerebro.py auditar                # estructura + color de todo el 
 python3 motor/cerebro.py bouquet "Cosecha Grande"   # un producto en detalle
 python3 motor/cerebro.py valor                  # ingreso por tallo propio
 python3 motor/cerebro.py ciclos                 # ciclo y ventana por grupo
+python3 motor/cerebro.py cartera                # demanda del catalogo contra cosecha real
+python3 motor/cerebro.py cartera Gomphrena      # ficha de un grupo para decidir sobre el
 python3 motor/cerebro.py rendimiento Campanula  # tallos/planta/día normalizado por ventana
 python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallos
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
@@ -205,6 +207,13 @@ Detalle en `05-programacion/02-registro-de-tallos.md`.
 2026-08-12 devolvió 251 filas de 598. El importador espeja las 6 pestañas,
 corrige 3 errores de fecha confirmados y reporta cada corrección. Detalle en
 `07-datos/FUENTES.md`.
+
+`cartera` es la mesa de la sesión de cartera: cruza lo que el catálogo pide con
+lo que el campo dio, grupo por grupo, y marca FALTA · SOBRA · COSECHA SIN RECETA
+· señales de calidad/venta. La demanda es una **canasta no ponderada** (una
+unidad de cada producto) porque el volumen de venta por producto vive en
+`03_Ventas`, fuera del alcance — es el peso en el catálogo, no en la caja. No
+ordena por margen: `costos_productos.csv` sigue vacío.
 
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada

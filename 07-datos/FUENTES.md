@@ -41,7 +41,9 @@ pueden espejar como texto.
 | ⬜ | `calidad_tallo.csv` | — | **solo encabezado.** La longitud de tallo no se mide hoy en ninguna parte del repositorio |
 | ✅ | `variedades_bitacora.csv` | 24535 | `1GaxNGowGOJY3Pxz9uR60XJCtxNU9H_aB` |
 | ✅ | `campo_siembras.csv` | 52881 | `1OPZLQANgzQOnkpW08lloc_ALQt-kcm-4` |
-| ✅ | `registro_tallos.csv` | — | **REEXPORTADO 2026-08-12** desde `DCB_Registro_Tallos_v7_ORGANIZADO` (XLSX binario) con `motor/importar_tallos.py`. 596 filas con fecha válida, 54.486 tallos frescos, rango 2026-05-31 → 2026-07-31. Antes tenía 361 filas y cortaba el 03/07: **faltaban 202 filas de todo julio.** Las 6 pestañas del libro quedaron espejadas, no 3 |
+| ✅ | `registro_tallos.csv` | — | **REEXPORTADO 2026-08-12**, ampliado al 12/08 con la corrección de mes del 2026-08-13. Hoy: **696 filas con fecha válida, 66.417 tallos frescos, rango 2026-05-31 → 2026-08-12**. La columna `Tallos secos` está vacía en las 696 filas. Antes tenía 361 filas y cortaba el 03/07 |
+| 🔨 | `registro_tallos_dictado.csv` | — | **sala de espera del dictado.** Cosecha que Vanessa dicta y que Drive todavía no tiene. Existe porque `importar_tallos.py` reescribe `registro_tallos.csv` completo y borraría cualquier fila escrita a mano. Se valida y se mezcla con `motor/dictar_tallos.py`; se vacía cuando Drive ya trae las filas. Arranca **solo con encabezado** |
+| 🔨 | `registro_tallos_dictado_historico.csv` | — | archivo de las filas dictadas ya confirmadas en Drive. Lo escribe `dictar_tallos.py vaciar`. Guarda la fecha del dictado y la del cierre — es la trazabilidad de qué entró por voz y cuándo |
 | ✅ | `variedades_parametros_siembra.csv` | 4689 | `1yvbrGcio8eEkg2BiApmDUeM1hncu9fDs` |
 | ✅ | `homologacion_registro.csv` | 3286 | `1WDAqbMnyYTgaMq0-ocnhIwB9xZO_wVWQ` |
 | ✅ | `aplicaciones_historial.csv` | 1784 | `18aAECzxa8DmjIkvRJ3AAMTg3AV7E9XZn` |

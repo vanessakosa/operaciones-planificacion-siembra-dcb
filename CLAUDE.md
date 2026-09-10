@@ -185,7 +185,19 @@ python3 motor/cerebro.py explotar motor/demanda_ejemplo.csv   # demanda -> tallo
 python3 motor/cerebro.py sembrar  motor/demanda_ejemplo.csv   # demanda -> siembra
 
 python3 motor/importar_tallos.py registro.xlsx  # Drive -> los CSV de 07-datos/
+python3 motor/dictar_tallos.py estado           # hasta que fecha llega el registro de cosecha
+python3 motor/dictar_tallos.py validar          # revisa la cosecha dictada, sin escribir
+python3 motor/dictar_tallos.py aplicar          # la mezcla en registro_tallos.csv
+python3 motor/dictar_tallos.py pegar            # bloque TSV para subirla a la hoja de Drive
 ```
+
+**Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas
+NO se escriben en `registro_tallos.csv` — `importar_tallos.py` lo reescribe
+completo y las borraría sin avisar. Van a `07-datos/registro_tallos_dictado.csv`
+y entran con `dictar_tallos.py aplicar`, que valida grupo contra el desplegable,
+rechaza fechas futuras y filas sin bloque, y salta lo que ya está registrado.
+Drive sigue siendo la fuente de verdad: `pegar` produce el bloque para subirlo.
+Detalle en `05-programacion/02-registro-de-tallos.md`.
 
 **Para refrescar el registro de cosecha:** bajar
 `DCB_Registro_Tallos_v7_ORGANIZADO` de Drive **como XLSX binario** y pasarlo por

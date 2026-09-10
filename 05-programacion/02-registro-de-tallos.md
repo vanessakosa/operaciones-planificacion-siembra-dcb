@@ -11,7 +11,7 @@ Verificado contra el libro el **2026-08-12**: son **6 hojas**, no 7.
 
 | Hoja | Contenido | Estado |
 |---|---|---|
-| **REGISTRO** | Una fila por corte: Fecha · Grupo · Variedad/Serie · Tallos frescos · Tallos secos · Bloque · ¿Cierre cama? · Notas · CLAVE_LOTE (auto) | ✅ **596 registros** con fecha válida, hasta el 31/07/2026 |
+| **REGISTRO** | Una fila por corte: Fecha · Grupo · Variedad/Serie · Tallos frescos · Tallos secos · Bloque · ¿Cierre cama? · Notas · CLAVE_LOTE (auto) | ✅ **696 registros** con fecha válida, hasta el **12/08/2026**. Columna `Tallos secos` **vacía en las 696 filas** |
 | **LISTAS** | Grupos y sus opciones — alimenta los desplegables en cascada | ✅ 18 grupos |
 | **RESUMEN** | Semana · Fecha · Total tallos | ⚠️ Con fórmulas. Solo 4 filas: se quedó en la semana 22 |
 | **CONSOLIDADO** | Grupo · Variedad · Bloque · Frescos · Secos · Total · #Registros · Primera cosecha · Última cosecha · key_helper | ✅ **141 lotes — sí se calcula solo** |
@@ -32,7 +32,7 @@ sus 141 lotes en Drive. Lo que pasaba es que nunca se había **espejado** al rep
 La cadena real es:
 
 ```
-REGISTRO (596 filas) → CONSOLIDADO (141 lotes) → RENDIMIENTO (tallos/m², $/tallo, utilidad)
+REGISTRO (696 filas) → CONSOLIDADO (141 lotes) → RENDIMIENTO (tallos/m², $/tallo, utilidad)
       ✅ ok                   ✅ ok                        ↑ ROTO AQUÍ
 ```
 
@@ -75,3 +75,41 @@ variedad real es "Snapdragon Monaco Dark Pink". Cada fila incluye además el est
   validación de rango en la columna Fecha para que no vuelva a entrar ninguna
 - Al leer con openpyxl: la hoja CAMPO requiere `max_row` de al menos 150 para capturar todas
   las filas pobladas. No confiar solo en `extract-text` + grep
+
+## Cuando Drive va atrasado: captura por dictado
+
+`importar_tallos.py` reescribe `registro_tallos.csv` **completo** desde el XLSX
+(abre el archivo en modo `w`). Cualquier fila escrita a mano en ese CSV
+desaparece en la siguiente importación, y desaparece en silencio.
+
+Por eso lo dictado no se escribe ahí. Se escribe en
+`07-datos/registro_tallos_dictado.csv` — una sala de espera que sobrevive a la
+importación — y `motor/dictar_tallos.py` lo valida y lo mezcla:
+
+```bash
+python3 motor/dictar_tallos.py estado    # hasta qué fecha llega el registro y qué falta
+python3 motor/dictar_tallos.py validar   # revisa grupo, fecha, bloque y duplicados; no escribe
+python3 motor/dictar_tallos.py aplicar   # mezcla en registro_tallos.csv, ordenado por fecha
+python3 motor/dictar_tallos.py pegar     # bloque TSV listo para la hoja REGISTRO de Drive
+python3 motor/dictar_tallos.py vaciar    # cierra la sala de espera cuando Drive ya lo trae
+```
+
+Lo que `validar` bloquea (marca ERROR y `aplicar` se niega a correr):
+
+- grupo que no está en `listas_desplegables.csv` — propone el más cercano
+- fecha ilegible o **futura**: una cosecha no se registra antes de cortarla
+- fila sin bloque — sin bloque el dato no cruza con microclima ni con capacidad
+- fila sin tallos, o cantidad no numérica
+
+Lo que solo avisa: variedad fuera del desplegable que **ya se cosechó antes**
+así (el dato real le gana al desplegable), bloque nuevo, variedad vacía.
+
+Duplicados: la identidad de un corte es fecha + grupo + variedad + bloque +
+cantidades. Lo que ya está en el registro se salta, así que `aplicar` se puede
+correr dos veces sin duplicar nada.
+
+**Drive sigue siendo la fuente de verdad.** La sala de espera es un puente, no
+un segundo registro: el paso `pegar` no es opcional. Dos cosas que la mezcla
+local **no** arregla: `consolidado_lotes.csv` y `resumen_tallos_dia.csv` se
+calculan con fórmulas en Drive, así que no incluyen lo dictado hasta que Drive
+se actualice y se vuelva a importar.

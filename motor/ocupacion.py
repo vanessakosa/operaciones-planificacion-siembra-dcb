@@ -17,11 +17,19 @@ ya documentada:
 Asi que el area de un lote NO hay que medirla en campo: se deriva de las
 plantas que se trasplantaron y de la distancia de siembra de esa variedad.
 
-    area ocupada m2 = plantas x (distancia_cm / 100)^2
+    area ocupada m2 = plantas x 0,15 x (distancia_cm / 100)
 
-La formula se verifica sola contra la cama: una cama de Inv 3A son 198 huecos
-x 8 lineas = 1.584 plantas, y 1.584 x 0,0225 = 35,64 m2, que es exactamente el
-area de esa cama. Ver 07-datos/area_camas.csv.
+La malla es de 0,15 m FIJO en una direccion; la distancia de siembra manda solo
+en la otra. Sembrar mas denso mete mas plantas en la MISMA cama, no en menos
+cama — por eso la distancia entra una sola vez y no al cuadrado.
+
+    a 15 cm : 1.584 plantas en una cama de Inv 3A -> 35,64 m2  = el area real
+    a 7,5 cm: 3.168 plantas en ESA MISMA cama     -> 35,64 m2  = el area real
+
+Elevar la distancia al cuadrado daria 17,82 m2 en el segundo caso, y diria que
+el lisianthus ocupa media cama cuando ocupa la cama entera. Es la formula de
+`cerebro.py m2` (2026-08-13), verificada contra la malla que confirmo Vanessa:
+"cada hueco tiene cero quince en esa malla". Ver 07-datos/area_camas.csv.
 
 QUE ES Y QUE NO ES ESTE NUMERO
 ------------------------------
@@ -39,6 +47,9 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cerebro as C
 import ficha_variedad as F
+
+# Paso de la malla, en metros. Fijo en una direccion (Vanessa 2026-08-13).
+MALLA_M = 0.15
 
 
 def cobertura_fecha_siembra():
@@ -123,7 +134,7 @@ def main(argv):
         val = ingreso.get(g)
         if not (dist and pl and tallos):
             continue
-        area = pl * (dist / 100.0) ** 2
+        area = pl * MALLA_M * (dist / 100.0)
         # Semanas de CAMA ocupada: del trasplante al fin de la ventana. La
         # germinacion es en bandeja y no ocupa cama, asi que no entra.
         campo = cic.get("sem_a_campo_max") or cic.get("sem_a_campo_min")

@@ -252,12 +252,13 @@ completo 677,3 m² (doc: 677) e Inv 5 411,8 m² (doc: 412). Asi que el area de u
 lote se deriva:
 
 ```
-area m² = plantas trasplantadas × (distancia_cm / 100)²
+area m² = plantas trasplantadas × 0,15 × (distancia_cm / 100)
 ```
 
-La formula se verifica sola contra la cama: 198 huecos × 8 lineas = 1.584
-plantas de Inv 3A, y 1.584 × 0,0225 = 35,64 m², que es el area de esa cama.
-Detalle en `07-datos/area_camas.csv` (21 camas, 19 con area).
+La malla es de 0,15 m **fijo en una direccion**; la distancia de siembra manda
+solo en la otra. Sembrar mas denso mete mas plantas en la MISMA cama, no en menos
+cama — por eso la distancia entra una sola vez, no al cuadrado. Es la formula de
+`cerebro.py m2` (2026-08-13). Detalle en `07-datos/area_camas.csv` (21 camas).
 
 **Pero el eje margen/m²/semana todavia no corre**, y por una razon distinta a la
 que se creia: el area sale de plantas **acumuladas de todo el historico** y los

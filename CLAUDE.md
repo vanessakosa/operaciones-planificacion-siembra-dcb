@@ -194,6 +194,10 @@ python3 motor/dictar_tallos.py estado           # hasta que fecha llega el regis
 python3 motor/dictar_tallos.py validar          # revisa la cosecha dictada, sin escribir
 python3 motor/dictar_tallos.py aplicar          # la mezcla en registro_tallos.csv
 python3 motor/dictar_tallos.py pegar            # bloque TSV para subirla a la hoja de Drive
+
+python3 motor/ficha_variedad.py                 # que dato hay por grupo, y cual falta
+python3 motor/ocupacion.py                      # tallos y $ por m2 por semana de cama
+python3 motor/ocupacion.py camas                # area de cada cama de la finca
 ```
 
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas
@@ -240,6 +244,33 @@ lo que el campo dio, grupo por grupo, y marca FALTA · SOBRA · COSECHA SIN RECE
 unidad de cada producto) porque el volumen de venta por producto vive en
 `03_Ventas`, fuera del alcance — es el peso en el catálogo, no en la caja. No
 ordena por margen: `costos_productos.csv` sigue vacío.
+
+**El area de cama NO hay que medirla: es una constante** (2026-09-10). La finca
+tiene una sola geometria — huecos cada 15 cm, 8 lineas, 1,20 m de ancho — que da
+**0,18 m² por hueco**, y cierra contra toda el area ya documentada: Inv 4
+completo 677,3 m² (doc: 677) e Inv 5 411,8 m² (doc: 412). Asi que el area de un
+lote se deriva:
+
+```
+area m² = plantas trasplantadas × (distancia_cm / 100)²
+```
+
+La formula se verifica sola contra la cama: 198 huecos × 8 lineas = 1.584
+plantas de Inv 3A, y 1.584 × 0,0225 = 35,64 m², que es el area de esa cama.
+Detalle en `07-datos/area_camas.csv` (21 camas, 19 con area).
+
+**Pero el eje margen/m²/semana todavia no corre**, y por una razon distinta a la
+que se creia: el area sale de plantas **acumuladas de todo el historico** y los
+tallos de una ventana de 12 semanas. Solo el **13 % de las plantas tiene fecha de
+siembra**, asi que el area no se puede recortar a esa ventana — un grupo con
+historico viejo sale artificialmente mal (Statice aparece con 977 m², media
+finca) y uno recien sembrado, artificialmente bien. `ocupacion.py` detecta la
+condicion y **se niega a nombrar mejor ni peor** mientras dure. Falta UNA
+columna: `Fecha siembra campo` en `campo_siembras.csv` (llena en 112 de 302).
+
+`ficha_variedad.py` audita, grupo por grupo, cual de las dos preguntas se puede
+contestar hoy: **sobra/falta** (volumen) se puede en 21 de 24 grupos;
+**rentable** (plata) en 0 de 24.
 
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada

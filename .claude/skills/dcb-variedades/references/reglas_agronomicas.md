@@ -43,3 +43,22 @@ Verificar el punto de injerto antes de invertir en recuperación — si los brot
 ---
 
 **Nota de mantenimiento:** cuando una observación nueva de `notas_campo.md` se confirme como patrón repetido (no un caso aislado), promoverla a esta lista de reglas establecidas.
+
+## Matricaria — zona (promovida a regla el 2026-09-10)
+
+**SÍ:** `Mini` · `3A` — son las mejores cosechas.
+**NO:** `3C` · `Inv 4` · `Inv 5` — malas cosechas, con mosca blanca de fondo.
+
+Se promueve automáticamente porque es la **segunda vez** que se reporta el mismo
+patrón en las mismas zonas. La primera está en el `CLAUDE.md`: *"Matricaria Vegmo
+Single no va en 3C ni Inv 5: inóculo de mosca blanca en el suelo. Dos lotes
+sacrificados por eso."* Vanessa lo confirmó y lo extendió el 2026-09-10,
+agregando **Inv 4** a la lista de malas y **Mini** a la de buenas.
+
+**Ensayo abierto:** se va a sembrar en `3B`. Vanessa planteó el criterio de
+salida ella misma: *"ahí habría que definir si vamos a mejorar la práctica de
+siembra o qué, porque si no, no tendría sentido seguir sembrándolas."* Si 3B
+tampoco rinde, la decisión es de continuidad del cultivo, no de zona.
+
+Matricaria **no se seca bien** — su alterna, Ammobium, sí. Ver
+`07-datos/roles_cartera.csv`.

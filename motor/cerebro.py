@@ -1716,23 +1716,42 @@ def cargar_roles():
     for fila in _leer_opcional("roles_cartera.csv"):
         g = (fila.get("grupo") or "").strip()
         if g:
-            roles[g] = {
+            # Un grupo puede tener varias filas: Celosia tiene una regla por
+            # subtipo y Dusty Miller una por cultivar. Se guarda la lista y el
+            # rol del grupo es el de su primera fila.
+            roles.setdefault(g, {
                 "rol": (fila.get("rol_cartera") or "").strip(),
-                "sustituible_con": (fila.get("sustituible_con") or "").strip(),
+                "alterna_con": (fila.get("alterna_con") or "").strip(),
                 "area": (fila.get("area_objetivo") or "").strip(),
+                "cadencia": (fila.get("cadencia_siembra") or "").strip(),
+                "ventana": (fila.get("ventana_objetivo") or "").strip(),
+                "destino": (fila.get("destino") or "").strip(),
+                "no_solapar": (fila.get("no_solapar") or "").strip() == "SI",
+                "regla": (fila.get("regla") or "").strip(),
                 "notas": (fila.get("notas") or "").strip(),
-            }
+                "filas": [],
+            })
+            roles[g]["filas"].append({
+                "subtipo": (fila.get("subtipo_o_cultivar") or "").strip(),
+                "rol": (fila.get("rol_cartera") or "").strip(),
+                "cadencia": (fila.get("cadencia_siembra") or "").strip(),
+                "ventana": (fila.get("ventana_objetivo") or "").strip(),
+                "regla": (fila.get("regla") or "").strip(),
+                "destino": (fila.get("destino") or "").strip(),
+                "notas": (fila.get("notas") or "").strip(),
+            })
     return roles
 
 
-ORDEN_ROL = ["BASE", "BASE_ENCAJE", "FOCAL", "TOQUE", "TOQUE_ENSAYO",
-             "SIN_CLASIFICAR"]
+ORDEN_ROL = ["BASE", "BASE_ENCAJE", "FOCAL", "FOLLAJE", "TOQUE",
+             "TOQUE_ENSAYO", "SIN_CLASIFICAR"]
 
 LEE_ROL = {
     "BASE": "siempre debe haber — un hueco es una falla",
     "BASE_ENCAJE": "el rol es ENCAJE; Ammi y Trachelium se sustituyen entre si",
     "FOCAL": "siempre una flor principal; el rol no puede quedar vacio",
     "TOQUE": "rota a proposito, poca cantidad, Inv 2 — el poco volumen es el diseno",
+    "FOLLAJE": "el follaje propio desplaza compra de Ruscus — es costo evitado",
     "TOQUE_ENSAYO": "en prueba; si no funciona, se saca la cama",
     "SIN_CLASIFICAR": "Vanessa todavia no le asigno rol — PREGUNTAR antes de juzgarlo",
 }
@@ -2136,6 +2155,21 @@ def _cartera_detalle(grupo, demanda, en_prod, ofe, senales, ciclos, n_prod,
         else:
             print("  sin un solo tallo en registro_tallos.csv")
         print()
+
+        rol = cargar_roles().get(g)
+        if rol:
+            print("ROL EN LA CARTERA — %s" % rol["rol"])
+            for f in rol["filas"]:
+                etiqueta = f["subtipo"] or "(todo el grupo)"
+                print("  %-18s %s" % (etiqueta, f["regla"] or "sin regla escrita"))
+                if f["cadencia"] or f["ventana"]:
+                    print("  %-18s cadencia: %s | ventana: %s"
+                          % ("", f["cadencia"] or "SIN_DATO", f["ventana"] or "SIN_DATO"))
+            if rol["alterna_con"]:
+                print("  alterna con: %s" % rol["alterna_con"])
+            if rol["no_solapar"]:
+                print("  OJO: no solapar dos camas en cosecha")
+            print()
 
         c = next((f for k, f in ciclos.items() if k and (k in norm(g) or norm(g) in k)), None)
         print("CICLO (ciclos_variedad.csv — referencia agronomica interna)")

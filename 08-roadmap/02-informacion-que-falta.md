@@ -218,3 +218,24 @@ Con el Nivel 0 y el Nivel 1 se puede armar la primera estrategia de siembra con
 **cantidad y margen** justificados. Con 2.1 encima, la estrategia incluye
 **bloque asignado y preventivos fechados** — que es la estrategia completa. Sin
 2.1, el bloque se seguirá asignando por intuición.
+
+## Bloqueos de INSUMO, no de dato (2026-09-10)
+
+Estos no se resuelven trayendo un archivo: falta el material.
+
+### Girasol `Pro Cut Plum` — el rosado
+
+**Bloqueado por acceso a semilla.** Vanessa: *"Ball no me las puede germinar
+porque no tiene acceso a esas semillas. Tiene que ser a través de Andrés y
+compradas por mí. Por eso no las hemos podido sembrar."*
+
+Importa porque es **el girasol más vendible por paquete**, y la intención es
+sembrarlo **dos veces al año** *"para generar conversación"*. Mientras la semilla
+no entre por Andrés, esa siembra no existe — y no es un problema de programación.
+
+### Complemento del Amaranto Velvet y del Cocoa
+
+Vanessa quiere sembrarlos 1–2 veces al año como toque de color puntual en
+exterior, pero **falta decidir con qué los acompaña**: al Velvet *"le iría muy
+bien algo rosado"*; el Cocoa *"también le hace falta algo que le dé vida, que
+todavía no sé qué es"*. Sin el acompañante, el toque queda incompleto.

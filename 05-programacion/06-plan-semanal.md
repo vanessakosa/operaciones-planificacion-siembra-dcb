@@ -267,7 +267,12 @@ disfrazado de éxito.
 | 13 | **Decidir si Misty Lavender se retira** | 3A | Si el canal del larkspur es seco y Light Blue seca mejor, las dos compiten por la misma cama |
 | 14 | Cargar `Tallos vendidos` mes a mes en `DCB_Modelo_Costos` | Drive | 12 números y el costo por tallo real del año queda calculado |
 | 15 | **Agregar a LISTAS: Craspedia, Scabiosa Estrella, Cynoglossum, Colitas de conejo, Espárrago** | Drive | Están cosechando y **no se pueden elegir en el desplegable**, así que no se registran. Es la acción de menor esfuerzo y mayor efecto de toda la sesión |
-| 16 | Asignar rol de cartera a los 14 grupos sin clasificar | — | Sin rol no se puede evaluar un grupo: depende de si su trabajo es estar siempre o aparecer de vez en cuando |
+| 16 | ~~Asignar rol de cartera a los 14 grupos~~ | — | ✅ **CERRADA 2026-09-10.** 23 grupos con rol en `roles_cartera.csv` |
+| 17 | **Calcular la cadencia de Green Ball** | 4A vs 4B | Las 2 camas de 4A se solaparon en cosecha con la de 4B y *"perdemos un montón"*. Hay que contrastar sembrado vs cosechado, ventana real y tallos, contra la programación, para decidir si espaciar más la siembra |
+| 18 | **Pedir semilla de Girasol Pro Cut Plum a Andrés** | — | Ball no la germina, no tiene acceso. Es el girasol más vendible por paquete y no se ha podido sembrar |
+| 19 | Revisar ventas y devoluciones de Celosia plumosa | — | *"No siempre se venden tan bien"*. Decide si sube o baja el volumen de la base |
+| 20 | Contar el ammobium seco en bodega | Bodega | *"Debería haber siempre ammobium seco para las coronas de Navidad"* — va al mismo `inventario_seco.csv` que el larkspur |
+| 21 | Probar Espárrago en **exterior** | Exterior | Vanessa quiere aumentarlo y falta saber si aguanta afuera |
 
 ⚠️ **Las acciones 10, 11 y 12 son de Drive, no del repositorio.** `campo_siembras.csv`
 y la BITÁCORA son espejos: escribirlos aquí se pierde en la próxima importación.

@@ -211,15 +211,28 @@ Detalle en `05-programacion/02-registro-de-tallos.md`.
 corrige 3 errores de fecha confirmados y reporta cada corrección. Detalle en
 `07-datos/FUENTES.md`.
 
-**La cartera tiene niveles, no es una sola lista** (Vanessa 2026-09-10): `BASE`
-(Boca de Dragón, Campánula, un encaje que es Ammi **o** Trachelium — siempre debe
-haber) · `FOCAL` (siempre una principal: Lisianthus, o Dianthus, Marigold,
-Zinnia) · `TOQUE` (rota **a propósito**, poca cantidad, en Inv 2, para que el
-catálogo se vea distinto y la gente se antoje — hoy colitas de conejo y
-craspedia, sigue larkspur) · `TOQUE_ENSAYO` (con criterio de salida: si la prueba
-falla, se saca la cama). Vive en `07-datos/roles_cartera.csv`. **Juzgar un TOQUE
-por volumen es un error de categoría** — mide como fracaso lo que es una
-decisión. Detalle en `13-optimizacion/03-estrategia-de-surtido.md`.
+**La cartera tiene niveles, no es una sola lista** (Vanessa 2026-09-10). 23
+grupos clasificados en `07-datos/roles_cartera.csv`:
+
+| Nivel | Quiénes | Regla |
+|---|---|---|
+| `BASE` | Statice · Celosia · Strawflower · Amaranto · Campánula · Boca de Dragón · Ammobium ↔ Matricaria | Siempre debe haber; un hueco es una falla |
+| `BASE_ENCAJE` | Ammi ↔ Trachelium | El encaje es un **rol**, no una especie |
+| `FOCAL` | Lisianthus · Zinnia · Girasol · Dahlias | Siempre una principal; el rol no queda vacío |
+| `FOLLAJE` | Dusty Miller · Espárrago | El follaje propio **desplaza compra** de Ruscus: es costo evitado |
+| `TOQUE` | Gomphrena · Green Ball · Larkspur · Colitas · Craspedia · Scabiosa · Amaranto Velvet/Cocoa | Rota **a propósito**, poca cantidad, en Inv 2 |
+| `TOQUE_ENSAYO` | Cynoglossum | Con criterio de salida: si falla, se saca la cama |
+
+**Juzgar un TOQUE por volumen es un error de categoría** — mide como fracaso lo
+que es una decisión. Y el rol puede ser **por subtipo**: Celosia tiene una regla
+distinta para plumosa, cristata y spicata, y Dusty Miller una por cultivar.
+
+El archivo guarda además **cadencia de siembra** (Amaranto y Celosia spicata cada
+3 semanas, Cristata mensual), **alternancia** (Ammobium ↔ Matricaria, Ammi ↔
+Trachelium), **ventana de eventos** (Zinnia en agosto·diciembre·marzo, Cristata
+en épocas de calor) y **anti-solapamiento** (Green Ball y Dusty Miller: dos camas
+en cosecha al tiempo es pérdida). Detalle y citas en
+`13-optimizacion/03-estrategia-de-surtido.md`.
 
 `cartera` es la mesa de la sesión de cartera: cruza lo que el catálogo pide con
 lo que el campo dio, grupo por grupo, y marca FALTA · SOBRA · COSECHA SIN RECETA

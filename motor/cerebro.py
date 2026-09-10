@@ -1793,6 +1793,34 @@ def cmd_cartera(grupo=None):
     hoy = datetime.date.today()
     corte = ofe["corte"]
 
+    # TRUNCAMIENTO POR LA IZQUIERDA. El registro de cosecha arranca en una
+    # semana concreta, y todo lo que produjo ANTES no esta en el. Un grupo
+    # cuyo pico documentado cayo antes de esa semana aparece con una oferta
+    # ridicula que no mide a la variedad: mide cuando empezo a llevarse el
+    # registro. Larkspur es el caso extremo — pico en la semana 21, registro
+    # desde la 22, y 243 tallos anotados de 4.788 plantas.
+    inicio = min(ofe["primera"].values()) if ofe["primera"] else None
+    sem_inicio = inicio.isocalendar()[1] if inicio else 0
+    truncados = {}
+    for g, s_g in senales.items():
+        pruebas = []
+        for f in s_g.get("picos", []):
+            try:
+                sp = int((f.get("sem_pico") or "").strip())
+            except ValueError:
+                continue
+            if sp < sem_inicio:
+                pruebas.append("pico sem %d" % sp)
+        for f in s_g.get("cierres", []):
+            try:
+                sc = int((f.get("semana_cierre") or "").strip())
+            except ValueError:
+                continue
+            if sc < sem_inicio:
+                pruebas.append("cerro sem %d por %s" % (sc, f.get("motivo") or "?"))
+        if pruebas:
+            truncados[g] = pruebas
+
     print("=" * 78)
     print("CARTERA DE VARIEDADES — que se queda, que se va, de que falta")
     print("=" * 78)
@@ -1809,6 +1837,20 @@ def cmd_cartera(grupo=None):
             print("%s sale SUBESTIMADO, y la columna OFERTA con el." % corte)
             print("Lo que se decida hoy sobre produccion es provisional hasta")
             print("cerrar ese hueco.")
+    if truncados:
+        print()
+        print("ADVERTENCIA 2 — el registro tampoco cubre el principio del ano.")
+        print("Arranca en la semana ISO %d, y estos %d grupos tienen picos o"
+              % (sem_inicio, len(truncados)))
+        print("cierres DOCUMENTADOS antes de esa semana. Su columna OFERTA no")
+        print("mide a la variedad: mide desde cuando se lleva el registro.")
+        for g in sorted(truncados):
+            print("  %-18s %s" % (g[:18], "; ".join(truncados[g][:3])))
+        print()
+        print("Con las dos advertencias juntas: la tabla es una FOTO DE 12")
+        print("SEMANAS (ISO %d a %d), no un veredicto del ano. FALTA y SOBRA se"
+              % (sem_inicio, corte.isocalendar()[1] if corte else 0))
+        print("leen dentro de esa ventana y de ninguna manera fuera de ella.")
     print()
     print("DEMANDA = canasta NO ponderada: una unidad de cada uno de los %d"
           % n_prod)
@@ -1847,8 +1889,8 @@ def cmd_cartera(grupo=None):
                  "%d/%d" % (f["prods"], n_prod) if f["prods"] else "—",
                  f["pct_dem"], f["ofe"], f["pct_ofe"], f["sem"],
                  f["ultima"] or "—",
-                 f["etiqueta"] if f["etiqueta"] in ("FALTA", "SOBRA")
-                 and abs(f["pp"]) < 100 else f["etiqueta"]))
+                 (f["etiqueta"] + (" <TRUNCADO" if f["grupo"] in truncados
+                                   else ""))))
     print()
 
     for titulo, cond in (
@@ -1881,6 +1923,9 @@ def cmd_cartera(grupo=None):
                 extra.append("cierres: %s" % ", ".join(sorted(motivos)))
             if f["ultima"] and corte and (corte - f["ultima"]).days > 21:
                 extra.append("sin cosecha desde %s" % f["ultima"])
+            if f["grupo"] in truncados:
+                extra.append("OJO: %s — produjo antes del registro"
+                             % truncados[f["grupo"]][0])
             print("  %-18s %+6.1f pp   %s"
                   % (f["grupo"][:18], f["pp"] if abs(f["pp"]) < 100 else 0,
                      " | ".join(extra) or "sin senales de campo registradas"))

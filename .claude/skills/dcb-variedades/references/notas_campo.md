@@ -8,6 +8,41 @@ Si una observación nueva contradice una regla ya establecida (no la repite, la 
 
 ---
 
+## 2026-09-10 — CORRECCIÓN: Larkspur no produjo poco, el registro empezó tarde
+
+**Lo que se dijo mal en esta sesión:** que Larkspur era el caso más claro de
+"se va" porque dio **243 tallos en toda la corrida**, siendo el 11 % del
+catálogo. Eso está **equivocado**, y el propio comentario de campo lo desmiente:
+
+> *"Ya cosechando en semana 20, medio balde diario. Cosecha extraordinaria en
+> semana 21 y 22, sacando un balde diario, sacamos las plantas en sem 24 para
+> secar, las ventas no fueron tan buenas, se despetalaban en el carrito."*
+
+**4.788 plantas en 3A**, cosecha empezando en la semana 20 y pico en la 21 y 22
+— y `registro_tallos.csv` arranca el 2026-05-31, que es la **semana 22**. El pico
+de Larkspur ocurrió casi todo **antes de que existiera el registro**. Los 243
+tallos no miden a la variedad: miden desde cuándo se anota.
+
+Y el lote no se cerró por agotamiento: *"sacamos las plantas en sem 24 **para
+secar**"*. Larkspur tiene destino en seco, igual que las colitas de conejo.
+
+**El problema real de Larkspur no es producción, es poscosecha:** se despetala en
+el carrito. Esa es la variable que decide si se queda, y no aparece en ninguna
+columna de la cartera porque `calidad_tallo.csv` y `vida_en_vaso.csv` están casi
+vacíos.
+
+### El patrón general, que es lo importante
+
+No es un caso aislado. **Nueve grupos tienen picos o cierres documentados antes
+de la semana 22**, o sea antes del registro: Gomphrena (picos en la 9 y la 21),
+Celosia (pico 15), Green Ball (16), Matricaria (15), Strawflower (21), Statice,
+Ammobium, Zinnia y Larkspur.
+
+Sumado a las cuatro semanas que faltan al final, **la tabla de cartera es una
+foto de 12 semanas (ISO 22 a 33), no un veredicto del año.** `cerebro.py cartera`
+ahora lo advierte y marca los grupos afectados con `<TRUNCADO`, para que la
+lectura no se vuelva a hacer mal.
+
 ## 2026-09-10 — respuestas al cierre de la sesión de cartera
 
 **Colitas de conejo · color BEIGE confirmado**

@@ -179,3 +179,27 @@ calendario de preventivos** — cada línea justificada con el dato que la sosti
 ---
 *Estado medido de cada variable: `python3 motor/cerebro.py matriz`*
 *Qué falta y en qué orden: `08-roadmap/02-informacion-que-falta.md`*
+
+## La ventana del registro es una variable en sí misma (2026-09-10)
+
+`registro_tallos.csv` cubre de la **semana ISO 22 a la 33** — 12 semanas de un
+año. Eso no es un detalle de completitud: **sesga toda comparación entre
+variedades**, y en la misma dirección que la ventana truncada de la variable 8.
+
+- **Por la izquierda:** 9 grupos tienen picos o cierres documentados **antes** de
+  la semana 22 (Gomphrena picos en la 9 y la 21, Celosia 15, Green Ball 16,
+  Matricaria 15, Strawflower 21, Statice, Ammobium, Zinnia, Larkspur). Lo que
+  produjeron antes no está anotado en ninguna parte.
+- **Por la derecha:** faltan las semanas 33 a 37, así que todo lote abierto al
+  12/08 sale subestimado.
+
+El caso extremo es **Larkspur**: 4.788 plantas, pico en la semana 21, y 243
+tallos registrados. La cifra no mide la variedad — mide desde cuándo se lleva el
+registro. Una decisión de cartera tomada sobre esa cifra habría sacado del
+cultivo una variedad que produjo un balde diario.
+
+`cerebro.py cartera` advierte de las dos truncaduras y marca los grupos
+afectados. **Regla de lectura: la cartera se lee dentro de su ventana y de
+ninguna manera fuera de ella.** Para un veredicto anual falta el histórico
+anterior a la semana 22, que hoy solo existe en prosa dentro de los COMENTARIOS
+de `campo_siembras.csv` y en `picos_cosecha.csv`.

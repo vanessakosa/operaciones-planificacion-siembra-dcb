@@ -1695,6 +1695,49 @@ def demanda_catalogo():
             "subtipos": por_subtipo_dem, "sustituciones": sustituciones}
 
 
+def cargar_roles():
+    """Rol de cada grupo en la cartera. Dictado por Vanessa el 2026-09-10.
+
+    LA PREMISA QUE FALTABA: no todo se siembra todo el tiempo, y los grupos NO
+    compiten entre si en una sola lista. Hay tres niveles con reglas distintas:
+
+      BASE / BASE_ENCAJE  siempre debe haber. Un hueco es una falla.
+      FOCAL               siempre debe haber UNA flor principal. El rol no
+                          puede quedar vacio, pero se llena con la que sea.
+      TOQUE               rota A PROPOSITO, poca cantidad, en Inv 2. El poco
+                          volumen NO es un fracaso: es el diseno. Lo que
+                          genera venta es que la gente no lo haya visto en un
+                          rato.
+
+    Comparar un TOQUE contra la demanda del catalogo por volumen es un error de
+    categoria: mediria como fracaso lo que es una decision.
+    """
+    roles = {}
+    for fila in _leer_opcional("roles_cartera.csv"):
+        g = (fila.get("grupo") or "").strip()
+        if g:
+            roles[g] = {
+                "rol": (fila.get("rol_cartera") or "").strip(),
+                "sustituible_con": (fila.get("sustituible_con") or "").strip(),
+                "area": (fila.get("area_objetivo") or "").strip(),
+                "notas": (fila.get("notas") or "").strip(),
+            }
+    return roles
+
+
+ORDEN_ROL = ["BASE", "BASE_ENCAJE", "FOCAL", "TOQUE", "TOQUE_ENSAYO",
+             "SIN_CLASIFICAR"]
+
+LEE_ROL = {
+    "BASE": "siempre debe haber — un hueco es una falla",
+    "BASE_ENCAJE": "el rol es ENCAJE; Ammi y Trachelium se sustituyen entre si",
+    "FOCAL": "siempre una flor principal; el rol no puede quedar vacio",
+    "TOQUE": "rota a proposito, poca cantidad, Inv 2 — el poco volumen es el diseno",
+    "TOQUE_ENSAYO": "en prueba; si no funciona, se saca la cama",
+    "SIN_CLASIFICAR": "Vanessa todavia no le asigno rol — PREGUNTAR antes de juzgarlo",
+}
+
+
 def oferta_registrada():
     """Tallos cosechados por grupo, con corte y semanas del registro."""
     oferta = defaultdict(float)
@@ -1876,13 +1919,30 @@ def cmd_cartera(grupo=None):
                       "sem": len(ofe["semanas"].get(g, ())),
                       "ultima": ofe["ultima"].get(g),
                       "etiqueta": etiqueta, "pp": pp})
-    filas.sort(key=lambda f: (-f["pct_dem"], -f["pct_ofe"]))
-
-    print("%-18s %6s %5s %6s %8s %6s %4s %-11s %s"
-          % ("GRUPO", "PIDE", "PROD", "%DEM", "COSECHO", "%OFE", "SEM",
-             "ULTIMA", "BALANCE"))
-    print("-" * 78)
+    roles = cargar_roles()
     for f in filas:
+        r = roles.get(f["grupo"], {})
+        f["rol"] = r.get("rol") or "SIN_CLASIFICAR"
+        f["area"] = r.get("area") or ""
+        # Un TOQUE no se juzga por volumen. Sustituir el veredicto evita el
+        # error de categoria de medirlo contra la demanda del catalogo.
+        if f["rol"].startswith("TOQUE"):
+            if f["etiqueta"] in ("FALTA", "SOBRA", "COSECHA SIN RECETA",
+                                 "EN RECETA, SIN COSECHA"):
+                f["etiqueta"] = "rotativo (volumen no aplica)"
+    filas.sort(key=lambda f: (ORDEN_ROL.index(f["rol"]) if f["rol"] in ORDEN_ROL
+                              else 99, -f["pct_dem"], -f["pct_ofe"]))
+
+    rol_actual = None
+    for f in filas:
+        if f["rol"] != rol_actual:
+            rol_actual = f["rol"]
+            print()
+            print("%s — %s" % (rol_actual, LEE_ROL.get(rol_actual, "")))
+            print("%-18s %6s %5s %6s %8s %6s %4s %-11s %s"
+                  % ("GRUPO", "PIDE", "PROD", "%DEM", "COSECHO", "%OFE", "SEM",
+                     "ULTIMA", "BALANCE"))
+            print("-" * 78)
         print("%-18s %6s %5s %5.1f%% %8.0f %5.1f%% %4d %-11s %s"
               % (f["grupo"][:18],
                  "%.0f" % f["dem"] if f["dem"] else "—",
@@ -1929,6 +1989,24 @@ def cmd_cartera(grupo=None):
             print("  %-18s %+6.1f pp   %s"
                   % (f["grupo"][:18], f["pp"] if abs(f["pp"]) < 100 else 0,
                      " | ".join(extra) or "sin senales de campo registradas"))
+        print()
+
+    # Un grupo con rol asignado y CERO tallos registrados no es un grupo que no
+    # produjo: es un grupo que nadie anoto. Los toques son justo los que se
+    # escapan, porque no estan en el desplegable de la hoja LISTAS.
+    grupos_lista = {norm(f["GRUPO"]) for f in _leer_csv("listas_desplegables.csv")
+                    if (f.get("GRUPO") or "").strip()}
+    invisibles = [(g, r) for g, r in sorted(roles.items())
+                  if not ofe["tallos"].get(g)]
+    if invisibles:
+        print("CON ROL ASIGNADO Y SIN UN SOLO TALLO REGISTRADO (%d)"
+              % len(invisibles))
+        print("No es que no hayan producido: es que nadie los anoto. Y el motivo")
+        print("suele ser el desplegable — un grupo que no esta en la hoja LISTAS")
+        print("no se puede elegir, asi que no se registra:")
+        for g, r in invisibles:
+            en_lista = "en LISTAS" if norm(g) in grupos_lista else "NO esta en LISTAS"
+            print("  %-20s %-14s %s" % (g[:20], r["rol"], en_lista))
         print()
 
     if cat["subtipos"]:

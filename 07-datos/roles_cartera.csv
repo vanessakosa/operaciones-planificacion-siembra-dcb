@@ -1,0 +1,11 @@
+grupo,rol_cartera,sustituible_con,area_objetivo,confianza,fuente,notas
+Boca de Dragón,BASE,,bloque productivo,alta,Vanessa 2026-09-10,"Dictado: ""hay ciertas variedades como boca de dragon, campanula, un encaje... que deberiamos tener siempre"""
+Campanula,BASE,,bloque productivo,alta,Vanessa 2026-09-10,Dictado: debe haber siempre
+Ammi,BASE_ENCAJE,Trachellium,bloque productivo,alta,Vanessa 2026-09-10,"El rol es ENCAJE y lo llena Ammi o Trachelium indistintamente: ""un encaje que puede ser ammi o traquelio"". Por eso la receta dice ""Trachelium o Ammi"" — la sustitucion no es una receta indecisa, es el rol"
+Trachellium,BASE_ENCAJE,Ammi,bloque productivo,alta,Vanessa 2026-09-10,Ver Ammi. Cualquiera de los dos cumple el rol de encaje
+Lisianthus,FOCAL,"Green Ball, Marigold, Zinnia",bloque productivo,alta,Vanessa 2026-09-10,"Dictado: ""siempre debe haber una flor principal, ojala un lisianthus, o si no una flor similar que llene el bouquet como un dianthus, o un marigold, o una cinia"". Lisianthus es el preferido; el rol NO puede quedar vacio"
+Colitas de conejo,TOQUE,,Inv 2,alta,Vanessa 2026-09-10,Toque en curso junto con Craspedia. 1.170 plantas en Inv 2
+Craspedia,TOQUE,,Inv 2,alta,Vanessa 2026-09-10,"Toque en curso junto con Colitas. 338 plantas en Inv 2, cosecha desde AGOSTO"
+Larkspur,TOQUE,,Inv 2,alta,Vanessa 2026-09-10,"Dictado: ""en el caso del larkspur yo lo hago como para hacer un boost"". Azul y rosado, los dos secan bien y hacen show en centro de mesa, Dream Big y Dreamland. REGLA: poca cantidad en Inv 2, NO ocupar area productiva de Inv 3. El lote de 4.788 plantas en 3A contradice esta regla. Siguiente en la rotacion despues de colitas y craspedia"
+Cynoglossum,TOQUE_ENSAYO,,Inv 2,alta,Vanessa 2026-09-10,"597 plantas en bloque 2. ""El otro azul"", sembrado para probar. CONFIRMADO que para fresco no sirve; ensayo de SECO en curso. Regla dictada: si la prueba de seco no funciona, se saca la cama"
+Scabiosa Estrella,TOQUE,,Inv 2,alta,Vanessa 2026-09-10,"870 plantas en bloque 2, cosecha desde AGOSTO. Nombrada como parte de la rotacion de toques"

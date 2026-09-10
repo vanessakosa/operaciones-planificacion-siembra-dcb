@@ -266,6 +266,8 @@ disfrazado de éxito.
 | 12 | **Registrar la siembra de dahlias italianas** | Drive + campo | Se siembran esta semana (sem 37). Homologado `Dahlia Italiana` |
 | 13 | **Decidir si Misty Lavender se retira** | 3A | Si el canal del larkspur es seco y Light Blue seca mejor, las dos compiten por la misma cama |
 | 14 | Cargar `Tallos vendidos` mes a mes en `DCB_Modelo_Costos` | Drive | 12 números y el costo por tallo real del año queda calculado |
+| 15 | **Agregar a LISTAS: Craspedia, Scabiosa Estrella, Cynoglossum, Colitas de conejo, Espárrago** | Drive | Están cosechando y **no se pueden elegir en el desplegable**, así que no se registran. Es la acción de menor esfuerzo y mayor efecto de toda la sesión |
+| 16 | Asignar rol de cartera a los 14 grupos sin clasificar | — | Sin rol no se puede evaluar un grupo: depende de si su trabajo es estar siempre o aparecer de vez en cuando |
 
 ⚠️ **Las acciones 10, 11 y 12 son de Drive, no del repositorio.** `campo_siembras.csv`
 y la BITÁCORA son espejos: escribirlos aquí se pierde en la próxima importación.

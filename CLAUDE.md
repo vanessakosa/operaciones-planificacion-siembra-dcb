@@ -211,6 +211,16 @@ Detalle en `05-programacion/02-registro-de-tallos.md`.
 corrige 3 errores de fecha confirmados y reporta cada corrección. Detalle en
 `07-datos/FUENTES.md`.
 
+**La cartera tiene niveles, no es una sola lista** (Vanessa 2026-09-10): `BASE`
+(Boca de Dragón, Campánula, un encaje que es Ammi **o** Trachelium — siempre debe
+haber) · `FOCAL` (siempre una principal: Lisianthus, o Dianthus, Marigold,
+Zinnia) · `TOQUE` (rota **a propósito**, poca cantidad, en Inv 2, para que el
+catálogo se vea distinto y la gente se antoje — hoy colitas de conejo y
+craspedia, sigue larkspur) · `TOQUE_ENSAYO` (con criterio de salida: si la prueba
+falla, se saca la cama). Vive en `07-datos/roles_cartera.csv`. **Juzgar un TOQUE
+por volumen es un error de categoría** — mide como fracaso lo que es una
+decisión. Detalle en `13-optimizacion/03-estrategia-de-surtido.md`.
+
 `cartera` es la mesa de la sesión de cartera: cruza lo que el catálogo pide con
 lo que el campo dio, grupo por grupo, y marca FALTA · SOBRA · COSECHA SIN RECETA
 · señales de calidad/venta. La demanda es una **canasta no ponderada** (una

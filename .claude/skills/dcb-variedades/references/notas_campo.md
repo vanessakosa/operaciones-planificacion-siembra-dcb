@@ -8,6 +8,49 @@ Si una observación nueva contradice una regla ya establecida (no la repite, la 
 
 ---
 
+## 2026-09-10 — LA PREMISA QUE FALTABA: la cartera tiene niveles
+
+Vanessa corrigió el marco entero del análisis: *"Yo no siembro todo, todo el
+tiempo."* Tres niveles con reglas distintas, en
+`07-datos/roles_cartera.csv` y explicados en
+`13-optimizacion/03-estrategia-de-surtido.md`:
+
+- **BASE** — Boca de Dragón, Campánula, un encaje (Ammi **o** Trachelium).
+  Siempre debe haber; un hueco es una falla.
+- **FOCAL** — siempre una flor principal: Lisianthus preferido, o Dianthus,
+  Marigold, Zinnia. El rol no puede quedar vacío.
+- **TOQUE** — rota **a propósito**, poca cantidad, **en Inv 2**, para no quitarle
+  área productiva a Inv 3. Hoy: colitas de conejo y craspedia. Sigue larkspur.
+  En ensayo: cynoglossum.
+
+**El motivo del toque es de demanda, no de oferta:** *"que no haya una cosecha
+siempre de lo mismo, para que cuando las personas vayan al carrito se antojen
+porque tienen rato que no lo ven. Eso es lo que genera que la gente esté
+constantemente comprando."*
+
+Dos cosas que esto corrige de lo que dije antes:
+
+1. **"Trachelium o Ammi" no es una receta indecisa.** Es el rol de encaje con la
+   especie abierta a propósito. Yo lo había reportado como un ingrediente que la
+   receta no se comprometía a fijar.
+2. **El `SOBRA` de Lisianthus no es un exceso a recortar.** Es la focal del
+   catálogo cumpliendo su función, con un ciclo de 19–23 semanas que no se
+   improvisa.
+
+Y el caso que enseñó la regla: **Larkspur son 4.788 plantas en 3A** — un toque
+sembrado a escala de producción en el mejor bloque. Los toques de hoy están todos
+en Bloque 2 y son de 338 a 870 plantas.
+
+### El hallazgo inmediato
+
+**Craspedia, Scabiosa Estrella y Cynoglossum tienen cosecha abierta desde agosto
+y CERO tallos en `registro_tallos.csv`.** Y ninguno de los tres está en la hoja
+LISTAS, así que no aparecen en el desplegable de Grupo — un grupo que no se puede
+elegir es un grupo que no se registra.
+
+O sea que **la pierna de la estrategia que genera la recompra es la única que no
+se está midiendo.**
+
 ## 2026-09-10 — DECISIÓN: Larkspur se queda, como cultivo de SECO, con Light Blue
 
 Vanessa confirmó las tres cosas que faltaban:

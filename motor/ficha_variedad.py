@@ -35,8 +35,13 @@ def plantas_por_grupo(grupos):
     for fila in C._leer_csv("campo_siembras.csv"):
         nombre = " ".join([(fila.get("Nombre Homologados") or ""),
                            (fila.get("Variedad") or "")])
+        # Por ALIAS, no por el nombre del grupo: CAMPO escribe "Snapdragon" en
+        # ingles y el grupo se llama "Boca de Dragón". Sin esto, el grupo de
+        # mas volumen del cultivo salia con cero plantas. Ver
+        # ocupacion.emparejar_grupo, que documenta el caso completo.
         n = C.norm(nombre)
-        g = next((x for x in ordenados if C.norm(x) in n), None)
+        g = next((x for x in ordenados
+                  if any(a in n for a in C.alias_grupo(x))), None)
         if not g:
             continue
         lotes[g] = lotes.get(g, 0) + 1

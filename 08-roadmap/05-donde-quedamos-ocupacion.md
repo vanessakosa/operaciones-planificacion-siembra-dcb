@@ -219,12 +219,66 @@ misma luz, mismo suelo, que es donde la comparación es limpia.
    documento sean correctos. Marcados `DERIVADO` en `area_camas.csv` y
    `capacidad_bloques.csv`, y `ocupacion.py camas` los lista aparte.
 
-3. **`MADRES` y `AMOR`** en la columna `Inicio cosecha` de `campo_siembras.csv`
-   son nombres de evento comercial, no meses. `MAYO MADRES` confirma que Madres
-   es mayo; `AMOR` sola no se deduce. Son ~13 filas y hoy quedan sin ubicar.
+3. ~~**`MADRES` y `AMOR`** en la columna `Inicio cosecha`.~~ **CERRADO.**
+   Vanessa 2026-09-10: *"Madres es mayo, que es semana veinte. Y amor es amor y
+   amistad, que es septiembre, semana treinta y ocho."*
 
-**Efecto en el área conocida de la finca:** de 1.857,6 a **2.705,6 m²**. Ya sólo
-faltan `Ext 3A`, `Ext 5` e `Inv 1` por número de camas.
+   **Resultaron ser mejor dato que un mes, no peor:** un evento tiene semana ISO
+   exacta, así que entran por la misma vía que la semana anotada en campo y no
+   por la del mes, que arrastra ±2 semanas de ruido. Nueva tabla `EVENTOS` en
+   `ocupacion.py`, con procedencia propia `EVT`. Resolvió **11 filas y 27.295
+   plantas**, entre ellas la única fila de Ammi que antes caía a estimación por
+   ciclo.
+
+   *Nota de calendario, para que quede el rastro:* el domingo del Día de la
+   Madre (2.º domingo de mayo) cae en semana ISO **19** — 2026-05-10 y
+   2025-05-11. La 20 es la siguiente, y es la que se usa porque es la semana en
+   que la cosecha corre. Amor y Amistad (3.er sábado de septiembre) cae exacto
+   en la **38** los dos años: 2025-09-20 y 2026-09-19.
+
+4. ~~**Ext 5**~~ **CERRADO.** Vanessa: *"Exterior cinco tiene una sola cama de
+   exterior y es exactamente igual del mismo tamaño de las camas del cinco."*
+   Una cama de 176 huecos = **31,68 m²**. Confirma los huecos que ya tenía; lo
+   que faltaba era `n_camas`.
+
+**Efecto en el área conocida de la finca:** de 1.857,6 a **2.737,3 m²**. Ya sólo
+faltan `Ext 3A` e `Inv 1` por número de camas.
+
+## 10. El hallazgo que destapó el dato de los eventos
+
+Al auditar qué filas resolvían por evento aparecieron dos con `grupo=None`:
+*"Bocas de Dragon Opus"* (4.658 plantas) y *"Snapdragon Potomac"* (3.014). Eso
+era Boca de Dragón — el grupo que la sección 7 nombraba como el hueco más grande
+del eje, con 14.769 tallos y **cero plantas vinculadas**.
+
+**La causa: CAMPO escribe el cultivo en inglés.** `Snapdragon` 60 veces,
+`Bocas de Dragon` una sola, mientras el grupo se llama `Boca de Dragón`. Tanto
+`ficha_variedad.plantas_por_grupo` como `ocupacion.plantas_en_ventana` buscaban
+el nombre del grupo *dentro* del texto, así que **nunca coincidía**. Eran **51
+filas y 73.258 plantas** sin emparejar con ningún grupo.
+
+Lo llamativo es que la solución ya existía y no se estaba usando:
+`cerebro.SINONIMOS_GRUPO` **ya tenía** `"boca de dragon": "snapdragon"` y
+`alias_grupo()` ya lo resolvía. Faltaba conectarlo. Ahora los dos tools
+emparejan por alias:
+
+| | antes | después |
+|---|---|---|
+| Boca de Dragón, plantas en ventana | 0 | **40.730** |
+| Boca de Dragón, área | — | **458,2 m²** (la mayor del cultivo) |
+| Boca de Dragón, $/m²/sem | fuera de la tabla | **12.956** |
+| Colitas de conejo, plantas | 0 | **1.170** (alias `bunny tails`) |
+
+Y el recorte de área sigue validándose: acerca el `tallos/planta` implícito al
+documentado en **12 grupos** ahora, aleja 1, no mueve 3.
+
+**Queda una sospecha del mismo tipo.** `cerebro.py matriz` sigue reportando la
+variable 8 (rendimiento normalizado) en 17 % — 22 de 133 lotes con tallos Y
+plantas. Ese es otro camino de emparejamiento (`construir_lotes` /
+`_plantas_del_lote` en `cerebro.py`), con un join más estricto por lote
+(grupo × variedad × bloque). Vale revisar si arrastra el mismo problema de alias
+antes de dar ese 17 % por bueno.
+
 
 Y una cuarta que salió de esta sesión:
 

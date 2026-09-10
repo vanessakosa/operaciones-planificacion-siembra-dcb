@@ -87,9 +87,27 @@ MESES = {
     "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
     "julio": 7, "agosto": 8, "septiembre": 9, "sept": 9, "octubre": 10,
     "noviembre": 11, "nov": 11, "diciembre": 12, "dic": 12,
-    # 'MAYO MADRES' lo confirma en el propio archivo: Madres es mayo. No es
-    # deduccion, es una fila que trae las dos cosas escritas juntas.
-    "mayo madres": 5,
+}
+
+# La columna 'Inicio cosecha' no siempre trae un mes: a veces trae el EVENTO
+# comercial para el que se sembro. Vanessa 2026-09-10: "Madres es mayo, que es
+# semana veinte... y amor es amor y amistad, que es septiembre, semana treinta
+# y ocho."
+#
+# Esto es MEJOR que un mes, no peor: un evento tiene semana ISO exacta, asi que
+# entra por la misma via que la semana anotada en campo y no por la del mes,
+# que arrastra +-2 semanas de ruido.
+#
+# Nota de calendario, para que quede el rastro: el domingo del Dia de la Madre
+# en Colombia (2do domingo de mayo) cae en la semana ISO 19 — el 2026-05-10 y el
+# 2025-05-11. La semana 20 es la siguiente. Se usa el 20 que dicto Vanessa, que
+# es la semana en que la cosecha efectivamente corre. Amor y Amistad (3er sabado
+# de septiembre) cae exacto en la 38 los dos anos: 2025-09-20 y 2026-09-19.
+EVENTOS = {
+    "madres": 20,
+    "mayo madres": 20,
+    "amor": 38,
+    "amor y amistad": 38,
 }
 
 
@@ -144,6 +162,16 @@ def _semana_iso_anclada(sem, ancla):
         if f >= ancla:
             return f
     return None
+
+
+def _evento_a_semana(txt):
+    """Semana ISO del evento comercial nombrado en 'Inicio cosecha', si es uno.
+
+    Devuelve None cuando el texto no es un evento — un mes, o algo que no se
+    reconoce. No adivina: la tabla EVENTOS es la que confirmo Vanessa, y un
+    nombre que no este ahi se pregunta, no se deduce.
+    """
+    return EVENTOS.get(C.norm(txt or "").strip().rstrip("?"))
 
 
 def _mes_anclado(txt, ancla):
@@ -213,6 +241,14 @@ def ventanas_de_siembra(ciclos):
         if sem_cos.isdigit() and f_siembra:
             ini = _semana_iso_anclada(int(sem_cos), f_siembra)
             fte_ini = "SEM"
+        # Un evento trae semana ISO exacta, asi que se resuelve ANTES que el
+        # mes y por la misma via que la semana anotada en campo.
+        if not ini and f_siembra:
+            sem_evt = _evento_a_semana(col(COL_MES_COSECHA))
+            if sem_evt:
+                ini = _semana_iso_anclada(sem_evt, f_siembra)
+                if ini:
+                    fte_ini = "EVT"
         if not ini and f_siembra:
             ini = _mes_anclado(col(COL_MES_COSECHA), f_siembra)
             if ini:
@@ -251,6 +287,29 @@ def ventanas_de_siembra(ciclos):
     return salida
 
 
+def emparejar_grupo(nombre, ordenados):
+    """El grupo al que pertenece una fila de CAMPO, por cualquiera de sus alias.
+
+    CAMPO escribe el cultivo en ingles: "Snapdragon" 60 veces y "Bocas de
+    Dragon" una sola, mientras el grupo se llama "Boca de Dragón". Buscar el
+    nombre del grupo dentro del texto no lo encuentra NUNCA, y por eso el grupo
+    de mas volumen del cultivo — 14.769 tallos registrados — aparecia con cero
+    plantas trasplantadas y quedaba fuera del eje de ocupacion.
+
+    cerebro.SINONIMOS_GRUPO ya conocia la equivalencia y alias_grupo() ya la
+    resolvia. Lo que faltaba era usarla aqui: son 51 filas y 73.258 plantas las
+    que no emparejaban con ningun grupo.
+
+    Se recorre `ordenados` (grupos de nombre mas largo a mas corto) para que
+    "Amaranto velvet" gane sobre "Amaranto" cuando el texto nombra al primero.
+    """
+    n = C.norm(nombre)
+    for g in ordenados:
+        if any(a in n for a in C.alias_grupo(g)):
+            return g
+    return None
+
+
 def plantas_en_ventana(grupos, ciclos, ventana_de):
     """Plantas por grupo cuya cosecha SOLAPA la ventana registrada del grupo.
 
@@ -272,7 +331,7 @@ def plantas_en_ventana(grupos, ciclos, ventana_de):
     diag = {"sin_ubicar": 0.0, "sin_ventana": 0.0, "fuera": 0.0,
             "dentro": 0.0, "fte": {}}
     for v in ventanas_de_siembra(ciclos):
-        g = next((x for x in ordenados if C.norm(x) in C.norm(v["nombre"])), None)
+        g = emparejar_grupo(v["nombre"], ordenados)
         if not g or not v["plantas"]:
             continue
         acumulado[g] = acumulado.get(g, 0.0) + v["plantas"]
@@ -459,6 +518,8 @@ def main(argv):
     print()
     print("  De donde salio el inicio de cosecha de las que entraron:")
     for fte, etiq in (("SEM", "semana ISO anotada en campo — la mas firme"),
+                      ("EVT", "evento comercial con semana ISO exacta (Madres 20,"
+                              " Amor y Amistad 38)"),
                       ("MES", "texto de mes, aproximado al dia 15 (+-2 sem)"),
                       ("CIC", "estimado con ciclos_variedad.csv")):
         if diag["fte"].get(fte):
@@ -587,8 +648,10 @@ def main(argv):
     print("       que trae +-2 semanas de ruido.")
     print("    5. La distancia es la del GRUPO. Donde el subtipo manda (Celosia:")
     print("       cristata 7,5 cm y plumosa 15 cm) el area sale promediada.")
-    print("    6. 'MADRES' y 'AMOR' en la columna de inicio de cosecha son")
-    print("       nombres de evento, no meses: no se traducen, se preguntan.")
+    print("    6. Los eventos de la columna de inicio de cosecha ya estan")
+    print("       resueltos con semana ISO exacta (Vanessa 2026-09-10): Madres")
+    print("       semana 20, Amor y Amistad semana 38. Un nombre de evento que")
+    print("       NO este en la tabla EVENTOS se pregunta, no se deduce.")
     print()
 
 

@@ -15,7 +15,7 @@ Mini grande,Mini,70,8,0.15,1.2,12.60,4,50.40,MEDIDO,capacidad_bloques.csv + 01-i
 Mini pequena,Mini,35,8,0.15,1.2,6.30,3,18.90,MEDIDO,01-invernaderos.md,3 camas. Sombra de pinos: produccion historicamente menor
 Ext 3A,Ext 3A,181,8,0.15,1.2,32.58,,,MEDIDO,capacidad_bloques.csv,Paralela a Inv 3A pero largo propio medido (181 vs 198). Misma tasa por m2 (Vanessa 2026-09-03)
 Ext 4,Ext 4,224,8,0.15,1.2,40.32,1,40.32,MEDIDO,capacidad_bloques.csv,"UNA sola cama = 4A + 4B seguidas, sin corredor (Vanessa 2026-09-03)"
-Ext 5,Ext 5,176,8,0.15,1.2,31.68,,,MEDIDO,capacidad_bloques.csv,Mismo largo que Inv 5 (Vanessa 2026-09-03)
+Ext 5,Ext 5,176,8,0.15,1.2,31.68,1,31.68,CONFIRMADO,Vanessa 2026-09-10,"UNA sola cama de exterior, del MISMO tamano que las camas de Inv 5. Dictado: ""Exterior cinco tiene una sola cama de exterior y es exactamente igual del mismo tamano de las camas del cinco"". Confirma los 176 huecos y los 31.68 m2 que ya tenia: el dato que faltaba era n_camas"
 Ext 3B larga,Ext 3B,267,8,0.15,1.2,48.06,1,48.06,PENDIENTE MEDIR,capacidad_bloques.csv,Espeja Inv 3B. Area 48.1 m2 ya documentada (Vanessa 2026-09-03)
 Ext 3B corta,Ext 3B,65,8,0.15,1.2,11.70,1,11.70,PENDIENTE MEDIR,capacidad_bloques.csv,Huecos DERIVADOS de los 11.7 m2 documentados
 Inv 2,2,,,,,,,200.00,NO UNIFORME,01-invernaderos.md,~200 m2 de zona. Camas de distinta medida — PENDIENTE MEDIR CAMA POR CAMA. Es el bloque de ensayos

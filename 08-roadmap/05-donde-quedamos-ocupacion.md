@@ -179,35 +179,52 @@ Lo que aporta `m2` y hoy no existe en `main`: la vista **por lote** (grupo ×
 variedad × bloque) y la comparación **dentro de un mismo bloque** — mismo riego,
 misma luz, mismo suelo, que es donde la comparación es limpia.
 
-## 9. Las preguntas para Vanessa
+## 9. Las preguntas para Vanessa — dos cerradas
 
-1. ~~**Inv 3C pequeña**: 90 huecos o 70.~~ **CERRADO 2026-09-10.** No eran dos
-   fuentes contradiciéndose: eran **dos secciones distintas**, y cada fuente
-   tenía razón sobre una parte. Vanessa: *"hay una sección que podríamos llamar
-   A que tiene las camas largas y tiene cuatro camas largas que tienen noventa
-   huecos. Y luego hay una sección B que tiene tres camas cortas que tienen
-   setenta huecos."* Los 90 huecos que `capacidad_bloques.csv` le tenía puestos
-   a la sección de 3 camas eran de las **largas**. Inv 3C queda en **7 camas y
-   102,6 m²** (antes 8 camas y 175,5), y el total de la finca baja de 1.857 a
-   **1.784,7 m²**.
+1. ~~**Inv 3C: 90 huecos o 70.**~~ **CERRADO.** No eran dos fuentes
+   contradiciéndose: **eran dos secciones**, y cada fuente describía una.
+   Vanessa: *"hay una sección que podríamos llamar A que tiene las camas
+   largas... y luego hay una sección B que tiene tres camas cortas que tienen
+   setenta huecos"*, y sobre la larga, *"son 5 camas tienes razón"*.
 
-   **Pero abrió una discrepancia nueva en la sección A**, y es grande: este
-   dictado dice 4 camas de 90 huecos (64,8 m²), mientras `capacidad_bloques.csv`
-   (5 × 141h) y `01-invernaderos.md` (5 × 140h) **coincidían entre sí** en
-   126,9 m². Son 72,9 m² —el 41 % del bloque— y una cama de diferencia. Se
-   aplicó el dictado por jerarquía de verdad y quedó marcado en los tres
-   archivos. **Vale una segunda confirmación en campo.**
-2. **Cuántas camas tienen Inv 3A e Inv 3B** — hay área por cama pero no cuántas,
-   así que no suman al total. **Subió de prioridad:** es la que despeja la
-   discrepancia de 3C-A. `01-invernaderos.md` dice que Inv3A + Inv3C suman
-   556 m²; con 3C en 102,6 quedan 453,4 m² para 3A, que son **12,72 camas** de
-   35,64 — no es entero. Con el 3C anterior daban 10,68, tampoco. Así que
-   **uno de los tres datos está mal**: el 556 de la zona, el área por cama de
-   3A, o la sección A de 3C. Saber cuántas camas tiene 3A resuelve los otros
-   dos.
+   | Sección | Camas | Huecos | m²/cama | Total |
+   |---|---|---|---|---|
+   | 3C-A larga | 5 | 140 | 25,2 | 126,0 m² |
+   | 3C-B corta | 3 | 70 | 12,6 | 37,8 m² |
+   | **Inv 3C** | **8** | | | **163,8 m²** |
+
+   Los 90 huecos que `capacidad_bloques.csv` tenía sueltos no eran de ninguna de
+   las dos secciones — la larga es de 140 y la corta de 70. Ese dato mal
+   asignado era todo el conflicto.
+
+2. ~~**Cuántas camas tienen Inv 3A e Inv 3B.**~~ **CERRADO, pero DERIVADO — hay
+   que contarlas.** Al cerrar 3C, los totales de zona de `01-invernaderos.md`
+   se vuelven ecuaciones con una sola incógnita, y **las dos dan entero**:
+
+   | Zona | Doc | Se resta | Queda | Camas | Resultado |
+   |---|---|---|---|---|---|
+   | Inv3A + Inv3C | 556 m² | 3C = 163,8 | 392,2 | **11,004** | Inv 3A = **11 camas** |
+   | Inv3B + Inv5 + Mini | 949 m² | Inv 5 411,84 + Mini 69,3 | 467,86 | **9,005** grandes | Inv 3B = **9 grandes + 3 cortas** |
+
+   Y las dos zonas cierran contra el documento: 555,84 contra 556 (**0,03 %**) y
+   948,78 contra 949 (**0,02 %**).
+
+   **Lo que le da fuerza al método es que sólo funciona con la geometría
+   correcta.** Con 5×90 para 3C-A, Inv 3A daría 12,27 camas; con 4×90, 12,72.
+   Ninguna da entero. Que la respuesta correcta de 3C sea la única que produce
+   un número entero de camas en 3A es una confirmación independiente del
+   dictado.
+
+   **Son DERIVADOS, no contados.** Dependen de que los totales de zona del
+   documento sean correctos. Marcados `DERIVADO` en `area_camas.csv` y
+   `capacidad_bloques.csv`, y `ocupacion.py camas` los lista aparte.
+
 3. **`MADRES` y `AMOR`** en la columna `Inicio cosecha` de `campo_siembras.csv`
    son nombres de evento comercial, no meses. `MAYO MADRES` confirma que Madres
    es mayo; `AMOR` sola no se deduce. Son ~13 filas y hoy quedan sin ubicar.
+
+**Efecto en el área conocida de la finca:** de 1.857,6 a **2.705,6 m²**. Ya sólo
+faltan `Ext 3A`, `Ext 5` e `Inv 1` por número de camas.
 
 Y una cuarta que salió de esta sesión:
 

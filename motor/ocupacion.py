@@ -346,8 +346,25 @@ def cmd_camas():
             f.get("confianza", "")))
     print("-" * 82)
     print("%-16s %7s %6s %10s %6s %12.2f" % ("SUMA", "", "", "", "", tot))
-    print("\n  Solo suma donde n_camas es conocido. Faltan Inv 3A, Inv 3B, Inv 2,")
-    print("  Inv 1 y las tres Ext: el area de cama esta, el numero de camas no.")
+    # Que bloques no suman, calculado — no escrito a mano: una lista fija se
+    # queda vieja en cuanto se confirma un bloque, y entonces el pie de la
+    # tabla afirma que falta algo que ya esta.
+    faltan = [f["bloque"] for f in filas
+              if not C.num(f.get("area_bloque_m2") or "")]
+    print()
+    if faltan:
+        print("  Solo suma donde n_camas es conocido. NO suman (%d): %s"
+              % (len(faltan), ", ".join(faltan)))
+        print("  En esos el area de cama esta; el numero de camas no.")
+    else:
+        print("  Todos los bloques con area de cama tienen n_camas: la suma es completa.")
+    derivados = [f["bloque"] for f in filas if f.get("confianza") == "DERIVADO"]
+    if derivados:
+        print()
+        print("  DERIVADO, no contado en campo (%d): %s"
+              % (len(derivados), ", ".join(derivados)))
+        print("  Salen de restarle a un total de zona los bloques ya cerrados.")
+        print("  Confirmar contando las camas.")
     conflictos = [f for f in filas if f.get("confianza") == "CONFLICTO"]
     if conflictos:
         print("\n  CONFLICTO ABIERTO:")

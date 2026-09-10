@@ -19,7 +19,7 @@
 | Inv 3A | 35.6 m² | Bueno |
 | Inv 3B grande | 48.1 m² | Salinidad activa (C.E. 0.829) |
 | Inv 3B pequeña | 11.7 m² | Similar a 3B |
-| Inv 3C-A (larga) | 16.2 m² | Bueno |
+| Inv 3C-A (larga) | 25.2 m² | Bueno |
 | Inv 3C-B (corta) | 12.6 m² | Bueno |
 | Mini grande | 12.6 m² | Bueno |
 | Mini pequeña | 6.3 m² | Bueno |
@@ -118,29 +118,28 @@ de Dahlia en `07-datos/ciclos_variedad.csv`.
 - Exitoso: celosias, campanula, trachelium, Dianthus Green Ball (parte inferior)
 - **Requiere mejora biológica de suelo a largo plazo** (enfoque Kempf / Restrepo)
 
-### Bloque 3C — sección A: 4 camas de 90h · sección B: 3 camas de 70h
+### Bloque 3C — sección A: 5 camas de 140h · sección B: 3 camas de 70h
 
-**Dos secciones, y el bloque se nombra por sección** (Vanessa 2026-09-10):
-*"hay una sección que podríamos llamar A que tiene las camas largas y tiene
-cuatro camas largas que tienen noventa huecos. Y luego hay una sección B que
-tiene tres camas cortas que tienen setenta huecos."*
+**El bloque tiene dos secciones y se nombra por sección** (Vanessa 2026-09-10):
+*"hay una sección que podríamos llamar A que tiene las camas largas... Y luego
+hay una sección B que tiene tres camas cortas que tienen setenta huecos."*
 
 | Sección | Camas | Huecos | m²/cama | Total |
 |---|---|---|---|---|
-| 3C-A larga | 4 | 90 | 16,2 | 64,8 m² |
+| 3C-A larga | 5 | 140 | 25,2 | 126,0 m² |
 | 3C-B corta | 3 | 70 | 12,6 | 37,8 m² |
-| **Inv 3C** | **7** | | | **102,6 m²** |
+| **Inv 3C** | **8** | | | **163,8 m²** |
 
-Esto **cerró el conflicto** que estaba abierto en `area_camas.csv`: el dato de
-90 huecos que `capacidad_bloques.csv` le tenía asignado a la sección de 3 camas
-era en realidad el de las camas largas. La sección corta es de 70, como decía
-este documento.
+Esto **cerró el conflicto** que estaba abierto en `area_camas.csv`, y la causa
+no era que una fuente estuviera equivocada: **eran dos secciones**, y cada
+fuente describía una. Los 90 huecos que `capacidad_bloques.csv` tenía sueltos no
+eran de ninguna de las dos — la larga es de 140 y la corta de 70.
 
-> **Queda una discrepancia por confirmar en la sección A.** Este documento y
-> `capacidad_bloques.csv` coincidían entre sí en **5 camas de 140–141 huecos**
-> (126,9 m²), contra las **4 camas de 90** dictadas (64,8 m²). Son 72,9 m² —
-> el 41 % del bloque — y una cama de diferencia. Vale el dictado por jerarquía
-> de verdad, pero el número anterior tenía dos fuentes que se corroboraban.
+**El cruce de zona lo confirma por una vía independiente.** Con `Inv3A + Inv3C =
+556 m²` y esta geometría, a Inv 3A le quedan 392,2 m², que son **11,004 camas**
+de 35,64 — entero. Ninguna otra hipótesis lo da: con 5×90 salen 12,27 camas y
+con 4×90, 12,72. Y 11 × 35,64 + 163,8 = 555,84 contra los 556 documentados,
+0,03 % de error. **Por eso `Inv 3A` queda en 11 camas (derivado, no contado).**
 
 - Perfil: fresco, húmedo, menos radiación, pegado al humedal
 - Exitoso: nigela, Dianthus Green Ball, anémonas, celosias Johnnys, statice

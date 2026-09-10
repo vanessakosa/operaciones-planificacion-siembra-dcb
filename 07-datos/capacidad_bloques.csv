@@ -1,8 +1,8 @@
 Bloque,Huecos (largo),Líneas,1/hueco,2/hueco,Zigzag,# Camas,confianza,Notas
-Inv 3A,198,8,,,,,MEDIDO,
+Inv 3A,198,8,,,,11,DERIVADO,"# Camas DERIVADO del cruce de zona 2026-09-10, no contado en campo: Inv3A+Inv3C = 556 m2 (01-invernaderos.md) menos Inv 3C ya cerrado en 163.8 deja 392.2, que son 11.004 camas de 35.64 m2. CONFIRMAR contando"
 Inv 3B,267,8,,,,,NO UNIFORME,"PENDIENTE MEDIR CAMA POR CAMA. Vanessa 2026-08-13: ""es muy particular, hay camas mas largas y otras mas pequenas"". Los 267 huecos NO son uniformes — no usar ese numero como area de todas las camas"
-Inv 3C-A (4 camas largas),90,8,,,,4,CONFIRMADO,"Seccion A, camas largas. Vanessa 2026-09-10. Antes este 90 estaba en la fila de 3 camas, que era el error"
-Inv 3C-B (3 camas cortas),70,8,,,,3,CONFIRMADO,"Seccion B, camas cortas. Vanessa 2026-09-10. Antes decia 90 huecos: corregido"
+Inv 3C-A (5 camas largas),140,8,,,,5,CONFIRMADO,"Seccion A, camas largas. Vanessa 2026-09-10: ""son 5 camas tienes razon"". Antes esta fila decia 4 camas de 90h; el 90 no era de aqui. La version previa de este archivo decia 141 huecos: el cruce de zona favorece 140"
+Inv 3C-B (3 camas cortas),70,8,,,,3,CONFIRMADO,"Seccion B, camas cortas. Vanessa 2026-09-10. Antes este archivo decia 90 huecos para esta seccion: era el dato de las camas largas, mal asignado"
 Ext 3A,181,8,,,,,MEDIDO,"Paralela a Inv 3A: MISMA tasa por m2, pero largo propio MEDIDO de 181 huecos (198 en 3A). Vanessa 2026-09-03: ""muy similares"", no identicas"
 Inv 4A,112,8,,,,,MEDIDO,Lado A
 Inv 4B,112,8,,,,,MEDIDO,Lado B

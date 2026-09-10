@@ -81,11 +81,12 @@ Ordenado por lo que más desbloquea.
 
 ## 4. Lo siguiente que hay que hacer aquí
 
-1. **Green Ball: calcular la cadencia.** Vanessa lo pidió explícitamente:
-   contrastar **las dos camas de 4A contra la de 4B** — sembrado vs cosechado,
-   ventana real y tallos — porque se solaparon en cosecha y *"perdemos un
-   montón"*. El resultado decide si se espacia más la siembra. Es la única tarea
-   de análisis que quedó nombrada y pendiente.
+1. ✅ **Green Ball: cadencia calculada** → `13-optimizacion/06-cadencia-green-ball.md`.
+   Propuesta **6 semanas, no un mes**, porque el pinch alarga la ventana (1,49–1,85
+   tallos/planta contra 1 documentado). **Pero el hallazgo grande es otro: el
+   registro no puede medir el solapamiento**, porque anota BLOQUE y no CAMA — las
+   dos camas de 4A se escriben igual, y "sucesión perfecta" y "solapamiento" dejan
+   la misma huella. 813 tallos (22 % del grupo) quedaron sin cama asignable.
 2. **Convertir las cadencias en calendario de siembra.** Ya hay cadencia escrita
    para Amaranto (3 sem), Celosia spicata (3 sem), Cristata (mensual), plumosa
    (3 sem) y Dusty Miller New Look (mensual). Falta cruzarlas con

@@ -252,6 +252,7 @@ disfrazado de éxito.
 | 5 | Confirmar si Colitas de conejo sigue produciendo | Inv 2 | Último corte 11/08, ventana ambigua |
 | 6 | Registrar la siembra de Espárrago en CAMPO | Inv 2 | Cosechando desde sem 33 sin fila de siembra |
 | 7 | Anotar **cama exacta** de cada ensayo de Inv 2 | Inv 2 | Hoy dicen "2" a secas, y es el bloque más irregular |
+| 7b | **Anotar la CAMA, no solo el bloque, en 4A y 4B** | 4A · 4B | Las dos camas de 4A se registran igual, así que el solapamiento de Green Ball **no se puede medir** y 813 tallos (22 % del grupo) quedaron sin cama asignable. Ver `13-optimizacion/06-cadencia-green-ball.md` |
 | 8 | Extender el pinch de Green Ball | 4A → resto | 2,76 t/planta contra 1 documentado |
 
 ---
@@ -270,7 +271,7 @@ disfrazado de éxito.
 | 15b | **Quitar el plural: `Craspedias` → `Craspedia` y `Esparragos` → `Esparrago`** | Drive, LISTAS A21 y A25 | En plural **no cruzan**: `campo_siembras.csv` dice `Craspedia` (338 plantas) y el registro ya tiene `Esparrago` con 40 tallos. El motor los ve como grupos distintos y `cerebro.py cartera` sigue reportando Craspedia como "NO está en LISTAS" |
 | 15c | `Potomac Appleblossom` en `S2` | Drive, LISTAS | La única de las dos variedades que quedó sin agregar. S2 quedó libre al borrar el `Forever Happy` que estaba mal ahí |
 | 16 | ~~Asignar rol de cartera a los 14 grupos~~ | — | ✅ **CERRADA 2026-09-10.** 23 grupos con rol en `roles_cartera.csv` |
-| 17 | **Calcular la cadencia de Green Ball** | 4A vs 4B | Las 2 camas de 4A se solaparon en cosecha con la de 4B y *"perdemos un montón"*. Hay que contrastar sembrado vs cosechado, ventana real y tallos, contra la programación, para decidir si espaciar más la siembra |
+| 17 | ~~Calcular la cadencia de Green Ball~~ | 4A vs 4B | ✅ **HECHO 2026-09-10** → `13-optimizacion/06-cadencia-green-ball.md`. Propuesta: **6 semanas, no un mes**. Pero el registro **no puede medir** el solapamiento porque anota bloque y no cama — ver acción 7b |
 | 18 | **Pedir semilla de Girasol Pro Cut Plum a Andrés** | — | Ball no la germina, no tiene acceso. Es el girasol más vendible por paquete y no se ha podido sembrar |
 | 19 | Revisar ventas y devoluciones de Celosia plumosa | — | *"No siempre se venden tan bien"*. Decide si sube o baja el volumen de la base |
 | 20 | Contar el ammobium seco en bodega | Bodega | *"Debería haber siempre ammobium seco para las coronas de Navidad"* — va al mismo `inventario_seco.csv` que el larkspur |

@@ -199,7 +199,7 @@ Dusty miller con colitas de conejo,50000,Paquete mixto,6 flores DCB + 0 follaje 
 ,,,Colitas de conejo,7,DCB,,
 ,,,Celosia plumosa,1,DCB,,
 ,,,Statice blanco o Statice Forever Happy,3,DCB,"SUSTITUCION: ""en algun momento lo cambiamos por la Forever Happy""",
-,,,Scabiosa Estrella,3,DCB,"Vanessa 2026-09-11: ""Escabiosa estrella es la que estamos cosechando ahorita"". Cultivo PROPIO activo. Scabiosa figura en roles_cartera como TOQUE y hasta hoy no tenia un solo tallo registrado — confirma que la cosecha existe y no se esta anotando",
+,,,Scabiosa Estrella,,DCB,"AGREGADO RECIEN, NO APLICA AL HISTORICO. Vanessa 2026-09-11: ""comenzamos a colectarle Escabiosa Estrella solamente a esta semana. Todos los que eran con colitas de conejo anteriores NO tenian Escabiosa Estrella"". Las 85 unidades vendidas entre junio y el 2026-09-10 se hicieron SIN ella, asi que la cantidad se deja VACIA a proposito: el motor no la cuenta y no inventa 255 tallos que nunca salieron. Cuando el registro de venta cubra desde la semana ISO 37, ponerle 3.",
 ,,,Trachelium,1,DCB,,
 Paquete ammi majus,45000,Paquete,1 flores DCB + 0 follaje comprado,,,,
 ,,,Ammi,10,DCB,"Vanessa 2026-09-11 (dictado): ""tiene diez tallos""",

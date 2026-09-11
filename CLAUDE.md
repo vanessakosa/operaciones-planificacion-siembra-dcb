@@ -439,6 +439,28 @@ Cristata Plus.
 > de cosecha. Larkspur figura vendiendo más de lo cosechado porque su ventana
 > registrada son dos días.
 
+> **LAS RECETAS CAMBIAN EN EL TIEMPO, Y EL MOTOR NO LO MODELA.** Es la
+> advertencia más importante sobre la cobertura del 82 %.
+> `formulas_productos_bouquets.csv` guarda **una sola versión de cada receta —
+> la de hoy** — y el cruce la aplica hacia atrás a cinco meses de venta.
+>
+> El caso que lo destapó: Vanessa 2026-09-11, *"comenzamos a colectarle
+> Escabiosa Estrella solamente a esta semana. Todos los que eran con colitas de
+> conejo anteriores **no** tenían Escabiosa Estrella"*. La receta de hoy de
+> `Dusty miller con colitas de conejo` lleva 3 scabiosa; aplicada a las 85
+> unidades vendidas desde junio, inventaba **255 tallos que nunca salieron** —
+> y hacía aparecer a Scabiosa, que no tiene un solo tallo cosechado registrado,
+> como si vendiera.
+>
+> **Mientras no haya fecha de vigencia por receta, un ingrediente agregado
+> hace poco se deja con la cantidad VACÍA** (el motor salta los ingredientes
+> sin cantidad) y la fecha de arranque va en las notas. Es preferible
+> subestimar a inventar demanda que jamás existió, porque esa demanda
+> inventada termina en una cama sembrada.
+>
+> La hoja de cada punto de venta ya tiene el concepto: `CONFIG_PRECIOS` trae
+> una columna `FECHA INICIO` por producto. Al archivo de recetas le falta.
+
 Las **13 señales cualitativas** de `07-datos/desajuste_demanda.csv` siguen
 valiendo: dicen **por qué** sobró o faltó, que el número no dice — *"no tengo a
 quien vendérselo"* (Boca de Dragón 4A), *"las usamos todas en MADRES y se

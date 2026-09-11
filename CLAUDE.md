@@ -77,6 +77,14 @@ repositorio ya documenta el patrón, aunque en prosa y sin poder consultarse:
   antes de sospechar botrytis. Patrón de ventana temporal, no de variedad.
 - Camas cortas = presión uniforme = riego homogéneo. Es la razón por la que Inv 4
   es el mejor del cultivo, y **la lección transferible más importante de la finca**.
+- **Cote de liberacion lenta y fertirriego son ALTERNATIVAS, no complementos.**
+  Juntos dan picos de salinidad. Vanessa 2026-09-11: *"al parar el fertirriego
+  les fue muchisimo mejor"*. Probado por accidente en Lisianthus 2026-S10, con
+  control temporal: un mes con los dos = estres; 22 semanas con solo el cote =
+  6.926 tallos. Cuidado con la lectura facil: **a esa cama le fue mejor sin
+  fertirriego PORQUE tenia cote.** Sin cote —que es el caso de la v8— el
+  fertirriego vuelve a ser necesario. Ver
+  `02-nutricion/11-cote-y-fertirriego-no-van-juntos.md`.
 - **El fertirriego se entrega en proporción al agua**, así que en los bloques de
   baja presión el déficit se multiplica en vez de sumarse. Bloque 5 tiene los
   cuatro indicadores de tanque en su mínimo (K, N-NO₃, C.E. y Cu) y es el único

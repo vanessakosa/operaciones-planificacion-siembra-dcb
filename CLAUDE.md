@@ -365,16 +365,38 @@ ventas. Viva Envigado y Online traen además tablas dinámicas, abonos y entrega
 rellenar— toda fila sin fecha.
 
 **EL LÍMITE AHORA ES EL CATÁLOGO, no el dato de venta.** La venta se registra por
-**PRODUCTO** y sólo **25 de 121 productos vendidos tienen receta** — el 43 % de
-las unidades. Sin receta no se puede bajar de producto a tallos.
+**PRODUCTO**, y sin receta no se puede bajar de producto a tallos. La mesa de
+trabajo es **`11-bouquets/recetas_por_hacer.csv`**, ordenada por unidades
+vendidas:
 
-> **Por eso el `%VTA` de `ficha_variedad.py` NO se lee literal.** Lisianthus
-> figura con **1 %** (76 tallos vendidos contra 6.926 cosechados) porque
-> *Edición Especial Lisianthus* —189 unidades, de lo más vendido del cultivo— no
-> tiene receta. Son **481 unidades de Lisianthus** vendidas bajo productos sin
-> recetar. Ese 1 % mide el catálogo, no la venta, y **arrancar el cultivo por
-> leerlo mal sería el error más caro posible.** El motor imprime la tabla de
-> venta invisible por grupo antes del veredicto.
+| Tipo | Prod | Unid | Qué hay que hacer |
+|---|---|---|---|
+| PAQUETE | 42 | 1.154 | un número cada uno: tallos por paquete |
+| BOUQUET | 21 | 770 | receta completa |
+| MIXTO | 14 | 358 | el reparto entre 2-3 variedades |
+| EVENTO | 13 | 231 | ya prellenadas: el conteo está en el nombre |
+| NO_FLOR | 6 | 55 | sobres, boutonnieres, floreros |
+
+**Avance: 5 de 96 productos, 448 unidades (17 %)** — dictadas por Vanessa el
+2026-09-11 y escritas en `formulas_productos_bouquets.csv`. Cobertura de la
+venta: **43 % → 54 %** de las unidades.
+
+**Dos recetas son variables A PROPÓSITO, y eso no es un dato faltante: es como
+funciona el producto.** Vanessa sobre la Edición Especial: *"todo depende de lo
+que esté en cosecha"*. Su acompañante rota entre **Ammi, Trachelium, Celosia
+plumosa y Green Ball, 3-5 tallos** — *"dependiendo lo grandes que son"*. Se
+escriben como `SUSTITUCIÓN`, que `cerebro.py` ya maneja sin sumar el ingrediente
+a las dos variedades a la vez. Lo mismo el *"Strawflower o Helipterum"* de la
+Cristata Plus.
+
+> **El `%VTA` de `ficha_variedad.py` NO se lee literal, y el caso que lo prueba
+> vale recordarlo.** Antes de escribir estas cinco recetas, Lisianthus figuraba
+> con **1 %** (76 tallos vendidos contra 6.926 cosechados) porque *Edición
+> Especial Lisianthus* —189 unidades, de lo más vendido del cultivo— no tenía
+> receta. Con la receta escrita pasó a **28 % (1.912 tallos)**. Ese 1 % medía el
+> catálogo, no la venta, y **arrancar el cultivo por leerlo mal habría sido el
+> error más caro posible.** El motor imprime la tabla de venta invisible por
+> grupo antes del veredicto; a Lisianthus todavía le quedan 151 unidades ahí.
 >
 > Y al revés: un `%VTA` **sobre 100** no es un milagro, es un hueco del registro
 > de cosecha. Larkspur figura vendiendo más de lo cosechado porque su ventana

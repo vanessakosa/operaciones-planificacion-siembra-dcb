@@ -263,6 +263,29 @@ las semanas anteriores, lo dice y se niega a hablar de rotacion.
 Arquitectura completa y orden para seguir en
 **`08-roadmap/06-arquitectura-ficha-cohorte.md`**.
 
+**Existe un repositorio hermano, `Campo`**, que lleva las planillas de Drive a
+Postgres (Vanessa compartio su `CLAUDE.md` el 2026-09-11). No compite: se define
+por lo que NO hace — *"no es un repo que decide el modelo de costos ni que disena
+el sistema de siembra"* — asi que es la capa de datos y este es el estratega.
+**Tres choques concretos antes de que los dos crezcan por separado:**
+
+1. **`Campo` fija la CAMA como unidad minima; aqui se imputa por BLOQUE.** Su
+   especificacion ya contesto la pregunta que este repo le iba a hacer a David, y
+   el repo le da la razon: los patrones que mas valen son intra-bloque (larkspur
+   abajo y dianthus arriba en 3A; lisianthus en 3C). Imputar por bloque promedia
+   justo la diferencia que se quiere medir. El cambio es de datos, no de motor.
+2. **"Tallo sin apellido no significa nada."** `registro_tallos.csv` separa
+   fresco de seco —destino, no calidad— y `tallo calificado` no existe en ninguna
+   parte. Por eso los 2.231 tallos sin explicar de Lisianthus no se pueden
+   repartir.
+3. **Insert-only.** Aqui `importar_tallos.py` reescribe el registro completo, y
+   las recetas no tienen vigencia — eso ya invento 255 tallos de Scabiosa. La
+   regla 9 de `Campo` es el arreglo.
+
+Y una critica suya que hay que aceptar: *"no dejar reglas solo en un prompt"*.
+Las reglas de este repo que SI estan forzadas en codigo son las que nunca se han
+incumplido. Detalle e interfaz en **`08-roadmap/07-interfaz-con-campo.md`**.
+
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas
 NO se escriben en `registro_tallos.csv` — `importar_tallos.py` lo reescribe
 completo y las borraría sin avisar. Van a `07-datos/registro_tallos_dictado.csv`

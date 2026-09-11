@@ -331,18 +331,30 @@ python3 motor/importar_ventas.py Jardines=jardines.txt "San Lucas=san_lucas.txt"
 Se espejan a **`07-datos/ventas_puntos.csv`**: 3.789 ventas, 4.510 unidades,
 121 productos, del 2026-04-21 al 2026-09-10.
 
-| Punto | Ventas | Unidades | Desde | Hasta |
-|---|---|---|---|---|
-| Jardines | 1.169 | 1.285 | 17/06 | 10/09 |
-| Online | 870 | 1.311 | 07/05 | 28/08 |
-| San Lucas | 532 | 579 | 18/06 | 10/09 |
-| Viva Envigado | 416 | 460 | 21/04 | **21/05** |
-| Tesoro | 410 | 443 | 19/06 | 10/09 |
-| Del Este | 391 | 431 | 28/07 | 10/09 |
-| Lemont | **1** | 1 | 07/08 | 07/08 |
+El estado de cada punto vive en **`07-datos/puntos_venta.csv`**, y el importador
+lo lee: sin él, un punto **cerrado** se confunde con uno que dejó de anotar, y
+son cosas opuestas.
 
-**Dos puntos no se están registrando:** Lemont tiene **una sola venta** desde que
-abrió el 07/08, y Viva Envigado se dejó de anotar el 21/05.
+| Punto | Estado | Ventas | Unidades | Desde | Hasta |
+|---|---|---|---|---|---|
+| Jardines | ACTIVO | 1.169 | 1.285 | 17/06 | 10/09 |
+| Online | ACTIVO | 870 | 1.311 | 07/05 | 28/08 |
+| San Lucas | ACTIVO | 532 | 579 | 18/06 | 10/09 |
+| Tesoro | ACTIVO | 410 | 443 | 19/06 | 10/09 |
+| Del Este | ACTIVO | 391 | 431 | 28/07 | 10/09 |
+| Viva Envigado | **CERRADO** | 416 | 460 | 21/04 | 21/05 |
+| Lemont | **CERRADO** | 1 | 1 | 07/08 | 07/08 |
+| **Especia** | **ACTIVO, SIN HOJA** | — | — | ~01/09 | — |
+
+**Viva Envigado y Lemont están cerrados** (Vanessa 2026-09-11: *"ya no estamos en
+Viva Envigado, y en Lemont tampoco"*). Sus ventas son históricas y completas —
+**no son un hueco de registro.** La única venta de Lemont es real: el punto duró
+muy poco.
+
+**Falta `Especia`**, que arrancó la semana del 01/09 (ISO 36). **No tiene hoja de
+venta visible en Drive** — no aparece por título, ni entre las hojas creadas
+desde el 20/08, ni en la cuenta `poscdreamscanbloom`. Hay que pedirla o que la
+compartan; mientras tanto ese punto no entra a `ventas_puntos.csv`.
 
 **Cómo está armada cada hoja** — una pestaña `CONFIG_PRECIOS` y después **una
 pestaña por día**, cada una con tres bloques: la venta fila a fila, los totales,

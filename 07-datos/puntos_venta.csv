@@ -1,0 +1,9 @@
+punto,estado,desde,hasta,hoja_drive_id,confianza,fuente,notas
+Jardines,ACTIVO,2026-06-17,,1_hra2GE_kU4jvyleMn53kTN1cVudeuqQ2dWaNKrG83Q,alta,hojas de punto (Drive) 2026-09-11,"El punto de mas volumen: 1.169 ventas, 1.285 unidades"
+San Lucas,ACTIVO,2026-06-18,,1JtxaB7IJdiepbFraFiUHCufzPq4vqHlzqK88JZa3XXE,alta,hojas de punto (Drive) 2026-09-11,532 ventas
+Tesoro,ACTIVO,2026-06-19,,1JZiEXwu0cA-bseHG235thL10uGZu3dHL_tvYYGZwO6o,alta,hojas de punto (Drive) 2026-09-11,410 ventas
+Del Este,ACTIVO,2026-07-28,,1yXFuC6o-OIe_TelKM2xxsuRHb9_zllVKNotH9cogYgw,alta,hojas de punto (Drive) 2026-09-11,391 ventas
+Online,ACTIVO,2026-05-07,,1C-wjtDKPss5lxAPjuHJr0M58PlKPL3cBPJhmL15_iko,alta,hojas de punto (Drive) 2026-09-11,"No es un carrito: es el canal online. 870 ventas, 1.311 unidades"
+Viva Envigado,CERRADO,2026-04-21,2026-05-21,1BTgseUGgVj0rALan0Y3gwNs97KNjdx2lEVB1lyWbjLc,alta,Vanessa 2026-09-11,"CERRADO. Vanessa: ""ya no estamos en Viva Envigado"". Sus 416 ventas son historicas y validas hasta el 21/05; NO es un hueco de registro. Corrige el diagnostico del 2026-09-11, que lo habia reportado como punto sin anotar"
+Lemont,CERRADO,2026-08-07,2026-08-07,1ariYs9yjeDRjCzgmGjcOrbleQ02qJplWpJ9r77OqX4w,alta,Vanessa 2026-09-11,"CERRADO. Vanessa: ""en Lemont tampoco"". Su unica venta registrada es real: el punto duro muy poco. NO es un hueco de registro"
+Especia,ACTIVO,2026-09-01,,,media,Vanessa 2026-09-11,"PUNTO NUEVO — arranco la semana del 2026-09-01 (semana ISO 36). Vanessa: ""falta es agregar el punto de especia, pero apenas empezo la semana pasada"". NO HAY HOJA DE VENTA visible en Drive: no aparece por titulo ni entre las hojas creadas desde el 20/08, y la cuenta poscdreamscanbloom no la tiene. La fecha de arranque es aproximada a la semana. PEDIR la hoja o que la compartan"

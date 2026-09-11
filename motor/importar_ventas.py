@@ -129,6 +129,18 @@ def parsear(ruta):
     return filas
 
 
+def estado_puntos():
+    """Estado de cada punto de venta, desde 07-datos/puntos_venta.csv.
+
+    Existe porque sin el un punto CERRADO se lee como un punto que dejo de
+    anotar, y son cosas opuestas. El 2026-09-11 este motor reporto "dos puntos
+    no se estan registrando" sobre Viva Envigado y Lemont; Vanessa corrigio:
+    "ya no estamos en Viva Envigado, y en Lemont tampoco". Sus ventas son
+    historicas y completas, no un hueco.
+    """
+    return {p["punto"]: p for p in C._leer_opcional("puntos_venta.csv")}
+
+
 def main(argv):
     if len(argv) < 2:
         raise SystemExit(__doc__)
@@ -140,10 +152,11 @@ def main(argv):
         return recetas.get(n) or next(
             (r for k, r in recetas.items() if k and (k in n or n in k)), "")
 
+    puntos = estado_puntos()
     todo = []
-    print("%-16s %7s %9s %12s %12s %6s" % (
-        "PUNTO", "FILAS", "UNIDADES", "DESDE", "HASTA", "PROD"))
-    print("-" * 68)
+    print("%-16s %-8s %7s %9s %12s %12s %6s" % (
+        "PUNTO", "ESTADO", "FILAS", "UNIDADES", "DESDE", "HASTA", "PROD"))
+    print("-" * 78)
     for arg in argv[1:]:
         punto, _, ruta = arg.partition("=")
         if not ruta:
@@ -153,8 +166,9 @@ def main(argv):
             f["punto"] = punto
         todo += fs
         ff = sorted(x["fecha"] for x in fs)
-        print("%-16s %7d %9.0f %12s %12s %6d" % (
-            punto, len(fs), sum(x["cantidad"] for x in fs),
+        est = (puntos.get(punto) or {}).get("estado", "?")
+        print("%-16s %-8s %7d %9.0f %12s %12s %6d" % (
+            punto, est, len(fs), sum(x["cantidad"] for x in fs),
             ff[0] if ff else "--", ff[-1] if ff else "--",
             len({x["producto"] for x in fs})))
 
@@ -175,10 +189,10 @@ def main(argv):
                 x["pago"], receta_de(x["producto"]), x["obs"],
                 "hojas de punto de venta, cuenta poscdreamscanbloom (Drive)"])
 
-    print("-" * 68)
+    print("-" * 78)
     ff = sorted(x["fecha"] for x in todo)
-    print("%-16s %7d %9.0f %12s %12s %6d" % (
-        "TOTAL", len(todo), sum(x["cantidad"] for x in todo),
+    print("%-16s %-8s %7d %9.0f %12s %12s %6d" % (
+        "TOTAL", "", len(todo), sum(x["cantidad"] for x in todo),
         ff[0], ff[-1], len({x["producto"] for x in todo})))
     con = sum(x["cantidad"] for x in todo if receta_de(x["producto"]))
     tot = sum(x["cantidad"] for x in todo)
@@ -187,6 +201,23 @@ def main(argv):
     print("Con receta: %.0f de %.0f unidades (%.0f%%). El resto se vende y el"
           % (con, tot, 100 * con / tot))
     print("catalogo no lo nombra, asi que no se puede bajar a tallos.")
+
+    cerrados = [p for p, d in puntos.items() if d.get("estado") == "CERRADO"]
+    if cerrados:
+        print()
+        print("CERRADOS (sus ventas son historicas, NO un hueco de registro):")
+        for p in cerrados:
+            d = puntos[p]
+            print("  %-16s hasta %s" % (p, d.get("hasta") or "?"))
+    faltan = [p for p, d in puntos.items()
+              if d.get("estado") == "ACTIVO" and not d.get("hoja_drive_id")]
+    if faltan:
+        print()
+        print("ACTIVOS SIN HOJA — no entran a ventas_puntos.csv:")
+        for p in faltan:
+            print("  %-16s desde %s   %s" % (
+                p, puntos[p].get("desde") or "?",
+                (puntos[p].get("notas") or "")[:60]))
 
 
 if __name__ == "__main__":

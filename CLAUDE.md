@@ -217,6 +217,29 @@ python3 motor/bomba.py catalogo                 # las bombas y sus dosis por tan
 python3 motor/bomba.py registrar 2026-09-12 37 "3B,3C" CHOQUE-BO 4 Wilson "oidio"
 ```
 
+## El contexto por variedad: lo unico que NO esta en Drive
+
+**`07-datos/contexto_variedad.csv`** — una fila por HECHO, no por variedad.
+Vanessa dicta, Claude valida y escribe. Cuestionario fijo de 12 categorias en
+`04-variedades/00-cuestionario-por-variedad.md`.
+
+Es lo unico que hay que crear nuevo: la cosecha, las siembras, las ventas y la
+germinacion ya estan en Drive y `Campo` las va a leer del original. **Copiarlas
+aqui es trabajo que se tira dos veces.** Lo que no esta escrito en ninguna parte
+es el contexto: por que esa variedad va en esa cama, con que se choquea el
+oidio, cuantas bombas son una aspersion completa, y **que se decidio, por que, y
+como resulto.**
+
+`cultivar` vacio = aplica a todo el grupo. `cohorte` vacio = permanente. Esa
+distincion es la que hace que sirva: al lisianthus le pega el oidio SIEMPRE; que
+esta cosecha perdiera la mitad es DE ESTA COSECHA. Mezclarlos convierte una mala
+temporada en una condena de la variedad.
+
+Formato largo (fila por hecho) a proposito: un dato nuevo es una fila, no una
+columna, asi que la tabla nunca hay que redisenarla. CSV y no markdown porque se
+carga a Postgres directo. En el repo y no en Drive porque esto no lo captura la
+gente de campo, y git guarda el historico solo.
+
 ## La ficha por COSECHA: el cruce es (bloque x semana)
 
 Vanessa 2026-09-11: *"si tu sabes que en semana 37 yo aplique esta bomba, y en

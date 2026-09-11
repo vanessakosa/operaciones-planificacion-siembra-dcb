@@ -1,0 +1,48 @@
+variedad,cultivar,cohorte,categoria,dato,valor,unidad,confianza,fuente,fecha,nota
+Lisianthus,,2026-S10-Mini3C+3B,CICLO,semanas trasplante a cosecha,15,semanas,ALTA,registro_tallos.csv,2026-09-11,"contra 19-23 documentadas en ciclos_variedad.csv. Esa referencia NO esta mal: sale de siembras pasadas, esta cohorte corrio distinto"
+Lisianthus,,2026-S10-Mini3C+3B,CICLO,ventana de cosecha observada,11,semanas,MEDIA,registro_tallos.csv,2026-09-11,"semanas 25 a 35, ABIERTA al corte del registro. Documentada 4-6"
+Lisianthus,,2026-S10-Mini3C+3B,CICLO,semana pico,32,semana ISO,ALTA,registro_tallos.csv,2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,CICLO,semanas en bandeja,15,semanas,ALTA,hoja Plant Andres,2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,CICLO,segunda floracion,SI,,MEDIA,Vanessa (dictado),2026-09-11,"'la segunda floracion es como la mitad'. Orden: primero los que florecieron primero (white, beige neo, apricot), los rosados al final"
+Lisianthus,,,PLANTULACION,plantulador,Andres,,ALTA,Vanessa (dictado),2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,PLANTULACION,semillas enviadas,27000,semillas,ALTA,hoja Plant Andres,2026-09-11,12 cultivares
+Lisianthus,,2026-S10-Mini3C+3B,PLANTULACION,plantulas entregadas,19301,plantulas,ALTA,hoja Plant Andres,2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,PLANTULACION,germinacion,71.5,%,ALTA,hoja Plant Andres,2026-09-11,TRAMO 1 de la merma: lo controla el plantulador
+Lisianthus,,2026-S10-Mini3C+3B,PLANTULACION,entrega por tandas,SI,,ALTA,hoja Plant Andres,2026-09-11,hasta 4 entregas por cultivar. campo_siembras registro solo la primera: 11.400 de 19.301
+Lisianthus,,2026-S10-Mini3C+3B,UBICACION,bloques,Mini + 3B + 3C,,ALTA,Vanessa (dictado),2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,UBICACION,area ocupada,231.6,m2,MEDIA,derivada,2026-09-11,"plantulas x 0,15 x 0,08. Reparto entre los tres bloques SIN DATO"
+Lisianthus,,,UBICACION,distancia de siembra,8,cm,ALTA,ciclos_variedad.csv,2026-09-11,
+Lisianthus,,,UBICACION,cama mala,3C,,ALTA,01-invernaderos.md,2026-09-11,'la cama mas problematica del bloque por humedad nocturna'
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,enfermedad dominante,oidio,,ALTA,Vanessa (dictado),2026-09-11,"'la mitad se perdio en primera floracion con oidio, teniamos que hacer labores culturales semanalmente'"
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,enfermedad secundaria,fusarium,,ALTA,campo_siembras COMENTARIOS,2026-09-11,"'mucha mortalidad en campo por fusarium', semana 20"
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,plantas viables semana 23,14337,plantas,MEDIA,hoja Plant Andres,2026-09-11,TRAMO 2 de la merma: lo controla la finca. CONTEO DE CAMPO CON ERRORES — 'Celeb 2 Lovely Pink' trae 1.812 viables contra 1.032 entregadas
+Lisianthus,,,SANIDAD,aspersion completa,4,bombas de 25 L,ALTA,Vanessa (dictado),2026-09-11,100 L por aplicacion. ES LA UNIDAD DE COSTEO
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,choque oidio,3,aplicaciones/semana,ALTA,Vanessa (dictado),2026-09-11,~2 meses = ~27 aplicaciones. Siempre con Timorex Gold o Heveanna
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,control oidio,1-2,aplicaciones/semana,ALTA,Vanessa (dictado),2026-09-11,"desde ~semana 32, el resto del ciclo"
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,productos foliares,Heveanna 50cc · Timorex Gold · Cantus · Revus · Botrycid · Solar · Glukoplant Ca-BZn · Starzyme,,ALTA,Vanessa (dictado),2026-09-11,Heveanna = Hevea brasiliensis beta. Todos con ficha salvo Efisoil
+Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,drench radicular,6,bombas de 20 L,ALTA,Vanessa (dictado),2026-09-11,"2-3 drenches. Fitoderma · Natural W CP · Endorriza · Estabios, alternados"
+Lisianthus,,2026-S10-Mini3C+3B,NUTRICION,preparacion de cama,protocolo v7 CON cotes,,ALTA,Vanessa (dictado),2026-09-11,"$224.135 de cote + $50.952 de Terra Life sobre 231,6 m2. Los cotes SALIERON en la v8 — las cohortes siguientes no lo tienen"
+Lisianthus,,2026-S10-Mini3C+3B,NUTRICION,fertirriego,solo el primer mes,,ALTA,Vanessa (dictado),2026-09-11,"despues SOLO AGUA. 'teniamos estres y pensamos que tuvimos picos de salinidad, juntando los cotes con el fertirriego. Al parar el fertirriego les fue muchisimo mejor'"
+Lisianthus,,,NUTRICION,regla derivada,"cote y fertirriego son alternativas, no complementos",,MEDIA,Vanessa (dictado),2026-09-11,juntos dan picos de salinidad. OJO: a esta cama le fue mejor sin fertirriego PORQUE tenia cote
+Lisianthus,,2026-S10-Mini3C+3B,INFRAESTRUCTURA,plastico,NO se puso,,ALTA,Vanessa (dictado),2026-09-11,'para prevenir un tema de fusarium que despues no pudiesemos controlar'. Habrian sido 2 rollos de 100 m a ~$200.000
+Lisianthus,,2026-S10-Mini3C+3B,INFRAESTRUCTURA,malla de tutorado,SIN_DATO,lineas,SIN_DATO,Vanessa (dictado),2026-09-11,ciclos_variedad.csv dice 'net' pero no cuantas lineas
+Lisianthus,,2026-S10-Mini3C+3B,INFRAESTRUCTURA,luz,SIN_DATO,horas,SIN_DATO,Vanessa (dictado),2026-09-11,ciclos_variedad marca luz. No hay registro de horas ni de consumo en el repositorio
+Lisianthus,,2026-S10-Mini3C+3B,LABOR,organizar el cultivo,3,dias,MEDIA,Vanessa (dictado),2026-09-11,"'en esos tres dias tambien se hacen otras labores, no es la jornada completa'"
+Lisianthus,,2026-S10-Mini3C+3B,LABOR,veces en el ciclo,5,veces,MEDIA,Vanessa (dictado),2026-09-11,consecuencia directa de no poner plastico
+Lisianthus,,,LABOR,costo de jornal,100000,COP/dia,BAJA,Vanessa (dictado),2026-09-11,"'creo que es por dia como 100 mil pesos, queda confirmar con David'"
+Lisianthus,,,LABOR,estructura,1 operario fijo + 1 por dias,,ALTA,Vanessa (dictado),2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,COSECHA,tallos registrados,6926,tallos,ALTA,registro_tallos.csv,2026-09-11,"semanas 25-35, ventana abierta"
+Lisianthus,,2026-S10-Mini3C+3B,COSECHA,tallos por planta viable,0.48,tallos/planta,MEDIA,Vanessa (dictado),2026-09-11,"contra 2 documentados. Denominador = viables, no entregadas"
+Lisianthus,,2026-S10-Mini3C+3B,COSECHA,cultivar registrado,Mix,,ALTA,registro_tallos.csv,2026-09-11,LOS 19 CULTIVARES SE COSECHARON BAJO UNA SOLA ETIQUETA. No se puede saber cual rindio
+Lisianthus,,,POSCOSECHA,vida en vaso,SIN_DATO,dias,SIN_DATO,Vanessa (dictado),2026-09-11,"ES EL ARGUMENTO CENTRAL DE PORTAFOLIO Y NO ESTA MEDIDO. 'el lisianthus tiene una duracion muy grande, los bouquets permanecen bonitos'"
+Lisianthus,,,POSCOSECHA,seca,SIN_DATO,,SIN_DATO,secado_variedad.csv,2026-09-11,
+Lisianthus,,,PRODUCTO,productos que lo llevan,22,productos,ALTA,formulas_productos_bouquets.csv,2026-09-11,Edicion Especial 5 · Cosecha Grande 2-3 · Cosecha Pequeno 1-2 · Dream Land 5-7 · Dream Big 5 · pureza 3-5 · centros 1-3 · yugo 1-3
+Lisianthus,,2026-S10-Mini3C+3B,PRODUCTO,tallos atribuidos a venta,4695,tallos,MEDIA,Vanessa (dictado),2026-09-11,"68% de lo cosechado, recortado a la ventana 25-35. El 32% restante: seco de sacada de cama y descarte"
+Lisianthus,,,PRODUCTO,conteo depende de,la ramificacion del tallo,,ALTA,Vanessa (dictado),2026-09-11,'depende de la cantidad de flores que el tallo tenga'. Un tallo con varias flores reemplaza a dos
+Lisianthus,,,COMERCIAL,rol de cartera,FOCAL,,ALTA,roles_cartera.csv,2026-09-11,
+Lisianthus,,2026-S10-Mini3C+3B,COMERCIAL,ingreso atribuido,31672442,COP,MEDIA,Vanessa (dictado),2026-09-11,dentro de la ventana 25-35
+Lisianthus,,2026-S10-Mini3C+3B,COMERCIAL,ticket con vs sin,2.04,x,MEDIA,Vanessa (dictado),2026-09-11,$85.607 contra $41.998. 52% del ingreso con 20% del catalogo
+Lisianthus,,,COMERCIAL,precio de compra en mercado,700-900,COP/tallo,MEDIA,Vanessa (dictado),2026-09-11,'si yo salgo a comprar un lisianthus tengo que pagar entre setenta y noventa centavos por tallo'. Una rosa: $3.000
+Lisianthus,,2026-S10-Mini3C+3B,DECISION,no poner plastico,costo hasta $1.500.000 en mano de obra y el fusarium aparecio igual,,MEDIA,Vanessa (dictado),2026-09-11,el plastico habria costado $400-500 mil: era 3x mas barato
+Lisianthus,,2026-S10-Mini3C+3B,DECISION,parar el fertirriego,el cultivo mejoro,,MEDIA,Vanessa (dictado),2026-09-11,
+Lisianthus,,,DECISION,portafolio,David propone sacarlo; Vanessa lo defiende,,ALTA,Vanessa (dictado),2026-09-11,"'todo lo que se ponga alrededor de un lisianthus se vende'. Cohorte siguiente YA PEDIDA: 26.000 semillas, entrega estimada semana 38"

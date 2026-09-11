@@ -31,7 +31,9 @@ algo que cambia de cohorte en cohorte. Hace falta **una fila por cosecha**.
 | Campo | Qué guarda |
 |---|---|
 | `cohorte` | identificador: grupo + semana de siembra + bloque |
-| `semillas_enviadas` · `plantas_trasplantadas` | el input, y la merma de plantulación entre los dos |
+| `semillas_enviadas` · `plantulas_entregadas` · `pct_germinacion` | el tramo del **plantulador** |
+| `plantas_viables` · `sem_conteo_viables` | el tramo de **campo**: cuántas seguían vivas, y en qué semana se contaron |
+| `plantas_trasplantadas_registro` | lo que dice `campo_siembras.csv` — **se guarda para poder contrastarlo, no porque sea el dato bueno** |
 | `sem_inicio_cosecha` · `sem_pico` · `sem_fin_primera` | la ventana **observada**, no la proyectada |
 | `tallos_primera` · `tallos_planta_obs` | lo que rindió de verdad |
 | `segunda_floracion` | `EN CURSO` · `SI` · `NO` · proporción respecto de la primera |
@@ -42,6 +44,25 @@ algo que cambia de cohorte en cohorte. Hace falta **una fila por cosecha**.
 planificación. `ciclos_observados.csv` es la serie histórica que, con suficientes
 cohortes, dirá si el consolidado hay que moverlo — y con qué dispersión, que es
 lo que hoy no se sabe.
+
+### La merma son dos tramos, no uno
+
+La primera cohorte lo dejó claro: entre la semilla y la planta que produce hay
+**dos pérdidas independientes con dueños distintos**, y promediarlas en un solo
+número de «merma» las hace invisibles.
+
+| Tramo | Quién lo controla | Dónde está el dato |
+|---|---|---|
+| semilla → plántula entregada | el plantulador (Andrés) | `07-datos/germinacion_andres.csv` |
+| plántula → planta viva en cama | el manejo de la finca | conteo de campo, hoy solo existe para Lisianthus |
+
+En Lisianthus cada tramo se llevó ~4.900 plantas por separado. Arreglar uno no
+arregla el otro, y la conversación para corregirlos es con personas distintas.
+
+**`plantas_trasplantadas` de `campo_siembras.csv` no sirve como input.** Registra
+la primera entrega cuando el plantulador entrega por tandas, y las tandas
+siguientes entran como filas sueltas sin cultivar. El input bueno es
+`plantulas_entregadas` de la hoja de Andrés.
 
 ## Las once secciones de la ficha
 

@@ -55,25 +55,91 @@ puede cuantificar.
 
 ## Lo que costó de verdad esta cohorte
 
+La pestaña **`Plant Andres`** de `PROGRAMACION_2026_v8` cerró este número el
+2026-09-11, y espejada queda en `07-datos/germinacion_andres.csv`. **Vanessa
+tenía razón hasta el último dígito: 27.000 semillas exactas**, 12 cultivares,
+enviadas a germinar en la semana 47 de 2025 y entregadas en la semana 9 de 2026
+— 15 semanas en bandeja.
+
+La merma no era una, eran **dos, y en etapas distintas**:
+
+| Etapa | Plantas | Sobrevive | Dónde se pierde |
+|---|---|---|---|
+| Semillas enviadas | **27.000** | — | — |
+| Plántulas entregadas | **19.301** | **71,5 %** | en el plantulador |
+| Viables en campo semana 23 | **14.337** | **74,3 %** | en la cama: oidio + fusarium |
+| **De semilla a planta productiva** | | **53,1 %** | |
+
+De esas 14.337, **1.249 quedaron marcadas `pinch enfermas`** (8,7 %) — plantas
+vivas pero comprometidas.
+
+**El dato corrige el que traía este documento.** Decía «merma de plantulación
+53 %» sobre 12.728 trasplantadas; el 53 % es real pero es lo **contrario**: es
+lo que **sobrevive** de punta a punta, y se reparte 28,5 % plantulador + 25,7 %
+campo. Son dos problemas distintos, con dueños distintos: uno se negocia con
+Andrés, el otro se maneja en la cama.
+
 | | |
 |---|---|
-| Semillas enviadas a germinar | ~27.000 *(Vanessa, de memoria — confirmar contra factura)* |
-| Plantas trasplantadas | 12.728 |
-| **Merma de plantulación** | **53 %** — 14.272 plantas |
-| Tallos cosechados (ventana abierta) | 6.926 |
-| **Tallos por planta observados** | **0,54** contra **2** esperados = **27 %** |
+| Tallos cosechados (semanas 25-35, ventana abierta) | 6.926 |
+| **Tallos por planta viable** | **0,48** contra **2** esperados = **24 %** |
+| Tallos por plántula entregada | 0,36 |
+| Tallos por semilla enviada | 0,26 |
 
-Ese 27 % es el precio del oidio, y coincide con la lectura de campo:
+Ese 24 % es el precio del oidio, y coincide con la lectura de campo:
 
 > *"La mitad se perdió en primera floración con oidio, porque teníamos que hacer
 > labores culturales semanalmente. El oidio generó una mortalidad inicial
 > importante y generó además una aplicación adicional de inputs. Pero eso
 > tampoco canceló toda la producción."*
 
-**Dos advertencias sobre ese 0,54.** La ventana sigue abierta —la segunda
-floración está en curso— así que es un piso, no un resultado. Y el 53 % de merma
-de plantulación es un costo **anterior** al campo: si se corrige, el mismo manejo
-rinde el doble sin cambiar nada de la cama.
+**Dos advertencias sobre ese 0,48.** La ventana sigue abierta —la segunda
+floración está en curso— así que es un piso, no un resultado. Y los dos tramos
+de merma son **anteriores e independientes**: arreglar la germinación no arregla
+el oidio, y al revés. Cada uno por separado vale ~4.900 plantas.
+
+### El 12.728 era un artefacto del registro, no un dato
+
+`campo_siembras.csv` no registró 12.728 plantas trasplantadas: registró
+**la primera de hasta cuatro entregas**. La columna `Cantidad Trasplantada` de
+cada cultivar coincide **exactamente** con `entrega_1` de la hoja de Andrés en
+**11 de los 12 cultivares** (el doceavo, `Megalo 3 Pink Pop`, quedó en blanco) y
+suma 11.400 de las 12.200 que entregó la primera tanda. Las otras 7.101
+plántulas llegaron después y entraron como filas sueltas sin cultivar
+(«Lisianthus» sem 15 → 1.042, «Lisianthus mas» sem 17 → 286), que sumadas a las
+11.400 dan el 12.728 — un número que no es ni la primera entrega ni el total.
+
+**Esto no es sólo de Lisianthus: es una forma en que `campo_siembras.csv`
+subcuenta plantas**, y las plantas son el insumo de la fórmula de área
+(`plantas × 0,15 × distancia`). Menos plantas contadas = menos área contada =
+**$/m²/semana inflado**. En esta cohorte el área real es **52 % mayor** que la que
+suma el registro: 19.301 plantas contra 12.728. De las 111 filas de la hoja de Andrés sólo 13 tienen entregas
+parciales —las 12 de Lisianthus y `Snapdragon Cannes Light Bronze`— así que el
+radio de daño está acotado, pero hay que mirarlo antes de leer un
+`$/m²/semana` de un lote entregado por tandas.
+
+### Y la decisión ya no es hipotética
+
+La misma hoja registra la **cohorte siguiente**: **26.000 semillas de 8
+cultivares nuevos**, enviadas el 03/06 (semana 23), **entrega estimada semana
+38** — es decir, la semana entrante.
+
+| Cultivar | Semillas |
+|---|---|
+| Macheriena White | 5.000 |
+| Corelli Sugoi Deep Pink | 5.000 |
+| Megalo 2 Pink Picotee | 5.000 |
+| Celeb 3 Pink | 4.000 |
+| Celeb Pink | 3.000 |
+| Arosa Wine | 2.000 |
+| Elegance 3 Champagne | 1.000 |
+| Celeb 2 Crystal | 1.000 |
+
+Al 71,5 % de germinación de la cohorte anterior eso son **~18.600 plántulas
+llegando a cama**. La conversación con David sobre si el lisianthus sigue en el
+portafolio **no es sobre el año entrante: es sobre plantas que ya están en
+bandeja**, y lo que está en juego ahora es dónde se siembran y con qué manejo
+preventivo de oidio — no si se siembran.
 
 ## La segunda floración
 
@@ -101,7 +167,9 @@ vaso— pero es una decisión distinta de la de sembrarlo.
    observación en carrito lo resuelve.
 2. **Cuál cultivar rindió.** 19 sembrados, todo registrado como `Mix`. Vanessa
    tiene la lectura cualitativa; pasarla a dato permite repetir los buenos.
-3. **Confirmar las 27.000 semillas** contra la factura del plantulador (Andrés).
+3. ~~Confirmar las 27.000 semillas~~ — **cerrado** el 2026-09-11 con la pestaña
+   `Plant Andres`. Son 27.000 exactas. Lo que sigue abierto es el **precio**:
+   la hoja trae cantidades, no costo.
 4. **El costo del oidio** — aplicaciones adicionales y labores culturales
    semanales. `aplicaciones_historial.csv` tiene 16 filas y sólo una toca
    Lisianthus.

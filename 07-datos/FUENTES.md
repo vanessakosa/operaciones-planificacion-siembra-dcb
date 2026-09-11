@@ -25,6 +25,7 @@ pueden espejar como texto.
 | ✅ | `capacidad_bloques.csv` | 684 | `1c2wBglS9gXkj50vUIzSaZifIhcH8iw4B` |
 | ✅ | `listas_desplegables.csv` | 1482 | `1YmXr9XrBhaLf1J7XJJtWvOSHgyF5hYeJ` — **RECONSTRUIDO 2026-09-10 desde Drive: tenía 19 opciones y la hoja tiene 96.** El encabezado de LISTAS son 2 celdas y las filas llegan a 19 columnas (18 bocas de dragón, 12 lisianthus, 8 celosias); `importar_tallos.py` cortaba cada fila al ancho del encabezado y perdía 77 variedades **en silencio**. Bug corregido: el ancho lo manda ahora la fila más ancha. **Pendiente en Drive:** 4 celdas sueltas en la columna S — variedades de Statice en las filas de Gomphrena, Campanula, Statice y Zinnia. Ver `05-programacion/07-desplegables-registro.md` |
 | 🔨 | `paleta_color.csv` | — | derivado de `listas_desplegables.csv` + recetas. **2026-09-10:** columna nueva `subtipo` (llena para los 8 cultivares de Celosia según el mapeo confirmado en `04-variedades/04-celosia-subtipos.md`) y 4 filas nuevas — `Celosia Cristata Enda Rose` (CORAL, color tomado de la columna Color de `campo_siembras.csv`, no del nombre), `Dahlias Mix` (MIX, colección sin segmentar), `Espárrago` (VERDE/FOLLAJE, único follaje propio) y `Colitas de conejo` (familia **SIN_DATO — pendiente de confirmar en campo**) |
+| 🔨 | `germinacion_andres.csv` | — | **espejado 2026-09-11** de la pestaña `Plant Andres` de `PROGRAMACION_2026_v8`. 111 filas, 164.731 semillas entregadas en 93 lotes: semillas enviadas, semanas en bandeja, hasta 4 entregas parciales, % de germinación y —solo para la cohorte de Lisianthus— conteo de plantas viables y enfermas en campo en la semana 23. Es la **única fuente de merma de plantulación** del repositorio |
 | 🔨 | `ciclos_variedad.csv` | — | derivado de `dcb-variedades/references/parametros_siembra.md` |
 | 🔨 | `objetivo_color_pdv.csv` | — | propuesta sin validar — requiere datos de `03_Ventas` |
 | 🔨 | `mezcla_real.csv` | — | derivado de `homologacion_registro.csv` (mezcla observada por Vanessa sem23) |
@@ -141,6 +142,34 @@ Los CSV de esta carpeta son el espejo en texto de estos Excel. **Verificar la
 versión del `PROGRAMACION_2026` antes de tomar los CSV como definitivos** — el
 export original se armó desde v7 y ya existe v8 con la homologación reparada
 (306/306 siembras cruzando).
+
+### Cómo se sacó la pestaña `Plant Andres` (2026-09-11)
+
+`read_file_content` sobre el ID del XLSX devuelve las 33 pestañas concatenadas
+en un solo texto, sin marcas de separación y sin saltos de línea: 240 KB de una
+sola línea. Se trabaja así:
+
+1. El resultado excede el límite de la herramienta, así que queda guardado en
+   disco como JSON `{fileContent: string}` — **no leerlo con `Read`**, hay que
+   extraerlo con `python3`/`jq`.
+2. Cada pestaña arranca con su encabezado propio. `Plant Andres` empieza en
+   `"Plant Andres Fecha Entrega,Variedad,Color,..."` y termina donde arranca la
+   siguiente (una celda basura, `Celosias bfhghsmgffttu7...`).
+3. Las filas no traen salto de línea: se separan cortando **antes de cada
+   fecha** (`\s(?=\d{2}/\d{2}(?:/\d{2})?,)`). Las filas sin fecha —las
+   últimas tres Celosias— quedan pegadas a la anterior y hay que trocearlas por
+   ancho de columna.
+4. **Cinco bloques de fechas vienen sin año** (`24/03`, `30/03`, `01/04`,
+   `15/04`, `03/06`). La hoja es cronológica y caen después de `04/03/26`, así
+   que el año se infiere 2026. La fecha literal se conserva en `fecha_fuente`.
+
+**Lo que la pestaña corrigió:** `campo_siembras.csv` registró como «Cantidad
+Trasplantada» solo la **primera de hasta cuatro entregas**. En la cohorte de
+Lisianthus eso son 11.400 de 19.301 plántulas — el resto entró como filas
+sueltas sin cultivar. Menos plantas contadas es menos área contada, y el área es
+el denominador de `ocupacion.py`. Solo 13 de las 111 filas tienen entregas
+parciales (las 12 de Lisianthus y `Snapdragon Cannes Light Bronze`), pero hay
+que mirarlas antes de leer un `$/m²/semana` de esos lotes.
 
 ## Cómo se refresca el registro de tallos
 

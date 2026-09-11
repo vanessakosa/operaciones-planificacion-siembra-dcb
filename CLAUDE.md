@@ -266,6 +266,24 @@ cama — por eso la distancia entra una sola vez, no al cuadrado. Es la formula
 que corre en `motor/ocupacion.py`. Detalle en `07-datos/area_camas.csv` (21
 camas).
 
+**Pero el numerador de plantas tiene un sesgo conocido** (2026-09-11). Cuando el
+plantulador entrega **por tandas**, `campo_siembras.csv` registra en `Cantidad
+Trasplantada` **solo la primera**, y las siguientes entran como filas sueltas sin
+cultivar. En la cohorte de Lisianthus eso son 11.400 registradas contra 19.301
+entregadas: **52 % de area sin contar, y por lo tanto un `$/m²/semana` inflado**.
+La fuente buena es `07-datos/germinacion_andres.csv`, espejo de la pestaña
+`Plant Andres` de `PROGRAMACION_2026_v8` — la unica fuente de **merma de
+plantulacion** del repositorio (111 lotes, 164.731 semillas, % de germinacion por
+cultivar). Solo 13 de sus 111 filas tienen entregas parciales, asi que el radio
+esta acotado, pero hay que revisarlas antes de leer el `$/m²/semana` de esos
+lotes.
+
+**Y la merma son DOS tramos con duenos distintos**, no uno: semilla → plantula
+la controla el plantulador, plantula → planta viva la controla el manejo de la
+finca. En Lisianthus se llevaron ~4.900 plantas cada uno por separado (28,5 % y
+25,7 %); promediarlos en un solo numero de "merma" esconde que son dos problemas
+y dos conversaciones distintas. Ver `04-variedades/protocolo-por-variedad.md`.
+
 **El eje ingreso/m²/semana YA CORRE** (2026-09-10). Se creia bloqueado por
 falta de la columna `Fecha siembra campo` — llena en 112 de 302 filas, el 14 %
 de las plantas. No estaba bloqueado: **esa columna se dejo de usar.** Vanessa

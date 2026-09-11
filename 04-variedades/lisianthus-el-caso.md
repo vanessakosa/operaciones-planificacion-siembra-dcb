@@ -73,6 +73,18 @@ La merma no era una, eran **dos, y en etapas distintas**:
 De esas 14.337, **1.249 quedaron marcadas `pinch enfermas`** (8,7 %) — plantas
 vivas pero comprometidas.
 
+> ⚠️ **El 14.337 está SIN CONFIRMAR.** Es la suma de una columna de la hoja de
+> Andrés titulada `Plantas viables WK 23` — doce celdas, una por cultivar. Lo
+> único que respalda leerla como «plantas vivas en cama» es que en los doce
+> cultivares `entregado − viables = pérdida`, exacto. Pero **no se sabe quién la
+> contó, cuándo ni cómo**, y hay dos señales en contra: `Celeb 2 Lovely Pink`
+> registra 1.812 viables contra 1.032 entregadas —780 plantas imposibles, la
+> pérdida sale en negativo— y el 26 % de mortalidad que arroja **contradice la
+> lectura de campo de Vanessa**, que fue *"la mitad se perdió en primera
+> floración con oidio"*. Si la buena es la mitad, el tramo de campo no es 25,7 %
+> sino ~50 %, y los tallos por planta suben en vez de bajar. **Hay que preguntar
+> antes de decidir sobre este número.**
+
 **El dato corrige el que traía este documento.** Decía «merma de plantulación
 53 %» sobre 12.728 trasplantadas; el 53 % es real pero es lo **contrario**: es
 lo que **sobrevive** de punta a punta, y se reparte 28,5 % plantulador + 25,7 %
@@ -118,11 +130,10 @@ parciales —las 12 de Lisianthus y `Snapdragon Cannes Light Bronze`— así que
 radio de daño está acotado, pero hay que mirarlo antes de leer un
 `$/m²/semana` de un lote entregado por tandas.
 
-### Y la decisión ya no es hipotética
+### La cohorte siguiente está pedida, no sembrada
 
-La misma hoja registra la **cohorte siguiente**: **26.000 semillas de 8
-cultivares nuevos**, enviadas el 03/06 (semana 23), **entrega estimada semana
-38** — es decir, la semana entrante.
+La misma hoja registra **26.000 semillas de 8 cultivares nuevos**, con fecha
+03/06 (semana 23) y **entrega estimada semana 38**.
 
 | Cultivar | Semillas |
 |---|---|
@@ -135,11 +146,13 @@ cultivares nuevos**, enviadas el 03/06 (semana 23), **entrega estimada semana
 | Elegance 3 Champagne | 1.000 |
 | Celeb 2 Crystal | 1.000 |
 
-Al 71,5 % de germinación de la cohorte anterior eso son **~18.600 plántulas
-llegando a cama**. La conversación con David sobre si el lisianthus sigue en el
-portafolio **no es sobre el año entrante: es sobre plantas que ya están en
-bandeja**, y lo que está en juego ahora es dónde se siembran y con qué manejo
-preventivo de oidio — no si se siembran.
+**Las ocho filas tienen la entrega en blanco**, y Vanessa lo confirmó el
+2026-09-11: *"la segunda siembra de lisianthus todavía no se ha hecho, ni
+siquiera me han entregado esas plántulas."* Así que la hoja y el campo dicen lo
+mismo: **está pedida, no entregada, y la siembra no ocurrió.**
+
+*(Queda por confirmar si la semilla llegó a salir hacia Andrés en la semana 23 o
+si esa fila es solo la intención de pedido. La hoja no lo distingue.)*
 
 ## La segunda floración
 

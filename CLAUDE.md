@@ -280,9 +280,14 @@ lotes.
 
 **Y la merma son DOS tramos con duenos distintos**, no uno: semilla → plantula
 la controla el plantulador, plantula → planta viva la controla el manejo de la
-finca. En Lisianthus se llevaron ~4.900 plantas cada uno por separado (28,5 % y
-25,7 %); promediarlos en un solo numero de "merma" esconde que son dos problemas
-y dos conversaciones distintas. Ver `04-variedades/protocolo-por-variedad.md`.
+finca. En Lisianthus el primer tramo esta medido y firme: 27.000 semillas ->
+19.301 plantulas = 28,5 %. **El segundo NO**: sale de la columna `Plantas viables
+WK 23` de la hoja de Andres, que da 25,7 % pero contradice a Vanessa (*"la mitad
+se perdio en primera floracion con oidio"*) y trae una fila imposible
+(`Celeb 2 Lovely Pink`, 1.812 viables contra 1.032 entregadas). **No decidir
+sobre ese numero sin preguntar.** Lo que si queda: promediar los dos tramos en
+un solo numero de "merma" esconde que son dos problemas y dos conversaciones
+distintas. Ver `04-variedades/protocolo-por-variedad.md`.
 
 **El eje ingreso/m²/semana YA CORRE** (2026-09-10). Se creia bloqueado por
 falta de la columna `Fecha siembra campo` — llena en 112 de 302 filas, el 14 %

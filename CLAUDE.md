@@ -200,6 +200,7 @@ python3 motor/ocupacion.py                      # ingreso por m2 por semana de c
 python3 motor/ocupacion.py camas                # area de cada cama de la finca
 python3 motor/calibrar_rendimiento.py           # lo teorico del ciclo contra lo que dio el campo
 python3 motor/importar_ventas.py Punto=hoja.txt # hojas de punto de venta -> ventas_puntos.csv
+python3 motor/cruce_venta_cosecha.py            # lo cosechado contra lo vendido, con su margen de error
 ```
 
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas

@@ -1075,9 +1075,35 @@ def cmd_ciclos():
 # El mismo grupo se llama distinto en cada archivo. REGISTRO usa el nombre en
 # espanol y CAMPO el comercial. Sin esto, el grupo mas grande del cultivo —60
 # siembras de Snapdragon— no cruza con sus 6.221 tallos cosechados.
+# Formas alternativas de nombrar un grupo. alias_grupo() las resuelve en las dos
+# direcciones, asi que da igual de que lado se escriba cada par.
+#
+# NO son deducciones sobre el contenido de un producto: son variantes de
+# ESCRITURA del mismo nombre — plurales, erratas y el nombre en ingles. Se
+# agregaron leyendo los 121 productos de ventas_puntos.csv (2026-09-11), donde
+# 200 unidades no emparejaban con ningun grupo solo por como estaban escritas.
 SINONIMOS_GRUPO = {
     "boca de dragon": "snapdragon",
     "colitas de conejo": "bunny tails",   # confirmado por Vanessa 2026-08-13
+    # Plurales. CAMPO y los puntos de venta escriben en plural mas seguido que
+    # en singular: "Bocas de dragon y statice" son 108 unidades, el tercer
+    # producto mas vendido sin receta, y no emparejaba con nada.
+    "bocas de dragon": "boca de dragon",
+    "colita de conejo": "colitas de conejo",
+    # Erratas observadas en las hojas de punto de venta. Cada una aparece
+    # varias veces, asi que no son un tecleo suelto.
+    "gomphena": "gomphrena",      # falta la r — 111 unidades en 6 productos
+    "gomphenas": "gomphrena",
+    "laskpur": "larkspur",
+    "strawfloer": "strawflower",
+    "ammobiun": "ammobium",
+    "trachelium": "trachellium",
+    # Subtipos que en el punto de venta se usan como si fueran el grupo. No es
+    # deduccion: subtipos.csv documenta que cristata, plumosa y spicata son
+    # subtipos de Celosia, y ciclos_variedad.csv los trae como filas propias.
+    "cristata": "celosia",
+    "plumosa": "celosia",
+    "spicata": "celosia",
 }
 
 # Palabras que describen la cama pero no la identifican: "CAMAS BAJAS 3A" es

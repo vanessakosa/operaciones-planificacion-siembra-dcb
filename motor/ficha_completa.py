@@ -140,6 +140,18 @@ def venta(grupo, ventana=None):
     return por_prod, por_tipo, previo
 
 
+def inputs_cohorte(grupo):
+    """Lo que consumio esta cohorte, dictado por Vanessa y guardado por cohorte.
+
+    Es la unica via para llenar la seccion 9: la fitosanidad de
+    `aplicaciones_historial.csv` no trae el lote, y la preparacion de cama, el
+    fertirriego y las labores culturales no tienen registro por lote en ningun
+    archivo. Sin esto la seccion 9 solo puede listar lo que falta.
+    """
+    return [r for r in C._leer_opcional("inputs_cohorte.csv")
+            if C.norm(grupo) in C.norm(r.get("cohorte") or "")]
+
+
 def bombas(grupo):
     """Aplicaciones fitosanitarias cuyo destino nombra a este grupo."""
     alias = C.alias_grupo(grupo)
@@ -178,6 +190,7 @@ def main(argv):
     ventana_cos = (min(sem), max(sem)) if sem else None
     por_prod, por_tipo, previo = venta(grupo, ventana_cos)
     ap = bombas(grupo)
+    inp = inputs_cohorte(grupo)
     areas, en_vent = F.area_por_grupo(grupos)
 
     L = "=" * 96
@@ -348,6 +361,22 @@ def main(argv):
         print("   El archivo tiene solo %d filas en total — no cubre el ciclo." % len(
             C._leer_opcional("aplicaciones_historial.csv")))
     print()
+    if inp:
+        print("   LO QUE CONSUMIO ESTA COHORTE (dictado, una fila por insumo):")
+        cat = None
+        for r in inp:
+            if r["categoria"] != cat:
+                cat = r["categoria"]
+                print("     %s" % cat.replace("_", " "))
+            marca = {"SI": "$", "PARCIAL": "~"}.get(r["costeable"], " ")
+            det = " ".join(x for x in (r["cantidad"], r["unidad"]) if x)
+            print("      %s %-32s %-13s %s" % (
+                marca, r["input"][:32], det[:13], r["frecuencia"][:28]))
+        n = sum(1 for r in inp if r["costeable"] == "SI")
+        print("     ($ ya tiene precio por m2 · ~ parcial · en blanco falta el precio)")
+        print("     %d de %d renglones se pueden costear hoy." % (n, len(inp)))
+        print("")
+
     print("   LO QUE NO SE PUEDE ATRIBUIR A ESTA VARIEDAD, y por que:")
     print("     preparacion de cama   no hay registro por lote (ni horas ni insumo)")
     print("     fertilizacion         falta litros de tanque por m2 por bloque — bloqueo 4b")

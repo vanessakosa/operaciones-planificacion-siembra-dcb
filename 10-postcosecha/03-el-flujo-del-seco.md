@@ -59,14 +59,46 @@ Eso da un **piso** de la corriente 2 — piso, porque no incluye lo que se colg�
 no se vendió todavía. Pero es un número real, sacado de una venta que sí se
 registra, en vez de un conteo que operativamente no se puede hacer.
 
-**Hoy la línea forever son 186 unidades y $19.725.000 de ingreso, y no tiene una
-sola receta.** Son las tres que faltan:
+**Escritas el 2026-09-11.** Pero con una salvedad que Vanessa puso de entrada y
+que cambia el modelo:
+
+> *"Es muy difícil darte una receta de forever… Yo normalmente trato de que los
+> forever tengan un **tamaño**. Tenemos tres tamaños, y ese **volumen** tratamos
+> de lograrlo para mantener consistencia, y como los tallos secos suelen ser
+> **deshidratados**, a veces se usa un poco más y otras veces menos."*
+
+**El forever se especifica por VOLUMEN, no por conteo.** El operario llena hasta
+el tamaño; cuántos tallos entren depende de qué tan deshidratado esté el
+material. Por eso las tres recetas se escribieron con **rangos y sustituciones**,
+marcadas como composición típica y no como contrato. Es el mismo criterio que se
+usó con la Edición Especial, pero por una razón distinta: allá varía **qué hay
+en cosecha**, acá varía **cuánto ocupa cada tallo**.
 
 | Producto | Unidades | Precio |
 |---|---|---|
 | `Bouquet forever Dream pequeño` | 97 | $85.000 |
 | `Bouquet forever Dream mediano` | 49 | $120.000 |
 | `Bouquet forever Dream grande` | 40 | $140.000 |
+
+La composición crece por tamaño de forma escalonada — statice 5/4/3-4, celosia
+3/2-3/1, ammobium 3/3/1, zinnia 3/2/1 — y el grande suma cristata, amaranto
+colgante y strawflower que el pequeño no lleva.
+
+## El pintado: un paso de proceso con costo que no está en ningún modelo
+
+> *"A veces le pintamos, por lo menos tres elementos, lo que le da un retroceso
+> y un **costo adicional**."*
+
+Es la primera vez que aparece en el repositorio un paso de **transformación con
+costo** entre la cosecha y la venta. No es merma ni es insumo de campo: es mano
+de obra y material de taller sobre un tallo ya cosechado, y **hoy no está en
+`DCB_Modelo_Costos` ni en ninguna parte**.
+
+Importa para el eje de rentabilidad porque va en dirección contraria al resto:
+el pintado **sube el costo del tallo después de cortarlo**, así que un forever
+pintado no cuesta lo mismo que uno sin pintar aunque lleve los mismos tallos.
+Queda anotado en la receta del grande, que es donde Vanessa lo nombró
+(matricaria Snowball pintada).
 
 ## Larkspur corrobora la lectura
 

@@ -199,6 +199,7 @@ python3 motor/ficha_variedad.py                 # que dato hay por grupo, y cual
 python3 motor/ocupacion.py                      # ingreso por m2 por semana de cama
 python3 motor/ocupacion.py camas                # area de cada cama de la finca
 python3 motor/calibrar_rendimiento.py           # lo teorico del ciclo contra lo que dio el campo
+python3 motor/importar_ventas.py Punto=hoja.txt # hojas de punto de venta -> ventas_puntos.csv
 ```
 
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas
@@ -316,23 +317,65 @@ con el área recortada a la ventana. Lo que no se puede es restarle el costo, y
 por eso no dice si algo da pérdida. La desbloquean los doce números de `Tallos
 vendidos en el mes` en `DCB_Modelo_Costos`.
 
-**La pregunta 2 es la que peor está, y es distinta de las otras: no le falta
-relleno, le faltaba estructura.** Las cuatro columnas de venta de
-`campo_siembras.csv` (`Tallos vendidos`, `Ventas WIX`, `Utilidad`, `Ventas por
-tallos calculados MG`) están en **0 de 302**, y ningún archivo de `07-datos/`
-registraba la salida. Se creó **`07-datos/tallos_despachados.csv`** con las
-columnas propuestas y **cero filas** —igual que `calidad_tallo.csv`— y el motor
-ya lo lee: en cuanto tenga filas, la pregunta 2 pasa a `SI` sola. **Las columnas
-son una propuesta: confirmarlas antes de llenarlo.**
+**La pregunta 2 ya corre desde el 2026-09-11 — 18 de 24 grupos.** La venta **no
+vive en este repositorio**: las cuatro columnas de venta de `campo_siembras.csv`
+están en 0 de 302 y **no son la fuente.** Vive en Drive, en **una hoja por punto
+de venta**, en la cuenta de servicio `poscdreamscanbloom@gmail.com` (Vanessa
+2026-09-11: *"debes mirar a través de la cuenta de servicios las hojas de venta
+de cada uno de los puntos"*).
 
-Sería el gemelo del registro de cosecha, del lado de la salida. Es también lo
-que convierte un `sobra` en un número en vez de una impresión.
+```bash
+python3 motor/importar_ventas.py Jardines=jardines.txt "San Lucas=san_lucas.txt" ...
+```
 
-Mientras no exista, "se está vendiendo" se contesta solo con las **13 señales
-cualitativas** ya extraídas de los COMENTARIOS a `07-datos/desajuste_demanda.csv`
-(`sobra` · `falta` · `calidad_venta`), y son buenas pero son 13: *"no tengo a
-quien vendérselo"* (Boca de Dragón 4A), *"mucha producción para lo que
-vendemos"* (Gomphrena), *"las usamos todas en MADRES y se quedaron cortas"*.
+Se espejan a **`07-datos/ventas_puntos.csv`**: 3.789 ventas, 4.510 unidades,
+121 productos, del 2026-04-21 al 2026-09-10.
+
+| Punto | Ventas | Unidades | Desde | Hasta |
+|---|---|---|---|---|
+| Jardines | 1.169 | 1.285 | 17/06 | 10/09 |
+| Online | 870 | 1.311 | 07/05 | 28/08 |
+| San Lucas | 532 | 579 | 18/06 | 10/09 |
+| Viva Envigado | 416 | 460 | 21/04 | **21/05** |
+| Tesoro | 410 | 443 | 19/06 | 10/09 |
+| Del Este | 391 | 431 | 28/07 | 10/09 |
+| Lemont | **1** | 1 | 07/08 | 07/08 |
+
+**Dos puntos no se están registrando:** Lemont tiene **una sola venta** desde que
+abrió el 07/08, y Viva Envigado se dejó de anotar el 21/05.
+
+**Cómo está armada cada hoja** — una pestaña `CONFIG_PRECIOS` y después **una
+pestaña por día**, cada una con tres bloques: la venta fila a fila, los totales,
+y un `INVENTARIO` que trae `Reposicion` y `Salida`. El bloque de inventario
+también empieza con `Producto`, así que sin cortarlo sus filas se leen como
+ventas. Viva Envigado y Online traen además tablas dinámicas, abonos y entregas.
+`importar_ventas.py` exige la firma completa de la tabla diaria y descarta —sin
+rellenar— toda fila sin fecha.
+
+**EL LÍMITE AHORA ES EL CATÁLOGO, no el dato de venta.** La venta se registra por
+**PRODUCTO** y sólo **25 de 121 productos vendidos tienen receta** — el 43 % de
+las unidades. Sin receta no se puede bajar de producto a tallos.
+
+> **Por eso el `%VTA` de `ficha_variedad.py` NO se lee literal.** Lisianthus
+> figura con **1 %** (76 tallos vendidos contra 6.926 cosechados) porque
+> *Edición Especial Lisianthus* —189 unidades, de lo más vendido del cultivo— no
+> tiene receta. Son **481 unidades de Lisianthus** vendidas bajo productos sin
+> recetar. Ese 1 % mide el catálogo, no la venta, y **arrancar el cultivo por
+> leerlo mal sería el error más caro posible.** El motor imprime la tabla de
+> venta invisible por grupo antes del veredicto.
+>
+> Y al revés: un `%VTA` **sobre 100** no es un milagro, es un hueco del registro
+> de cosecha. Larkspur figura vendiendo más de lo cosechado porque su ventana
+> registrada son dos días.
+
+Las **13 señales cualitativas** de `07-datos/desajuste_demanda.csv` siguen
+valiendo: dicen **por qué** sobró o faltó, que el número no dice — *"no tengo a
+quien vendérselo"* (Boca de Dragón 4A), *"las usamos todas en MADRES y se
+quedaron cortas"*.
+
+*(`07-datos/tallos_despachados.csv` sigue vacío y es otra cosa: el despacho de
+poscosecha al punto. En Drive existe **`Despacho poscosecha a puntos de venta`**,
+sin espejar, con datos hasta el 2026-05-14.)*
 
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada

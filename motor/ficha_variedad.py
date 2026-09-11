@@ -170,6 +170,84 @@ def area_por_grupo(grupos):
     return areas, en_vent
 
 
+def venta_por_grupo(grupos):
+    """Tallos VENDIDOS por grupo, bajando de producto a variedad por receta.
+
+    La venta se registra por PRODUCTO ("Cosecha Grande", "Bocas de dragon"), no
+    por tallo. Para llegar a la variedad hay que explotar cada producto vendido
+    con su receta, igual que hace `cerebro.py explotar` con la demanda.
+
+    Devuelve (tallos_por_grupo, unidades_con_receta, unidades_totales,
+    productos_sin_receta) — las tres ultimas para poder decir CUANTA de la venta
+    quedo fuera del cruce, que es la mitad del diagnostico.
+    """
+    ventas = C._leer_opcional("ventas_puntos.csv")
+    if not ventas:
+        return {}, 0.0, 0.0, {}
+    productos, _ = C.cargar_recetas()
+    por_nombre, por_grupo = C.cargar_paleta()
+    recetas = {C.norm(p["producto"]): p for p in productos}
+    ordenados = sorted(grupos, key=lambda g: -len(g))
+
+    tallos, con, tot, sin = {}, 0.0, 0.0, {}
+    for v in ventas:
+        cant = C.num((v.get("cantidad") or "").strip()) or 0.0
+        if not cant:
+            continue
+        tot += cant
+        nom = C.norm(v.get("producto_receta") or "")
+        p = recetas.get(nom)
+        if not p:
+            sin[v.get("producto") or "?"] = sin.get(v.get("producto") or "?", 0.0) + cant
+            continue
+        con += cant
+        for it in p["ingredientes"]:
+            if (it.get("origen") or "").lower().startswith("compr"):
+                continue
+            n = it.get("cant_max") or it.get("cant_min") or 0.0
+            if not n:
+                continue
+            res = C.resolver(it["ingrediente"], por_nombre, por_grupo)
+            if res["tipo"] in ("SUSTITUCION", "NO_FLOR"):
+                continue
+            texto = C.norm(it["ingrediente"])
+            g = next((x for x in ordenados
+                      if any(a in texto for a in C.alias_grupo(x))), None)
+            if g:
+                tallos[g] = tallos.get(g, 0.0) + n * cant
+    return tallos, con, tot, sin
+
+
+def venta_invisible(grupos, sin_receta):
+    """Unidades vendidas de productos SIN receta cuyo nombre nombra al grupo.
+
+    Es la salvaguarda mas importante de esta tabla. El %VTA sale de explotar
+    los productos vendidos con su receta, y hoy solo 25 de 121 productos
+    vendidos tienen una. Un grupo cuyos productos estrella no estan recetados
+    aparece vendiendo casi nada — y la conclusion natural, arrancarlo, seria
+    exactamente la equivocada.
+
+    El caso que obliga a esto: Lisianthus figura con 76 tallos vendidos contra
+    6.926 cosechados, un 1%. Pero "Edicion Especial Lisianthus" vendio 189
+    unidades sin receta y es de lo mas vendido del cultivo. Ese 1% mide el
+    catalogo, no la venta.
+
+    No convierte a tallos: sin receta no se sabe cuantos tallos lleva cada
+    unidad. Cuenta UNIDADES, que es lo unico que se puede afirmar.
+    """
+    ordenados = sorted(grupos, key=lambda g: -len(g))
+    inv = {}
+    for prod, cant in sin_receta.items():
+        n = C.norm(prod)
+        for g in ordenados:
+            if any(a in n for a in C.alias_grupo(g)):
+                inv.setdefault(g, {"unidades": 0.0, "productos": []})
+                inv[g]["unidades"] += cant
+                inv[g]["productos"].append((prod, cant))
+                break
+    return inv
+
+
 def main(argv):
     solo_faltantes = len(argv) > 1 and argv[1].startswith("falt")
 
@@ -188,7 +266,11 @@ def main(argv):
     desaj = _por_grupo_desde("desajuste_demanda.csv", grupos)
     picos = _por_grupo_desde("picos_cosecha.csv", grupos)
     vq = venta_cuantitativa()
-    hay_venta_cuant = any(vq.values())
+    vend, uni_con, uni_tot, sin_receta = venta_por_grupo(grupos)
+    invis = venta_invisible(grupos, sin_receta)
+    vts2 = C._leer_opcional("ventas_puntos.csv")
+    nprod = len({v.get("producto") for v in vts2})
+    hay_venta_cuant = bool(vend)
 
     print("=" * 100)
     print("FICHA POR GRUPO — cual de las cuatro preguntas se puede contestar")
@@ -201,10 +283,10 @@ def main(argv):
     print()
     print("  SI = se puede decidir   ~ = solo cualitativo, sin numero   NO = falta el dato")
     print()
-    print("%-19s %-6s %7s %8s %8s %7s  %-5s %-5s %-6s %-6s  %s" % (
-        "GRUPO", "ROL", "COSECHO", "$/TALLO", "AREA m2", "PLANTAS",
+    print("%-19s %-6s %7s %7s %5s %8s %7s  %-5s %-5s %-6s %-6s  %s" % (
+        "GRUPO", "ROL", "COSECHO", "VENDIDO", "%VTA", "AREA m2", "PLANTAS",
         "RENTA", "VENTA", "APORTA", "AJUSTE", "QUE LE FALTA"))
-    print("-" * 100)
+    print("-" * 110)
 
     faltan = {"costo": [], "venta": [], "ciclo": [], "planta": [],
               "precio": [], "calidad": [], "area": [], "distancia": []}
@@ -237,7 +319,8 @@ def main(argv):
         # ("no tengo a quien venderselo").
         sen_venta = [f for f in desaj.get(g, [])
                      if (f.get("tipo") or "") in ("sobra", "falta", "calidad_venta")]
-        if hay_venta_cuant:
+        vt = vend.get(g)
+        if vt:
             venta = "SI"
         elif sen_venta:
             venta = "~"
@@ -264,6 +347,9 @@ def main(argv):
                 cuenta[k] += 1
 
         f = []
+        iv = invis.get(g)
+        if iv:
+            f.append("OJO %.0f unid sin receta" % iv["unidades"])
         if not tiene_costo:
             f.append("costo"); faltan["costo"].append(g)
         if not hay_venta_cuant:
@@ -285,13 +371,40 @@ def main(argv):
         if solo_faltantes and not f:
             continue
 
-        print("%-19s %-6s %7.0f %8s %8s %7s  %-5s %-5s %-6s %-6s  %s" % (
+        print("%-19s %-6s %7.0f %7s %5s %8s %7s  %-5s %-5s %-6s %-6s  %s" % (
             g[:19], rol[:6], o,
-            ("{:,.0f}".format(val).replace(",", ".") if val else "--"),
+            ("{:,.0f}".format(vt).replace(",", ".") if vt else "--"),
+            ("%.0f%%" % (100 * vt / o)) if (vt and o) else "--",
             ("%.1f" % area) if area else "--",
             ("{:,.0f}".format(pl).replace(",", ".") if pl else "--"),
             renta, venta, aporta, ajuste, ", ".join(f) or "nada"))
 
+    if invis:
+        vts = C._leer_opcional("ventas_puntos.csv")
+        print()
+        print("!" * 110)
+        print("EL %VTA NO SE PUEDE LEER LITERAL — la venta se registra por PRODUCTO,")
+        print("y solo %d de %d productos vendidos tienen receta (%.0f%% de las unidades)."
+              % (len({v.get("producto_receta") for v in vts if v.get("producto_receta")}),
+                 len({v.get("producto") for v in vts}),
+                 100 * uni_con / uni_tot if uni_tot else 0))
+        print("Un grupo cuyos productos estrella no estan recetados aparece vendiendo")
+        print("casi nada. Arrancarlo por eso seria el error mas caro posible.")
+        print()
+        print("  %-19s %8s  %s" % ("GRUPO", "UNID", "vendidas bajo productos SIN receta"))
+        print("  " + "-" * 104)
+        for g in sorted(invis, key=lambda x: -invis[x]["unidades"]):
+            d = invis[g]
+            top = sorted(d["productos"], key=lambda x: -x[1])[:3]
+            print("  %-19s %8.0f  %s" % (
+                g[:19], d["unidades"],
+                " | ".join("%s (%.0f)" % (p[:32], c) for p, c in top)))
+        print()
+        print("  Y al reves: un %VTA SOBRE 100 no es un milagro, es un hueco del")
+        print("  REGISTRO DE COSECHA. Larkspur figura vendiendo mas de lo cosechado")
+        print("  porque su ventana registrada son dos dias.")
+        print("!" * 110)
+        print()
     n = len(grupos)
     print()
     print("=" * 100)
@@ -318,25 +431,28 @@ def main(argv):
     print("     doce numeros, unico campo manual, en 0 en los doce meses. El modelo")
     print("     ya tiene los costos de 2026 cargados.")
     print()
-    print("  2 VENTA   — SE PUEDE en %d de %d grupos. ES LA QUE PEOR ESTA."
+    print("  2 VENTA   — SE PUEDE en %d de %d grupos, y desde el 2026-09-11."
           % (cuenta["venta"], n))
-    print("     No hay numerador. campo_siembras.csv tiene cuatro columnas para")
-    print("     esto y las cuatro estan vacias:")
+    print("     La venta NO vive en este repositorio: vive en Drive, en una hoja")
+    print("     por PUNTO DE VENTA, en la cuenta poscdreamscanbloom. Espejadas a")
+    print("     07-datos/ventas_puntos.csv con motor/importar_ventas.py:")
+    print("     %d ventas, %.0f unidades, %d productos." % (len(vts2), uni_tot, nprod))
+    print()
+    print("     Las cuatro columnas de venta de campo_siembras.csv siguen vacias")
+    print("     y NO son la fuente — la fuente son las hojas de punto:")
     for c, k in vq.items():
-        # El archivo de despacho se cuenta en filas propias; las cuatro
-        # columnas de campo_siembras, sobre sus 302 filas.
         if c.endswith("(filas)"):
             print("       %-34s %3d filas" % (c, k))
         else:
             print("       %-34s %3d de 302" % (c, k))
     print()
-    print("     Es la unica de las cuatro preguntas a la que le falta el")
-    print("     ESQUELETO. Se creo 07-datos/tallos_despachados.csv (2026-09-10)")
-    print("     con las columnas propuestas y CERO filas, igual que calidad_tallo.csv:")
-    print("     en cuanto tenga filas, esta pregunta pasa a SI sola. Las columnas")
-    print("     son una PROPUESTA — confirmar con Vanessa antes de llenarlo.")
-    print("     Hoy se responde solo con las senales cualitativas que quedaron en")
-    print("     los COMENTARIOS, y son buenas pero son 13 filas:")
+    print("     EL LIMITE AHORA ES OTRO, y es el catalogo: la venta se registra")
+    print("     por PRODUCTO y solo el %.0f%% de las unidades tiene receta, asi que"
+          % (100 * uni_con / uni_tot if uni_tot else 0))
+    print("     el resto no se puede bajar a tallos. Ver la advertencia de arriba.")
+    print()
+    print("     Las 13 senales cualitativas de desajuste_demanda.csv siguen")
+    print("     valiendo: dicen POR QUE sobro o falto, que el numero no dice.")
     con_senal = sorted((g for g in grupos if desaj.get(g)),
                        key=lambda g: -len(desaj[g]))
     for g in con_senal:

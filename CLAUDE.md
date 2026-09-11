@@ -381,6 +381,43 @@ vendidas:
 2026-09-11 y escritas en `formulas_productos_bouquets.csv`. Cobertura de la
 venta: **43 % → 54 %** de las unidades.
 
+**UN NOMBRE DISTINTO NO SIEMPRE ES UN PRODUCTO DISTINTO.** Vanessa 2026-09-11:
+*"Cristata y Gomphrenas, y Cristata Pop son lo mismo, tienen la misma cantidad
+de tallos, sólo que son dos colores diferentes. A veces le pongo nombres
+diferentes **para yo saber si algún color se vendió más que otro**."*
+
+Eso cambia cómo se lee la lista de 121 productos: **no son 121 recetas.** Varios
+son **el mismo ramo en dos colores**, con nombre distinto a propósito, y esa
+duplicación es un **instrumento de medición de color en punto de venta** — la
+pierna 1 del objetivo de este repositorio. Los dos primeros documentados
+comparten estructura (5 cristata + 15 gomphrena) y cambian sólo el color:
+
+| Producto | Cristata | Gomphrena | Precio |
+|---|---|---|---|
+| `Bouquet cristata pop` | Verda Green (VERDE) | frambuesa — Quis Carmine/Red | $85.000 |
+| `Cristata y gomphenas` | Enda Rose (CORAL) | Quis Carmine (FUCSIA) | $65.000 |
+
+*(Mismo contenido y $20.000 de diferencia: pendiente de confirmar si es precio
+real o uno quedó desactualizado.)*
+
+**Antes de dar un producto por "sin receta", hay que preguntarse si es variante
+de color de otro que ya la tiene.**
+
+**Gomphrena son DOS productos, no uno** (Vanessa 2026-09-11): la **pequeña de
+racimo** (Quis Carmine, Quis Red → "fresa", "frambuesa") va a **25 tallos + 3
+Ruscus**, y la **grande con laterales** (salmón, blancas, rose) va a **5-6
+tallos**, *"un tallo con laterales completo"*. La equivalencia la dio ella:
+*"cinco tallos de la grande, más o menos el mismo volumen"* que veinticinco de
+la pequeña — **5×**. El catálogo ya lo corroboraba sin que nadie lo notara:
+`Gomphrenas blancas (paquete)` tenía 4 tallos a $45.000 y `Gomphrenas (paquete
+grande)` 26 a $90.000.
+
+**Qué es un `Event planner`** (Vanessa 2026-09-11): *"básicamente tienen un
+quince por ciento de descuento, se hacen en papelería más básica, y no suelen
+tener follaje"*. La cuenta cierra exacta — $45.000 × 0,85 = **$38.250**, que es
+el precio de todos los `Event` del archivo. **No llevan menos tallos: llevan lo
+mismo sin follaje.**
+
 **Dos recetas son variables A PROPÓSITO, y eso no es un dato faltante: es como
 funciona el producto.** Vanessa sobre la Edición Especial: *"todo depende de lo
 que esté en cosecha"*. Su acompañante rota entre **Ammi, Trachelium, Celosia

@@ -471,6 +471,36 @@ quedaron cortas"*.
 poscosecha al punto. En Drive existe **`Despacho poscosecha a puntos de venta`**,
 sin espejar, con datos hasta el 2026-05-14.)*
 
+## El seco son DOS corrientes, y sólo una está en el registro
+
+Vanessa 2026-09-11. Explica por qué el cruce venta/cosecha no cierra y de dónde
+sale la línea `forever`. Detalle en **`10-postcosecha/03-el-flujo-del-seco.md`**.
+
+| Corriente | Origen | ¿En el registro? |
+|---|---|---|
+| **Sobrante de sala** | *"el lunes y el martes, con lo que se cosechó sobre todo el viernes y sobró, se suele colgar para secar"* | **SÍ** — ya se contó como fresco al cortar |
+| **Sacada de cama** | *"los tallos enanos, lo que sobra… se suele cortar para secar, pero de eso no hay registro"* | **NO, en absoluto** |
+
+La primera **no es doble conteo**: es el mismo tallo cambiando de destino. Parte
+de los +36.512 tallos de diferencia del cruce es esto, no pérdida.
+
+La segunda es **producción adicional que el registro nunca vio** — la finca
+produce más que los 83.200 tallos. No se cuenta porque **el que sube ese
+material es el preparador de cama, no el cortador** (*"normalmente no es el que
+cuenta, y lo sube muy crudo"*), y después *"la persona que cuelga lo maquilla y
+de ahí saca lo que está bueno"* — dos mermas en serie, ninguna medida.
+
+**La salida no es contar en el origen: es derivarlo de la venta.** `Bouquet
+forever Dream` es el producto de esa corriente, así que
+`unidades vendidas × receta = tallos secos consumidos` da un piso real, sacado
+de una venta que sí se registra. Hoy la línea forever son **186 unidades y
+$19.725.000 sin una sola receta** — son las tres que faltan.
+
+**Larkspur corrobora la lectura:** `secado_variedad.csv` ya dice que seca `SI`
+con rol `LINEA`, y es el grupo que más vende por encima de lo cosechado (243
+contra 879). Se vende seco, y el seco viene de sacada de cama, que no se
+registra. El cruce no está fallando: está encontrando esto.
+
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada
 sesión de estrategia corriéndolo.**

@@ -82,19 +82,32 @@ def cosecha(grupo):
     return sem, blo, var
 
 
-def venta(grupo):
-    """Tallos e ingreso de este grupo, por producto y por tipo de producto."""
+def venta(grupo, ventana=None):
+    """Tallos e ingreso de este grupo, por producto y por tipo de producto.
+
+    `ventana` es (sem_ini, sem_fin) del registro de cosecha. La venta ANTERIOR
+    a sem_ini no puede salir de esta cosecha — o es comprada, o es de un ciclo
+    previo — asi que se devuelve aparte y NO se atribuye al grupo. Vanessa
+    2026-09-11, sobre MADRES: *"mama de los suenos fue antes de que
+    empezaramos a cosechar lisianthus. Esos lisianthus eran comprados.
+    Entonces tu tienes que cruzarlo desde que empezamos a cosechar."*
+    Es la misma regla que ya rige el area en ocupacion.py: el numerador y el
+    denominador tienen que cubrir el mismo periodo.
+    """
     productos, _ = C.cargar_recetas()
     por_nombre, por_grupo = C.cargar_paleta()
     recetas = {C.norm(p["producto"]): p for p in productos}
     alias = C.alias_grupo(grupo)
     por_prod = collections.defaultdict(lambda: [0.0, 0.0, 0.0])  # unid, tallos, $
     por_tipo = collections.defaultdict(lambda: [0.0, 0.0])
+    previo = collections.defaultdict(lambda: [0.0, 0.0])  # unid, tallos — no es nuestro
     for v in C._leer_opcional("ventas_puntos.csv"):
         cant = C.num((v.get("cantidad") or "").strip()) or 0.0
         valor = C.num((v.get("valor_cobrado") or "").strip()) or 0.0
         if not cant:
             continue
+        sem_v = C.num((v.get("semana_iso") or "").strip())
+        antes = bool(ventana and sem_v and sem_v < ventana[0])
         p = recetas.get(C.norm(C.receta_de_producto(
             v.get("producto") or "", {k: k for k in recetas})))
         if not p:
@@ -114,13 +127,17 @@ def venta(grupo):
                 mios += n
         if not mios:
             continue
+        if antes:
+            previo[p["producto"]][0] += cant
+            previo[p["producto"]][1] += mios * cant
+            continue
         cat = (p.get("categoria") or "?").strip() or "?"
         por_prod[p["producto"]][0] += cant
         por_prod[p["producto"]][1] += mios * cant
         por_prod[p["producto"]][2] += valor * (mios / total) if total else 0
         por_tipo[cat][0] += mios * cant
         por_tipo[cat][1] += valor * (mios / total) if total else 0
-    return por_prod, por_tipo
+    return por_prod, por_tipo, previo
 
 
 def bombas(grupo):
@@ -158,7 +175,8 @@ def main(argv):
     cic = ciclos.get(C.norm(grupo)) or {}
     sb = siembras(grupo)
     sem, blo, var = cosecha(grupo)
-    por_prod, por_tipo = venta(grupo)
+    ventana_cos = (min(sem), max(sem)) if sem else None
+    por_prod, por_tipo, previo = venta(grupo, ventana_cos)
     ap = bombas(grupo)
     areas, en_vent = F.area_por_grupo(grupos)
 
@@ -274,6 +292,17 @@ def main(argv):
         print("   %-38s %6.0f unid %7s tallos  $%s" % (
             k[:38], u, "{:,.0f}".format(t).replace(",", "."),
             "{:,.0f}".format(i).replace(",", ".")))
+
+    if previo:
+        pu = sum(v[0] for v in previo.values())
+        pt = sum(v[1] for v in previo.values())
+        print("\n   NO ATRIBUIDO — %.0f unidades, %s tallos vendidos ANTES de la semana %d,"
+              % (pu, "{:,.0f}".format(pt).replace(",", "."), ventana_cos[0]))
+        print("   que es la primera con cosecha registrada. No puede salir de esta cama:")
+        print("   o se compro, o viene de un ciclo anterior que no quedo en el registro.")
+        for k, (u, t_) in sorted(previo.items(), key=lambda kv: -kv[1][1])[:8]:
+            print("     %-38s %6.0f unid %7s tallos" % (
+                k[:38], u, "{:,.0f}".format(t_).replace(",", ".")))
 
     print("\n7. REPARTO POR TIPO DE PRODUCTO")
     print("-" * 96)

@@ -8,20 +8,41 @@
 
 Esto es lo que dicen los datos del 2026-09-11, con lo que falta señalado.
 
-## La hipótesis se sostiene
+## La hipótesis se sostiene, pero hay que medirla en la ventana correcta
 
-Se comparó lo vendido en los **20 productos que llevan Lisianthus** contra los
-**101 que no**, sobre $291.287.084 de venta real registrada:
+**Vanessa 2026-09-11, corrigiendo la primera versión de esta cuenta:** *"Mamá de
+los sueños fue antes de que empezáramos a cosechar lisianthus. Esos lisianthus
+eran comprados. Entonces tú tienes que cruzarlo desde que empezamos a cosechar,
+según la semana que empezamos a cosechar, inicio de la ventana de corte."*
+
+Es la misma regla que ya rige el área en `ocupacion.py`: **numerador y
+denominador tienen que cubrir el mismo periodo.** La primera versión sumaba
+venta de todo el año contra cosecha de once semanas, y metía MADRES —donde el
+lisianthus fue **comprado**— del lado propio.
+
+La cosecha propia registrada va de la **semana 25 a la 35**. Recortado ahí:
 
 | | Productos | Unidades | Ingreso | $/unidad |
 |---|---|---|---|---|
-| **CON lisianthus** | 20 | 960 | **$83.943.950** | **$87.442** |
-| SIN lisianthus | 101 | 3.535 | $207.343.134 | $58.654 |
+| **CON lisianthus** | 19 | 598 | **$43.952.200** | **$73.499** |
+| SIN lisianthus | 92 | 2.776 | $148.248.284 | $53.404 |
 
-- **Ticket 1,5× mayor**: $87.442 contra $58.654.
-- **1,4× más unidades por producto**: 48,0 contra 35,0.
-- **El 29 % del ingreso de la finca pasa por un producto que lleva Lisianthus**,
-  siendo el 17 % del catálogo.
+- **Ticket 1,38× mayor** — no 1,5× como decía la primera cuenta.
+- **23 % del ingreso** pasa por un producto con lisianthus, siendo el 17 % del
+  catálogo — no 29 %.
+
+**El argumento sobrevive al recorte, más chico pero en pie.** Y sobrevive
+justamente porque el recorte quita la temporada más fuerte del año: si el
+lisianthus solo levantara el ticket en MADRES, al sacar MADRES se caía.
+
+*(Para referencia, la cuenta sin recortar —que NO sirve para decidir sobre la
+cama, porque mezcla tallo propio con tallo comprado— daba 20 productos, 960
+unidades, $83.943.950 y ticket 1,48×.)*
+
+**Las 303 unidades y 379 tallos vendidos antes de la semana 25 no son
+nuestros.** Los dos grandes son `Bouquet mamá de los sueños petit` (164) y
+`grande` (84). `ficha_completa.py` ya los separa y los imprime aparte en vez de
+atribuirlos al grupo.
 
 No prueba causalidad —puede ser que el lisianthus se ponga en los productos que
 ya iban a ser caros— pero **es consistente con la hipótesis y no con la
@@ -29,15 +50,16 @@ contraria.**
 
 ## Lo que costaría no producirlo
 
-Los 3.370 tallos vendidos, comprados en el mercado:
+Los **2.826 tallos propios vendidos dentro de la ventana**, si hubiera que
+comprarlos en el mercado:
 
 | Precio de compra | Costo |
 |---|---|
-| $700/tallo | $2.359.000 |
-| $900/tallo | $3.033.000 |
-| *(una rosa, para comparar: $3.000)* | *$10.110.000* |
+| $700/tallo | $1.978.000 |
+| $900/tallo | $2.543.000 |
+| *(una rosa, para comparar: $3.000)* | *$8.478.000* |
 
-**Comprarlo es barato** — menos del 4 % del ingreso que pasa por sus productos.
+**Comprarlo es barato** — menos del 6 % del ingreso que pasa por sus productos.
 Así que el argumento de peso **no es el costo del tallo**: es lo que Vanessa
 señala después.
 

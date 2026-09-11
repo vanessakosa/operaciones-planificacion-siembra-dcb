@@ -1,0 +1,2 @@
+fecha,semana_iso,anio,bloque,bomba_id,tanques,litros,operario,motivo,fuente,notas
+2026-07-03,27,2026,SIN_DATO,CHOQUE-BO,,,Wilson,Focos activos de oidio,aplicaciones_historial.csv,"La fila original dice Destino='idem', que no permite cruzar. HAY QUE PREGUNTAR EN QUE BLOQUES SE APLICO. Es el ejemplo de por que este archivo existe aparte del historial"

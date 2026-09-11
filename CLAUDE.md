@@ -211,7 +211,57 @@ python3 motor/importar_ventas.py Punto=hoja.txt # hojas de punto de venta -> ven
 python3 motor/cruce_venta_cosecha.py            # lo cosechado contra lo vendido, con su margen de error
 python3 motor/analisis_variedad.py              # rentabilidad preliminar por variedad: ventana + venta + rol
 python3 motor/ficha_completa.py Lisianthus      # la mesa de variedad por variedad: 11 secciones fijas
+
+python3 motor/bomba.py semana 37                # la mesa para disenar la bomba de la semana
+python3 motor/bomba.py catalogo                 # las bombas y sus dosis por tanque de 25 L
+python3 motor/bomba.py registrar 2026-09-12 37 "3B,3C" CHOQUE-BO 4 Wilson "oidio"
 ```
+
+## La ficha por COSECHA: el cruce es (bloque x semana)
+
+Vanessa 2026-09-11: *"si tu sabes que en semana 37 yo aplique esta bomba, y en
+semana 37 esta sembrado este numero de variedades, yo se que este numero de
+variedades lo recibieron... **eso se lo va sumando la ficha**."*
+
+```
+una bomba se aplica a un BLOQUE en una SEMANA
+una cosecha ocupa un BLOQUE durante un RANGO DE SEMANAS
+                    -> el cruce es (bloque x semana)
+```
+
+**Nadie anota a que variedad se le aplico cada cosa: se deduce de donde estaba
+sembrada esa semana.** El operario registra por bloque, que es como trabaja de
+todos modos, y la ficha se arma sola. Esa deduccion vive en `motor/lotes.py`.
+
+| Archivo | Que es | Grano |
+|---|---|---|
+| `ciclos_observados.csv` | quien es la cohorte y como le fue | 1 por cosecha |
+| **`ocupacion_lote.csv`** | **donde y cuando estuvo — LA LLAVE** | 1 por cosecha x bloque |
+| `bombas_catalogo.csv` | la receta de cada bomba, con vigencia | 1 por bomba x producto |
+| `aplicaciones_lote.csv` · `fertirriego_lote.csv` · `labores_lote.csv` | los **eventos**, los tres con la misma forma | 1 por evento |
+| `infraestructura_lote.csv` | dotacion: mallas, luz, plastico | 1 por cosecha x elemento |
+| `costos_productos.csv` | **el precio. Vacio: es EL bloqueo** | 1 por producto |
+
+**Reparto:** un evento en el bloque B la semana W se le carga a toda cohorte que
+ocupaba B esa semana, **prorrateado por area**. Sin area, parte iguales y el
+resultado sale marcado **`APROX`** — nunca se inventa un numero y se presenta
+como medido. Y lo que **no se pudo imputar** (sin bloque, o sin cohorte ahi) sale
+en la ficha bajo `NO SE PUDO IMPUTAR` con el motivo: es trabajo pendiente, no
+ruido. El primer caso real es la bomba del 2026-07-03, cuyo `Destino` dice
+`idem`.
+
+**El registro escribe el mismo bloque de 45 formas** ("3B", "3b", "Inv 3B",
+"Mini 3C Y 3B", "3AB", "5?"). La tabla canonica es `area_camas.csv` con su
+columna `alias_registro`; `lotes.bloques_de()` colapsa cualquier escritura a los
+15 bloques reales y reconoce varios en un texto. Los alias largos ganan sobre los
+cortos, para que `Ext 3B` no se confunda con `3B`.
+
+La sesion semanal tiene skill propia: **`.claude/skills/dcb-bomba-semanal/`**.
+`bomba.py semana` es la regla APLICACIONES hecha comando — si no hay registro de
+las semanas anteriores, lo dice y se niega a hablar de rotacion.
+
+Arquitectura completa y orden para seguir en
+**`08-roadmap/06-arquitectura-ficha-cohorte.md`**.
 
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas
 NO se escriben en `registro_tallos.csv` — `importar_tallos.py` lo reescribe

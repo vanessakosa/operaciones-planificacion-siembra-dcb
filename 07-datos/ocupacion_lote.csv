@@ -1,0 +1,4 @@
+cohorte,bloque,camas,area_m2,sem_desde,sem_hasta,anio,estado,confianza,fuente,notas
+Lisianthus 2026-S10-Mini3C+3B,Mini,,,10,,2026,EN_COSECHA,BAJA,campo_siembras.csv + Vanessa 2026-09-11,"El reparto de las 231,6 m2 entre Mini, 3B y 3C NO se conoce. Mientras area_m2 este vacia la imputacion reparte en partes iguales y marca el resultado APROX"
+Lisianthus 2026-S10-Mini3C+3B,3B,,,10,,2026,EN_COSECHA,BAJA,campo_siembras.csv,idem
+Lisianthus 2026-S10-Mini3C+3B,3C,,,10,,2026,EN_COSECHA,BAJA,campo_siembras.csv,3C es 'la cama mas problematica del bloque por humedad nocturna' (CLAUDE.md). Candidata a explicar parte del oidio

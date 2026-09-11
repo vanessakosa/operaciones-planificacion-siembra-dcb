@@ -33,6 +33,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cerebro as C
+import lotes as LT
 import ficha_variedad as F
 import ocupacion as O
 
@@ -375,6 +376,27 @@ def main(argv):
         n = sum(1 for r in inp if r["costeable"] == "SI")
         print("     ($ ya tiene precio por m2 · ~ parcial · en blanco falta el precio)")
         print("     %d de %d renglones se pueden costear hoy." % (n, len(inp)))
+        print("")
+
+    imput, huerf = LT.eventos(grupo)
+    if imput:
+        print("   IMPUTADO POR (BLOQUE x SEMANA) — lo que le cayo por estar ahi esa semana:")
+        acum = {}
+        for e in imput:
+            k = (e["tipo"], e["que"])
+            a = acum.setdefault(k, {"frac": 0.0, "sem": set(), "exacto": True})
+            a["frac"] += e["fraccion"]; a["sem"].add(e["semana"])
+            a["exacto"] = a["exacto"] and e["exacto"]
+        for (tipo, que), a in sorted(acum.items()):
+            sem = sorted(a["sem"])
+            rango = "sem %d" % sem[0] if len(sem) == 1 else "sem %d-%d" % (sem[0], sem[-1])
+            print("      %-12s %-30s %-11s x%.2f %s" % (
+                tipo, que[:30], rango, a["frac"], "" if a["exacto"] else "APROX"))
+    if huerf:
+        print("   NO SE PUDO IMPUTAR (falta el dato que permite cruzar):")
+        for e in huerf:
+            print("      %-12s %-30s falta: %s" % (e["tipo"], e["que"][:30], e["falta"]))
+    if imput or huerf:
         print("")
 
     print("   LO QUE NO SE PUEDE ATRIBUIR A ESTA VARIEDAD, y por que:")

@@ -1,0 +1,2 @@
+fecha,semana_iso,anio,bloque,labor,dias,operarios,horas,costo_dia,fuente,notas
+,20,2026,Mini+3B+3C,Desyerbe (2a labor),3,,,100000,campo_siembras.csv COMENTARIOS,'En semana 20 segunda labor de desyerbe'. Dias tomados del promedio dictado por Vanessa

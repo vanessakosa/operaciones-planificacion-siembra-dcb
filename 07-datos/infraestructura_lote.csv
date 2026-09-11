@@ -1,0 +1,4 @@
+cohorte,elemento,cantidad,unidad,costo_unitario,vida_util_ciclos,fuente,notas
+Lisianthus 2026-S10-Mini3C+3B,Plastico / acolchado,0,rollos de 100 m,200000,,Vanessa 2026-09-11,"NO SE PUSO. Habrian sido 2 rollos (193 m de cama) = $400-500 mil. Precio ESTIMADO, no esta en el business plan"
+Lisianthus 2026-S10-Mini3C+3B,Malla de tutorado,SIN_DATO,lineas,,,,ciclos_variedad.csv dice 'net' para Lisianthus pero no cuantas lineas. PREGUNTAR
+Lisianthus 2026-S10-Mini3C+3B,Luz artificial,SIN_DATO,horas,,,,ciclos_variedad.csv marca luz para Lisianthus. No existe registro de horas de luz ni de consumo electrico en todo el repositorio

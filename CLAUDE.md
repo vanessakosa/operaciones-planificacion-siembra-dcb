@@ -503,6 +503,36 @@ con rol `LINEA`, y es el grupo que más vende por encima de lo cosechado (243
 contra 879). Se vende seco, y el seco viene de sacada de cama, que no se
 registra. El cruce no está fallando: está encontrando esto.
 
+## El ciclo no es un número: es una serie por cohorte
+
+Vanessa 2026-09-11, corrigiendo una lectura mía. Yo reporté que el ciclo de
+Lisianthus **estaba mal** (15 semanas reales contra 19-23 documentadas). No
+estaba mal:
+
+> *"La documentación que hay de los ciclos de lisianthus, el cerebro, es por
+> **siembras pasadas**, no es por literatura imaginada. Pero esta tuvimos un
+> resultado diferente… **cada cosecha tiene que ser personalizada**, porque puede
+> comportarse diferente."*
+
+`ciclos_variedad.csv` es el **consolidado histórico** y no se toca: sigue siendo
+la referencia de planificación. Lo que faltaba es dónde guardar la cohorte que se
+comportó distinto — **`07-datos/ciclos_observados.csv`**, una fila por COSECHA con
+su ventana observada, su rendimiento real, su incidencia y su procedencia. Con
+suficientes cohortes dirá si el consolidado hay que mover, y **con qué
+dispersión**, que es lo que hoy no se sabe.
+
+Protocolo completo en **`04-variedades/protocolo-por-variedad.md`**; la ficha de
+once secciones la produce `motor/ficha_completa.py <variedad>`.
+
+**El caso Lisianthus está escrito en `04-variedades/lisianthus-el-caso.md`** — el
+sustento para la discusión de portafolio que Vanessa tiene con David. Resumen:
+los 20 productos que lo llevan tienen **ticket 1,5× mayor** ($87.442 contra
+$58.654) y mueven el **29 % del ingreso** siendo el 17 % del catálogo. Su costo
+de reemplazo comprado es bajo ($2,4M), así que el argumento de peso no es el
+tallo: es la **vida en vaso** — *"los bouquets permanecen bonitos, así le cambie
+una boca de dragón o una campánula varios días"* — y ése es **el único dato que
+no está medido**: `vida_en_vaso.csv` tiene una sola fila y no es Lisianthus.
+
 `matriz` es el tablero de control del proyecto: mide qué porcentaje de cada una
 de las 11 variables de decisión está cubierto con datos reales. **Empieza cada
 sesión de estrategia corriéndolo.**

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Imputacion de eventos a cohortes por (bloque x semana).
+"""Imputacion de eventos a siembras por (bloque x semana).
 
 LA IDEA CENTRAL, y la unica que hay que entender para usar todo esto:
 
@@ -8,7 +8,7 @@ LA IDEA CENTRAL, y la unica que hay que entender para usar todo esto:
     -> el cruce es (bloque x semana), y de ahi sale todo lo demas
 
 Un evento (bomba, labor, fertirriego) en el bloque B la semana W se le carga a
-TODA cohorte que ocupaba B esa semana, prorrateado por area. Si el area no se
+TODA siembra que ocupaba B esa semana, prorrateado por area. Si el area no se
 conoce, se reparte en partes iguales y el resultado sale marcado APROX — nunca
 se inventa un numero y se presenta como medido.
 
@@ -79,7 +79,7 @@ def _semanas(desde, hasta, tope):
 
 # ---------------------------------------------------------------- ocupacion
 def ocupacion(tope_semana=53):
-    """{(bloque, semana): [ {cohorte, area_m2 o None}, ... ] }"""
+    """{(bloque, semana): [ {siembra, area_m2 o None}, ... ] }"""
     idx = collections.defaultdict(list)
     for r in leer("ocupacion_lote.csv"):
         bloque = (r.get("bloque") or "").strip()
@@ -90,14 +90,14 @@ def ocupacion(tope_semana=53):
         except ValueError:
             area = None
         for w in _semanas(r.get("sem_desde"), r.get("sem_hasta"), tope_semana):
-            idx[(norm(bloque), w)].append({"cohorte": r["cohorte"], "area": area})
+            idx[(norm(bloque), w)].append({"siembra": r["siembra"], "area": area})
     return idx
 
 
 def reparto(bloque, semana, idx):
-    """Que fraccion del evento le toca a cada cohorte. Suma 1,0.
+    """Que fraccion del evento le toca a cada siembra. Suma 1,0.
 
-    Devuelve [(cohorte, fraccion, exacto)] — `exacto` es False cuando el area
+    Devuelve [(siembra, fraccion, exacto)] — `exacto` es False cuando el area
     no se conoce y hubo que repartir en partes iguales.
     """
     ocup = idx.get((norm(bloque), semana), [])
@@ -106,14 +106,14 @@ def reparto(bloque, semana, idx):
     areas = [o["area"] for o in ocup]
     if all(a is not None for a in areas) and sum(areas) > 0:
         tot = sum(areas)
-        return [(o["cohorte"], o["area"] / tot, True) for o in ocup]
+        return [(o["siembra"], o["area"] / tot, True) for o in ocup]
     n = len(ocup)
-    return [(o["cohorte"], 1.0 / n, n == 1) for o in ocup]
+    return [(o["siembra"], 1.0 / n, n == 1) for o in ocup]
 
 
 # ---------------------------------------------------------------- eventos
-def eventos(cohorte=None, tope_semana=53):
-    """Todo lo que le paso a una cohorte, imputado por (bloque x semana).
+def eventos(siembra=None, tope_semana=53):
+    """Todo lo que le paso a una siembra, imputado por (bloque x semana).
 
     Devuelve filas con `fraccion` y `exacto`, mas las que no se pudieron
     imputar (`bloque` vacio o SIN_DATO), que se devuelven aparte porque son
@@ -144,15 +144,15 @@ def eventos(cohorte=None, tope_semana=53):
             for b in blos:
                 for w in semanas:
                     for coh, frac, exacto in reparto(b, w, idx):
-                        if cohorte and norm(cohorte) not in norm(coh):
+                        if siembra and norm(siembra) not in norm(coh):
                             continue
                         tocado = True
-                        imputados.append(dict(tipo=tipo, que=que, cohorte=coh, bloque=b,
+                        imputados.append(dict(tipo=tipo, que=que, siembra=coh, bloque=b,
                                               semana=w, fraccion=frac / len(blos),
                                               exacto=exacto, fila=r))
-            if not tocado and not cohorte:
+            if not tocado and not siembra:
                 huerfanos.append(dict(tipo=tipo, que=que, fila=r,
-                                      falta="no hay cohorte ocupando ese bloque esa semana"))
+                                      falta="no hay siembra ocupando ese bloque esa semana"))
     return imputados, huerfanos
 
 

@@ -34,14 +34,14 @@ Esa deducción vive en `motor/lotes.py`, y es la única pieza conceptual nueva.
 
 | Archivo | Qué es | Grano |
 |---|---|---|
-| `07-datos/ciclos_observados.csv` | **quién es** la cohorte y **cómo le fue** | 1 por cosecha |
+| `07-datos/ciclos_observados.csv` | **quién es** la siembra y **cómo le fue** | 1 por cosecha |
 | **`07-datos/ocupacion_lote.csv`** | **dónde y cuándo estuvo — LA LLAVE** | 1 por cosecha × bloque |
 | `07-datos/bombas_catalogo.csv` | la receta de cada bomba, con vigencia | 1 por bomba × producto |
 | `07-datos/aplicaciones_lote.csv` | **evento**: qué bomba, qué bloque, qué semana | 1 por aplicación |
 | `07-datos/fertirriego_lote.csv` | evento, misma forma | 1 por fertirriego |
 | `07-datos/labores_lote.csv` | evento, misma forma + días y jornal | 1 por labor |
 | `07-datos/infraestructura_lote.csv` | dotación: mallas, luz, plástico | 1 por cosecha × elemento |
-| `07-datos/inputs_cohorte.csv` | lo dictado que no es evento fechado | 1 por cosecha × insumo |
+| `07-datos/inputs_siembra.csv` | lo dictado que no es evento fechado | 1 por cosecha × insumo |
 | `07-datos/costos_productos.csv` | **el precio. Hoy vacío: es el bloqueo** | 1 por producto |
 
 Los tres archivos de **evento** tienen la misma forma a propósito —
@@ -51,7 +51,7 @@ copiar el patrón, no tocar el motor.
 
 ## Cómo reparte cuando hay varias cosechas en un bloque
 
-Un evento en el bloque B la semana W se le carga a **toda** cohorte que ocupaba B
+Un evento en el bloque B la semana W se le carga a **toda** siembra que ocupaba B
 esa semana, **prorrateado por área**. Si el área no se conoce, se reparte en
 partes iguales y el resultado sale marcado **`APROX`**.
 
@@ -60,7 +60,7 @@ partes iguales y el resultado sale marcado **`APROX`**.
 > llenar `area_m2` en `ocupacion_lote.csv`.
 
 Y cuando un evento **no se puede imputar** —porque no dice el bloque, o porque
-ninguna cohorte estaba ahí— no se descarta en silencio: sale en la ficha bajo
+ninguna siembra estaba ahí— no se descarta en silencio: sale en la ficha bajo
 **`NO SE PUDO IMPUTAR`** con el motivo. Es trabajo pendiente, no ruido.
 
 El primer caso real es la bomba del 2026-07-03: su columna `Destino` dice
@@ -119,7 +119,7 @@ La arquitectura no cambia cuando lleguen.
 
 ## El orden para seguir
 
-1. **Llenar `ocupacion_lote.csv` con las cohortes vivas.** Es lo que hace que
+1. **Llenar `ocupacion_lote.csv` con las siembras vivas.** Es lo que hace que
    toda aplicación futura se impute sola. Sin esto lo demás no sirve.
 2. **Empezar a registrar las bombas con bloque**, con `bomba.py registrar`. A
    partir de la primera semana registrada, la ficha empieza a sumar sola.

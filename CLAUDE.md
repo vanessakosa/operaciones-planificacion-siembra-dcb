@@ -230,7 +230,7 @@ es el contexto: por que esa variedad va en esa cama, con que se choquea el
 oidio, cuantas bombas son una aspersion completa, y **que se decidio, por que, y
 como resulto.**
 
-`cultivar` vacio = aplica a todo el grupo. `cohorte` vacio = permanente. Esa
+`cultivar` vacio = aplica a todo el grupo. `siembra` vacio = permanente. Esa
 distincion es la que hace que sirva: al lisianthus le pega el oidio SIEMPRE; que
 esta cosecha perdiera la mitad es DE ESTA COSECHA. Mezclarlos convierte una mala
 temporada en una condena de la variedad.
@@ -258,17 +258,17 @@ todos modos, y la ficha se arma sola. Esa deduccion vive en `motor/lotes.py`.
 
 | Archivo | Que es | Grano |
 |---|---|---|
-| `ciclos_observados.csv` | quien es la cohorte y como le fue | 1 por cosecha |
+| `ciclos_observados.csv` | quien es la siembra y como le fue | 1 por cosecha |
 | **`ocupacion_lote.csv`** | **donde y cuando estuvo — LA LLAVE** | 1 por cosecha x bloque |
 | `bombas_catalogo.csv` | la receta de cada bomba, con vigencia | 1 por bomba x producto |
 | `aplicaciones_lote.csv` · `fertirriego_lote.csv` · `labores_lote.csv` | los **eventos**, los tres con la misma forma | 1 por evento |
 | `infraestructura_lote.csv` | dotacion: mallas, luz, plastico | 1 por cosecha x elemento |
 | `costos_productos.csv` | **el precio. Vacio: es EL bloqueo** | 1 por producto |
 
-**Reparto:** un evento en el bloque B la semana W se le carga a toda cohorte que
+**Reparto:** un evento en el bloque B la semana W se le carga a toda siembra que
 ocupaba B esa semana, **prorrateado por area**. Sin area, parte iguales y el
 resultado sale marcado **`APROX`** — nunca se inventa un numero y se presenta
-como medido. Y lo que **no se pudo imputar** (sin bloque, o sin cohorte ahi) sale
+como medido. Y lo que **no se pudo imputar** (sin bloque, o sin siembra ahi) sale
 en la ficha bajo `NO SE PUDO IMPUTAR` con el motivo: es trabajo pendiente, no
 ruido. El primer caso real es la bomba del 2026-07-03, cuyo `Destino` dice
 `idem`.
@@ -284,7 +284,7 @@ La sesion semanal tiene skill propia: **`.claude/skills/dcb-bomba-semanal/`**.
 las semanas anteriores, lo dice y se niega a hablar de rotacion.
 
 Arquitectura completa y orden para seguir en
-**`08-roadmap/06-arquitectura-ficha-cohorte.md`**.
+**`08-roadmap/06-arquitectura-ficha-siembra.md`**.
 
 **Existe un repositorio hermano, `Campo`**, que lleva las planillas de Drive a
 Postgres (Vanessa compartio su `CLAUDE.md` el 2026-09-11). No compite: se define
@@ -373,7 +373,7 @@ camas).
 **Pero el numerador de plantas tiene un sesgo conocido** (2026-09-11). Cuando el
 plantulador entrega **por tandas**, `campo_siembras.csv` registra en `Cantidad
 Trasplantada` **solo la primera**, y las siguientes entran como filas sueltas sin
-cultivar. En la cohorte de Lisianthus eso son 11.400 registradas contra 19.301
+cultivar. En la siembra de Lisianthus eso son 11.400 registradas contra 19.301
 entregadas: **52 % de area sin contar, y por lo tanto un `$/m²/semana` inflado**.
 La fuente buena es `07-datos/germinacion_andres.csv`, espejo de la pestaña
 `Plant Andres` de `PROGRAMACION_2026_v8` — la unica fuente de **merma de
@@ -630,7 +630,7 @@ con rol `LINEA`, y es el grupo que más vende por encima de lo cosechado (243
 contra 879). Se vende seco, y el seco viene de sacada de cama, que no se
 registra. El cruce no está fallando: está encontrando esto.
 
-## El ciclo no es un número: es una serie por cohorte
+## El ciclo no es un número: es una serie por siembra
 
 Vanessa 2026-09-11, corrigiendo una lectura mía. Yo reporté que el ciclo de
 Lisianthus **estaba mal** (15 semanas reales contra 19-23 documentadas). No
@@ -642,10 +642,10 @@ estaba mal:
 > comportarse diferente."*
 
 `ciclos_variedad.csv` es el **consolidado histórico** y no se toca: sigue siendo
-la referencia de planificación. Lo que faltaba es dónde guardar la cohorte que se
+la referencia de planificación. Lo que faltaba es dónde guardar la siembra que se
 comportó distinto — **`07-datos/ciclos_observados.csv`**, una fila por COSECHA con
 su ventana observada, su rendimiento real, su incidencia y su procedencia. Con
-suficientes cohortes dirá si el consolidado hay que mover, y **con qué
+suficientes siembras dirá si el consolidado hay que mover, y **con qué
 dispersión**, que es lo que hoy no se sabe.
 
 Protocolo completo en **`04-variedades/protocolo-por-variedad.md`**; la ficha de

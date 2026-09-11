@@ -146,7 +146,7 @@ llegue el patógeno. Aquí van TerraLife, Estabios, Promobac, el Naturcomplet, y
 obligatorio de Beauveria/Paecilomyces para Matricaria Vegmo.
 
 **2. PREFLORACIÓN vía tanque — sí se justifica.**
-El costo por m² es comparable al drench viejo, y el bloque casi siempre se siembra en cohorte
+El costo por m² es comparable al drench viejo, y el bloque casi siempre se siembra en siembra
 (misma semana, misma etapa), así que tratar el bloque completo **es el objetivo correcto**, no un
 desperdicio. **Mejor costo/beneficio en esta ventana: el Estabios**, por la solubilización de
 fosfatos — coincide con la ventana de máxima demanda de P (formación de botón). Si hubiera que

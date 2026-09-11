@@ -64,7 +64,7 @@ conversación con campo, y `Campo` la va a tener de todos modos.
 **destino**, no de **calidad**. No existe `tallo calificado` en ninguna parte del
 repositorio, y `calidad_tallo.csv` está vacío.
 
-Por eso los **2.231 tallos sin explicar** de la cohorte de Lisianthus (32 % de la
+Por eso los **2.231 tallos sin explicar** de la siembra de Lisianthus (32 % de la
 cosecha) no se pueden repartir: pueden ser seco de sacada de cama, descarte por
 oidio, o venta posterior al corte del registro. **El vocabulario de `Campo`
 nombra el hueco con precisión: nos falta la clasificación.**

@@ -141,16 +141,16 @@ def venta(grupo, ventana=None):
     return por_prod, por_tipo, previo
 
 
-def inputs_cohorte(grupo):
-    """Lo que consumio esta cohorte, dictado por Vanessa y guardado por cohorte.
+def inputs_siembra(grupo):
+    """Lo que consumio esta siembra, dictado por Vanessa y guardado por siembra.
 
     Es la unica via para llenar la seccion 9: la fitosanidad de
     `aplicaciones_historial.csv` no trae el lote, y la preparacion de cama, el
     fertirriego y las labores culturales no tienen registro por lote en ningun
     archivo. Sin esto la seccion 9 solo puede listar lo que falta.
     """
-    return [r for r in C._leer_opcional("inputs_cohorte.csv")
-            if C.norm(grupo) in C.norm(r.get("cohorte") or "")]
+    return [r for r in C._leer_opcional("inputs_siembra.csv")
+            if C.norm(grupo) in C.norm(r.get("siembra") or "")]
 
 
 def bombas(grupo):
@@ -191,7 +191,7 @@ def main(argv):
     ventana_cos = (min(sem), max(sem)) if sem else None
     por_prod, por_tipo, previo = venta(grupo, ventana_cos)
     ap = bombas(grupo)
-    inp = inputs_cohorte(grupo)
+    inp = inputs_siembra(grupo)
     areas, en_vent = F.area_por_grupo(grupos)
 
     L = "=" * 96
@@ -363,7 +363,7 @@ def main(argv):
             C._leer_opcional("aplicaciones_historial.csv")))
     print()
     if inp:
-        print("   LO QUE CONSUMIO ESTA COHORTE (dictado, una fila por insumo):")
+        print("   LO QUE CONSUMIO ESTA SIEMBRA (dictado, una fila por insumo):")
         cat = None
         for r in inp:
             if r["categoria"] != cat:

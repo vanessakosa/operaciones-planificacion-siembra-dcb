@@ -75,7 +75,7 @@ bouquet en exhibición mientras el resto se cambia, reduce reposición y descart
 en punto de venta: **es costo evitado en la sala, no en la cama**, y hoy no se
 puede cuantificar.
 
-## Lo que costó de verdad esta cohorte
+## Lo que costó de verdad esta siembra
 
 La pestaña **`Plant Andres`** de `PROGRAMACION_2026_v8` cerró este número el
 2026-09-11, y espejada queda en `07-datos/germinacion_andres.csv`. **Vanessa
@@ -146,13 +146,13 @@ plántulas llegaron después y entraron como filas sueltas sin cultivar
 **Esto no es sólo de Lisianthus: es una forma en que `campo_siembras.csv`
 subcuenta plantas**, y las plantas son el insumo de la fórmula de área
 (`plantas × 0,15 × distancia`). Menos plantas contadas = menos área contada =
-**$/m²/semana inflado**. En esta cohorte el área real es **52 % mayor** que la que
+**$/m²/semana inflado**. En esta siembra el área real es **52 % mayor** que la que
 suma el registro: 19.301 plantas contra 12.728. De las 111 filas de la hoja de Andrés sólo 13 tienen entregas
 parciales —las 12 de Lisianthus y `Snapdragon Cannes Light Bronze`— así que el
 radio de daño está acotado, pero hay que mirarlo antes de leer un
 `$/m²/semana` de un lote entregado por tandas.
 
-### La cohorte siguiente está pedida, no sembrada
+### La siembra siguiente está pedida, no sembrada
 
 La misma hoja registra **26.000 semillas de 8 cultivares nuevos**, con fecha
 03/06 (semana 23) y **entrega estimada semana 38**.

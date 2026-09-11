@@ -17,14 +17,14 @@ mañana sin cambiar el esquema.
 |---|---|
 | `variedad` | el grupo homologado |
 | `cultivar` | **vacío = aplica a todo el grupo** |
-| `cohorte` | **vacío = permanente**; con valor = solo de esa cosecha |
+| `siembra` | **vacío = permanente**; con valor = solo de esa cosecha |
 | `categoria` | una de las doce de abajo |
 | `dato` · `valor` · `unidad` | el hecho |
 | `confianza` | `ALTA` · `MEDIA` · `BAJA` · `SIN_DATO` |
 | `fuente` · `fecha` | de dónde salió y cuándo se supo |
 | `nota` | **la cita literal**, si la hubo |
 
-La distinción entre permanente y por cohorte es la que hace que esto sirva: el
+La distinción entre permanente y por siembra es la que hace que esto sirva: el
 oidio le pega al lisianthus **siempre**; que esta cosecha se haya perdido la
 mitad es **de esta cosecha**. Mezclarlos convierte una mala temporada en una
 condena de la variedad.

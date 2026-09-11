@@ -18,19 +18,19 @@ Vanessa corrigió la lectura:
 > un resultado diferente."*
 
 **No estaba mal: estaba midiendo otra cosecha.** `ciclos_variedad.csv` es el
-consolidado histórico. Esta cohorte se comportó distinto, y eso no es un error
+consolidado histórico. Esta siembra se comportó distinto, y eso no es un error
 que corregir sino **un dato nuevo que guardar al lado del anterior**.
 
 La consecuencia es de diseño: un solo número por variedad no puede representar
-algo que cambia de cohorte en cohorte. Hace falta **una fila por cosecha**.
+algo que cambia de siembra en siembra. Hace falta **una fila por cosecha**.
 
 ## Cómo se guarda
 
-**`07-datos/ciclos_observados.csv`** — una fila por COHORTE, no por variedad:
+**`07-datos/ciclos_observados.csv`** — una fila por SIEMBRA, no por variedad:
 
 | Campo | Qué guarda |
 |---|---|
-| `cohorte` | identificador: grupo + semana de siembra + bloque |
+| `siembra` | identificador: grupo + semana de siembra + bloque |
 | `semillas_enviadas` · `plantulas_entregadas` · `pct_germinacion` | el tramo del **plantulador** |
 | `plantas_viables` · `sem_conteo_viables` | el tramo de **campo**: cuántas seguían vivas, y en qué semana se contaron |
 | `plantas_trasplantadas_registro` | lo que dice `campo_siembras.csv` — **se guarda para poder contrastarlo, no porque sea el dato bueno** |
@@ -42,12 +42,12 @@ algo que cambia de cohorte en cohorte. Hace falta **una fila por cosecha**.
 
 `ciclos_variedad.csv` **no se toca**: sigue siendo la referencia de
 planificación. `ciclos_observados.csv` es la serie histórica que, con suficientes
-cohortes, dirá si el consolidado hay que moverlo — y con qué dispersión, que es
+siembras, dirá si el consolidado hay que moverlo — y con qué dispersión, que es
 lo que hoy no se sabe.
 
 ### La merma son dos tramos, no uno
 
-La primera cohorte lo dejó claro: entre la semilla y la planta que produce hay
+La primera siembra lo dejó claro: entre la semilla y la planta que produce hay
 **dos pérdidas independientes con dueños distintos**, y promediarlas en un solo
 número de «merma» las hace invisibles.
 
@@ -83,8 +83,8 @@ de manejo · lo que falta para cerrar el margen.
 4. **Al cerrar** — semana de fin, tallos totales, tallos/planta observados. **Hoy
    0 de 21 siembras de Lisianthus tienen fin de cosecha anotado**, y por eso
    ninguna ventana se puede cerrar.
-5. **Recálculo** — comparar la cohorte contra `ciclos_variedad.csv` y contra las
-   cohortes anteriores. Si el patrón se repite dos veces, se promueve a regla
+5. **Recálculo** — comparar la siembra contra `ciclos_variedad.csv` y contra las
+   siembras anteriores. Si el patrón se repite dos veces, se promueve a regla
    (`04-variedades/notas-campo.md`).
 
 ## Lo que este protocolo todavía no puede capturar

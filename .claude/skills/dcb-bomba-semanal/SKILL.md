@@ -7,7 +7,7 @@ description: La sesión semanal de diseño de bomba fitosanitaria de Dreams Can 
 
 Existe para que **ninguna aplicación se pierda**: toda bomba que se registre con
 su bloque se le suma sola a la ficha de las cosechas que estaban ahí esa semana.
-Arquitectura completa en `08-roadmap/06-arquitectura-ficha-cohorte.md`.
+Arquitectura completa en `08-roadmap/06-arquitectura-ficha-siembra.md`.
 
 ## El orden es obligatorio
 
@@ -54,7 +54,7 @@ python3 motor/bomba.py registrar <fecha> <semana> "<bloques>" <bomba_id> <tanque
 y no le suma a ninguna ficha — aparece en la sección 9 bajo `NO SE PUDO IMPUTAR`.
 
 El comando dice, al terminar, a qué cosechas se les acaba de sumar. **Leer esa
-línea y reportarla**: si sale vacía, falta la cohorte en `ocupacion_lote.csv` y
+línea y reportarla**: si sale vacía, falta la siembra en `ocupacion_lote.csv` y
 hay que arreglarlo ahora, no después.
 
 ### 4. Cerrar

@@ -1,5 +1,5 @@
-variedad,cultivar,cohorte,categoria,dato,valor,unidad,confianza,fuente,fecha,nota
-Lisianthus,,2026-S10-Mini3C+3B,CICLO,semanas trasplante a cosecha,15,semanas,ALTA,registro_tallos.csv,2026-09-11,"contra 19-23 documentadas en ciclos_variedad.csv. Esa referencia NO esta mal: sale de siembras pasadas, esta cohorte corrio distinto"
+variedad,cultivar,siembra,categoria,dato,valor,unidad,confianza,fuente,fecha,nota
+Lisianthus,,2026-S10-Mini3C+3B,CICLO,semanas trasplante a cosecha,15,semanas,ALTA,registro_tallos.csv,2026-09-11,"contra 19-23 documentadas en ciclos_variedad.csv. Esa referencia NO esta mal: sale de siembras pasadas, esta siembra corrio distinto"
 Lisianthus,,2026-S10-Mini3C+3B,CICLO,ventana de cosecha observada,11,semanas,MEDIA,registro_tallos.csv,2026-09-11,"semanas 25 a 35, ABIERTA al corte del registro. Documentada 4-6"
 Lisianthus,,2026-S10-Mini3C+3B,CICLO,semana pico,32,semana ISO,ALTA,registro_tallos.csv,2026-09-11,
 Lisianthus,,2026-S10-Mini3C+3B,CICLO,semanas en bandeja,15,semanas,ALTA,hoja Plant Andres,2026-09-11,
@@ -21,7 +21,7 @@ Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,choque oidio,3,aplicaciones/semana,ALTA,V
 Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,control oidio,1-2,aplicaciones/semana,ALTA,Vanessa (dictado),2026-09-11,"desde ~semana 32, el resto del ciclo"
 Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,productos foliares,Heveanna 50cc · Timorex Gold · Cantus · Revus · Botrycid · Solar · Glukoplant Ca-BZn · Starzyme,,ALTA,Vanessa (dictado),2026-09-11,Heveanna = Hevea brasiliensis beta. Todos con ficha salvo Efisoil
 Lisianthus,,2026-S10-Mini3C+3B,SANIDAD,drench radicular,6,bombas de 20 L,ALTA,Vanessa (dictado),2026-09-11,"2-3 drenches. Fitoderma · Natural W CP · Endorriza · Estabios, alternados"
-Lisianthus,,2026-S10-Mini3C+3B,NUTRICION,preparacion de cama,protocolo v7 CON cotes,,ALTA,Vanessa (dictado),2026-09-11,"$224.135 de cote + $50.952 de Terra Life sobre 231,6 m2. Los cotes SALIERON en la v8 — las cohortes siguientes no lo tienen"
+Lisianthus,,2026-S10-Mini3C+3B,NUTRICION,preparacion de cama,protocolo v7 CON cotes,,ALTA,Vanessa (dictado),2026-09-11,"$224.135 de cote + $50.952 de Terra Life sobre 231,6 m2. Los cotes SALIERON en la v8 — las siembras siguientes no lo tienen"
 Lisianthus,,2026-S10-Mini3C+3B,NUTRICION,fertirriego,solo el primer mes,,ALTA,Vanessa (dictado),2026-09-11,"despues SOLO AGUA. 'teniamos estres y pensamos que tuvimos picos de salinidad, juntando los cotes con el fertirriego. Al parar el fertirriego les fue muchisimo mejor'"
 Lisianthus,,,NUTRICION,regla derivada,"cote y fertirriego son alternativas, no complementos",,MEDIA,Vanessa (dictado),2026-09-11,juntos dan picos de salinidad. OJO: a esta cama le fue mejor sin fertirriego PORQUE tenia cote
 Lisianthus,,2026-S10-Mini3C+3B,INFRAESTRUCTURA,plastico,NO se puso,,ALTA,Vanessa (dictado),2026-09-11,'para prevenir un tema de fusarium que despues no pudiesemos controlar'. Habrian sido 2 rollos de 100 m a ~$200.000
@@ -45,4 +45,4 @@ Lisianthus,,2026-S10-Mini3C+3B,COMERCIAL,ticket con vs sin,2.04,x,MEDIA,Vanessa 
 Lisianthus,,,COMERCIAL,precio de compra en mercado,700-900,COP/tallo,MEDIA,Vanessa (dictado),2026-09-11,'si yo salgo a comprar un lisianthus tengo que pagar entre setenta y noventa centavos por tallo'. Una rosa: $3.000
 Lisianthus,,2026-S10-Mini3C+3B,DECISION,no poner plastico,costo hasta $1.500.000 en mano de obra y el fusarium aparecio igual,,MEDIA,Vanessa (dictado),2026-09-11,el plastico habria costado $400-500 mil: era 3x mas barato
 Lisianthus,,2026-S10-Mini3C+3B,DECISION,parar el fertirriego,el cultivo mejoro,,MEDIA,Vanessa (dictado),2026-09-11,
-Lisianthus,,,DECISION,portafolio,David propone sacarlo; Vanessa lo defiende,,ALTA,Vanessa (dictado),2026-09-11,"'todo lo que se ponga alrededor de un lisianthus se vende'. Cohorte siguiente YA PEDIDA: 26.000 semillas, entrega estimada semana 38"
+Lisianthus,,,DECISION,portafolio,David propone sacarlo; Vanessa lo defiende,,ALTA,Vanessa (dictado),2026-09-11,"'todo lo que se ponga alrededor de un lisianthus se vende'. Siembra siguiente YA PEDIDA: 26.000 semillas, entrega estimada semana 38"

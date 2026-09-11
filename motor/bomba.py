@@ -21,7 +21,7 @@ import lotes as L
 ANCHO = 92
 
 
-def _cohortes_por_bloque(semana):
+def _siembras_por_bloque(semana):
     idx = L.ocupacion(tope_semana=semana)
     out = collections.defaultdict(list)
     for r in L.leer("ocupacion_lote.csv"):
@@ -53,9 +53,9 @@ def cmd_semana(semana):
 
     print("\n2. QUE HAY SEMBRADO ESTA SEMANA  (a quien le va a caer la bomba)")
     print("-" * ANCHO)
-    porb = _cohortes_por_bloque(semana)
+    porb = _siembras_por_bloque(semana)
     if not porb:
-        print("   Ninguna cohorte con ocupacion registrada en la semana %d." % semana)
+        print("   Ninguna siembra con ocupacion registrada en la semana %d." % semana)
         print("   Llenar 07-datos/ocupacion_lote.csv — sin eso nada se puede imputar.")
     else:
         for b in sorted(porb):
@@ -136,7 +136,7 @@ def cmd_registrar(argv):
         for coh, exacto in sorted(tocadas):
             print("   %s%s" % (coh, "" if exacto else "   (reparto APROX: falta el area)"))
     else:
-        print("OJO: ninguna cohorte tiene ocupacion registrada en esos bloques esa semana,")
+        print("OJO: ninguna siembra tiene ocupacion registrada en esos bloques esa semana,")
         print("asi que esta aplicacion no le suma a ninguna ficha. Revisa ocupacion_lote.csv.")
 
 

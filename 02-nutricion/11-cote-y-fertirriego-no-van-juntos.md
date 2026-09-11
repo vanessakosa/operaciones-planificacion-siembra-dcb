@@ -1,6 +1,6 @@
 # Cote y fertirriego no van juntos
 
-**Vanessa, 2026-09-11.** Es la lección más transferible de la cohorte de
+**Vanessa, 2026-09-11.** Es la lección más transferible de la siembra de
 Lisianthus 2026-S10, y no es sobre lisianthus: es sobre cómo se alimenta
 cualquier cama preparada con liberación lenta.
 
@@ -40,7 +40,7 @@ polimérico y los dos marcos agronómicos. **Esta observación de campo es una
 cuarta razón independiente, y llegó después de la decisión** — no la motivó, la
 confirma.
 
-Consecuencia para las cohortes que vienen: **sin cote, el fertirriego vuelve a
+Consecuencia para las siembras que vienen: **sin cote, el fertirriego vuelve a
 ser necesario.** No se puede leer «al lisianthus le fue mejor sin fertirriego» y
 quitárselo a la siguiente siembra: a ésta le fue mejor sin fertirriego **porque
 tenía cote**. Quitar los dos es una tercera cosa que nadie ha probado.

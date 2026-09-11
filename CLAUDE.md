@@ -202,6 +202,7 @@ python3 motor/calibrar_rendimiento.py           # lo teorico del ciclo contra lo
 python3 motor/importar_ventas.py Punto=hoja.txt # hojas de punto de venta -> ventas_puntos.csv
 python3 motor/cruce_venta_cosecha.py            # lo cosechado contra lo vendido, con su margen de error
 python3 motor/analisis_variedad.py              # rentabilidad preliminar por variedad: ventana + venta + rol
+python3 motor/ficha_completa.py Lisianthus      # la mesa de variedad por variedad: 11 secciones fijas
 ```
 
 **Cuando Drive va atrasado y Vanessa dicta la cosecha:** las filas dictadas

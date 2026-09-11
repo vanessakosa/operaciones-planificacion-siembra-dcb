@@ -148,9 +148,9 @@ def main(argv):
     recetas = {C.norm(p["producto"]): p["producto"] for p in productos}
 
     def receta_de(p):
-        n = C.norm(p)
-        return recetas.get(n) or next(
-            (r for k, r in recetas.items() if k and (k in n or n in k)), "")
+        # Emparejado ESTRICTO (cerebro.receta_de_producto): por subcadena,
+        # "Dream Big blanco" caia en la receta de "Dream Big".
+        return C.receta_de_producto(p, recetas)
 
     puntos = estado_puntos()
     todo = []

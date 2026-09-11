@@ -195,8 +195,10 @@ def venta_por_grupo(grupos):
         if not cant:
             continue
         tot += cant
-        nom = C.norm(v.get("producto_receta") or "")
-        p = recetas.get(nom)
+        p = recetas.get(C.norm(C.receta_de_producto(
+            v.get("producto") or "", {k: k for k in recetas})))
+        if p is None:
+            p = recetas.get(C.norm(v.get("producto_receta") or ""))
         if not p:
             sin[v.get("producto") or "?"] = sin.get(v.get("producto") or "?", 0.0) + cant
             continue

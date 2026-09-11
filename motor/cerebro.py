@@ -1124,6 +1124,35 @@ def alias_grupo(grupo):
     return {f for f in formas if f}
 
 
+def receta_de_producto(nombre, recetas):
+    """La receta del catalogo que corresponde a un producto VENDIDO, o "".
+
+    `recetas` es {norm(nombre del producto): nombre original}.
+
+    El punto de venta y el catalogo escriben el mismo producto distinto: el
+    catalogo pone el sufijo "(paquete)" y el punto no, y hay tildes de por
+    medio. Pero un emparejado por SUBCADENA es demasiado laxo y mete errores
+    caros en la direccion contraria: "Dream Big blanco" caia en la receta de
+    "Dream Big", y "Paquete amaranto velvet" en la de "Paquete amaranto velvet
+    y larkspur". Son productos DISTINTOS, y atribuirle a uno la receta de otro
+    corrompe el conteo de tallos de las dos variedades a la vez.
+
+    Asi que se exige igualdad EXACTA despues de normalizar y de quitarle al
+    nombre del catalogo un parentesis final — que es la unica diferencia
+    sistematica entre las dos fuentes.
+    """
+    n = norm(nombre)
+    if n in recetas:
+        return recetas[n]
+    # norm() ya quito los parentesis, asi que el sufijo del catalogo llega como
+    # palabras sueltas al final: "bocas de dragon paquete".
+    for clave, original in recetas.items():
+        base = re.sub(r"\s+paquete(\s+\w+)?$", "", clave).strip()
+        if base and base == n:
+            return original
+    return ""
+
+
 def bloques_de(texto):
     """Codigos de cama que aparecen en un texto libre.
 

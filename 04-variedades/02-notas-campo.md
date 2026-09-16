@@ -62,16 +62,18 @@ dragón/snap **al tiempo en 3B, 4A y 4B**. Diagnóstico de Vanessa: raíz consum
 parches, se ve la mordedura, y **descarta *Fusarium* por conocer su patrón de mortalidad**. Las
 tres camas tienen **ground cover plástico**.
 
-**Vanessa reporta haber tenido chiza antes** — de hecho compró el Deep Green para ese evento.
-Eso la convierte en la **segunda ocurrencia**, que es el umbral de la REGLA #9. Falta el dato
-del evento anterior para poder cerrarla:
+**Ya son cuatro eventos, y NO es una regla de variedad.** Los anteriores fueron en **3A, con
+Dianthus y con Statice** (Vanessa, 2026-09-16) — no con bocas de dragón, aunque 3A tiene 13
+siembras de bocas de dragón registradas. **Si hubiera preferencia por la boca de dragón, en 3A
+habría ido a ella.**
 
-| Pendiente | Por qué decide |
-|---|---|
-| **Bloque y año del evento anterior** | Si coincide bloque → inóculo de suelo, como la mosca blanca de 3C |
-| **¿También en bocas de dragón?** | Si coincide variedad → regla de variedad, no de bloque |
-| **¿También con plástico, y en qué época?** | El plástico da suelo tapado, húmedo y sin depredadores. Si coincide, la regla es de **manejo**, no de sitio |
-| **Dosis usada y si funcionó** | Es el mejor dato de eficacia que puede existir: esta finca, este suelo |
+Lo que la boca de dragón sí es: **el 20 % de todas las siembras de la finca** (60 de 302, en 13
+bloques). Cuando una plaga de suelo aparece en tres bloques a la vez, es la variedad con más
+probabilidad de estar en los tres. Es exposición, no selección.
+
+**La hipótesis viva es que la larva no elige variedad: encuentra raíz tierna en su ventana.**
+Análisis completo, las tres hipótesis y cómo distinguirlas en
+`03-fitosanidad/05-chiza-el-patron.md`.
 
 **Manejo aplicado:** drench de Deep Green por fertirriego — ver `07-datos/decisiones_manejo.csv`
 y `05-programacion/hojas-operario/drench-chiza.html`.

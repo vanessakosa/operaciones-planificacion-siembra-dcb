@@ -54,3 +54,28 @@ Las semillas del documento base solo se usan cuando no hay ninguna cosecha regis
   polinizadores. No es todavía la misma variedad+zona+comportamiento que exige la regla de
   promoción, pero **si aparece un tercer caso, se promueve a regla general de manejo de
   polinizadores**, no solo a nota de variedad individual
+
+## Chiza en bocas de dragón/snap — segunda vez, pendiente de cerrar como regla
+
+**2026-09-16.** Mortalidad por **chiza** (gallina ciega, larva de coleóptero) en bocas de
+dragón/snap **al tiempo en 3B, 4A y 4B**. Diagnóstico de Vanessa: raíz consumida, mortalidad en
+parches, se ve la mordedura, y **descarta *Fusarium* por conocer su patrón de mortalidad**. Las
+tres camas tienen **ground cover plástico**.
+
+**Vanessa reporta haber tenido chiza antes** — de hecho compró el Deep Green para ese evento.
+Eso la convierte en la **segunda ocurrencia**, que es el umbral de la REGLA #9. Falta el dato
+del evento anterior para poder cerrarla:
+
+| Pendiente | Por qué decide |
+|---|---|
+| **Bloque y año del evento anterior** | Si coincide bloque → inóculo de suelo, como la mosca blanca de 3C |
+| **¿También en bocas de dragón?** | Si coincide variedad → regla de variedad, no de bloque |
+| **¿También con plástico, y en qué época?** | El plástico da suelo tapado, húmedo y sin depredadores. Si coincide, la regla es de **manejo**, no de sitio |
+| **Dosis usada y si funcionó** | Es el mejor dato de eficacia que puede existir: esta finca, este suelo |
+
+**Manejo aplicado:** drench de Deep Green por fertirriego — ver `07-datos/decisiones_manejo.csv`
+y `05-programacion/hojas-operario/drench-chiza.html`.
+
+**Control cultural que acompaña, y que el drench no reemplaza:** desyerbar los bordes de cama
+—el adulto pone huevos donde hay cobertura vegetal— y trampa de luz nocturna, que además es la
+única forma de medir si la presión sube o baja con el plástico puesto.

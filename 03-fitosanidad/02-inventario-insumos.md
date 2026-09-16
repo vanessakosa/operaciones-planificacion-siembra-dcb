@@ -46,6 +46,7 @@
 | Alysin (ajo-ají) | 500 cc | Repelente — usar hasta agotar |
 | BTK (Bacillus thuringiensis) | 250 cc | Defoliadores, trips, spodoptera |
 | Azasol (azadiractina 6%) | 15 g | **Reservar para emergencias — casi agotado** |
+| **Deep Green** (*Metarhizium anisopliae* DSM15168) | verificar | **Coleópteros — CHIZA en drench.** 0,7 cc/L · **1 cc/L en incidencia alta**. Misma dosis foliar y en drench. Tarde estricta |
 
 ## Bioestimulantes y acondicionadores
 

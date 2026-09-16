@@ -1,0 +1,224 @@
+<title>Bomba Semana 38</title>
+<style>
+  :root{
+    --papel:#FFFFFF; --beige:#F5F0E8; --crema:#FAF7F3;
+    --tinta:#1A1A1A; --tinta-2:#555555; --tinta-3:#888888;
+    --regla:#D0C8B8; --alerta:#C0392B;
+    --op:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--op);
+       margin:0;padding:28px 20px 60px;-webkit-font-smoothing:antialiased}
+  .hoja{max-width:820px;margin:0 auto}
+
+  .marca{font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+         color:var(--tinta-2);margin:0 0 6px}
+  h1{font-size:29px;line-height:1.15;font-weight:700;letter-spacing:-.01em;
+     margin:0 0 10px;text-wrap:balance}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 26px;font-size:13px;color:var(--tinta-2);
+        padding-bottom:14px;border-bottom:2px solid var(--regla);margin-bottom:30px}
+  .meta b{color:var(--tinta);font-weight:700}
+
+  section{margin-bottom:34px;break-inside:avoid}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);
+     font-weight:700;margin:0 0 12px;padding-bottom:7px;border-bottom:1px solid var(--regla)}
+
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  .envoltura{overflow-x:auto}
+  caption{caption-side:top;text-align:left;font-size:13px;color:var(--tinta-2);padding:0 0 9px}
+  th{background:var(--beige);color:var(--tinta-2);font-size:11px;letter-spacing:.11em;
+     text-transform:uppercase;font-weight:700;text-align:left;padding:9px 12px;
+     border-bottom:1px solid var(--regla)}
+  td{padding:13px 12px;border-bottom:1px solid var(--regla);vertical-align:middle}
+  tbody tr:nth-child(even) td{background:var(--crema)}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.mid,td.mid{text-align:center}
+
+  .prod{font-weight:700;font-size:16px;line-height:1.25}
+  .prod small{display:block;font-weight:400;font-size:12.5px;color:var(--tinta-2);margin-top:2px}
+  .dosis{font-size:25px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+  .dosis span{font-size:14px;font-weight:400;color:var(--tinta-2);margin-left:2px}
+  .caja{display:inline-block;width:19px;height:19px;border:1.5px solid var(--tinta-2)}
+  .kg{font-size:17px;font-weight:700;color:var(--tinta-2);white-space:nowrap}
+  .kg span{font-size:13px;font-weight:400;margin-left:2px}
+
+  .fuera td{background:var(--papel)}
+  .fuera .prod{font-weight:400;color:var(--tinta-3)}
+  .no-va{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+         color:var(--alerta)}
+
+  ol.orden{margin:0;padding:0;list-style:none;counter-reset:paso;display:grid;gap:1px;
+           background:var(--regla);border:1px solid var(--regla)}
+  ol.orden li{counter-increment:paso;background:var(--papel);padding:12px 14px 12px 46px;
+              position:relative;font-size:14.5px;line-height:1.4}
+  ol.orden li:nth-child(even){background:var(--crema)}
+  ol.orden li::before{content:counter(paso);position:absolute;left:14px;top:12px;
+                      font-weight:700;font-size:14.5px;color:var(--tinta-2);
+                      font-variant-numeric:tabular-nums}
+
+  .control{border:2px solid var(--tinta);padding:18px 20px}
+  .control h3{font-size:16px;margin:0 0 14px;font-weight:700}
+  .dias{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:1px;
+        background:var(--regla);border:1px solid var(--regla)}
+  .dias.log{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:520px){.dias.log{grid-template-columns:repeat(3,1fr)}}
+  .dia{background:var(--papel);padding:11px 12px}
+  .dia b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+         color:var(--tinta-2);margin-bottom:8px}
+  .linea{display:block;min-height:24px;border-bottom:1.5px solid var(--tinta-2);margin-bottom:6px}
+  .dia small{font-size:11.5px;color:var(--tinta-3)}
+  .dia.v{background:var(--beige)}
+
+  .senales{margin-top:16px;font-size:14.5px;line-height:1.5}
+  .senales b{font-weight:700}
+
+  .no{margin-top:14px;border-left:3px solid var(--alerta);padding:10px 0 10px 14px;
+      font-size:14px;line-height:1.45}
+  .no b{color:var(--alerta)}
+
+  footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--regla);
+         font-size:12px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 22px}
+
+  .salto{border-top:2px solid var(--regla);margin:52px 0 30px}
+
+  @media print{
+    @page{margin:11mm 13mm}
+    body{padding:0;font-size:10pt}
+    .hoja{max-width:none}
+    section{page-break-inside:avoid;margin-bottom:15px}
+    .marca{font-size:8.5pt;margin-bottom:3px}
+    h1{font-size:17pt;margin-bottom:6px}
+    .meta{font-size:9pt;padding-bottom:8px;margin-bottom:15px;gap:3px 18px}
+    h2{font-size:8.5pt;margin-bottom:7px;padding-bottom:4px}
+    caption{font-size:8.5pt;padding-bottom:5px}
+    th{font-size:7.5pt;padding:5px 8px}
+    td{padding:6px 8px}
+    .prod{font-size:10.5pt}
+    .prod small{font-size:8pt;margin-top:1px}
+    .dosis{font-size:15pt}
+    .dosis span{font-size:9pt}
+    .kg{font-size:11pt}
+    .kg span{font-size:8.5pt}
+    .caja{width:14px;height:14px}
+    ol.orden li{font-size:9.5pt;padding:7px 10px 7px 32px}
+    ol.orden li::before{font-size:9.5pt;left:10px;top:7px}
+    .control{padding:11px 13px}
+    .control h3{font-size:11pt;margin-bottom:9px}
+    .dia{padding:7px 8px}
+    .dia b{font-size:7.5pt;margin-bottom:5px}
+    .linea{min-height:17px;margin-bottom:4px}
+    .dia small{font-size:7.5pt}
+    .senales{font-size:9.5pt;margin-top:10px}
+    .no{font-size:9.5pt;margin-top:9px;padding:7px 0 7px 11px}
+    .no-va{font-size:8.5pt}
+    footer{font-size:8.5pt;margin-top:18px;padding-top:9px}
+    .salto{page-break-before:always;border-top:none;margin:0}
+  }
+  @media (max-width:560px){
+    .dosis{font-size:21px}
+    td,th{padding-left:8px;padding-right:8px}
+  }
+</style>
+
+<div class="hoja">
+
+  <p class="marca">Dreams Can Bloom · Finca Soplavientos</p>
+  <h1>Bomba semana 38</h1>
+  <div class="meta">
+    <span>Tanque de <b>25 litros</b></span>
+    <span>Hora: <b>4:00 pm</b></span>
+    <span>Antes del corte: <b>aplicar hoy</b></span>
+  </div>
+
+  <section>
+    <h2>Qué lleva el tanque</h2>
+    <div class="envoltura">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:44%">Producto</th>
+            <th class="num" style="width:26%">Por tanque de 25 L</th>
+            <th class="mid" style="width:15%">Medido</th>
+            <th class="mid" style="width:15%">Al tanque</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prod">Equifun<small>Líquido</small></td>
+            <td class="num"><span class="dosis">100<span>cc</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+          <tr>
+            <td class="prod">Regalia<small>Líquido</small></td>
+            <td class="num"><span class="dosis">25<span>cc</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+          <tr>
+            <td class="prod">Ascofol<small>Líquido</small></td>
+            <td class="num"><span class="dosis">25<span>cc</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+          <tr>
+            <td class="prod">Safer Mix<small>Polvo — disolver aparte</small></td>
+            <td class="num"><span class="dosis">10<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+          <tr>
+            <td class="prod">ADNGard<small>Polvo — disolver aparte</small></td>
+            <td class="num"><span class="dosis">12,5<span>g</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+          <tr>
+            <td class="prod">Neofat<small>Surfactante — entra de último</small></td>
+            <td class="num"><span class="dosis">12<span>cc</span></span></td>
+            <td class="mid"><span class="caja"></span></td>
+            <td class="mid"><span class="caja"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Orden de preparación</h2>
+    <ol class="orden">
+      <li>Llenar el tanque hasta <b>la mitad</b> con agua limpia.</li>
+      <li>Disolver el <b>Safer Mix</b> y el <b>ADNGard</b> aparte, cada uno en un balde con agua. Revolver hasta que no queden grumos.</li>
+      <li>Echar al tanque los dos baldes, con el agitador andando.</li>
+      <li>Agregar <b>Equifun</b>, después <b>Regalia</b>, después <b>Ascofol</b>. Uno a la vez.</li>
+      <li>Completar los <b>25 litros</b> de agua.</li>
+      <li>Agregar el <b>Neofat</b> de último. No antes.</li>
+      <li>Agitar y aplicar. <b>El tanque se usa el mismo día.</b></li>
+    </ol>
+    <p class="no"><b>NO</b> mojar la cabeza de la flor en las camas que se van a cortar. Dirigir a hoja y tallo.</p>
+  </section>
+
+  <section>
+    <h2>Registro de la aplicación</h2>
+    <div class="control">
+      <h3>Llenar al terminar</h3>
+      <div class="dias log">
+        <div class="dia"><b>Fecha</b><span class="linea"></span></div>
+        <div class="dia"><b>Hora de inicio</b><span class="linea"></span></div>
+        <div class="dia"><b>Tanques usados</b><span class="linea"></span></div>
+        <div class="dia"><b>Operario</b><span class="linea"></span></div>
+      </div>
+      <div class="dias log" style="margin-top:1px">
+        <div class="dia v" style="grid-column:1 / -1"><b>Bloques aplicados — anotar todos</b><span class="linea"></span><span class="linea"></span></div>
+      </div>
+      <p class="senales"><b>El bloque no se puede dejar en blanco.</b> Sin bloque la aplicación no queda registrada.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Aplicación: 4:00 pm</span>
+    <span>Tanque de 25 L</span>
+    <span>Dudas de dosis: preguntar antes de mezclar</span>
+  </footer>
+
+</div>

@@ -12,9 +12,8 @@
 | **1** | **misma semana 13** | **Statice Forever Happy**, trasplantado sem 13 | 3A + 3B + 4A | **recién trasplantado** |
 | **2** | **38 de 2026** (mediados de septiembre) | **Bocas de dragón** | 3B + 4A + 4B | jóvenes |
 
-🟡 *La identificación de la siembra del evento 1 como `Brianthus Hilverda` (fila 126 de
-`campo_siembras.csv`) está **pendiente de confirmación de Vanessa**. Coincide en bloque, época,
-color y proveedor.*
+*Siembra del evento 1 **confirmada por Vanessa el 2026-09-16**: `Brianthus Hilverda` /
+homologado `Brianthus Jolly`, fila 126 de `campo_siembras.csv`.*
 
 ## Lo que prueban esos dos renglones de la semana 13
 
@@ -68,11 +67,10 @@ ventana identificada, el mismo producto puesto tres semanas antes vale mucho má
 
 | # | Falta | Qué desbloquea |
 |---|---|---|
-| 1 | **Confirmar que el evento 1 es la siembra de `Brianthus Hilverda`** | Fija la fecha del evento |
-| 2 | **Un tercer evento** (o revisar 2025) | Dos puntos dan un intervalo; tres dan un ciclo |
-| 3 | **`clima_semanal.csv`** | Ata la ventana a la lluvia y la vuelve predecible, no solo repetible |
-| 4 | **Conteo de trampa de luz, semana a semana** | Es la única forma de medir presión con el ground cover puesto — y lo que avisaría de la ventana **antes** del daño |
-| 5 | **Dosis y resultado del control del evento 1** | Funcionó, y no está escrito con qué números |
+| 1 | **Un tercer evento** (o revisar 2025) | Dos puntos dan un intervalo; tres dan un ciclo |
+| 2 | **`clima_semanal.csv`** | Ata la ventana a la lluvia y la vuelve predecible, no solo repetible |
+| 3 | **Conteo de trampa de luz, semana a semana** | Es la única forma de medir presión con el ground cover puesto — y lo que avisaría de la ventana **antes** del daño |
+| 4 | **Dosis y resultado del control del evento 1** | Funcionó, y no está escrito con qué números |
 
 ## Manejo vigente
 

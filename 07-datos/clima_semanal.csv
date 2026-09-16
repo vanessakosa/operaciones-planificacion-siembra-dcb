@@ -1,1 +1,1 @@
-semana_iso,anio,fecha_inicio,temp_min_c,temp_max_c,hum_rel_min_pct,hum_rel_max_pct,lluvia_mm,dias_lluvia,radiacion_rel,evento,fuente,notas
+semana_iso,anio,fecha_lunes,lluvia_mm,temp_min_c,temp_max_c,humedad_rel_pct,dias_con_lluvia,fuente,notas

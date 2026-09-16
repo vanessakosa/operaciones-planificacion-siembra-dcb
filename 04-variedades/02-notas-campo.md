@@ -55,14 +55,20 @@ Las semillas del documento base solo se usan cuando no hay ninguna cosecha regis
   promoción, pero **si aparece un tercer caso, se promueve a regla general de manejo de
   polinizadores**, no solo a nota de variedad individual
 
-## Chiza en bocas de dragón/snap — segunda vez, pendiente de cerrar como regla
+## Chiza — REGLA: es una ventana del calendario, no una variedad
 
 **2026-09-16.** Mortalidad por **chiza** (gallina ciega, larva de coleóptero) en bocas de
 dragón/snap **al tiempo en 3B, 4A y 4B**. Diagnóstico de Vanessa: raíz consumida, mortalidad en
 parches, se ve la mordedura, y **descarta *Fusarium* por conocer su patrón de mortalidad**. Las
 tres camas tienen **ground cover plástico**.
 
-**Ya son cuatro eventos, y NO es una regla de variedad.** Los anteriores fueron en **3A, con
+> 🟢 **PROMOVIDA A REGLA (REGLA #9), 2026-09-16.** Dos eventos fechados, semana 13 y semana 38
+> de 2026 — **25 semanas, seis meses.** La chiza no selecciona variedad, edad ni bloque:
+> **selecciona SEMANA.** La misma semana 13 atacó dianthus **en cosecha** y statice **recién
+> trasplantado**. Próxima ventana de riesgo: **semanas 12–14 de 2027**, y el drench va antes de
+> ver mortalidad. Análisis completo en `03-fitosanidad/05-chiza-el-patron.md`.
+
+**NO es una regla de variedad.** Los anteriores fueron en **3A, con
 Dianthus y con Statice** (Vanessa, 2026-09-16) — no con bocas de dragón, aunque 3A tiene 13
 siembras de bocas de dragón registradas. **Si hubiera preferencia por la boca de dragón, en 3A
 habría ido a ella.**
@@ -71,9 +77,9 @@ Lo que la boca de dragón sí es: **el 20 % de todas las siembras de la finca** 
 bloques). Cuando una plaga de suelo aparece en tres bloques a la vez, es la variedad con más
 probabilidad de estar en los tres. Es exposición, no selección.
 
-**La hipótesis viva es que la larva no elige variedad: encuentra raíz tierna en su ventana.**
-Análisis completo, las tres hipótesis y cómo distinguirlas en
-`03-fitosanidad/05-chiza-el-patron.md`.
+Y no es siquiera cuestión de edad: en la semana 13 el dianthus estaba **en cosecha** y el
+statice **recién trasplantado**, y les pegó a los dos. Cuando la larva llega a su estadio
+voraz, come lo que tenga encima.
 
 **Manejo aplicado:** drench de Deep Green por fertirriego — ver `07-datos/decisiones_manejo.csv`
 y `05-programacion/hojas-operario/drench-chiza.html`.

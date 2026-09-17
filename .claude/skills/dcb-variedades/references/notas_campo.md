@@ -214,6 +214,37 @@ Contexto ya documentado: **1.170 plantas en Inv 2**, primera vez bajo
 invernadero, cosechando desde sem 32, 400 tallos hasta el 11/08.
 **Ninguna receta la nombra todavía** — el uso vive solo en la cabeza de Vanessa.
 
+## Lisianthus · el mapa de zona por bloque (2026-09-17)
+
+Vanessa dictó, al decidir dónde poner las 8.149 plántulas que llegan, el
+historial completo de zona del cultivo — tres bloques, tres resultados:
+
+| Bloque | Resultado | Qué falló |
+|---|---|---|
+| `3B` (siembra 2026-S10) | **Malo** | oidio + botrytis. La mitad de la primera floración perdida, ~27 aplicaciones de choque |
+| `Inv 4` (hace ~1 año) | **Bueno** | le fue bien, pero con **fusarium** de fondo |
+| `Inv 5` (una cama, una vez) | **Malo** | *"se quedaron enanas"* — nunca elongaron |
+
+**Lo de Inv 5 no es nuevo: es el mismo patrón por tercera vez.** Trachelium y
+matricaria ya se habían quedado vegetativos sin florar ahí, con **causa
+confirmada de estrés hídrico** (`01-invernaderos.md`: *"la peor presión del
+sistema"*). El lisianthus enano es la tercera variedad que lo muestra, así que
+**no se registra como caso de lisianthus sino como confirmación de la regla de
+bloque**: Inv 5 no sostiene ninguna variedad exigente en agua mientras no se
+instale la bomba.
+
+**Y lo de 3B tampoco es de la variedad: es del bloque.** 3B tiene doble
+limitante documentada — erosión histórica + presión insuficiente — y **C.E.
+0,829**, la salinidad más alta medida en la finca. Oidio y botrytis ahí son
+síntoma de planta estresada en cama salina con riego desigual, no de que el
+lisianthus sea susceptible en abstracto.
+
+**La diferencia que decide:** en 3B y en 5 el problema es **ambiental y no se
+corrige con manejo** (haría falta obra de agua y recuperación de suelo). En
+Inv 4 el problema es **inóculo de fusarium en el suelo**, que sí tiene manejo
+documentado — rotación biosupresora (marigold, gomphrena, matricaria),
+drenches radiculares y calcio continuo.
+
 ---
 
 *(Las entradas nuevas se agregan arriba de esta línea, con fecha.)*

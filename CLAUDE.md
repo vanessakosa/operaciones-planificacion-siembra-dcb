@@ -286,6 +286,15 @@ que no ha cerrado su ciclo de ventana, donde aparecen todos los comentarios, es 
 error... ahi podria saber entonces la etapa fenologica en la que esta cada cosa.
 Eso tiene que suceder ANTES de hacerme una sugerencia de bomba."*
 
+**Pero la programacion que hay en el repo NO es la de hoy.** El espejo
+`DCB_PUENTE_CAMPO` esta congelado en el 2026-09-03 y su siembra mas reciente es
+de la **semana 32**; la hoja viva que Vanessa edita es otra
+(`1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4`) y **su pestaña CAMPO no se puede
+extraer con las herramientas de la sesion** — las cuatro vias estan probadas y
+documentadas en `07-datos/FUENTES.md`. Hay que exportar CAMPO a CSV a mano.
+Mientras tanto **todo lo VEGETATIVO es invisible**, que es justo lo que una bomba
+de desarrollo necesita ver.
+
 `campo_siembras.csv` trae las tres columnas que hacen falta —  `Estado` (Activa =
 no cerro ventana), la semana de TRASPLANTE y la de INICIO DE COSECHA — y con ellas
 `motor/etapa.py` deriva COSECHA · PREFLORACION · DESARROLLO · VEGETATIVO para los
@@ -843,7 +852,8 @@ Son demasiado grandes para espejar como texto. Se consultan en Drive por ID:
 
 | Archivo | ID de Drive |
 |---|---|
-| `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` (17 MB) | `1NaGlBEY5j-e-rLx_7NvdIWWPWCiGxv0x` |
+| `PROGRAMACION_2026_v8_ACTUALIZADO` — **la hoja NATIVA, la que Vanessa edita** | `1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4` |
+| `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` (17 MB) — **snapshot congelado del 22/07, NO usar** | `1NaGlBEY5j-e-rLx_7NvdIWWPWCiGxv0x` |
 | `Stock Productos Agro DCB.xlsx` | `1lqk28pyr6Fd00U1nuPmwH9_hfVL8yZE4` |
 | `DCB_Calculadora_Bouquets.xlsx` | `14eKUYrRhmseyqrHXxDFt2Siq97E71yVN` |
 | `DCB_Registro_Tallos_v7_ORGANIZADO` | `14OP0GgkNmV1ty8Jz0hmASEts64ptI3y9L0i2FYsedHc` |

@@ -119,6 +119,28 @@ puntual, **nunca para concluir que un dato no existe**: lo que no aparece pudo
 quedar en la parte truncada. Para trabajar con CAMPO completo hay que exportar
 esa pestaña sola a CSV desde Sheets.
 
+**Probado y agotado el 2026-09-21 — las cuatro vías fallan, y hay que saberlo
+antes de volver a intentarlo:**
+
+| Via | Resultado |
+|---|---|
+| `download_file_content` export CSV | devuelve **solo la primera pestaña** (`TECNIPLANTAS`), no CAMPO |
+| `download_file_content` export XLSX | `File too large for export` |
+| `read_file_content` | trunca: dio **117 de ~366 filas** de CAMPO, y son las **mas viejas** (semanas 31-52 de 2025, todas Cerrada) |
+| `curl` al `/export?format=csv&gid=` | el egress de la sesion **bloquea `docs.google.com`** |
+
+Asi que **la pestaña CAMPO viva solo entra al repo si alguien la exporta a mano**
+(Archivo -> Descargar -> CSV, estando parado en la pestaña CAMPO) o si se
+mantiene un espejo chico que si exporte limpio.
+
+**`DCB_PUENTE_CAMPO` es ese espejo, y esta CONGELADO.** ID
+`1ndYgVHA49dGfeTULKkHu8gTLbHJAcfuJSfDRfsDZsSw`, `modifiedTime` **2026-09-03**.
+Exporta limpio a CSV —sus 21 columnas coinciden en posicion con
+`campo_siembras.csv`— pero su siembra mas reciente es de la **semana 32**.
+De ahi salio el refresco del 2026-09-21 (302 -> 366 filas, y la columna `Estado`
+que antes venia vacia): **es mejor que lo que habia, pero NO es el estado de hoy.**
+`motor/etapa.py` lo detecta solo y `bomba.py semana` lo grita en su seccion 3.
+
 Dentro trae una **tabla de referencia agronómica** con `SEMANAS SIEMBRA A
 COSECHA` y `VENTANA DE COSECHA (SEMANAS)` para ~50 variedades, más germinación,
 distancia, densidad, pinch y tallos por planta. **No está espejada en el repo** y

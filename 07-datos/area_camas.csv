@@ -20,3 +20,4 @@ Ext 3B larga,Ext 3B,267,8,0.15,1.2,48.06,1,48.06,PENDIENTE MEDIR,capacidad_bloqu
 Ext 3B corta,Ext 3B,65,8,0.15,1.2,11.70,1,11.70,PENDIENTE MEDIR,capacidad_bloques.csv,Huecos DERIVADOS de los 11.7 m2 documentados
 Inv 2,2,,,,,,,200.00,NO UNIFORME,01-invernaderos.md,~200 m2 de zona. Camas de distinta medida — PENDIENTE MEDIR CAMA POR CAMA. Es el bloque de ensayos
 Inv 1,1,,,,,,6,,SIN_DATO,01-invernaderos.md,6 camas. C1-C3 rosas de jardin injertadas ~7 anos. SIN una sola variable de suelo ni area medida — es el cultivo de mayor ticket de la finca
+Ext 6,Ext 6,,,,,,,,NULA,campo_siembras.csv (Estado=Activa) 2026-09-21,"Exterior del invernadero 6. Aparece escrito ""6 EXT"" y ""6ext"" en 6 lotes activos (strawflower y ammi). NO estaba en la tabla canonica, asi que colapsaba al alias ""6"" y se imputaba dentro de Inv 6. AREA SIN MEDIR — pendiente #8."

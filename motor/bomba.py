@@ -17,19 +17,20 @@ Sin bloque la fila queda huerfana y no le suma a nadie.
 import sys, os, csv, io, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import lotes as L
+import etapa as E
 
 ANCHO = 92
 
 
 def _siembras_por_bloque(semana):
-    idx = L.ocupacion(tope_semana=semana)
-    out = collections.defaultdict(list)
-    for r in L.leer("ocupacion_lote.csv"):
-        for b in L.bloques_de(r.get("bloque") or ""):
-            for coh, frac, exacto in L.reparto(b, semana, idx):
-                if coh not in out[b]:
-                    out[b].append(coh)
-    return out
+    """Que hay en cada bloque esta semana, y en que etapa fenologica.
+
+    Sale de la PROGRAMACION (campo_siembras.csv, columna Estado = Activa), no de
+    ocupacion_lote.csv. Vanessa 2026-09-21: *"si no esta leyendo el archivo de
+    programacion donde aparece todo lo que no ha cerrado su ciclo de ventana...
+    es un error"*. La etapa se deriva, no se registra — ver motor/etapa.py.
+    """
+    return E.por_bloque(semana)
 
 
 def cmd_semana(semana):
@@ -51,18 +52,34 @@ def cmd_semana(semana):
                     w, r.get("bomba_id", ""), r.get("bloque", "") or "SIN BLOQUE",
                     r.get("motivo", "")[:40]))
 
-    print("\n2. QUE HAY SEMBRADO ESTA SEMANA  (a quien le va a caer la bomba)")
+    print("\n2. QUE HAY EN CADA BLOQUE, Y EN QUE ETAPA  (a quien le va a caer la bomba)")
     print("-" * ANCHO)
     porb = _siembras_por_bloque(semana)
     if not porb:
-        print("   Ninguna siembra con ocupacion registrada en la semana %d." % semana)
-        print("   Llenar 07-datos/ocupacion_lote.csv — sin eso nada se puede imputar.")
+        print("   La programacion no tiene ningun lote Activa. Refrescar campo_siembras.csv.")
     else:
-        for b in sorted(porb):
-            for c in porb[b]:
-                print("   %-10s %s" % (b, c))
+        for b in sorted(porb, key=lambda x: (x == "SIN_BLOQUE", x)):
+            cuenta = collections.Counter(x["etapa"] for x in porb[b])
+            resumen = " · ".join("%s %d" % (k, v) for k, v in sorted(cuenta.items()))
+            bomba = sorted({E.ETAPA_BOMBA.get(x["etapa"]) for x in porb[b]} - {None})
+            print("   %-10s %-42s -> %s" % (b, resumen, "+".join(bomba) or "SIN_DATO"))
+        print("\n   Detalle lote por lote, con los comentarios de campo:")
+        print("     python3 motor/etapa.py %d" % semana)
 
-    print("\n3. INCIDENCIA CONOCIDA EN ESOS BLOQUES")
+    print("\n3. SIEMBRAS QUE LA PROGRAMACION TODAVIA NO VE")
+    print("-" * ANCHO)
+    lot = E.lotes_activos(semana)
+    ult = max((x["sem_siembra"] for x in lot if x["sem_siembra"]), default=None)
+    veg = [x for x in lot if x["etapa"] == "VEGETATIVO"]
+    if ult is not None and ult < semana - 1:
+        print("   La siembra mas reciente registrada es de la semana %d." % ult)
+        print("   Faltan las ultimas %d semanas de siembra -> todo lo VEGETATIVO" % (semana - ult))
+        print("   es invisible aca (%d lotes en vegetativo hoy)." % len(veg))
+        print("   Refrescar la hoja CAMPO antes de confiar en la bomba de desarrollo.")
+    else:
+        print("   La programacion esta al dia.")
+
+    print("\n4. INCIDENCIA CONOCIDA EN ESOS BLOQUES")
     print("-" * ANCHO)
     hubo = False
     for r in L.leer("incidencia_fitosanitaria.csv"):
@@ -97,6 +114,12 @@ def cmd_registrar(argv):
         raise SystemExit(
             'Uso: registrar <fecha> <semana> "<bloques>" <bomba_id> <tanques> '
             '[operario] ["motivo"]')
+    # --camas "3 camas" marca una aplicacion DIRIGIDA: no se reparte al bloque
+    camas = ""
+    if "--camas" in argv:
+        i = argv.index("--camas")
+        camas = argv[i + 1] if len(argv) > i + 1 else ""
+        argv = argv[:i] + argv[i + 2:]
     fecha, semana, bloques, bomba_id, tanques = argv[:5]
     operario = argv[5] if len(argv) > 5 else ""
     motivo = argv[6] if len(argv) > 6 else ""
@@ -121,6 +144,8 @@ def cmd_registrar(argv):
     fila.update(fecha=fecha, semana_iso=semana, anio=fecha[:4], bloque=",".join(reconocidos),
                 bomba_id=bomba_id, tanques=tanques, litros="%g" % litros,
                 operario=operario, motivo=motivo, fuente="motor/bomba.py registrar")
+    if "camas" in fila:
+        fila["camas"] = camas
     with io.open(ruta, "a", newline="", encoding="utf-8") as f:
         csv.DictWriter(f, fieldnames=cols).writerow(fila)
 

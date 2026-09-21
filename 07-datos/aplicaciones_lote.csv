@@ -1,2 +1,3 @@
-fecha,semana_iso,anio,bloque,bomba_id,tanques,litros,operario,motivo,fuente,notas
-2026-07-03,27,2026,SIN_DATO,CHOQUE-BO,,,Wilson,Focos activos de oidio,aplicaciones_historial.csv,"La fila original dice Destino='idem', que no permite cruzar. HAY QUE PREGUNTAR EN QUE BLOQUES SE APLICO. Es el ejemplo de por que este archivo existe aparte del historial"
+fecha,semana_iso,anio,bloque,camas,bomba_id,tanques,litros,operario,motivo,fuente,notas
+2026-07-03,27,2026,SIN_DATO,,CHOQUE-BO,,,Wilson,Focos activos de oidio,aplicaciones_historial.csv,"La fila original dice Destino='idem', que no permite cruzar. HAY QUE PREGUNTAR EN QUE BLOQUES SE APLICO. Es el ejemplo de por que este archivo existe aparte del historial"
+2026-09-16,38,2026,3B,1 cama,DRENCH-CHIZA,1,25,SIN_DATO,Chiza - 1a aplicacion drench. Cama de 3B. Inv 4 (3 camas) pendiente de saber si es 4A/4B/4C,motor/bomba.py registrar,

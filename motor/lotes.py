@@ -56,6 +56,10 @@ def bloques_de(texto):
     t = norm(texto)
     if not t or t == "sin dato":
         return []
+    # El registro escribe el exterior en los dos ordenes: 'Ext 5' y '5 EXT'.
+    # Sin esto '6 EXT' pierde contra el alias '6' y el lote del exterior se
+    # imputa ADENTRO del invernadero — una bomba mal atribuida en dos fichas.
+    t = re.sub(r"\b(\d+ ?[abc]?) ?ext\b", lambda m: "ext " + m.group(1).strip(), t)
     # los alias largos primero, para que 'Ext 3B' gane sobre '3B'
     hallados, usados = [], []
     for k in sorted(canon, key=len, reverse=True):
@@ -79,8 +83,37 @@ def _semanas(desde, hasta, tope):
 
 # ---------------------------------------------------------------- ocupacion
 def ocupacion(tope_semana=53):
-    """{(bloque, semana): [ {siembra, area_m2 o None}, ... ] }"""
+    """{(bloque, semana): [ {siembra, area_m2 o None}, ... ] }
+
+    DOS fuentes, en este orden:
+
+    1. La PROGRAMACION (`campo_siembras.csv`, Estado = Activa). Es la base: un
+       lote ocupa sus bloques desde la semana de trasplante hasta que cierra la
+       ventana. Son ~130 lotes y se mantienen solos al refrescar la hoja CAMPO.
+    2. `ocupacion_lote.csv` ENCIMA, como correccion. Es el archivo curado a mano
+       y es el unico que trae `area_m2`, asi que cuando una siembra esta en los
+       dos gana este: sin area el reparto va en partes iguales y sale APROX.
+
+    Antes solo existia (2), con UNA cosecha cargada. Toda bomba registrada caia
+    en `NO SE PUDO IMPUTAR`. Vanessa 2026-09-21: *"si no esta leyendo el archivo
+    de programacion... es un error"*.
+    """
     idx = collections.defaultdict(list)
+    vistos = set()
+
+    # (1) la programacion. Import diferido: etapa.py importa este modulo.
+    import etapa as E
+    for lo in E.lotes_activos():
+        if not lo["bloques"] or lo["sem_siembra"] is None:
+            continue
+        nombre = lo["homologado"] or lo["variedad"]
+        siembra = "%s %s-S%s" % (nombre, "2026", lo["sem_siembra"])
+        for b in lo["bloques"]:
+            for w in _semanas(lo["sem_siembra"], lo["sem_cosecha_fin"], tope_semana):
+                idx[(norm(b), w)].append({"siembra": siembra, "area": None})
+            vistos.add((norm(b), norm(siembra)))
+
+    # (2) el archivo curado encima — trae area y gana sobre la programacion
     for r in leer("ocupacion_lote.csv"):
         bloque = (r.get("bloque") or "").strip()
         if not bloque:
@@ -139,6 +172,15 @@ def eventos(siembra=None, tope_semana=53):
             if not blos or not semanas:
                 huerfanos.append(dict(tipo=tipo, que=que, fila=r,
                                       falta="bloque" if not blos else "semana"))
+                continue
+            # Aplicacion dirigida a camas puntuales: NO se reparte al bloque.
+            # Un drench a 1 cama de 3B no lo recibieron los 11 lotes del bloque.
+            # Mientras la ocupacion no baje a nivel CAMA, atribuirlo seria
+            # inventar: sale como pendiente, con el motivo escrito.
+            if (r.get("camas") or "").strip():
+                huerfanos.append(dict(tipo=tipo, que=que, fila=r,
+                                      falta="alcance de CAMA (%s) — la ocupacion solo llega a BLOQUE"
+                                            % r["camas"].strip()))
                 continue
             tocado = False
             for b in blos:

@@ -185,6 +185,7 @@ agronómica de manejo y se usa para planificación interna de siembra.
 Python 3, solo librería estándar. Todo se ejecuta desde la raíz del repo.
 
 ```bash
+python3 motor/etapa.py                          # etapa fenologica de cada lote activo, por bloque
 python3 motor/cerebro.py matriz                 # cuánto de la matriz de decisión está cubierto
 python3 motor/cerebro.py productos              # las 24 recetas del catálogo
 python3 motor/cerebro.py auditar                # estructura + color de todo el catálogo
@@ -278,6 +279,35 @@ ruido. El primer caso real es la bomba del 2026-07-03, cuyo `Destino` dice
 columna `alias_registro`; `lotes.bloques_de()` colapsa cualquier escritura a los
 15 bloques reales y reconoce varios en un texto. Los alias largos ganan sobre los
 cortos, para que `Ext 3B` no se confunda con `3B`.
+
+**La etapa fenologica NO se registra: se deriva de la programacion.** Vanessa
+2026-09-21: *"si no esta leyendo el archivo de programacion donde aparece todo lo
+que no ha cerrado su ciclo de ventana, donde aparecen todos los comentarios, es un
+error... ahi podria saber entonces la etapa fenologica en la que esta cada cosa.
+Eso tiene que suceder ANTES de hacerme una sugerencia de bomba."*
+
+`campo_siembras.csv` trae las tres columnas que hacen falta —  `Estado` (Activa =
+no cerro ventana), la semana de TRASPLANTE y la de INICIO DE COSECHA — y con ellas
+`motor/etapa.py` deriva COSECHA · PREFLORACION · DESARROLLO · VEGETATIVO para los
+130 lotes activos, y de ahi la bomba que toca. `bomba.py semana` y la imputacion de
+`lotes.ocupacion()` leen de ahi; `ocupacion_lote.csv` quedo como **correccion
+encima**, porque es el unico que trae `area_m2`.
+
+Tres cosas que salieron al conectarlo, y que hay que tener presentes:
+
+1. **La columna `Estado` no estaba en el CSV del repo.** Existia en la hoja de
+   Drive y el espejo la copiaba vacia. Sin ella no habia forma de saber que lote
+   sigue en campo.
+2. **`6 EXT` se colapsaba a `Inv 6`** — el alias `6` ganaba y los 6 lotes del
+   exterior se imputaban ADENTRO del invernadero. `bloques_de()` ahora normaliza
+   los dos ordenes de escritura (`Ext 5` y `5 EXT`) y `Ext 6` entro a
+   `area_camas.csv`. **`3EXT` sigue sin resolver a proposito:** es ambiguo entre
+   Ext 3A y Ext 3B y hay que preguntarlo, no adivinarlo.
+3. **Una aplicacion dirigida a camas puntuales NO se reparte al bloque.** Un
+   drench a 1 cama de 3B no lo recibieron los 11 lotes del bloque. `registrar`
+   acepta `--camas "N camas"` y esas filas salen como pendientes con el motivo,
+   en vez de ensuciar once fichas. Es el choque #1 con `Campo` hecho explicito:
+   mientras la ocupacion no baje a nivel CAMA, atribuirlo seria inventar.
 
 La sesion semanal tiene skill propia: **`.claude/skills/dcb-bomba-semanal/`**.
 `bomba.py semana` es la regla APLICACIONES hecha comando — si no hay registro de

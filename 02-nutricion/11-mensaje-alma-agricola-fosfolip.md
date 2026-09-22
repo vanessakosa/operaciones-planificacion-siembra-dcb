@@ -1,5 +1,12 @@
 # Mensaje a Alma Agrícola · Fosfolip
 
+> **🟢 EN CAMPO desde 2026-09-21 (confirmado por Vanessa 2026-09-22).** Primera aplicación real,
+> con la cama de Campánula sembrada esa semana — hasta ahora esto era solo la propuesta de abajo.
+> No hay confirmación de que Alma Agrícola haya contestado las 5 preguntas todavía: se está
+> aplicando a la dosis propuesta (1,5 cc/bomba de 20L) sin que conste respuesta de la asesora.
+> Registrado en `07-datos/labores_lote.csv`, pendiente de nombre homologado del lote para poder
+> imputarlo cuando aparezca en la programación.
+>
 > Redactado 2026-09-09 para que Vanessa lo envíe. Objetivo: validar con la asesora la dosis y el
 > método antes de pedir el producto, y cerrar las cinco preguntas que dejan la dosis como juicio
 > en vez de dato.

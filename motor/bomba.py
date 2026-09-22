@@ -4,6 +4,8 @@
     python3 motor/bomba.py semana 37        # la mesa para disenar la bomba de la semana
     python3 motor/bomba.py catalogo         # las bombas y sus dosis
     python3 motor/bomba.py registrar 2026-09-12 37 "3B,3C" CHOQUE-BO 4 Wilson "oidio en lisianthus"
+    python3 motor/bomba.py registrar 2026-09-12 37 "3B,3C" CHOQUE-BO PENDIENTE Wilson "oidio en lisianthus"
+    python3 motor/bomba.py tanques 2026-09-12 "3B,3C" CHOQUE-BO 4    # completa el PENDIENTE de arriba
 
 `semana` es OBLIGATORIO antes de recomendar nada — es la regla APLICACIONES de
 CLAUDE.md hecha comando: muestra la rotacion de las ultimas 4 semanas y que hay
@@ -13,6 +15,13 @@ memoria.
 `registrar` escribe en `07-datos/aplicaciones_lote.csv` con el BLOQUE, que es lo
 que permite que la aplicacion se le sume despues a la ficha de cada cosecha.
 Sin bloque la fila queda huerfana y no le suma a nadie.
+
+Vegetativo y Prefloracion cambian de semana a semana segun lo que se vaya
+cosechando, y Vanessa no sabe cuantos tanques se gastaron hasta que le
+pregunta al operario — a veces dias despues. Por eso `tanques` NO es
+obligatorio en `registrar`: se puede pasar `PENDIENTE` y la fila queda con
+tanques/litros vacios (SIN romper la imputacion, que solo necesita bloque y
+semana). `tanques` completa esa fila despues, cuando el dato llegue.
 """
 import sys, os, csv, io, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -132,25 +141,38 @@ def cmd_registrar(argv):
         raise SystemExit("No reconozco ningun bloque en %r. Los validos salen de "
                          "area_camas.csv: %s" % (bloques, ", ".join(sorted(
                              set(L.alias_bloques().values())))))
-    try:
-        litros = float(tanques) * 25
-    except ValueError:
-        raise SystemExit("tanques tiene que ser un numero.")
+    pendiente = tanques.strip().upper() in ("PENDIENTE", "SIN_DATO", "?")
+    if pendiente:
+        litros = None
+    else:
+        try:
+            litros = float(tanques) * 25
+        except ValueError:
+            raise SystemExit("tanques tiene que ser un numero, o 'PENDIENTE' si "
+                             "el operario todavia no reporta cuanto gasto.")
 
     ruta = os.path.join(L.DATOS, "aplicaciones_lote.csv")
     with open(ruta, encoding="utf-8") as f:
         cols = next(csv.reader(f))
     fila = dict.fromkeys(cols, "")
     fila.update(fecha=fecha, semana_iso=semana, anio=fecha[:4], bloque=",".join(reconocidos),
-                bomba_id=bomba_id, tanques=tanques, litros="%g" % litros,
+                bomba_id=bomba_id, tanques="" if pendiente else tanques,
+                litros="" if pendiente else "%g" % litros,
                 operario=operario, motivo=motivo, fuente="motor/bomba.py registrar")
     if "camas" in fila:
         fila["camas"] = camas
     with io.open(ruta, "a", newline="", encoding="utf-8") as f:
         csv.DictWriter(f, fieldnames=cols).writerow(fila)
 
-    print("Registrada: sem %s · %s · %s · %s tanques (%g L) · %s" % (
-        semana, ",".join(reconocidos), bomba_id, tanques, litros, operario or "sin operario"))
+    if pendiente:
+        print("Registrada: sem %s · %s · %s · TANQUES PENDIENTE · %s" % (
+            semana, ",".join(reconocidos), bomba_id, operario or "sin operario"))
+        print("Cuando el operario reporte cuanto gasto:")
+        print('  python3 motor/bomba.py tanques %s "%s" %s <tanques>' % (
+            fecha, ",".join(reconocidos), bomba_id))
+    else:
+        print("Registrada: sem %s · %s · %s · %s tanques (%g L) · %s" % (
+            semana, ",".join(reconocidos), bomba_id, tanques, litros, operario or "sin operario"))
     idx = L.ocupacion(tope_semana=int(semana))
     tocadas = set()
     for b in reconocidos:
@@ -165,6 +187,40 @@ def cmd_registrar(argv):
         print("asi que esta aplicacion no le suma a ninguna ficha. Revisa ocupacion_lote.csv.")
 
 
+def cmd_tanques(argv):
+    if len(argv) < 4:
+        raise SystemExit('Uso: tanques <fecha> "<bloques>" <bomba_id> <tanques>')
+    fecha, bloques, bomba_id, tanques = argv[:4]
+    reconocidos = ",".join(L.bloques_de(bloques)) or bloques
+    try:
+        litros = float(tanques) * 25
+    except ValueError:
+        raise SystemExit("tanques tiene que ser un numero.")
+
+    ruta = os.path.join(L.DATOS, "aplicaciones_lote.csv")
+    with open(ruta, encoding="utf-8") as f:
+        filas = list(csv.DictReader(f))
+    cols = list(filas[0].keys()) if filas else []
+    candidatas = [f for f in filas
+                  if f.get("fecha") == fecha and f.get("bloque") == reconocidos
+                  and f.get("bomba_id") == bomba_id and not (f.get("tanques") or "").strip()]
+    if not candidatas:
+        raise SystemExit("No encontre una fila SIN tanques con fecha=%s bloque=%s bomba=%s. "
+                         "Revisa con 'python3 motor/bomba.py rotacion' o el CSV directo." % (
+                             fecha, reconocidos, bomba_id))
+    if len(candidatas) > 1:
+        raise SystemExit("Hay %d filas pendientes iguales (misma fecha/bloque/bomba) — "
+                         "edita el CSV a mano para no ambiguar cual es cual." % len(candidatas))
+    candidatas[0]["tanques"] = tanques
+    candidatas[0]["litros"] = "%g" % litros
+    with io.open(ruta, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=cols)
+        w.writeheader()
+        w.writerows(filas)
+    print("Actualizado: %s · %s · %s -> %s tanques (%g L)" % (
+        fecha, reconocidos, bomba_id, tanques, litros))
+
+
 def main(argv):
     if len(argv) < 2:
         print(__doc__)
@@ -176,6 +232,8 @@ def main(argv):
         cmd_catalogo()
     elif cmd == "registrar":
         cmd_registrar(argv[2:])
+    elif cmd == "tanques":
+        cmd_tanques(argv[2:])
     else:
         print(__doc__)
 

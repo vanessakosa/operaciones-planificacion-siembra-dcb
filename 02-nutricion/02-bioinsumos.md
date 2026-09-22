@@ -35,6 +35,12 @@ insumos como estrategia de costo**.
 > cantidad es marginal (200 g en 1.500 kg) y el objetivo es corregir el déficit crítico de Cu,
 > que pesa más que el aporte de S.
 
+> **Trazabilidad de lote — Vanessa 2026-09-22:** "todo lo sembrado en estas últimas semanas sí ha
+> llevado Bokashi, el Bokashi antiguo." Confirma que, a la semana 39, toda siembra reciente
+> (preparación de cama) sigue usando el lote **anterior** de Bokashi, no uno nuevo — importa para
+> cuando se registre `inputs_siembra.csv` por siembra: hay que anotar de qué lote/receta viene,
+> porque la V1 de arriba no es necesariamente la única versión que ha salido de la pila.
+
 ## Manejo de la pila
 
 - Voltear día 2 y día 4 · altura máxima 1.2 m · **no compactar**

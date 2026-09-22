@@ -1,5 +1,10 @@
 # Comparativo de casas comerciales — fertirriego
 
+> **🟢 EN CAMPO desde ~semana 37 (confirmado por Vanessa 2026-09-22).** El programa de Alma
+> Agrícola (Calcinit + Kelasys Cu + Borosol de más abajo) ya se está aplicando en Inv 2, 3, 4 y 5
+> — **el exterior todavía no lo recibe**. Registrado en `07-datos/fertirriego_lote.csv`. Falta
+> confirmar litros/tanque y frecuencia exactos por bloque — ver la fila SIN_DATO en ese CSV.
+>
 > **Estado: DECISIÓN TOMADA en nitrato de calcio y cobre. Ver el VEREDICTO al final.**
 >
 > Recibido y confirmado (Vanessa, 2026-09-02): precios Haifa y Fullfert, ficha del Haifa Micro,

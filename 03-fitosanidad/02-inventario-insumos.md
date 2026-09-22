@@ -39,6 +39,7 @@
 
 | Producto | Stock | Función |
 |---|---|---|
+| **Raxter Mix SC** (Metarhizium + Beauveria + Bt kurstaki + **Bacillus popilliae**) | — | **CHIZA por drench — 50 cc/cama, repetir a los 15 días.** Ficha FT8030 v2, ICA 14487. **NO mezclar con fungicidas ni bactericidas** |
 | Safer Mix (Beauveria mix) | 500 g | Mosca blanca, trips, spodoptera |
 | ADN Green (Stemona) | 1.000 cc | Trips, áfidos, mosca blanca |
 | No Fly (Paecilomyces) | 600 g | Mosca blanca, pulgones, trips |

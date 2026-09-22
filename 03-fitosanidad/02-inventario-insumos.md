@@ -48,6 +48,7 @@
 | Azasol (azadiractina 6%) | 15 g | **Reservar para emergencias — casi agotado** |
 | **Deep Green** (*Metarhizium anisopliae* DSM15168) | verificar | **Coleópteros — CHIZA en drench.** 0,7 cc/L · **1 cc/L en incidencia alta**. Misma dosis foliar y en drench. Tarde estricta |
 | **Raxter Mix SC** (*Metarhizium* + *Beauveria* + *Bt kurstaki* + ***B. popilliae***) | verificar | **CHIZA — el más específico que hay.** Ornamentales: **50 cc por cama en drench**, repetir a los 15 días. ICA 14487 · BIO-CROP. **Ficha técnica CONFIRMADA** (FT 8030 v2, 2026-02-10). Sin carencia ni reingreso. **NO con fungicidas** |
+| **Cronox WP** (*Bacillus popilliae* **solo**) | verificar | **CHIZA — *Chiza* sp., Flia. Melolonthinae.** **500 g por caneca de 200 L** = 1 cama, drench a zona de raíces. 1,0×10⁸ UFC/g. **Ficha CONFIRMADA** (FT 1009 v4) · BIO-CROP. **SÍ compatible con fungicidas.** Esporulación 14–21 días — lento |
 
 ## Bioestimulantes y acondicionadores
 

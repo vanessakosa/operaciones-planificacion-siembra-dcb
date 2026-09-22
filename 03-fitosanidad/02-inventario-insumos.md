@@ -9,7 +9,6 @@
 |---|---|---|
 | Equifun (cola de caballo + silicio) | 7.000 cc | Botrytis, alternaria — PREVENTIVO |
 | Botrycid (Burkholderia) | 1.000 cc | Botrytis específico — BIOLÓGICO. Intervalo etiqueta 12 semanas |
-| Amicos MC (Bacillus subtilis) | 1.000 cc | Mildeos, botrytis, fusarium, trips |
 | Regalia (Reynoutria) | 500 cc | Mildeo polvoso, botrytis — inductor de resistencia |
 | Yodosafer (yodo PVP) | 500 cc | Fungicida + bactericida. **NO en floración** |
 | Rutastar (cítricos) | 250 cc | Botrytis, mildeos, erwinia |
@@ -24,6 +23,7 @@
 | Glukoplant Cabozan (Ca+B+Zn) | 1.000 cc | **Máx 6 aplicaciones por ciclo** |
 | Engruese (calcio) | 4.000 cc | Fortalecimiento celular |
 | Tropical | 2.000 cc | Crecimiento vegetativo |
+| **Amicos MC nt** (Mn 1% + Zn 1%, mezcla líquida de micronutrientes, sulfatos) | 1.000 cc | **FICHA CONFIRMADA (Vanessa 2026-09-22, FTP Amicos Mc nt rev.2 05-10-2022).** Corrector Mn+Zn — nutrientes de Fase 2/3 de Kempf. Dosis Ornamentales: foliar 200-300 ml/hl (1-3 L/ha), 2-5 aplicaciones cada 8-10 días → **50-75 cc por tanque de 25L** |
 
 ## Inoculantes
 
@@ -71,9 +71,14 @@ redundante. Aclarar si la decisión cambió o si fue por agotar existencias.
 
 ## Aclaración de clasificación
 
-**Amicos MC es corrector nutricional (Mg/Ca), no biofungicida** — aunque en el inventario
-original está listado como fungicida por su efecto sobre Bacillus subtilis. Cuidado al contarlo
-como componente fungicida de una bomba.
+**Amicos MC ES Mn+Zn, no biofungicida — y tampoco Mg/Ca.** Vanessa compartió la ficha técnica el
+2026-09-22 (FTP Amicos Mc nt rev.2, 05-10-2022): "MEZCLA LÍQUIDA DE MICRONUTRIENTES MINERALES",
+Mn soluble 1% p/p + Zn soluble 1% p/p, aniones sulfatos. **No trae ningún organismo** —nunca fue
+biofungicida— y la clasificación anterior de "corrector Mg/Ca" (dictada de memoria antes de ver
+la ficha) tampoco era correcta. Zafado el error dos veces: primero se le atribuyó Bacillus
+subtilis sin ficha, después Mg/Ca sin ficha. Con la ficha real: es un corrector de Mn y Zn, que
+son justo los nutrientes que `02-nutricion/04-diagnostico-kempf-ingham.md` (Capa 5 — Foliar) pide
+para la Fase 2 (Mn, fotosíntesis completa) y la Fase 3 (Zn, junto a Cu+B+P, inmunidad a botritis).
 
 ## Costos
 

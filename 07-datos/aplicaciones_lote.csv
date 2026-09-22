@@ -25,3 +25,7 @@ fecha,semana_iso,anio,bloque,camas,bomba_id,tanques,litros,operario,motivo,fuent
 2026-09-22,39,2026,Ext 3B,,VEG,,,,"Reinicio rotacion - 12 sem sin bomba foliar (microorganismos, etapa desarrollo+vegetativo)",motor/bomba.py registrar,
 2026-09-22,39,2026,Ext 6,,VEG,,,,"Reinicio rotacion - 12 sem sin bomba foliar (microorganismos, etapa desarrollo+vegetativo)",motor/bomba.py registrar,
 2026-09-22,39,2026,Mini,,VEG,,,,"Reinicio rotacion - 12 sem sin bomba foliar (microorganismos, etapa desarrollo+vegetativo)",motor/bomba.py registrar,
+2026-09-22,39,2026,3B,,REFUERZO-MOSCA,,,,Refuerzo mosca blanca en matricaria (Safer Mix WP),motor/bomba.py registrar,
+2026-09-22,39,2026,4A,,REFUERZO-MOSCA,,,,Refuerzo mosca blanca en matricaria (Safer Mix WP),motor/bomba.py registrar,
+2026-09-22,39,2026,4B,,REFUERZO-MOSCA,,,,Refuerzo mosca blanca en matricaria (Safer Mix WP),motor/bomba.py registrar,
+2026-09-22,39,2026,5,,REFUERZO-MOSCA,,,,Refuerzo mosca blanca en matricaria (Safer Mix WP),motor/bomba.py registrar,

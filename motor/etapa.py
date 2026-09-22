@@ -86,8 +86,20 @@ def etapa_de(sem_siembra, sem_cosecha, sem_actual):
     return etapa, en_campo, "ALTA"
 
 
-def lotes_activos(sem_actual=None, incluir_sin_estado=False):
-    """Un dict por lote activo, ya con su etapa y sus bloques canonicos."""
+def lotes_activos(sem_actual=None, solo_estado_activa=False):
+    """Un dict por lote EN CAMPO, ya con su etapa y sus bloques canonicos.
+
+    EN CAMPO es `Estado != Cerrada`, NO `Estado == Activa`.
+
+    Vanessa 2026-09-22: *"en la pestaña de campo hay siembras registradas hasta
+    semana 38, hasta la fila 360 no entiendo por que no las ves"*. No las veia
+    porque este filtro pedia `Activa` y las siembras NUEVAS entran con `Estado`
+    EN BLANCO — nadie lo llena al sembrar, se llena al cerrar la cama. Son 59
+    filas de las semanas 28 a 40, y son justo las que estan en VEGETATIVO.
+
+    Una cama sin cerrar es una cama en campo. El blanco es el estado por
+    defecto de lo recien sembrado, no un dato faltante.
+    """
     sem_actual = sem_actual or semana_actual()
     ruta = os.path.join(DATOS, "campo_siembras.csv")
     with open(ruta, encoding="utf-8") as f:
@@ -98,7 +110,7 @@ def lotes_activos(sem_actual=None, incluir_sin_estado=False):
         estado = r[I_ESTADO].strip()
         if estado.lower() == "cerrada":
             continue
-        if not estado and not incluir_sin_estado:
+        if solo_estado_activa and estado.lower() != "activa":
             continue
         if not r[I_VARIEDAD].strip():
             continue
@@ -118,21 +130,23 @@ def lotes_activos(sem_actual=None, incluir_sin_estado=False):
     return out
 
 
-def por_bloque(sem_actual=None, incluir_sin_estado=False):
+def por_bloque(sem_actual=None, solo_estado_activa=False):
     """{bloque: [lote, ...]} — un lote en 2 bloques aparece en los dos."""
     d = collections.defaultdict(list)
-    for lo in lotes_activos(sem_actual, incluir_sin_estado):
+    for lo in lotes_activos(sem_actual, solo_estado_activa):
         for b in (lo["bloques"] or ["SIN_BLOQUE"]):
             d[b].append(lo)
     return d
 
 
-def imprimir(sem_actual=None, incluir_sin_estado=False):
+def imprimir(sem_actual=None, solo_estado_activa=False):
     sem = sem_actual or semana_actual()
-    lot = lotes_activos(sem, incluir_sin_estado)
-    d = por_bloque(sem, incluir_sin_estado)
+    lot = lotes_activos(sem, solo_estado_activa)
+    d = por_bloque(sem, solo_estado_activa)
+    nuevas = sum(1 for x in lot if x["estado"] == "(sin estado)")
     print("=" * 92)
-    print(f"ETAPA FENOLOGICA POR BLOQUE — SEMANA {sem}   ({len(lot)} lotes sin cerrar ventana)")
+    print(f"ETAPA FENOLOGICA POR BLOQUE — SEMANA {sem}   ({len(lot)} lotes en campo, "
+          f"{nuevas} sin Estado escrito = siembra nueva)")
     print("=" * 92)
     for b in sorted(d, key=lambda x: (x == "SIN_BLOQUE", x)):
         sub = d[b]
@@ -157,4 +171,4 @@ def imprimir(sem_actual=None, incluir_sin_estado=False):
 
 if __name__ == "__main__":
     sem = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else None
-    imprimir(sem, incluir_sin_estado="--todos" in sys.argv)
+    imprimir(sem, solo_estado_activa="--solo-activa" in sys.argv)

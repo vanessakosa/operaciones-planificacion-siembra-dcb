@@ -60,6 +60,7 @@ def bloques_de(texto):
     # Sin esto '6 EXT' pierde contra el alias '6' y el lote del exterior se
     # imputa ADENTRO del invernadero — una bomba mal atribuida en dos fichas.
     t = re.sub(r"\b(\d+ ?[abc]?) ?ext\b", lambda m: "ext " + m.group(1).strip(), t)
+    t = re.sub(r"\bext ?(\d+ ?[abc]?)", lambda m: "ext " + m.group(1).strip(), t)
     # los alias largos primero, para que 'Ext 3B' gane sobre '3B'
     hallados, usados = [], []
     for k in sorted(canon, key=len, reverse=True):

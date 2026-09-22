@@ -114,6 +114,12 @@ def lotes_activos(sem_actual=None, solo_estado_activa=False):
             continue
         if not r[I_VARIEDAD].strip():
             continue
+        # Sin bloque y sin Estado = siembra EN COLA, todavia no sembrada.
+        # Vanessa 2026-09-22: "esos lotes que dice de bloque vacia es porque
+        # todavia no los hemos sembrado, los tengo ahi en cola". No estan en
+        # campo, asi que no reciben bomba y no son un hueco de datos.
+        if not r[I_BLOQUE].strip() and not estado:
+            continue
         s, c = _int(r[I_SEM_SIEMBRA]), _int(r[I_SEM_COSECHA])
         fin = _int(r[I_FIN_COSECHA])
         etapa, en_campo, conf = etapa_de(s, c, sem_actual)

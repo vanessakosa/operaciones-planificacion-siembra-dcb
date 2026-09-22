@@ -200,8 +200,15 @@ def eventos(siembra=None, tope_semana=53):
 
 
 def receta_bomba(bomba_id):
+    """Ingredientes vigentes de una bomba -- descarta los que ya tienen vigencia_hasta.
+
+    vigencia_desde/vigencia_hasta existian como columnas desde el origen pero
+    nadie las leia: un ingrediente retirado (Amicos MC, 2026-09-22 -- sin ficha
+    confirmada) seguia apareciendo en 'catalogo' y en cada ficha de cosecha.
+    """
     return [r for r in leer("bombas_catalogo.csv")
-            if norm(r.get("bomba_id")) == norm(bomba_id)]
+            if norm(r.get("bomba_id")) == norm(bomba_id)
+            and not (r.get("vigencia_hasta") or "").strip()]
 
 
 def rotacion(desde_semana, hasta_semana):

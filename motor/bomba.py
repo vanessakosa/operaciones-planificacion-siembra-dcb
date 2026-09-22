@@ -107,7 +107,8 @@ def cmd_semana(semana):
 
 
 def cmd_catalogo():
-    filas = L.leer("bombas_catalogo.csv")
+    filas = [r for r in L.leer("bombas_catalogo.csv")
+             if not (r.get("vigencia_hasta") or "").strip()]
     por = collections.OrderedDict()
     for r in filas:
         por.setdefault(r["bomba_id"], []).append(r)

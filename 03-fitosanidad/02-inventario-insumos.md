@@ -47,6 +47,7 @@
 | BTK (Bacillus thuringiensis) | 250 cc | Defoliadores, trips, spodoptera |
 | Azasol (azadiractina 6%) | 15 g | **Reservar para emergencias — casi agotado** |
 | **Deep Green** (*Metarhizium anisopliae* DSM15168) | verificar | **Coleópteros — CHIZA en drench.** 0,7 cc/L · **1 cc/L en incidencia alta**. Misma dosis foliar y en drench. Tarde estricta |
+| **Raxter Mix SC** (*Metarhizium* + *Beauveria* + *Bt kurstaki* + ***B. popilliae***) | verificar | **CHIZA — el más específico que hay.** Ornamentales: **50 cc por cama en drench**, repetir a los 15 días. ICA 14487 · BIO-CROP. **Ficha técnica CONFIRMADA** (FT 8030 v2, 2026-02-10). Sin carencia ni reingreso. **NO con fungicidas** |
 
 ## Bioestimulantes y acondicionadores
 

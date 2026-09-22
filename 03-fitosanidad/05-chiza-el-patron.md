@@ -72,6 +72,58 @@ ventana identificada, el mismo producto puesto tres semanas antes vale mucho má
 | 3 | **Conteo de trampa de luz, semana a semana** | Es la única forma de medir presión con el ground cover puesto — y lo que avisaría de la ventana **antes** del daño |
 | 4 | **Dosis y resultado del control del evento 1** | Funcionó, y no está escrito con qué números |
 
+## El producto de fondo: RAXTER MIX SC
+
+**Ficha técnica confirmada** — FT 8030 v2, 2026-02-10, registro ICA 14487, BIO-CROP S.A.S.
+(Palmira, Valle). Aportada por Vanessa el 2026-09-22.
+
+| | |
+|---|---|
+| *Metarhizium anisopliae* | 2,0×10⁸ UFC/cc |
+| *Beauveria bassiana* | 2,0×10⁸ UFC/cc |
+| *Bacillus thuringiensis* var. *kurstaki* | 2,0×10⁸ UFC/cc |
+| ***Bacillus popilliae*** | **2,0×10⁸ UFC/cc** |
+
+***Bacillus popilliae* es el diferenciador.** Es el patógeno específico de larvas de escarabajo
+—la enfermedad lechosa— y es lo más dirigido que existe contra chiza. Ninguno de los otros
+productos del repositorio lo tiene.
+
+> **Ornamentales · Chizas · 50 cc por cama · repetir a los 15 días mediante drench.**
+
+Es dosis **por cama**, para **ornamentales**, contra **chiza**, en **drench**. Exactamente los
+cuatro atributos que a la ficha del Deep Green le faltaban y que costaron tres rondas de
+sesión. A 50 cc/cama, un litro rinde **20 camas**.
+
+**Compatibilidad, textual:** *"Puede usarse en mezcla con insecticidas, herbicidas y
+fertilizantes. **No debe usarse en mezcla con fungicidas y bactericidas.** Puede usarse con
+coadyuvantes que no tengan alcohol."*
+
+> ⚠️ **Corrección a lo que yo había dicho:** advertí que el drench debía ir en tanque de agua
+> sola por la C.E. del fertirriego. **La ficha autoriza la mezcla con fertilizantes**, y la
+> ficha manda sobre mi precaución. Lo que sí se mantiene, y ahora con respaldo de etiqueta, es
+> la prohibición con fungicidas.
+
+**Sin categoría toxicológica, sin período de carencia y sin período de reingreso.** Para flor de
+corte eso vale mucho: se aplica sin sacar gente del invernadero y sin esperar para cosechar.
+
+### Deep Green o Raxter
+
+| | Deep Green | **Raxter Mix SC** |
+|---|---|---|
+| Organismos | *Metarhizium* solo | **4, con *B. popilliae*** |
+| Dosis ornamental/chiza/drench | **no la trae** | **50 cc/cama** |
+| Concentración UFC/cc | **SIN_DATO** | 2,0×10⁸ de cada uno |
+| Ficha en el repositorio | parcial | **completa** |
+| Ya está comprado | **sí, ~800 cc** | por confirmar |
+
+**No hay que elegir hoy:** el Deep Green está en finca y ya controló el evento de marzo, así que
+es lo que entra en la ventana abierta. El Raxter es el producto de fondo — para los pases 2 y 3
+y para la ventana de marzo de 2027.
+
+🟡 **Pregunta pendiente al proveedor del Deep Green: ¿cuántas UFC/cc tiene?** Es el único dato
+que permite comparar las dos dosis en la misma unidad. Sin él, "1 cc/L" y "50 cc/cama" no son
+comparables.
+
 ## Manejo vigente
 
 `07-datos/decisiones_manejo.csv` (2026-09-16) y la hoja

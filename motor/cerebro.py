@@ -1671,8 +1671,12 @@ def cobertura_matriz():
         "saber si la siembra cabe en la semana que se necesita")
 
     # 11 — Costos
-    cos = _leer_opcional("costos_productos.csv")
-    add(11, "Costo de semilla, insumos y mano de obra", len(cos), 1, "filas de costo",
+    # El precio de los insumos vive en productos.csv (el cerebro de productos),
+    # una columna mas de la ficha de cada producto.
+    prod = _leer_opcional("productos.csv")
+    con_precio = sum(1 for f in prod if _es_numero(f.get("precio_cop")))
+    add(11, "Costo de semilla, insumos y mano de obra", con_precio, max(len(prod), 1),
+        "productos con precio",
         "margen por m2 por semana — el eje que une los otros tres")
 
     return filas

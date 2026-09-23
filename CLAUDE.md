@@ -213,10 +213,24 @@ python3 motor/cruce_venta_cosecha.py            # lo cosechado contra lo vendido
 python3 motor/analisis_variedad.py              # rentabilidad preliminar por variedad: ventana + venta + rol
 python3 motor/ficha_completa.py Lisianthus      # la mesa de variedad por variedad: 11 secciones fijas
 
+python3 motor/productos.py                      # cerebro de productos: que falta (ficha, dosis, precio)
+python3 motor/productos.py comparar Mn          # mismo ingrediente, distinto producto: costo por activo
+python3 motor/hoja_bomba.py 39                  # PDF de bombas del operario, diseno fijo
 python3 motor/bomba.py semana 37                # la mesa para disenar la bomba de la semana
 python3 motor/bomba.py catalogo                 # las bombas y sus dosis por tanque de 25 L
 python3 motor/bomba.py registrar 2026-09-12 37 "3B,3C" CHOQUE-BO 4 Wilson "oidio"
 ```
+
+## Las bombas se formulan desde PRODUCTOS, no desde recetas (2026-09-23)
+
+`bombas_catalogo.csv` guardaba recetas armadas y cada semana se copiaban sin
+razonar: asi entro No Fly (hongo vivo) al mismo tanque que Equifun (fungicida).
+La base ahora es **`07-datos/productos.csv`** (una ficha por producto, con precio),
+`producto_ingredientes.csv` (para comparar costo por unidad de activo entre
+productos que tienen lo mismo) y `compatibilidad.csv` (reglas por clase). Cada
+bomba se formula para la semana con sus cuatro componentes —nutricional,
+bioestimulante, insecticida, fungicida— segun etapa, incidencia y clima, y cada
+producto con su porque. Detalle en **`03-fitosanidad/00-cerebro-de-productos.md`**.
 
 ## El contexto por variedad: lo unico que NO esta en Drive
 

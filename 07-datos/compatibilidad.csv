@@ -1,0 +1,10 @@
+sujeto,tipo_sujeto,con,tipo_con,regla,fuente,confianza,notas
+HONGO,organismo_vivo,FUNGICIDA,categoria,NO_MEZCLAR,"Ficha Raxter Mix SC: ""no debe usarse en mezcla con fungicidas y bactericidas""",INFERIDA_POR_CLASE,Extendida a todo hongo entomopatogeno: el fungicida lo mata en el tanque. Confirmar en cada ficha.
+HONGO+BACTERIA,organismo_vivo,FUNGICIDA,categoria,NO_MEZCLAR,Ficha Raxter Mix SC,INFERIDA_POR_CLASE,
+Raxter Mix SC,producto,BACTERICIDA,categoria,NO_MEZCLAR,Ficha FT8030 v2,FICHA,
+Raxter Mix SC,producto,COADYUVANTE con alcohol,categoria,NO_MEZCLAR,Ficha FT8030 v2,FICHA,"Compatible con insecticidas, herbicidas, fertilizantes y coadyuvantes sin alcohol."
+Yodosafer,producto,FLORACION,etapa,NO_APLICAR,01-reglas-y-protocolos.md,REPO,
+cobre (cupricos),ingrediente,Limonium sinensis con color,cultivo,NO_APLICAR,01-reglas-y-protocolos.md,REPO,Decoloracion permanente.
+Glukoplant Ca-BZn,producto,ciclo,limite,MAX_6,01-reglas-y-protocolos.md,REPO,
+Botrycid,producto,Botrycid,intervalo,84_DIAS,01-reglas-y-protocolos.md (etiqueta),REPO,Se aplicaba semanal: probable causa de baja eficacia.
+calcio,ingrediente,sulfatos / fosfatos,ingrediente,REVISAR,conocimiento general de mezcla (precipitados),GENERAL,Amicos MC es de sulfatos; Glukoplant y ADNGard llevan Ca. Confirmar con fichas o prueba de jarra.

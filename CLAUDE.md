@@ -869,6 +869,7 @@ Son demasiado grandes para espejar como texto. Se consultan en Drive por ID:
 | `PROGRAMACION_2026_v8_ACTUALIZADO` — **la hoja NATIVA, la que Vanessa edita** | `1eZdmU5bYJf99SCwXSDgvGsuvUhjtRyJR26mLADv9Ef4` |
 | `PROGRAMACION_2026_v8_ACTUALIZADO.xlsx` (17 MB) — **snapshot congelado del 22/07, NO usar** | `1NaGlBEY5j-e-rLx_7NvdIWWPWCiGxv0x` |
 | `Stock Productos Agro DCB.xlsx` | `1lqk28pyr6Fd00U1nuPmwH9_hfVL8yZE4` |
+| `Lista de precios Agosto (1).xlsx` — distribuidor, 919 productos. **Copia completa en `07-datos/fuentes/`** | `1d3JOki68Oo6EenNwezO5NPUYaUZRv0WO` |
 | `DCB_Calculadora_Bouquets.xlsx` | `14eKUYrRhmseyqrHXxDFt2Siq97E71yVN` |
 | `DCB_Registro_Tallos_v7_ORGANIZADO` | `14OP0GgkNmV1ty8Jz0hmASEts64ptI3y9L0i2FYsedHc` |
 

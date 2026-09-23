@@ -41,6 +41,8 @@ Se propone cada bomba con el porqué de cada producto, se escribe en
 python3 motor/formular.py revisar S40-PREFLOR
 ```
 
+**Floración responde a la presión de la semana; vegetativo sigue los escalones de Kempf.** Para floración, preguntar qué hongo/plaga está activo, en qué cultivo y si está esporulando, y buscar el mejor producto para ese blanco **también fuera de la bodega** (`07-datos/fuentes/lista_precios_agosto_2026.csv` → `07-datos/productos_mercado.csv`).
+
 Ninguna bomba va a Vanessa con alertas sin explicar. Después de que la valide:
 `bombas/semana-<N>.csv` + `python3 motor/hoja_bomba.py <N>` → PDF de Alexander.
 

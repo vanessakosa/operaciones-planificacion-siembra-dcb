@@ -18,6 +18,51 @@ afirmación lleva su fuente y su **nivel de evidencia**:
 
 ---
 
+
+## 0. La regla madre: vegetativo construye, floración responde
+
+Vanessa 2026-09-23: *"empecemos a trabajar muy juiciosos con los escalones en
+todo lo que está en vegetativo. En floración tenemos que responder más a las
+presiones que tenemos en esta zona por la humedad... a lo largo del tiempo, si con
+Kempf, la preparación de camas y el fertirriego logramos mejores niveles, ya no
+vamos a tener que responder tanto a presiones."*
+
+| Etapa | Qué manda | Cómo se elige |
+|---|---|---|
+| **Vegetativo · desarrollo** | Los escalones de Kempf (sección 2) | Nutricional y bioestimulante primero; la protección es preventiva |
+| **Prefloración · floración** | **La presión de esta semana**: qué hongo o plaga está activo, en qué cultivo, y si está esporulando | Primero el blanco y el cultivo; después, el mejor producto para ese blanco **de la bodega o del mercado** |
+
+Presión documentada al 2026-09-23 (Vanessa): **oidio alto**; **statice** en la ventana
+de mayor susceptibilidad a botrytis; **lisianthus** con historia de botrytis y oidio;
+inóculo **esporulando y en el suelo**. Cuando el hongo está esporulando se prefiere un
+producto **curativo y antiesporulante** (Timorex Gold, FICHA) sobre uno solo preventivo.
+
+### Buscar fuera de la despensa
+
+La pregunta no es "¿qué tengo?", es "¿qué es lo mejor para este blanco en este
+cultivo, compatible con agricultura orgánica?". Si lo mejor no está en bodega, se
+busca en la lista del distribuidor (`07-datos/fuentes/lista_precios_agosto_2026.csv`)
+y se deja como candidato de compra en **`07-datos/productos_mercado.csv`**, con su
+evidencia y su precio. Un candidato entra a formulación solo cuando su ficha se lee
+y pasa a `productos.csv`.
+
+Lo que la literatura respalda para floración en invernadero (LIT):
+
+- **Oidio:** azufre es el control inorgánico más confiable (85–96 % en ensayo) ([PMC
+  2025, oidio con materiales orgánicos](https://pmc.ncbi.nlm.nih.gov/articles/PMC11813349/));
+  *Bacillus pumilus* QST 2808 y *B. amyloliquefaciens* con eficacia reportada;
+  *Ampelomyces* suprime pero no iguala un programa completo.
+- **Botrytis:** *Bacillus subtilis*, *Aureobasidium pullulans* y *Trichoderma* controlan
+  bien cuando se aplican en la etapa correcta; la eficacia varía mucho con temperatura
+  y humedad ([PMC 2021, mecanismos de biocontrol de B. cinerea](https://pmc.ncbi.nlm.nih.gov/articles/PMC8707566/));
+  *B. subtilis* QST 713 tiene espectro amplio en invernadero (botrytis y oidio) y
+  *T. harzianum* T39 se desarrolló contra B. cinerea ([ScienceDirect, biocontrol en
+  invernadero](https://www.sciencedirect.com/science/article/abs/pii/0261219495001298)).
+- **Resistencia:** Botrytis desarrolla resistencia a varios modos de acción: **rotar**
+  ([Plant Disease 2023](https://apsjournals.apsnet.org/doi/10.1094/PDIS-06-23-1213-SR)).
+- **Statice (Limonium) específicamente:** no se encontró literatura de biocontrol
+  propia del cultivo; se extrapola de otros cultivos con botrytis. Es un hueco.
+
 ## 1. Qué lleva toda bomba
 
 **Cuatro componentes, siempre** (DCB, `01-reglas-y-protocolos.md`; Vanessa

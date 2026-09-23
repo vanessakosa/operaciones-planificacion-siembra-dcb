@@ -26,6 +26,9 @@ import lotes as L
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(RAIZ, "05-programacion", "hojas-operario", "bombas")
+# Como conoce el producto el operario, cuando no es el nombre del cerebro.
+NOMBRE_OPERARIO = {"Hevea brasiliensis beta": "Heveacinna Beta", "Amicos MC nt": "Amicos MC",
+                   "Glukoplant Ca-BZn": "Glukoplant Ca-BZn", "Safer Mix WP": "Safer Mix"}
 DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 
 CSS = """
@@ -73,7 +76,7 @@ def receta(bomba_id, fecha):
         items.append((orden[prod], i, prod, r["dosis_25L"], r["unidad"]))
     if not items:
         raise SystemExit("La bomba %s no tiene receta vigente al %s." % (bomba_id, fecha))
-    return [(p, "%s %s" % (num(d), u)) for _, _, p, d, u in sorted(items)]
+    return [(NOMBRE_OPERARIO.get(p, p), "%s %s" % (num(d), u)) for _, _, p, d, u in sorted(items)]
 
 
 def lista(items):

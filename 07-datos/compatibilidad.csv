@@ -13,3 +13,10 @@ Safer Mix WP,producto,FUNGICIDA,categoria,NO_MEZCLAR,"hoja Stock: incompatible c
 Safer Mix WP,producto,BACTERICIDA,categoria,NO_MEZCLAR,hoja Stock,VANESSA_HOJA,
 Azasol,producto,"alcalinos (caldo bordeles, azufre de cal)",categoria,NO_MEZCLAR,hoja Stock,VANESSA_HOJA,
 Mn / Zn,ingrediente,Naturmix-L + Amicos MC nt + Starzyme,producto,SUMAN,composiciones (hoja Stock + ficha Amicos),VANESSA_HOJA,Las tres fuentes llevan Mn y Zn: en VEG van las tres juntas.
+ADN Green,producto,TODO,categoria,PREFERIBLEMENTE_SOLO,Ficha ADN Green v002,FICHA,"Con plaguicidas: prueba a pequena escala. Separar aplicaciones cada 15 dias. Manana, <=26 C."
+ADNGard,producto,FUNGICIDA,categoria,CONSULTAR,Ficha ADNGard v002,FICHA,Con insecticidas y acaricidas SI. Aplicar max 3 h despues de mezclar.
+Neofat,producto,orden de mezcla,proceso,PRIMERO,Ficha Neofat,FICHA,"Agua + Neofat primero, despues el biologico o la molecula."
+Starzyme,producto,pesticidas / surfactantes / foliares,categoria,PRUEBA_DE_JARRA,Ficha Starzyme 2021,FICHA,
+Timorex Gold,producto,TODO,categoria,PRUEBA_DE_JARRA,Ficha Timorex Gold 2022,FICHA,"Extracto fungicida: por clase, no con hongos vivos (No Fly, Safer Mix, Solar)."
+Fitoderma,producto,TODO salvo fertilizantes,categoria,PREFERIBLEMENTE_SOLO,Ficha Fitoderma 2019,FICHA,Organismos vivos.
+Zn,ingrediente,Starzyme + Amicos MC nt + ADNGard + Naturmix-L,producto,SUMAN,"fichas Starzyme (72 g/L Zn), ADNGard (0,4 %), Amicos (1 %)",FICHA,"Starzyme solo ya aporta 1,8 g de Zn por bomba a 25 cc."

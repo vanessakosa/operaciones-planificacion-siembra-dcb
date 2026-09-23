@@ -174,6 +174,10 @@ def cmd_registrar(argv):
     else:
         print("Registrada: sem %s · %s · %s · %s tanques (%g L) · %s" % (
             semana, ",".join(reconocidos), bomba_id, tanques, litros, operario or "sin operario"))
+    if camas:
+        print("Dirigida a camas puntuales (%s): NO se reparte al bloque. Queda en la ficha"
+              " como NO SE PUDO IMPUTAR hasta que la ocupacion baje a nivel cama." % camas)
+        return
     idx = L.ocupacion(tope_semana=int(semana))
     tocadas = set()
     for b in reconocidos:

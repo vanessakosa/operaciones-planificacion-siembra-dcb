@@ -39,7 +39,7 @@
 
 | Producto | Stock | Función |
 |---|---|---|
-| **Raxter Mix SC** (Metarhizium + Beauveria + Bt kurstaki + **Bacillus popilliae**) | **2 kg** (llegó 2026-09-23, Vanessa) — destino: drench chiza en las camas de boca de dragón de 3B(?) y Inv 4, en 2.000 L | **CHIZA por drench — 50 cc/cama, repetir a los 15 días.** Ficha FT8030 v2, ICA 14487. **NO mezclar con fungicidas ni bactericidas** |
+| **Raxter Mix SC** (Metarhizium + Beauveria + Bt kurstaki + **Bacillus popilliae**) | **0** — llegaron 2 kg el 2026-09-23 y se aplicaron COMPLETOS ese día (drench bocas 3B+4A+4B, 2.000 L, 200 cc/cama). **Hay que comprar para la repetición de los 15 días** | **CHIZA por drench — 50 cc/cama, repetir a los 15 días.** Ficha FT8030 v2, ICA 14487. **NO mezclar con fungicidas ni bactericidas** |
 | **Safer Mix WP** (Beauveria bassiana + Metarhizium anisopliae + Lecanicillium lecanii + Bacillus thuringiensis, 1×10⁹ UFC/g total) | 500 g | **FICHA CONFIRMADA (Vanessa 2026-09-22).** Mosca blanca (*Trialeurodes vaporariorum*) **1 g/L → 25g/tanque 25L**, N.A/N.A carencia y reingreso. También trips en rosa 1,5 g/L (dividido botón+suelo) — no aplica a DCB por ahora |
 | Alysin (ajo-ají — extractos de ají y ajo) | 500 cc | **FICHA CONFIRMADA (Vanessa 2026-09-22).** Ornamentales: **1 cc/L → 25cc/tanque 25L**, semanal, en flor y follaje — pero la etiqueta certifica **trips** (*Frankliniella occidentalis*), NO mosca blanca. Repelente de amplio espectro por sus volátiles, pero no confirmado contra mosca blanca — usar hasta agotar como refuerzo de trips, no como sustituto del Safer Mix para matricaria |
 | ADN Green (Stemona) | 1.000 cc | Trips, áfidos, mosca blanca |

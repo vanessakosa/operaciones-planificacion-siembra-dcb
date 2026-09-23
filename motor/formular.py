@@ -117,7 +117,7 @@ def cmd_revisar(bomba_id, fecha=None):
               "%s %s" % (r["dosis_25L"], r["unidad"]),
               ("$%s" % format(round(cb), ",")) if cb else "-", p["ficha_estado"] + viejo))
         # 2 ficha
-        if p["ficha_estado"] != "CONFIRMADA":
+        if p["ficha_estado"] not in ("CONFIRMADA", "ACEPTADO_POR_VANESSA"):
             alertas.append("FICHA: %s esta %s (regla 3)" % (p["producto"], p["ficha_estado"]))
         # 3 dosis
         lo, hi = num(p["dosis_min_25L"]), num(p["dosis_max_25L"])

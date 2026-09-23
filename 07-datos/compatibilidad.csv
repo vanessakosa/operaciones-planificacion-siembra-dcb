@@ -1,5 +1,5 @@
 sujeto,tipo_sujeto,con,tipo_con,regla,fuente,confianza,notas
-HONGO,organismo_vivo,FUNGICIDA,categoria,NO_MEZCLAR,"Ficha Raxter Mix SC: ""no debe usarse en mezcla con fungicidas y bactericidas""",INFERIDA_POR_CLASE,Extendida a todo hongo entomopatogeno: el fungicida lo mata en el tanque. Confirmar en cada ficha.
+HONGO,organismo_vivo,FUNGICIDA,categoria,NO_MEZCLAR,"Ficha Raxter Mix SC: ""no debe usarse en mezcla con fungicidas y bactericidas""",INFERIDA_POR_CLASE,"Extendida a todo hongo entomopatogeno: el fungicida lo mata en el tanque. Confirmar en cada ficha. EXCEPCION por ficha: Solar declara compatibilidad con la mayoria de fungicidas; No Fly con la mayoria de productos. La regla queda como alerta de prueba de jarra, no como prohibicion, salvo que la ficha la prohiba (Raxter, Safer Mix)."
 HONGO+BACTERIA,organismo_vivo,FUNGICIDA,categoria,NO_MEZCLAR,Ficha Raxter Mix SC,INFERIDA_POR_CLASE,
 Raxter Mix SC,producto,BACTERICIDA,categoria,NO_MEZCLAR,Ficha FT8030 v2,FICHA,
 Raxter Mix SC,producto,COADYUVANTE con alcohol,categoria,NO_MEZCLAR,Ficha FT8030 v2,FICHA,"Compatible con insecticidas, herbicidas, fertilizantes y coadyuvantes sin alcohol."
@@ -20,3 +20,9 @@ Starzyme,producto,pesticidas / surfactantes / foliares,categoria,PRUEBA_DE_JARRA
 Timorex Gold,producto,TODO,categoria,PRUEBA_DE_JARRA,Ficha Timorex Gold 2022,FICHA,"Extracto fungicida: por clase, no con hongos vivos (No Fly, Safer Mix, Solar)."
 Fitoderma,producto,TODO salvo fertilizantes,categoria,PREFERIBLEMENTE_SOLO,Ficha Fitoderma 2019,FICHA,Organismos vivos.
 Zn,ingrediente,Starzyme + Amicos MC nt + ADNGard + Naturmix-L,producto,SUMAN,"fichas Starzyme (72 g/L Zn), ADNGard (0,4 %), Amicos (1 %)",FICHA,"Starzyme solo ya aporta 1,8 g de Zn por bomba a 25 cc."
+Solar,producto,FUNGICIDA,categoria,COMPATIBLE_SEGUN_FICHA,Ficha Solar (Bioquirama 2021),FICHA,La ficha dice compatible con la mayoria de fungicidas; manda sobre la regla por clase HONGO x FUNGICIDA.
+Solar,producto,cupricos,ingrediente,NO_MEZCLAR,Ficha Solar,FICHA,
+No Fly,producto,TODO,categoria,PRUEBA_DE_JARRA,Ficha No Fly (Futureco),FICHA,Compatible con la mayoria de productos de proteccion; test previo.
+Equifun,producto,INSECTICIDA,categoria,COMPATIBLE,Ficha Equifun 2022,FICHA,
+Botrycid,producto,Trichoderma,organismo,SINERGIA,Ficha Botrycid v4,FICHA,Fitotripen (Trichoderma) para botrytis y damping off.
+Naturmix-L,producto,FOLIAR,via,FUERA_DE_ETIQUETA,Ficha Naturmix-L v1,FICHA,Registrado solo para fertirriego.

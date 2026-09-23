@@ -18,9 +18,15 @@ Dónde está el original de cada ficha y cuándo entró. Los datos viven en
 | Heveacinna Beta | Drive `1Mu4MLK91NXF3iIu8HvYRnIxFsUfWoHh6` | — (sin registro ICA) | 2026-09-23 |
 | Ascofol (ADN) | texto de PLM pegado por Vanessa | — | 2026-09-23 (parcial) |
 
-**Enlaces web que Vanessa pasó el 2026-09-23 y NO se pudieron leer** (la red del
-entorno bloquea esos dominios): Equifun y Solar (bioquirama.com), Regalia
-(precisagro.com.co), Botrycid (naturalcontrol.com.co), No Fly
-(futurecobioscience.com), Glukoplant (inveragro.com.co), Naturmix-L
-(agriandesdaymsa.com), Naturamin WSP (agroinsumos.cl). Subir el PDF a la carpeta
-"Fichas técnicas" de Drive, o habilitar esos dominios en el entorno.
+| Regalia | `Regalia.pdf` (precisagro.com.co) | registro 2026-02-24, ICA 9432 | 2026-09-23 |
+| Botrycid SL | `Botrycid.pdf` (naturalcontrol.com.co) | v4 2024-03-04, ICA 6204 | 2026-09-23 |
+| No Fly WP | `No-Fly.pdf` (futurecobioscience.com) | — | 2026-09-23 |
+| Naturmix-L | `Naturmix-L.pdf` (agriandesdaymsa.com) | v1 2026, ICA 5575 | 2026-09-23 |
+| Naturamin WSP | `Naturamin-WSP.pdf` (agroinsumos.cl, version Chile) | — | 2026-09-23 (parcial) |
+| Equifun | `Equifun.txt` (bioquirama.com) | act. 2022-11-01, ICA prod. 1384 | 2026-09-23 |
+| Solar | `Solar.txt` (bioquirama.com) | act. 2021-11-01 | 2026-09-23 |
+| Glukoplant Ca-BZn | `Glukoplant.txt` (inveragro.com.co) | — | 2026-09-23 |
+
+Los enlaces se abrieron cuando Vanessa habilitó el acceso de red del entorno
+(2026-09-23). Sin ese acceso, la via es subir el PDF a la carpeta "Fichas
+técnicas" de Drive.

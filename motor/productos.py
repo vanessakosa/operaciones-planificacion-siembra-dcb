@@ -115,7 +115,7 @@ def cmd_comparar(ingrediente):
     if not filas:
         raise SystemExit("Ningun producto registra %r como ingrediente en producto_ingredientes.csv." % ingrediente)
     print("PRODUCTOS CON %s\n" % ingrediente.upper())
-    print("%-18s %-14s %-16s %-12s %-12s %-14s %s" % ("PRODUCTO", "CONC.", "UNIDAD", "DOSIS 25L", "$/BOMBA", "$/1e9 UNID.", "PARA DECIDIR FALTA"))
+    print("%-18s %-14s %-16s %-12s %-12s %-14s %s" % ("PRODUCTO", "CONC.", "UNIDAD", "DOSIS 25L", "$/BOMBA", "$/ACTIVO", "PARA DECIDIR FALTA"))
     print("-" * 115)
     for i in filas:
         r = P.get(i["producto"], {})
@@ -131,10 +131,16 @@ def cmd_comparar(ingrediente):
         if not d:
             falta.append("dosis por 25L")
         activo = "-"
-        if cu and conc and "%" not in i["unidad"]:
-            activo = "$%s" % format(round(cu / conc * 1e9), ",")
-        elif cu and conc:
-            activo = "$%s/g act." % format(round(cu / (conc / 100.0)), ",")
+        u = i["unidad"].lower()
+        if cu and conc:
+            if u.startswith("g/l"):
+                # cu es $/cc; 1 L trae conc g de activo -> $/g = cu * 1000 / conc
+                activo = "$%s/g act." % format(round(cu * 1000 / conc), ",")
+            elif "%" in u:
+                # aprox: % sobre el peso o volumen del producto
+                activo = "$%s/g act." % format(round(cu / (conc / 100.0)), ",")
+            elif "ufc" in u or "esporas" in u or "conidios" in u:
+                activo = "$%s/1e9" % format(round(cu / conc * 1e9), ",")
         print("%-18s %-14s %-16s %-12s %-12s %-14s %s" % (
             i["producto"][:18], i["concentracion"], i["unidad"][:16],
             ("%g %s" % (d, r.get("unidad", ""))) if d else "-",

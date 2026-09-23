@@ -61,6 +61,7 @@ def cmd_estado():
         print("   %-18s %3d" % (k, cuenta[k]))
     con_precio = sum(1 for r in P.values() if num(r["precio_cop"]))
     print("   %-18s %3d de %d\n" % ("con precio", con_precio, len(P)))
+    print("Precios con fecha 2023 cuentan como 'precio viejo': sirven para ordenar, no para decidir.\n")
     print("%-26s %-12s %-18s %-10s %-8s %s" % ("PRODUCTO", "CATEGORIA", "FICHA", "DOSIS 25L", "PRECIO", "FALTA"))
     print("-" * 110)
     for r in sorted(P.values(), key=lambda r: (ORDEN_FICHA.get(r["ficha_estado"], 9), r["categoria"], r["producto"])):
@@ -73,12 +74,14 @@ def cmd_estado():
             falta.append("dosis de etiqueta")
         if not num(r["precio_cop"]):
             falta.append("precio")
+        elif r["precio_fecha"].startswith("2023"):
+            falta.append("precio actual")
         if not r["stock"]:
             falta.append("stock")
         d = r["dosis_max_25L"] or r["dosis_min_25L"]
         print("%-26s %-12s %-18s %-10s %-8s %s" % (
             r["producto"][:26], r["categoria"][:12], r["ficha_estado"],
-            ("%s %s" % (d, r["unidad"])) if d else "-", "si" if num(r["precio_cop"]) else "-",
+            ("%s %s" % (d, r["unidad"])) if d else "-", ("viejo" if r["precio_fecha"].startswith("2023") else "si") if num(r["precio_cop"]) else "-",
             ", ".join(falta)))
 
 

@@ -25,7 +25,26 @@ y la incidencia conocida de esos bloques.
 rotación.** No inventar contra qué se está rotando, ni siquiera si Vanessa dice
 "hazlo de memoria".
 
-### 2. Diseñar
+### 2. Diseñar desde PRODUCTOS, no desde recetas (desde 2026-09-23)
+
+```bash
+python3 motor/formular.py candidatos          # por componente: dosis de ficha, costo, alertas
+```
+
+El criterio (Kempf por etapa, qué absorbe la planta, compatibilidad, hora, vida
+útil, literatura citada) está en `03-fitosanidad/06-criterio-de-formulacion.md`.
+Se propone cada bomba con el porqué de cada producto, se escribe en
+`bombas_catalogo.csv` con un `bomba_id` nuevo (`S40-PREFLOR`, `S40-VEG`,
+`S40-REF-...`) y `vigencia_desde`, y se revisa:
+
+```bash
+python3 motor/formular.py revisar S40-PREFLOR
+```
+
+Ninguna bomba va a Vanessa con alertas sin explicar. Después de que la valide:
+`bombas/semana-<N>.csv` + `python3 motor/hoja_bomba.py <N>` → PDF de Alexander.
+
+### 2b. Criterio heredado
 
 El criterio agronómico y el inventario están en la skill `dcb-fitosanidad`.
 Las bombas ya documentadas con dosis salen de:

@@ -8,3 +8,8 @@ cobre (cupricos),ingrediente,Limonium sinensis con color,cultivo,NO_APLICAR,01-r
 Glukoplant Ca-BZn,producto,ciclo,limite,MAX_6,01-reglas-y-protocolos.md,REPO,
 Botrycid,producto,Botrycid,intervalo,84_DIAS,01-reglas-y-protocolos.md (etiqueta),REPO,Se aplicaba semanal: probable causa de baja eficacia.
 calcio,ingrediente,sulfatos / fosfatos,ingrediente,REVISAR,conocimiento general de mezcla (precipitados),GENERAL,Amicos MC es de sulfatos; Glukoplant y ADNGard llevan Ca. Confirmar con fichas o prueba de jarra.
+Glukoplant Ca-BZn,producto,TODO,categoria,APLICAR_SOLO,"hoja Stock Productos Agro DCB: ""Calcio debe aplicarse solo""",VANESSA_HOJA,Hoy va mezclado en CHOQUE-BO y PREFLOR: contradice la nota.
+Safer Mix WP,producto,FUNGICIDA,categoria,NO_MEZCLAR,"hoja Stock: incompatible con fungicidas, bactericidas, UV",VANESSA_HOJA,Confirma la regla por clase de hongo vivo.
+Safer Mix WP,producto,BACTERICIDA,categoria,NO_MEZCLAR,hoja Stock,VANESSA_HOJA,
+Azasol,producto,"alcalinos (caldo bordeles, azufre de cal)",categoria,NO_MEZCLAR,hoja Stock,VANESSA_HOJA,
+Mn / Zn,ingrediente,Naturmix-L + Amicos MC nt + Starzyme,producto,SUMAN,composiciones (hoja Stock + ficha Amicos),VANESSA_HOJA,Las tres fuentes llevan Mn y Zn: en VEG van las tres juntas.

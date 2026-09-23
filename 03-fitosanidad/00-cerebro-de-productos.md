@@ -11,7 +11,7 @@ porque la receta se copió de julio sin razonarla.
 
 | # | Pieza | Archivo | Estado |
 |---|---|---|---|
-| 1 | Ficha por producto, con precio | `07-datos/productos.csv` + PDF en `fichas/` | **Esqueleto listo (45 productos)** — 4 fichas confirmadas, 0 precios |
+| 1 | Ficha por producto, con precio | `07-datos/productos.csv` + PDF en `fichas/` | **45 productos** — 4 fichas confirmadas; composición, dosis por litro, incompatibilidades y 32 precios traídos de la hoja `Stock Productos Agro DCB` de Drive (precios sin fecha, ~2023) |
 | 1b | Ingredientes activos, formato largo | `07-datos/producto_ingredientes.csv` | Solo los que traen concentración en el repo |
 | 2 | Reglas de compatibilidad por clase | `07-datos/compatibilidad.csv` | 9 reglas iniciales |
 | 3 | El criterio con fuentes | `03-fitosanidad/06-criterio-de-formulacion.md` | Pendiente |

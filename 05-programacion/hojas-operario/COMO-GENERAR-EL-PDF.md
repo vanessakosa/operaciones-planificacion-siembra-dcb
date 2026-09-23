@@ -44,3 +44,19 @@ Cada hoja está escrita para **caber en papel carta**, y el bloque
 
 Viven en `05-programacion/hojas-operario/pdf/`. Se regeneran cuando cambia el
 HTML — no se editan a mano.
+
+## La hoja de BOMBAS no se hace a mano
+
+Vanessa 2026-09-23: *"cada vez que generamos este PDF me lo haces distinto"*. El
+diseño quedó fijo en `motor/hoja_bomba.py`. Cada semana solo se escribe
+`bombas/semana-<N>.csv` (título, subtítulo, bomba, fecha, hora, operario) y se corre:
+
+```bash
+python3 motor/hoja_bomba.py 39
+```
+
+Una hoja por página: título grande (PREFLORACIÓN · FLORACIÓN / DESARROLLO ·
+VEGETATIVO / REFUERZOS), día y hora, operario, y los productos **en orden de
+mezcla** con la cantidad para 25 L. Nada más: ni dosis, ni camas, ni
+explicaciones. Las cantidades salen de `07-datos/bombas_catalogo.csv` y el orden de
+`07-datos/orden_mezcla.csv`.

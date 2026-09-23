@@ -77,3 +77,21 @@ Si crees que estamos sobredosificando o subdosificando, prefiero saberlo ahora.
 
 Gracias,
 **Vanessa**
+
+
+## Cómo se aplica en DCB (confirmado por Vanessa, 2026-09-23)
+
+| | |
+|---|---|
+| Dosis | **1 cc por litro** |
+| Momento | Al trasplante, cama por cama |
+| Inv 3A (cama ~35,6 m²) | **2 bombas de 20 L** = 40 L y 40 cc por cama |
+| Inv 4 (cama ~20,2 m²) | **1 bomba de 20 L** = 20 L y 20 cc por cama |
+| Caldo | ~1 L por m² de cama en los dos bloques |
+| Costo (lista agosto, $52.140/L) | ~$1.040 por cama en Inv 4 · ~$2.090 en 3A |
+
+Primeras camas: Campánula en 3A (2026-09-21); Dahlias SB Talee y Snapdragon Potomac
+Appleblossom en 4A (2026-09-23). Registrado en `07-datos/labores_lote.csv`.
+
+La dosis del mensaje original (1,5 cc por bomba de 20 L) era una propuesta; la que se
+aplica es **1 cc/L**, unas 13 veces más concentrada. Sigue faltando la ficha técnica.
